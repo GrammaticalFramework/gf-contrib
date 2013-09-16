@@ -8,7 +8,7 @@ or which do not belong there.
 
     GF core = compiler + runtimes + standard libraries + central docs
 
-If you want to contribute to GF, this is repository to do it in!
+If you want to contribute to GF, this is the repository to do it in!
 
 1. Fork this repository and clone your fork locally
 2. Work on your code & commit as much as you want to your forked repo
