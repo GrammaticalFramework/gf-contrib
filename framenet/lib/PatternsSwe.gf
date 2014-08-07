@@ -3219,13 +3219,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Imitating
 		--
 
-		Imitating_V2_1 agent_np characteristic_np v2 = lin Clause {
-			np = fromMaybe NP emptyNP agent_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP characteristic_np)
-		} ;
-		-- <Agent>[arter] kan [HÄRMA] <Characteristic>[mönstren] på <S/DP>[de giftiga]
-
-		Imitating_V2_2 agent_np standard_np v2 = lin Clause {
+		Imitating_V2 agent_np standard_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP agent_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP standard_np)
 		} ;
@@ -3620,16 +3614,6 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			vp = mkVP v2 (fromMaybe NP emptyNP possession_np)
 		} ;
 		-- <Owner>[jag] [TAPPADE BORT] <Possession>[all min mail]
-
-		--
-		-- Losing_someone
-		--
-
-		Losing_someone_V2 deceased_np sufferer_np v2 = lin Clause {
-			np = fromMaybe NP emptyNP sufferer_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP deceased_np)
-		} ;
-		-- <Sufferer>[Hon] [FÖRLORADE] <Deceased>[sin 18-årige son] <E/P>[i branden]
 
 		--
 		-- Make_noise
@@ -5910,16 +5894,6 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP defendant_np)) (fromMaybe Adv emptyAdv finding_adv)
 		} ;
 		-- <Judge>[Tingsrätten] [FINNER] <Defendant>[honom] <Finding>[skyldig på samtliga åtalspunkter]
-
-		--
-		-- Verification
-		--
-
-		Verification_VS inspector_np unconfirmed_content_s vs = lin Clause {
-			np = fromMaybe NP emptyNP inspector_np ;
-			vp = mkVP vs (fromMaybe S emptyS unconfirmed_content_s)
-		} ;
-		-- <C/T>[Efter att ha undersökt föremålet] kunde <Inspector>[de] [FASTSTÄLLA] <Unconfirmed_content>[att det verkligen rörde sig om en sprängladdning av något slag]
 
 		--
 		-- Wagering

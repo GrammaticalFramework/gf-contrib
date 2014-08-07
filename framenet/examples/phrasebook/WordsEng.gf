@@ -1,17 +1,19 @@
 --2 Implementations of Words, with English as example
 
 concrete WordsEng of Words = SentencesEng **
-    open
-      PatternsEng, -- FrameNet API
-      TargetsEng,  -- FrameNet API
-      Maybe',      -- FrameNet API
-      SyntaxEng,
-      ParadigmsEng,
-      (L = LexiconEng),
-      (P = ParadigmsEng),
-      IrregEng,
-      ExtraEng,
-      Prelude in {
+  open
+    PatternsEng, -- FrameNet API
+    TargetsEng,  -- FrameNet API
+    SyntaxEng,
+    ParadigmsEng,
+    (L = LexiconEng),
+    (P = ParadigmsEng),
+    IrregEng,
+    ExtraEng,
+    Prelude,
+    Maybe        -- from RGL; used with FrameNet API
+  in {
+
   lin
 
 -- Kinds; many of them are in the resource lexicon, others can be built by $mkN$.
@@ -203,15 +205,15 @@ concrete WordsEng of Words = SentencesEng **
 	-- FrameNet API:
     AWantGo p place = let cl : Clause =
       Desiring_VV
-        (Just VP -- Event
+        (Just VP                -- Desiring.Event
           (Motion_V_2
-            (Just Adv place.to) -- Goal
-            (Nothing' Adv) -- Source
-            (Nothing' NP) -- Theme
+            (Just Adv place.to) -- Motion.Goal
+            (Nothing' Adv)      -- Motion.Source
+            (Nothing' NP)       -- Motion.Theme
             go_V_Motion
           ).vp
         )
-        (Just NP p.name) -- Experiencer
+        (Just NP p.name)        -- Desiring.Experiencer
         want_VV_Desiring
       in mkCl cl.np cl.vp ;
 
