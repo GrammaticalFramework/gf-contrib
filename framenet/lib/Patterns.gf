@@ -612,8 +612,7 @@ abstract Patterns = Elements ** {
 
 		Hunting_V : Hunter_NP -> V -> Clause ;
 
-		Imitating_V2_1 : Agent_NP -> Characteristic_NP -> V2 -> Clause ;
-		Imitating_V2_2 : Agent_NP -> Standard_NP -> V2 -> Clause ;
+		Imitating_V2 : Agent_NP -> Standard_NP -> V2 -> Clause ;
 
 		Immobilization_V2 : Agent_NP -> Patient_NP -> V2 -> Clause ;
 
@@ -688,8 +687,6 @@ abstract Patterns = Elements ** {
 		Location_of_light_V : Figure_NP -> Ground_Adv -> V -> Clause ;
 
 		Losing_V2 : Owner_NP -> Possession_NP -> V2 -> Clause ;
-
-		Losing_someone_V2 : Deceased_NP -> Sufferer_NP -> V2 -> Clause ;
 
 		Make_noise_V : Noisy_event_NP -> V -> Clause ;
 		Make_noise_V2 : Sound_NP -> Sound_source_NP -> V2 -> Clause ;
@@ -1124,8 +1121,6 @@ abstract Patterns = Elements ** {
 		Using_V2_Pass : Instrument_NP -> V2 -> Clause ;
 
 		Verdict_V2 : Defendant_NP -> Finding_Adv -> Judge_NP -> V2 -> Clause ;
-
-		Verification_VS : Inspector_NP -> Unconfirmed_content_S -> VS -> Clause ;
 
 		Wagering_VS : Gambler_NP -> Outcome_S -> VS -> Clause ;
 

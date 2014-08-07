@@ -3219,13 +3219,7 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Imitating
 		--
 
-		Imitating_V2_1 agent_np characteristic_np v2 = lin Clause {
-			np = fromMaybe NP emptyNP agent_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP characteristic_np)
-		} ;
-		-- <Agent>[I] [MIMICKED] <Characteristic>[his slow accent]
-
-		Imitating_V2_2 agent_np standard_np v2 = lin Clause {
+		Imitating_V2 agent_np standard_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP agent_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP standard_np)
 		} ;
@@ -3620,16 +3614,6 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP v2 (fromMaybe NP emptyNP possession_np)
 		} ;
 		-- <Owner>[I] have n't [LOST] <Possession>[it]
-
-		--
-		-- Losing_someone
-		--
-
-		Losing_someone_V2 deceased_np sufferer_np v2 = lin Clause {
-			np = fromMaybe NP emptyNP sufferer_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP deceased_np)
-		} ;
-		-- <Sufferer>[i] was [LOSING] <Deceased>[my family]
 
 		--
 		-- Make_noise
@@ -5910,16 +5894,6 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP defendant_np)) (fromMaybe Adv emptyAdv finding_adv)
 		} ;
 		-- <Judge>[The jury] returned within minutes , [FINDING] <Defendant>[both men] <Finding>[guilty]
-
-		--
-		-- Verification
-		--
-
-		Verification_VS inspector_np unconfirmed_content_s vs = lin Clause {
-			np = fromMaybe NP emptyNP inspector_np ;
-			vp = mkVP vs (fromMaybe S emptyS unconfirmed_content_s)
-		} ;
-		-- <Inspector>[They] [VERIFY] <Unconfirmed_content>[that is coming from where the person says it 's coming]
 
 		--
 		-- Wagering

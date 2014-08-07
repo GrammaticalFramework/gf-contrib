@@ -60,7 +60,6 @@ abstract Elements = Cat ** {
 		Buyer_NP ;
 		Carrier_NP ;
 		Cause_NP ;
-		Characteristic_NP ;
 		Charges_Adv ;
 		Child_NP ;
 		Chosen_NP ;
@@ -106,7 +105,6 @@ abstract Elements = Cat ** {
 		Crime_jurisdiction_Adv ;
 		Criteria_Adv ;
 		Danger_Adv ;
-		Deceased_NP ;
 		Decision_VP ;
 		Defendant_NP ;
 		Defender_NP ;
@@ -438,7 +436,6 @@ abstract Elements = Cat ** {
 		Submittor_NP ;
 		Substance_Adv ;
 		Substance_NP ;
-		Sufferer_NP ;
 		Supplier_NP ;
 		Support_NP ;
 		Supported_NP ;
@@ -465,7 +462,6 @@ abstract Elements = Cat ** {
 		Traveller_NP ;
 		Trigger_Adv ;
 		Trigger_NP ;
-		Unconfirmed_content_S ;
 		Undergoer_NP ;
 		Undertaking_Adv ;
 		Undesirable_Event_Adv ;
