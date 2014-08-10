@@ -29,9 +29,10 @@ All grammar modules have been automatically generated based on the automatically
   - `ElementsI.gf` – mapping from the semantic types to the syntactic types, shared for all languages.
   - `ElementsEng.gf` and `ElementsSwe.gf` – language-specific instantiations of `ElementsI.gf`.
   - `PatternsEng.gf` and `PatternsSwe.gf` – language-specific implementation of the shared valence patterns (frame building functions).
-  - `TargetsEng.gf` – implementation of 2,373 BFN LUs (reusing [`DictionaryEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/translator/DictionaryEng.gf)).
+  - `TargetsEng.gf` – implementation of 2,482 BFN LUs (reusing [`DictEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/DictEng.gf)).
+  - `TargetsSwe.gf` – implementation of 1,021 SweFN LUs (reusing [`DictSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/DictSwe.gf)).
 
-LUs between BFN and SweFN are not directly aligned, therefore a framenet-specific lexicon is generated for each language. Note that `TargetsSwe.gf` is not included yet.
+LUs between BFN and SweFN are not directly aligned, therefore a framenet-specific lexicon is generated for each language.
 
 Documentation
 -------------
@@ -48,7 +49,7 @@ Usage example
 
 To illustrate the use of the FrameNet-based API, a re-engineered version of the [Phrasebook](https://github.com/GrammaticalFramework/gf-contrib/tree/master/phrasebook) grammar is included, preserving the original functionality and making no changes in the abstract syntax. Changes affect only the concrete syntax.
 
-Search for "FrameNet API" in `WordsEng.gf` and `PhrasebookEng.gf` under `examples/phrasebook` to see the added and modified code.
+Search for "FrameNet API" in `WordsEng.gf`, `PhrasebookEng.gf` and `WordsSwe.gf`, `PhrasebookSwe.gf` under `examples/phrasebook` to see the added and modified code.
 
 Publications
 ------------
