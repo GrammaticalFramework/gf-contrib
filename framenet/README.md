@@ -1,7 +1,7 @@
 A FrameNet-based API to GF Resource Grammar Library
 ===================================================
 
-Version 0.9.2
+Version 0.9.3
 
 Introduction
 ------------
