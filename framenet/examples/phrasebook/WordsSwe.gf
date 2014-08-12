@@ -162,7 +162,12 @@ concrete WordsSwe of Words = SentencesSwe **
     AHungry p = mkCl p.name (mkA "hungrig") ;
     AIll p = mkCl p.name (mkA "sjuk") ;
     AKnow p = mkCl p.name (mkV "veta" "vet" "vet" "visste" "vetat" "visst") ;
-    ALike p item = mkCl p.name (mkV2 (mkV "tycker") (mkPrep "om")) item ;
+
+    --ALike p item = mkCl p.name (mkV2 (mkV "tycker") (mkPrep "om")) item ;
+    -- FrameNet API:
+    ALike p item = let cl : Clause =
+      Experiencer_focus_V2 (Just NP item) (Just NP p.name) (mkV2 (mkV "tycker") (mkPrep "om"))
+        in mkCl cl.np cl.vp ;
 
     --ALive p co = mkCl p.name (mkVP (mkVP (mkV "bo")) (SyntaxSwe.mkAdv in_Prep co)) ;
     -- FrameNet API:
