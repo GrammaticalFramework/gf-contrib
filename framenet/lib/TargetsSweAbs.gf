@@ -9,10 +9,16 @@ abstract TargetsSweAbs = Cat ** {
 		överge_V2_Abandonment : V2 ; -- <Agent>[Besättningen på Skandia] tvingades att [ÖVERGE] <Theme>[båten]
 
 		drälla_V_Abounding_with : V ; -- <Location>[Världen] [DRÄLLER] <Theme>[av receptböcker]
+		myllra_V_Abounding_with : V ; -- [MYLLRA] <Theme>[av lekande barn]
 		svämma_över_V_Abounding_with : V ; -- <Location>[ett bord som] [SVÄMMAR ÖVER] <Theme>[av bullar]
 		vimla_V_Abounding_with : V ; -- <Location>[Hela huset] [VIMLAR] <Theme>[av folk]
 
+		grädda_V_Absorb_heat : V ; -- <Entity>[den] [GRÄDDA]
+		koka_V_Absorb_heat : V ; -- [KOKAR] <Entity>[de]
+		puttra_V_Absorb_heat : V ; -- <Entity>[stuvningen] [PUTTRA]
 		sjuda_V_Absorb_heat : V ; -- <Entity>[Den] får [SJUDA] <Heat_source>[i ugnen]
+		småkoka_V_Absorb_heat : V ; -- <Entity>[anrättningen] får [SMÅKOKA]
+		steka_V_Absorb_heat : V ; -- <Entity>[de] får [STEKA]
 
 		misshandla_V2_Abusing : V2 ; -- <Abuser>[en kvinna] [MISSHANDLAR] <Victim>[en man]
 
@@ -38,6 +44,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		börja_V_Activity_start : V ; -- [BÖRJADE] <Activity>[med tv- reklam och animation]
 		börja_V2_Activity_start : V2 ; -- <Agent>[Pablo] är född i Guinea , men uppvuxen i Tyskland och [BÖRJADE] <Activity>[sin karriär]
+		inleda_V2_Activity_start : V2 ; -- [INLEDA] <Activity>[pollenmätningarna]
 		begynna_VV_Activity_start : VV ; -- <Agent>[han] inte [BEGYNNER] <Activity>[slå mor]
 		börja_VV_Activity_start : VV ; -- <Agent>[Ford] och framför allt <Agent>[GM] måste [BÖRJA] <Activity>[tillverka attraktiva bilar som säljer]
 		ge_VV_Activity_start : VV ; -- <Agent>[jag] [GE MIG PÅ] <Activity>[att tillverka ett eget mönster]
@@ -76,19 +83,30 @@ abstract TargetsSweAbs = Cat ** {
 		vägra_VV_Agree_or_refuse_to_act : VV ; -- <Speaker>[Mannen] [VÄGRADE] <Proposed_action>[släppa kniven]
 
 		bruka_V2_Agriculture : V2 ; -- <Agriculturist>[Vi] [BRUKAR] <Ground>[jorden]
+		kultivera_V2_Agriculture : V2 ; -- [KULTIVERA] <Ground>[åkrarna]
 
 		rikta_V2_Aiming : V2 ; -- <Agent>[Skurken] [RIKTAR] <Instrument>[sitt vapen] <Targeted>[mot den obeväpnade hjälten]
 
+		ackumulera_V2_Amassing : V2 ; -- [ACKUMULERA] <Mass_theme>[kadmium]
 		hamstra_V2_Amassing : V2 ; -- <Recipient>[Konsumenterna] har att börja [HAMSTRA] <Mass_theme>[dagligvaror]
 
 		belöpa_sig_V_Amounting_to : V ; -- <Attribute>[De samlade resurser som vi ger i detta sammanhang] [BELÖPER SIG] i det närmaste <Value>[till 300 milj]
 
+		baka_V2_Apply_heat : V2 ; -- [BAKA] <Food>[potatisarna]
+		koka_V2_Apply_heat : V2 ; -- [KOKA] <Food>[betorna]
+		pochera_V2_Apply_heat : V2 ; -- [ÅNGKOKA] <Food>[fisken] eller [POCHERA] ( <LU).>[sjuda]
+		sjuda_V2_Apply_heat : V2 ; -- [KOKA] [UPP] och [SJUD] <Food>[rödbetorna]
 		steka_V2_Apply_heat : V2 ; -- [STEKA] <Food>[kött] <Container>[i en värmetålig stekpåse]
+		woka_V2_Apply_heat : V2 ; -- [WOKA] <Food>[grönsakerna]
+		ångkoka_V2_Apply_heat : V2 ; -- [ÅNGKOKA] <Food>[fisken] eller [POCHERA] ( <LU).>[sjuda]
 
 		ackreditera_V2_Appointing : V2 ; -- <Official>[Ambassadörer] [ACKREDITERAS] <Role>[till statschefer]
 
+		arrangera_V2_Arranging : V2 ; -- <Agent>[Nederländaren Maarten Bon] 1933-2003 arbetade under en period med att [ARRANGERA] <Theme>[fyra pianosatser i Stravinskys berömda Våroffer]
+		göra_V2_Arranging : V2 ; -- <Agent>[kommunen] [GÖR I ORDNING] <Theme>[sitt nyköpta område]
 		lägga_V2_Arranging : V2 ; -- <Agent>[Man] kan även [LÄGGA UPP] <Theme>[ett tak] <Configuration>[i form av en segelduk eller ett vackert parasoll]
 
+		ankomma_V_Arriving : V ; -- <Theme>[Tåget mot Norsborg] [ANKOMMER]
 		anlända_V_Arriving : V ; -- [ANLÄNDE] <Theme>[Kris Beech] <Goal>[till Jönköping]
 		komma_V_Arriving : V ; -- <Theme>[Vi] [KOM] <Goal>[till Sverige]
 		landa_V_Arriving : V ; -- <Theme>[Dottern] har [LANDAT] <Goal>[i New York]
@@ -104,14 +122,21 @@ abstract TargetsSweAbs = Cat ** {
 		vikta_V2_Assessing : V2 ; -- <Phenomenon>[Betyg i dessa relativt krävande ämnen] ska kunna [VIKTAS]
 		övervärdera_V2_Assessing : V2 ; -- <Phenomenon>[Trivselfaktorn] [ÖVERVÄRDERAS]
 
+		hjälpa_V2_Assistance : V2 ; -- <Helper>[barn] [HJÄLPER] <Benefited_party>[barn]
 		stödja_V2_Assistance : V2 ; -- <Helper>[Du] ska [STÖDJA] <Benefited_party>[mig] <Focal_entity>[i allt jag gör]
+		tjäna_V2_Assistance : V2 ; -- <Helper>[Han] hade gett sitt liv för att [TJÄNA] <Benefited_party>[sin husbonde]
 		hjälpa_V2V_Assistance : V2V ; -- <Helper>[sanden] [HJÄLPER] <Benefited_party>[dig] <Goal>[att flyta]
 
 		gottgöra_V2_Atonement : V2 ; -- <Agent>[Jag] vill härmed [GOTTGÖRA] <Wrong.>[denna försummelse]
 		sona_V2_Atonement : V2 ; -- <Agent>[Marie] har [SONAT] <Wrong,>[sitt brott]
 
+		bränna_V2_Attaching : V2 ; -- <Agent>[man] [BRÄNNER FAST] <Item>[det]
 		fästa_V2_Attaching : V2 ; -- <Agent>[man] [FÄSTER] <Item>[en knapp] <Goal>[i ett plagg]
+		förtöja_V2_Attaching : V2 ; -- <Agent>[en man och kvinna] [FÖRTÖJA] <Item>[sin segelbåt]
+		haka_V2_Attaching : V2 ; -- <Agent>[Jag] släcker alla ljus , [HAKAR FAST] <Item>[fönstret]
+		montera_V2_Attaching : V2 ; -- <Agent>[man] [MONTERAR] <Item>[bilbarnstolen]
 		spika_V2_Attaching : V2 ; -- <Agent>[Vi] flyttade bort boden , rev bort masoniten och [SPIKADE FAST] <Item>[hattlist] <Goal>[på ytterväggarna]
+		säkra_V2_Attaching : V2 ; -- <Agent>[man] [SÄKRAR] <Item>[sin last]
 		koppla_V2_Attaching : V2 ; -- <Agent>[entreprenörerna Staffan Jonasson och Magnus Westin] på att [KOPPLA IHOP] <Items>[kablar]
 		slå_V2_Attaching : V2 ; -- [SLÅ FAST] <Item>[ramarna] <Goal>[i den] <Connector>[med spik]
 		dras_V2_Attaching : V2 ; -- <Item>[bogvisiret] [DRAS FAST] <Connector>[med vantskruvar] <Goal>[i durken]
@@ -120,11 +145,13 @@ abstract TargetsSweAbs = Cat ** {
 		ge_V2_Attack : V2 ; -- <Assailant>[Mannen] [GAV SIG PÅ] <Victim>[60-åringen]
 
 		anstränga_V_Attempt : V ; -- <Agent>[Hon] [ANSTRÄNGER SIG] <Goal>[för att ta seden dit hon kommer]
+		bjuda_V_Attempt : V ; -- <Agent>[vi] vågar [BJUDA TILL]
 		anstränga_VV_Attempt : VV ; -- <Agent>[Dessa journalister] är professionella som [ANSTRÄNGER SIG] <Goal>[att varna allmänheten i sitt land , att kritisera korruptionen i regimen]
 		försöka_VV_Attempt : VV ; -- <Agent>[Hon] kommer också att [FÖRSÖKA] <Goal>[få sin häst stambokförd]
 
 		undvika_V2_Avoiding : V2 ; -- <Agent>[jag] [UNDVIKA] <Undesirable_situation>[dessa smärtor]
 		undgå_VV_Avoiding : VV ; -- <Agent>[vi] kunnat [UNDGÅ] <Undesirable_situation>[att bli indragna i 1900-talets båda världskrig]
+		undvika_VV_Avoiding : VV ; -- [UNDVIKA] <Undesirable_situation>[att bli sjuk]
 
 		veta_V_Awareness : V ; -- <Cognizer>[vi] [VET] inte <Content>[om framtidens apparater kan avläsa det vi arkiverar i dag]
 		ana_V2_Awareness : V2 ; -- [ANAR] <Cognizer>[man] <Content.>[ett engagemang som slagit över i överkänslighet]
@@ -160,8 +187,10 @@ abstract TargetsSweAbs = Cat ** {
 		torka_V_Becoming_dry : V ; -- <Entity>[banan] [TORKADE UPP]
 
 		dela_V_Becoming_separated : V ; -- <Whole>[kräftan] [DELAR SIG] <Parts>[i två halvor]
+		smula_V_Becoming_separated : V ; -- <Whole>[Min grovhackade kycklingleverpaté] [SMULAR SIG]
 
 		dirigera_V2_Behind_the_scenes : V2 ; -- <Artist>[Lehtinen] hade förmånen att få [DIRIGERA] <Production>[Ingvar Lindholms dramatiska och magnifikt svärtade Kontakion som repeterades under sista tävlingsomgången]
+		filmatisera_V2_Behind_the_scenes : V2 ; -- [FILMATISERA] <Production>[böckerna om 007]
 		komponera_V2_Behind_the_scenes : V2 ; -- <Artist>[Erik Bergman] [KOMPONERADE] <Production>[operan]
 		producera_V2_Behind_the_scenes : V2 ; -- <Artist>[ScanTV] ska [PRODUCERA] <Production>[färre egna program]
 
@@ -188,6 +217,7 @@ abstract TargetsSweAbs = Cat ** {
 		vicka_V_Body_movement : V ; -- <Agent>[Han] rörde på tårna och [VICKADE] <Body_part>[på fötterna]
 
 		bravera_V_Bragging : V ; -- <Speaker>[hon] skulle [BRAVERA] <Topic>[med sin konst]
+		göra_V_Bragging : V ; -- <Speaker>[blomman] slutade att [GÖRA SIG FIN]
 		skryta_V_Bragging : V ; -- <Speaker>[Jag] vill inte [SKRYTA] <Topic>[om nånting]
 
 		inhalera_V2_Breathing : V2 ; -- <Agent>[hon] ertappats med att [INHALERA] <Air>[lustgas]
@@ -197,21 +227,27 @@ abstract TargetsSweAbs = Cat ** {
 		forsla_V2_Bringing : V2 ; -- <Agent>[De] [FORSLAR IN] <Theme>[militär utrustning]
 		köra_V2_Bringing : V2 ; -- <Carrier>[Bussen] [KÖR] <Theme>[oss] <Goal>[till Katrineholm där ett nytt tåg står och väntar]
 
+		anlägga_V2_Building : V2 ; -- <Agent>[Norge] rustar upp och [ANLÄGGER] <Created_entity>[fästningar]
 		bygga_V2_Building : V2 ; -- <Agent>[Sjökaptenen] [BYGGDE] <Created_entity>[sitt hus] <Components>[av holländskt tegel]
 		göra_V2_Building : V2 ; -- <Agent>[Möbelakrobaterna] [GÖR] <Created_entity>[möbler] <Components>[av slitna skor och gamla badkar]
-		sätta_V2_Building : V2 ; -- <Agent>[vi] däremot [SÄTTER SAMMAN] <Components>[delarna till ett hus eller en motor]
+		montera_V2_Building : V2 ; -- <Agent>[man] [MONTERADE] endast <Created_entity>[sex flygplan]
+		sätta_V2_Building : V2 ; -- <Agent>[En smart student] kan [SÄTTA IHOP] <Created_entity>[en persondator]
+		timra_V2_Building : V2 ; -- <Agent>[De] [TIMRAR] <Created_entity>[en ny trappa]
+		uppföra_V2_Building : V2 ; -- <Agent>[han] [UPPFÖRA] <Created_entity>[en byggnad som kallas Beckford ' s torn]
 
 		drulla_V_Bungling : V ; -- <Agent>[han] balansen och [DRULLAR]
 		ramla_V_Bungling : V ; -- <Agent>[tönten som] [RAMLAR RUNT]
 		sjabbla_V2_Bungling : V2 ; -- <Patient>[Hallströms samer] [SJABBLAS BORT]
 
 		föra_V2_Carry_goods : V2 ; -- <Distributor>[de] [FÖR] inte <Goods.>[försvarets hudsalva]
+		saluföra_V2_Carry_goods : V2 ; -- [SALUFÖRA] <Goods.>[livsmedel som är så rena och fria från tillsatser som möjligt]
 
 		råka_V_Catastrophe : V ; -- <Undergoer>[hundarna] [RÅKA UT] <Undesirable_Event>[för en massa svansolyckor]
 		drabba_V2_Catastrophe : V2 ; -- <Undesirable_Event>[Fusionen] kommer att [DRABBA] <Undergoer>[en tredjedel av de sammanlagt 18500 anställda i bankerna]
 
 		kategorisera_V2_Categorization : V2 ; -- <Item>[Orkaners styrka] [KATEGORISERAS] <Criteria>[enligt ett system som kallas Saffir-Simpsonskalan]
 
+		väcka_V2_Causation : V2 ; -- <Actor>[jag] ville [VÄCKA] <Effect>[uppmärksamhet]
 		åsamka_V2_Causation : V2 ; -- <Actor>[Hajar] har setts använda för att [ÅSAMKA] <Effect>[skada] <Affected>[på sina bytesdjur]
 		göra_V2_Causation : V2 ; -- <Actor>[Du] [GJORDE] <Affected>[mig] <Effect>[jätteglad]
 		framkalla_V2_Causation : V2 ; -- <Cause>[Färgämnet] kan [FRAMKALLA] <Effect>[svåra eksem och ge livslånga allergiproblem]
@@ -221,15 +257,20 @@ abstract TargetsSweAbs = Cat ** {
 		få_V2V_Causation : V2V ; -- <Cause>[Bilderna på mormors morfar] [FICK] <Affected>[mig] <Effect>[att drömma om att också bli äventyrare]
 		komma_V2V_Causation : V2V ; -- <Cause>[Det våldsamma septemberovädret det året] [KOM] <Affected>[floden] <Effect>[att svämma över]
 
+		förändra_V2_Cause_change : V2 ; -- <Agent>[Många ungdomar] [FÖRÄNDRAR] också <Entity>[sitt beteende]
 		göra_V2_Cause_change : V2 ; -- <Agent>[Jag] vill också [GÖRA] <Entity>[världen] <Final_category>[till en lite bättre plats]
-		förändra_V2_Cause_change : V2 ; -- <Cause>[Denna teknik] [FÖRÄNDRAR] <Entity>[vårt emotionella tillstånd]
+		omdana_V2_Cause_change : V2 ; -- <Agent>[Gandhi] [OMDANAR] <Entity>[Indiens ekonomi]
+		ändra_V2_Cause_change : V2 ; -- <Agent>[hon] [ÄNDRAR] <Entity>[formuleringar som hon har grubblat på , ord som skimrar i hennes minne]
 		omvandla_V2_Cause_change : V2 ; -- <Entity>[de] [OMVANDLAS] <Final_category>[till ännu finare smycken]
 		omändra_V2_Cause_change : V2 ; -- <Entity>[den] [OMÄNDRAS] <Final_category>[till laståsna] eller <Final_category>[till konferensutrymme]
 
 		lösa_V2_Cause_change_of_consistency : V2 ; -- <Agent>[man] behöver göra är att [LÖSA] <Undergoer>[pigmentet]
+		reda_V2_Cause_change_of_consistency : V2 ; -- [REDA UT] <Undergoer>[såsen]
 		mjuka_V2_Cause_change_of_consistency : V2 ; -- <Undergoer,>[En mör filé med tilltalande vild smak] täckt av en generös driva ljuvliga kantareller i en mustig , konjaksspetsad sås , som [MJUKATS UPP]
 
 		frysa_V2_Cause_change_of_phase : V2 ; -- <Agent>[Vi] kan [FRYSA NED] <Undergoer>[enkla organismer eller levande embryon ( foster i mycket tidigt stadium )] och [TINA UPP] <Undergoer>[dem]
+		smälta_V2_Cause_change_of_phase : V2 ; -- [SMÄLTA] <Undergoer>[maten]
+		snabbfrysa_V2_Cause_change_of_phase : V2 ; -- [SNABBFRYS] <Undergoer>[fisken]
 		tina_V2_Cause_change_of_phase : V2 ; -- <Agent>[Arkeologerna] för att [TINA UPP] <Undergoer>[tjälen]
 		djupfrysa_V2_Cause_change_of_phase : V2 ; -- <Undergoer>[Slaktad lax] [DJUPFRYSES]
 		förgasa_V2_Cause_change_of_phase : V2 ; -- <Undergoer>[natriumet] [FÖRGASATS]
@@ -245,28 +286,40 @@ abstract TargetsSweAbs = Cat ** {
 		smäda_V2_Cause_emotion : V2 ; -- <Agent>[Man] ska lyfta fram sitt lag och [SMÄDA] <Experiencer>[motståndarna]
 
 		droppa_V2_Cause_fluidic_motion : V2 ; -- <Agent>[man] antingen [DROPPA] <Goal>[i] <Fluid>[oljan]
+		skvalpa_V2_Cause_fluidic_motion : V2 ; -- <Agent>[prästen] som skred fram för att inte [SKVALPA UT] <Fluid>[den glittrande pölen]
 		slå_V2_Cause_fluidic_motion : V2 ; -- <Agent>[Hon] hade en skopa i handen och [SLOG] <Fluid>[vatten] <Goal>[på stenarna som låg på bastuelementet]
 		strila_V2_Cause_fluidic_motion : V2 ; -- <Agent>[hon] [STRILADE] <Fluid>[den ruttna urinen] <Goal>[över jorden]
 		tappa_V2_Cause_fluidic_motion : V2 ; -- <Agent>[den förste libanesiske vintillverkare som] [TAPPADE] <Fluid>[vin] <Goal>[på flaska]
 
 		hugga_V_Cause_harm : V ; -- [HUGGER] <Agent>[hon] <Victim>[på honom]
+		daska_V2_Cause_harm : V2 ; -- <Agent>[han] [DASKADE TILL] <Victim>[henne]
+		golva_V2_Cause_harm : V2 ; -- <Agent>[Han] fläskade till två brudar på truten , [GOLVADE] <Victim>[en snubbe]
+		hugga_V2_Cause_harm : V2 ; -- <Agent>[Jag] fick fatt på en stor kniv och [HÖGG] <Victim>[barnet i magen]
+		klå_V2_Cause_harm : V2 ; -- <Agent>[han] skulle [KLÅ UPP] <Victim>[cykeltjuvar]
 		knäa_V2_Cause_harm : V2 ; -- <Agent>[hon] [KNÄADE] <Victim>[sin konkurrent] <Body_part>[i ansiktet] utan <Body_part>[i pannan]
 		slå_V2_Cause_harm : V2 ; -- <Agent>[en av dem] hann [SLÅ] <Victim>[festdeltagaren] <Body_part>[i huvudet]
+		smocka_V2_Cause_harm : V2 ; -- <Agent>[han] [SMOCKADE TILL] <Victim>[en politisk motståndare]
 		sparka_V2_Cause_harm : V2 ; -- <Victim>[en snubbe som] <Agent>[han] [SPARKADE] <Body_part>[i ansiktet]
+		spöa_V2_Cause_harm : V2 ; -- <Agent>[möss] kan [SPÖA UPP] <Victim>[katten]
 		slåss_V2_Cause_harm : V2 ; -- <Victim>[En man] har [SLAGITS]
 
 		banka_V_Cause_impact : V ; -- [BANKAR] <Agent>[man] <Impactor>[med lämplig tillhygge] <Impactee>[på den tjocka nedre delen]
 		drämma_V2_Cause_impact : V2 ; -- <Agent>[Soldat] [DRÄMDE] <Impactor>[dörr] <Impactee>[på sin fru]
 		slå_V2_Cause_impact : V2 ; -- <Agent>[Emil] [SLOG] <Impactor>[näven] <Impactee>[i bordet]
+		daska_V2_Cause_impact : V2 ; -- <Agent>[Ulf Jängnemyr som] [DASKADE TILL] <Impactee>[bollen]
 		köra_V2_Cause_impact : V2 ; -- [KÖRS] <Impactor>[nålen]
 
 		röra_V_Cause_motion : V ; -- <Theme>[den] gick inte att [RÖRA]
 		toppa_V_Cause_motion : V ; -- [TOPPAR] <Theme>[bollen]
+		flytta_V2_Cause_motion : V2 ; -- [FLYTTA] <Theme>[bord]
+		skjuta_V2_Cause_motion : V2 ; -- <Agent>[Han] [SKÖT UT] <Theme>[sig]
 		släpa_V2_Cause_motion : V2 ; -- <Agent>[Tonårspojkarna] tejpade en yngre skolkamrat över hela kroppen och [SLÄPADE] <Theme>[honom] <Area>[över golvet]
 		bogsera_V2_Cause_motion : V2 ; -- <Agent>[Min pappa och jag] [BOGSERADE] <Theme>[Forden] <Source>[från verkstaden] <Goal>[till min arbetskamrat]
+		fira_V2_Cause_motion : V2 ; -- <Agent>[De] [FIRADE NER] <Theme>[två plankor] <Goal>[till lagom höjd]
+		kasta_V2_Cause_motion : V2 ; -- <Agent>[Mannen] [KASTADE] <Theme>[trädgårdsmöbeln] <Goal>[i ryggen på kvinnan]
+		toppa_V2_Cause_motion : V2 ; -- <Agent>[Pelle] [TOPPAR] <Theme>[bollen] <Goal>[i sanden]
+		nicka_V2_Cause_motion : V2 ; -- [NICKA] <Path>[bort] <Theme>[bollen]
 		rulla_V2_Cause_motion : V2 ; -- <Agent>[Man] [RULLADE] <Theme>[boll] <Path>[längs marken]
-		skjuta_V2_Cause_motion : V2 ; -- <Agent>[Hon] vinner tekningen , [SKJUTER] <Theme>[pucken] <Path>[mellan sina gul- och blåklädda spelare]
-		kasta_V2_Cause_motion : V2 ; -- <Cause>[Vågorna] [KASTADE] <Theme>[båten] <Goal>[mot klipporna]
 		toppa_V3_Cause_motion : V3 ; -- <Agent>[jag] [TOPPAR] <Theme>[bollen]
 		hala_V2_Cause_motion : V2 ; -- <Theme>[Flaggan] [HALAS]
 		hissa_V2_Cause_motion : V2 ; -- <Theme>[Flaggan] [HISSAS]
@@ -285,12 +338,14 @@ abstract TargetsSweAbs = Cat ** {
 
 		adjungera_V2_Cause_to_be_included : V2 ; -- <Agent>[Styrelsen] har sitt säte i Enköping och kan vid behov till sig [ADJUNGERA] <New_member>[ledamöter]
 		infoga_V2_Cause_to_be_included : V2 ; -- <New_member>[Ett nytt namn] kan [INFOGAS] <Group>[i den ädla listan]
+		tillfoga_V2_Cause_to_be_included : V2 ; -- [TILLFOGAS] <New_member>[ett elfte bud , som brukar kallas ' Jantelagens strafflag ']
 		uppta_V2_Cause_to_be_included : V2 ; -- <New_member>[Den som] [UPPTOGS] <Group>[i klostret]
 
 		skärpa_V2_Cause_to_be_sharp : V2 ; -- <Agent>[människorna] inte ha börjat [SKÄRPA] <Patient>[sina stenyxor]
 		vässa_V2_Cause_to_be_sharp : V2 ; -- <Agent>[Chili-Nisse] kommer att älska att [VÄSSA] <Patient>[klorna]
 
 		dränka_V2_Cause_to_be_wet : V2 ; -- [DRÄNKER] <Agent>[du] <Undergoer>[dem] <Liquid>[i citron]
+		läska_V2_Cause_to_be_wet : V2 ; -- <Agent>[Den som inte bara vill väta utsidan] kan även [LÄSKA] <Undergoer>[insidan]
 		bevattna_V2_Cause_to_be_wet : V2 ; -- <Undergoer>[Sälgsnåren] [BEVATTNAS] <Liquid>[med tippens starkt kvävehaltiga lakvatten]
 
 		fortsätta_VV_Cause_to_continue : VV ; -- <Agent>[de] [FORTSÄTTER] <Process>[att driva en eurostödslinje man för stunden inte kan omfatta]
@@ -304,6 +359,7 @@ abstract TargetsSweAbs = Cat ** {
 		förlusta_V2_Cause_to_experience : V2 ; -- <Agent>[han] uppenbart [FÖRLUSTADE] <Experiencer>[hela sällskapet]
 		terrorisera_V2_Cause_to_experience : V2 ; -- <Agent>[En man i Linköping] döms till fyra månaders fängelse för att ha [TERRORISERAT] <Experiencer>[sin före detta flickvän]
 
+		bryta_V2_Cause_to_fragment : V2 ; -- [BRYTA AV] <Whole_patient>[skivan]
 		paja_V2_Cause_to_fragment : V2 ; -- <Agent>[Han] [PAJAR] <Whole_patient>[rutor]
 		slå_V2_Cause_to_fragment : V2 ; -- <Agent>[De] [SLOG IN] <Whole_patient>[ytterdörren]
 
@@ -340,9 +396,11 @@ abstract TargetsSweAbs = Cat ** {
 		tro_VS_Certainty : VS ; -- <Cognizer>[Läkarna] [TRODDE] <Content>[att hon hade sköldkörtelinflammation]
 
 		böja_V_Change_direction : V ; -- <Theme>[vinden] [BÖJER AV] <Direction>[mot öster] och { böjer av } <Direction>[åt väster]
+		slå_V_Change_direction : V ; -- <Theme>[seglarna] blev instruerade om att lägga sig brevid varandra på samma bog och [SLÅ]
 		svänga_V_Change_direction : V ; -- <Theme>[en bil] skulle [SVÄNGA] <Direction>[upp]
 		ta_V_Change_direction : V ; -- <Theme>[Jag] [TAR] <Direction>[höger]
 		vända_V_Change_direction : V ; -- <Theme>[En långtradare] fick [VÄNDA] <Direction>[tillbaka]
+		ändra_V_Change_direction : V ; -- <Theme>[Han] [ÄNDRADE KURS]
 
 		förkorta_V2_Change_event_duration : V2 ; -- <Agent>[Arbetsministeriet] vill [FÖRKORTA] <Event>[tiden för civiltjänstgöring]
 		förlänga_V2_Change_event_duration : V2 ; -- <Agent>[Jag] vill inte [FÖRLÄNGA] <Event>[diskussionen]
@@ -387,23 +445,34 @@ abstract TargetsSweAbs = Cat ** {
 		samtala_V_Chatting : V ; -- <Interlocutors>[De] skrattade och [SAMTALADE]
 		snacka_V_Chatting : V ; -- <Interlocutors>[Vi] åt frukost och satt och [SNACKADE]
 
+		handplocka_V2_Choosing : V2 ; -- <Cognizer>[Vi] [HANDPLOCKAR] <Chosen>[lärare]
+		se_V2_Choosing : V2 ; -- <Cognizer>[Vi] har [SETT UT] <Chosen>[tre pristagare]
+		selektera_V2_Choosing : V2 ; -- [SELEKTERA] <Chosen>[informationsbruset]
 		toppa_V2_Choosing : V2 ; -- <Cognizer>[Örkelljunga] [TOPPAR] <Chosen>[laget] <Possibilities>[med fyra amerikaner]
+		välja_V2_Choosing : V2 ; -- <Cognizer>[Årsmötet] [VÄLJER] <Chosen>[Christer]
 		plocka_V2_Choosing : V2 ; -- <Chosen>[Tolv lyckliga] har [PLOCKATS UT]
 
 		göra_V2_Claim_ownership : V2 ; -- <Claimant>[vetenskapen] inte [GÖR ANSPRÅK PÅ] <Property>[en slutgiltig sanning]
 		muta_V2_Claim_ownership : V2 ; -- <Claimant>[Vi] måste [MUTA IN] <Property>[vårt revir]
 
 		skalka_V2_Closure : V2 ; -- <Agent>[jag] senare installerat mig ombord i god tid och [SKALKAT] <Container_portal>[luckorna]
+		tillsluta_V2_Closure : V2 ; -- [TILLSLUTA] <Container_portal>[gränsen]
+		fästa_V2_Closure : V2 ; -- [FÄST] [IHOP] <Containing_object>[degen]
 		försegla_V2_Closure : V2 ; -- <Agent>[Guden Allah] beslutar sig för att [FÖRSEGLA] <Containing_object>[deras öron]
 		korka_V2_Closure : V2 ; -- <Containing_object>[flaskorna] [KORKAS UPP]
 
 		fråga_V_Cogitation : V ; -- <Cognizer>[Man] kan [FRÅGA SIG] <Topic.>[hur den dagliga syrebristen påverkar barnens fysiska utveckling]
+		reflektera_V_Cogitation : V ; -- <Cognizer>[han] aldrig [REFLEKTERAT] <Topic1.>[över]
 		tänka_V_Cogitation : V ; -- <Cognizer>[han] sitta och [TÄNKA ÖVER] <Topic>[hur han ska kunna bli en ny människa när han kommer ut]
 		undra_V2_Cogitation : V2 ; -- <Cognizer>[Hon] [UNDRADE] <Topic.>[vad hisspojken tänkte]
 		tänka_VS_Cogitation : VS ; -- <Cognizer>[Svedberg] [TÄNKTE] <Topic.>[att han hade begått ett misstag]
 
+		jobba_V_Collaboration : V ; -- <Partner_1>[Niclas] [JOBBAR IHOP] <Partner_2>[med dem]
+		kooperera_V_Collaboration : V ; -- <Partner_1>[Hon] [KOOPERERADE] också <Partner_2>[med industriföretag i Venezuela , Hongkong , Tyskland och Finland ( Artek och Björneborgs Bomull )]
+		samarbeta_V_Collaboration : V ; -- <Partner_1>[Hoppets Stjärna] [SAMARBETAR] också <Partner_2>[med organisationen Vacha Charitable Trust]
 		samverka_V_Collaboration : V ; -- <Partner_1>[Teatern] skall [SAMVERKA] <Partner_2>[med utbildningsanstalterna] <Undertaking>[inom scenkonsternas och musikens område]
-		samarbeta_V_Collaboration : V ; -- <Partners>[länderna] [SAMARBETAR] <Undertaking>[inom många områden]
+		stå_V_Collaboration : V ; -- <Partner_1>[polismästaren som hade kontor mitt emot kyrkan] [STOD I MASKOPI] <Partner_2>[med Forell]
+		arbeta_V_Collaboration : V ; -- <Partners>[vi] får [ARBETA IHOP]
 
 		stöta_V_Come_together : V ; -- <Party_1>[han] [STÖTTE SAMMAN] <Party_2>[med en och annan övrig udda existens]
 		församlas_V2_Come_together : V2 ; -- <Individuals>[gestalterna] [FÖRSAMLAS]
@@ -419,6 +488,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		designa_V2_Coming_up_with : V2 ; -- [DESIGNAR] <Cognizer>[hon] <Idea>[sina nya kollektioner]
 		dikta_V2_Coming_up_with : V2 ; -- <Cognizer>[42-åringen] [DIKTADE IHOP] <Idea>[en historia om hur främlingar hade rusat in i lägenheten och skjutit]
+		kläcka_V2_Coming_up_with : V2 ; -- [KLÄCKA] <Idea>[höstens uppslag]
 		upprätta_V2_Coming_up_with : V2 ; -- <Idea>[obligatoriska rivningsplaner] [UPPRÄTTAS]
 
 		fynda_V2_Commerce_buy : V2 ; -- <Goods>[Byxorna] [FYNDADE] <Buyer>[jag]
@@ -426,6 +496,7 @@ abstract TargetsSweAbs = Cat ** {
 		köpa_V2_Commerce_buy : V2 ; -- <Buyer>[Jag] har [KÖPT] <Goods>[en resa]
 
 		kränga_V_Commerce_sell : V ; -- <Goods>[Prylarna som stjäls] är att [KRÄNGA AV]
+		saluföra_V2_Commerce_sell : V2 ; -- <Seller>[Företaget ekokul] [SALUFÖR] <Goods>[ekologiska leksaker som är gjord av majs]
 		sälja_V2_Commerce_sell : V2 ; -- <Seller>[15-åringen] [SÅLDE] <Goods>[knark] <Buyer>[till andra ungdomar]
 		avyttra_V2_Commerce_sell : V2 ; -- <Goods>[Innehavet] har [AVYTTRATS]
 
@@ -441,10 +512,15 @@ abstract TargetsSweAbs = Cat ** {
 		meddela_VS_Communication : VS ; -- <Communicator>[Elisabeth] [MEDDELADE] <Message>[att lägget just nu är lugnt på lågstadiet]
 
 		babbla_V_Communication_manner : V ; -- <Speaker>[Han] var förresten på radio häromveckan och [BABBLADE] <Topic>[om sin pensionärstillvaro]
+		bryta_V_Communication_manner : V ; -- <Speaker>[Bartendern , som] [BRYTER]
+		pladdra_V_Communication_manner : V ; -- <Speaker>[Hon] kunde ingen engelska men [PLADDRADE]
+		sjunga_V_Communication_manner : V ; -- [SJÖNG] <Speaker>[hon]
+		stamma_V_Communication_manner : V ; -- <Speaker>[Jag] [STAMMADE]
 		artikulera_V2_Communication_manner : V2 ; -- <Speaker>[man som medborgare] kunna [ARTIKULERA] <Message>[kritik mot makten]
 		sjunga_V2_Communication_manner : V2 ; -- <Speaker>[Bel Canto] [SJÖNG] <Message>[40-talsmusik]
 
 		faxa_V_Communication_means : V ; -- <Communicator>[Han] [RINGDE] och [FAXADE] flera gånger om dagen <Addressee>[till kunder som han visste hade pengar]
+		messa_V_Communication_means : V ; -- <Communicator>[hon] [MESSADE]
 		ringa_V_Communication_means : V ; -- <Communicator>[Han] [RINGDE] och [FAXADE] flera gånger om dagen <Addressee>[till kunder som han visste hade pengar]
 		faxa_V2_Communication_means : V2 ; -- [FAXA] <Message>[svaren] <Addressee>[till din läkare]
 
@@ -474,6 +550,7 @@ abstract TargetsSweAbs = Cat ** {
 		vara_V_Conduct : V ; -- <Agent>[Andy Warhol] [VAR] <Manner>[trevlig]
 
 		bemöta_V2_Confronting_problem : V2 ; -- <Agent>[Ledningsgruppen] har ännu inte [BEMÖTT] <Issue>[kritiken]
+		konfrontera_V2_Confronting_problem : V2 ; -- [KONFRONTERA] <Issue>[den]
 		stå_V2_Confronting_problem : V2 ; -- <Agent>[vi] att [STÅ INFÖR] <Issue>[några väldigt allvarliga utmaningar]
 		ta_V2_Confronting_problem : V2 ; -- <Agent>[jag] [TA UPP] <Issue>[problemet med Europaparlamentet]
 
@@ -485,6 +562,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		kontakta_V2_Contacting : V2 ; -- <Communicator>[Han] [KONTAKTAR] <Addressee>[polisen]
 
+		innehålla_V2_Containing : V2 ; -- [INNEHÅLLER] <Contents>[fyra kapitel]
 		rymma_V2_Containing : V2 ; -- <Container>[Reservoaren] [RYMMER] <Contents>[424 miljoner kubikmeter]
 
 		komma_V_Contingency : V ; -- <Outcome>[det marknära ozonet] [KOMMER AN] <Determinant>[på utsläpp av svaveloxid ( SOx ) och lättflyktiga kolväten ( CxHx )]
@@ -500,12 +578,14 @@ abstract TargetsSweAbs = Cat ** {
 		understryka_V2_Convey_importance : V2 ; -- <Message>[Känslan av tidlöshet] [UNDERSTRYKS]
 
 		baka_V2_Cooking_creation : V2 ; -- <Cook>[Jag] brukar oftast [BAKA] <Produced_food>[brödet]
+		göra_V2_Cooking_creation : V2 ; -- [GÖRA] <Produced_food>[middag]
 		laga_V2_Cooking_creation : V2 ; -- <Cook>[man] [LAGA TILL] <Produced_food>[en apelsinsaft]
 		tillreda_V2_Cooking_creation : V2 ; -- <Produced_food>[Kaffe] kan [TILLREDAS]
 
 		korrodera_V_Corroding : V ; -- <Undergoer>[Järn] [KORRODERAR]
 		rosta_V_Corroding : V ; -- <Undergoer>[behållarna] [ROSTA]
 
+		förfölja_V2_Cotheme : V2 ; -- <Theme>[De] [FÖRFÖLJDE] <Cotheme>[henne]
 		guida_V2_Cotheme : V2 ; -- <Theme>[Olle] [GUIDAR] <Cotheme>[oss] <Direction>[mot havsisen]
 		lotsa_V2_Cotheme : V2 ; -- <Theme>[Polisen] planerade [LOTSA] <Direction>[in] <Cotheme>[kalven]
 		leda_V2_Cotheme : V2 ; -- <Theme>[Han] [LEDDE] <Cotheme>[barnet] <Goal>[till kunskap]
@@ -530,6 +610,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		hugga_V2_Cutting : V2 ; -- <Agent>[kvinnor] [HUGGER] <Item>[ved]
 		klippa_V2_Cutting : V2 ; -- <Agent>[jag] [KLIPPA NER] <Item>[syrenhäcken]
+		sönderdela_V2_Cutting : V2 ; -- [SÖNDERDELAR] <Item>[materialet]
 		toppa_V2_Cutting : V2 ; -- <Agent>[Hon] skulle bara [TOPPA] <Item>[mitt långa hår]
 
 		riva_V2_Damaging : V2 ; -- <Agent>[Israelerna] [RIVER] <Patient>[hus] eller [SKJUTER SÖNDER] <Patient>[dem]
@@ -552,6 +633,7 @@ abstract TargetsSweAbs = Cat ** {
 		spänna_V_Delimitation_of_diversity : V ; -- <Variable>[åldrarna] [SPÄNNER] <Limit1>[från 35] <Limit2>[till 64 år]
 
 		leverera_V2_Delivery : V2 ; -- <Deliverer>[En del av företagen] [LEVERERAR] <Theme>[vårdtjänster] <Recipient>[till kommunala beställare]
+		distribuera_V2_Delivery : V2 ; -- <Theme>[En omfattande bilaga om Åland] ska [DISTRIBUERAS]
 
 		förbjuda_V2V_Deny_permission : V2V ; -- <Authority>[Man] kan inte [FÖRBJUDA] <Protagonist>[oss] <Action>[att tänka]
 
@@ -572,12 +654,14 @@ abstract TargetsSweAbs = Cat ** {
 		jämna_V2_Destroying : V2 ; -- <Undergoer>[städerna Loren och Manatuto] hade [JÄMNATS MED MARKEN]
 
 		kapa_V2_Detaching : V2 ; -- <Agent>[vi] [KAPAR AV] <Item>[benen] <Source>[på älgarna] <Time.>[innan vi dödar dom]
+		lösgöra_V2_Detaching : V2 ; -- <Agent>[en korkliknande grej] for iväg uppför en stålbana och [LÖSGJORDE] <Item>[en anordning]
 
 		häkta_V2_Detaining : V2 ; -- <Authorities>[man] [HÄKTAR] <Suspect>[en tidigare ostraffad 15-åring]
 
 		urskilja_V2_Differentiation : V2 ; -- <Cognizer>[Brå] bär sig åt för att [URSKILJA] <Phenomena>[de riktiga svenskarna]
 		skiljas_V2_Differentiation : V2 ; -- <Phenomena>[lagen] [SKILJAS ÅT]
 
+		beströ_V2_Dispersal : V2 ; -- [BESTRÖ] <Individuals>[de döda]
 		sprida_V2_Dispersal : V2 ; -- <Agent>[Arrangerande Nilsby spelmän i Pargas] har också [SPRITT UT] <Individuals>[evenemangen]
 
 		sidsteppa_V2_Dodging : V2 ; -- <Dodger>[Staten Israel] tar sig rätten att [SIDSTEPPA] <Bad_entity>[internationell lag]
@@ -586,7 +670,10 @@ abstract TargetsSweAbs = Cat ** {
 
 		dominera_V2_Dominate_situation : V2 ; -- <Agent>[någon] [DOMINERA] <Situation>[ett bord]
 
+		förklä_sig_V_Dressing : V ; -- <Wearer>[Bond] [FÖRKLÄ SIG]
 		klä_V_Dressing : V ; -- <Wearer>[Bea] [KLÄR SIG] <Clothing>[i moderna och utmanande kläder och högklackade skor]
+		kostymera_V_Dressing : V ; -- <Wearer>[PSL-Klas] var inte ensam om att [KOSTYMERA SIG]
+		skruda_V_Dressing : V ; -- <Wearer>[Förra årets studenter] fick [SKRUDA] [SIG]]
 		sätta_V2_Dressing : V2 ; -- <Wearer>[Han] [SÄTTER PÅ SIG] <Clothing>[mössan]
 		ta_V2_Dressing : V2 ; -- <Wearer>[De] [TAR PÅ SIG] lite mascara och <Clothing>[en snygg klänning]
 
@@ -595,6 +682,7 @@ abstract TargetsSweAbs = Cat ** {
 		dippa_V2_Dunking : V2 ; -- <Theme>[ditt eget grillspett] och [DIPPA] <Substance>[i olika såser]
 
 		tjäna_V_Earnings_and_losses : V ; -- <Earner>[Det finns personer som] [TJÄNAT] <Earnings>[tusentals euro]
+		förlora_V2_Earnings_and_losses : V2 ; -- [FÖRLORADE] <Earnings>[stora pengar]
 		göra_V2_Earnings_and_losses : V2 ; -- <Earner>[man] [GÖRA] <Earnings>[pengar]
 		ha_V2_Earnings_and_losses : V2 ; -- <Earnings>[Vad] <Earner>[de kvinnorna som säljer tyg på stranden] [HAR I LÖN]
 		tjäna_V2_Earnings_and_losses : V2 ; -- <Earner>[Kajander] inte [TJÄNAR] <Earnings>[några pengar]
@@ -622,15 +710,22 @@ abstract TargetsSweAbs = Cat ** {
 		bekymra_V_Emotion_active : V ; -- <Experiencer>[En del akademiker] [BEKYMRAR SIG] <Topic>[över vad de ska forska i då disputationen är avklarad]
 		oroa_V_Emotion_active : V ; -- <Experiencer>[De] [OROAR SIG] <Topic>[över sin situation]
 
+		brinna_V_Emotion_heat : V ; -- <Experiencer>[Jag] [BRANN AV IVER]
 		koka_V_Emotion_heat : V ; -- <Experiencer>[En del av fordringsägarna] [KOKAR] <Emotion>[av ilska]
 		sjuda_V_Emotion_heat : V ; -- <Experiencer>[Han] [SJUDER] <Emotion>[av livslust]
 
 		anställa_V2_Employing : V2 ; -- <Employer>[Saab] [ANSTÄLLER] <Employee>[100 arbetare]
 
 		avfrosta_V_Emptying : V ; -- [AVFROSTA] <Source>[bilens rutor]
+		avlusa_V2_Emptying : V2 ; -- <Agent>[man] dessutom [AVLUSA] <Source>[kläderna]
+		duka_V2_Emptying : V2 ; -- <Agent>[Servitörerna] [DUKADE AV] <Source>[de tomma borden]
 		tömma_V2_Emptying : V2 ; -- <Agent>[Jag] [TÖMMER] <Source>[hårddisken] <Theme>[på bilder]
+		ösa_V2_Emptying : V2 ; -- <Agent>[Isabelle] tryckte in knappen till nödsändaren som registreras via satellit och började [ÖSA] <Source>[båten]
+		avfrosta_V2_Emptying : V2 ; -- <Source>[bilrutorna] [AVFROSTAS]
 		göra_V2_Emptying : V2 ; -- <Source>[cykelbanan som] [GJORDES REN] <Theme>[från snö]
+		kalhugga_V2_Emptying : V2 ; -- <Source>[Skogar] [KALHUGGS]
 
+		formulera_V_Encoding : V ; -- [FORMULERA MIG] <Manner>[försiktigt]
 		uttrycka_V_Encoding : V ; -- [UTTRYCKA] <Message>[tanken] <Manner>[indirekt]
 		formulera_V2_Encoding : V2 ; -- [FORMULERAS] <Message>[idén om nationen] <Manner>[i allra högsta grad]
 
@@ -656,10 +751,13 @@ abstract TargetsSweAbs = Cat ** {
 		komma_V2_Evading : V2 ; -- <Evader>[Han] [KOM UNDAN] <Pursuer>[överfallet]
 		undkomma_V2_Evading : V2 ; -- <Evader>[han] skulle [UNDKOMMA] <Pursuer>[sina förföljare]
 
+		gå_V_Evaluative_comparison : V ; -- <Profiled_item>[Inget] [GÅR UPP] <Standard_item>[mot en häst som buffar en i magen och vill bli krafsad och blåser varm luft i ens ansikte]
 		mäta_V_Evaluative_comparison : V ; -- <Profiled_item>[ingen av svenskarna] kan [MÄTA SIG] <Attribute>[bilmässigt] <Standard_item>[med norrmannen]
 
 		dra_V_Event : V ; -- <Time>[när] <Event>[måndagens oväder] [DROG IN] <Place>[över Danmark]
 		gå_V_Event : V ; -- <Event>[Sista föreställningen] [GÅR] <Place>[på Bergakungen] <Time>[på onsdag 3 / 2 kl 10.00]
+		slå_V_Event : V ; -- <Event>[Drömmen] [SLOG IN]
+		stå_V_Event : V ; -- <Event>[vad som] [STÅR PÅ]
 		inträffa_V2_Event : V2 ; -- <Event>[Händelsen] [INTRÄFFADE] <Time>[1941] <Place>[utanför Marstrand]
 		äga_V2_Event : V2 ; -- <Event>[Föreställningen] [ÄGER RUM] <Time>[16-18 mars klockan 1900] <Place>[på Teater Giljotin i Stockholm]
 
@@ -698,10 +796,13 @@ abstract TargetsSweAbs = Cat ** {
 		avguda_V2_Experiencer_focus : V2 ; -- <Experiencer>[Bert Karlsson] är inte <Experiencer>[mannen som] [AVGUDAR] <Content>[de byråkratiska , utdragna diskussionerna]
 		älska_V2_Experiencer_focus : V2 ; -- <Experiencer>[Jag] [ÄLSKAR] <Content>[komplimanger]
 
+		förblinda_V_Experiencer_obj : V ; -- <Stimulus>[Rockdrömmar] [FÖRBLINDAR]
+		lena_V_Experiencer_obj : V ; -- <Stimulus>[Avocadopurén] [LENADE]
 		slå_V_Experiencer_obj : V ; -- <Stimulus>[idén] [SLAGIT AN] <Experiencer>[på mig]
 		tillintetgöra_V_Experiencer_obj : V ; -- <Stimulus>[ett skällsord , som] effektivt används för att [TILLINTETGÖRA] <Experiencer>[civilt och fackligt engagemang]
 		drabba_V2_Experiencer_obj : V2 ; -- <Stimulus>[en bok som] har [DRABBAT] <Experiencer>[mig]
 		egga_V2_Experiencer_obj : V2 ; -- <Stimulus>[Hennes passivitet] [EGGADE UPP] <Experiencer>[honom]
+		fånga_V2_Experiencer_obj : V2 ; -- [FÅNGA] <Experiencer>[en publik]
 		förgöra_V2_Experiencer_obj : V2 ; -- <Stimulus>[Det förflutna] hotar att [FÖRGÖRA] <Experiencer>[honom]
 		golva_V2_Experiencer_obj : V2 ; -- <Stimulus>[de] [GOLVADE] <Experiencer>[mig]
 		hetsa_V2_Experiencer_obj : V2 ; -- <Stimulus>[Sådana händelser] [HETSAR UPP] <Experiencer>[folk]
@@ -720,11 +821,13 @@ abstract TargetsSweAbs = Cat ** {
 		frappera_VS_Experiencer_obj : VS ; -- [FRAPPERADES] <Experiencer>[hon] av <Stimulus>[att frimärkena var mycket modernare och roligare]
 
 		förklara_V_Explaining_the_facts : V ; -- <Fact>[Resultaten] [FÖRKLARAR] <Question>[varför så få djurarter är asymmetriska]
+		reda_V_Explaining_the_facts : V ; -- [REDA UT] <Question>[hur vi tänker]
 
 		utskeppa_V2_Exporting : V2 ; -- <Exporter>[Köpehandelskompaniet] inrättades 1614 och fick privilegier , skepp och kanoner av Gustav II Adolf och skulle ensamt ha rätt att köpa och [UTSKEPPA] <Goods>[all råkoppar]
 		exportera_V2_Exporting : V2 ; -- <Goods>[Lingonets läromedel] [EXPORTERAS] <Importing_area>[till tiotals länder runtom i världen]
 
 		klä_V2_Expressing_publicly : V2 ; -- <Communicator>[Han] har [KLÄTT I ORD] <Content>[det jag känner om dagens samhälle och vad som är fel i det]
+		lufta_V2_Expressing_publicly : V2 ; -- [LUFTA] <Content>[våra tankar kring detta]
 		ventilera_V2_Expressing_publicly : V2 ; -- <Communicator>[Båda parterna] måste åtminstone ha rätt att [VENTILERA] <Content>[sina främsta krav]
 
 		utlämna_V2_Extradition : V2 ; -- [UTLÄMNA] <Suspect>[honom] <Crime_jurisdiction>[till USA]
@@ -736,9 +839,14 @@ abstract TargetsSweAbs = Cat ** {
 
 		simulera_V2_Feigning : V2 ; -- <Agent>[man] [SIMULERA] <State_of_affairs>[stor smärta]
 
+		fylla_V2_Filling : V2 ; -- <Agent>[Tillskärarakademin] [FYLLER] <Goal>[salarna]
+		julpynta_V2_Filling : V2 ; -- <Agent>[Han] [JULPYNTADE] <Goal>[hela lägenheten] men väntade med att [KLÄ] <Goal>[granen]
+		klä_V2_Filling : V2 ; -- <Agent>[Han] [JULPYNTADE] <Goal>[hela lägenheten] men väntade med att [KLÄ] <Goal>[granen]
 		slå_V2_Filling : V2 ; -- <Agent>[De] skall [SLÅ IN] <Goal>[en flaska] <Theme>[i julklappspapper]
 		proppa_V2_Filling : V2 ; -- [PROPPA] <Goal>[i dig] <Theme>[massor]
+		stryka_V2_Filling : V2 ; -- [STRYKA] <Theme>[färgen]
 
+		leda_V2_Finish_competition : V2 ; -- <Competitor>[Sverige] [LEDER] <Competition>[matchen]
 		vinna_V2_Finish_competition : V2 ; -- <Competitor>[De] [VANN] <Competition>[bortamötet] <Opponent>[mot Polisen]
 
 		förlora_V_Finish_game : V ; -- <Player>[svenskar] [FÖRLORAR]
@@ -748,11 +856,15 @@ abstract TargetsSweAbs = Cat ** {
 		säga_V2_Firing : V2 ; -- <Employer>[hans statligt drivna företag , som] [SADE UPP] <Employee>[honom]
 
 		skena_V_Fleeing : V ; -- <Self_mover>[Två ystra hästar från Lannäslunds skolor i Jakobstad] [SKENADE] <Goal>[mot en hägrande frihet]
+		smita_V_Fleeing : V ; -- <Self_mover>[Hon] sätter eld på Snapes mantel och lyckas [SMITA IVÄG]
 		fly_V_Fleeing : V ; -- <Source>[Från Sarajevo] [FLYDDE] <Self_mover>[människor] <Path>[i tunnlar]
 
 		sippra_V_Fluidic_motion : V ; -- <Fluid>[vätskan] <Area>[i svampen] [SIPPRAT UR]
 		svämma_över_V_Fluidic_motion : V ; -- <Area>[I London] har <Fluid>[Themsen] [SVÄMMAT ÖVER]
+		cirkulera_V_Fluidic_motion : V ; -- <Fluid>[Vätskan] [CIRKULERAR] <Source>[från hjärnan] <Path>[genom ryggmärgen]
+		flyta_V_Fluidic_motion : V ; -- <Fluid>[blodet] [FLYTER FRAM] <Path>[i navelsträngen] och <Path>[i fostrets blodådror]
 		rinna_V_Fluidic_motion : V ; -- <Fluid>[Floden] [RINNER] <Source>[från sjön Ilmen] <Path>[norrut] <Goal>[till Europas största insjö Ladoga]
+		strömma_V_Fluidic_motion : V ; -- <Fluid>[Vattnet] [STRÖMMADE] <Goal>[in i kök och badrum]
 
 		ha_V2_Forging : V2 ; -- <Agent>[Sambon] [HADE FÖRFALSKAT] <Forgery>[hennes namnteckning]
 
@@ -761,6 +873,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		bryta_V_Forming_relationships : V ; -- <Partner_1>[Hon] [BRÖT] <Partner_2>[med pojkvännen]
 		gifta_sig_V_Forming_relationships : V ; -- <Partner_1>[Kvinnor] [GIFTER SIG] <Partner_2>[med dem de älskar]
+		göra_V_Forming_relationships : V ; -- <Partner_1>[Min kille] [GJORDE SLUT]
 		äkta_V2_Forming_relationships : V2 ; -- <Partner_1>[Hon] [ÄKTADE] <Partner_2>[sin Simon]
 
 		knirka_V_Friction : V ; -- <Theme>[mjölkkärrans hjul] [KNIRKA] <Static_object>[mot vägens grus]
@@ -772,9 +885,11 @@ abstract TargetsSweAbs = Cat ** {
 		föra_V2_Gathering_up : V2 ; -- <Agent>[hon] skulle [FÖRA IHOP] <Individuals>[Johan med Peter]
 		kalla_V2_Gathering_up : V2 ; -- <Agent>[Han] skyndade till sitt rum för att [KALLA IHOP] <Individuals>[sina kollegor]
 		samla_V2_Gathering_up : V2 ; -- <Agent>[Orgelparty] [SAMLAR] <Individuals>[virtuoser och sångare]
+		uppbåda_V2_Gathering_up : V2 ; -- [UPPBÅDA] <Individuals>[svenskspråkiga poliser]
 
 		vinka_V_Gesture : V ; -- [VINKADE] <Communicator>[han] <Body_part>[med armarna]
 		vinka_V2_Gesture : V2 ; -- <Communicator>[jag] [VINKADE] <Message>[farväl] <Addressee>[till den missmodige sonen och kattlådan]
+		teckna_VS_Gesture : VS ; -- <Communicator>[Niklas] [TECKNAR] <Message>[att vi ska gå ned]
 		vinka_VS_Gesture : VS ; -- <Communicator>[Han] [VINKADE] <Addressee>[på sin gumma] <Message>[att hon skulle komma]
 		vinka_VV_Gesture : VV ; -- <Communicator>[Anders Frisk] [VINKADE] <Message>[spela vidare]
 
@@ -785,6 +900,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		donera_V2_Giving : V2 ; -- <Donor>[Sveriges riksbank] firade 300-årsjubileum år 1968 genom att [DONERA] <Theme>[en stor summa pengar] <Recipient>[till Nobelstiftelsen]
 		ge_V2_Giving : V2 ; -- <Donor>[Hon] [GAV] <Theme>[pengar] <Recipient>[till folk som verkligen förtjänade pengarna !]
+		ägna_V2_Giving : V2 ; -- <Donor>[Sonen Gustaf] kom att [ÄGNA] <Theme>[sitt liv]
 
 		fälla_V_Go_into_shape : V ; -- <Theme>[Blommorna som] vecklar ut sig i sol och [FÄLLER IHOP SIG]
 		krusa_V_Go_into_shape : V ; -- <Theme>[Vattnet] [KRUSAR SIG]
@@ -796,16 +912,21 @@ abstract TargetsSweAbs = Cat ** {
 
 		backa_V_Going_back_on_a_commitment : V ; -- <Protagonist>[Regeringen] har inte [BACKAT] <Commitment>[från löften man gett tidigare]
 
+		fatta_V_Grasp : V ; -- <Cognizer>[ni] inte [FATTAR]
 		förstå_V_Grasp : V ; -- <Cognizer>[De flesta föräldrar] [FÖRSTÅR] <Phenomenon>[hur situationen ser ut]
+		koppla_V_Grasp : V ; -- [KOPPLADE] <Cognizer>[jag]
 		greppa_V2_Grasp : V2 ; -- <Cognizer>[Ojanen och Jalonen] säger sig [GREPPA] <Phenomenon>[historien]
 		uppfatta_V2_Grasp : V2 ; -- <Cognizer>[De flesta] har [UPPFATTAT] <Phenomenon>[honom som Carl I Hagens kronprins]
 
 		tugga_V_Grinding : V ; -- [TUGGA] <Undergoer>[varje tugga]
+		pulvrisera_V2_Grinding : V2 ; -- [PULVRISERA] <Undergoer>[stenblock]
 		smula_V2_Grinding : V2 ; -- <Grinder>[Hon] [SMULAR SÖNDER] <Undergoer>[askan]
 
 		rengöra_V_Grooming : V ; -- [RENGÖR] <Body_part>[ansikte] och <Body_part>[hals] och undvik att [SKRUBBA]
 		skrubba_V_Grooming : V ; -- [RENGÖR] <Body_part>[ansikte] och <Body_part>[hals] och undvik att [SKRUBBA]
 		borsta_V2_Grooming : V2 ; -- <Agent>[Liam] [BORSTAR] <Body_part>[tänderna]
+		sprita_V2_Grooming : V2 ; -- [TVÄTTA] <Body_part>[händerna] , [SPRITA]
+		tvätta_V2_Grooming : V2 ; -- [TVÄTTA] <Body_part>[händerna] , [SPRITA]
 		två_V2_Grooming : V2 ; -- <Agent>[Jag] [TVÅR] <Body_part>[mina händer]
 
 		göra_V_Halt : V ; -- <Theme>[Gaffeln med tomatbiten] [GÖR HALT]
@@ -815,7 +936,10 @@ abstract TargetsSweAbs = Cat ** {
 		höra_V2_Hear : V2 ; -- [HÖR] <Hearer>[poliserna] <Message>[ett klonkande ljud bakom mannen]
 		höra_VS_Hear : VS ; -- <Hearer>[Jag] [HÖRDE] <Message>[att det var nåt strul med hustrun]
 
+		dölja_V2_Hiding_objects : V2 ; -- <Agent>[Han] [DÖLJER] <Hidden_object>[sitt ansikte]
 		gömma_V2_Hiding_objects : V2 ; -- <Agent>[Max] [GÖMMER] <Hidden_object>[25 000 pund från en kupp i London] <Hiding_place>[i en ananasburk]
+		maskera_V2_Hiding_objects : V2 ; -- <Agent>[Angelo] [MASKERAR] inte <Hidden_object>[sina känslor]
+		skymma_V2_Hiding_objects : V2 ; -- <Agent>[Han] [SKYMMER] <Hidden_object>[utsikten]
 
 		hindra_V2_Hindering : V2 ; -- <Hindrance>[Lördagens hällregn] [HINDRADE] inte <Protagonist>[besökarna] <Action>[på helgens auktion]
 		hämma_V2_Hindering : V2 ; -- <Hindrance>[det] [HÄMMAR] <Action>[utvecklingen]
@@ -838,6 +962,7 @@ abstract TargetsSweAbs = Cat ** {
 		slå_V_Impact : V ; -- <Impactor>[vågorna] [SLOG] <Impactee>[mot hennes dörr]
 		smattra_V_Impact : V ; -- <Impactor>[Åskregnen som] [SMATTRAR] <Impactee>[mot glastaket]
 		snärta_V_Impact : V ; -- <Impactor>[tungan] [SNÄRTAR] <Impactee>[mot gommen]
+		ta_V_Impact : V ; -- <Impactor>[bollen] [TOG]
 		ramma_V2_Impact : V2 ; -- <Impactor>[Båten] [RAMMADE] <Impactee>[ett betongfundament]
 		träffa_V2_Impact : V2 ; -- <Impactor>[Kulan] [TRÄFFADE] <Impactee>[eleven]
 
@@ -854,6 +979,7 @@ abstract TargetsSweAbs = Cat ** {
 		inta_V2_Ingest_substance : V2 ; -- <Substance>[Kokain] [INTAS]
 
 		hugga_V_Ingestion : V ; -- <Ingestor>[Annie Wegelius] [HUGGER IN] <Ingestibles>[på en korv med bröd]
+		äta_V_Ingestion : V ; -- <Ingestor>[Människor] och <Ingestor>[djur] [ÄTER]
 		dricka_V_Ingestion : V ; -- <Ingestibles>[man] [DRICKER]
 		dricka_V2_Ingestion : V2 ; -- <Ingestor>[Vi] [DRICKER] <Ingestibles>[mjölk]
 		ha_V2_Ingestion : V2 ; -- <Ingestor>[jag] hungrig och vill [HA] <Ingestibles>[lunch]
@@ -895,8 +1021,9 @@ abstract TargetsSweAbs = Cat ** {
 
 		svartmåla_V2_Judgment_communication : V2 ; -- <Communicator>[massmedia] [SVARTMÅLAR] <Evaluee>[ravefesterna]
 
+		gräla_V2_Judgment_direct_address : V2 ; -- <Communicator>[hon] har [GRÄLAT PÅ] <Addressee>[oss]
 		komplimentera_V2_Judgment_direct_address : V2 ; -- <Communicator>[jag] [KOMPLIMENTERA] <Addressee>[föredraganden] <Reason>[till hans korta och tydliga förklaring]
-		tillrättavisa_V2_Judgment_direct_address : V2 ; -- <Communicator>[Jag] vill vända mig till Jeffrey Titford och [TILLRÄTTAVISA] <Addressee>[honom] <Topic>[när det gäller ett par saker]
+		tillrättavisa_V2_Judgment_direct_address : V2 ; -- <Communicator>[ni] försöker [TILLRÄTTAVISA] <Addressee>[mig]
 		förebrå_V2_Judgment_direct_address : V2 ; -- <Addressee>[Detta parlament] [FÖREBRÅS] <Reason>[för att inte alltid vara så ansvarsfullt]
 
 		försvara_V2_Justifying : V2 ; -- <Agent>[idioter] går ut med namn och [FÖRSVARAR] <Act>[sin rätt att dricka sig berusad i sällskap av sina barn]
@@ -904,6 +1031,7 @@ abstract TargetsSweAbs = Cat ** {
 		kidnappa_V2_Kidnapping : V2 ; -- [KIDNAPPAR] <Perpetrator>[han] <Victim>[ett barn]
 
 		dränka_V2_Killing : V2 ; -- <Cause>[Flodvågor orsakade av skalvet] [DRÄNKTE] <Victim>[många människor]
+		gasa_V2_Killing : V2 ; -- [GASA] <Victim>[sig själv]
 		slå_V2_Killing : V2 ; -- <Killer>[En tjänare] och [SLOG IHJÄL] <Victim>[honom]
 
 		knyta_V2_Knot_creation : V2 ; -- <Agent>[Jag] [KNYTER] <Knot>[en knut]
@@ -917,6 +1045,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		krylla_V_Lively_place : V ; -- <Location>[London] [KRYLLAR] <Activity>[av mysiga caféer och tesalonger]
 
+		blinka_V_Location_of_light : V ; -- <Figure>[ett DJ-bås som] [BLINKAR]
 		lysa_V_Location_of_light : V ; -- <Figure>[De suddiga ' nebulosor ' som] [LYSER] <Ground>[på himlen]
 		skimra_V_Location_of_light : V ; -- <Figure>[lågorna] [SKIMRAR] <Ground>[i vinterkvällen]
 
@@ -938,7 +1067,10 @@ abstract TargetsSweAbs = Cat ** {
 
 		manipulera_V2_Manipulate_into_doing : V2 ; -- <Victim>[Sara Svensson] hade [MANIPULERATS] <Resulting_action>[till att vilja göra sitt bästa för auktoriteter]
 
+		gno_V_Manipulation : V ; -- <Agent>[Jag] [GNODDE]
 		nudda_V_Manipulation : V ; -- <Agent>[han] sig mot mig och [NUDDADE] <Entity>[vid mitt öra] <Bodypart_of_agent>[med läpparna]
+		ta_V_Manipulation : V ; -- <Agent>[Man] [TAR] inte <Entity>[i folk man inte känner]
+		gripa_V2_Manipulation : V2 ; -- <Agent>[Jag] saktade in , [GREP] <Entity>[kameran som låg bredvid mig i framsätet]
 		hålla_V2_Manipulation : V2 ; -- <Agent>[Hon] [HÖLL] <Entity>[luren] <Bodypart_of_agent>[i handen]
 		topsa_V2_Manipulation : V2 ; -- <Entity>[Han] [TOPSADES]
 
@@ -948,9 +1080,9 @@ abstract TargetsSweAbs = Cat ** {
 
 		bre_V_Mass_motion : V ; -- <Mass_theme>[Klätterhortensian] [BREDER UT SIG] <Area.>[över husväggen]
 		sprida_V_Mass_motion : V ; -- <Mass_theme>[Tjänstemän från Internationella valutafonden IMF] anlände till landet och [SPRED UT SIG] <Area.>[över huvudstaden]
+		välla_V_Mass_motion : V ; -- <Mass_theme>[Cyklisterna] [VÄLLER FRAM]
 		tränga_V_Mass_motion : V ; -- <Mass_theme>[En del folk] börjar [TRÄNGA SIG] <Direction>[mot dörrarna]
 		hagla_V_Mass_motion : V ; -- <Mass_theme>[bollarna] [HAGLADE] <Goal.>[in i boxen]
-		välla_V_Mass_motion : V ; -- <Mass_theme>[de] [VÄLLER IN] <Path.>[över gränserna]
 
 		fullgöra_V2_Meet_specifications : V2 ; -- <Agent>[folk] [FULLGÖR] <Standard>[sina skyldigheter]
 		utföra_V2_Meet_specifications : V2 ; -- <Agent>[Han] väntar på det rätta tillfället att [UTFÖRA] <Standard>[sin plikt]
@@ -962,6 +1094,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		motta_V2_Meet_with_response : V2 ; -- <Trigger>[Olika förslag och idéer] [MOTTAGES] <Response>[med tacksamhet]
 		mötas_V2_Meet_with_response : V2 ; -- <Trigger>[de] [MÖTS] <Response,>[av våld]
+		uppta_V2_Meet_with_response : V2 ; -- <Trigger>[Detta] [UPPTOGS]
 
 		memorera_V2_Memorization : V2 ; -- <Cognizer>[han] [MEMORERAT] <Pattern.>[hela anförandet]
 
@@ -973,13 +1106,16 @@ abstract TargetsSweAbs = Cat ** {
 
 		synda_V_Misdeed : V ; -- <Wrongdoer>[Den som sover] [SYNDAR]
 
+		gå_V_Motion : V ; -- <Theme>[Hon] [GICK]
 		orma_V_Motion : V ; -- <Theme>[Han] började [ORMA] <Direction>[fram]
-		gå_V_Motion : V ; -- <Theme>[Busslinje 518] [GÅR] <Source>[från Helenelunds station] <Goal>[till Barkarby]
 		leda_V_Motion : V ; -- <Theme>[E 4:an] [LEDDE] <Source>[från Lissabon] <Goal>[till Helsingfors]
+		åka_V_Motion : V ; -- <Theme>[Fyra vänner] ska [ÅKA] <Goal>[till Reno]
 		spela_V_Motion : V ; -- <Theme>[Solljuset] [SPELADE] <Path>[mellan vasstråna]
 
+		falla_V_Motion_directional : V ; -- <Theme>[Snön] [FALLER]
+		slå_V_Motion_directional : V ; -- <Theme>[Hon] bråkade , stegrade sig och [SLOG ÖVER]
+		stiga_V_Motion_directional : V ; -- <Theme>[Vattnet] [STEG UPP]
 		trilla_V_Motion_directional : V ; -- <Theme>[En person] ska ha [TRILLAT] <Goal>[i vattnet]
-		stiga_V_Motion_directional : V ; -- <Theme>[Röken] [STEG UPP] <Path>[mellan stenarna]
 		störta_V_Motion_directional : V ; -- <Theme>[De två klättrarna] [STÖRTADE] <Source>[från en isvägg på Kebnekaise]
 
 		svischa_V_Motion_noise : V ; -- <Theme>[Tåg efter tåg] [SVISCHADE] <Area>[förbi]
@@ -1012,6 +1148,8 @@ abstract TargetsSweAbs = Cat ** {
 		förutspå_V2_Omen : V2 ; -- <Phenomenon_1>[Galluparna] [FÖRUTSPÅR] <Phenomenon_2>[valframgång] <Interested_party.>[för Sannfinländarna]
 
 		cykla_V_Operate_vehicle : V ; -- [CYKLADE] <Driver>[en 69-årig man] <Area>[på en grusväg]
+		köra_V_Operate_vehicle : V ; -- <Driver>[vi] [KÖRDE]
+		paddla_V_Operate_vehicle : V ; -- <Driver>[Jag] [PADDLADE] <Path>[genom det lilla sundet mellan Hasselön och Grindholmen]
 		köra_V2_Operate_vehicle : V2 ; -- <Driver>[Folk] [KÖR] <Vehicle>[båt] som <Driver>[de] [KÖR] <Vehicle>[bil]
 
 		driva_V2_Operating_a_system : V2 ; -- <Operator>[Min fru] [DRIVER] <System>[en liten enskild firma]
@@ -1039,6 +1177,8 @@ abstract TargetsSweAbs = Cat ** {
 
 		stiga_V_Path_shape : V ; -- <Road>[vägen] [STIGER] och [SVÄNGER] <Direction>[mot höger]
 		svänga_V_Path_shape : V ; -- <Road>[vägen] [STIGER] och [SVÄNGER] <Direction>[mot höger]
+		gå_V_Path_shape : V ; -- <Road>[ena vägen] [GÅR] <Goal>[till Jacques lägenhet] , <Road>[den andra] { LU går } <Goal>[till kärnkraftverket där Homer arbetar]
+		löpa_V_Path_shape : V ; -- [LÖPER] <Road>[en smal stig] <Source>[från beteshagen i öster]
 		korsa_V2_Path_shape : V2 ; -- <Road>[Vägen] [KORSAR] <Area>[ett område av riksintresse för kulturmiljövård]
 
 		hugga_V_Perception_body : V ; -- [HÖGG] <Body_part>[i bröstet]
@@ -1067,7 +1207,9 @@ abstract TargetsSweAbs = Cat ** {
 		kurtisera_V2_Personal_relationship : V2 ; -- <Partner_1>[Han] är känd som en stor förförare , och [KURTISERAR] <Partner_2>[alla kvinnor han ser]
 
 		kapa_V2_Piracy : V2 ; -- <Perpetrator>[Pirater] [KAPADE] <Vehicle>[tre thailändska fiskefartyg]
+		uppbringa_V2_Piracy : V2 ; -- [UPPBRINGA] <Vehicle>[fartygen]
 
+		ge_V_Place_weight_on : V ; -- [GE TYNGD] <Consideration>[åt vissa politiska krav]
 		lägga_V_Place_weight_on : V ; -- <Agent>[vi] försöker [LÄGGA TYNGDEN] <Consideration>[på att barnen själva skall synas i rutan]
 
 		dra_V2_Placing : V2 ; -- <Agent>[Man] hade [DRAGIT] <Theme>[en ledning] <Goal>[mellan datorn och terminalen]
@@ -1091,24 +1233,33 @@ abstract TargetsSweAbs = Cat ** {
 
 		huka_sig_V_Posture : V ; -- <Agent>[De] satt tysta som kyrkråttor i sina bås och [HUKADE SIG] <Location>[i de allra innersta hörnen]
 		ligga_V_Posture : V ; -- <Agent>[Jag] [LIGGER] <Location>[i hängmattan]
+		luta_V_Posture : V ; -- <Agent>[jag] [LUTAR]
 		sitta_V_Posture : V ; -- <Agent>[En stork] [SITTER] <Location>[på kyrktornet]
+		sätta_V_Posture : V ; -- <Agent>[Jag] måste [SÄTTA MIG UPP]
 
 		repa_V_Practice : V ; -- <Action>[över 25 melodier som] <Agent>[vi] [REPADE IN]
+		repetera_V_Practice : V ; -- <Agent>[han] [REPETERAT]
 		öva_V_Practice : V ; -- <Agent>[jag] förresten [ÖVA] <Action>[på arior för mezzosopran]
+		repa_V2_Practice : V2 ; -- <Agent>[Vi] hade [REPAT IN] <Action>[l2 låtar]
+		träna_V2_Practice : V2 ; -- <Agent>[jag] istället [TRÄNA] <Action>[cirkelträning]
 		öva_V2_Practice : V2 ; -- <Action>[schlagersånger som] <Agent>[de] [ÖVAT IN] <Occasion>[för skolmusikfestivalen]
-		repa_V2_Practice : V2 ; -- <Action>[Showen som] skrivits ihop och [REPATS IN]
 
 		snöa_V_Precipitation : V ; -- [SNÖADE] <Place>[i området]
 
+		balsamera_V2_Preserving : V2 ; -- <Agent>[vi] [BALSAMERAR] <Undergoer>[kroppen]
+		konservera_V2_Preserving : V2 ; -- [KONSERVERA] <Undergoer>[fisken]
+		luta_V2_Preserving : V2 ; -- <Agent>[du] fick börja [LUTA] <Undergoer>[fisk]
 		lägga_V2_Preserving : V2 ; -- <Agent>[du] [LÄGGER IN] <Undergoer>[sill] <Medium>[i klar lag]
-		sylta_V2_Preserving : V2 ; -- <Undergoer>[Pepparkakskryddan ingefära] kan också [SYLTAS IN] <Medium.>[i kraftig sockerlag]
+		sylta_V2_Preserving : V2 ; -- <Agent>[man] [SYLTADE IN] <Undergoer>[dom]
 
 		ljuga_V_Prevarication : V ; -- <Speaker>[Hon] [LJÖG] <Topic>[om sin ålder]
 
 		frånta_V3_Prevent_from_having : V3 ; -- <Agent>[jag] inte ville [FRÅNTA] <Protagonist>[någon]
 
+		avvärja_V2_Preventing : V2 ; -- [AVVÄRJA] <Event>[en humanitär katastrof] <Place.>[i området]
 		förhindra_V2_Preventing : V2 ; -- <Agent>[Man] vill [FÖRHINDRA] <Event>[vapensmuggling]
 		stoppa_V2_Preventing : V2 ; -- <Agent>[åtalet] ska [STOPPA] <Event>[kriget]
+		undanröja_V2_Preventing : V2 ; -- [UNDANRÖJA] <Event.>[hotet mot grödornas fortlevnad]
 
 		fortgå_V_Process_continue : V ; -- <Event>[fredsprocessen] [FORTGICK]
 		gå_V_Process_continue : V ; -- <Event>[Livet] [GICK SIN GILLA GÅNG]
@@ -1128,26 +1279,35 @@ abstract TargetsSweAbs = Cat ** {
 		avstanna_V_Process_stop : V ; -- <Process>[byggandet] har [AVSTANNAT]
 		stanna_V_Process_stop : V ; -- <Process>[bostadsbyggandet] [STANNAR AV]
 
+		arbeta_V2_Processing_materials : V2 ; -- [ARBETA] <Material>[degen]
 		bearbeta_V2_Processing_materials : V2 ; -- [BEARBETAR] <Agent>[Kjell Karlsson] <Material>[ett granitblock]
 
 		gå_V_Proliferating_in_number : V ; -- <Set>[moderaterna] [GÅR NER] <Initial_number>[från 23,8] <Final_number>[till 21,9]
 		krympa_V_Proliferating_in_number : V ; -- <Set>[antalet polisinrättningar] [KRYMPER] <Initial_number>[från 24] <Final_number>[till 11]
 		minska_V_Proliferating_in_number : V ; -- <Set>[vänsterpartiet] [MINSKAR] <Initial_number>[från 11,4] <Final_number>[till 10,4]
+		uppgå_V_Proliferating_in_number : V ; -- <Set>[Det sammanlagda antalet besök i ateljéerna] [UPPGICK] <Final_number>[till cirka 15 000]
+		öka_V_Proliferating_in_number : V ; -- <Set>[antalet öar] [ÖKAR]
 		fördubbla_V2_Proliferating_in_number : V2 ; -- <Set>[Antalet kvinnor med hörselskador] har [FÖRDUBBLATS]
 
 		skydda_V2_Protecting : V2 ; -- <Protection>[Korallreven] [SKYDDAR] <Asset>[kusterna vid stormar]
+		säkerställa_V2_Protecting : V2 ; -- [SÄKERSTÄLLER] <Asset>[långvarig överlevnad]
 
 		käfta_V_Quarreling : V ; -- <Arguer1>[Johannesson] brukar [KÄFTA] <Arguer2>[med Wennerholm]
 		bråka_V_Quarreling : V ; -- [BRÅKADE] <Arguers>[två västsvenska klubbar] <Issue>[om en övergång]
 
 		fråga_V_Questioning : V ; -- <Speaker>[De] var väldigt vetgiriga båda två och [FRÅGADE] <Topic>[om allt från löner till huspriser]
+		spörja_V_Questioning : V ; -- <Speaker>[Alla] undrar och [SPÖRJER]
 		fråga_V2_Questioning : V2 ; -- <Speaker>[Vi] har [FRÅGAT] <Addressee>[alla andra]
 		höra_V2_Questioning : V2 ; -- <Speaker>[jag] [HÖRA] <Message>[vad tusan jag ska göra]
 		grilla_V2_Questioning : V2 ; -- <Addressee>[kändisar] låter sig [GRILLAS]
 
+		abdikera_V_Quitting : V ; -- <Employee>[En drottning] [ABDIKERAR]
+		avgå_V_Quitting : V ; -- <Employee>[Hon] [AVGÅR]
 		säga_V_Quitting : V ; -- <Employee>[Emma] [SA UPP SIG] <Position>[från sitt jobb som florist]
 
 		dra_V_Quitting_a_place : V ; -- <Self_mover>[Gaddafistyrkorna] [DRAGIT SIG TILLBAKA] <Source>[från staden]
+		dunsta_V_Quitting_a_place : V ; -- <Self_mover>[du] [DUNSTAR]
+		fly_V_Quitting_a_place : V ; -- <Self_mover>[Huvudpersonen själv] har [FLYTT FÄLTET]
 		utrymma_V2_Quitting_a_place : V2 ; -- [UTRYMMA] <Source>[lägenheten]
 
 		ratificera_V2_Ratification : V2 ; -- <Ratifier>[26 EU-länder] har [RATIFICERAT] <Proposal>[Lissabonfördraget]
@@ -1172,12 +1332,15 @@ abstract TargetsSweAbs = Cat ** {
 		ta_V2_Receiving : V2 ; -- <Recipient>[Nobelpristagarna] kommer till för att [TA EMOT] <Theme>[sina medaljer]
 
 		anteckna_V2_Recording : V2 ; -- <Agent>[Maja Lundgren] vet mer och [ANTECKNAR] <Phenomenon>[allt hon ser och hör]
+		dokumentera_V2_Recording : V2 ; -- [DOKUMENTERAR] <Phenomenon>[svensk filmhistoria]
 		skildra_V2_Recording : V2 ; -- <Agent>[Jag] befann mig med fotograf för att [SKILDRA] <Phenomenon>[valstriden]
 
+		komma_V_Recovery : V ; -- <Patient>[Han] [KOM SIG]
 		återhämta_V_Recovery : V ; -- <Patient>[Räven] har [ÅTERHÄMTAT SIG] <Affliction>[efter skabben]
 		läka_V_Recovery : V ; -- <Affliction>[Såret] [LÄKER]
 
 		avleda_V2_Redirecting : V2 ; -- <Agent>[Jag] försöker [AVLEDA] <Theme>[Lokes uppmärksamhet]
+		avvända_V2_Redirecting : V2 ; -- [AVVÄNDA] <Theme>[det onda ögat]
 		dirigera_V2_Redirecting : V2 ; -- <Theme>[några mångmiljonbelopp] kan [DIRIGERAS OM] <Goal>[till just Stockholm]
 		styra_V2_Redirecting : V2 ; -- <Theme>[Huvuduppdraget] [STYRDES OM] <Goal>[till ett konkret mål : att förmedla jobb]
 
@@ -1194,6 +1357,7 @@ abstract TargetsSweAbs = Cat ** {
 		binda_V2_Relating_concepts : V2 ; -- <Evidence>[inget enskilt bevis] [BINDER] <Concept_1>[45-åringen] <Concept_2>[till dådet]
 		förbinda_V2_Relating_concepts : V2 ; -- <Evidence>[beviset , som] [FÖRBAND] <Concept_1>[vasen] <Concept_2>[med Helena Westermarcks hem]
 		förena_V2_Relating_concepts : V2 ; -- <Evidence>[26-4 i målskillnad på de åtta kvalmatcherna visar att man lyckats] [FÖRENA] <Concept_1>[anfall] <Concept_2>[med ett väl fungernade försvar]
+		relatera_V2_Relating_concepts : V2 ; -- [RELATERA] <Concept_1>[resultatet] <Concept_2>[med analytikers förväntningar]
 		sätta_V2_Relating_concepts : V2 ; -- <Concept_1>[alla brott] måste också [SÄTTAS I RELATION] <Concept_2>[till det uppdrag man har]
 
 		dra_V_Relative_time : V ; -- <Focal_occasion>[Lektionen] [DRAR UT PÅ TIDEN]
@@ -1207,17 +1371,21 @@ abstract TargetsSweAbs = Cat ** {
 		lämna_V2_Remainder : V2 ; -- [LÄMNAT] <Remainder>[skräp]
 
 		erinra_V_Remembering_experience : V ; -- <Cognizer>[han] och [ERINRAR SIG] <Experience>[hur han blev utbuad av parlamentet för några år sedan]
+		tänka_V_Remembering_experience : V ; -- <Cognizer>[jag] [TÄNKER TILLBAKA]
 
 		dra_VS_Remembering_information : VS ; -- <Cognizer>[Han] [DRAR SIG TILL MINNES] <Mental_content>[att Marks kommun hjälpt honom att arbeta brottsförebyggande]
 		påminna_VS_Remembering_information : VS ; -- <Cognizer>[han] kan inte [PÅMINNA SIG] <Mental_content>[att de talade om lerhyddor]
 
 		glömma_VV_Remembering_to_do : VV ; -- <Cognizer>[Man] har [GLÖMT] <Action.>[att titta på arbetsorganisationen]
+		komma_VV_Remembering_to_do : VV ; -- [KOM IHÅG] <Action>[att inte fastna i detaljer]
 
 		göra_V_Removing : V ; -- <Agent>[Besökarna] kunde inte [GÖRA SIG AV] <Theme>[med avfallet]
 		tömma_V2_Removing : V2 ; -- <Agent>[Rånarna] [TÖMDE] <Source>[kassaskåpet]
 		plocka_V2_Removing : V2 ; -- <Agent>[hon] [PLOCKAR] <Theme>[en kyckling]
+		slå_V2_Removing : V2 ; -- [SLÅ BORT] <Theme>[vattnet]
 		vräka_V2_Removing : V2 ; -- <Agent>[Hyresvärden] vill [VRÄKA] <Theme>[nazisterna]
 		kränga_V3_Removing : V3 ; -- [KRÄNGA AV] <Source>[sig] <Theme>[sina fuktiga badbrallor]
+		abortera_V2_Removing : V2 ; -- [ABORTERAS] <Theme>[fostret]
 		utvisa_V2_Removing : V2 ; -- <Theme>[En utländsk medborgare] eller <Theme>[en statslös person] [UTVISAS] <Source>[ur Sverige]
 		evakuera_V2_Removing : V2 ; -- <Theme>[Boende i en tvåvånings länga på Haparandavägen] fick [EVAKUERAS]
 
@@ -1240,19 +1408,23 @@ abstract TargetsSweAbs = Cat ** {
 		substituera_V2_Replacing : V2 ; -- <Agent>[man] har börjat [SUBSTITUERA] <New>[vete] <Old>[istället för majs som foder]
 
 		gola_V_Reporting : V ; -- <Informer>[Hon] [GOLAR] även <Wrongdoer>[på Lisbet]
+		tjalla_V_Reporting : V ; -- <Informer>[Tungt kriminella] [TJALLAR]
 
 		stå_V_Representing : V ; -- <Entity>[1997] [STÅR] <Phenomenon>[för året då Günter och Christina flyttade till gården]
 
+		hemställa_V_Request : V ; -- <Speaker>[Jag] [HEMSTÄLLER]]
 		yrka_V_Request : V ; -- <Speaker>[Åklagaren Per-Åke Kvarnström] kommer att [YRKA] <Message>[på att den misstänkte döms till livstids fängelse]
 		begära_V2_Request : V2 ; -- [BEGÄRDE] <Speaker>[hon] <Message>[hyran tillbaka plus 1 500 kronor för ' sveda och värk ']
 		befalla_V2V_Request : V2V ; -- <Speaker>[Hon] [BEFALLDE] <Addressee>[flickan] <Message>[att tvätta av sina händer] , <Message>[ta på sig kappan] och <Message>[komma med]
+		blixtinkalla_V2_Request : V2 ; -- <Addressee>[Myhre] [BLIXTINKALLADES] <Containing_event.>[då samtliga målvakter dras med skador]
 		hemkalla_V2_Request : V2 ; -- <Addressee>[Löwenhielm] [HEMKALLADES] <Message>[för att ta befälet över en husarskvadron]
 		kalla_V2_Request : V2 ; -- <Addressee>[Stornaways båt] [KALLADES UT] <Message.>[för att hjälpa en tankbåt som hade problem utanför Cape Wrath]
 
 		forska_V_Research : V ; -- [FORSKAR] <Researcher>[jag] <Field>[i analytisk ontologi]
-		vetenskapa_V_Research : V ; -- <Researcher>[man] [VETENSKAPA] <Topic>[om detta , om vardagen , om stringbokhyllan och hushållsassistenten]
+		vetenskapa_V_Research : V ; -- <Researcher>[män och idel män som] [VETENSKAPAR]
 
 		forma_V2_Reshaping : V2 ; -- <Deformer>[Caroline] och [FORMAR] <Undergoer>[händerna]
+		krossa_V2_Reshaping : V2 ; -- [KROSSAT] <Undergoer>[sin bil]
 		valsa_V2_Reshaping : V2 ; -- [VALSAR] <Deformer>[du] <Undergoer>[skivor av deg]
 
 		bo_V_Residence : V ; -- <Resident>[Elisabeth Krantz] [BOR] <Location>[i Kungsbacka]
@@ -1272,14 +1444,17 @@ abstract TargetsSweAbs = Cat ** {
 		avslöja_V_Reveal_secret : V ; -- [AVSLÖJADE] <Speaker>[STV] <Information>[hur den privatiserade arbetsförmedlingen i det borgerliga Sverige har resulterat i kurser i virkning och fejkade mentorskap där de arbetslösa har lämnats vind för våg]
 		ge_V_Reveal_secret : V ; -- <Speaker>[han] har [GETT TILL KÄNNA] <Information>[hur det var när han tjänstgjorde i justitiedepartementet]
 		yppa_V_Reveal_secret : V ; -- <Speaker>[Vuoria] ville inte [YPPA] <Information>[om uppsägningen har något att göra med Fortums framtidsplaner]
+		avslöja_V2_Reveal_secret : V2 ; -- [AVSLÖJA] <Information>[hallens nästa namn]
 		yppa_V2_Reveal_secret : V2 ; -- <Medium>[Dagboken] [YPPAR] <Information>[hemligheter som får överraskande följder]
 		avslöja_VS_Reveal_secret : VS ; -- <Medium>[ett samtal till kostplanerare Maarit Ketola] [AVSLÖJAR] <Information>[att den här veckans meny inte bjuder på några konstigheter eller exotiska inslag]
 
+		ge_V_Revenge : V ; -- <Avenger>[Andra] [GER IGEN FÖR GAMMAL OST]
 		vedergälla_V_Revenge : V ; -- <Avenger>[Jag] vill [VEDERGÄLLA] <Injury>[ont] <Punishment'.>[med ont]
 		hämnas_V2_Revenge : V2 ; -- <Avenger>[Denne] kunde [HÄMNAS] <Punishment>[genom att skvallra på dem]
 
 		straffa_V2_Rewards_and_punishments : V2 ; -- <Agent>[Spararna] kan inte [STRAFFA] <Evaluee>[ett livbolag man är missnöjd med]
 
+		ta_V2_Ride_vehicle : V2 ; -- <Theme>[jag] [TAR] <Vehicle>[bussen] <Goal>[hem]
 		åka_V2_Ride_vehicle : V2 ; -- <Source>[Från Cityterminalen] kan <Theme>[du] [ÅKA] <Vehicle>[buss] <Goal>[till hela Sverige]
 
 		komma_V_Rising_to_a_challenge : V ; -- <Protagonist>[jag] gärna [KOMMA I KAPP] <Activity>[med lektionerna]
@@ -1307,15 +1482,17 @@ abstract TargetsSweAbs = Cat ** {
 		eftersträva_V2_Seeking_to_achieve : V2 ; -- <Agent>[Man] [EFTERSTRÄVAR] <Sought_entity>[ett rättvisare samhälle]
 
 		flänga_V_Self_motion : V ; -- <Self_mover>[Han] [FLÄNGDE] <Area>[runt]
+		röra_V_Self_motion : V ; -- <Self_mover>[Han] får dock [RÖRA SIG]
 		springa_V_Self_motion : V ; -- <Self_mover>[Två hästar] på rymmen [SPRANG] <Area>[ute på vägbanan i södra Södertälje]
 		strosa_V_Self_motion : V ; -- <Self_mover>[Hemingway] [STROSADE] mycket <Area>[runt]
 		stryka_V_Self_motion : V ; -- <Self_mover>[Vi] [STRYKER] <Area>[omkring]
 		örla_V_Self_motion : V ; -- <Self_mover>[Servitörerna] [ÖRLAR] <Area>[omkring]
+		jaga_V_Self_motion : V ; -- <Self_mover>[Han] [JAGAR]
 		promenera_V_Self_motion : V ; -- <Self_mover>[Vi] [PROMENERAR] <Direction>[söderut]
-		röra_V_Self_motion : V ; -- <Self_mover>[En växande grupp rebeller] [RÖRDE SIG] <Goal>[mot presidentpalatset]
 		stiga_V_Self_motion : V ; -- <Self_mover>[Värden] [STIGER FRAM] <Goal>[till hans bord]
 		störta_V_Self_motion : V ; -- [STÖRTADE] <Self_mover>[han] <Goal>[ut på gatan]
 
+		dirigera_V2_Sending : V2 ; -- <Sender>[Polis och brandkår] och [DIRIGERADE OM] <Theme>[trafiken]
 		skeppa_V2_Sending : V2 ; -- <Sender>[Garcia] [SKEPPADE] <Theme>[statyerna] och <Recipient>[till USA]
 		översända_V2_Sending : V2 ; -- <Sender>[Gymnasienämnden i Mölndal] tillstyrker och har [ÖVERSÄNT] <Theme>[beslutet] <Recipient>[till kommunstyrelsen]
 
@@ -1353,12 +1530,14 @@ abstract TargetsSweAbs = Cat ** {
 
 		smuggla_V2_Smuggling : V2 ; -- <Perpetrator>[hon] [SMUGGLAT IN] <Goods>[en mobiltelefon som en av fångarna skulle använda]
 
+		blötlägga_V2_Soaking : V2 ; -- [BLÖTLÄGG] <Theme>[grillspetten]
 		marinera_V2_Soaking : V2 ; -- <Agent>[man] ofta [MARINERAR] <Theme>[tunna köttskivor] <Medium>[i en söt vitlöksstark sojasås]
 
 		uppta_V2_Soaking_up : V2 ; -- <Substance>[Syre] [UPPTAS]
 
 		eka_V_Sound_movement : V ; -- <Sound>[Hymnen] [EKADE]
 
+		föreläsa_V_Speak_on_topic : V ; -- <Speaker>[Du] [FÖRELÄSER]
 		predika_V_Speak_on_topic : V ; -- <Speaker>[Klasskamrater och vänner] [PREDIKADE] <Audience>[för mig] <Topic>[hur hemska alla uppkörningsinspektörer är och hur sadistiska de brukar vara mot stackars nervösa förare]
 
 		artikulera_V2_Spelling_and_pronouncing : V2 ; -- <Speaker>[barn med Downs syndrom] har svårare att lära sig [ARTIKULERA] <Sign>[ord]
@@ -1370,6 +1549,7 @@ abstract TargetsSweAbs = Cat ** {
 		hålla_V_State_continue : V ; -- <Entity>[vagnen] [HÖLL]
 		stå_V_State_continue : V ; -- <Entity>[En av hans traktorer] [STOD]
 
+		rapportera_V_Statement : V ; -- <Speaker>[Andreas] [RAPPORTERADE]
 		skriva_V_Statement : V ; -- <Message>[I Sverige döms flera hundra utvecklingsstörda till fängelse varje år] , [SKRIVER] <Speaker>[Svenska Dagbladet]
 		tala_V_Statement : V ; -- <Speaker>[Brittiska drottningen Elizabeth II] [TALADE] <Topic>[för världsfreden]
 		stadga_V2_Statement : V2 ; -- <Medium>[Andra ändringar i lagen] [STADGAR] <Message>[fängelsestraff för sexuellt ofredande av barn , handel med mänskliga organ och miljöförstörelse]
@@ -1387,9 +1567,12 @@ abstract TargetsSweAbs = Cat ** {
 		övertala_V2V_Suasion : V2V ; -- <Speaker>[man] nog kunna [ÖVERTALA] <Addressee>[honom] <Content>[att hjälpa till]
 		övertala_V2_Suasion : V2 ; -- <Addressee>[Han] hade [ÖVERTALATS] <Content>[till räddningsaktionen]
 
+		lämna_V2_Submitting_documents : V2 ; -- <Submittor>[Jag] har [LÄMNAT IN] <Documents>[en hemtenta om Gustav Vasas brev]
 		skicka_V2_Submitting_documents : V2 ; -- <Submittor>[Sveriges kommuner och landsting] har [SKICKAT IN] <Documents>[en skrivelse] <Authority>[till socialdepartementet]
 		sända_V2_Submitting_documents : V2 ; -- <Submittor>[Vi] har [SÄNT IN] <Documents>[våra brev] <Authority>[till arrangörerna]
 
+		bita_V_Success_or_failure : V ; -- <Agent>[Han] fick [BITA I GRÄSET]
+		göra_V_Success_or_failure : V ; -- <Agent>[Jag] kommer att [GÖRA BORT MIG]
 		ta_V_Success_or_failure : V ; -- <Agent>[Holm] [TOG] <Goal>[2,20]
 		klara_VV_Success_or_failure : VV ; -- <Agent>[Jag] hade [KLARAT] <Goal>[att hjälpa den tjejen]
 		misslyckas_V2_Success_or_failure : V2 ; -- [MISSLYCKADES] <Agent>[ett antal partier] <Goal>[med att klara spärren på fem procent]
@@ -1401,6 +1584,7 @@ abstract TargetsSweAbs = Cat ** {
 		förankra_V2_Successfully_communicate_message : V2 ; -- <Communicator>[De] har rest runt i delstaterna för att [FÖRANKRA] <Message>[förslagen]
 		förmedla_V2_Successfully_communicate_message : V2 ; -- <Communicator>[De] visste betyget och hade svårt att [FÖRMEDLA] <Message>[kunskapen om hur de kom fram till det]
 
+		förslå_V_Sufficiency : V ; -- <Item>[Ändringar i organisationen] [FÖRSLÅR]
 		räcka_V_Sufficiency : V ; -- <Item>[Pengarna] [RÄCKTE] förstås inte <Enabled_situation>[till allt]
 
 		ekipera_V2_Supply : V2 ; -- <Supplier>[Jag] hade tagit bussen de två milen till Borlänge och [EKIPERAT] <Recipient>[mig]
@@ -1417,10 +1601,14 @@ abstract TargetsSweAbs = Cat ** {
 		överlämna_V2_Surrendering_possession : V2 ; -- <Surrenderer>[Regeringssoldater] [ÖVERLÄMNADE] <Theme>[vapen]
 
 		avlösa_V2_Take_place_of : V2 ; -- <New>[Vice statsminister Mona Sahlin] [AVLÖSTE] <Old>[Jonsson] <Role>[i talarstolen]
+		efterträda_V2_Take_place_of : V2 ; -- <New>[Han] [EFTERTRÄDDE] <Old>[Tony Blair]
+		ersätta_V2_Take_place_of : V2 ; -- <New>[Avtalet] ska [ERSÄTTA] <Old>[Kyotoprotokollet]
 
+		beslagta_V2_Taking : V2 ; -- <Agent>[Den grekiska regimen] svarade med att [BESLAGTA] <Theme>[motståndsmännens egendomar]
 		ta_V2_Taking : V2 ; -- <Agent>[S] [TAR] <Theme>[röster] <Source>[från v]
 
 		berätta_V_Telling : V ; -- <Speaker>[David Eberhard , läkare i psykiatri ,] [BERÄTTAR] <Topic>[om sin syn på det svenska paniksyndromet]
+		komma_V_Telling : V ; -- <Speaker>[Han] har enbart att [KOMMA]
 		dra_V2_Telling : V2 ; -- <Speaker>[Killen] [DRAR] <Message.>[ett skämt]
 		berätta_VS_Telling : VS ; -- <Speaker>[Chauffören] har [BERÄTTAT] <Message>[att det plötsligt bara small till]
 
@@ -1433,6 +1621,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		snatta_V_Theft : V ; -- <Perpetrator>[Två 13-åriga flickor] ertappas när de [SNATTAT] <Source>[på NK]
 		förskingra_V2_Theft : V2 ; -- <Perpetrator>[En polisman med fackligt uppdrag] misstänks ha [FÖRSKINGRAT] <Goods>[en stor summa pengar] <Victim>[från sin fackförening i Västerbotten]
+		nalla_V2_Theft : V2 ; -- [NALLADE] <Perpetrator>[han] <Goods>[en godislåda]
 
 		blomstra_V_Thriving : V ; -- [BLOMSTRAR] <Entity>[Sveriges turistnäring]
 		rasa_V_Thriving : V ; -- <Entity>[Priserna på bredband] [RASAR]
@@ -1446,6 +1635,8 @@ abstract TargetsSweAbs = Cat ** {
 
 		pendla_V_Travel : V ; -- <Traveler>[Jag] [PENDLADE]
 
+		kretsa_V_Traversing : V ; -- <Path>[Runt omkring oss] [KRETSAR] <Theme>[stewarden Salvatore]
+		sicksacka_V_Traversing : V ; -- [SICKSACKADE] <Theme>[brevbäraren] <Path>[i motlutet]
 		tvära_V_Traversing : V ; -- <Theme>[Vi] [TVÄRAR] <Path>[in] <Source>[från stigen]
 
 		pröva_V2_Trying_out : V2 ; -- [PRÖVAR] <Evaluator>[skivbranschen] <Entity>[en mjukare taktik]
@@ -1466,6 +1657,7 @@ abstract TargetsSweAbs = Cat ** {
 
 		avfyra_V2_Use_firearm : V2 ; -- <Agent>[terroristerna] [AVFYRAT] <Firearm>[sina maskingevär]
 
+		begagna_V2_Using : V2 ; -- <Instrument>[Dräkter] , <Instrument>[kulisser] och <Instrument>[rekvisita] [BEGAGNAR] <Agent>[man]
 		ta_V2_Using : V2 ; -- <Agent>[Forskare i USA] vill [TA TILL] <Instrument>[drastiska medicinska åtgärder] <Purpose>[för att få bukt med fetmaepidemin]
 		tillämpa_V2_Using : V2 ; -- <Agent>[Swebus] [TILLÄMPAR] <Instrument>[en strikt företagspolicy] <Purpose>[för att behålla en drogfri arbetsmiljö]
 		tas_V2_Using : V2 ; -- <Instrument>[Säve flygplats] [TAS I ANSPRÅK]
@@ -1479,12 +1671,14 @@ abstract TargetsSweAbs = Cat ** {
 		vakna_V_Waking_up : V ; -- <Sleeper>[Jag] [VAKNADE] <Sleep_state>[ur drömmen]
 
 		tveka_V_Waver_between_options : V ; -- <Cognizer>[Jag] bara [TVEKAR] <Issue>[mellan vilken metod jag ska välja]
+		vackla_V_Waver_between_options : V ; -- <Cognizer>[oppositionen] [VACKLAR]
 		hatta_V_Waver_between_options : V ; -- <Cognizer>[Jag] har [HATTAT] <Options>[mellan 100 och 200 meter]
 		vela_V_Waver_between_options : V ; -- <Cognizer>[Jag] stod först och [VELADE] , <Options>[mellan vitt och svart]
 
 		bära_V2_Wearing : V2 ; -- [BÄR] <Wearer>[de] dessutom <Clothing>[kilten]
 
 		erövra_V2_Win_prize : V2 ; -- <Competitor>[hon] koras både till Årets idrottskvinna och [ERÖVRA] <Prize>[radions Jerringpris]
+		ta_V2_Win_prize : V2 ; -- [TA HEM] <Prize>[bucklan]
 
 		dra_V_Withdraw_from_participation : V ; -- <Participant>[en överförmyndare] [DRAR SIG TILLBAKA]
 
