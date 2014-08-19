@@ -1,7 +1,7 @@
 A FrameNet-based API to GF Resource Grammar Library
 ===================================================
 
-Version 0.9.3
+Version 0.9.4
 
 Introduction
 ------------
@@ -21,16 +21,16 @@ All grammar modules have been automatically generated based on the automatically
 
   - `Elements.gf` – 482 core frame elements (FE) declared as semantic categories that are subcategorized by the syntactic RGL types.
   - `Patterns.gf` – 714 valence patterns declared as functions that take one or more core FEs and a target verb as arguments, and return a clause. For each frame, the set of core FEs is often split into several alternative functions according to the corpus evidence.
-  - `TargetsEngAbs.gf` – 2,663 lexical units (LU) from BFN.
-  - `TargetsSweAbs.gf` – 1,063 LUs from SweFN.
+  - `TargetsEngAbs.gf` – 2,996 lexical units (LU) from BFN.
+  - `TargetsSweAbs.gf` – 1,257 LUs from SweFN.
 
 ### Concrete syntax
 
   - `ElementsI.gf` – mapping from the semantic types to the syntactic types, shared for all languages.
   - `ElementsEng.gf` and `ElementsSwe.gf` – language-specific instantiations of `ElementsI.gf`.
   - `PatternsEng.gf` and `PatternsSwe.gf` – language-specific implementation of the shared valence patterns (frame building functions).
-  - `TargetsEng.gf` – implementation of 2,482 BFN LUs (reusing [`DictEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/DictEng.gf)).
-  - `TargetsSwe.gf` – implementation of 1,021 SweFN LUs (reusing [`DictSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/DictSwe.gf)).
+  - `TargetsEng.gf` – implementation of 2,755 BFN LUs (reusing [`DictEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/DictEng.gf)).
+  - `TargetsSwe.gf` – implementation of 1,211 SweFN LUs (reusing [`DictSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/DictSwe.gf)).
 
 LUs between BFN and SweFN are not directly aligned, therefore a framenet-specific lexicon is generated for each language.
 
