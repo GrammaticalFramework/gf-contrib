@@ -395,11 +395,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Assessor>[a district nurse] should visit , [ASSESS] <Phenomenon>[the wound]
 
-		Assessing_V2_Pass phenomenon_np v2 = lin Clause {
+		Assessing_V2_Pass assessor_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP phenomenon_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP assessor_np))
 		} ;
-		-- <Phenomenon>[The taught portion of the course] is [ASSESSED]
+		-- <Phenomenon>[all of these cases] are [ASSESSED] <Assessor>[by a Consultant Obstetrician]
 
 		--
 		-- Assistance
@@ -596,6 +596,12 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP v2 (fromMaybe NP emptyNP phenomenon_np)
 		} ;
 		-- <Cognizer>[We] [SPOTTED] <Phenomenon>[you]
+
+		Becoming_aware_VQ cognizer_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP cognizer_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Cognizer>[You] [SPOT] <Phenomenon>[what season of the year is appropriate]
 
 		Becoming_aware_VS phenomenon_s vs = lin Clause {
 			np = emptyNP ;
@@ -959,11 +965,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Agent>[He] [PUNCHED] <Victim>[me] <Body_part>[in the eye]
 
-		Cause_harm_V2_Pass victim_np v2 = lin Clause {
+		Cause_harm_V2_Pass agent_np victim_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP victim_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP agent_np))
 		} ;
-		-- <Victim>[he] 'd been [PUNCHED]
+		-- <Victim>[he] was kicked and [PUNCHED] <Agent>[by four people]
 
 		--
 		-- Cause_impact
@@ -1243,11 +1249,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Cause>[publicity] to [GENERATE] <Effect>[interest]
 
-		Cause_to_start_V2_Pass effect_np v2 = lin Clause {
+		Cause_to_start_V2_Pass cause_np effect_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP effect_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP cause_np))
 		} ;
-		-- <Effect>[considerable local relief] can be [GENERATED]
+		-- <Effect>[the excitement] [GENERATED] <Cause>[by this debate]
 
 		--
 		-- Cause_to_wake
@@ -1485,11 +1491,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Cognizer>[she] [PONDERED] <Topic>[on her good fortune]
 
-		Cogitation_V2 cognizer_np topic_np v2 = lin Clause {
+		Cogitation_VQ cognizer_np topic_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP topic_np)
+			vp = mkVP vq (fromMaybe QS emptyQS topic_qs)
 		} ;
-		-- <Cognizer>[She] [PONDERED] <Topic>[his words]
+		-- <Cognizer>[Control] [PONDERED] <Topic>[what to do]
 
 		Cogitation_VS cognizer_np topic_s vs = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
@@ -1893,11 +1899,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[The adviser] [STRESSED] <Message>[that it needed to be a constructive exercise]
 
-		Convey_importance_V2_Pass message_np v2 = lin Clause {
+		Convey_importance_V2_Pass medium_np message_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP message_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP medium_np))
 		} ;
-		-- <Message>[The backbenchers ' unrest] was [UNDERLINED]
+		-- <Message>[The backbenchers ' unrest] was [UNDERLINED] <Medium>[by the rousing ovation they gave to Chancellor Nor-man Lamont at a private meeting yesterday]
 
 		--
 		-- Cooking_creation
@@ -1953,11 +1959,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Theme>[Eleanor] repeated mechanically and [FOLLOWED] <Cotheme>[Melissa] <Source>[from the church]
 
-		Cotheme_V2_Pass cotheme_np v2 = lin Clause {
+		Cotheme_V2_Pass cotheme_np theme_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP cotheme_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP theme_np))
 		} ;
-		-- <Cotheme>[proper procedures] are [FOLLOWED]
+		-- <Cotheme>[She] then arrived at Zaidie 's house [FOLLOWED] <Theme>[by the defendant]
 
 		--
 		-- Create_physical_artwork
@@ -1979,11 +1985,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Creator>[I] [PHOTOGRAPHED] <Represented>[the cow]
 
-		Create_representation_V2_Pass represented_np v2 = lin Clause {
+		Create_representation_V2_Pass creator_np represented_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP represented_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP creator_np))
 		} ;
-		-- <Represented>[an august assembly] was [PHOTOGRAPHED]
+		-- <Represented>[this placid mask of Eastern innocence] being [PHOTOGRAPHED] <Creator>[by David Bailey]
 
 		--
 		-- Creating
@@ -2167,7 +2173,13 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Destroyer>[we] [DESTROY] <Undergoer>[it]
 
-		Destroying_V2_Pass undergoer_np v2 = lin Clause {
+		Destroying_V2_Pass_1 destroyer_np v2 = lin Clause {
+			np = emptyNP ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP destroyer_np))
+		} ;
+		-- [DESTROYED] <Destroyer>[by the hero Bellepheron]
+
+		Destroying_V2_Pass_2 undergoer_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP undergoer_np ;
 			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
 		} ;
@@ -2511,12 +2523,6 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Estimating
 		--
 
-		Estimating_V cognizer_np estimation_adv v = lin Clause {
-			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv estimation_adv)
-		} ;
-		-- <Cognizer>[Aziz] [ESTIMATED] <Estimation>[that Kuwait had stolen oil worth US$2,400 million]
-
 		Estimating_VS cognizer_np estimation_s vs = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
 			vp = mkVP vs (fromMaybe S emptyS estimation_s)
@@ -2575,17 +2581,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Evidence
 		--
 
-		Evidence_V proposition_adv support_np v = lin Clause {
-			np = fromMaybe NP emptyNP support_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv proposition_adv)
-		} ;
-		-- <Support>[The collection of his personal correspondence] [REVEALED] <Proposition>[much about the affairs of the twelfth century]
-
 		Evidence_V2 proposition_np support_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP support_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP proposition_np)
 		} ;
 		-- <Support>[the letters] [REVEALING] <Proposition>[his generosity]
+
+		Evidence_VQ proposition_qs support_np vq = lin Clause {
+			np = fromMaybe NP emptyNP support_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS proposition_qs)
+		} ;
+		-- <Support>[The Queen 's Speech in November] will broadly [REVEAL] <Proposition>[what the Bill is likely to contain]
 
 		Evidence_VS proposition_s support_np vs = lin Clause {
 			np = fromMaybe NP emptyNP support_np ;
@@ -2647,11 +2653,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Execution
 		--
 
-		Execution_V2_Pass executed_np v2 = lin Clause {
+		Execution_V2_Pass executed_np executioner_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP executed_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP executioner_np))
 		} ;
-		-- <Executed>[He] could be [EXECUTED]
+		-- <Executed>[The family] was [EXECUTED] <Executioner>[by Bolsheviks]
 
 		--
 		-- Existence
@@ -2673,11 +2679,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Expectation
 		--
 
-		Expectation_V cognizer_np v = lin Clause {
+		Expectation_VQ cognizer_np phenomenon_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP v
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
 		} ;
-		-- <Cognizer>[She] had [ANTICIPATED]
+		-- <Cognizer>[Sukarno] should have [ANTICIPATED] <Phenomenon>[what happened]
 
 		Expectation_VS_Pass phenomenon_s vs = lin Clause {
 			np = emptyNP ;
@@ -2737,11 +2743,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- [SHOCKED] <Experiencer>[her] <Stimulus>[that she could make such a cool analysis of the situation]
 
-		Experiencer_obj_V2_Pass experiencer_np stimulus_adv v2 = lin Clause {
+		Experiencer_obj_V2_Pass experiencer_np stimulus_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP experiencer_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv stimulus_adv)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP stimulus_np))
 		} ;
-		-- <Experiencer>[One] was [FRIGHTENED] <Stimulus>[by a bee escaping from a hive]
+		-- <Experiencer>[I] [SHOCKED] <Stimulus>[by this decision]
 
 		Experiencer_obj_VS_Pass experiencer_np stimulus_s vs = lin Clause {
 			np = fromMaybe NP emptyNP experiencer_np ;
@@ -2753,17 +2759,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Explaining_the_facts
 		--
 
-		Explaining_the_facts_V_1 fact_np question_adv v = lin Clause {
+		Explaining_the_facts_VQ_1 fact_np question_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP fact_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv question_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS question_qs)
 		} ;
-		-- <Fact>[the reasons] <Fact>[which] [ACCOUNT] <Question>[for why each step was taken rather than any other]
+		-- <Fact>[This] may [EXPLAIN] <Question>[why Držić was known as “ the Croatian Molière ”]
 
-		Explaining_the_facts_V_2 state_of_affairs_adv v = lin Clause {
+		Explaining_the_facts_VQ_2 state_of_affairs_qs vq = lin Clause {
 			np = emptyNP ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv state_of_affairs_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS state_of_affairs_qs)
 		} ;
-		-- [ACCOUNTED] <State_of_affairs>[for it]
+		-- [EXPLAINS] <State_of_affairs>[why the Tsar was able to secure the acquiescence of the nobility]
 
 		--
 		-- Exporting
@@ -3083,17 +3089,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Grasp
 		--
 
-		Grasp_V cognizer_np phenomenon_adv v = lin Clause {
-			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv phenomenon_adv)
-		} ;
-		-- <Cognizer>[I] [GRASP] <Phenomenon>[that he understood the particular use I made of such ` consistent convolutions " .]
-
 		Grasp_V2 cognizer_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP phenomenon_np)
 		} ;
 		-- <Cognizer>[I] [UNDERSTOOD] <Phenomenon>[why]
+
+		Grasp_VQ cognizer_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP cognizer_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Cognizer>[she] found it difficult to [UNDERSTAND] <Phenomenon>[what he was talking about]
 
 		--
 		-- Grinding
@@ -3353,11 +3359,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Inspector>[Benjamin] [EXAMINED] <Ground>[the yellowing teeth]
 
-		Inspecting_V2_Pass ground_np v2 = lin Clause {
+		Inspecting_V2_Pass ground_np inspector_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP ground_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP inspector_np))
 		} ;
-		-- <Ground>[the point] [EXAMINED]
+		-- <Ground>[your client] [EXAMINED] <Inspector>[by their medical expert]
 
 		--
 		-- Installing
@@ -3427,11 +3433,21 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Interceptor>[A man] [INTERCEPTED] <Theme>[him]
 
-		Intercepting_V2_Pass theme_np v2 = lin Clause {
+		Intercepting_V2_Pass interceptor_np theme_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP theme_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP interceptor_np))
 		} ;
-		-- <Theme>[The call] was [INTERCEPTED]
+		-- <Theme>[their vessel] was [INTERCEPTED] <Interceptor>[by an Israeli naval patrol vessel]
+
+		--
+		-- Interrupt_process
+		--
+
+		Interrupt_process_V2_Pass cause_np process_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP process_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP cause_np))
+		} ;
+		-- <Process>[its proceedings] were [INTERRUPTED] <Cause>[by the Turkish War]
 
 		--
 		-- Invading
@@ -3473,25 +3489,25 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Judgment_direct_address
 		--
 
-		Judgment_direct_address_V2_1 addressee_np communicator_np reason_adv v2 = lin Clause {
+		Judgment_direct_address_V2 addressee_np communicator_np reason_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP communicator_np ;
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP addressee_np)) (fromMaybe Adv emptyAdv reason_adv)
 		} ;
 		-- <Communicator>[I] [THANKED] <Addressee>[God] <Reason>[for typecasting]
 
-		Judgment_direct_address_V2_2 addressee_np communicator_np topic_adv v2 = lin Clause {
-			np = fromMaybe NP emptyNP communicator_np ;
-			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP addressee_np)) (fromMaybe Adv emptyAdv topic_adv)
+		Judgment_direct_address_V2_Pass_1 addressee_np communicator_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP addressee_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP communicator_np))
 		} ;
-		-- <Communicator>[him] to [CHASTISE] <Addressee>[Ellie] <Topic>[on account of her newly-styled hair]
+		-- <Addressee>[she] was commiserated with , patted on the back , [THANKED] <Communicator>[by the little girl 's father]
 
-		Judgment_direct_address_V2_Pass_1 addressee_np reason_adv v2 = lin Clause {
+		Judgment_direct_address_V2_Pass_2 addressee_np reason_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv reason_adv)
 		} ;
 		-- <Addressee>[the informant] will be [THANKED] <Reason>[for co-operating]
 
-		Judgment_direct_address_V2_Pass_2 addressee_np topic_adv v2 = lin Clause {
+		Judgment_direct_address_V2_Pass_3 addressee_np topic_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv topic_adv)
 		} ;
@@ -3574,6 +3590,12 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP v2 (fromMaybe NP emptyNP governed_np)
 		} ;
 		-- <Leader>[you] could [RULE] <Governed>[the world]
+
+		Leadership_V2_Pass governed_np leader_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP governed_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP leader_np))
+		} ;
+		-- <Governed>[The lands] [RULED] <Leader>[by the Yek]
 
 		--
 		-- Linguistic_meaning
@@ -3901,11 +3923,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[somebody] made something and [NAME] <Entity>[it]
 
-		Name_conferral_V2_Pass entity_np name_adv v2 = lin Clause {
+		Name_conferral_V2_Pass entity_np name_adv speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP entity_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv name_adv)
+			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))) (fromMaybe Adv emptyAdv name_adv)
 		} ;
-		-- <Entity>[the stricter Queen 's Bench Prison] ( <Name>[so] [NAMED]
+		-- <Entity>[they] were <Name>[so] [NAMED] <Speaker>[by Clerk Maxwell]
 
 		--
 		-- Needing
@@ -3933,7 +3955,13 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Arraign_authority>[prosecutors] plan to formally [INDICT] <Accused>[Chun] <Charges>[on corruption charges]
 
-		Notification_of_charges_V2_Pass accused_np charges_adv v2 = lin Clause {
+		Notification_of_charges_V2_Pass_1 accused_np arraign_authority_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP accused_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP arraign_authority_np))
+		} ;
+		-- <Accused>[he] has not been [INDICTED] <Arraign_authority>[by a war crimes tribunal]
+
+		Notification_of_charges_V2_Pass_2 accused_np charges_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP accused_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv charges_adv)
 		} ;
@@ -4141,17 +4169,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Perception_experience
 		--
 
-		Perception_experience_V perceiver_passive_np phenomenon_adv v = lin Clause {
-			np = fromMaybe NP emptyNP perceiver_passive_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv phenomenon_adv)
-		} ;
-		-- <Perceiver_passive>[a good student] should be able to [SENSE] <Phenomenon>[whether he is getting the point of the problem or not]
-
 		Perception_experience_V2 perceiver_passive_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP perceiver_passive_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP phenomenon_np)
 		} ;
 		-- <Perceiver_passive>[you] [SEE] <Phenomenon>[the face]
+
+		Perception_experience_VQ perceiver_passive_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP perceiver_passive_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Perceiver_passive>[you] [HEAR] <Phenomenon>[what I said]
 
 		Perception_experience_V2_Pass phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP phenomenon_np ;
@@ -4270,12 +4298,6 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP theme_np)) (fromMaybe Adv emptyAdv ground_adv)
 		} ;
 		-- [PLANT] <Theme>[a single , carefully selected plant] <Ground>[in the chosen spot]
-
-		Planting_V2_Pass theme_adv v2 = lin Clause {
-			np = emptyNP ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv theme_adv)
-		} ;
-		-- [PLANTED] <Theme>[with shrubs and low growing trees]
 
 		--
 		-- Posing_as
@@ -4505,23 +4527,23 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[We] [ASKED] <Topic>[about going into Finland]
 
-		Questioning_V2_1 addressee_np speaker_np v2 = lin Clause {
+		Questioning_V2 addressee_np speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP addressee_np)
 		} ;
 		-- <Speaker>[they] 'll [QUESTION] <Addressee>[your friends]
 
-		Questioning_V2_2 message_np speaker_np v2 = lin Clause {
+		Questioning_VQ message_qs speaker_np vq = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP message_np)
+			vp = mkVP vq (fromMaybe QS emptyQS message_qs)
 		} ;
-		-- <Speaker>[I] did not [INQUIRE] <Message>[the reason]
+		-- <Speaker>[Isabel] wanted to [ASK] <Message>[why not]
 
-		Questioning_V2_Pass addressee_np v2 = lin Clause {
+		Questioning_V2_Pass addressee_np speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
 		} ;
-		-- <Addressee>[He] , too , has been [QUESTIONED]
+		-- <Addressee>[Two men] have been arrested and [QUESTIONED] <Speaker>[by police]
 
 		--
 		-- Quitting
@@ -4763,11 +4785,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Remembering_experience
 		--
 
-		Remembering_experience_V cognizer_np experience_adv v = lin Clause {
+		Remembering_experience_VQ cognizer_np experience_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv experience_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS experience_qs)
 		} ;
-		-- <Cognizer>[I] have n't [FORGOTTEN] <Experience>[yesterday]
+		-- <Cognizer>[i] [FORGET] <Experience>[why]
 
 		--
 		-- Remembering_information
@@ -5049,17 +5071,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[I] [CONFESS] <Information>[to this failing]
 
-		Reveal_secret_V2_1 information_np medium_np v2 = lin Clause {
+		Reveal_secret_V2 information_np medium_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP medium_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP information_np)
 		} ;
 		-- <Medium>[a letter] [CONFESSING] <Information>[the weakness]
 
-		Reveal_secret_V2_2 information_np speaker_np v2 = lin Clause {
+		Reveal_secret_VQ information_qs speaker_np vq = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP information_np)
+			vp = mkVP vq (fromMaybe QS emptyQS information_qs)
 		} ;
-		-- <Speaker>[you] [CONFESS] <Information>[all]
+		-- <Speaker>[She] once [CONFESSED] <Information>[how unhappy she had been at home]
 
 		Reveal_secret_VS information_s medium_np vs = lin Clause {
 			np = fromMaybe NP emptyNP medium_np ;
@@ -5403,11 +5425,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Soaking_up
 		--
 
-		Soaking_up_V2_Pass substance_np v2 = lin Clause {
+		Soaking_up_V2_Pass item_np substance_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP substance_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP item_np))
 		} ;
-		-- <Substance>[1 dose] to be [ABSORBED]
+		-- <Substance>[Light] is [ABSORBED] <Item>[by dark surfaces]
 
 		--
 		-- Sound_movement
@@ -5423,11 +5445,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		-- Speak_on_topic
 		--
 
-		Speak_on_topic_V audience_adv speaker_np topic_adv v = lin Clause {
+		Speak_on_topic_V speaker_np topic_adv v = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP (mkVP (mkVP v) (fromMaybe Adv emptyAdv audience_adv)) (fromMaybe Adv emptyAdv topic_adv)
+			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv topic_adv)
 		} ;
-		-- <Speaker>[him] to [LECTURE] <Audience>[to punters] <Topic>[on Plato]
+		-- <Speaker>[he] [LECTURED] <Topic>[on " The Music of Poetry "]
 
 		--
 		-- Spelling_and_pronouncing
@@ -5489,6 +5511,12 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[you] [REPORTED] <Message>[finding a body]
 
+		Statement_V2_Pass speaker_np v2 = lin Clause {
+			np = emptyNP ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
+		} ;
+		-- [CAUTIONED] <Speaker>[by the superintendent]
+
 		--
 		-- Storing
 		--
@@ -5525,11 +5553,17 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Speaker>[she] could [CONVINCE] <Addressee>[him] <Content>[to stop looking at her that way]
 
-		Suasion_V2_Pass addressee_np content_adv v2 = lin Clause {
+		Suasion_V2_Pass_1 addressee_np content_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv content_adv)
 		} ;
 		-- <Addressee>[I] was [CONVINCED] <Content>[of your innocence]
+
+		Suasion_V2_Pass_2 addressee_np speaker_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP addressee_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
+		} ;
+		-- <Addressee>[Northern Ireland] treated the election as a referendum on the power-sharing system and was [CONVINCED] <Speaker>[by the loyalists]
 
 		--
 		-- Submitting_documents
@@ -5625,11 +5659,11 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 		} ;
 		-- <Supporter>[the chain] [SUPPORTING] <Supported>[a wooden or iron flail sprouting spikes]
 
-		Supporting_V2_Pass supported_np supporter_adv v2 = lin Clause {
+		Supporting_V2_Pass supported_np supporter_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP supported_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv supporter_adv)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP supporter_np))
 		} ;
-		-- <Supported>[His leg] was [SUPPORTED] <Supporter>[on a chair]
+		-- <Supported>[its mat roof] [SUPPORTED] <Supporter>[by stone columns]
 
 		--
 		-- Surrendering
@@ -5660,6 +5694,12 @@ concrete PatternsEng of Patterns = ElementsEng ** open SyntaxEng, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP old_np)) (fromMaybe Adv emptyAdv role_adv)
 		} ;
 		-- <New>[cotton] had [REPLACED] <Old>[wool] <Role>[as Britain 's leading export]
+
+		Take_place_of_V2_Pass new_np old_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP old_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP new_np))
+		} ;
+		-- <Old>[words] are [REPLACED] <New>[by integers]
 
 		--
 		-- Taking

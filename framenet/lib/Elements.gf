@@ -41,7 +41,6 @@ abstract Elements = Cat ** {
 		Astronomical_entity_NP ;
 		Attribute_Adv ;
 		Attribute_NP ;
-		Audience_Adv ;
 		Author_Adv ;
 		Author_NP ;
 		Authorities_Adv ;
@@ -149,7 +148,6 @@ abstract Elements = Cat ** {
 		Entity_Adv ;
 		Entity_NP ;
 		Escapee_NP ;
-		Estimation_Adv ;
 		Estimation_S ;
 		Evader_NP ;
 		Evaluator_NP ;
@@ -163,8 +161,9 @@ abstract Elements = Cat ** {
 		Excreta_NP ;
 		Excreter_NP ;
 		Executed_NP ;
+		Executioner_NP ;
 		Executive_authority_NP ;
-		Experience_Adv ;
+		Experience_QS ;
 		Experiencer_Adv ;
 		Experiencer_NP ;
 		Exporter_NP ;
@@ -224,6 +223,7 @@ abstract Elements = Cat ** {
 		Individuals_NP ;
 		Information_Adv ;
 		Information_NP ;
+		Information_QS ;
 		Information_S ;
 		Informer_NP ;
 		Ingestibles_Adv ;
@@ -273,6 +273,7 @@ abstract Elements = Cat ** {
 		Mental_content_S ;
 		Message_Adv ;
 		Message_NP ;
+		Message_QS ;
 		Message_S ;
 		Message_VP ;
 		Name_Adv ;
@@ -337,6 +338,7 @@ abstract Elements = Cat ** {
 		Phenomenon_2_NP ;
 		Phenomenon_Adv ;
 		Phenomenon_NP ;
+		Phenomenon_QS ;
 		Phenomenon_S ;
 		Place_Adv ;
 		Place_of_employment_Adv ;
@@ -362,8 +364,8 @@ abstract Elements = Cat ** {
 		Property_NP ;
 		Proposal_NP ;
 		Proposed_action_VP ;
-		Proposition_Adv ;
 		Proposition_NP ;
+		Proposition_QS ;
 		Proposition_S ;
 		Protagonist_NP ;
 		Protection_NP ;
@@ -372,7 +374,7 @@ abstract Elements = Cat ** {
 		Pursuer_Adv ;
 		Pursuer_NP ;
 		Qualification_Adv ;
-		Question_Adv ;
+		Question_QS ;
 		Ratifier_NP ;
 		Reader_NP ;
 		Reason_Adv ;
@@ -425,10 +427,9 @@ abstract Elements = Cat ** {
 		Standard_NP ;
 		Standard_item_Adv ;
 		State_NP ;
-		State_of_affairs_Adv ;
 		State_of_affairs_NP ;
+		State_of_affairs_QS ;
 		Static_object_Adv ;
-		Stimulus_Adv ;
 		Stimulus_NP ;
 		Stimulus_S ;
 		Student_NP ;
@@ -439,7 +440,6 @@ abstract Elements = Cat ** {
 		Supplier_NP ;
 		Support_NP ;
 		Supported_NP ;
-		Supporter_Adv ;
 		Supporter_NP ;
 		Surrenderer_NP ;
 		Suspect_NP ;
@@ -456,6 +456,7 @@ abstract Elements = Cat ** {
 		Time_NP ;
 		Topic_Adv ;
 		Topic_NP ;
+		Topic_QS ;
 		Topic_S ;
 		Total_NP ;
 		Traveler_NP ;
@@ -490,6 +491,7 @@ abstract Elements = Cat ** {
 	fun
 
 		emptyS : S ;
+		emptyQS : QS ;
 		emptyNP : NP ;
 		emptyVP : VP ;
 		emptyAdv : Adv ;

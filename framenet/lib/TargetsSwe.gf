@@ -169,9 +169,9 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		gå_V2_Becoming_a_member = mkV2 (mkV "gå" "går" "gå" "gick" "gått" "gången") ;
 
 		bli_V_Becoming_aware = mkV "bli" "blev" "blivit" ;
-		lägga_V_Becoming_aware = mkV "lägga" "lade" "lagt" ;
 		märka_V2_Becoming_aware = mkV2 (mkV "märker") ;
 		varsna_V2_Becoming_aware = mkV2 (mkV "varsnar") ;
+		lägga_VQ_Becoming_aware = mkVQ (mkV "lägga" "lade" "lagt") ;
 		upptäcka_VS_Becoming_aware = mkVS (mkV "upptäcker") ;
 
 		soltorka_V_Becoming_dry = mkV "soltorkar" ;
@@ -191,7 +191,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 
 		jobba_V_Being_employed = mkV "jobbar" ;
 
-		hänga_V_Being_located = mkV "hänger" ;
 		ligga_V_Being_located = mkV "ligga" "låg" "legat" ;
 		sitta_V_Being_located = mkV "sitta" "satt" "suttit" ;
 		stå_V_Being_located = mkV "stå" "stod" "stått" ;
@@ -445,10 +444,11 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		försegla_V2_Closure = mkV2 (mkV "förseglar") ;
 		korka_V2_Closure = mkV2 (mkV "korkar") ;
 
-		fråga_V_Cogitation = mkV "frågar" ;
 		reflektera_V_Cogitation = mkV "reflekterar" ;
 		tänka_V_Cogitation = mkV "tänker" ;
-		undra_V2_Cogitation = mkV2 (mkV "undrar") ;
+		fråga_VQ_Cogitation = mkVQ (mkV "frågar") ;
+		tänka_VQ_Cogitation = mkVQ (mkV "tänker") ;
+		undra_VQ_Cogitation = mkVQ (mkV "undrar") ;
 		tänka_VS_Cogitation = mkVS (mkV "tänker") ;
 
 		jobba_V_Collaboration = mkV "jobbar" ;
@@ -717,7 +717,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 
 		rymma_V_Escaping = mkV "rymmer" ;
 
-		gissa_V_Estimating = mkV "gissar" ;
 		hålla_VS_Estimating = mkVS (mkV "hålla" "höll" "hållit") ;
 
 		komma_V_Evading = mkV "komma" "kom" "kommit" ;
@@ -729,18 +728,17 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		gå_V_Evaluative_comparison = mkV "gå" "går" "gå" "gick" "gått" "gången" ;
 		mäta_V_Evaluative_comparison = mkV "mäter" ;
 
-		dra_V_Event = mkV "dra" "drar" "dra" "drog" "dragit" "dragen" ;
 		gå_V_Event = mkV "gå" "går" "gå" "gick" "gått" "gången" ;
 		slå_V_Event = mkV "slå" "slog" "slagit" ;
 		stå_V_Event = mkV "stå" "stod" "stått" ;
 		inträffa_V2_Event = mkV2 (mkV "inträffar") ;
 		äga_V2_Event = mkV2 (mkV "äger") ;
 
-		bekräfta_V_Evidence = mkV "bekräftar" ;
-		visa_V_Evidence = mkV "visar" ;
 		bestyrka_V2_Evidence = mkV2 (mkV "bestyrker") ;
 		påvisa_V2_Evidence = mkV2 (mkV "påvisar") ;
 		styrka_V2_Evidence = mkV2 (mkV "styrker") ;
+		bekräfta_VQ_Evidence = mkVQ (mkV "bekräftar") ;
+		visa_VQ_Evidence = mkVQ (mkV "visar") ;
 		visa_VS_Evidence = mkVS (mkV "visar") ;
 
 		påminna_V2_Evoking = mkV2 (mkV "påminna" "påminde" "påmint") ;
@@ -758,7 +756,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 
 		existera_V_Existence = mkV "existerar" ;
 
-		vara_V_Expectation = mkV "varar" ;
+		ana_VQ_Expectation = mkVQ (mkV "anar") ;
 		förutse_VS_Expectation = mkVS (mkV "förutse" "förutsåg" "förutsett") ;
 
 		stå_V_Expensiveness = mkV "stå" "stod" "stått" ;
@@ -793,8 +791,8 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		reta_V2S_Experiencer_obj = mkV2S (mkV "retar") ;
 		frappera_VS_Experiencer_obj = mkVS (mkV "frapperar") ;
 
-		förklara_V_Explaining_the_facts = mkV "förklarar" ;
-		reda_V_Explaining_the_facts = mkV "reda" "redde" "rett" ;
+		förklara_VQ_Explaining_the_facts = mkVQ (mkV "förklarar") ;
+		reda_VQ_Explaining_the_facts = mkVQ (mkV "reda" "redde" "rett") ;
 
 		utskeppa_V2_Exporting = mkV2 (mkV "utskeppar") ;
 		exportera_V2_Exporting = mkV2 (mkV "exporterar") ;
@@ -882,11 +880,9 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 
 		backa_V_Going_back_on_a_commitment = mkV "backar" ;
 
-		fatta_V_Grasp = mkV "fattar" ;
-		förstå_V_Grasp = mkV "förstå" "förstod" "förstått" ;
-		koppla_V_Grasp = mkV "kopplar" ;
 		greppa_V2_Grasp = mkV2 (mkV "greppar") ;
 		uppfatta_V2_Grasp = mkV2 (mkV "uppfattar") ;
+		förstå_VQ_Grasp = mkVQ (mkV "förstå" "förstod" "förstått") ;
 
 		tugga_V_Grinding = mkV "tuggar" ;
 		pulvrisera_V2_Grinding = mkV2 (mkV "pulvriserar") ;
@@ -923,7 +919,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 
 		apa_sig_V2_Imitating = dirV2 (reflV (mkV "apar")) ;
 		efterlikna_V2_Imitating = mkV2 (mkV "efterliknar") ;
-		spela_V2_Imitating = mkV2 (mkV "spelar") ;
 
 		bura_in_V2_Immobilization = dirV2 (partV (mkV "burar")"in") ;
 
@@ -962,7 +957,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		mönstra_V2_Inspecting = mkV2 (mkV "mönstrar") ;
 		titta_V2_Inspecting = mkV2 (mkV "tittar") ;
 		visitera_V2_Inspecting = mkV2 (mkV "visiterar") ;
-		kontrollera_V2_Inspecting = mkV2 (mkV "kontrollerar") ;
 		kroppsvisitera_V2_Inspecting = mkV2 (mkV "kroppsvisiterar") ;
 		läkarundersöka_V2_Inspecting = mkV2 (mkV "läkarundersöker") ;
 		söka_V2_Inspecting = mkV2 (mkV "söker") ;
@@ -982,6 +976,8 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		fånga_V2_Intercepting = mkV2 (mkV "fångar") ;
 		snappa_V2_Intercepting = mkV2 (mkV "snappar") ;
 
+		avbryta_V2_Interrupt_process = mkV2 (mkV "avbryta" "avbröt" "avbrutit") ;
+
 		invadera_V_Invading = mkV "invaderar" ;
 		invadera_V2_Invading = mkV2 (mkV "invaderar") ;
 
@@ -992,6 +988,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		gräla_V2_Judgment_direct_address = mkV2 (mkV "grälar") ;
 		komplimentera_V2_Judgment_direct_address = mkV2 (mkV "komplimenterar") ;
 		tillrättavisa_V2_Judgment_direct_address = mkV2 (mkV "tillrättavisar") ;
+		tala_V2_Judgment_direct_address = mkV2 (mkV "talar") ;
 		förebrå_V2_Judgment_direct_address = mkV2 (mkV "förebrår") ;
 
 		försvara_V2_Justifying = mkV2 (mkV "försvarar") ;
@@ -1008,6 +1005,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		sjösätta_V2_Launch_process = mkV2 (mkV "sjösätta" "sjösätter" "sjösätt" "sjösatte" "sjösatt" "sjösatt") ;
 
 		leda_V2_Leadership = mkV2 (mkV "leda" "ledde" "lett") ;
+		styra_V2_Leadership = mkV2 (mkV "styra" "styrde" "styrt") ;
 
 		betyda_V2_Linguistic_meaning = mkV2 (mkV "betyda" "betydde" "betytt") ;
 
@@ -1028,7 +1026,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		möjliggöra_VS_Make_possible_to_do = mkVS (mkV "möjliggöra" "möjliggjorde" "möjliggjort") ;
 		tillåta_VS_Make_possible_to_do = mkVS (mkV "tillåta" "tillät" "tillåtit") ;
 
-		dra_V_Making_faces = mkV "dra" "drar" "dra" "drog" "dragit" "dragen" ;
 		flina_V_Making_faces = mkV "flinar" ;
 		grimasera_V_Making_faces = mkV "grimaserar" ;
 		hånle_V_Making_faces = mkV "hånle" "hånlog" "hånlett" ;
@@ -1152,9 +1149,9 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		göra_V_Perception_body = mkV "göra" "gjorde" "gjort" ;
 		värka_V_Perception_body = mkV "värker" ;
 
-		bevittna_V_Perception_experience = mkV "bevittnar" ;
 		känna_V2_Perception_experience = mkV2 (mkV "känna" "kände" "känt") ;
 		se_V2_Perception_experience = mkV2 (mkV "se" "såg" "sett") ;
+		bevittna_VQ_Perception_experience = mkVQ (mkV "bevittnar") ;
 		beskåda_V2_Perception_experience = mkV2 (mkV "beskådar") ;
 
 		spela_V2_Performers_and_roles = mkV2 (mkV "spelar") ;
@@ -1188,7 +1185,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		plantera_V2_Planting = mkV2 (mkV "planterar") ;
 		sätta_V2_Planting = mkV2 (mkV "sätta" "sätter" "sätt" "satte" "satt" "satt") ;
 		så_V2_Planting = mkV2 (mkV "sår") ;
-		odla_V2_Planting = mkV2 (mkV "odlar") ;
 
 		framställa_V2_Posing_as = mkV2 (mkV "framställer") ;
 
@@ -1260,7 +1256,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		fråga_V_Questioning = mkV "frågar" ;
 		spörja_V_Questioning = mkV "spörja" "sporde" "sport" ;
 		fråga_V2_Questioning = mkV2 (mkV "frågar") ;
-		höra_V2_Questioning = mkV2 (mkV "höra" "hörde" "hört") ;
+		höra_VQ_Questioning = mkVQ (mkV "höra" "hörde" "hört") ;
 		grilla_V2_Questioning = mkV2 (mkV "grillar") ;
 
 		abdikera_V_Quitting = mkV "abdikerar" ;
@@ -1331,8 +1327,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		kvarstå_V_Remainder = mkV "kvarstå" "kvarstod" "kvarstått" ;
 		lämna_V2_Remainder = mkV2 (mkV "lämnar") ;
 
-		erinra_V_Remembering_experience = mkV "erinrar" ;
-		tänka_V_Remembering_experience = mkV "tänker" ;
+		erinra_VQ_Remembering_experience = mkVQ (mkV "erinrar") ;
 
 		dra_VS_Remembering_information = mkVS (mkV "dra" "drar" "dra" "drog" "dragit" "dragen") ;
 		påminna_VS_Remembering_information = mkVS (mkV "påminna" "påminde" "påmint") ;
@@ -1402,11 +1397,12 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		reagera_V_Response = mkV "reagerar" ;
 
 		anförtro_V_Reveal_secret = mkV "anförtror" ;
-		avslöja_V_Reveal_secret = mkV "avslöjar" ;
-		ge_V_Reveal_secret = mkV "ge" "ger" "ge" "gav" "gett" "given" ;
 		yppa_V_Reveal_secret = mkV "yppar" ;
 		avslöja_V2_Reveal_secret = mkV2 (mkV "avslöjar") ;
 		yppa_V2_Reveal_secret = mkV2 (mkV "yppar") ;
+		avslöja_VQ_Reveal_secret = mkVQ (mkV "avslöjar") ;
+		ge_VQ_Reveal_secret = mkVQ (mkV "ge" "ger" "ge" "gav" "gett" "given") ;
+		yppa_VQ_Reveal_secret = mkVQ (mkV "yppar") ;
 		avslöja_VS_Reveal_secret = mkVS (mkV "avslöjar") ;
 
 		ge_V_Revenge = mkV "ge" "ger" "ge" "gav" "gett" "given" ;
@@ -1497,7 +1493,6 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		eka_V_Sound_movement = mkV "ekar" ;
 
 		föreläsa_V_Speak_on_topic = mkV "föreläser" ;
-		predika_V_Speak_on_topic = mkV "predikar" ;
 
 		artikulera_V2_Spelling_and_pronouncing = mkV2 (mkV "artikulerar") ;
 		säga_V2_Spelling_and_pronouncing = mkV2 (mkV "säga" "sade" "sagt") ;
@@ -1516,6 +1511,7 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		fastslå_VS_Statement = mkVS (mkV "fastslå" "fastslog" "fastslagit") ;
 		säga_VS_Statement = mkVS (mkV "säga" "sade" "sagt") ;
 		uppge_VV_Statement = mkVV (mkV "uppge" "uppger" "uppge" "uppgav" "uppgett" "uppgiven") ;
+		kommentera_V2_Statement = mkV2 (mkV "kommenterar") ;
 
 		lagra_V2_Storing = mkV2 (mkV "lagrar") ;
 
@@ -1637,5 +1633,9 @@ concrete TargetsSwe of TargetsSweAbs = CatSwe ** open ParadigmsSwe, IrregSwe, St
 		ta_V2_Win_prize = mkV2 (mkV "ta" "tar" "ta" "tog" "tagit" "tagen") ;
 
 		dra_V_Withdraw_from_participation = mkV "dra" "drar" "dra" "drog" "dragit" "dragen" ;
+
+		-- NB: Manually added
+		ha_V2_Possession = have_V2 ;
+		vilja_VV_Desiring = want_VV ;
 
 }

@@ -189,7 +189,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = emptyNP ;
 			vp = mkVP v2 (fromMaybe NP emptyNP numbers_np)
 		} ;
-		-- [RÄKNA IHOP] <Numbers>[5438799+]
+		-- [RÄKNA IHOP] <Numbers>[200 barn mellan 3 och 15 år]
 
 		Adding_up_V2_2 result_np v2 = lin Clause {
 			np = emptyNP ;
@@ -395,11 +395,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Assessor>[han] [BEDÖMDE] <Phenomenon>[sin egen form]
 
-		Assessing_V2_Pass phenomenon_np v2 = lin Clause {
+		Assessing_V2_Pass assessor_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP phenomenon_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP assessor_np))
 		} ;
-		-- <Phenomenon>[Hans skador] [BEDÖMS]
+		-- <Phenomenon>[Fjordens glaciär] [BEDÖMS] <Assessor>[av experter]
 
 		--
 		-- Assistance
@@ -597,6 +597,12 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Cognizer>[Många människor] kommer att [MÄRKA] <Phenomenon>[höjningen]
 
+		Becoming_aware_VQ cognizer_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP cognizer_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Cognizer>[du] att [LÄGGA MÄRKE TILL] <Phenomenon>[hur all ansträngning och anspänning försvinner]
+
 		Becoming_aware_VS phenomenon_s vs = lin Clause {
 			np = emptyNP ;
 			vp = mkVP vs (fromMaybe S emptyS phenomenon_s)
@@ -671,7 +677,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP theme_np ;
 			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv location_adv)
 		} ;
-		-- <Location>[var] <Theme>[tavlorna] ska [HÄNGA]
+		-- <Location>[På balkongräcket utanför fönstret] [SITTER] <Theme>[julbelysningen]
 
 		--
 		-- Besieging
@@ -925,7 +931,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP agent_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP experiencer_np)
 		} ;
-		-- <Agent>[tonåringar] bör avstå från att råna och [MISSFIRMA] <Experiencer>[pensionärer]
+		-- <Agent>[Man] ska lyfta fram sitt lag och [SMÄDA] <Experiencer>[motståndarna]
 
 		Cause_emotion_V2_Pass experiencer_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP experiencer_np ;
@@ -959,11 +965,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Agent>[hon] [KNÄADE] <Victim>[sin konkurrent] <Body_part>[i ansiktet] utan <Body_part>[i pannan]
 
-		Cause_harm_V2_Pass victim_np v2 = lin Clause {
+		Cause_harm_V2_Pass agent_np victim_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP victim_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP agent_np))
 		} ;
-		-- <Victim>[En man] har [SLAGITS]
+		-- <Victim>[En man] har [SLAGITS] <Agent>[av ett par andra män]
 
 		--
 		-- Cause_impact
@@ -1243,11 +1249,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Cause>[Ekonomiska skillnader] [DRIVER FRAM] <Effect>[migration]
 
-		Cause_to_start_V2_Pass effect_np v2 = lin Clause {
+		Cause_to_start_V2_Pass cause_np effect_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP effect_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP cause_np))
 		} ;
-		-- <Effect>[kriget i Tjetjenien] [PROVOCERADES FRAM]
+		-- <Effect>[kriget i Tjetjenien] [PROVOCERADES FRAM] <Cause>[av makthavarna i Kreml]
 
 		--
 		-- Cause_to_wake
@@ -1483,13 +1489,13 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP cognizer_np ;
 			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv topic_adv)
 		} ;
-		-- <Cognizer>[han] sitta och [TÄNKA ÖVER] <Topic>[hur han ska kunna bli en ny människa när han kommer ut]
+		-- [TÄNKTE] <Cognizer>[jag] ofta <Topic>[på dem]
 
-		Cogitation_V2 cognizer_np topic_np v2 = lin Clause {
+		Cogitation_VQ cognizer_np topic_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP topic_np)
+			vp = mkVP vq (fromMaybe QS emptyQS topic_qs)
 		} ;
-		-- <Cognizer>[Hon] [UNDRADE] <Topic.>[vad hisspojken tänkte]
+		-- <Cognizer>[han] sitta och [TÄNKA ÖVER] <Topic>[hur han ska kunna bli en ny människa när han kommer ut]
 
 		Cogitation_VS cognizer_np topic_s vs = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
@@ -1893,11 +1899,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Speaker>[du] att [FRAMHÅLLA] <Message>[att det barn som tog provet var ditt och Mr Johnson var inte pojkens far]
 
-		Convey_importance_V2_Pass message_np v2 = lin Clause {
+		Convey_importance_V2_Pass medium_np message_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP message_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP medium_np))
 		} ;
-		-- <Message>[Något som] [ACCENTUERAS]
+		-- <Message>[Känslan av tidlöshet] [UNDERSTRYKS] också <Medium>[av dräkterna ( Tuomas Lampinen ) , som ibland för tankarna till Shakespeares kungadramer snarare än till Tjechovs 1904]
 
 		--
 		-- Cooking_creation
@@ -1953,11 +1959,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Theme>[Gunnar] [LEDDE] <Cotheme>[hästen] <Source>[därifrån]
 
-		Cotheme_V2_Pass cotheme_np v2 = lin Clause {
+		Cotheme_V2_Pass cotheme_np theme_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP cotheme_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP theme_np))
 		} ;
-		-- <Cotheme>[Clemenceau] [ESKORTERAS]
+		-- <Cotheme>[Clemenceau] [ESKORTERAS] <Theme>[av två robotjagare samt förrådsfartyget Meuse]
 
 		--
 		-- Create_physical_artwork
@@ -1979,11 +1985,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Creator>[Gustav] [PORTRÄTTERAR] <Represented>[sig själv]
 
-		Create_representation_V2_Pass represented_np v2 = lin Clause {
+		Create_representation_V2_Pass creator_np represented_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP represented_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP creator_np))
 		} ;
-		-- <Represented>[Verkligheten] [AVBILDAS]
+		-- [PORTRÄTTERAS] <Represented>[Stevens] <Creator,>[av skådespelaren Tommy Lee Jones]
 
 		--
 		-- Creating
@@ -2167,7 +2173,13 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Destroyer>[de] kan [TILLINTETGÖRA] <Undergoer>[varandra]
 
-		Destroying_V2_Pass undergoer_np v2 = lin Clause {
+		Destroying_V2_Pass_1 destroyer_np v2 = lin Clause {
+			np = emptyNP ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP destroyer_np))
+		} ;
+		-- [TILLINTETGJORDES] <Destroyer>[av de tysk-estniska trupper , som tålmodigt hade väntat på att de gummiklädda sovjetsoldaterna skulle avancera så långt att en flykt blev omöjlig]
+
+		Destroying_V2_Pass_2 undergoer_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP undergoer_np ;
 			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
 		} ;
@@ -2511,12 +2523,6 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Estimating
 		--
 
-		Estimating_V cognizer_np estimation_adv v = lin Clause {
-			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv estimation_adv)
-		} ;
-		-- <Cognizer>[han] vill inte [GISSA] <Estimation>[hur länge de håller]
-
 		Estimating_VS cognizer_np estimation_s vs = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
 			vp = mkVP vs (fromMaybe S emptyS estimation_s)
@@ -2575,17 +2581,17 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Evidence
 		--
 
-		Evidence_V proposition_adv support_np v = lin Clause {
-			np = fromMaybe NP emptyNP support_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv proposition_adv)
-		} ;
-		-- <Support>[Testerna] [VISAR] <Proposition>[hur mycket alkohol man dricker]
-
 		Evidence_V2 proposition_np support_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP support_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP proposition_np)
 		} ;
 		-- <Support>[Dessa uppgifter] [BESTYRKER] <Proposition>[de klara tendenserna till en ökning av rattfylleriet som avspeglas i antalet anmälningar]
+
+		Evidence_VQ proposition_qs support_np vq = lin Clause {
+			np = fromMaybe NP emptyNP support_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS proposition_qs)
+		} ;
+		-- <Support>[Testerna] [VISAR] <Proposition>[hur mycket alkohol man dricker]
 
 		Evidence_VS proposition_s support_np vs = lin Clause {
 			np = fromMaybe NP emptyNP support_np ;
@@ -2647,11 +2653,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Execution
 		--
 
-		Execution_V2_Pass executed_np v2 = lin Clause {
+		Execution_V2_Pass executed_np executioner_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP executed_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP executioner_np))
 		} ;
-		-- <Executed>[fler än 750 fångar] [AVRÄTTATS]
+		-- [HÄNGDES] <Executed>[en 16-årig utvecklingsstörd flicka] <Executioner>[av domaren själv]
 
 		--
 		-- Existence
@@ -2673,11 +2679,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Expectation
 		--
 
-		Expectation_V cognizer_np v = lin Clause {
+		Expectation_VQ cognizer_np phenomenon_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP v
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
 		} ;
-		-- <Cognizer>[länsstyrelsens polisavdelning] [ÄR I BEREDSKAP]
+		-- [ANADE] <Cognizer>[han] <Phenomenon>[vad han skulle ställa till med]
 
 		Expectation_VS_Pass phenomenon_s vs = lin Clause {
 			np = emptyNP ;
@@ -2737,9 +2743,9 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- [RETAR] <Experiencer>[honom] <Stimulus>[att han inte lyckats lokalisera tio nålar som getts ut av några klubbar i Göteborg]
 
-		Experiencer_obj_V2_Pass experiencer_np stimulus_adv v2 = lin Clause {
+		Experiencer_obj_V2_Pass experiencer_np stimulus_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP experiencer_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv stimulus_adv)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP stimulus_np))
 		} ;
 		-- <Experiencer>[Fantasin] [EGGAS] <Stimulus>[av medeltida dans , sång och musik]
 
@@ -2753,15 +2759,15 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Explaining_the_facts
 		--
 
-		Explaining_the_facts_V_1 fact_np question_adv v = lin Clause {
+		Explaining_the_facts_VQ_1 fact_np question_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP fact_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv question_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS question_qs)
 		} ;
 		-- <Fact>[Resultaten] [FÖRKLARAR] <Question>[varför så få djurarter är asymmetriska]
 
-		Explaining_the_facts_V_2 state_of_affairs_adv v = lin Clause {
+		Explaining_the_facts_VQ_2 state_of_affairs_qs vq = lin Clause {
 			np = emptyNP ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv state_of_affairs_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS state_of_affairs_qs)
 		} ;
 		-- [FÖRKLARA] <State_of_affairs>[hur jag och majoriteten i fullmäktige tänkte]
 
@@ -3083,17 +3089,17 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Grasp
 		--
 
-		Grasp_V cognizer_np phenomenon_adv v = lin Clause {
-			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv phenomenon_adv)
-		} ;
-		-- <Cognizer>[De flesta föräldrar] [FÖRSTÅR] <Phenomenon>[hur situationen ser ut]
-
 		Grasp_V2 cognizer_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP phenomenon_np)
 		} ;
 		-- <Cognizer>[Ojanen och Jalonen] säger sig [GREPPA] <Phenomenon>[historien]
+
+		Grasp_VQ cognizer_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP cognizer_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Cognizer>[De flesta föräldrar] [FÖRSTÅR] <Phenomenon>[hur situationen ser ut]
 
 		--
 		-- Grinding
@@ -3353,11 +3359,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Inspector>[brandkåren i Rjukan som] [TITTAR TILL] <Ground>[anläggningen]
 
-		Inspecting_V2_Pass ground_np v2 = lin Clause {
+		Inspecting_V2_Pass ground_np inspector_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP ground_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP inspector_np))
 		} ;
-		-- <Ground>[Familjen] [KROPPSVISITERADES] och <Ground>[deras väskor] [SÖKTES IGENOM]
+		-- <Ground>[Tjejerna] [KROPPSVISITERADES] <Inspector>[av en kvinna]
 
 		--
 		-- Installing
@@ -3427,11 +3433,21 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Interceptor>[Satelliter] [FÅNGAR UPP] <Theme>[samtal och e-post]
 
-		Intercepting_V2_Pass theme_np v2 = lin Clause {
+		Intercepting_V2_Pass interceptor_np theme_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP theme_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP interceptor_np))
 		} ;
-		-- <Theme>[de] [SNAPPAS UPP]
+		-- <Theme>[de] [SNAPPAS UPP] <Interceptor>[av den kejserliga censuren]
+
+		--
+		-- Interrupt_process
+		--
+
+		Interrupt_process_V2_Pass cause_np process_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP process_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP cause_np))
+		} ;
+		-- <Process>[Deras möte] [AVBRYTS] <Cause>[av Tommys entré]
 
 		--
 		-- Invading
@@ -3473,25 +3489,25 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Judgment_direct_address
 		--
 
-		Judgment_direct_address_V2_1 addressee_np communicator_np reason_adv v2 = lin Clause {
+		Judgment_direct_address_V2 addressee_np communicator_np reason_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP communicator_np ;
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP addressee_np)) (fromMaybe Adv emptyAdv reason_adv)
 		} ;
 		-- <Communicator>[jag] [KOMPLIMENTERA] <Addressee>[föredraganden] <Reason>[till hans korta och tydliga förklaring]
 
-		Judgment_direct_address_V2_2 addressee_np communicator_np topic_adv v2 = lin Clause {
-			np = fromMaybe NP emptyNP communicator_np ;
-			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP addressee_np)) (fromMaybe Adv emptyAdv topic_adv)
+		Judgment_direct_address_V2_Pass_1 addressee_np communicator_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP addressee_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP communicator_np))
 		} ;
-		-- <Communicator>[Jag] vill vända mig till Jeffrey Titford och [TILLRÄTTAVISA] <Addressee>[honom] <Topic>[när det gäller ett par saker]
+		-- <Addressee>[de inblandade] [TALAS TILL RÄTTA] <Communicator>[av polisen]
 
-		Judgment_direct_address_V2_Pass_1 addressee_np reason_adv v2 = lin Clause {
+		Judgment_direct_address_V2_Pass_2 addressee_np reason_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv reason_adv)
 		} ;
 		-- <Addressee>[Detta parlament] [FÖREBRÅS] <Reason>[för att inte alltid vara så ansvarsfullt]
 
-		Judgment_direct_address_V2_Pass_2 addressee_np topic_adv v2 = lin Clause {
+		Judgment_direct_address_V2_Pass_3 addressee_np topic_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv topic_adv)
 		} ;
@@ -3575,6 +3591,12 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Leader>[Han] [LEDDE] <Governed>[företaget]
 
+		Leadership_V2_Pass governed_np leader_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP governed_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP leader_np))
+		} ;
+		-- <Governed>[Marocko] [STYRS] <Leader>[av kung Hassan II]
+
 		--
 		-- Linguistic_meaning
 		--
@@ -3655,7 +3677,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP agent_np ;
 			vp = mkVP v
 		} ;
-		-- <Agent>[Vem] kan undvika att [DRA PÅ SMILBANDEN]
+		-- <Agent>[Emil] och [FLINAR]
 
 		--
 		-- Manipulate_into_doing
@@ -3767,7 +3789,7 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP trigger_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv response_adv)
 		} ;
-		-- <Trigger>[de] [MÖTS] <Response,>[av våld]
+		-- <Trigger>[Janssons idé] [MÖTS] <Response>[med skepsis] också <Place.>[i Karleby]
 
 		--
 		-- Memorization
@@ -3901,11 +3923,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Entity>[ett grovt saftigt bröd som] <Speaker>[jag] [DÖPER]
 
-		Name_conferral_V2_Pass entity_np name_adv v2 = lin Clause {
+		Name_conferral_V2_Pass entity_np name_adv speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP entity_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv name_adv)
+			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))) (fromMaybe Adv emptyAdv name_adv)
 		} ;
-		-- <Entity>[Webbens upphovsman riddare Tim Berners-Lee] [DUBBADES] <Name>[till riddare]
+		-- <Entity>[Webbens upphovsman riddare Tim Berners-Lee] [DUBBADES] <Name>[till riddare] <Speaker>[av drottning Elizabeth II]
 
 		--
 		-- Needing
@@ -3933,7 +3955,13 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Arraign_authority>[polisen] [ANMÄLDE] <Accused>[mannen] <Charges.>[för framkallande av fara för annan]
 
-		Notification_of_charges_V2_Pass accused_np charges_adv v2 = lin Clause {
+		Notification_of_charges_V2_Pass_1 accused_np arraign_authority_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP accused_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP arraign_authority_np))
+		} ;
+		-- <Accused>[medborgare i ett land som godkänt avtalet] kan [ÅTALAS] <Arraign_authority>[av domstolen] samt att <Accused>[personer som begår brott mot mänskligheten i ett land som godkänt avtalet] kan [ÅTALAS] <Arraign_authority.>[av domstolen]
+
+		Notification_of_charges_V2_Pass_2 accused_np charges_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP accused_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv charges_adv)
 		} ;
@@ -4141,17 +4169,17 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Perception_experience
 		--
 
-		Perception_experience_V perceiver_passive_np phenomenon_adv v = lin Clause {
-			np = fromMaybe NP emptyNP perceiver_passive_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv phenomenon_adv)
-		} ;
-		-- <Perceiver_passive>[de själva] hunnit [BEVITTNA] <Phenomenon>[hur en epok tagit slut]
-
 		Perception_experience_V2 perceiver_passive_np phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP perceiver_passive_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP phenomenon_np)
 		} ;
 		-- <Perceiver_passive>[jag] också [KÄNNA] <Phenomenon>[oro]
+
+		Perception_experience_VQ perceiver_passive_np phenomenon_qs vq = lin Clause {
+			np = fromMaybe NP emptyNP perceiver_passive_np ;
+			vp = mkVP vq (fromMaybe QS emptyQS phenomenon_qs)
+		} ;
+		-- <Perceiver_passive>[de själva] hunnit [BEVITTNA] <Phenomenon>[hur en epok tagit slut]
 
 		Perception_experience_V2_Pass phenomenon_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP phenomenon_np ;
@@ -4270,12 +4298,6 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP theme_np)) (fromMaybe Adv emptyAdv ground_adv)
 		} ;
 		-- [PLANTERA] <Theme>[björkar] <Ground>[på områden där det finns mycket tungmetaller i jordmånen]
-
-		Planting_V2_Pass theme_adv v2 = lin Clause {
-			np = emptyNP ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv theme_adv)
-		} ;
-		-- <Theme>[av utvalda frön] [ODLAS]
 
 		--
 		-- Posing_as
@@ -4505,23 +4527,23 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Speaker>[De] var väldigt vetgiriga båda två och [FRÅGADE] <Topic>[om allt från löner till huspriser]
 
-		Questioning_V2_1 addressee_np speaker_np v2 = lin Clause {
+		Questioning_V2 addressee_np speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP addressee_np)
 		} ;
 		-- <Speaker>[Vi] har [FRÅGAT] <Addressee>[alla andra]
 
-		Questioning_V2_2 message_np speaker_np v2 = lin Clause {
+		Questioning_VQ message_qs speaker_np vq = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP message_np)
+			vp = mkVP vq (fromMaybe QS emptyQS message_qs)
 		} ;
 		-- <Speaker>[jag] [HÖRA] <Message>[vad tusan jag ska göra]
 
-		Questioning_V2_Pass addressee_np v2 = lin Clause {
+		Questioning_V2_Pass addressee_np speaker_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
 		} ;
-		-- <Addressee>[kändisar] låter sig [GRILLAS]
+		-- <Addressee>[kändisar] låter sig [GRILLAS] <Speaker>[av komiker]
 
 		--
 		-- Quitting
@@ -4763,9 +4785,9 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Remembering_experience
 		--
 
-		Remembering_experience_V cognizer_np experience_adv v = lin Clause {
+		Remembering_experience_VQ cognizer_np experience_qs vq = lin Clause {
 			np = fromMaybe NP emptyNP cognizer_np ;
-			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv experience_adv)
+			vp = mkVP vq (fromMaybe QS emptyQS experience_qs)
 		} ;
 		-- <Cognizer>[han] och [ERINRAR SIG] <Experience>[hur han blev utbuad av parlamentet för några år sedan]
 
@@ -5047,19 +5069,19 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			np = fromMaybe NP emptyNP speaker_np ;
 			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv information_adv)
 		} ;
-		-- [AVSLÖJADE] <Speaker>[STV] <Information>[hur den privatiserade arbetsförmedlingen i det borgerliga Sverige har resulterat i kurser i virkning och fejkade mentorskap där de arbetslösa har lämnats vind för våg]
+		-- <Speaker>[Vuoria] ville inte [YPPA] <Information>[om uppsägningen har något att göra med Fortums framtidsplaner]
 
-		Reveal_secret_V2_1 information_np medium_np v2 = lin Clause {
+		Reveal_secret_V2 information_np medium_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP medium_np ;
 			vp = mkVP v2 (fromMaybe NP emptyNP information_np)
 		} ;
 		-- <Medium>[Dagboken] [YPPAR] <Information>[hemligheter som får överraskande följder]
 
-		Reveal_secret_V2_2 information_np speaker_np v2 = lin Clause {
+		Reveal_secret_VQ information_qs speaker_np vq = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP v2 (fromMaybe NP emptyNP information_np)
+			vp = mkVP vq (fromMaybe QS emptyQS information_qs)
 		} ;
-		-- <Speaker>[Ministern] vill inte [YPPA] <Information>[vilket parti som bett om dispens]
+		-- [AVSLÖJADE] <Speaker>[STV] <Information>[hur den privatiserade arbetsförmedlingen i det borgerliga Sverige har resulterat i kurser i virkning och fejkade mentorskap där de arbetslösa har lämnats vind för våg]
 
 		Reveal_secret_VS information_s medium_np vs = lin Clause {
 			np = fromMaybe NP emptyNP medium_np ;
@@ -5403,11 +5425,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Soaking_up
 		--
 
-		Soaking_up_V2_Pass substance_np v2 = lin Clause {
+		Soaking_up_V2_Pass item_np substance_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP substance_np ;
-			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP item_np))
 		} ;
-		-- <Substance>[Syre] [UPPTAS]
+		-- <Substance>[Smöret] [UPPTAS] <Item>[av huden]
 
 		--
 		-- Sound_movement
@@ -5423,11 +5445,11 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		-- Speak_on_topic
 		--
 
-		Speak_on_topic_V audience_adv speaker_np topic_adv v = lin Clause {
+		Speak_on_topic_V speaker_np topic_adv v = lin Clause {
 			np = fromMaybe NP emptyNP speaker_np ;
-			vp = mkVP (mkVP (mkVP v) (fromMaybe Adv emptyAdv audience_adv)) (fromMaybe Adv emptyAdv topic_adv)
+			vp = mkVP (mkVP v) (fromMaybe Adv emptyAdv topic_adv)
 		} ;
-		-- <Speaker>[Klasskamrater och vänner] [PREDIKADE] <Audience>[för mig] <Topic>[hur hemska alla uppkörningsinspektörer är och hur sadistiska de brukar vara mot stackars nervösa förare]
+		-- <Speaker>[Du] [FÖRELÄSER] även <Topic>[om utbrändhet]
 
 		--
 		-- Spelling_and_pronouncing
@@ -5489,6 +5511,12 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- [UPPGAV] <Speaker>[militären] <Message>[att ytterligare två soldater gripits , misstänkta för inblanding i dödsskjutningen]
 
+		Statement_V2_Pass speaker_np v2 = lin Clause {
+			np = emptyNP ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
+		} ;
+		-- [KOMMENTERAS] <Speaker>[av läraren]
+
 		--
 		-- Storing
 		--
@@ -5525,11 +5553,17 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Speaker>[man] nog kunna [ÖVERTALA] <Addressee>[honom] <Content>[att hjälpa till]
 
-		Suasion_V2_Pass addressee_np content_adv v2 = lin Clause {
+		Suasion_V2_Pass_1 addressee_np content_adv v2 = lin Clause {
 			np = fromMaybe NP emptyNP addressee_np ;
 			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv content_adv)
 		} ;
 		-- <Addressee>[Han] hade [ÖVERTALATS] <Content>[till räddningsaktionen]
+
+		Suasion_V2_Pass_2 addressee_np speaker_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP addressee_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP speaker_np))
+		} ;
+		-- <Addressee>[Han] hade [ÖVERTALATS] <Speaker>[av sin nu 42-åriga dotter , flickans mamma]
 
 		--
 		-- Submitting_documents
@@ -5625,9 +5659,9 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 		} ;
 		-- <Supporter>[Min roll] är att [STÖDJA] <Supported>[Fredrik]
 
-		Supporting_V2_Pass supported_np supporter_adv v2 = lin Clause {
+		Supporting_V2_Pass supported_np supporter_np v2 = lin Clause {
 			np = fromMaybe NP emptyNP supported_np ;
-			vp = mkVP (mkVP (passiveVP v2) (mkAdv by8agent_Prep emptyNP)) (fromMaybe Adv emptyAdv supporter_adv)
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP supporter_np))
 		} ;
 		-- <Supported>[Varje enskild blomma] [STÖDS] <Supporter>[av ett smalt stödblad]
 
@@ -5660,6 +5694,12 @@ concrete PatternsSwe of Patterns = ElementsSwe ** open SyntaxSwe, Maybe in {
 			vp = mkVP (mkVP v2 (fromMaybe NP emptyNP old_np)) (fromMaybe Adv emptyAdv role_adv)
 		} ;
 		-- <New>[Vice statsminister Mona Sahlin] [AVLÖSTE] <Old>[Jonsson] <Role>[i talarstolen]
+
+		Take_place_of_V2_Pass new_np old_np v2 = lin Clause {
+			np = fromMaybe NP emptyNP old_np ;
+			vp = mkVP (passiveVP v2) (mkAdv by8agent_Prep (fromMaybe NP emptyNP new_np))
+		} ;
+		-- <Old>[Den vinglande , kvisslige grabben på rullskridskor] [AVLÖSTES] <New>[av en raffig kvinna i Henrys egen ålder]
 
 		--
 		-- Taking

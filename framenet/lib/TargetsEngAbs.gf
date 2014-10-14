@@ -323,6 +323,14 @@ abstract TargetsEngAbs = Cat ** {
 		recognize_V2_Becoming_aware : V2 ; -- <Cognizer>[you] [RECOGNIZE] <Phenomenon>[Jasmine]
 		register_V2_Becoming_aware : V2 ; -- <Cognizer>[she] [REGISTERED] <Phenomenon>[the journey]
 		spot_V2_Becoming_aware : V2 ; -- <Cognizer>[We] [SPOTTED] <Phenomenon>[you]
+		discern_VQ_Becoming_aware : VQ ; -- <Cognizer>[pupils] [DISCERN] <Phenomenon>[what is acceptable to the teacher]
+		locate_VQ_Becoming_aware : VQ ; -- <Cognizer>[you] [LOCATE] <Phenomenon>[where it is]
+		note_VQ_Becoming_aware : VQ ; -- <Cognizer>[Charles] [NOTED] <Phenomenon>[how Alex was rising to the challenge]
+		notice_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [NOTICED] <Phenomenon>[how quiet the school seemed]
+		perceive_VQ_Becoming_aware : VQ ; -- <Cognizer>[they] were able to [PERCEIVE] <Phenomenon>[who was who in the Rowdies hierarchy and which subunits were worth making a try for]
+		recognize_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [RECOGNIZED] <Phenomenon>[where he was]
+		register_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [REGISTERED] <Phenomenon>[who she was]
+		spot_VQ_Becoming_aware : VQ ; -- <Cognizer>[You] [SPOT] <Phenomenon>[what season of the year is appropriate]
 		discern_VS_Becoming_aware : VS ; -- [DISCERN] <Phenomenon>[that petomania is not a profession]
 		discover_VS_Becoming_aware : VS ; -- [DISCOVER] on returning much later to the apartment <Phenomenon>[that the detested clothes were waiting for her in her room]
 		learn_VS_Becoming_aware : VS ; -- [LEARNED] <Phenomenon>[that they were on their summer holidays]
@@ -554,7 +562,6 @@ abstract TargetsEngAbs = Cat ** {
 		strike_V2_Cause_harm : V2 ; -- <Agent>[Terry Hodges] [STRUCK] <Victim>[Trisha Campbell] <Body_part>[in the face]
 		torture_V2_Cause_harm : V2 ; -- <Agent>[someone] was [TORTURING] <Victim>[them]
 		whip_V2_Cause_harm : V2 ; -- <Agent>[A branch] [WHIPPED] <Victim>[him] <Body_part>[in the face]
-		gash_V2_Cause_harm : V2 ; -- <Victim>[a man] <Victim>[who] 'd been [GASHED]
 
 		bang_V_Cause_impact : V ; -- <Agent>[Mrs Murphy] [BANGED] <Impactor>[with her gavel]
 		jab_V_Cause_impact : V ; -- <Agent>[She] stopped and [JABBED] <Impactee>[at O'Hara 's machine] <Impactor>[with her umbrella]
@@ -821,11 +828,11 @@ abstract TargetsEngAbs = Cat ** {
 		ponder_V_Cogitation : V ; -- <Cognizer>[she] [PONDERED] <Topic>[on her good fortune]
 		reflect_V_Cogitation : V ; -- <Cognizer>[us] [REFLECT] <Topic>[on the matter]
 		ruminate_V_Cogitation : V ; -- <Cognizer>[I] was [RUMINATING] <Topic>[on his chances]
-		consider_V2_Cogitation : V2 ; -- <Cognizer>[the government] is [CONSIDERING] <Topic>[new warnings on steroids]
-		contemplate_V2_Cogitation : V2 ; -- <Cognizer>[you] [CONTEMPLATED] <Topic>[suicide]
-		deliberate_V2_Cogitation : V2 ; -- <Cognizer>[he] [DELIBERATED] <Topic>[his answer]
-		meditate_V2_Cogitation : V2 ; -- <Cognizer>[they] began to [MEDITATE] <Topic>[retreat]
-		ponder_V2_Cogitation : V2 ; -- <Cognizer>[She] [PONDERED] <Topic>[his words]
+		consider_VQ_Cogitation : VQ ; -- <Cognizer>[I] was almost predestined to [CONSIDER] <Topic>[how the two great nations of Western Europe , the Germans and the English , related to one another]
+		contemplate_VQ_Cogitation : VQ ; -- <Cognizer>[he] [CONTEMPLATED] <Topic>[what he might say next]
+		meditate_VQ_Cogitation : VQ ; -- <Cognizer>[I] [MEDITATED] <Topic>[what to do]
+		ponder_VQ_Cogitation : VQ ; -- <Cognizer>[Control] [PONDERED] <Topic>[what to do]
+		reflect_VQ_Cogitation : VQ ; -- <Cognizer>[you] [REFLECT] <Topic>[how common it is that poetic plans do n't get fulfilled]
 		contemplate_VS_Cogitation : VS ; -- <Cognizer>[the Act] apparently [CONTEMPLATES] <Topic>[that one may be produced from the other]
 		deliberate_VS_Cogitation : VS ; -- <Cognizer>[Taylor] [DELIBERATES] <Topic>[just who should be his partner]
 		muse_VS_Cogitation : VS ; -- <Cognizer>[Daedalus] [MUSED] <Topic>[that if the metal was not uniformly heated , upwelling convection cells would form within it]
@@ -1350,8 +1357,6 @@ abstract TargetsEngAbs = Cat ** {
 		evacuate_V_Escaping : V ; -- <Escapee>[a baffled party] to [EVACUATE]
 		scarper_V_Escaping : V ; -- <Escapee>[the old man] [SCARPERED]
 
-		estimate_V_Estimating : V ; -- <Cognizer>[Aziz] [ESTIMATED] <Estimation>[that Kuwait had stolen oil worth US$2,400 million]
-		guess_V_Estimating : V ; -- <Cognizer>[Duncan] had [GUESSED] <Estimation>[about it being a Shogun , the smaller , two-door version]
 		estimate_VS_Estimating : VS ; -- <Cognizer>[George Constantinou] [ESTIMATES] <Estimation>[that 2000 thousand tonnes of copper had been mined by Roman times]
 		guess_VS_Estimating : VS ; -- <Cognizer>[I] [GUESS] <Estimation>[it will all work out]
 
@@ -1372,11 +1377,6 @@ abstract TargetsEngAbs = Cat ** {
 		occur_V2_Event : V2 ; -- <Event>[a murder] <Event>[that] [OCCURRED] <Time>[120 years before]
 		take_place_V2_Event : V2 ; -- <Event>[The first performance] [TAKES PLACE] <Place>[here] <Place>[at the Unicorn theatre] <Place>[in Abingdon] <Time>[tomorrow]
 
-		argue_V_Evidence : V ; -- <Support>[reasons of strategy] [ARGUE] <Proposition>[against this]
-		attest_V_Evidence : V ; -- <Support>[The system 's 10K-450K temperature range] [ATTESTS] <Proposition>[to its flexibility for cooling samples in a wide range of applications]
-		demonstrate_V_Evidence : V ; -- <Support>[European emigrants to the United States] [DEMONSTRATED]
-		reveal_V_Evidence : V ; -- <Support>[The collection of his personal correspondence] [REVEALED] <Proposition>[much about the affairs of the twelfth century]
-		testify_V_Evidence : V ; -- <Support>[it] [TESTIFIED] <Proposition>[to the contrary]
 		argue_V2_Evidence : V2 ; -- <Support>[The fact of these men 's having been guided] [ARGUES] <Proposition>[a body of local botanical knowledge as early as the first part of the 17th century]
 		attest_V2_Evidence : V2 ; -- <Support>[Episcopal registers] amply [ATTEST] <Proposition>[the development of this system]
 		contradict_V2_Evidence : V2 ; -- <Support>[The evidence] , however , seems to [CONTRADICT] <Proposition>[this]
@@ -1392,6 +1392,11 @@ abstract TargetsEngAbs = Cat ** {
 		support_V2_Evidence : V2 ; -- <Support>[The facts] do not [SUPPORT] <Proposition>[that contention]
 		tell_V2_Evidence : V2 ; -- <Support>[human nature , which has presumably evolved in response to an enormous array of random forces] , [TELLS] <Proposition>[anything about what is good or desirable in terms of the traits humans should possess]
 		verify_V2_Evidence : V2 ; -- <Support>[a conviction] as [VERIFYING] <Proposition>[them]
+		contradict_VQ_Evidence : VQ ; -- <Support>[information] <Support>[which] [CONTRADICTED] <Proposition>[what they were being told by their own government through Government and party channels]
+		indicate_VQ_Evidence : VQ ; -- <Support>[nothing] to [INDICATE] <Proposition>[who is speaking]
+		prove_VQ_Evidence : VQ ; -- <Support>[The follow-up] , ` Grandpa 's Party " , [PROVED] <Proposition>[how sharp she could be]
+		reveal_VQ_Evidence : VQ ; -- <Support>[The Queen 's Speech in November] will broadly [REVEAL] <Proposition>[what the Bill is likely to contain]
+		show_VQ_Evidence : VQ ; -- <Support>[the Boolean functions described above] [SHOWING] <Proposition>[when genes turn on and o]
 		attest_VS_Evidence : VS ; -- <Support>[a growing body of scientific evidence] [ATTESTS] <Proposition>[that yoga can influence nearly all the Physiological systems of the human organism , and has therapeutic effects on a wide range of disorders]
 		confirm_VS_Evidence : VS ; -- <Support>[Our researches] [CONFIRM] <Proposition>[that intoxication is implicated in many call outs]
 		demonstrate_VS_Evidence : VS ; -- <Support>[my early results] [DEMONSTRATED] <Proposition>[I was worthy of an NSR]
@@ -1420,16 +1425,16 @@ abstract TargetsEngAbs = Cat ** {
 
 		implement_V2_Execute_plan : V2 ; -- <Agent>[Æthelred 's government] [IMPLEMENTED] <Plan>[its decisions]
 
-		execute_V2_Execution : V2 ; -- <Executed>[He] could be [EXECUTED]
+		execute_V2_Execution : V2 ; -- <Executed>[The family] was [EXECUTED] <Executioner>[by Bolsheviks]
 		hang_V2_Execution : V2 ; -- <Executed>[Inmates] were [HANGED]
 
 		exist_V_Existence : V ; -- <Entity>[sexual reproduction] [EXISTS]
 		there_be_V_Existence : V ; -- [there] [WAS] <Entity>[no way of shutting it off completely]
 		exist_V2_Existence : V2 ; -- <Entity>[the world] [EXISTED]
 
-		anticipate_V_Expectation : V ; -- <Cognizer>[She] had [ANTICIPATED]
-		await_V_Expectation : V ; -- <Cognizer>[I] [AWAIT]
-		expect_V_Expectation : V ; -- <Cognizer>[you] 'd [EXPECT]
+		anticipate_VQ_Expectation : VQ ; -- <Cognizer>[Sukarno] should have [ANTICIPATED] <Phenomenon>[what happened]
+		foresee_VQ_Expectation : VQ ; -- <Cognizer>[I] ached to [FORESEE] <Phenomenon>[what he was planning]
+		predict_VQ_Expectation : VQ ; -- <Cognizer>[you] could not [PREDICT] <Phenomenon>[where you would arrive]
 		anticipate_VS_Expectation : VS ; -- [ANTICIPATED] <Phenomenon>[that LMS will bring any difference]
 		await_VS_Expectation : VS ; -- <Phenomenon>[Identification of the gene encoding s-ADH and the eventual search for polymorphisms] are [AWAITED]
 		expect_VS_Expectation : VS ; -- [EXPECTED] <Phenomenon>[that the engineer shall be fair and reasonable in the way he or she administers the contract]
@@ -1644,12 +1649,13 @@ abstract TargetsEngAbs = Cat ** {
 		thrill_V2S_Experiencer_obj : V2S ; -- [THRILLED] <Experiencer>[her] <Stimulus>[that he 'd called them that]
 		unsettle_V2S_Experiencer_obj : V2S ; -- <Stimulus>[That their only recorded material is in rattly old tape format] will no doubt [UNSETTLE] <Experiencer>[the media-literate , fast-lane ` indie " kid of today]
 		upset_V2S_Experiencer_obj : V2S ; -- [UPSETS] <Experiencer>[me] <Stimulus>[that this happens]
-		discourage_V2_Experiencer_obj : V2 ; -- <Experiencer>[we] are [DISCOURAGED]
+		discourage_V2_Experiencer_obj : V2 ; -- <Experiencer>[teachers] [DISCOURAGED] <Stimulus>[by the rock-bottom pay and difficult conditions]
+		flummox_V2_Experiencer_obj : V2 ; -- <Experiencer>[he] had been [FLUMMOXED] <Stimulus>[by all this opulence]
 		intrigue_VS_Experiencer_obj : VS ; -- <Experiencer>[he] was [INTRIGUED] <Stimulus>[that her journalistic methods were unlike those of any other journalist he had met]
 		offend_VS_Experiencer_obj : VS ; -- <Experiencer>[She] was also [OFFENDED] <Stimulus>[that a young man as charming and eligible as Lord John should flaunt his foolishness]
 		tickle_VS_Experiencer_obj : VS ; -- <Experiencer>[he] was good-natured , and was [TICKLED] <Stimulus>[that she 'd asked him to go shopping with her]
 
-		account_V_Explaining_the_facts : V ; -- <Fact>[the reasons] <Fact>[which] [ACCOUNT] <Question>[for why each step was taken rather than any other]
+		explain_VQ_Explaining_the_facts : VQ ; -- <Fact>[This] may [EXPLAIN] <Question>[why Držić was known as “ the Croatian Molière ”]
 
 		export_V2_Exporting : V2 ; -- <Exporter>[It] [EXPORTED] <Goods>[their manufactured goods]
 
@@ -1832,14 +1838,15 @@ abstract TargetsEngAbs = Cat ** {
 		back_out_V_Going_back_on_a_commitment : V ; -- <Protagonist>[the insurance company] ca n't [BACK OUT] <Commitment>[of the contract]
 		renege_V_Going_back_on_a_commitment : V ; -- <Protagonist>[they] [RENEGE] <Commitment>[on that]
 
-		fathom_V_Grasp : V ; -- <Cognizer>[she] had n't [FATHOMED]
-		grasp_V_Grasp : V ; -- <Cognizer>[I] [GRASP] <Phenomenon>[that he understood the particular use I made of such ` consistent convolutions " .]
-		understand_V_Grasp : V ; -- <Phenomenon>[So] <Cognizer>[I] [UNDERSTAND]
 		comprehend_V2_Grasp : V2 ; -- <Cognizer>[we] do [COMPREHEND] <Phenomenon>[it]
 		fathom_V2_Grasp : V2 ; -- <Cognizer>[she] tried to [FATHOM] <Phenomenon>[its meaning]
 		grasp_V2_Grasp : V2 ; -- <Cognizer>[He] had no trouble [GRASPING] <Phenomenon>[her meaning]
 		see_V2_Grasp : V2 ; -- <Cognizer>[I] [SEE] <Phenomenon>[your problem]
 		understand_V2_Grasp : V2 ; -- <Cognizer>[I] [UNDERSTOOD] <Phenomenon>[why]
+		fathom_VQ_Grasp : VQ ; -- <Cognizer>[she] could n't [FATHOM] <Phenomenon>[where funerals came into it]
+		grasp_VQ_Grasp : VQ ; -- <Cognizer>[Westerners] took a long time to [GRASP] <Phenomenon>[how very different it is from what we understand by matter .]
+		see_VQ_Grasp : VQ ; -- <Cognizer>[You] [SEE] <Phenomenon>[what I mean ? "]
+		understand_VQ_Grasp : VQ ; -- <Cognizer>[she] found it difficult to [UNDERSTAND] <Phenomenon>[what he was talking about]
 
 		crush_V_Grinding : V ; -- <Undergoer>[the camomile daisies] [CRUSHED]
 		flake_V_Grinding : V ; -- <Undergoer>[generous amounts of fresh Parmesan] , either grated or [FLAKED]
@@ -2049,6 +2056,8 @@ abstract TargetsEngAbs = Cat ** {
 		set_up_V2_Intentionally_create : V2 ; -- <Creator>[you] [SET] <Created_entity>[it] [up]
 
 		intercept_V2_Intercepting : V2 ; -- <Interceptor>[A man] [INTERCEPTED] <Theme>[him]
+
+		interrupt_V2_Interrupt_process : V2 ; -- <Process>[its proceedings] were [INTERRUPTED] <Cause>[by the Turkish War]
 
 		invade_V_Invading : V ; -- <Land>[Poland] [INVADED]
 		invade_V2_Invading : V2 ; -- <Invader>[Iraq] [INVADED] <Land>[Iran]
@@ -2472,12 +2481,6 @@ abstract TargetsEngAbs = Cat ** {
 		burn_V_Perception_body : V ; -- <Body_part>[her skin] [BURNED]
 		tickle_V_Perception_body : V ; -- <Body_part>[My feet] [TICKLE]
 
-		detect_V_Perception_experience : V ; -- <Perceiver_passive>[you] are able to [DETECT] <Phenomenon>[under which cup the coin is placed]
-		overhear_V_Perception_experience : V ; -- <Perceiver_passive>[My father] [OVERHEARD]
-		perceive_V_Perception_experience : V ; -- <Perceiver_passive>[old people] [PERCEIVE]
-		see_V_Perception_experience : V ; -- <Perceiver_passive>[I] [SEE]
-		sense_V_Perception_experience : V ; -- <Perceiver_passive>[a good student] should be able to [SENSE] <Phenomenon>[whether he is getting the point of the problem or not]
-		taste_V_Perception_experience : V ; -- <Perceiver_passive>[she] could [TASTE] <Phenomenon>[there had been some kind of pork boiled in the liquid]
 		detect_V2_Perception_experience : V2 ; -- <Perceiver_passive>[I] [DETECT] <Phenomenon>[a wistful note]
 		feel_V2_Perception_experience : V2 ; -- <Perceiver_passive>[I] [FELT] <Phenomenon>[the ground under my feet]
 		hear_V2_Perception_experience : V2 ; -- <Perceiver_passive>[She] [HEARD] <Phenomenon>[the click]
@@ -2487,6 +2490,11 @@ abstract TargetsEngAbs = Cat ** {
 		sense_V2_Perception_experience : V2 ; -- <Perceiver_passive>[Milly] [SENSED] <Phenomenon>[a trap]
 		smell_V2_Perception_experience : V2 ; -- <Perceiver_passive>[I] [SMELL] <Phenomenon>[flowers]
 		taste_V2_Perception_experience : V2 ; -- <Perceiver_passive>[I] can [TASTE] <Phenomenon>[it]
+		detect_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[we] may [DETECT] <Phenomenon>[what is missing from a student 's repertoire]
+		hear_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[you] [HEAR] <Phenomenon>[what I said]
+		overhear_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[You] [OVERHEARD] <Phenomenon>[what I was saying to Victoria]
+		perceive_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[he] too [PERCEIVED] <Phenomenon>[what she meant]
+		sense_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[he] [SENSES] <Phenomenon>[when I 'm ` soft]
 
 		act_V2_Performers_and_roles : V2 ; -- <Performer>[Will] was [ACTING] <Role>[four small parts] <Performance>[in two different plays]
 		play_V2_Performers_and_roles : V2 ; -- <Performer>[a girl] <Performer>[who] [PLAYS] <Role>[Gemma] <Performance>[in Neighbours]
@@ -2660,7 +2668,8 @@ abstract TargetsEngAbs = Cat ** {
 		interrogate_V2_Questioning : V2 ; -- <Speaker>[he] 'd [INTERROGATED] <Addressee>[her]
 		question_V2_Questioning : V2 ; -- <Speaker>[they] 'll [QUESTION] <Addressee>[your friends]
 		quiz_V2_Questioning : V2 ; -- <Speaker>[I] have the power to [QUIZ] <Addressee>[you]
-		inquire_V2_Questioning : V2 ; -- <Speaker>[I] did not [INQUIRE] <Message>[the reason]
+		ask_VQ_Questioning : VQ ; -- <Speaker>[Isabel] wanted to [ASK] <Message>[why not]
+		inquire_VQ_Questioning : VQ ; -- <Speaker>[ignorant English people] [INQUIRE] <Message>[what their mother tongue might be]
 
 		quit_V_Quitting : V ; -- <Employee>[U'S BOSS Roy McDonough] has [QUIT] <Position>[as a player]
 		resign_V_Quitting : V ; -- <Employee>[he] [RESIGNED] <Position>[as chairman]
@@ -2740,7 +2749,7 @@ abstract TargetsEngAbs = Cat ** {
 		remain_V_Remainder : V ; -- <Remainder>[No walls] [REMAIN]
 		remain_V2_Remainder : V2 ; -- [REMAINS] <Remainder>[a wealth of untapped experience and knowledge]
 
-		forget_V_Remembering_experience : V ; -- <Cognizer>[I] have n't [FORGOTTEN] <Experience>[yesterday]
+		forget_VQ_Remembering_experience : VQ ; -- <Cognizer>[i] [FORGET] <Experience>[why]
 
 		forget_VS_Remembering_information : VS ; -- <Cognizer>[she] [FORGOT] <Mental_content>[you were coming]
 
@@ -2886,10 +2895,10 @@ abstract TargetsEngAbs = Cat ** {
 		confess_V2_Reveal_secret : V2 ; -- <Medium>[a letter] [CONFESSING] <Information>[the weakness]
 		disclose_V2_Reveal_secret : V2 ; -- [DISCLOSE] <Information>[it]
 		divulge_V2_Reveal_secret : V2 ; -- <Medium>[the accounts] do not [DIVULGE] <Information>[the whereabouts of specific monies paid into it]
-		admit_V2_Reveal_secret : V2 ; -- <Speaker>[Some people] do [ADMIT] <Information>[defeat]
-		confide_V2_Reveal_secret : V2 ; -- <Speaker>[He] [CONFIDED] <Information>[his second dream]
-		leak_V2_Reveal_secret : V2 ; -- <Speaker>[she] [LEAKED] <Information>[that]
-		reveal_V2_Reveal_secret : V2 ; -- <Speaker>[he] would not [REVEAL] <Information>[her secret]
+		confess_VQ_Reveal_secret : VQ ; -- <Speaker>[She] once [CONFESSED] <Information>[how unhappy she had been at home]
+		disclose_VQ_Reveal_secret : VQ ; -- <Speaker>[Mr Sulzberger] has not [DISCLOSED] <Information>[when he will go]
+		divulge_VQ_Reveal_secret : VQ ; -- <Speaker>[the Pentagon] do n't know or wo n't [DIVULGE] <Information>[what type of plane it was]
+		reveal_VQ_Reveal_secret : VQ ; -- <Speaker>[she] would not [REVEAL] <Information>[what the others had prescribed]
 		confess_VS_Reveal_secret : VS ; -- <Information>[a " provocatively contentious and quite unacceptable " conclusion] , [CONFESSED] <Medium>[the report]
 		reveal_VS_Reveal_secret : VS ; -- <Information>[SPELLING everyday words is beyond the grasp of millions of Britons] , <Medium>[a survey] [REVEALED]
 
@@ -3126,13 +3135,12 @@ abstract TargetsEngAbs = Cat ** {
 		marinate_V2_Soaking : V2 ; -- <Agent>[You] can [MARINATE] <Theme>[the skinned and boned whole breasts] <Medium>[in the marinade]
 		soak_V2_Soaking : V2 ; -- <Agent>[I] [SOAKED] <Theme>[it] <Medium>[in biological liquid]
 
-		absorb_V2_Soaking_up : V2 ; -- <Substance>[1 dose] to be [ABSORBED]
+		absorb_V2_Soaking_up : V2 ; -- <Substance>[Light] is [ABSORBED] <Item>[by dark surfaces]
 
 		echo_V_Sound_movement : V ; -- <Sound>[A loud explosion] [ECHOED]
 		reverberate_V_Sound_movement : V ; -- <Sound>[Big Ben 's bongs] [REVERBERATE]
 
-		address_V_Speak_on_topic : V ; -- <Speaker>[he] [ADDRESSED] <Audience>[close to 200 members and guests of the Metropolitan Section at the Institution of Electrical Engineers on the Thames Embankment]
-		lecture_V_Speak_on_topic : V ; -- <Speaker>[him] to [LECTURE] <Audience>[to punters] <Topic>[on Plato]
+		lecture_V_Speak_on_topic : V ; -- <Speaker>[he] [LECTURED] <Topic>[on " The Music of Poetry "]
 		pontificate_V_Speak_on_topic : V ; -- <Speaker>[so-called experts] [PONTIFICATING] <Topic>[on how to deal with terrorists in hostage situations]
 		tell_V_Speak_on_topic : V ; -- <Speaker>[he] [TOLD] <Topic>[of being attacked by insects as big as chickens]
 
@@ -3220,6 +3228,14 @@ abstract TargetsEngAbs = Cat ** {
 		propose_VV_Statement : VV ; -- <Speaker>[I] do not [PROPOSE] <Message>[to discuss it further]
 		report_VV_Statement : VV ; -- <Speaker>[you] [REPORTED] <Message>[finding a body]
 		suggest_VV_Statement : VV ; -- <Speaker>[I] [SUGGESTED] <Message>[forming a union]
+		attest_V2_Statement : V2 ; -- [ATTESTED] <Speaker>[by many authorities]
+		avow_V2_Statement : V2 ; -- [AVOWED] <Speaker>[by many scientists]
+		caution_V2_Statement : V2 ; -- [CAUTIONED] <Speaker>[by the superintendent]
+		preach_V2_Statement : V2 ; -- [PREACHED] <Speaker>[by business ethicists]
+		profess_V2_Statement : V2 ; -- [PROFESSED] <Speaker>[by around 85 per cent of Romanian Christians]
+		reiterate_V2_Statement : V2 ; -- [REITERATED] <Speaker>[by F.C. Banks , secretary of the National Association]
+		suggest_V2_Statement : V2 ; -- [SUGGESTED] <Speaker>[by Peter Fowler]
+		talk_V2_Statement : V2 ; -- [TALKED] <Speaker>[by some of the purists]
 
 		keep_V2_Storing : V2 ; -- <Agent>[I] [KEEP] <Theme>[it]
 		store_V2_Storing : V2 ; -- <Agent>[You] can [STORE] <Theme>[each vehicle]
@@ -3264,6 +3280,7 @@ abstract TargetsEngAbs = Cat ** {
 
 		replace_V2_Take_place_of : V2 ; -- <New>[cotton] had [REPLACED] <Old>[wool] <Role>[as Britain 's leading export]
 		succeed_V2_Take_place_of : V2 ; -- <New>[Yeltsin 's choice] to [SUCCEED] <Old>[him] <Role>[as acting prime minister]
+		substitute_V2_Take_place_of : V2 ; -- <Old>[the number of hydrogens] [SUBSTITUTED] <New>[by alkyl groups]
 
 		seize_V2_Taking : V2 ; -- <Agent>[they] attempted to [SEIZE] <Theme>[explosives] <Source>[from a quarry]
 

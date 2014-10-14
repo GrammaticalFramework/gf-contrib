@@ -76,7 +76,7 @@ abstract Patterns = Elements ** {
 		Assemble_V : Group_NP -> V -> Clause ;
 
 		Assessing_V2 : Assessor_NP -> Phenomenon_NP -> V2 -> Clause ;
-		Assessing_V2_Pass : Phenomenon_NP -> V2 -> Clause ;
+		Assessing_V2_Pass : Assessor_NP -> Phenomenon_NP -> V2 -> Clause ;
 
 		Assistance_V2 : Benefited_party_NP -> Focal_entity_Adv -> Helper_NP -> V2 -> Clause ;
 		Assistance_V2V : Benefited_party_NP -> Goal_VP -> Helper_NP -> V2V -> Clause ;
@@ -114,6 +114,7 @@ abstract Patterns = Elements ** {
 
 		Becoming_aware_V : Cognizer_NP -> Phenomenon_Adv -> V -> Clause ;
 		Becoming_aware_V2 : Cognizer_NP -> Phenomenon_NP -> V2 -> Clause ;
+		Becoming_aware_VQ : Cognizer_NP -> Phenomenon_QS -> VQ -> Clause ;
 		Becoming_aware_VS : Phenomenon_S -> VS -> Clause ;
 
 		Becoming_dry_V : Entity_NP -> V -> Clause ;
@@ -183,7 +184,7 @@ abstract Patterns = Elements ** {
 
 		Cause_harm_V : Agent_NP -> Victim_Adv -> V -> Clause ;
 		Cause_harm_V2 : Agent_NP -> Body_part_Adv -> Victim_NP -> V2 -> Clause ;
-		Cause_harm_V2_Pass : Victim_NP -> V2 -> Clause ;
+		Cause_harm_V2_Pass : Agent_NP -> Victim_NP -> V2 -> Clause ;
 
 		Cause_impact_V : Agent_NP -> Impactee_Adv -> Impactor_Adv -> V -> Clause ;
 		Cause_impact_V2_1 : Agent_NP -> Impactee_Adv -> Impactor_NP -> V2 -> Clause ;
@@ -236,7 +237,7 @@ abstract Patterns = Elements ** {
 		Cause_to_resume_V2 : Agent_NP -> Process_NP -> V2 -> Clause ;
 
 		Cause_to_start_V2 : Cause_NP -> Effect_NP -> V2 -> Clause ;
-		Cause_to_start_V2_Pass : Effect_NP -> V2 -> Clause ;
+		Cause_to_start_V2_Pass : Cause_NP -> Effect_NP -> V2 -> Clause ;
 
 		Cause_to_wake_V2_1 : Agent_NP -> Sleeper_NP -> V2 -> Clause ;
 		Cause_to_wake_V2_2 : Cause_NP -> Sleeper_NP -> V2 -> Clause ;
@@ -282,7 +283,7 @@ abstract Patterns = Elements ** {
 		Closure_V2_Pass : Containing_object_NP -> V2 -> Clause ;
 
 		Cogitation_V : Cognizer_NP -> Topic_Adv -> V -> Clause ;
-		Cogitation_V2 : Cognizer_NP -> Topic_NP -> V2 -> Clause ;
+		Cogitation_VQ : Cognizer_NP -> Topic_QS -> VQ -> Clause ;
 		Cogitation_VS : Cognizer_NP -> Topic_S -> VS -> Clause ;
 
 		Collaboration_V_1 : Partner_1_NP -> Partner_2_Adv -> Undertaking_Adv -> V -> Clause ;
@@ -359,7 +360,7 @@ abstract Patterns = Elements ** {
 		Convey_importance_V2_1 : Medium_NP -> Message_NP -> V2 -> Clause ;
 		Convey_importance_V2_2 : Message_NP -> Speaker_NP -> V2 -> Clause ;
 		Convey_importance_VS : Message_S -> Speaker_NP -> VS -> Clause ;
-		Convey_importance_V2_Pass : Message_NP -> V2 -> Clause ;
+		Convey_importance_V2_Pass : Medium_NP -> Message_NP -> V2 -> Clause ;
 
 		Cooking_creation_V2 : Cook_NP -> Produced_food_NP -> V2 -> Clause ;
 		Cooking_creation_V2_Pass : Produced_food_NP -> V2 -> Clause ;
@@ -370,12 +371,12 @@ abstract Patterns = Elements ** {
 		Cotheme_V2_2 : Cotheme_NP -> Goal_Adv -> Theme_NP -> V2 -> Clause ;
 		Cotheme_V2_3 : Cotheme_NP -> Path_Adv -> Theme_NP -> V2 -> Clause ;
 		Cotheme_V2_4 : Cotheme_NP -> Source_Adv -> Theme_NP -> V2 -> Clause ;
-		Cotheme_V2_Pass : Cotheme_NP -> V2 -> Clause ;
+		Cotheme_V2_Pass : Cotheme_NP -> Theme_NP -> V2 -> Clause ;
 
 		Create_physical_artwork_V2 : Creator_NP -> Representation_NP -> V2 -> Clause ;
 
 		Create_representation_V2 : Creator_NP -> Represented_NP -> V2 -> Clause ;
-		Create_representation_V2_Pass : Represented_NP -> V2 -> Clause ;
+		Create_representation_V2_Pass : Creator_NP -> Represented_NP -> V2 -> Clause ;
 
 		Creating_V2_1 : Cause_NP -> Created_entity_NP -> V2 -> Clause ;
 		Creating_V2_2 : Created_entity_NP -> Creator_NP -> V2 -> Clause ;
@@ -411,7 +412,8 @@ abstract Patterns = Elements ** {
 
 		Destroying_V2_1 : Cause_NP -> Undergoer_NP -> V2 -> Clause ;
 		Destroying_V2_2 : Destroyer_NP -> Undergoer_NP -> V2 -> Clause ;
-		Destroying_V2_Pass : Undergoer_NP -> V2 -> Clause ;
+		Destroying_V2_Pass_1 : Destroyer_NP -> V2 -> Clause ;
+		Destroying_V2_Pass_2 : Undergoer_NP -> V2 -> Clause ;
 
 		Detaching_V2 : Agent_NP -> Item_NP -> Source_Adv -> V2 -> Clause ;
 		Detaching_V2_Pass : Item_NP -> V2 -> Clause ;
@@ -477,7 +479,6 @@ abstract Patterns = Elements ** {
 
 		Escaping_V : Escapee_NP -> Undesirable_location_Adv -> V -> Clause ;
 
-		Estimating_V : Cognizer_NP -> Estimation_Adv -> V -> Clause ;
 		Estimating_VS : Cognizer_NP -> Estimation_S -> VS -> Clause ;
 		Estimating_VS_Pass : Estimation_S -> VS -> Clause ;
 
@@ -489,8 +490,8 @@ abstract Patterns = Elements ** {
 		Event_V : Event_NP -> Place_Adv -> Time_Adv -> V -> Clause ;
 		Event_V2 : Event_NP -> Place_Adv -> Time_NP -> V2 -> Clause ;
 
-		Evidence_V : Proposition_Adv -> Support_NP -> V -> Clause ;
 		Evidence_V2 : Proposition_NP -> Support_NP -> V2 -> Clause ;
+		Evidence_VQ : Proposition_QS -> Support_NP -> VQ -> Clause ;
 		Evidence_VS : Proposition_S -> Support_NP -> VS -> Clause ;
 
 		Evoking_V2 : Cognizer_NP -> Phenomenon_Adv -> Stimulus_NP -> V2 -> Clause ;
@@ -503,12 +504,12 @@ abstract Patterns = Elements ** {
 
 		Execute_plan_V2 : Agent_NP -> Plan_NP -> V2 -> Clause ;
 
-		Execution_V2_Pass : Executed_NP -> V2 -> Clause ;
+		Execution_V2_Pass : Executed_NP -> Executioner_NP -> V2 -> Clause ;
 
 		Existence_V : Entity_NP -> V -> Clause ;
 		Existence_V2_Pass : Entity_NP -> V2 -> Clause ;
 
-		Expectation_V : Cognizer_NP -> V -> Clause ;
+		Expectation_VQ : Cognizer_NP -> Phenomenon_QS -> VQ -> Clause ;
 		Expectation_VS_Pass : Phenomenon_S -> VS -> Clause ;
 
 		Expensiveness_V : Asset_Adv -> Goods_NP -> V -> Clause ;
@@ -520,11 +521,11 @@ abstract Patterns = Elements ** {
 		Experiencer_obj_V : Experiencer_Adv -> Stimulus_NP -> V -> Clause ;
 		Experiencer_obj_V2 : Experiencer_NP -> Stimulus_NP -> V2 -> Clause ;
 		Experiencer_obj_V2S : Experiencer_NP -> Stimulus_S -> V2S -> Clause ;
-		Experiencer_obj_V2_Pass : Experiencer_NP -> Stimulus_Adv -> V2 -> Clause ;
+		Experiencer_obj_V2_Pass : Experiencer_NP -> Stimulus_NP -> V2 -> Clause ;
 		Experiencer_obj_VS_Pass : Experiencer_NP -> Stimulus_S -> VS -> Clause ;
 
-		Explaining_the_facts_V_1 : Fact_NP -> Question_Adv -> V -> Clause ;
-		Explaining_the_facts_V_2 : State_of_affairs_Adv -> V -> Clause ;
+		Explaining_the_facts_VQ_1 : Fact_NP -> Question_QS -> VQ -> Clause ;
+		Explaining_the_facts_VQ_2 : State_of_affairs_QS -> VQ -> Clause ;
 
 		Exporting_V2 : Exporter_NP -> Goods_NP -> V2 -> Clause ;
 		Exporting_V2_Pass : Goods_NP -> Importing_area_Adv -> V2 -> Clause ;
@@ -586,8 +587,8 @@ abstract Patterns = Elements ** {
 
 		Going_back_on_a_commitment_V : Commitment_Adv -> Protagonist_NP -> V -> Clause ;
 
-		Grasp_V : Cognizer_NP -> Phenomenon_Adv -> V -> Clause ;
 		Grasp_V2 : Cognizer_NP -> Phenomenon_NP -> V2 -> Clause ;
+		Grasp_VQ : Cognizer_NP -> Phenomenon_QS -> VQ -> Clause ;
 
 		Grinding_V : Undergoer_NP -> V -> Clause ;
 		Grinding_V2 : Grinder_NP -> Undergoer_NP -> V2 -> Clause ;
@@ -637,7 +638,7 @@ abstract Patterns = Elements ** {
 		Inhibit_movement_V2 : Agent_NP -> Theme_NP -> V2 -> Clause ;
 
 		Inspecting_V2 : Ground_NP -> Inspector_NP -> V2 -> Clause ;
-		Inspecting_V2_Pass : Ground_NP -> V2 -> Clause ;
+		Inspecting_V2_Pass : Ground_NP -> Inspector_NP -> V2 -> Clause ;
 
 		Installing_V2 : Agent_NP -> Component_NP -> Fixed_location_Adv -> V2 -> Clause ;
 
@@ -651,7 +652,9 @@ abstract Patterns = Elements ** {
 		Intentionally_create_V2_Pass : Created_entity_NP -> V2 -> Clause ;
 
 		Intercepting_V2 : Interceptor_NP -> Theme_NP -> V2 -> Clause ;
-		Intercepting_V2_Pass : Theme_NP -> V2 -> Clause ;
+		Intercepting_V2_Pass : Interceptor_NP -> Theme_NP -> V2 -> Clause ;
+
+		Interrupt_process_V2_Pass : Cause_NP -> Process_NP -> V2 -> Clause ;
 
 		Invading_V : Land_NP -> V -> Clause ;
 		Invading_V2 : Invader_NP -> Land_NP -> V2 -> Clause ;
@@ -660,10 +663,10 @@ abstract Patterns = Elements ** {
 
 		Judgment_communication_V2 : Communicator_NP -> Evaluee_NP -> V2 -> Clause ;
 
-		Judgment_direct_address_V2_1 : Addressee_NP -> Communicator_NP -> Reason_Adv -> V2 -> Clause ;
-		Judgment_direct_address_V2_2 : Addressee_NP -> Communicator_NP -> Topic_Adv -> V2 -> Clause ;
-		Judgment_direct_address_V2_Pass_1 : Addressee_NP -> Reason_Adv -> V2 -> Clause ;
-		Judgment_direct_address_V2_Pass_2 : Addressee_NP -> Topic_Adv -> V2 -> Clause ;
+		Judgment_direct_address_V2 : Addressee_NP -> Communicator_NP -> Reason_Adv -> V2 -> Clause ;
+		Judgment_direct_address_V2_Pass_1 : Addressee_NP -> Communicator_NP -> V2 -> Clause ;
+		Judgment_direct_address_V2_Pass_2 : Addressee_NP -> Reason_Adv -> V2 -> Clause ;
+		Judgment_direct_address_V2_Pass_3 : Addressee_NP -> Topic_Adv -> V2 -> Clause ;
 
 		Justifying_V2 : Act_NP -> Agent_NP -> V2 -> Clause ;
 
@@ -679,6 +682,7 @@ abstract Patterns = Elements ** {
 
 		Leadership_V2_1 : Activity_NP -> Leader_NP -> V2 -> Clause ;
 		Leadership_V2_2 : Governed_NP -> Leader_NP -> V2 -> Clause ;
+		Leadership_V2_Pass : Governed_NP -> Leader_NP -> V2 -> Clause ;
 
 		Linguistic_meaning_V2 : Form_NP -> Meaning_NP -> V2 -> Clause ;
 
@@ -741,13 +745,14 @@ abstract Patterns = Elements ** {
 		Moving_in_place_V : Theme_NP -> V -> Clause ;
 
 		Name_conferral_V2 : Entity_NP -> Speaker_NP -> V2 -> Clause ;
-		Name_conferral_V2_Pass : Entity_NP -> Name_Adv -> V2 -> Clause ;
+		Name_conferral_V2_Pass : Entity_NP -> Name_Adv -> Speaker_NP -> V2 -> Clause ;
 
 		Needing_V2 : Cognizer_NP -> Requirement_NP -> V2 -> Clause ;
 		Needing_V2_Pass : Requirement_NP -> V2 -> Clause ;
 
 		Notification_of_charges_V2 : Accused_NP -> Arraign_authority_NP -> Charges_Adv -> V2 -> Clause ;
-		Notification_of_charges_V2_Pass : Accused_NP -> Charges_Adv -> V2 -> Clause ;
+		Notification_of_charges_V2_Pass_1 : Accused_NP -> Arraign_authority_NP -> V2 -> Clause ;
+		Notification_of_charges_V2_Pass_2 : Accused_NP -> Charges_Adv -> V2 -> Clause ;
 
 		Nuclear_process_V : Element_NP -> V -> Clause ;
 
@@ -787,8 +792,8 @@ abstract Patterns = Elements ** {
 		Perception_body_V_1 : Body_part_Adv -> V -> Clause ;
 		Perception_body_V_2 : Body_part_NP -> V -> Clause ;
 
-		Perception_experience_V : Perceiver_passive_NP -> Phenomenon_Adv -> V -> Clause ;
 		Perception_experience_V2 : Perceiver_passive_NP -> Phenomenon_NP -> V2 -> Clause ;
+		Perception_experience_VQ : Perceiver_passive_NP -> Phenomenon_QS -> VQ -> Clause ;
 		Perception_experience_V2_Pass : Phenomenon_NP -> V2 -> Clause ;
 
 		Performers_and_roles_V2_1 : Performance_Adv -> Performer_NP -> Role_NP -> V2 -> Clause ;
@@ -811,7 +816,6 @@ abstract Patterns = Elements ** {
 
 		Planting_V2_1 : Agent_NP -> Theme_NP -> V2 -> Clause ;
 		Planting_V2_2 : Ground_Adv -> Theme_NP -> V2 -> Clause ;
-		Planting_V2_Pass : Theme_Adv -> V2 -> Clause ;
 
 		Posing_as_V2 : Agent_NP -> Simulated_entity_NP -> V2 -> Clause ;
 
@@ -856,9 +860,9 @@ abstract Patterns = Elements ** {
 		Quarreling_V_2 : Arguers_NP -> Issue_Adv -> V -> Clause ;
 
 		Questioning_V : Speaker_NP -> Topic_Adv -> V -> Clause ;
-		Questioning_V2_1 : Addressee_NP -> Speaker_NP -> V2 -> Clause ;
-		Questioning_V2_2 : Message_NP -> Speaker_NP -> V2 -> Clause ;
-		Questioning_V2_Pass : Addressee_NP -> V2 -> Clause ;
+		Questioning_V2 : Addressee_NP -> Speaker_NP -> V2 -> Clause ;
+		Questioning_VQ : Message_QS -> Speaker_NP -> VQ -> Clause ;
+		Questioning_V2_Pass : Addressee_NP -> Speaker_NP -> V2 -> Clause ;
 
 		Quitting_V : Employee_NP -> Position_Adv -> V -> Clause ;
 
@@ -905,7 +909,7 @@ abstract Patterns = Elements ** {
 		Remainder_V : Remainder_NP -> V -> Clause ;
 		Remainder_V2 : Remainder_NP -> V2 -> Clause ;
 
-		Remembering_experience_V : Cognizer_NP -> Experience_Adv -> V -> Clause ;
+		Remembering_experience_VQ : Cognizer_NP -> Experience_QS -> VQ -> Clause ;
 
 		Remembering_information_VS : Cognizer_NP -> Mental_content_S -> VS -> Clause ;
 
@@ -959,8 +963,8 @@ abstract Patterns = Elements ** {
 		Response_V_2 : Responding_entity_NP -> Trigger_Adv -> V -> Clause ;
 
 		Reveal_secret_V : Information_Adv -> Speaker_NP -> V -> Clause ;
-		Reveal_secret_V2_1 : Information_NP -> Medium_NP -> V2 -> Clause ;
-		Reveal_secret_V2_2 : Information_NP -> Speaker_NP -> V2 -> Clause ;
+		Reveal_secret_V2 : Information_NP -> Medium_NP -> V2 -> Clause ;
+		Reveal_secret_VQ : Information_QS -> Speaker_NP -> VQ -> Clause ;
 		Reveal_secret_VS : Information_S -> Medium_NP -> VS -> Clause ;
 
 		Revenge_V_1 : Avenger_NP -> Injury_Adv -> V -> Clause ;
@@ -1027,11 +1031,11 @@ abstract Patterns = Elements ** {
 
 		Soaking_V2 : Agent_NP -> Medium_Adv -> Theme_NP -> V2 -> Clause ;
 
-		Soaking_up_V2_Pass : Substance_NP -> V2 -> Clause ;
+		Soaking_up_V2_Pass : Item_NP -> Substance_NP -> V2 -> Clause ;
 
 		Sound_movement_V : Sound_NP -> V -> Clause ;
 
-		Speak_on_topic_V : Audience_Adv -> Speaker_NP -> Topic_Adv -> V -> Clause ;
+		Speak_on_topic_V : Speaker_NP -> Topic_Adv -> V -> Clause ;
 
 		Spelling_and_pronouncing_V2 : Sign_NP -> Speaker_NP -> V2 -> Clause ;
 
@@ -1043,6 +1047,7 @@ abstract Patterns = Elements ** {
 		Statement_VS_1 : Medium_NP -> Message_S -> VS -> Clause ;
 		Statement_VS_2 : Message_S -> Speaker_NP -> VS -> Clause ;
 		Statement_VV : Message_VP -> Speaker_NP -> VV -> Clause ;
+		Statement_V2_Pass : Speaker_NP -> V2 -> Clause ;
 
 		Storing_V2 : Agent_NP -> Theme_NP -> V2 -> Clause ;
 
@@ -1050,7 +1055,8 @@ abstract Patterns = Elements ** {
 		Studying_V2 : Student_NP -> Subject_NP -> V2 -> Clause ;
 
 		Suasion_V2V : Addressee_NP -> Content_VP -> Speaker_NP -> V2V -> Clause ;
-		Suasion_V2_Pass : Addressee_NP -> Content_Adv -> V2 -> Clause ;
+		Suasion_V2_Pass_1 : Addressee_NP -> Content_Adv -> V2 -> Clause ;
+		Suasion_V2_Pass_2 : Addressee_NP -> Speaker_NP -> V2 -> Clause ;
 
 		Submitting_documents_V2 : Authority_Adv -> Documents_NP -> Submittor_NP -> V2 -> Clause ;
 
@@ -1069,13 +1075,14 @@ abstract Patterns = Elements ** {
 		Supply_V2_Pass : Recipient_NP -> V2 -> Clause ;
 
 		Supporting_V2 : Supported_NP -> Supporter_NP -> V2 -> Clause ;
-		Supporting_V2_Pass : Supported_NP -> Supporter_Adv -> V2 -> Clause ;
+		Supporting_V2_Pass : Supported_NP -> Supporter_NP -> V2 -> Clause ;
 
 		Surrendering_V : Authorities_Adv -> Fugitive_NP -> V -> Clause ;
 
 		Surrendering_possession_V2 : Surrenderer_NP -> Theme_NP -> V2 -> Clause ;
 
 		Take_place_of_V2 : New_NP -> Old_NP -> Role_Adv -> V2 -> Clause ;
+		Take_place_of_V2_Pass : New_NP -> Old_NP -> V2 -> Clause ;
 
 		Taking_V2 : Agent_NP -> Source_Adv -> Theme_NP -> V2 -> Clause ;
 
