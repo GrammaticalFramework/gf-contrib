@@ -24,6 +24,8 @@ The current grammar is still very rough and brittle.
 
 ==Files==
 
+To get the sources: https://github.com/GrammaticalFramework/gf-contrib/tree/master/homotopy-typetheory
+
 [ltestEng.pdf ltestEng.pdf], a text whose source is recognizable and producible by the grammar. 
 Follows a text by Peter Aczel almost verbatim. This text is very compact and dense, but follows the formal structure 
 very closely.
@@ -128,6 +130,8 @@ GF was originally develop on top of the proof editor ALF. But non-mathematical a
 the ones that implement the full API of GF Resource Grammar Library.
 
 The HoTT grammar should follow these [best practices http://www.molto-project.eu/sites/default/files/MOLTO_D2.3.pdf]
+
+Thanks to: Bas Spitters.
 
 Contact: http://www.cse.chalmers.se/~aarne/
 
