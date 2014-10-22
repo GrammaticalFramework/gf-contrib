@@ -1,6 +1,6 @@
 Translating Homotopy Type Theory in Grammatical Framework
 Aarne Ranta
-21 October 2014
+22 October 2014
 
 
 
@@ -15,15 +15,22 @@ converts it into type-theory-like formal notation.
 This is the start of a project for translating between natural language and formalized mathematics. 
 The current grammar is still very rough and brittle.
 
+==News==
+
+22/10 Some refactoring; French added.
+
+21/19/2014 First version.
 
 
 ==Files==
 
-[ltest.pdf ltest.pdf], a text whose source is recognizable and producible by the grammar. 
+[ltestEng.pdf ltestEng.pdf], a text whose source is recognizable and producible by the grammar. 
 Follows a text by Peter Aczel almost verbatim. This text is very compact and dense, but follows the formal structure 
 very closely.
 
-[ltest.tex ltest.tex], the source itself.
+[ltestFre.pdf ltestFre.pdf], the same in French, as translated by the grammar.
+
+[ltestEng.tex ltestEng.tex], the source of the English text.
 
 [ltestLogic.txt ltestLogic.txt], the source translated to logical notation by GF.
 
@@ -39,17 +46,25 @@ very closely.
 
 [FrameworkFunctor.gf FrameworkFunctor.gf], concrete syntax functor for textual structures in natural language.
 
+[FrameworkInterface.gf FrameworkInterface.gf], domain-specific interface for the functor.
+
+[FrameworkInstanceEng.gf FrameworkInstanceEng.gf], English instance of the domain-specific interface.
+
+[FrameworkInstanceFre.gf FrameworkInstanceFre.gf], French instance of the domain-specific interface.
+
 [FrameworkEng.gf FrameworkEng.gf], concrete syntax for textual structures in English, instantiating the functor.
+
+[FrameworkFre.gf FrameworkFre.gf], concrete syntax for textual structures in French, instantiating the functor.
 
 [FormulasLatex.gf FormulasLatex.gf], concrete syntax for LaTeX formulas to be embedded in English.
 
 [HottLexiconEng.gf HottLexiconEng.gf], concrete syntax for a homotopy type theory lexicon in English.
 
+[HottLexiconFre.gf HottLexiconFre.gf], concrete syntax for a homotopy type theory lexicon in English.
+
 [FrameworkLogic.gf FrameworkLogic.gf], concrete syntax for textual structures in a type-theory-like formalism.
 
 [FormulasLogic.gf FormulasLogic.gf], concrete syntax for formulas in the formalism.
-
-[HottLexiconEng.gf HottLexiconEng.gf], concrete syntax for a homotopy type theory lexicon in the formalism.
 
  
 
@@ -64,17 +79,19 @@ get the correct lexing and unlexing behaviour for latex code.
   -- import the top files
   i HottLexiconLogic.gf 
   i HottLexiconEng.gf
-
-  -- look at the raw test file
+  i HottLexiconFre.gf
 
   -- look at the lexed test file
-  rf -file=ltest.tex -lines | ps -lines -lexmixed | p | l 
+  rf -file=ltestEng.tex -lines | ps -lines -lexmixed
 
   -- look at the parse trees
-  rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng 
+  rf -file=ltestEng.tex -lines | ps -lines -lexmixed | p -lang=Eng
 
   -- convert parse trees to logic
-  rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng | l -lang=Logic -unlexcode
+  rf -file=ltestEng.tex -lines | ps -lines -lexmixed | p -lang=Eng | l -lang=Logic -unlexcode
+
+  -- translate English to French
+  rf -file=ltestEng.tex -lines | ps -lines -lexmixed | p -lang=Eng | l -lang=Fre -bind -unlexmixed
 ```
 The translation takes 20 milliseconds on my early-2013 MacBook Pro. This means that we could translate 
 a 500-page book in 10 seconds - or a bit more, if the pages are longer.

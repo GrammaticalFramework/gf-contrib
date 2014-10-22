@@ -74,8 +74,8 @@ lin
   CommentFormat = "--" ;
   EmptyLineFormat = "" ;
   Utf8Format = "" ;
-  LatexsymFormat : "" ;
-  AmsfontsFormat : "" ;
+  LatexsymFormat = "" ;
+  AmsfontsFormat = "" ;
   BeginDocumentFormat = "" ;
   InputMacrosFormat = "" ;
   BeginItemizeFormat = "" ;
