@@ -19,8 +19,8 @@ lin
   equivalenceSort AB = mkSort (P.mkN "équivalence") ** {postname = AB ; isSymbolic = True} ; 
 
   equivalence_Pred = mkComp (mkNP a_Det (P.mkN "équivalence")) ;
-  fiber_Fun = mkFun (mkCN (P.mkN "fibre" P.masculine)) ;
-  fiberWrt_Fun a = mkFun (mkCN (mkCN (P.mkN "fibre" P.masculine)) (mkAdv (P.mkPrep "par rapport de") a.s)) ;
+  fiber_Fun = mkFun (mkCN (P.mkN "fibre")) ;
+  fiberWrt_Fun a = mkFun (mkCN (mkCN (P.mkN "fibre")) (mkAdv (P.mkPrep "par rapport de") a.s)) ;
   identity_map_Fun = mkFun (mkCN (P.mkN "identité")) ;
 
   id_induction_Label = mkLabel ("Id-induction") ;
