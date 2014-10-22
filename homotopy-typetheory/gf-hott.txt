@@ -1,0 +1,118 @@
+Translating Homotopy Type Theory in Grammatical Framework
+Aarne Ranta
+21 October 2014
+
+
+
+
+[hott.png]
+
+
+===Abstract=== 
+
+We have built a GF grammar (http://www.grammaticalframework.org) that parses an English text and
+converts it into type-theory-like formal notation.
+This is the start of a project for translating between natural language and formalized mathematics. 
+The current grammar is still very rough and brittle.
+
+
+
+==Files==
+
+[ltest.pdf ltest.pdf], a text whose source is recognizable and producible by the grammar. 
+Follows a text by Peter Aczel almost verbatim. This text is very compact and dense, but follows the formal structure 
+very closely.
+
+[ltest.tex ltest.tex], the source itself.
+
+[ltestLogic.txt ltestLogic.txt], the source translated to logical notation by GF.
+
+[ltestTrees.txt ltestTrees.txt], the abstract syntax trees obtained by GF parsing.
+
+[macros.tex macros.tex], some macros used in the text.
+
+[Framework.gf Framework.gf], abstract syntax for textual structures.
+
+[Formulas.gf Formulas.gf], abstract syntax for material presented as LaTeX formulas.
+
+[HottLexicon.gf HottLexicon.gf], abstract syntax for a homotopy type theory lexicon.
+
+[FrameworkFunctor.gf FrameworkFunctor.gf], concrete syntax functor for textual structures in natural language.
+
+[FrameworkEng.gf FrameworkEng.gf], concrete syntax for textual structures in English, instantiating the functor.
+
+[FormulasLatex.gf FormulasLatex.gf], concrete syntax for LaTeX formulas to be embedded in English.
+
+[HottLexiconEng.gf HottLexiconEng.gf], concrete syntax for a homotopy type theory lexicon in English.
+
+[FrameworkLogic.gf FrameworkLogic.gf], concrete syntax for textual structures in a type-theory-like formalism.
+
+[FormulasLogic.gf FormulasLogic.gf], concrete syntax for formulas in the formalism.
+
+[HottLexiconEng.gf HottLexiconEng.gf], concrete syntax for a homotopy type theory lexicon in the formalism.
+
+ 
+
+==To try it yourself==
+
+Make sure that you have recent enough a version of GF, 3.6.10-darcs Oct 21, 2014, or later. This is needed to
+get the correct lexing and unlexing behaviour for latex code.
+```
+  -- start GF in a Unix shell
+  gf
+
+  -- import the top files
+  i HottLexiconLogic.gf 
+  i HottLexiconEng.gf
+
+  -- look at the raw test file
+
+  -- look at the lexed test file
+  rf -file=ltest.tex -lines | ps -lines -lexmixed | p | l 
+
+  -- look at the parse trees
+  rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng 
+
+  -- convert parse trees to logic
+  rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng | l -lang=Logic -unlexcode
+```
+The translation takes 20 milliseconds on my early-2013 MacBook Pro. This means that we could translate 
+a 500-page book in 10 seconds - or a bit more, if the pages are longer.
+
+
+
+==Documentation==
+
+See comments in the GF files themselves.
+
+See [my CADE paper http://www.cse.chalmers.se/~aarne/articles/cade2011.pdf] 
+and this [earlier LPAR paper http://link.springer.com/chapter/10.1007/3-540-44404-1_6]
+for ideas on translating mathematics between type theory and natural language texts.
+
+
+==To do==
+
+Most things. Here are some in a priority order:
+
+- improve the translation to logic, with particular attention on side effects and anaphoric expressions
+- port to other languages
+- create API's for easy extension of lexicon
+- extend the syntax
+- extend the lexicon
+- move the periods into math displays either by pre/postprocessing (easy) or by modifying the linearization types (more elegant, but
+  feels like overkill)
+
+
+==Grammatical Framework==
+
+GF = Logical Framework + concrete syntax. 
+
+GF was originally develop on top of the proof editor ALF. But non-mathematical applications have dominated since 1998. GF has libraries supporting over 30 languages, and the functor used in the current experiment could be readily instantiated in 29 of them:
+the ones that implement the full API of GF Resource Grammar Library.
+
+The HoTT grammar should follow these [best practices http://www.molto-project.eu/sites/default/files/MOLTO_D2.3.pdf]
+
+Contact: http://www.cse.chalmers.se/~aarne/
+
+
+

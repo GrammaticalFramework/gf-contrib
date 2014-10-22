@@ -1,0 +1,35 @@
+FormatParagraph DocumentStyleFormat
+FormatParagraph EmptyLineFormat
+FormatParagraph BeginDocumentFormat
+FormatParagraph InputMacrosFormat
+FormatParagraph EmptyLineFormat
+TitleParagraph DefinitionTitle
+DefPredParagraph type_Sort A_Var contractible_Pred (ExistCalledProp a_Var (ExpSort (VarExp A_Var)) (FunInd centre_of_contraction_Fun) (ForAllProp (BaseVar x_Var) (ExpSort (VarExp A_Var)) (ExpProp (equalExp (VarExp a_Var) (VarExp x_Var)))))
+FormatParagraph EmptyLineFormat
+TitleParagraph DefinitionTitle
+DefPredParagraph (mapSort (mapExp (VarExp A_Var) (VarExp B_Var))) f_Var equivalence_Pred (ForAllProp (BaseVar y_Var) (ExpSort (VarExp B_Var)) (PredProp contractible_Pred (AliasInd (AppFunItInd fiber_Fun) (FunInd (ExpFun (ComprehensionExp x_Var (VarExp A_Var) (equalExp (AppExp f_Var (VarExp x_Var)) (VarExp y_Var))))))))
+DefPropParagraph (ExpProp (equivalenceExp (VarExp A_Var) (VarExp B_Var))) (ExistSortProp (equivalenceSort (mapExp (VarExp A_Var) (VarExp B_Var))))
+FormatParagraph EmptyLineFormat
+TitleParagraph LemmaTitle
+TheoremParagraph (ForAllProp (BaseVar A_Var) type_Sort (PredProp equivalence_Pred (AliasInd (FunInd identity_map_Fun) (FunInd (ExpFun (DefExp (identityMapExp (VarExp A_Var)) (TypedExp (BaseExp (lambdaExp x_Var (VarExp A_Var) (VarExp x_Var))) (mapExp (VarExp A_Var) (VarExp A_Var)))))))))
+FormatParagraph EmptyLineFormat
+TitleParagraph ProofTitle
+AssumptionParagraph (ConsAssumption (ForAssumption y_Var (ExpSort (VarExp A_Var)) (LetAssumption (FunInd (ExpFun (DefExp (fiberExp (VarExp y_Var) (VarExp A_Var)) (ComprehensionExp x_Var (VarExp A_Var) (equalExp (VarExp x_Var) (VarExp y_Var)))))) (AppFunItInd (fiberWrt_Fun (FunInd (ExpFun (identityMapExp (VarExp A_Var)))))))) (BaseAssumption (LetExpAssumption (barExp (VarExp y_Var)) (TypedExp (BaseExp (pairExp (VarExp y_Var) (reflexivityExp (VarExp A_Var) (VarExp y_Var)))) (fiberExp (VarExp y_Var) (VarExp A_Var))))))
+ConclusionParagraph (AsConclusion (ForAllProp (BaseVar y_Var) (ExpSort (VarExp A_Var)) (ExpProp (equalExp (pairExp (VarExp y_Var) (reflexivityExp (VarExp A_Var) (VarExp y_Var))) (VarExp y_Var)))) (ApplyLabelConclusion id_induction_Label (ConsInd (FunInd (ExpFun (VarExp y_Var))) (ConsInd (FunInd (ExpFun (TypedExp (BaseExp (VarExp x_Var)) (VarExp A_Var)))) (ConsInd (FunInd (ExpFun (TypedExp (BaseExp (VarExp z_Var)) (idPropExp (VarExp x_Var) (VarExp y_Var))))) BaseInd))) (DisplayExpProp (equalExp (pairExp (VarExp x_Var) (VarExp z_Var)) (VarExp y_Var)))))
+ConclusionSoThatParagraph (ForConclusion (BaseVar y_Var) (ExpSort (VarExp A_Var)) (ApplyLabelConclusion sigma_elimination_Label (ConsInd (FunInd (ExpFun (TypedExp (BaseExp (VarExp u_Var)) (fiberExp (VarExp y_Var) (VarExp A_Var))))) BaseInd) (ExpProp (equalExp (VarExp u_Var) (VarExp y_Var))))) (PredProp contractible_Pred (FunInd (ExpFun (fiberExp (VarExp y_Var) (VarExp A_Var)))))
+ConclusionParagraph (PropConclusion (PredProp equivalence_Pred (FunInd (ExpFun (TypedExp (BaseExp (identityMapExp (VarExp A_Var))) (mapExp (VarExp A_Var) (VarExp A_Var)))))))
+QEDParagraph
+FormatParagraph EmptyLineFormat
+TitleParagraph CorollaryTitle
+TheoremParagraph (ForAllProp (BaseVar U_Var) type_universe_Sort (ForAllProp (ConsVar X_Var (BaseVar Y_Var)) (ExpSort (VarExp U_Var)) (DisplayLabelledExpProp StarLabel (mapExp (equalExp (VarExp X_Var) (VarExp Y_Var)) (equivalenceExp (VarExp X_Var) (VarExp Y_Var))))))
+FormatParagraph EmptyLineFormat
+TitleParagraph ProofTitle
+ConclusionParagraph (ApplyLabelConclusion the_lemma_Label BaseInd (ForAllProp (BaseVar X_Var) (ExpSort (VarExp U_Var)) (ExpProp (equivalenceExp (VarExp X_Var) (VarExp X_Var)))))
+ConclusionParagraph (ApplyLabelConclusion id_induction_Label (ConsInd (FunInd (ExpFun (TypedExp (ConsExp (VarExp X_Var) (BaseExp (VarExp Y_Var))) (VarExp U_Var)))) BaseInd) (LabelProp StarLabel))
+QEDParagraph
+FormatParagraph EmptyLineFormat
+FormatParagraph EmptyLineFormat
+TitleParagraph DefinitionTitle
+DefPredParagraph type_universe_Sort U_Var univalent_Pred (ForAllProp (ConsVar X_Var (BaseVar Y_Var)) (ExpSort (VarExp U_Var)) (PredProp equivalence_Pred (IndInLabel (TheSortInd (mapSort (mapExp (equalExp (VarExp X_Var) (VarExp Y_Var)) (equivalenceExp (VarExp X_Var) (VarExp Y_Var)))) (equivalenceMapExp (VarExp X_Var) (VarExp Y_Var))) StarLabel)))
+FormatParagraph EmptyLineFormat
+FormatParagraph EndDocumentFormat

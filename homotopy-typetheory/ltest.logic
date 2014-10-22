@@ -1,0 +1,66 @@
+-- article
+
+
+
+
+
+
+
+
+
+-- Definition
+
+( A : Type ) => Contractible A := exist ( ( a : A ) ) ( ( x : A ) -> Id ( a ) ( x ) ) ; ; CenterContraction ;
+
+
+
+-- Definition
+
+( f : app ( Map ) ( A -> B ) ) => Equivalence f := ( y : B ) -> ( Contractible ( fiber it ) ) ; ; ; fiber it := comprehension ( x ) ( A ) ( Id ( f ( x ) ) ( y ) )
+
+equivalence ( A ) ( B ) := Equivalence ( A -> B ) ;
+
+
+
+-- Lemma
+
+=> ( A : Type ) -> ( Equivalence ( id ) ) ; ; ; id := idMap ( A ) := ( \ x : A -> x ) : A -> A
+
+
+
+-- Proof
+
+<= ( y : A ) => fiber ( y ) ( A ) := comprehension ( x ) ( A ) ( Id ( x ) ( y ) ) := fiber ( idMap ( A ) ) it ; ; ; bar ( y ) := < y , refl ( A ) ( y ) > : fiber ( y ) ( A )
+
+=> ( y : A ) -> Id ( < y , refl ( A ) ( y ) > ) ( y ) => IdInd y x : A z : Id ( x ) ( y ) : Id ( < x , z > ) ( y ) ;
+
+=> ( y : A ) => SigmaEl u : fiber ( y ) ( A ) : Id ( u ) ( y ) ; ( Contractible ( fiber ( y ) ( A ) ) ) ;
+
+=> ( Equivalence ( idMap ( A ) : A -> A ) ) ;
+
+QED
+
+
+
+-- Corollary
+
+=> ( U : Universe ) -> ( X , Y : U ) -> Id ( X ) ( Y ) -> equivalence ( X ) ( Y ) ; it := Id ( X ) ( Y ) -> equivalence ( X ) ( Y )
+
+
+
+-- Proof
+
+=> Lemma : ( X : U ) -> equivalence ( X ) ( X )
+
+=> IdInd X , Y : U : it
+
+QED
+
+
+
+
+
+-- Definition
+
+( U : Universe ) => Univalent U := ( X , Y : U ) -> ( Equivalence ( ( ( EqMap ( X ) ( Y ) : app ( Map ) ( Id ( X ) ( Y ) -> equivalence ( X ) ( Y ) ) ) : it ) ) ) ;
+

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META NAME="generator" CONTENT="http://txt2tags.org">
+<TITLE>Translating Homotopy Type Theory in Grammatical Framework</TITLE>
+</HEAD><BODY BGCOLOR="white" TEXT="black">
+<CENTER>
+<H1>Translating Homotopy Type Theory in Grammatical Framework</H1>
+<FONT SIZE="4"><I>Aarne Ranta</I></FONT><BR>
+<FONT SIZE="4">21 October 2014</FONT>
+</CENTER>
+
+<P>
+<IMG ALIGN="middle" SRC="hott.png" BORDER="0" ALT="">
+</P>
+
+<H3>Abstract</H3>
+
+<P>
+We have built a GF grammar (<A HREF="http://www.grammaticalframework.org">http://www.grammaticalframework.org</A>) that parses an English text and
+converts it into type-theory-like formal notation.
+This is the start of a project for translating between natural language and formalized mathematics. 
+The current grammar is still very rough and brittle.
+</P>
+
+<H2>Files</H2>
+
+<P>
+<A HREF="ltest.pdf">ltest.pdf</A>, a text whose source is recognizable and producible by the grammar. 
+Follows a text by Peter Aczel almost verbatim. This text is very compact and dense, but follows the formal structure 
+very closely.
+</P>
+<P>
+<A HREF="ltest.tex">ltest.tex</A>, the source itself.
+</P>
+<P>
+<A HREF="ltestLogic.txt">ltestLogic.txt</A>, the source translated to logical notation by GF.
+</P>
+<P>
+<A HREF="ltestTrees.txt">ltestTrees.txt</A>, the abstract syntax trees obtained by GF parsing.
+</P>
+<P>
+<A HREF="macros.tex">macros.tex</A>, some macros used in the text.
+</P>
+<P>
+<A HREF="Framework.gf">Framework.gf</A>, abstract syntax for textual structures.
+</P>
+<P>
+<A HREF="Formulas.gf">Formulas.gf</A>, abstract syntax for material presented as LaTeX formulas.
+</P>
+<P>
+<A HREF="HottLexicon.gf">HottLexicon.gf</A>, abstract syntax for a homotopy type theory lexicon.
+</P>
+<P>
+<A HREF="FrameworkFunctor.gf">FrameworkFunctor.gf</A>, concrete syntax functor for textual structures in natural language.
+</P>
+<P>
+<A HREF="FrameworkEng.gf">FrameworkEng.gf</A>, concrete syntax for textual structures in English, instantiating the functor.
+</P>
+<P>
+<A HREF="FormulasLatex.gf">FormulasLatex.gf</A>, concrete syntax for LaTeX formulas to be embedded in English.
+</P>
+<P>
+<A HREF="HottLexiconEng.gf">HottLexiconEng.gf</A>, concrete syntax for a homotopy type theory lexicon in English.
+</P>
+<P>
+<A HREF="FrameworkLogic.gf">FrameworkLogic.gf</A>, concrete syntax for textual structures in a type-theory-like formalism.
+</P>
+<P>
+<A HREF="FormulasLogic.gf">FormulasLogic.gf</A>, concrete syntax for formulas in the formalism.
+</P>
+<P>
+<A HREF="HottLexiconEng.gf">HottLexiconEng.gf</A>, concrete syntax for a homotopy type theory lexicon in the formalism.
+</P>
+
+<H2>To try it yourself</H2>
+
+<P>
+Make sure that you have recent enough a version of GF, 3.6.10-darcs Oct 21, 2014, or later. This is needed to
+get the correct lexing and unlexing behaviour for latex code.
+</P>
+
+<PRE>
+    -- start GF in a Unix shell
+    gf
+  
+    -- import the top files
+    i HottLexiconLogic.gf 
+    i HottLexiconEng.gf
+  
+    -- look at the raw test file
+  
+    -- look at the lexed test file
+    rf -file=ltest.tex -lines | ps -lines -lexmixed | p | l 
+  
+    -- look at the parse trees
+    rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng 
+  
+    -- convert parse trees to logic
+    rf -file=ltest.tex -lines | ps -lines -lexmixed | p -lang=Eng | l -lang=Logic -unlexcode
+</PRE>
+
+<P>
+The translation takes 20 milliseconds on my early-2013 MacBook Pro. This means that we could translate 
+a 500-page book in 10 seconds - or a bit more, if the pages are longer.
+</P>
+
+<H2>Documentation</H2>
+
+<P>
+See comments in the GF files themselves.
+</P>
+<P>
+See <A HREF="http://www.cse.chalmers.se/~aarne/articles/cade2011.pdf">my CADE paper</A> 
+and this <A HREF="http://link.springer.com/chapter/10.1007/3-540-44404-1_6">earlier LPAR paper</A>
+for ideas on translating mathematics between type theory and natural language texts.
+</P>
+
+<H2>To do</H2>
+
+<P>
+Most things. Here are some in a priority order:
+</P>
+
+<UL>
+<LI>improve the translation to logic, with particular attention on side effects and anaphoric expressions
+<LI>port to other languages
+<LI>create API's for easy extension of lexicon
+<LI>extend the syntax
+<LI>extend the lexicon
+<LI>move the periods into math displays either by pre/postprocessing (easy) or by modifying the linearization types (more elegant, but
+  feels like overkill)
+</UL>
+
+<H2>Grammatical Framework</H2>
+
+<P>
+GF = Logical Framework + concrete syntax. 
+</P>
+<P>
+GF was originally develop on top of the proof editor ALF. But non-mathematical applications have dominated since 1998. GF has libraries supporting over 30 languages, and the functor used in the current experiment could be readily instantiated in 29 of them:
+the ones that implement the full API of GF Resource Grammar Library.
+</P>
+<P>
+The HoTT grammar should follow these <A HREF="http://www.molto-project.eu/sites/default/files/MOLTO_D2.3.pdf">best practices</A>
+</P>
+<P>
+Contact: <A HREF="http://www.cse.chalmers.se/~aarne/">http://www.cse.chalmers.se/~aarne/</A>
+</P>
+
+<!-- html code generated by txt2tags 2.6 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -thtml gf-hott.txt -->
+</BODY></HTML>

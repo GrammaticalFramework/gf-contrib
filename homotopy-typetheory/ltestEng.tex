@@ -1,0 +1,37 @@
+\documentclass{article}
+ \usepackage[utf8]{inputenc}
+ \usepackage{latexsym}
+ \usepackage{amsfonts}
+ \begin{document}
+ \input{macros}
+ 
+ \textbf{Definition}:
+ A type $A$ is contractible, if there is $a : A$, called the center of contraction, such that for all $x : A$, $\equalH {a}{x}$.
+ 
+ \textbf{Definition}:
+ A map $f : \arrowH {A}{B}$ is an equivalence, if for all $y : B$, its fiber, $\comprehensionH {x}{A}{\equalH {\appH {f}{x}}{y}}$, is contractible.
+ We write $\equivalenceH {A}{B}$, if there is an equivalence $\arrowH {A}{B}$.
+ 
+ \textbf{Lemma}:
+ For each type $A$, the identity map, $\defineH {\idMapH {A}}{\typingH {\lambdaH {x}{A}{x}}{\arrowH {A}{A}}}$, is an equivalence.
+ 
+ \textbf{Proof}:
+ For each $y : A$, let $\defineH {\fiberH {y}{A}}{\comprehensionH {x}{A}{\equalH {x}{y}}}$ be its fiber with respect to $\idMapH {A}$ and let $\defineH {\barH {y}}{\typingH {\pairH {y}{\reflexivityH {A}{y}}}{\fiberH {y}{A}}}$.
+ As for all $y : A$, $\equalH {\pairH {y}{\reflexivityH {A}{y}}}{y}$, we may apply Id-induction on $y$, $\typingH {x}{A}$ and $\typingH {z}{\idPropH {x}{y}}$ to get that \[\equalH {\pairH {x}{z}}{y}\].
+ Hence, for $y : A$, we may apply $\Sigma$ -elimination on $\typingH {u}{\fiberH {y}{A}}$ to get that $\equalH {u}{y}$, so that $\fiberH {y}{A}$ is contractible.
+ Thus, $\typingH {\idMapH {A}}{\arrowH {A}{A}}$ is an equivalence.
+  $\Box$ 
+ 
+ \textbf{Corollary}:
+ If $U$ is a type universe, then, for $X , Y : U$, \[(*)\arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}\].
+ 
+ \textbf{Proof}:
+ We may apply the lemma to get that for $X : U$, $\equivalenceH {X}{X}$.
+ Hence, we may apply Id-induction on $\typingH {X , Y}{U}$ to get that $(*)$.
+  $\Box$ 
+ 
+ 
+ \textbf{Definition}:
+ A type universe $U$ is univalent, if for $X , Y : U$, the map $\equivalenceMapH {X}{Y}: \arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}$ in $(*)$ is an equivalence.
+ 
+ \end{document}
