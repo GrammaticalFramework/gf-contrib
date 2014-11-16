@@ -5,7 +5,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 	lin
 
 		abandon_V2_Abandonment = mkV2 (mkV "abandon" "abandons" "abandoned" "abandoned" "abandoning") ;
-		forget_V2_Abandonment = mkV2 (IrregEng.forget_V) ;
+		forget_V2_Abandonment = mkV2 (irregDuplV "forget" "forgot" "forgotten") ;
 
 		crawl_V_Abounding_with = mkV "crawl" "crawls" "crawled" "crawled" "crawling" ;
 		swarm_V_Abounding_with = mkV "swarm" "swarms" "swarmed" "swarmed" "swarming" ;
@@ -29,34 +29,34 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		invent_V2_Achieving_first = mkV2 (mkV "invent" "invents" "invented" "invented" "inventing") ;
 		originate_V2_Achieving_first = mkV2 (mkV "originate" "originates" "originated" "originated" "originating") ;
 		pioneer_V2_Achieving_first = mkV2 (mkV "pioneer" "pioneers" "pioneered" "pioneered" "pioneering") ;
-		invent_VS_Achieving_first = mkVS (mkV "invent") ;
+		invent_VS_Achieving_first = mkVS (mkV "invent" "invents" "invented" "invented" "inventing") ;
 
 		complete_V2_Activity_finish = mkV2 (mkV "complete" "completes" "completed" "completed" "completing") ;
 		conclude_V2_Activity_finish = mkV2 (mkV "conclude" "concludes" "concluded" "concluded" "concluding") ;
 		finish_V2_Activity_finish = mkV2 (mkV "finish" "finishes" "finished" "finished" "finishing") ;
 
 		continue_VV_Activity_ongoing = mkVV (mkV "continue" "continues" "continued" "continued" "continuing") ;
-		keep_VV_Activity_ongoing = ingVV (IrregEng.keep_V) ;
+		keep_VV_Activity_ongoing = mkVV (irregV "keep" "kept" "kept") ;
 
-		freeze_V2_Activity_pause = mkV2 (IrregEng.freeze_V) ;
+		freeze_V2_Activity_pause = mkV2 (irregV "freeze" "froze" "frozen") ;
 		suspend_V2_Activity_pause = mkV2 (mkV "suspend" "suspends" "suspended" "suspended" "suspending") ;
 
 		prepare_V_Activity_prepare = mkV "prepare" "prepares" "prepared" "prepared" "preparing" ;
+		ready_V_Activity_prepare = mkV "ready" ;
 
 		renew_V2_Activity_resume = mkV2 (mkV "renew" "renews" "renewed" "renewed" "renewing") ;
 		restart_V2_Activity_resume = mkV2 (mkV "restart" "restarts" "restarted" "restarted" "restarting") ;
 		resume_V2_Activity_resume = mkV2 (mkV "resume" "resumes" "resumed" "resumed" "resuming") ;
 
-		begin_V_Activity_start = IrregEng.begin_V ;
-		commence_V_Activity_start = mkV "commence" "commences" "commenced" "commenced" "commencing" ;
 		enter_V_Activity_start = mkV "enter" "enters" "entered" "entered" "entering" ;
-		start_V_Activity_start = mkV "start" "starts" "started" "started" "starting" ;
-		begin_V2_Activity_start = mkV2 (IrregEng.begin_V) ;
+		launch_V_Activity_start = mkV "launch" "launches" "launched" "launched" "launching" ;
+		swing_V_Activity_start = irregV "swing" "swung" "swung" ;
+		begin_V2_Activity_start = mkV2 (irregV "begin" "began" "begun") ;
 		commence_V2_Activity_start = mkV2 (mkV "commence" "commences" "commenced" "commenced" "commencing") ;
 		enter_V2_Activity_start = mkV2 (mkV "enter" "enters" "entered" "entered" "entering") ;
 		initiate_V2_Activity_start = mkV2 (mkV "initiate" "initiates" "initiated" "initiated" "initiating") ;
 		start_V2_Activity_start = mkV2 (mkV "start" "starts" "started" "started" "starting") ;
-		begin_VV_Activity_start = mkVV (IrregEng.begin_V) ;
+		begin_VV_Activity_start = mkVV (irregV "begin" "began" "begun") ;
 		commence_VV_Activity_start = mkVV (mkV "commence" "commences" "commenced" "commenced" "commencing") ;
 		start_VV_Activity_start = mkVV (mkV "start" "starts" "started" "started" "starting") ;
 
@@ -68,11 +68,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		terminate_V2_Activity_stop = mkV2 (mkV "terminate" "terminates" "terminated" "terminated" "terminating") ;
 
 		tally_V2_Adding_up = mkV2 (mkV "tally" "tallies" "tallied" "tallied" "tallying") ;
-		total_V2_Adding_up = mkV2 (variants {mkV "total" "totals" "totaled"  "totaled"  "totaling"; mkV "total" "totals" "totalled" "totalled" "totalling" }) ;
+		total_V2_Adding_up = mkV2 (us_britishV "total") ;
 
 		adduce_V2_Adducing = mkV2 (mkV "adduce" "adduces" "adduced" "adduced" "adducing") ;
 		cite_V2_Adducing = mkV2 (mkV "cite" "cites" "cited" "cited" "citing") ;
 
+		tweak_V_Adjusting = mkV "tweak" "tweaks" "tweaked" "tweaked" "tweaking" ;
 		adjust_V2_Adjusting = mkV2 (mkV "adjust" "adjusts" "adjusted" "adjusted" "adjusting") ;
 		tweak_V2_Adjusting = mkV2 (mkV "tweak" "tweaks" "tweaked" "tweaked" "tweaking") ;
 		calibrate_V2_Adjusting = mkV2 (mkV "calibrate" "calibrates" "calibrated" "calibrated" "calibrating") ;
@@ -99,7 +100,8 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		stockpile_V2_Amassing = mkV2 (mkV "stockpile") ;
 
 		amount_V_Amounting_to = mkV "amount" "amounts" "amounted" "amounted" "amounting" ;
-		total_V_Amounting_to = variants {mkV "total" "totals" "totaled"  "totaled"  "totaling"; mkV "total" "totals" "totalled" "totalled" "totalling" } ;
+		number_V_Amounting_to = mkV "number" "numbers" "numbered" "numbered" "numbering" ;
+		total_V_Amounting_to = us_britishV "total" ;
 
 		bake_V2_Apply_heat = mkV2 (mkV "bake" "bakes" "baked" "baked" "baking") ;
 		blanch_V2_Apply_heat = mkV2 (mkV "blanch" "blanches" "blanched" "blanched" "blanching") ;
@@ -111,7 +113,6 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		parboil_V2_Apply_heat = mkV2 (mkV "parboil" "parboils" "parboiled" "parboiled" "parboiling") ;
 		poach_V2_Apply_heat = mkV2 (mkV "poach" "poaches" "poached" "poached" "poaching") ;
 		roast_V2_Apply_heat = mkV2 (mkV "roast" "roasts" "roasted" "roasted" "roasting") ;
-		saute_V2_Apply_heat = mkV2 (mkV "sauté" "sautés" "sautéed" "sautéed" "sautéing") ;
 		scald_V2_Apply_heat = mkV2 (mkV "scald" "scalds" "scalded" "scalded" "scalding") ;
 		simmer_V2_Apply_heat = mkV2 (mkV "simmer" "simmers" "simmered" "simmered" "simmering") ;
 		steam_V2_Apply_heat = mkV2 (mkV "steam" "steams" "steamed" "steamed" "steaming") ;
@@ -131,15 +132,15 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		approach_V_Arriving = mkV "approach" "approaches" "approached" "approached" "approaching" ;
 		arrive_V_Arriving = mkV "arrive" "arrives" "arrived" "arrived" "arriving" ;
-		come_V_Arriving = IrregEng.come_V ;
+		come_V_Arriving = irregV "come" "came" "come" ;
+		descend_V_Arriving = mkV "descend" "descends" "descended" "descended" "descending" ;
 		enter_V_Arriving = mkV "enter" "enters" "entered" "entered" "entering" ;
-		get_V_Arriving = IrregEng.get_V ;
-		make_it_V_Arriving = partV IrregEng.make_V "it" ;
+		get_V_Arriving = irregDuplV "get" "got" "gotten" ;
 		reach_V_Arriving = mkV "reach" "reaches" "reached" "reached" "reaching" ;
 		return_V_Arriving = mkV "return" "returns" "returned" "returned" "returning" ;
 		visit_V_Arriving = mkV "visit" "visits" "visited" "visited" "visiting" ;
 
-		meet_V_Assemble = IrregEng.meet_V ;
+		meet_V_Assemble = irregV "meet" "met" "met" ;
 
 		appraise_V2_Assessing = mkV2 (mkV "appraise" "appraises" "appraised" "appraised" "appraising") ;
 		assess_V2_Assessing = mkV2 (mkV "assess" "assesses" "assessed" "assessed" "assessing") ;
@@ -156,9 +157,9 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		aid_V2_Assistance = mkV2 (mkV "aid" "aids" "aided" "aided" "aiding") ;
 		assist_V2_Assistance = mkV2 (mkV "assist" "assists" "assisted" "assisted" "assisting") ;
 		help_V2_Assistance = mkV2 (mkV "help" "helps" "helped" "helped" "helping") ;
-		aid_V2V_Assistance = mkV2V (mkV "aid") noPrep to_Prep ;
+		aid_V2V_Assistance = mkV2V (mkV "aid" "aids" "aided" "aided" "aiding") noPrep to_Prep ;
 		assist_V2V_Assistance = mkV2V (mkV "assist" "assists" "assisted" "assisted" "assisting") noPrep to_Prep ;
-		help_V2V_Assistance = mkV2V (mkV "help" "helps" "helped" "helped" "helping") noPrep noPrep ;
+		help_V2V_Assistance = mkV2V (mkV "help" "helps" "helped" "helped" "helping") noPrep to_Prep ;
 
 		expiate_V2_Atonement = mkV2 (mkV "expiate" "expiates" "expiated" "expiated" "expiating") ;
 
@@ -166,7 +167,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		anchor_V2_Attaching = mkV2 (mkV "anchor" "anchors" "anchored" "anchored" "anchoring") ;
 		append_V2_Attaching = mkV2 (mkV "append" "appends" "appended" "appended" "appending") ;
 		attach_V2_Attaching = mkV2 (mkV "attach" "attaches" "attached" "attached" "attaching") ;
-		bind_V2_Attaching = mkV2 (IrregEng.bind_V) ;
+		bind_V2_Attaching = mkV2 (irregV "bind" "bound" "bound") ;
 		cement_V2_Attaching = mkV2 (mkV "cement" "cements" "cemented" "cemented" "cementing") ;
 		chain_V2_Attaching = mkV2 (mkV "chain" "chains" "chained" "chained" "chaining") ;
 		cinch_V2_Attaching = mkV2 (mkV "cinch") ;
@@ -190,16 +191,16 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		pin_V2_Attaching = mkV2 (mkV "pin" "pins" "pinned" "pinned" "pinning") ;
 		plaster_V2_Attaching = mkV2 (mkV "plaster" "plasters" "plastered" "plastered" "plastering") ;
 		secure_V2_Attaching = mkV2 (mkV "secure" "secures" "secured" "secured" "securing") ;
-		sew_V2_Attaching = mkV2 (IrregEng.sew_V) ;
+		sew_V2_Attaching = mkV2 (irregV "sew" "sewed" (variants {"sewed" ; "sewn"})) ;
 		shackle_V2_Attaching = mkV2 (mkV "shackle" "shackles" "shackled" "shackled" "shackling") ;
 		solder_V2_Attaching = mkV2 (mkV "solder" "solders" "soldered" "soldered" "soldering") ;
 		staple_V2_Attaching = mkV2 (mkV "staple" "staples" "stapled" "stapled" "stapling") ;
-		stick_V2_Attaching = mkV2 (mkV "stick" "sticks" "sticked" "sticked" "sticking") ;
+		stick_V2_Attaching = mkV2 (irregV "stick" "stuck" "stuck") ;
 		strap_V2_Attaching = mkV2 (mkV "strap" "straps" "strapped" "strapped" "strapping") ;
 		tack_V2_Attaching = mkV2 (mkV "tack" "tacks" "tacked" "tacked" "tacking") ;
 		tape_V2_Attaching = mkV2 (mkV "tape" "tapes" "taped" "taped" "taping") ;
 		tether_V2_Attaching = mkV2 (mkV "tether" "tethers" "tethered" "tethered" "tethering") ;
-		tie_V2_Attaching = mkV2 (mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"})) ;
+		tie_V2_Attaching = mkV2 (regV "tie") ;
 		untie_V2_Attaching = mkV2 (mkV "untie" "IRREG" "IRREG" "IRREG" "IRREG") ;
 		weld_V2_Attaching = mkV2 (mkV "weld" "welds" "welded" "welded" "welding") ;
 		yoke_V2_Attaching = mkV2 (mkV "yoke" "yokes" "yoked" "yoked" "yoking") ;
@@ -215,11 +216,13 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		bomb_V2_Attack = mkV2 (mkV "bomb" "bombs" "bombed" "bombed" "bombing") ;
 		raid_V2_Attack = mkV2 (mkV "raid" "raids" "raided" "raided" "raiding") ;
 		storm_V2_Attack = mkV2 (mkV "storm" "storms" "stormed" "stormed" "storming") ;
-		strike_V2_Attack = mkV2 (IrregEng.strike_V) ;
+		strike_V2_Attack = mkV2 (irregV "strike" "struck" "struck") ;
 
+		attempt_V_Attempt = mkV "attempt" "attempts" "attempted" "attempted" "attempting" ;
 		try_V_Attempt = mkV "try" "tries" "tried" "tried" "trying" ;
-		attempt_VV_Attempt = mkVV (mkV "attempt") ;
+		attempt_VV_Attempt = mkVV (mkV "attempt" "attempts" "attempted" "attempted" "attempting") ;
 		try_VV_Attempt = mkVV (mkV "try" "tries" "tried" "tried" "trying") ;
+		undertake_VV_Attempt = mkVV (mkV "under" IrregEng.take_V) ;
 
 		avoid_V2_Avoiding = mkV2 (mkV "avoid" "avoids" "avoided" "avoided" "avoiding") ;
 		dodge_V2_Avoiding = mkV2 (mkV "dodge" "dodges" "dodged" "dodged" "dodging") ;
@@ -232,93 +235,116 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		shun_V2_Avoiding = mkV2 (mkV "shun" "shuns" "shunned" "shunned" "shunning") ;
 		sidestep_V2_Avoiding = mkV2 (mkV "sidestep" "sidesteps" "sidestepped" "sidestepped" "sidestepping") ;
 		skirt_V2_Avoiding = mkV2 (mkV "skirt" "skirts" "skirted" "skirted" "skirting") ;
-		avoid_VV_Avoiding = ingVV (mkV "avoid" "avoids" "avoided" "avoided" "avoiding") ;
+		avoid_VV_Avoiding = mkVV (mkV "avoid" "avoids" "avoided" "avoided" "avoiding") ;
 		dodge_VV_Avoiding = mkVV (mkV "dodge" "dodges" "dodged" "dodged" "dodging") ;
 		duck_VV_Avoiding = mkVV (mkV "duck" "ducks" "ducked" "ducked" "ducking") ;
+		evade_VV_Avoiding = mkVV (mkV "evade" "evades" "evaded" "evaded" "evading") ;
+		shun_VV_Avoiding = mkVV (mkV "shun" "shuns" "shunned" "shunned" "shunning") ;
 		sidestep_VV_Avoiding = mkVV (mkV "sidestep" "sidesteps" "sidestepped" "sidestepped" "sidestepping") ;
 
 		believe_V_Awareness = mkV "believe" "believes" "believed" "believed" "believing" ;
+		comprehend_V_Awareness = mkV "comprehend" "comprehends" "comprehended" "comprehended" "comprehending" ;
 		conceive_V_Awareness = mkV "conceive" "conceives" "conceived" "conceived" "conceiving" ;
-		know_V_Awareness = mkV "know" "knows" "knew" "known" "knowing" ;
+		know_V_Awareness = irregV "know" "knew" "known" ;
 		presume_V_Awareness = mkV "presume" "presumes" "presumed" "presumed" "presuming" ;
-		think_V_Awareness = IrregEng.think_V ;
-		understand_V_Awareness = IrregEng.understand_V ;
+		suspect_V_Awareness = mkV "suspect" "suspects" "suspected" "suspected" "suspecting" ;
+		think_V_Awareness = irregV "think" "thought" "thought" ;
+		understand_V_Awareness = irregV "understand" "understood" "understood" ;
 		believe_V2_Awareness = mkV2 (mkV "believe" "believes" "believed" "believed" "believing") ;
 		comprehend_V2_Awareness = mkV2 (mkV "comprehend" "comprehends" "comprehended" "comprehended" "comprehending") ;
 		conceive_V2_Awareness = mkV2 (mkV "conceive" "conceives" "conceived" "conceived" "conceiving") ;
 		imagine_V2_Awareness = mkV2 (mkV "imagine" "imagines" "imagined" "imagined" "imagining") ;
-		know_V2_Awareness = mkV2 (mkV "know" "knows" "knew" "known" "knowing") ;
+		know_V2_Awareness = mkV2 (irregV "know" "knew" "known") ;
 		presume_V2_Awareness = mkV2 (mkV "presume" "presumes" "presumed" "presumed" "presuming") ;
 		suspect_V2_Awareness = mkV2 (mkV "suspect" "suspects" "suspected" "suspected" "suspecting") ;
-		think_V2_Awareness = mkV2 (IrregEng.think_V) ;
-		understand_V2_Awareness = mkV2 (IrregEng.understand_V) ;
+		think_V2_Awareness = mkV2 (irregV "think" "thought" "thought") ;
+		understand_V2_Awareness = mkV2 (irregV "understand" "understood" "understood") ;
 		believe_VS_Awareness = mkVS (mkV "believe" "believes" "believed" "believed" "believing") ;
+		comprehend_VS_Awareness = mkVS (mkV "comprehend" "comprehends" "comprehended" "comprehended" "comprehending") ;
 		conceive_VS_Awareness = mkVS (mkV "conceive" "conceives" "conceived" "conceived" "conceiving") ;
-		imagine_VS_Awareness = mkVS (mkV "imagine") ;
-		know_VS_Awareness = mkVS (mkV "know" "knows" "knew" "known" "knowing") ;
+		imagine_VS_Awareness = mkVS (mkV "imagine" "imagines" "imagined" "imagined" "imagining") ;
+		know_VS_Awareness = mkVS (irregV "know" "knew" "known") ;
 		presume_VS_Awareness = mkVS (mkV "presume" "presumes" "presumed" "presumed" "presuming") ;
 		reckon_VS_Awareness = mkVS (mkV "reckon" "reckons" "reckoned" "reckoned" "reckoning") ;
-		suspect_VS_Awareness = mkVS (mkV "suspect") ;
-		think_VS_Awareness = mkVS (IrregEng.think_V) ;
-		understand_VS_Awareness = mkVS (IrregEng.understand_V) ;
-		imagine_VV_Awareness = mkVV (mkV "imagine") ;
+		suspect_VS_Awareness = mkVS (mkV "suspect" "suspects" "suspected" "suspected" "suspecting") ;
+		think_VS_Awareness = mkVS (irregV "think" "thought" "thought") ;
+		understand_VS_Awareness = mkVS (irregV "understand" "understood" "understood") ;
+		imagine_VV_Awareness = mkVV (mkV "imagine" "imagines" "imagined" "imagined" "imagining") ;
 		reckon_VV_Awareness = mkVV (mkV "reckon" "reckons" "reckoned" "reckoned" "reckoning") ;
 
 		agree_V_Be_in_agreement_on_assessment = mkV "agree" ;
 		concur_V_Be_in_agreement_on_assessment = mkV "concur" "concurs" "concurred" "concurred" "concurring" ;
 
-		beat_V2_Beat_opponent = mkV2 (IrregEng.beat_V) ;
+		beat_V2_Beat_opponent = mkV2 (irregV "beat" "beat" "beaten") ;
 		defeat_V2_Beat_opponent = mkV2 (mkV "defeat" "defeats" "defeated" "defeated" "defeating") ;
 		demolish_V2_Beat_opponent = mkV2 (mkV "demolish" "demolishes" "demolished" "demolished" "demolishing") ;
 		rout_V2_Beat_opponent = mkV2 (mkV "rout" "routs" "routed" "routed" "routing") ;
 		trounce_V2_Beat_opponent = mkV2 (mkV "trounce" "trounces" "trounced" "trounced" "trouncing") ;
 
 		hush_V_Become_silent = mkV "hush" "hushes" "hushed" "hushed" "hushing" ;
+		hush_up_V_Become_silent = partV (mkV "hush" "hushes" "hushed" "hushed" "hushing") "up" ;
+		quiet_down_V_Become_silent = partV (mkV "quiet" "quiets" "quieted" "quieted" "quieting") "down" ;
 		quieten_V_Become_silent = mkV "quieten" "quietens" "quietened" "quietened" "quietening" ;
 		shush_V_Become_silent = mkV "shush" "shushes" "shushed" "shushed" "shushing" ;
+		shut_up_V_Become_silent = partV (irregDuplV "shut" "shut" "shut") "up" ;
 
-		become_V_Becoming = IrregEng.become_V ;
-		get_V_Becoming = IrregEng.get_V ;
-		go_V_Becoming = IrregEng.go_V ;
-		grow_V_Becoming = IrregEng.grow_V ;
-		turn_V_Becoming = mkV "turn" "turns" "turned" "turned" "turning" ;
+		become_V_Becoming = irregV "become" "became" "become" ;
+		end_up_V_Becoming = partV (mkV "end" "ends" "ended" "ended" "ending") "up" ;
+		get_V_Becoming = irregDuplV "get" "got" "gotten" ;
+		go_V_Becoming = mk5V "go" "goes" "went" "gone" "going" ;
+		grow_V_Becoming = irregV "grow" "grew" "grown" ;
+		turn_V_Becoming = regV "turn" ;
 
 		enlist_V_Becoming_a_member = mkV "enlist" "enlists" "enlisted" "enlisted" "enlisting" ;
 		enroll_V_Becoming_a_member = mkV "enroll" "enrolls" "enrolled" "enrolled" "enrolling" ;
 		join_V_Becoming_a_member = mkV "join" "joins" "joined" "joined" "joining" ;
 		join_V2_Becoming_a_member = mkV2 (mkV "join" "joins" "joined" "joined" "joining") ;
 
-		learn_V_Becoming_aware = mkV "learn" "learns" "learned" "learned" "learning" ;
+		discern_V_Becoming_aware = mkV "discern" "discerns" "discerned" "discerned" "discerning" ;
+		find_out_V_Becoming_aware = partV (irregV "find" "found" "found") "out" ;
+		learn_V_Becoming_aware = irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"}) ;
+		recognize_V_Becoming_aware = mkV "recognize" "recognizes" "recognized" "recognized" "recognizing" ;
 		spot_V_Becoming_aware = mkV "spot" "spots" "spotted" "spotted" "spotting" ;
-		tell_V_Becoming_aware = IrregEng.tell_V ;
+		tell_V_Becoming_aware = irregV "tell" "told" "told" ;
 		descry_V2_Becoming_aware = mkV2 (mkV "descry" "descries" "descried" "descried" "descrying") ;
 		detect_V2_Becoming_aware = mkV2 (mkV "detect" "detects" "detected" "detected" "detecting") ;
 		discern_V2_Becoming_aware = mkV2 (mkV "discern" "discerns" "discerned" "discerned" "discerning") ;
 		discover_V2_Becoming_aware = mkV2 (mkV "discover" "discovers" "discovered" "discovered" "discovering") ;
 		encounter_V2_Becoming_aware = mkV2 (mkV "encounter" "encounters" "encountered" "encountered" "encountering") ;
 		espy_V2_Becoming_aware = mkV2 (mkV "espy" "espies" "espied" "espied" "espying") ;
-		find_V2_Becoming_aware = mkV2 (IrregEng.find_V) ;
-		learn_V2_Becoming_aware = mkV2 (mkV "learn" "learns" "learned" "learned" "learning") ;
+		find_V2_Becoming_aware = mkV2 (irregV "find" "found" "found") ;
+		find_out_V2_Becoming_aware = mkV2 (partV (irregV "find" "found" "found") "out") ;
+		learn_V2_Becoming_aware = mkV2 (irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"})) ;
 		locate_V2_Becoming_aware = mkV2 (mkV "locate" "locates" "located" "located" "locating") ;
 		note_V2_Becoming_aware = mkV2 (mkV "note" "notes" "noted" "noted" "noting") ;
 		notice_V2_Becoming_aware = mkV2 (mkV "notice" "notices" "noticed" "noticed" "noticing") ;
 		perceive_V2_Becoming_aware = mkV2 (mkV "perceive" "perceives" "perceived" "perceived" "perceiving") ;
+		recognize_V2_Becoming_aware = mkV2 (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;
 		register_V2_Becoming_aware = mkV2 (mkV "register" "registers" "registered" "registered" "registering") ;
 		spot_V2_Becoming_aware = mkV2 (mkV "spot" "spots" "spotted" "spotted" "spotting") ;
-		locate_VQ_Becoming_aware = mkVQ (mkV "locate") ;
-		note_VQ_Becoming_aware = mkVQ (mkV "note") ;
+		discern_VQ_Becoming_aware = mkVQ (mkV "discern" "discerns" "discerned" "discerned" "discerning") ;
+		find_out_VQ_Becoming_aware = mkVQ (partV (irregV "find" "found" "found") "out") ;
+		locate_VQ_Becoming_aware = mkVQ (mkV "locate" "locates" "located" "located" "locating") ;
+		note_VQ_Becoming_aware = mkVQ (mkV "note" "notes" "noted" "noted" "noting") ;
 		notice_VQ_Becoming_aware = mkVQ (mkV "notice" "notices" "noticed" "noticed" "noticing") ;
+		perceive_VQ_Becoming_aware = mkVQ (mkV "perceive" "perceives" "perceived" "perceived" "perceiving") ;
+		recognize_VQ_Becoming_aware = mkVQ (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;
 		register_VQ_Becoming_aware = mkVQ (mkV "register" "registers" "registered" "registered" "registering") ;
 		spot_VQ_Becoming_aware = mkVQ (mkV "spot" "spots" "spotted" "spotted" "spotting") ;
+		tell_VQ_Becoming_aware = mkVQ (irregV "tell" "told" "told") ;
+		discern_VS_Becoming_aware = mkVS (mkV "discern" "discerns" "discerned" "discerned" "discerning") ;
 		discover_VS_Becoming_aware = mkVS (mkV "discover" "discovers" "discovered" "discovered" "discovering") ;
-		learn_VS_Becoming_aware = mkVS (mkV "learn" "learns" "learned" "learned" "learning") ;
-		note_VS_Becoming_aware = mkVS (mkV "note") ;
+		find_out_VS_Becoming_aware = mkVS (partV (irregV "find" "found" "found") "out") ;
+		learn_VS_Becoming_aware = mkVS (irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"})) ;
+		note_VS_Becoming_aware = mkVS (mkV "note" "notes" "noted" "noted" "noting") ;
 		notice_VS_Becoming_aware = mkVS (mkV "notice" "notices" "noticed" "noticed" "noticing") ;
-		perceive_VS_Becoming_aware = mkVS (mkV "perceive") ;
-		recognize_VS_Becoming_aware = mkVS (mkV "recognize") ;
+		perceive_VS_Becoming_aware = mkVS (mkV "perceive" "perceives" "perceived" "perceived" "perceiving") ;
+		recognize_VS_Becoming_aware = mkVS (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;
 		register_VS_Becoming_aware = mkVS (mkV "register" "registers" "registered" "registered" "registering") ;
 		spot_VS_Becoming_aware = mkVS (mkV "spot" "spots" "spotted" "spotted" "spotting") ;
+		tell_VS_Becoming_aware = mkVS (irregV "tell" "told" "told") ;
 
+		dehydrate_V_Becoming_dry = mkV "dehydrate" "dehydrates" "dehydrated" "dehydrated" "dehydrating" ;
 		dry_V_Becoming_dry = mkV "dry" "dries" "dried" "dried" "drying" ;
 
 		separate_V_Becoming_separated = mkV "separate" "separates" "separated" "separated" "separating" ;
@@ -327,19 +353,19 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		film_V2_Behind_the_scenes = mkV2 (mkV "film" "films" "filmed" "filmed" "filming") ;
 		produce_V2_Behind_the_scenes = mkV2 (mkV "produce" "produces" "produced" "produced" "producing") ;
 
-		stick_V_Being_attached = IrregEng.stick_V ;
+		stick_V_Being_attached = irregV "stick" "stuck" "stuck" ;
 
 		-- No target for Being_born
 
 		work_V_Being_employed = mkV "work" "works" "worked" "worked" "working" ;
 
-		sit_V_Being_located = IrregEng.sit_V ;
+		sit_V_Being_located = irregDuplV "sit" "sat" "sat" ;
 
 		besiege_V2_Besieging = mkV2 (mkV "besiege" "besieges" "besieged" "besieged" "besieging") ;
 
 		board_V2_Board_vehicle = mkV2 (mkV "board" "boards" "boarded" "boarded" "boarding") ;
 
-		bend_V_Body_movement = mkV "bend" "bends" "bended" "bended" "bending" ;
+		bend_V_Body_movement = irregV "bend" "bent" "bent" ;
 		blink_V_Body_movement = mkV "blink" "blinks" "blinked" "blinked" "blinking" ;
 		bob_V_Body_movement = mkV "bob" "bobs" "bobbed" "bobbed" "bobbing" ;
 		clap_V_Body_movement = mkV "clap" "claps" "clapped" "clapped" "clapping" ;
@@ -350,17 +376,18 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		flap_V_Body_movement = mkV "flap" "flaps" "flapped" "flapped" "flapping" ;
 		gnash_V_Body_movement = mkV "gnash" "gnashes" "gnashed" "gnashed" "gnashing" ;
 		jerk_V_Body_movement = mkV "jerk" "jerks" "jerked" "jerked" "jerking" ;
-		kneel_V_Body_movement = mkV "kneel" "kneels" "kneeled" "kneeled" "kneeling" ;
+		kneel_V_Body_movement = irregV "kneel" "knelt" "knelt" ;
 		nod_V_Body_movement = mkV "nod" "nods" "nodded" "nodded" "nodding" ;
 		pout_V_Body_movement = mkV "pout" "pouts" "pouted" "pouted" "pouting" ;
 		roll_V_Body_movement = mkV "roll" "rolls" "rolled" "rolled" "rolling" ;
-		shake_V_Body_movement = IrregEng.shake_V ;
+		shake_V_Body_movement = irregV "shake" "shook" "shaken" ;
 		shiver_V_Body_movement = mkV "shiver" "shivers" "shivered" "shivered" "shivering" ;
+		shrug_V_Body_movement = mkV "shrug" "shrugs" "shrugged" "shrugged" "shrugging" ;
 		shudder_V_Body_movement = mkV "shudder" "shudders" "shuddered" "shuddered" "shuddering" ;
 		shuffle_V_Body_movement = mkV "shuffle" "shuffles" "shuffled" "shuffled" "shuffling" ;
 		stamp_V_Body_movement = mkV "stamp" "stamps" "stamped" "stamped" "stamping" ;
 		stretch_V_Body_movement = mkV "stretch" "stretches" "stretched" "stretched" "stretching" ;
-		swing_V_Body_movement = IrregEng.swing_V ;
+		swing_V_Body_movement = irregV "swing" "swung" "swung" ;
 		toss_V_Body_movement = mkV "toss" "tosses" "tossed" "tossed" "tossing" ;
 		twitch_V_Body_movement = mkV "twitch" "twitches" "twitched" "twitched" "twitching" ;
 		wave_V_Body_movement = mkV "wave" "waves" "waved" "waved" "waving" ;
@@ -373,42 +400,45 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		boast_V_Bragging = mkV "boast" "boasts" "boasted" "boasted" "boasting" ;
 		brag_V_Bragging = mkV "brag" "brags" "bragged" "bragged" "bragging" ;
 
-		breathe_V2_Breathing = mkV2 (mkV "breathe" "breathes" "breathed" "breathed" "breathing") ;
+		breathe_V2_Breathing = mkV2 (regV "breathe") ;
 		exhale_V2_Breathing = mkV2 (mkV "exhale" "exhales" "exhaled" "exhaled" "exhaling") ;
 		inhale_V2_Breathing = mkV2 (mkV "inhale" "inhales" "inhaled" "inhaled" "inhaling") ;
 		puff_V2_Breathing = mkV2 (mkV "puff" "puffs" "puffed" "puffed" "puffing") ;
 		respire_V2_Breathing = mkV2 (mkV "respire" "respires" "respired" "respired" "respiring") ;
 
-		bring_V2_Bringing = mkV2 (IrregEng.bring_V) ;
+		bring_V2_Bringing = mkV2 (irregV "bring" "brought" "brought") ;
 		carry_V2_Bringing = mkV2 (mkV "carry" "carries" "carried" "carried" "carrying") ;
 		cart_V2_Bringing = mkV2 (mkV "cart" "carts" "carted" "carted" "carting") ;
 		convey_V2_Bringing = mkV2 (mkV "convey" "conveys" "conveyed" "conveyed" "conveying") ;
-		drive_V2_Bringing = mkV2 (IrregEng.drive_V) ;
+		drive_V2_Bringing = mkV2 (irregV "drive" "drove" "driven") ;
 		ferry_V2_Bringing = mkV2 (mkV "ferry" "ferries" "ferried" "ferried" "ferrying") ;
 		fetch_V2_Bringing = mkV2 (mkV "fetch" "fetches" "fetched" "fetched" "fetching") ;
-		fly_V2_Bringing = mkV2 (IrregEng.fly_V) ;
+		fly_V2_Bringing = mkV2 (irregV "fly" "flew" "flown") ;
 		haul_V2_Bringing = mkV2 (mkV "haul" "hauls" "hauled" "hauled" "hauling") ;
 		hump_V2_Bringing = mkV2 (mkV "hump" "humps" "humped" "humped" "humping") ;
 		jet_V2_Bringing = mkV2 (mkV "jet" "jets" "jetted" "jetted" "jetting") ;
 		lug_V2_Bringing = mkV2 (mkV "lug" "lugs" "lugged" "lugged" "lugging") ;
 		paddle_V2_Bringing = mkV2 (mkV "paddle" "paddles" "paddled" "paddled" "paddling") ;
-		take_V2_Bringing = mkV2 (IrregEng.take_V) ;
+		take_V2_Bringing = mkV2 (irregV "take" "took" "taken") ;
 		tote_V2_Bringing = mkV2 (mkV "tote" "totes" "toted" "toted" "toting") ;
 		transport_V2_Bringing = mkV2 (mkV "transport" "transports" "transported" "transported" "transporting") ;
 		trundle_V2_Bringing = mkV2 (mkV "trundle" "trundles" "trundled" "trundled" "trundling") ;
 		wheel_V2_Bringing = mkV2 (mkV "wheel" "wheels" "wheeled" "wheeled" "wheeling") ;
 
 		assemble_V2_Building = mkV2 (mkV "assemble" "assembles" "assembled" "assembled" "assembling") ;
-		build_V2_Building = mkV2 (IrregEng.build_V) ;
+		build_V2_Building = mkV2 (irregV "build" "built" "built") ;
 		construct_V2_Building = mkV2 (mkV "construct" "constructs" "constructed" "constructed" "constructing") ;
 		erect_V2_Building = mkV2 (mkV "erect" "erects" "erected" "erected" "erecting") ;
 		fashion_V2_Building = mkV2 (mkV "fashion" "fashions" "fashioned" "fashioned" "fashioning") ;
 		glue_V2_Building = mkV2 (mkV "glue" "IRREG" "IRREG" "IRREG" "IRREG") ;
-		make_V2_Building = mkV2 (IrregEng.make_V) ;
+		make_V2_Building = mkV2 (irregV "make" "made" "made") ;
+		piece_together_V2_Building = mkV2 (partV (mkV "piece" "pieces" "pieced" "pieced" "piecing") "together") ;
 
+		fuck_up_V_Bungling = partV (mkV "fuck" "fucks" "fucked" "fucked" "fucking") "up" ;
 		fumble_V_Bungling = mkV "fumble" "fumbles" "fumbled" "fumbled" "fumbling" ;
+		screw_up_V_Bungling = partV (mkV "screw" "screws" "screwed" "screwed" "screwing") "up" ;
 		ruin_V2_Bungling = mkV2 (mkV "ruin" "ruins" "ruined" "ruined" "ruining") ;
-		screw_up_V2_Bungling = mkV2 (partV (mkV "screw") "up") ;
+		screw_up_V2_Bungling = mkV2 (partV (mkV "screw" "screws" "screwed" "screwed" "screwing") "up") ;
 
 		carry_V2_Carry_goods = mkV2 (mkV "carry" "carries" "carried" "carried" "carrying") ;
 		stock_V2_Carry_goods = mkV2 (mkV "stock" "stocks" "stocked" "stocked" "stocking") ;
@@ -423,22 +453,25 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		pigeonhole_V2_Categorization = mkV2 (mkV "pigeonhole" "pigeonholes" "pigeonholed" "pigeonholed" "pigeonholing") ;
 		typecast_V2_Categorization = mkV2 (mkV "type" IrregEng.cast_V) ;
 
+		lead_V_Causation = irregV "lead" "led" "led" ;
+		bring_about_V2_Causation = mkV2 (partV (irregV "bring" "brought" "brought") "about") ;
 		cause_V2_Causation = mkV2 (mkV "cause" "causes" "caused" "caused" "causing") ;
 		induce_V2_Causation = mkV2 (mkV "induce" "induces" "induced" "induced" "inducing") ;
 		wreak_V2_Causation = mkV2 (mkV "wreak" "wreaks" "wreaked" "wreaked" "wreaking") ;
-		make_V2_Causation = mkV2 (IrregEng.make_V) ;
+		make_V2_Causation = mkV2 (irregV "make" "made" "made") ;
 		render_V2_Causation = mkV2 (mkV "render" "renders" "rendered" "rendered" "rendering") ;
-		bring_V2_Causation = mkV2 (IrregEng.bring_V) ;
+		bring_V2_Causation = mkV2 (irregV "bring" "brought" "brought") ;
 		precipitate_V2_Causation = mkV2 (mkV "precipitate" "precipitates" "precipitated" "precipitated" "precipitating") ;
-		bring_V2V_Causation = mkV2V (IrregEng.bring_V) noPrep to_Prep ;
-		make_V2V_Causation = mkV2V (IrregEng.make_V) noPrep noPrep ;
+		bring_V2V_Causation = mkV2V (irregV "bring" "brought" "brought") noPrep to_Prep ;
+		make_V2V_Causation = mkV2V (irregV "make" "made" "made") noPrep to_Prep ;
+		render_V2V_Causation = mkV2V (mkV "render" "renders" "rendered" "rendered" "rendering") noPrep to_Prep ;
 
 		alter_V2_Cause_change = mkV2 (mkV "alter" "alters" "altered" "altered" "altering") ;
 		change_V2_Cause_change = mkV2 (mkV "change" "changes" "changed" "changed" "changing") ;
 		convert_V2_Cause_change = mkV2 (mkV "convert" "converts" "converted" "converted" "converting") ;
 		modify_V2_Cause_change = mkV2 (mkV "modify" "modifies" "modified" "modified" "modifying") ;
 		transform_V2_Cause_change = mkV2 (mkV "transform" "transforms" "transformed" "transformed" "transforming") ;
-		turn_V2_Cause_change = mkV2 (mkV "turn" "turns" "turned" "turned" "turning") ;
+		turn_V2_Cause_change = mkV2 (regV "turn") ;
 		vary_V2_Cause_change = mkV2 (mkV "vary" "varies" "varied" "varied" "varying") ;
 
 		harden_V2_Cause_change_of_consistency = mkV2 (mkV "harden" "hardens" "hardened" "hardened" "hardening") ;
@@ -447,7 +480,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		thin_V2_Cause_change_of_consistency = mkV2 (mkV "thin" "thins" "thinned" "thinned" "thinning") ;
 
 		defrost_V2_Cause_change_of_phase = mkV2 (mkV "defrost" "defrosts" "defrosted" "defrosted" "defrosting") ;
-		freeze_V2_Cause_change_of_phase = mkV2 (IrregEng.freeze_V) ;
+		freeze_V2_Cause_change_of_phase = mkV2 (irregV "freeze" "froze" "frozen") ;
 		liquefy_V2_Cause_change_of_phase = mkV2 (mkV "liquefy" "liquefies" "liquefied" "liquefied" "liquefying") ;
 		melt_V2_Cause_change_of_phase = mkV2 (mkV "melt" "melts" "melted" "melted" "melting") ;
 		thaw_V2_Cause_change_of_phase = mkV2 (mkV "thaw" "thaws" "thawed" "thawed" "thawing") ;
@@ -468,22 +501,26 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		spray_V2_Cause_fluidic_motion = mkV2 (mkV "spray" "sprays" "sprayed" "sprayed" "spraying") ;
 		squirt_V2_Cause_fluidic_motion = mkV2 (mkV "squirt" "squirts" "squirted" "squirted" "squirting") ;
 
-		beat_V_Cause_harm = IrregEng.beat_V ;
-		cut_V_Cause_harm = IrregEng.cut_V ;
-		hit_V_Cause_harm = IrregEng.hit_V ;
+		beat_V_Cause_harm = irregV "beat" "beat" "beaten" ;
+		claw_V_Cause_harm = mkV "claw" "claws" "clawed" "clawed" "clawing" ;
+		cut_V_Cause_harm = irregDuplV "cut" "cut" "cut" ;
+		hit_V_Cause_harm = irregDuplV "hit" "hit" "hit" ;
 		jab_V_Cause_harm = mkV "jab" "jabs" "jabbed" "jabbed" "jabbing" ;
 		lash_V_Cause_harm = mkV "lash" "lashes" "lashed" "lashed" "lashing" ;
+		maim_V_Cause_harm = mkV "maim" "maims" "maimed" "maimed" "maiming" ;
+		punch_V_Cause_harm = mkV "punch" "punches" "punched" "punched" "punching" ;
+		slap_V_Cause_harm = mkV "slap" "slaps" "slapped" "slapped" "slapping" ;
 		smack_V_Cause_harm = mkV "smack" "smacks" "smacked" "smacked" "smacking" ;
 		stab_V_Cause_harm = mkV "stab" "stabs" "stabbed" "stabbed" "stabbing" ;
-		strike_V_Cause_harm = IrregEng.strike_V ;
+		strike_V_Cause_harm = irregV "strike" "struck" "struck" ;
 		bash_V2_Cause_harm = mkV2 (mkV "bash" "bashes" "bashed" "bashed" "bashing") ;
 		batter_V2_Cause_harm = mkV2 (mkV "batter" "batters" "battered" "battered" "battering") ;
-		beat_V2_Cause_harm = mkV2 (IrregEng.beat_V) ;
+		beat_V2_Cause_harm = mkV2 (irregV "beat" "beat" "beaten") ;
 		belt_V2_Cause_harm = mkV2 (mkV "belt" "belts" "belted" "belted" "belting") ;
 		bludgeon_V2_Cause_harm = mkV2 (mkV "bludgeon" "bludgeons" "bludgeoned" "bludgeoned" "bludgeoning") ;
 		boil_V2_Cause_harm = mkV2 (mkV "boil" "boils" "boiled" "boiled" "boiling") ;
 		bruise_V2_Cause_harm = mkV2 (mkV "bruise" "bruises" "bruised" "bruised" "bruising") ;
-		burn_V2_Cause_harm = mkV2 (mkV "burn" "burns" "burned" "burned" "burning") ;
+		burn_V2_Cause_harm = mkV2 (irregV "burn" (variants {"burned" ; "burnt"}) (variants {"burned" ; "burnt"})) ;
 		butt_V2_Cause_harm = mkV2 (mkV "butt" "butts" "butted" "butted" "butting") ;
 		cane_V2_Cause_harm = mkV2 (mkV "cane" "canes" "caned" "caned" "caning") ;
 		chop_V2_Cause_harm = mkV2 (mkV "chop" "chops" "chopped" "chopped" "chopping") ;
@@ -494,15 +531,15 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		crush_V2_Cause_harm = mkV2 (mkV "crush" "crushes" "crushed" "crushed" "crushing") ;
 		cudgel_V2_Cause_harm = mkV2 (mkV "cudgel" "cudgels" "cudgeled" "cudgeled" "cudgeling") ;
 		cuff_V2_Cause_harm = mkV2 (mkV "cuff" "cuffs" "cuffed" "cuffed" "cuffing") ;
-		cut_V2_Cause_harm = mkV2 (IrregEng.cut_V) ;
+		cut_V2_Cause_harm = mkV2 (irregDuplV "cut" "cut" "cut") ;
 		elbow_V2_Cause_harm = mkV2 (mkV "elbow" "elbows" "elbowed" "elbowed" "elbowing") ;
 		electrocute_V2_Cause_harm = mkV2 (mkV "electrocute" "electrocutes" "electrocuted" "electrocuted" "electrocuting") ;
 		flagellate_V2_Cause_harm = mkV2 (mkV "flagellate" "flagellates" "flagellated" "flagellated" "flagellating") ;
 		flog_V2_Cause_harm = mkV2 (mkV "flog" "flogs" "flogged" "flogged" "flogging") ;
 		hammer_V2_Cause_harm = mkV2 (mkV "hammer" "hammers" "hammered" "hammered" "hammering") ;
-		hit_V2_Cause_harm = mkV2 (IrregEng.hit_V) ;
+		hit_V2_Cause_harm = mkV2 (irregDuplV "hit" "hit" "hit") ;
 		horsewhip_V2_Cause_harm = mkV2 (mkV "horsewhip" "horsewhips" "horsewhipped" "horsewhipped" "horsewhipping") ;
-		hurt_V2_Cause_harm = mkV2 (IrregEng.hurt_V) ;
+		hurt_V2_Cause_harm = mkV2 (irregV "hurt" "hurt" "hurt") ;
 		impale_V2_Cause_harm = mkV2 (mkV "impale" "impales" "impaled" "impaled" "impaling") ;
 		injure_V2_Cause_harm = mkV2 (mkV "injure" "injures" "injured" "injured" "injuring") ;
 		jab_V2_Cause_harm = mkV2 (mkV "jab" "jabs" "jabbed" "jabbed" "jabbing") ;
@@ -524,7 +561,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		squash_V2_Cause_harm = mkV2 (mkV "squash" "squashes" "squashed" "squashed" "squashing") ;
 		stab_V2_Cause_harm = mkV2 (mkV "stab" "stabs" "stabbed" "stabbed" "stabbing") ;
 		stone_V2_Cause_harm = mkV2 (mkV "stone" "stones" "stoned" "stoned" "stoning") ;
-		strike_V2_Cause_harm = mkV2 (IrregEng.strike_V) ;
+		strike_V2_Cause_harm = mkV2 (irregV "strike" "struck" "struck") ;
 		torture_V2_Cause_harm = mkV2 (mkV "torture" "tortures" "tortured" "tortured" "torturing") ;
 		whip_V2_Cause_harm = mkV2 (mkV "whip" "whips" "whipped" "whipped" "whipping") ;
 
@@ -537,32 +574,33 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		clatter_V2_Cause_impact = mkV2 (mkV "clatter" "clatters" "clattered" "clattered" "clattering") ;
 		click_V2_Cause_impact = mkV2 (mkV "click" "clicks" "clicked" "clicked" "clicking") ;
 		clink_V2_Cause_impact = mkV2 (mkV "clink" "clinks" "clinked" "clinked" "clinking") ;
-		hit_V2_Cause_impact = mkV2 (IrregEng.hit_V) ;
+		hit_V2_Cause_impact = mkV2 (irregDuplV "hit" "hit" "hit") ;
 		jab_V2_Cause_impact = mkV2 (mkV "jab" "jabs" "jabbed" "jabbed" "jabbing") ;
 		ram_V2_Cause_impact = mkV2 (mkV "ram" "rams" "rammed" "rammed" "ramming") ;
 		rap_V2_Cause_impact = mkV2 (mkV "rap" "raps" "rapped" "rapped" "rapping") ;
 		rattle_V2_Cause_impact = mkV2 (mkV "rattle" "rattles" "rattled" "rattled" "rattling") ;
-		run_V2_Cause_impact = mkV2 (IrregEng.run_V) ;
+		run_V2_Cause_impact = mkV2 (irregDuplV "run" "ran" "run") ;
 		slam_V2_Cause_impact = mkV2 (mkV "slam" "slams" "slammed" "slammed" "slamming") ;
 		slap_V2_Cause_impact = mkV2 (mkV "slap" "slaps" "slapped" "slapped" "slapping") ;
 		smack_V2_Cause_impact = mkV2 (mkV "smack" "smacks" "smacked" "smacked" "smacking") ;
-		strike_V2_Cause_impact = mkV2 (IrregEng.strike_V) ;
+		strike_V2_Cause_impact = mkV2 (irregV "strike" "struck" "struck") ;
 		thump_V2_Cause_impact = mkV2 (mkV "thump" "thumps" "thumped" "thumped" "thumping") ;
 		clash_V2_Cause_impact = mkV2 (mkV "clash" "clashes" "clashed" "clashed" "clashing") ;
 		rustle_V2_Cause_impact = mkV2 (mkV "rustle" "rustles" "rustled" "rustled" "rustling") ;
 
-		fling_V_Cause_motion = IrregEng.fling_V ;
+		fling_V_Cause_motion = irregV "fling" "flung" "flung" ;
+		hurl_V_Cause_motion = mkV "hurl" "hurls" "hurled" "hurled" "hurling" ;
 		press_V_Cause_motion = mkV "press" "presses" "pressed" "pressed" "pressing" ;
-		push_V_Cause_motion = mkV "push" "pushes" "pushed" "pushed" "pushing" ;
-		thrust_V_Cause_motion = IrregEng.thrust_V ;
+		push_V_Cause_motion = regV "push" ;
+		thrust_V_Cause_motion = irregV "thrust" "thrust" "thrust" ;
 		toss_V_Cause_motion = mkV "toss" "tosses" "tossed" "tossed" "tossing" ;
 		chuck_V2_Cause_motion = mkV2 (mkV "chuck" "chucks" "chucked" "chucked" "chucking") ;
-		fling_V2_Cause_motion = mkV2 (IrregEng.fling_V) ;
+		fling_V2_Cause_motion = mkV2 (irregV "fling" "flung" "flung") ;
 		hurl_V2_Cause_motion = mkV2 (mkV "hurl" "hurls" "hurled" "hurled" "hurling") ;
 		press_V2_Cause_motion = mkV2 (mkV "press" "presses" "pressed" "pressed" "pressing") ;
 		propel_V2_Cause_motion = mkV2 (mkV "propel" "propels" "propelled" "propelled" "propelling") ;
-		push_V2_Cause_motion = mkV2 (mkV "push" "pushes" "pushed" "pushed" "pushing") ;
-		throw_V2_Cause_motion = mkV2 (IrregEng.throw_V) ;
+		push_V2_Cause_motion = mkV2 (regV "push") ;
+		throw_V2_Cause_motion = mkV2 (irregV "throw" "threw" "thrown") ;
 		tug_V2_Cause_motion = mkV2 (mkV "tug" "tugs" "tugged" "tugged" "tugging") ;
 		catapult_V2_Cause_motion = mkV2 (mkV "catapult" "catapults" "catapulted" "catapulted" "catapulting") ;
 		drag_V2_Cause_motion = mkV2 (mkV "drag" "drags" "dragged" "dragged" "dragging") ;
@@ -570,11 +608,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		nudge_V2_Cause_motion = mkV2 (mkV "nudge" "nudges" "nudged" "nudged" "nudging") ;
 		pitch_V2_Cause_motion = mkV2 (mkV "pitch" "pitches" "pitched" "pitched" "pitching") ;
 		shove_V2_Cause_motion = mkV2 (mkV "shove" "shoves" "shoved" "shoved" "shoving") ;
-		thrust_V2_Cause_motion = mkV2 (IrregEng.thrust_V) ;
+		thrust_V2_Cause_motion = mkV2 (irregV "thrust" "thrust" "thrust") ;
 		toss_V2_Cause_motion = mkV2 (mkV "toss" "tosses" "tossed" "tossed" "tossing") ;
 		yank_V2_Cause_motion = mkV2 (mkV "yank" "yanks" "yanked" "yanked" "yanking") ;
+		hurl_V3_Cause_motion = mkV3 (mkV "hurl" "hurls" "hurled" "hurled" "hurling") ;
 		press_V3_Cause_motion = mkV3 (mkV "press" "presses" "pressed" "pressed" "pressing") ;
-		thrust_V3_Cause_motion = mkV3 (IrregEng.thrust_V) ;
+		thrust_V3_Cause_motion = mkV3 (irregV "thrust" "thrust" "thrust") ;
 		tug_V3_Cause_motion = mkV3 (mkV "tug" "tugs" "tugged" "tugged" "tugging") ;
 
 		amalgamate_V2_Cause_to_amalgamate = mkV2 (mkV "amalgamate" "amalgamates" "amalgamated" "amalgamated" "amalgamating") ;
@@ -590,8 +629,11 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dehydrate_V2_Cause_to_be_dry = mkV2 (mkV "dehydrate" "dehydrates" "dehydrated" "dehydrated" "dehydrating") ;
 		desiccate_V2_Cause_to_be_dry = mkV2 (mkV "desiccate" "desiccates" "desiccated" "desiccated" "desiccating") ;
 		dry_V2_Cause_to_be_dry = mkV2 (mkV "dry" "dries" "dried" "dried" "drying") ;
+		dry_off_V2_Cause_to_be_dry = mkV2 (partV (mkV "dry" "dries" "dried" "dried" "drying") "off") ;
+		dry_out_V2_Cause_to_be_dry = mkV2 (partV (mkV "dry" "dries" "dried" "dried" "drying") "out") ;
+		dry_up_V2_Cause_to_be_dry = mkV2 (partV (mkV "dry" "dries" "dried" "dried" "drying") "up") ;
 
-		add_V2_Cause_to_be_included = mkV2 (mkV "add") ;
+		add_V2_Cause_to_be_included = mkV2 (regV "add") ;
 
 		sharpen_V2_Cause_to_be_sharp = mkV2 (mkV "sharpen" "sharpens" "sharpened" "sharpened" "sharpening") ;
 
@@ -604,7 +646,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		souse_V2_Cause_to_be_wet = mkV2 (mkV "souse" "souses" "soused" "soused" "sousing") ;
 		wet_V2_Cause_to_be_wet = mkV2 (mkV "wet" "wets" "wetted" "wetted" "wetting") ;
 
-		keep_VV_Cause_to_continue = ingVV (IrregEng.keep_V) ;
+		keep_VV_Cause_to_continue = mkVV (irregV "keep" "kept" "kept") ;
 
 		end_V2_Cause_to_end = mkV2 (mkV "end" "ends" "ended" "ended" "ending") ;
 		lift_V2_Cause_to_end = mkV2 (mkV "lift" "lifts" "lifted" "lifted" "lifting") ;
@@ -612,18 +654,20 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		terrorize_V2_Cause_to_experience = mkV2 (mkV "terrorize" "terrorizes" "terrorized" "terrorized" "terrorizing") ;
 		torment_V2_Cause_to_experience = mkV2 (mkV "torment" "torments" "tormented" "tormented" "tormenting") ;
 
-		break_V2_Cause_to_fragment = mkV2 (IrregEng.break_V) ;
+		break_V2_Cause_to_fragment = mkV2 (irregV "break" "broke" "broken") ;
 		cleave_V2_Cause_to_fragment = mkV2 (mkV "cleave" "cleaves" "cleaved" "cleaved" "cleaving") ;
 		fracture_V2_Cause_to_fragment = mkV2 (mkV "fracture" "fractures" "fractured" "fractured" "fracturing") ;
 		fragment_V2_Cause_to_fragment = mkV2 (mkV "fragment" "fragments" "fragmented" "fragmented" "fragmenting") ;
-		rend_V2_Cause_to_fragment = mkV2 (mkV "rend" "IRREG" "IRREG" "IRREG" "IRREG") ;
+		rend_V2_Cause_to_fragment = mkV2 (mkV "rend") ;
 		rip_V2_Cause_to_fragment = mkV2 (mkV "rip" "rips" "ripped" "ripped" "ripping") ;
+		rip_up_V2_Cause_to_fragment = mkV2 (partV (mkV "rip" "rips" "ripped" "ripped" "ripping") "up") ;
 		shatter_V2_Cause_to_fragment = mkV2 (mkV "shatter" "shatters" "shattered" "shattered" "shattering") ;
 		shred_V2_Cause_to_fragment = mkV2 (mkV "shred" "shreds" "shredded" "shredded" "shredding") ;
 		smash_V2_Cause_to_fragment = mkV2 (mkV "smash" "smashes" "smashed" "smashed" "smashing") ;
 		snap_V2_Cause_to_fragment = mkV2 (mkV "snap" "snaps" "snapped" "snapped" "snapping") ;
 		splinter_V2_Cause_to_fragment = mkV2 (mkV "splinter" "splinters" "splintered" "splintered" "splintering") ;
-		tear_V2_Cause_to_fragment = mkV2 (IrregEng.tear_V) ;
+		tear_V2_Cause_to_fragment = mkV2 (irregV "tear" "tore" "torn") ;
+		tear_up_V2_Cause_to_fragment = mkV2 (partV (irregV "tear" "tore" "torn") "up") ;
 
 		blast_V2_Cause_to_make_noise = mkV2 (mkV "blast" "blasts" "blasted" "blasted" "blasting") ;
 		creak_V2_Cause_to_make_noise = mkV2 (mkV "creak" "creaks" "creaked" "creaked" "creaking") ;
@@ -637,12 +681,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		rotate_V2_Cause_to_move_in_place = mkV2 (mkV "rotate" "rotates" "rotated" "rotated" "rotating") ;
 		seesaw_V2_Cause_to_move_in_place = mkV2 (mkV "seesaw" "seesaws" "seesawed" "seesawed" "seesawing") ;
-		shake_V2_Cause_to_move_in_place = mkV2 (IrregEng.shake_V) ;
-		turn_V2_Cause_to_move_in_place = mkV2 (mkV "turn" "turns" "turned" "turned" "turning") ;
+		shake_V2_Cause_to_move_in_place = mkV2 (irregV "shake" "shook" "shaken") ;
+		turn_V2_Cause_to_move_in_place = mkV2 (regV "turn") ;
 		twirl_V2_Cause_to_move_in_place = mkV2 (mkV "twirl" "twirls" "twirled" "twirled" "twirling") ;
 		vibrate_V2_Cause_to_move_in_place = mkV2 (mkV "vibrate" "vibrates" "vibrated" "vibrated" "vibrating") ;
 
-		show_V2_Cause_to_perceive = mkV2 IrregEng.show_V ;
+		show_V2_Cause_to_perceive = mkV2 (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 
 		reinstate_V2_Cause_to_resume = mkV2 (mkV "reinstate" "reinstates" "reinstated" "reinstated" "reinstating") ;
 
@@ -654,15 +698,17 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		awaken_V2_Cause_to_wake = mkV2 (mkV "awaken" "awakens" "awakened" "awakened" "awakening") ;
 		rouse_V2_Cause_to_wake = mkV2 (mkV "rouse" "rouses" "roused" "roused" "rousing") ;
-		wake_V2_Cause_to_wake = mkV2 (mkV "wake" "wakes" "waked" "waked" "waking") ;
+		wake_V2_Cause_to_wake = mkV2 (irregV "wake" "woke" "woken") ;
+		wake_up_V2_Cause_to_wake = mkV2 (partV (irregV "wake" "woke" "woken") "up") ;
 
 		disappear_V_Ceasing_to_be = mkV "disappear" "disappears" "disappeared" "disappeared" "disappearing" ;
 
-		doubt_VS_Certainty = mkVS (mkV "doubt") ;
-		know_VS_Certainty = mkVS (mkV "know" "knows" "knew" "known" "knowing") ;
+		doubt_V_Certainty = mkV "doubt" "doubts" "doubted" "doubted" "doubting" ;
+		doubt_VS_Certainty = mkVS (mkV "doubt" "doubts" "doubted" "doubted" "doubting") ;
+		know_VS_Certainty = mkVS (irregV "know" "knew" "known") ;
 
-		bear_V_Change_direction = IrregEng.bear_V ;
-		swing_V_Change_direction = IrregEng.swing_V ;
+		bear_V_Change_direction = irregV "bear" "bore" "born" ;
+		swing_V_Change_direction = irregV "swing" "swung" "swung" ;
 		veer_V_Change_direction = mkV "veer" "veers" "veered" "veered" "veering" ;
 
 		prolong_V2_Change_event_duration = mkV2 (mkV "prolong" "prolongs" "prolonged" "prolonged" "prolonging") ;
@@ -682,8 +728,9 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		thicken_V_Change_of_consistency = mkV "thicken" "thickens" "thickened" "thickened" "thickening" ;
 
 		condense_V_Change_of_phase = mkV "condense" "condenses" "condensed" "condensed" "condensing" ;
+		defrost_V_Change_of_phase = mkV "defrost" "defrosts" "defrosted" "defrosted" "defrosting" ;
 		evaporate_V_Change_of_phase = mkV "evaporate" "evaporates" "evaporated" "evaporated" "evaporating" ;
-		freeze_V_Change_of_phase = IrregEng.freeze_V ;
+		freeze_V_Change_of_phase = irregV "freeze" "froze" "frozen" ;
 		liquefy_V_Change_of_phase = mkV "liquefy" "liquefies" "liquefied" "liquefied" "liquefying" ;
 		melt_V_Change_of_phase = mkV "melt" "melts" "melted" "melted" "melting" ;
 		solidify_V_Change_of_phase = mkV "solidify" "solidifies" "solidified" "solidified" "solidifying" ;
@@ -704,39 +751,48 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dwindle_V_Change_position_on_a_scale = mkV "dwindle" "dwindles" "dwindled" "dwindled" "dwindling" ;
 		edge_V_Change_position_on_a_scale = mkV "edge" "edges" "edged" "edged" "edging" ;
 		explode_V_Change_position_on_a_scale = mkV "explode" "explodes" "exploded" "exploded" "exploding" ;
-		fall_V_Change_position_on_a_scale = IrregEng.fall_V ;
+		fall_V_Change_position_on_a_scale = irregV "fall" "fell" "fallen" ;
 		fluctuate_V_Change_position_on_a_scale = mkV "fluctuate" "fluctuates" "fluctuated" "fluctuated" "fluctuating" ;
-		grow_V_Change_position_on_a_scale = IrregEng.grow_V ;
+		grow_V_Change_position_on_a_scale = irregV "grow" "grew" "grown" ;
 		increase_V_Change_position_on_a_scale = mkV "increase" "increases" "increased" "increased" "increasing" ;
-		jump_V_Change_position_on_a_scale = mkV "jump" "jumps" "jumped" "jumped" "jumping" ;
+		jump_V_Change_position_on_a_scale = regV "jump" ;
 		mushroom_V_Change_position_on_a_scale = mkV "mushroom" "mushrooms" "mushroomed" "mushroomed" "mushrooming" ;
 		plummet_V_Change_position_on_a_scale = mkV "plummet" "plummets" "plummeted" "plummeted" "plummeting" ;
 		reach_V_Change_position_on_a_scale = mkV "reach" "reaches" "reached" "reached" "reaching" ;
-		rise_V_Change_position_on_a_scale = IrregEng.rise_V ;
+		rise_V_Change_position_on_a_scale = irregV "rise" "rose" "risen" ;
 		rocket_V_Change_position_on_a_scale = mkV "rocket" "rockets" "rocketed" "rocketed" "rocketing" ;
 		skyrocket_V_Change_position_on_a_scale = mkV "skyrocket" "skyrockets" "skyrocketed" "skyrocketed" "skyrocketing" ;
-		slide_V_Change_position_on_a_scale = IrregEng.slide_V ;
+		slide_V_Change_position_on_a_scale = irregV "slide" "slid" "slid" ;
 		soar_V_Change_position_on_a_scale = mkV "soar" "soars" "soared" "soared" "soaring" ;
-		swing_V_Change_position_on_a_scale = IrregEng.swing_V ;
+		swing_V_Change_position_on_a_scale = irregV "swing" "swung" "swung" ;
 		triple_V_Change_position_on_a_scale = mkV "triple" "triples" "tripled" "tripled" "tripling" ;
 		tumble_V_Change_position_on_a_scale = mkV "tumble" "tumbles" "tumbled" "tumbled" "tumbling" ;
 		gain_V_Change_position_on_a_scale = mkV "gain" "gains" "gained" "gained" "gaining" ;
 
-		bend_V_Change_posture = mkV "bend" "bends" "bended" "bended" "bending" ;
+		bend_V_Change_posture = irregV "bend" "bent" "bent" ;
 		crouch_V_Change_posture = mkV "crouch" "crouches" "crouched" "crouched" "crouching" ;
+		crouch_down_V_Change_posture = partV (mkV "crouch" "crouches" "crouched" "crouched" "crouching") "down" ;
 		drop_V_Change_posture = mkV "drop" "drops" "dropped" "dropped" "dropping" ;
 		huddle_V_Change_posture = mkV "huddle" "huddles" "huddled" "huddled" "huddling" ;
-		kneel_V_Change_posture = mkV "kneel" "kneels" "kneeled" "kneeled" "kneeling" ;
+		hunch_V_Change_posture = mkV "hunch" "hunches" "hunched" "hunched" "hunching" ;
+		hunch_up_V_Change_posture = partV (mkV "hunch" "hunches" "hunched" "hunched" "hunching") "up" ;
+		kneel_V_Change_posture = irregV "kneel" "knelt" "knelt" ;
+		kneel_down_V_Change_posture = partV (irregV "kneel" "knelt" "knelt") "down" ;
+		kneel_up_V_Change_posture = partV (irregV "kneel" "knelt" "knelt") "up" ;
 		lean_V_Change_posture = mkV "lean" "leans" "leaned" "leaned" "leaning" ;
-		lie_down_V_Change_posture = partV IrregEng.lie_V "down" ;
-		rise_V_Change_posture = IrregEng.rise_V ;
-		sit_V_Change_posture = IrregEng.sit_V ;
-		sit_up_V_Change_posture = partV (mkV "sit") "up" ;
+		lie_V_Change_posture = irregV "lie" "lay" "lain" ;
+		lie_down_V_Change_posture = partV (irregV "lie" "lay" "lain") "down" ;
+		rise_V_Change_posture = irregV "rise" "rose" "risen" ;
+		sit_V_Change_posture = irregDuplV "sit" "sat" "sat" ;
+		sit_down_V_Change_posture = partV (irregDuplV "sit" "sat" "sat") "down" ;
+		sit_up_V_Change_posture = partV (irregDuplV "sit" "sat" "sat") "up" ;
 		slouch_V_Change_posture = mkV "slouch" "slouches" "slouched" "slouched" "slouching" ;
 		sprawl_V_Change_posture = mkV "sprawl" "sprawls" "sprawled" "sprawled" "sprawling" ;
+		sprawl_out_V_Change_posture = partV (mkV "sprawl" "sprawls" "sprawled" "sprawled" "sprawling") "out" ;
 		squat_V_Change_posture = mkV "squat" "squats" "squatted" "squatted" "squatting" ;
-		stand_V_Change_posture = IrregEng.stand_V ;
-		stand_up_V_Change_posture = partV IrregEng.stand_V "up" ;
+		squat_down_V_Change_posture = partV (mkV "squat" "squats" "squatted" "squatted" "squatting") "down" ;
+		stand_V_Change_posture = irregV "stand" "stood" "stood" ;
+		stand_up_V_Change_posture = partV (irregV "stand" "stood" "stood") "up" ;
 		stoop_V_Change_posture = mkV "stoop" "stoops" "stooped" "stooped" "stooping" ;
 
 		transfer_V_Change_tool = mkV "transfer" "transfers" "transferred" "transferred" "transferring" ;
@@ -745,10 +801,10 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		converse_V_Chatting = mkV "converse" "converses" "conversed" "conversed" "conversing" ;
 		gossip_V_Chatting = mkV "gossip" "gossips" "gossiped" "gossiped" "gossiping" ;
 		joke_V_Chatting = mkV "joke" "jokes" "joked" "joked" "joking" ;
-		speak_V_Chatting = IrregEng.speak_V ;
-		talk_V_Chatting = mkV "talk" "talks" "talked" "talked" "talking" ;
+		speak_V_Chatting = irregV "speak" "spoke" "spoken" ;
+		talk_V_Chatting = regV "talk" ;
 
-		choose_V2_Choosing = mkV2 (IrregEng.choose_V) ;
+		choose_V2_Choosing = mkV2 (irregV "choose" "chose" "chosen") ;
 		pick_V2_Choosing = mkV2 (mkV "pick" "picks" "picked" "picked" "picking") ;
 
 		claim_V2_Claim_ownership = mkV2 (mkV "claim" "claims" "claimed" "claimed" "claiming") ;
@@ -761,7 +817,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		cap_V2_Closure = mkV2 (mkV "cap" "caps" "capped" "capped" "capping") ;
 		lace_V2_Closure = mkV2 (mkV "lace" "laces" "laced" "laced" "lacing") ;
 		seal_V2_Closure = mkV2 (mkV "seal" "seals" "sealed" "sealed" "sealing") ;
-		tie_V2_Closure = mkV2 (mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"})) ;
+		tie_V2_Closure = mkV2 (regV "tie") ;
 		unbuckle_V2_Closure = mkV2 (mkV "unbuckle" "unbuckles" "unbuckled" "unbuckled" "unbuckling") ;
 		uncork_V2_Closure = mkV2 (mkV "uncork" "uncorks" "uncorked" "uncorked" "uncorking") ;
 		unfasten_V2_Closure = mkV2 (mkV "unfasten" "unfastens" "unfastened" "unfastened" "unfastening") ;
@@ -771,7 +827,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		consider_V_Cogitation = mkV "consider" "considers" "considered" "considered" "considering" ;
 		contemplate_V_Cogitation = mkV "contemplate" "contemplates" "contemplated" "contemplated" "contemplating" ;
 		deliberate_V_Cogitation = mkV "deliberate" "deliberates" "deliberated" "deliberated" "deliberating" ;
-		dwell_V_Cogitation = variants {mkV "dwell" "dwells" "dwelt" "dwelt" "dwelling"; mkV "dwell" "dwells" "dwelled" "dwelled" "dwelling"} ;
+		dwell_V_Cogitation = mkV "dwell" "dwells" "dwelt" "dwelt" "dwelling" ;
 		meditate_V_Cogitation = mkV "meditate" "meditates" "meditated" "meditated" "meditating" ;
 		muse_V_Cogitation = mkV "muse" "muses" "mused" "mused" "musing" ;
 		ponder_V_Cogitation = mkV "ponder" "ponders" "pondered" "pondered" "pondering" ;
@@ -780,18 +836,23 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		consider_VQ_Cogitation = mkVQ (mkV "consider" "considers" "considered" "considered" "considering") ;
 		contemplate_VQ_Cogitation = mkVQ (mkV "contemplate" "contemplates" "contemplated" "contemplated" "contemplating") ;
 		meditate_VQ_Cogitation = mkVQ (mkV "meditate" "meditates" "meditated" "meditated" "meditating") ;
+		mull_over_VQ_Cogitation = mkVQ (partV (mkV "mull" "mulls" "mulled" "mulled" "mulling") "over") ;
 		ponder_VQ_Cogitation = mkVQ (mkV "ponder" "ponders" "pondered" "pondered" "pondering") ;
 		reflect_VQ_Cogitation = mkVQ (mkV "reflect" "reflects" "reflected" "reflected" "reflecting") ;
 		contemplate_VS_Cogitation = mkVS (mkV "contemplate" "contemplates" "contemplated" "contemplated" "contemplating") ;
 		deliberate_VS_Cogitation = mkVS (mkV "deliberate" "deliberates" "deliberated" "deliberated" "deliberating") ;
+		mull_over_VS_Cogitation = mkVS (partV (mkV "mull" "mulls" "mulled" "mulled" "mulling") "over") ;
 		muse_VS_Cogitation = mkVS (mkV "muse" "muses" "mused" "mused" "musing") ;
 		reflect_VS_Cogitation = mkVS (mkV "reflect" "reflects" "reflected" "reflected" "reflecting") ;
 
 		collaborate_V_Collaboration = mkV "collaborate" "collaborates" "collaborated" "collaborated" "collaborating" ;
 		conspire_V_Collaboration = mkV "conspire" "conspires" "conspired" "conspired" "conspiring" ;
+		partner_V_Collaboration = mkV "partner" "partners" "partnered" "partnered" "partnering" ;
+		team_up_V_Collaboration = partV (mkV "team" "teams" "teamed" "teamed" "teaming") "up" ;
 
-		meet_V_Come_together = IrregEng.meet_V ;
-		meet_V2_Come_together = mkV2 (IrregEng.meet_V) ;
+		come_together_V_Come_together = partV (irregV "come" "came" "come") "together" ;
+		meet_V_Come_together = irregV "meet" "met" "met" ;
+		meet_V2_Come_together = mkV2 (irregV "meet" "met" "met") ;
 
 		appear_V_Coming_to_be = mkV "appear" "appears" "appeared" "appeared" "appearing" ;
 		arise_V_Coming_to_be = mkV "a" IrregEng.rise_V ;
@@ -803,24 +864,28 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		ascertain_V2_Coming_to_believe = mkV2 (mkV "ascertain" "ascertains" "ascertained" "ascertained" "ascertaining") ;
 		conclude_V2_Coming_to_believe = mkV2 (mkV "conclude" "concludes" "concluded" "concluded" "concluding") ;
 		deduce_V2_Coming_to_believe = mkV2 (mkV "deduce" "deduces" "deduced" "deduced" "deducing") ;
-		find_V2_Coming_to_believe = mkV2 (IrregEng.find_V) ;
+		find_V2_Coming_to_believe = mkV2 (irregV "find" "found" "found") ;
 		guess_V2_Coming_to_believe = mkV2 (mkV "guess" "guesses" "guessed" "guessed" "guessing") ;
 		infer_V2_Coming_to_believe = mkV2 (mkV "infer" "infers" "inferred" "inferred" "inferring") ;
-		learn_V2_Coming_to_believe = mkV2 (mkV "learn" "learns" "learned" "learned" "learning") ;
+		learn_V2_Coming_to_believe = mkV2 (irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"})) ;
 		realize_V2_Coming_to_believe = mkV2 (mkV "realize" "realizes" "realized" "realized" "realizing") ;
 		surmise_V2_Coming_to_believe = mkV2 (mkV "surmise" "surmises" "surmised" "surmised" "surmising") ;
+		ascertain_VS_Coming_to_believe = mkVS (mkV "ascertain" "ascertains" "ascertained" "ascertained" "ascertaining") ;
 		conclude_VS_Coming_to_believe = mkVS (mkV "conclude" "concludes" "concluded" "concluded" "concluding") ;
-		find_VS_Coming_to_believe = mkVS (IrregEng.find_V) ;
+		deduce_VS_Coming_to_believe = mkVS (mkV "deduce" "deduces" "deduced" "deduced" "deducing") ;
+		find_VS_Coming_to_believe = mkVS (irregV "find" "found" "found") ;
 		guess_VS_Coming_to_believe = mkVS (mkV "guess" "guesses" "guessed" "guessed" "guessing") ;
-		learn_VS_Coming_to_believe = mkVS (mkV "learn" "learns" "learned" "learned" "learning") ;
-		realize_VS_Coming_to_believe = mkVS (mkV "realize") ;
+		infer_VS_Coming_to_believe = mkVS (mkV "infer" "infers" "inferred" "inferred" "inferring") ;
+		learn_VS_Coming_to_believe = mkVS (irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"})) ;
+		realize_VS_Coming_to_believe = mkVS (mkV "realize" "realizes" "realized" "realized" "realizing") ;
 		surmise_VS_Coming_to_believe = mkVS (mkV "surmise" "surmises" "surmised" "surmised" "surmising") ;
-		learn_VV_Coming_to_believe = mkVV (mkV "learn" "learns" "learned" "learned" "learning") ;
+		learn_VV_Coming_to_believe = mkVV (irregV "learn" (variants {"learned" ; "learnt"}) (variants {"learned" ; "learnt"})) ;
 
 		coin_V2_Coming_up_with = mkV2 (mkV "coin" "coins" "coined" "coined" "coining") ;
 		conceive_V2_Coming_up_with = mkV2 (mkV "conceive" "conceives" "conceived" "conceived" "conceiving") ;
 		concoct_V2_Coming_up_with = mkV2 (mkV "concoct" "concocts" "concocted" "concocted" "concocting") ;
 		contrive_V2_Coming_up_with = mkV2 (mkV "contrive" "contrives" "contrived" "contrived" "contriving") ;
+		cook_up_V2_Coming_up_with = mkV2 (partV (mkV "cook" "cooks" "cooked" "cooked" "cooking") "up") ;
 		design_V2_Coming_up_with = mkV2 (mkV "design" "designs" "designed" "designed" "designing") ;
 		devise_V2_Coming_up_with = mkV2 (mkV "devise" "devises" "devised" "devised" "devising") ;
 		formulate_V2_Coming_up_with = mkV2 (mkV "formulate" "formulates" "formulated" "formulated" "formulating") ;
@@ -828,37 +893,40 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		improvise_V2_Coming_up_with = mkV2 (mkV "improvise" "improvises" "improvised" "improvised" "improvising") ;
 		invent_V2_Coming_up_with = mkV2 (mkV "invent" "invents" "invented" "invented" "inventing") ;
 
-		buy_V2_Commerce_buy = mkV2 (IrregEng.buy_V) ;
+		buy_V2_Commerce_buy = mkV2 (irregV "buy" "bought" "bought") ;
 		purchase_V2_Commerce_buy = mkV2 (mkV "purchase" "purchases" "purchased" "purchased" "purchasing") ;
 
 		retail_V_Commerce_sell = mkV "retail" "retails" "retailed" "retailed" "retailing" ;
-		sell_V_Commerce_sell = IrregEng.sell_V ;
+		sell_V_Commerce_sell = irregV "sell" "sold" "sold" ;
 		retail_V2_Commerce_sell = mkV2 (mkV "retail" "retails" "retailed" "retailed" "retailing") ;
-		sell_V2_Commerce_sell = mkV2 (IrregEng.sell_V) ;
+		sell_V2_Commerce_sell = mkV2 (irregV "sell" "sold" "sold") ;
 		vend_V2_Commerce_sell = mkV2 (mkV "vend" "vends" "vended" "vended" "vending") ;
 
 		consent_V_Commitment = mkV "consent" "consents" "consented" "consented" "consenting" ;
 		promise_V_Commitment = mkV "promise" "promises" "promised" "promised" "promising" ;
 		volunteer_V_Commitment = mkV "volunteer" "volunteers" "volunteered" "volunteered" "volunteering" ;
 		covenant_VS_Commitment = mkVS (mkV "covenant" "covenants" "covenanted" "covenanted" "covenanting") ;
-		pledge_VS_Commitment = mkVS (mkV "pledge") ;
+		pledge_VS_Commitment = mkVS (mkV "pledge" "pledges" "pledged" "pledged" "pledging") ;
 		promise_VS_Commitment = mkVS (mkV "promise" "promises" "promised" "promised" "promising") ;
-		swear_VS_Commitment = mkVS (IrregEng.swear_V) ;
+		swear_VS_Commitment = mkVS (irregV "swear" "swore" "sworn") ;
 		threaten_VS_Commitment = mkVS (mkV "threaten" "threatens" "threatened" "threatened" "threatening") ;
-		vow_VS_Commitment = mkVS (mkV "vow") ;
+		undertake_VS_Commitment = mkVS (mkV "under" IrregEng.take_V) ;
+		vow_VS_Commitment = mkVS (mkV "vow" "vows" "vowed" "vowed" "vowing") ;
 		consent_VV_Commitment = mkVV (mkV "consent" "consents" "consented" "consented" "consenting") ;
 		covenant_VV_Commitment = mkVV (mkV "covenant" "covenants" "covenanted" "covenanted" "covenanting") ;
+		pledge_VV_Commitment = mkVV (mkV "pledge" "pledges" "pledged" "pledged" "pledging") ;
 		promise_VV_Commitment = mkVV (mkV "promise" "promises" "promised" "promised" "promising") ;
-		swear_VV_Commitment = mkVV (IrregEng.swear_V) ;
+		swear_VV_Commitment = mkVV (irregV "swear" "swore" "sworn") ;
 		threaten_VV_Commitment = mkVV (mkV "threaten" "threatens" "threatened" "threatened" "threatening") ;
+		undertake_VV_Commitment = mkVV (mkV "under" IrregEng.take_V) ;
 		volunteer_VV_Commitment = mkVV (mkV "volunteer" "volunteers" "volunteered" "volunteered" "volunteering") ;
-		vow_VV_Commitment = mkVV (mkV "vow") ;
+		vow_VV_Commitment = mkVV (mkV "vow" "vows" "vowed" "vowed" "vowing") ;
 
 		commit_V2_Committing_crime = mkV2 (mkV "commit" "commits" "committed" "committed" "committing") ;
 		perpetrate_V2_Committing_crime = mkV2 (mkV "perpetrate" "perpetrates" "perpetrated" "perpetrated" "perpetrating") ;
 
 		communicate_V2_Communication = mkV2 (mkV "communicate" "communicates" "communicated" "communicated" "communicating") ;
-		say_VS_Communication = mkVS (IrregEng.say_V) ;
+		say_VS_Communication = mkVS (irregV "say" "said" "said") ;
 
 		babble_V_Communication_manner = mkV "babble" "babbles" "babbled" "babbled" "babbling" ;
 		bluster_V_Communication_manner = mkV "bluster" "blusters" "blustered" "blustered" "blustering" ;
@@ -878,7 +946,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		rave_V_Communication_manner = mkV "rave" "raves" "raved" "raved" "raving" ;
 		shout_V_Communication_manner = mkV "shout" "shouts" "shouted" "shouted" "shouting" ;
 		simper_V_Communication_manner = mkV "simper" "simpers" "simpered" "simpered" "simpering" ;
-		sing_V_Communication_manner = IrregEng.sing_V ;
+		sing_V_Communication_manner = irregV "sing" "sang" "sung" ;
 		slur_V_Communication_manner = mkV "slur" "slurs" "slurred" "slurred" "slurring" ;
 		stammer_V_Communication_manner = mkV "stammer" "stammers" "stammered" "stammered" "stammering" ;
 		stutter_V_Communication_manner = mkV "stutter" "stutters" "stuttered" "stuttered" "stuttering" ;
@@ -897,7 +965,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		rant_V2_Communication_manner = mkV2 (mkV "rant" "rants" "ranted" "ranted" "ranting") ;
 		shout_V2_Communication_manner = mkV2 (mkV "shout" "shouts" "shouted" "shouted" "shouting") ;
 		simper_V2_Communication_manner = mkV2 (mkV "simper" "simpers" "simpered" "simpered" "simpering") ;
-		sing_V2_Communication_manner = mkV2 (IrregEng.sing_V) ;
+		sing_V2_Communication_manner = mkV2 (irregV "sing" "sang" "sung") ;
 		slur_V2_Communication_manner = mkV2 (mkV "slur" "slurs" "slurred" "slurred" "slurring") ;
 		stammer_V2_Communication_manner = mkV2 (mkV "stammer" "stammers" "stammered" "stammered" "stammering") ;
 		stutter_V2_Communication_manner = mkV2 (mkV "stutter" "stutters" "stuttered" "stuttered" "stuttering") ;
@@ -929,11 +997,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		whine_VS_Communication_noise = mkVS (mkV "whine" "whines" "whined" "whined" "whining") ;
 		yell_VS_Communication_noise = mkVS (mkV "yell" "yells" "yelled" "yelled" "yelling") ;
 
-		answer_V_Communication_response = mkV "answer" "answers" "answered" "answered" "answering" ;
+		answer_V_Communication_response = mkV "answer" "answered" ;
 		counter_V_Communication_response = mkV "counter" "counters" "countered" "countered" "countering" ;
 		reply_V_Communication_response = mkV "reply" "replies" "replied" "replied" "replying" ;
 		respond_V_Communication_response = mkV "respond" "responds" "responded" "responded" "responding" ;
-		answer_VS_Communication_response = mkVS (mkV "answer" "answers" "answered" "answered" "answering") ;
+		retort_V_Communication_response = mkV "retort" "retorts" "retorted" "retorted" "retorting" ;
+		answer_VS_Communication_response = mkVS (mkV "answer" "answered") ;
 		counter_VS_Communication_response = mkVS (mkV "counter" "counters" "countered" "countered" "countering") ;
 		rejoin_VS_Communication_response = mkVS (mkV "rejoin" "rejoins" "rejoined" "rejoined" "rejoining") ;
 		reply_VS_Communication_response = mkVS (mkV "reply" "replies" "replied" "replied" "replying") ;
@@ -952,19 +1021,20 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		square_V_Compatibility = mkV "square" "squares" "squared" "squared" "squaring" ;
 		clash_V2_Compatibility = mkV2 (mkV "clash" "clashes" "clashed" "clashed" "clashing") ;
 
-		play_V_Competition = mkV "play" "plays" "played" "played" "playing" ;
+		play_V_Competition = regV "play" ;
 
 		bitch_V_Complaining = mkV "bitch" "bitches" "bitched" "bitched" "bitching" ;
 		complain_V_Complaining = mkV "complain" "complains" "complained" "complained" "complaining" ;
+		gripe_V_Complaining = mkV "gripe" ;
 		grouse_V_Complaining = mkV "grouse" "grouses" "groused" "groused" "grousing" ;
 		grumble_V_Complaining = mkV "grumble" "grumbles" "grumbled" "grumbled" "grumbling" ;
 		lament_V_Complaining = mkV "lament" "laments" "lamented" "lamented" "lamenting" ;
 
 		adhere_V_Compliance = mkV "adhere" "adheres" "adhered" "adhered" "adhering" ;
-		comply_V_Compliance = mkV "comply" ;
+		comply_V_Compliance = mkV "comply" "complies" "complied" "complied" "complying" ;
 		conform_V_Compliance = mkV "conform" "conforms" "conformed" "conformed" "conforming" ;
 		breach_V2_Compliance = mkV2 (mkV "breach" "breaches" "breached" "breached" "breaching") ;
-		break_V2_Compliance = mkV2 (IrregEng.break_V) ;
+		break_V2_Compliance = mkV2 (irregV "break" "broke" "broken") ;
 		contravene_V2_Compliance = mkV2 (mkV "contravene" "contravenes" "contravened" "contravened" "contravening") ;
 		flout_V2_Compliance = mkV2 (mkV "flout" "flouts" "flouted" "flouted" "flouting") ;
 		follow_V2_Compliance = mkV2 (mkV "follow" "follows" "followed" "followed" "following") ;
@@ -973,34 +1043,35 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		violate_V2_Compliance = mkV2 (mkV "violate" "violates" "violated" "violated" "violating") ;
 
 		act_V_Conduct = mkV "act" "acts" "acted" "acted" "acting" ;
-		act_up_V_Conduct = partV (mkV "act") "up" ;
+		act_up_V_Conduct = partV (mkV "act" "acts" "acted" "acted" "acting") "up" ;
 		behave_V_Conduct = mkV "behave" "behaves" "behaved" "behaved" "behaving" ;
 		misbehave_V_Conduct = mkV "misbehave" "misbehaves" "misbehaved" "misbehaved" "misbehaving" ;
 
 		confront_V2_Confronting_problem = mkV2 (mkV "confront" "confronts" "confronted" "confronted" "confronting") ;
 
-		fall_V_Conquering = IrregEng.fall_V ;
+		fall_V_Conquering = irregV "fall" "fell" "fallen" ;
 		capture_V2_Conquering = mkV2 (mkV "capture" "captures" "captured" "captured" "capturing") ;
 		conquer_V2_Conquering = mkV2 (mkV "conquer" "conquers" "conquered" "conquered" "conquering") ;
 
 		cable_V2_Contacting = mkV2 (mkV "cable" "cables" "cabled" "cabled" "cabling") ;
 		call_V2_Contacting = mkV2 (mkV "call" "calls" "called" "called" "calling") ;
-		call_up_V2_Contacting = mkV2 (partV (mkV "call") "up") ;
+		call_up_V2_Contacting = mkV2 (partV (mkV "call" "calls" "called" "called" "calling") "up") ;
 		contact_V2_Contacting = mkV2 (mkV "contact" "contacts" "contacted" "contacted" "contacting") ;
 		page_V2_Contacting = mkV2 (mkV "page" "pages" "paged" "paged" "paging") ;
 		phone_V2_Contacting = mkV2 (mkV "phone" "phones" "phoned" "phoned" "phoning") ;
 		radio_V2_Contacting = mkV2 (mkV "radio") ;
 		reach_V2_Contacting = mkV2 (mkV "reach" "reaches" "reached" "reached" "reaching") ;
-		ring_V2_Contacting = mkV2 (IrregEng.ring_V) ;
+		ring_V2_Contacting = mkV2 (irregV "ring" "rang" "rung") ;
 		telegraph_V2_Contacting = mkV2 (mkV "telegraph" "telegraphs" "telegraphed" "telegraphed" "telegraphing") ;
 		telephone_V2_Contacting = mkV2 (mkV "telephone" "telephones" "telephoned" "telephoned" "telephoning") ;
 
-		hold_V2_Containing = mkV2 (IrregEng.hold_V) ;
+		hold_V2_Containing = mkV2 (irregV "hold" "held" "held") ;
 		house_V2_Containing = mkV2 (mkV "house" "houses" "housed" "housed" "housing") ;
 
 		depend_V_Contingency = mkV "depend" "depends" "depended" "depended" "depending" ;
+		hang_V_Contingency = irregV "hang" "hung" "hung" ;
 		hinge_V_Contingency = mkV "hinge" "hinges" "hinged" "hinged" "hinging" ;
-		turn_V_Contingency = mkV "turn" "turns" "turned" "turned" "turning" ;
+		turn_V_Contingency = regV "turn" ;
 
 		repent_V_Contrition = mkV "repent" "repents" "repented" "repented" "repenting" ;
 
@@ -1008,14 +1079,16 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		stress_V2_Convey_importance = mkV2 (mkV "stress" "stresses" "stressed" "stressed" "stressing") ;
 		underline_V2_Convey_importance = mkV2 (mkV "underline" "underlines" "underlined" "underlined" "underlining") ;
 		underscore_V2_Convey_importance = mkV2 (mkV "underscore" "underscores" "underscored" "underscored" "underscoring") ;
-		emphasize_VS_Convey_importance = mkVS (mkV "emphasize") ;
-		stress_VS_Convey_importance = mkVS (mkV "stress") ;
+		emphasize_VS_Convey_importance = mkVS (mkV "emphasize" "emphasizes" "emphasized" "emphasized" "emphasizing") ;
+		stress_VS_Convey_importance = mkVS (mkV "stress" "stresses" "stressed" "stressed" "stressing") ;
 
 		bake_V2_Cooking_creation = mkV2 (mkV "bake" "bakes" "baked" "baked" "baking") ;
 		concoct_V2_Cooking_creation = mkV2 (mkV "concoct" "concocts" "concocted" "concocted" "concocting") ;
 		cook_V2_Cooking_creation = mkV2 (mkV "cook" "cooks" "cooked" "cooked" "cooking") ;
-		make_V2_Cooking_creation = mkV2 (IrregEng.make_V) ;
+		cook_up_V2_Cooking_creation = mkV2 (partV (mkV "cook" "cooks" "cooked" "cooked" "cooking") "up") ;
+		make_V2_Cooking_creation = mkV2 (irregV "make" "made" "made") ;
 		prepare_V2_Cooking_creation = mkV2 (mkV "prepare" "prepares" "prepared" "prepared" "preparing") ;
+		whip_up_V2_Cooking_creation = mkV2 (partV (mkV "whip" "whips" "whipped" "whipped" "whipping") "up") ;
 
 		corrode_V_Corroding = mkV "corrode" "corrodes" "corroded" "corroded" "corroding" ;
 		rust_V_Corroding = mkV "rust" "rusts" "rusted" "rusted" "rusting" ;
@@ -1027,7 +1100,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		follow_V2_Cotheme = mkV2 (mkV "follow" "follows" "followed" "followed" "following") ;
 		guide_V2_Cotheme = mkV2 (mkV "guide" "guides" "guided" "guided" "guiding") ;
 		hound_V2_Cotheme = mkV2 (mkV "hound" "hounds" "hounded" "hounded" "hounding") ;
-		lead_V2_Cotheme = mkV2 (IrregEng.lead_V) ;
+		lead_V2_Cotheme = mkV2 (irregV "lead" "led" "led") ;
 		pursue_V2_Cotheme = mkV2 (mkV "pursue" "pursues" "pursued" "pursued" "pursuing") ;
 		shadow_V2_Cotheme = mkV2 (mkV "shadow" "shadows" "shadowed" "shadowed" "shadowing") ;
 		stalk_V2_Cotheme = mkV2 (mkV "stalk" "stalks" "stalked" "stalked" "stalking") ;
@@ -1035,13 +1108,16 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		track_V2_Cotheme = mkV2 (mkV "track" "tracks" "tracked" "tracked" "tracking") ;
 		trail_V2_Cotheme = mkV2 (mkV "trail" "trails" "trailed" "trailed" "trailing") ;
 		shepherd_V2_Cotheme = mkV2 (mkV "shepherd" "shepherds" "shepherded" "shepherded" "shepherding") ;
-		show_V2_Cotheme = mkV2 IrregEng.show_V ;
+		show_V2_Cotheme = mkV2 (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 		usher_V2_Cotheme = mkV2 (mkV "usher" "ushers" "ushered" "ushered" "ushering") ;
 
-		draw_V2_Create_physical_artwork = mkV2 (IrregEng.draw_V) ;
-		paint_V2_Create_physical_artwork = mkV2 (mkV "paint" "paints" "painted" "painted" "painting") ;
+		crossexamine_V2_Court_examination = mkV2 (mkV "cross-examine" "cross-examines" "cross-examined" "cross-examined" "cross-examining") ;
+		examine_V2_Court_examination = mkV2 (mkV "examine" "examines" "examined" "examined" "examining") ;
 
-		paint_V2_Create_representation = mkV2 (mkV "paint" "paints" "painted" "painted" "painting") ;
+		draw_V2_Create_physical_artwork = mkV2 (irregV "draw" "drew" "drawn") ;
+		paint_V2_Create_physical_artwork = mkV2 (regV "paint") ;
+
+		paint_V2_Create_representation = mkV2 (regV "paint") ;
 		photograph_V2_Create_representation = mkV2 (mkV "photograph" "photographs" "photographed" "photographed" "photographing") ;
 
 		create_V2_Creating = mkV2 (mkV "create" "creates" "created" "created" "creating") ;
@@ -1062,7 +1138,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		damage_V2_Damaging = mkV2 (mkV "damage" "damages" "damaged" "damaged" "damaging") ;
 		dent_V2_Damaging = mkV2 (mkV "dent" "dents" "dented" "dented" "denting") ;
 		rip_V2_Damaging = mkV2 (mkV "rip" "rips" "ripped" "ripped" "ripping") ;
-		tear_V2_Damaging = mkV2 (IrregEng.tear_V) ;
+		tear_V2_Damaging = mkV2 (irregV "tear" "tore" "torn") ;
 
 		chance_V2_Daring = mkV2 (mkV "chance" "chances" "chanced" "chanced" "chancing") ;
 		dare_V2_Daring = mkV2 (mkV "dare" "dares" "dared" "dared" "daring") ;
@@ -1070,14 +1146,14 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		risk_V2_Daring = mkV2 (mkV "risk" "risks" "risked" "risked" "risking") ;
 		venture_V2_Daring = mkV2 (mkV "venture" "ventures" "ventured" "ventured" "venturing") ;
 		dare_VV_Daring = mkVV (mkV "dare" "dares" "dared" "dared" "daring") ;
-		risk_VV_Daring = ingVV (mkV "risk") ;
+		risk_VV_Daring = mkVV (mkV "risk" "risks" "risked" "risked" "risking") ;
 		venture_VV_Daring = mkVV (mkV "venture" "ventures" "ventured" "ventured" "venturing") ;
 
 		croak_V_Death = mkV "croak" "croaks" "croaked" "croaked" "croaking" ;
-		die_V_Death = mkV "die" "dies" "died" "died" "dying" ;
+		die_V_Death = regV "die" ;
 		drown_V_Death = mkV "drown" "drowns" "drowned" "drowned" "drowning" ;
 		expire_V_Death = mkV "expire" "expires" "expired" "expired" "expiring" ;
-		pass_away_V_Death = partV (mkV "pass") "away" ;
+		pass_away_V_Death = partV (mkV "pass" "passes" "passed" "passed" "passing") "away" ;
 		perish_V_Death = mkV "perish" "perishes" "perished" "perished" "perishing" ;
 		starve_V_Death = mkV "starve" "starves" "starved" "starved" "starving" ;
 
@@ -1087,40 +1163,47 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		deliver_V2_Delivery = mkV2 (mkV "deliver" "delivers" "delivered" "delivered" "delivering") ;
 
-		-- No target for Deny_permission
+		forbid_V2V_Deny_permission = mkV2V (irregDuplV "forbid" "forbade" "forbidden") noPrep to_Prep ;
 
 		depart_V2_Departing = mkV2 (mkV "depart" "departs" "departed" "departed" "departing") ;
 		escape_V2_Departing = mkV2 (mkV "escape" "escapes" "escaped" "escaped" "escaping") ;
 		exit_V2_Departing = mkV2 (mkV "exit" "exits" "exited" "exited" "exiting") ;
-		leave_V2_Departing = mkV2 (IrregEng.leave_V) ;
+		leave_V2_Departing = mkV2 (irregV "leave" "left" "left") ;
 
 		justify_V2_Deserving = mkV2 (mkV "justify" "justifies" "justified" "justified" "justifying") ;
 		warrant_V2_Deserving = mkV2 (mkV "warrant" "warrants" "warranted" "warranted" "warranting") ;
 
 		aspire_V_Desiring = mkV "aspire" "aspires" "aspired" "aspired" "aspiring" ;
+		covet_V_Desiring = mkV "covet" "covets" "coveted" "coveted" "coveting" ;
 		hanker_V_Desiring = mkV "hanker" "hankers" "hankered" "hankered" "hankering" ;
 		hunger_V_Desiring = mkV "hunger" "hungers" "hungered" "hungered" "hungering" ;
 		long_V_Desiring = mkV "long" "longs" "longed" "longed" "longing" ;
 		lust_V_Desiring = mkV "lust" "lusts" "lusted" "lusted" "lusting" ;
 		pine_V_Desiring = mkV "pine" "pines" "pined" "pined" "pining" ;
-		want_V_Desiring = mkV "want" ;
+		thirst_V_Desiring = mkV "thirst" "thirsts" "thirsted" "thirsted" "thirsting" ;
+		want_V_Desiring = regV "want" ;
 		yearn_V_Desiring = mkV "yearn" "yearns" "yearned" "yearned" "yearning" ;
 		covet_V2_Desiring = mkV2 (mkV "covet" "covets" "coveted" "coveted" "coveting") ;
 		crave_V2_Desiring = mkV2 (mkV "crave" "craves" "craved" "craved" "craving") ;
 		desire_V2_Desiring = mkV2 (mkV "desire" "desires" "desired" "desired" "desiring") ;
 		fancy_V2_Desiring = mkV2 (mkV "fancy" "fancies" "fancied" "fancied" "fancying") ;
-		want_V2_Desiring = mkV2 (mkV "want") ;
+		feel_like_V2_Desiring = mkV2 (partV (irregV "feel" "felt" "felt") "like") ;
+		want_V2_Desiring = mkV2 (regV "want") ;
 		yearn_V2_Desiring = mkV2 (mkV "yearn" "yearns" "yearned" "yearned" "yearning") ;
 		aspire_VV_Desiring = mkVV (mkV "aspire" "aspires" "aspired" "aspired" "aspiring") ;
 		crave_VV_Desiring = mkVV (mkV "crave" "craves" "craved" "craved" "craving") ;
+		desire_VV_Desiring = mkVV (mkV "desire" "desires" "desired" "desired" "desiring") ;
+		fancy_VV_Desiring = mkVV (mkV "fancy" "fancies" "fancied" "fancied" "fancying") ;
+		feel_like_VV_Desiring = mkVV (partV (irregV "feel" "felt" "felt") "like") ;
 		hanker_VV_Desiring = mkVV (mkV "hanker" "hankers" "hankered" "hankered" "hankering") ;
 		long_VV_Desiring = mkVV (mkV "long" "longs" "longed" "longed" "longing") ;
 		lust_VV_Desiring = mkVV (mkV "lust" "lusts" "lusted" "lusted" "lusting") ;
 		pine_VV_Desiring = mkVV (mkV "pine" "pines" "pined" "pined" "pining") ;
-		want_VV_Desiring = mkVV (mkV "want") ;
+		thirst_VV_Desiring = mkVV (mkV "thirst" "thirsts" "thirsted" "thirsted" "thirsting") ;
+		want_VV_Desiring = mkVV (regV "want") ;
 		yearn_VV_Desiring = mkVV (mkV "yearn" "yearns" "yearned" "yearned" "yearning") ;
 
-		blow_up_V2_Destroying = mkV2 (partV IrregEng.blow_V "up") ;
+		blow_up_V2_Destroying = mkV2 (partV (irregV "blow" "blew" "blown") "up") ;
 		demolish_V2_Destroying = mkV2 (mkV "demolish" "demolishes" "demolished" "demolished" "demolishing") ;
 		destroy_V2_Destroying = mkV2 (mkV "destroy" "destroys" "destroyed" "destroyed" "destroying") ;
 		devastate_V2_Destroying = mkV2 (mkV "devastate" "devastates" "devastated" "devastated" "devastating") ;
@@ -1133,18 +1216,18 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		untie_V2_Detaching = mkV2 (mkV "untie" "IRREG" "IRREG" "IRREG" "IRREG") ;
 
 		detain_V2_Detaining = mkV2 (mkV "detain" "detains" "detained" "detained" "detaining") ;
-		hold_V2_Detaining = mkV2 (IrregEng.hold_V) ;
+		hold_V2_Detaining = mkV2 (irregV "hold" "held" "held") ;
 		intern_V2_Detaining = mkV2 (mkV "intern" "interns" "interned" "interned" "interning") ;
 
 		differentiate_V2_Differentiation = mkV2 (mkV "differentiate" "differentiates" "differentiated" "differentiated" "differentiating") ;
 		discriminate_V2_Differentiation = mkV2 (mkV "discriminate" "discriminates" "discriminated" "discriminated" "discriminating") ;
 		distinguish_V2_Differentiation = mkV2 (mkV "distinguish" "distinguishes" "distinguished" "distinguished" "distinguishing") ;
 		sort_V2_Differentiation = mkV2 (mkV "sort" "sorts" "sorted" "sorted" "sorting") ;
-		know_V2_Differentiation = mkV2 (mkV "know" "knows" "knew" "known" "knowing") ;
+		know_V2_Differentiation = mkV2 (irregV "know" "knew" "known") ;
 		separate_V2_Differentiation = mkV2 (mkV "separate" "separates" "separated" "separated" "separating") ;
 
 		scatter_V2_Dispersal = mkV2 (mkV "scatter" "scatters" "scattered" "scattered" "scattering") ;
-		spread_V2_Dispersal = mkV2 (IrregEng.spread_V) ;
+		spread_V2_Dispersal = mkV2 (irregV "spread" "spread" "spread") ;
 		sprinkle_V2_Dispersal = mkV2 (mkV "sprinkle" "sprinkles" "sprinkled" "sprinkled" "sprinkling") ;
 		strew_V2_Dispersal = mkV2 (mkV "strew" "strews" "strewed" "strewed" "strewing") ;
 
@@ -1156,30 +1239,34 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dominate_V2_Dominate_situation = mkV2 (mkV "dominate" "dominates" "dominated" "dominated" "dominating") ;
 
 		dress_V_Dressing = mkV "dress" "dresses" "dressed" "dressed" "dressing" ;
-		dress_up_V_Dressing = partV (mkV "dress") "up" ;
+		dress_up_V_Dressing = partV (mkV "dress" "dresses" "dressed" "dressed" "dressing") "up" ;
 		don_V2_Dressing = mkV2 (mkV "don" "dons" "donned" "donned" "donning") ;
 		dress_V2_Dressing = mkV2 (mkV "dress" "dresses" "dressed" "dressed" "dressing") ;
-		get_on_V2_Dressing = mkV2 (partV IrregEng.get_V "on") ;
-		pull_on_V2_Dressing = mkV2 (partV (mkV "pull") "on") ;
-		put_on_V2_Dressing = mkV2 (partV IrregEng.put_V "on") ;
-		slip_on_V2_Dressing = mkV2 (partV (mkV "slip") "on") ;
-		throw_on_V2_Dressing = mkV2 (partV IrregEng.throw_V "on") ;
+		get_on_V2_Dressing = mkV2 (partV (irregDuplV "get" "got" "gotten") "on") ;
+		pull_on_V2_Dressing = mkV2 (partV (regV "pull") "on") ;
+		put_on_V2_Dressing = mkV2 (partV (irregDuplV "put" "put" "put") "on") ;
+		slip_on_V2_Dressing = mkV2 (partV (mkV "slip" "slips" "slipped" "slipped" "slipping") "on") ;
+		throw_on_V2_Dressing = mkV2 (partV (irregV "throw" "threw" "thrown") "on") ;
 
-		drop_in_V_Drop_in_on = partV (mkV "drop") "in" ;
+		drop_in_V_Drop_in_on = partV (mkV "drop" "drops" "dropped" "dropped" "dropping") "in" ;
 
 		dip_V2_Dunking = mkV2 (mkV "dip" "dips" "dipped" "dipped" "dipping") ;
 
-		lose_V_Earnings_and_losses = IrregEng.lose_V ;
-		lose_V2_Earnings_and_losses = mkV2 (IrregEng.lose_V) ;
+		lose_V_Earnings_and_losses = irregV "lose" "lost" "lost" ;
+		lose_V2_Earnings_and_losses = mkV2 (irregV "lose" "lost" "lost") ;
 
+		blot_out_V_Eclipse = partV (mkV "blot" "blots" "blotted" "blotted" "blotting") "out" ;
+		obscure_V_Eclipse = mkV "obscure" "obscures" "obscured" "obscured" "obscuring" ;
 		screen_V_Eclipse = mkV "screen" "screens" "screened" "screened" "screening" ;
+		shroud_V_Eclipse = mkV "shroud" "shrouds" "shrouded" "shrouded" "shrouding" ;
 		block_V2_Eclipse = mkV2 (mkV "block" "blocks" "blocked" "blocked" "blocking") ;
+		blot_out_V2_Eclipse = mkV2 (partV (mkV "blot" "blots" "blotted" "blotted" "blotting") "out") ;
 		cloak_V2_Eclipse = mkV2 (mkV "cloak" "cloaks" "cloaked" "cloaked" "cloaking") ;
 		conceal_V2_Eclipse = mkV2 (mkV "conceal" "conceals" "concealed" "concealed" "concealing") ;
 		cover_V2_Eclipse = mkV2 (mkV "cover" "covers" "covered" "covered" "covering") ;
 		eclipse_V2_Eclipse = mkV2 (mkV "eclipse" "eclipses" "eclipsed" "eclipsed" "eclipsing") ;
 		enshroud_V2_Eclipse = mkV2 (mkV "enshroud" "enshrouds" "enshrouded" "enshrouded" "enshrouding") ;
-		hide_V2_Eclipse = mkV2 (IrregEng.hide_V) ;
+		hide_V2_Eclipse = mkV2 (irregV "hide" "hid" "hidden") ;
 		mask_V2_Eclipse = mkV2 (mkV "mask" "masks" "masked" "masked" "masking") ;
 		obscure_V2_Eclipse = mkV2 (mkV "obscure" "obscures" "obscured" "obscured" "obscuring") ;
 		obstruct_V2_Eclipse = mkV2 (mkV "obstruct" "obstructs" "obstructed" "obstructed" "obstructing") ;
@@ -1217,18 +1304,25 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		worry_V_Emotion_active = mkV "worry" "worries" "worried" "worried" "worrying" ;
 
 		boil_V_Emotion_heat = mkV "boil" "boils" "boiled" "boiled" "boiling" ;
-		burn_V_Emotion_heat = mkV "burn" "burns" "burned" "burned" "burning" ;
+		burn_V_Emotion_heat = irregV "burn" (variants {"burned" ; "burnt"}) (variants {"burned" ; "burnt"}) ;
 		chafe_V_Emotion_heat = mkV "chafe" "chafes" "chafed" "chafed" "chafing" ;
 		fume_V_Emotion_heat = mkV "fume" "fumes" "fumed" "fumed" "fuming" ;
 		seethe_V_Emotion_heat = mkV "seethe" "seethes" "seethed" "seethed" "seething" ;
 		simmer_V_Emotion_heat = mkV "simmer" "simmers" "simmered" "simmered" "simmering" ;
-		smoulder_V_Emotion_heat = mkV "smoulder" "smoulders" "smouldered" "smouldered" "smouldering" ;
 		stew_V_Emotion_heat = mkV "stew" "stews" "stewed" "stewed" "stewing" ;
+
+		delight_V_Emotions_of_mental_activity = mkV "delight" "delights" "delighted" "delighted" "delighting" ;
 
 		employ_V2_Employing = mkV2 (mkV "employ" "employs" "employed" "employed" "employing") ;
 
 		clear_V_Emptying = mkV "clear" "clears" "cleared" "cleared" "clearing" ;
+		deforest_V_Emptying = mkV "deforest" "deforests" "deforested" "deforested" "deforesting" ;
+		delouse_V_Emptying = mkV "delouse" "delouses" "deloused" "deloused" "delousing" ;
+		denude_V_Emptying = mkV "denude" "denudes" "denuded" "denuded" "denuding" ;
+		divest_V_Emptying = mkV "divest" "divests" "divested" "divested" "divesting" ;
 		drain_V_Emptying = mkV "drain" "drains" "drained" "drained" "draining" ;
+		eviscerate_V_Emptying = mkV "eviscerate" "eviscerates" "eviscerated" "eviscerated" "eviscerating" ;
+		gut_V_Emptying = mkV "gut" "guts" "gutted" "gutted" "gutting" ;
 		skin_V_Emptying = mkV "skin" "skins" "skinned" "skinned" "skinning" ;
 		strip_V_Emptying = mkV "strip" "strips" "stripped" "stripped" "stripping" ;
 		bone_V2_Emptying = mkV2 (mkV "bone" "bones" "boned" "boned" "boning") ;
@@ -1248,7 +1342,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		gut_V2_Emptying = mkV2 (mkV "gut" "guts" "gutted" "gutted" "gutting") ;
 		peel_V2_Emptying = mkV2 (mkV "peel" "peels" "peeled" "peeled" "peeling") ;
 		purge_V2_Emptying = mkV2 (mkV "purge" "purges" "purged" "purged" "purging") ;
-		rid_V2_Emptying = mkV2 (IrregEng.rid_V) ;
+		rid_V2_Emptying = mkV2 (irregDuplV "rid" "rid" "rid") ;
 		scalp_V2_Emptying = mkV2 (mkV "scalp" "scalps" "scalped" "scalped" "scalping") ;
 		skin_V2_Emptying = mkV2 (mkV "skin" "skins" "skinned" "skinned" "skinning") ;
 		strip_V2_Emptying = mkV2 (mkV "strip" "strips" "stripped" "stripped" "stripping") ;
@@ -1257,6 +1351,8 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		deforest_V2_Emptying = mkV2 (mkV "deforest" "deforests" "deforested" "deforested" "deforesting") ;
 
 		couch_V_Encoding = mkV "couch" "couches" "couched" "couched" "couching" ;
+		phrase_V_Encoding = mkV "phrase" "phrases" "phrased" "phrased" "phrasing" ;
+		word_V_Encoding = mkV "word" "words" "worded" "worded" "wording" ;
 		couch_V2_Encoding = mkV2 (mkV "couch" "couches" "couched" "couched" "couching") ;
 		express_V2_Encoding = mkV2 (mkV "express" "expresses" "expressed" "expressed" "expressing") ;
 		frame_V2_Encoding = mkV2 (mkV "frame" "frames" "framed" "framed" "framing") ;
@@ -1268,19 +1364,20 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		enforce_V2_Enforcing = mkV2 (mkV "enforce" "enforces" "enforced" "enforced" "enforcing") ;
 
-		plead_V_Entering_of_plea = mkV "plead" "pleads" "pleaded" "pleaded" "pleading" ;
+		plead_V_Entering_of_plea = irregV "plead" "pled" "pled" ;
 
 		escape_V_Escaping = mkV "escape" "escapes" "escaped" "escaped" "escaping" ;
+		evacuate_V_Escaping = mkV "evacuate" "evacuates" "evacuated" "evacuated" "evacuating" ;
 		scarper_V_Escaping = mkV "scarper" "scarpers" "scarpered" "scarpered" "scarpering" ;
 
 		estimate_VS_Estimating = mkVS (mkV "estimate" "estimates" "estimated" "estimated" "estimating") ;
 		guess_VS_Estimating = mkVS (mkV "guess" "guesses" "guessed" "guessed" "guessing") ;
 
-		flee_V_Evading = IrregEng.flee_V ;
-		get_away_V_Evading = partV IrregEng.get_V "away" ;
+		flee_V_Evading = irregV "flee" "fled" "fled" ;
+		get_away_V_Evading = partV (irregDuplV "get" "got" "gotten") "away" ;
 		elude_V2_Evading = mkV2 (mkV "elude" "eludes" "eluded" "eluded" "eluding") ;
 		evade_V2_Evading = mkV2 (mkV "evade" "evades" "evaded" "evaded" "evading") ;
-		flee_V2_Evading = mkV2 (IrregEng.flee_V) ;
+		flee_V2_Evading = mkV2 (irregV "flee" "fled" "fled") ;
 
 		compare_V_Evaluative_comparison = mkV "compare" "compares" "compared" "compared" "comparing" ;
 
@@ -1298,25 +1395,28 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		disprove_V2_Evidence = mkV2 (mkV "disprove" "disproves" "disproved" "disproved" "disproving") ;
 		evince_V2_Evidence = mkV2 (mkV "evince" "evinces" "evinced" "evinced" "evincing") ;
 		indicate_V2_Evidence = mkV2 (mkV "indicate" "indicates" "indicated" "indicated" "indicating") ;
-		prove_V2_Evidence = mkV2 (mkV "prove" "proves" "proved" "proved" "proving") ;
+		prove_V2_Evidence = mkV2 (irregV "prove" "proved" (variants {"proved" ; "proven"})) ;
 		reveal_V2_Evidence = mkV2 (mkV "reveal" "reveals" "revealed" "revealed" "revealing") ;
-		show_V2_Evidence = mkV2 IrregEng.show_V ;
+		show_V2_Evidence = mkV2 (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 		substantiate_V2_Evidence = mkV2 (mkV "substantiate" "substantiates" "substantiated" "substantiated" "substantiating") ;
 		support_V2_Evidence = mkV2 (mkV "support" "supports" "supported" "supported" "supporting") ;
-		tell_V2_Evidence = mkV2 (IrregEng.tell_V) ;
+		tell_V2_Evidence = mkV2 (irregV "tell" "told" "told") ;
 		verify_V2_Evidence = mkV2 (mkV "verify" "verifies" "verified" "verified" "verifying") ;
-		indicate_VQ_Evidence = mkVQ (mkV "indicate") ;
-		prove_VQ_Evidence = mkVQ (mkV "prove" "proves" "proved" "proved" "proving") ;
-		show_VQ_Evidence = mkVQ IrregEng.show_V ;
+		contradict_VQ_Evidence = mkVQ (mkV "contradict" "contradicts" "contradicted" "contradicted" "contradicting") ;
+		indicate_VQ_Evidence = mkVQ (mkV "indicate" "indicates" "indicated" "indicated" "indicating") ;
+		prove_VQ_Evidence = mkVQ (irregV "prove" "proved" (variants {"proved" ; "proven"})) ;
+		reveal_VQ_Evidence = mkVQ (mkV "reveal" "reveals" "revealed" "revealed" "revealing") ;
+		show_VQ_Evidence = mkVQ (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 		attest_VS_Evidence = mkVS (mkV "attest" "attests" "attested" "attested" "attesting") ;
-		confirm_VS_Evidence = mkVS (mkV "confirm") ;
+		confirm_VS_Evidence = mkVS (mkV "confirm" "confirms" "confirmed" "confirmed" "confirming") ;
 		demonstrate_VS_Evidence = mkVS (mkV "demonstrate" "demonstrates" "demonstrated" "demonstrated" "demonstrating") ;
-		disprove_VS_Evidence = mkVS (mkV "disprove") ;
-		indicate_VS_Evidence = mkVS (mkV "indicate") ;
-		prove_VS_Evidence = mkVS (mkV "prove" "proves" "proved" "proved" "proving") ;
-		reveal_VS_Evidence = mkVS (mkV "reveal") ;
-		show_VS_Evidence = mkVS IrregEng.show_V ;
+		disprove_VS_Evidence = mkVS (mkV "disprove" "disproves" "disproved" "disproved" "disproving") ;
+		indicate_VS_Evidence = mkVS (mkV "indicate" "indicates" "indicated" "indicated" "indicating") ;
+		prove_VS_Evidence = mkVS (irregV "prove" "proved" (variants {"proved" ; "proven"})) ;
+		reveal_VS_Evidence = mkVS (mkV "reveal" "reveals" "revealed" "revealed" "revealing") ;
+		show_VS_Evidence = mkVS (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 		testify_VS_Evidence = mkVS (mkV "testify" "testifies" "testified" "testified" "testifying") ;
+		verify_VS_Evidence = mkVS (mkV "verify" "verifies" "verified" "verified" "verifying") ;
 
 		remind_V2_Evoking = mkV2 (mkV "remind" "reminds" "reminded" "reminded" "reminding") ;
 
@@ -1336,29 +1436,32 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		implement_V2_Execute_plan = mkV2 (mkV "implement" "implements" "implemented" "implemented" "implementing") ;
 
 		execute_V2_Execution = mkV2 (mkV "execute" "executes" "executed" "executed" "executing") ;
-		hang_V2_Execution = mkV2 (mkV "hang" "hangs" "hung" "hung" "hanging" | mkV "hang" "hangs" "hanged" "hanged" "hanging") ;
+		hang_V2_Execution = mkV2 (irregV "hang" "hung" "hung") ;
 
 		exist_V_Existence = mkV "exist" "exists" "existed" "existed" "existing" ;
 		exist_V2_Existence = mkV2 (mkV "exist" "exists" "existed" "existed" "existing") ;
 
-		anticipate_VQ_Expectation = mkVQ (mkV "anticipate") ;
+		anticipate_VQ_Expectation = mkVQ (mkV "anticipate" "anticipates" "anticipated" "anticipated" "anticipating") ;
+		foresee_VQ_Expectation = mkVQ (mkV "fore" IrregEng.see_V) ;
+		predict_VQ_Expectation = mkVQ (mkV "predict" "predicts" "predicted" "predicted" "predicting") ;
 		anticipate_VS_Expectation = mkVS (mkV "anticipate" "anticipates" "anticipated" "anticipated" "anticipating") ;
+		await_VS_Expectation = mkVS (mkV "await" "awaits" "awaited" "awaited" "awaiting") ;
 		expect_VS_Expectation = mkVS (mkV "expect") ;
 
-		cost_V_Expensiveness = mkV "cost" "costs" "costed" "costed" "costing" ;
+		cost_V_Expensiveness = irregV "cost" "cost" "cost" ;
 
-		break_V2_Experience_bodily_harm = mkV2 (IrregEng.break_V) ;
-		burn_V2_Experience_bodily_harm = mkV2 (mkV "burn" "burns" "burned" "burned" "burning") ;
-		cut_V2_Experience_bodily_harm = mkV2 (IrregEng.cut_V) ;
+		break_V2_Experience_bodily_harm = mkV2 (irregV "break" "broke" "broken") ;
+		burn_V2_Experience_bodily_harm = mkV2 (irregV "burn" (variants {"burned" ; "burnt"}) (variants {"burned" ; "burnt"})) ;
+		cut_V2_Experience_bodily_harm = mkV2 (irregDuplV "cut" "cut" "cut") ;
 		graze_V2_Experience_bodily_harm = mkV2 (mkV "graze" "grazes" "grazed" "grazed" "grazing") ;
-		hit_V2_Experience_bodily_harm = mkV2 (IrregEng.hit_V) ;
-		hurt_V2_Experience_bodily_harm = mkV2 (IrregEng.hurt_V) ;
+		hit_V2_Experience_bodily_harm = mkV2 (irregDuplV "hit" "hit" "hit") ;
+		hurt_V2_Experience_bodily_harm = mkV2 (irregV "hurt" "hurt" "hurt") ;
 		injure_V2_Experience_bodily_harm = mkV2 (mkV "injure" "injures" "injured" "injured" "injuring") ;
-		pull_V2_Experience_bodily_harm = mkV2 (mkV "pull" "pulls" "pulled" "pulled" "pulling") ;
+		pull_V2_Experience_bodily_harm = mkV2 (regV "pull") ;
 		sprain_V2_Experience_bodily_harm = mkV2 (mkV "sprain" "sprains" "sprained" "sprained" "spraining") ;
 		strain_V2_Experience_bodily_harm = mkV2 (mkV "strain" "strains" "strained" "strained" "straining") ;
 		stub_V2_Experience_bodily_harm = mkV2 (mkV "stub" "stubs" "stubbed" "stubbed" "stubbing") ;
-		tear_V2_Experience_bodily_harm = mkV2 (IrregEng.tear_V) ;
+		tear_V2_Experience_bodily_harm = mkV2 (irregV "tear" "tore" "torn") ;
 		twist_V2_Experience_bodily_harm = mkV2 (mkV "twist" "twists" "twisted" "twisted" "twisting") ;
 
 		abhor_V2_Experiencer_focus = mkV2 (mkV "abhor" "abhors" "abhorred" "abhorred" "abhorring") ;
@@ -1369,25 +1472,49 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dislike_V2_Experiencer_focus = mkV2 (mkV "dislike" "dislikes" "disliked" "disliked" "disliking") ;
 		dread_V2_Experiencer_focus = mkV2 (mkV "dread" "dreads" "dreaded" "dreaded" "dreading") ;
 		envy_V2_Experiencer_focus = mkV2 (mkV "envy" "envies" "envied" "envied" "envying") ;
-		fear_V2_Experiencer_focus = mkV2 (mkV "fear" "fears" "feared" "feared" "fearing") ;
+		fear_V2_Experiencer_focus = mkV2 (regV "fear") ;
 		grieve_V2_Experiencer_focus = mkV2 (mkV "grieve" "grieves" "grieved" "grieved" "grieving") ;
-		hate_V2_Experiencer_focus = mkV2 (mkV "hate" "hates" "hated" "hated" "hating") ;
-		like_V2_Experiencer_focus = mkV2 (mkV "like" "likes" "liked" "liked" "liking") ;
+		hate_V2_Experiencer_focus = mkV2 (regV "hate") ;
+		like_V2_Experiencer_focus = mkV2 (regV "like") ;
 		loathe_V2_Experiencer_focus = mkV2 (mkV "loathe" "loathes" "loathed" "loathed" "loathing") ;
-		love_V2_Experiencer_focus = mkV2 (mkV "love" "loves" "loved" "loved" "loving") ;
+		love_V2_Experiencer_focus = mkV2 (regV "love") ;
 		mourn_V2_Experiencer_focus = mkV2 (mkV "mourn" "mourns" "mourned" "mourned" "mourning") ;
 		pity_V2_Experiencer_focus = mkV2 (mkV "pity" "pities" "pitied" "pitied" "pitying") ;
 		regret_V2_Experiencer_focus = mkV2 (mkV "regret" "regrets" "regretted" "regretted" "regretting") ;
 		resent_V2_Experiencer_focus = mkV2 (mkV "resent" "resents" "resented" "resented" "resenting") ;
 		rue_V2_Experiencer_focus = mkV2 (mkV "rue" "rues" "rued" "rued" "ruing") ;
 
+		amaze_V_Experiencer_obj = mkV "amaze" "amazes" "amazed" "amazed" "amazing" ;
+		antagonize_V_Experiencer_obj = mkV "antagonize" "antagonizes" "antagonized" "antagonized" "antagonizing" ;
+		astound_V_Experiencer_obj = mkV "astound" "astounds" "astounded" "astounded" "astounding" ;
+		captivate_V_Experiencer_obj = mkV "captivate" "captivates" "captivated" "captivated" "captivating" ;
 		charm_V_Experiencer_obj = mkV "charm" "charms" "charmed" "charmed" "charming" ;
 		cheer_V_Experiencer_obj = mkV "cheer" "cheers" "cheered" "cheered" "cheering" ;
+		confuse_V_Experiencer_obj = mkV "confuse" "confuses" "confused" "confused" "confusing" ;
 		delight_V_Experiencer_obj = mkV "delight" "delights" "delighted" "delighted" "delighting" ;
-		impress_V_Experiencer_obj = mkV "impress" ;
+		disappoint_V_Experiencer_obj = mkV "disappoint" "disappoints" "disappointed" "disappointed" "disappointing" ;
+		displease_V_Experiencer_obj = mkV "displease" "displeases" "displeased" "displeased" "displeasing" ;
+		enchant_V_Experiencer_obj = mkV "enchant" "enchants" "enchanted" "enchanted" "enchanting" ;
+		enthrall_V_Experiencer_obj = mkV "enthrall" "enthralls" "enthralled" "enthralled" "enthralling" ;
+		excite_V_Experiencer_obj = mkV "excite" "excites" "excited" "excited" "exciting" ;
+		fascinate_V_Experiencer_obj = mkV "fascinate" "fascinates" "fascinated" "fascinated" "fascinating" ;
+		frustrate_V_Experiencer_obj = mkV "frustrate" "frustrates" "frustrated" "frustrated" "frustrating" ;
+		gall_V_Experiencer_obj = mkV "gall" "galls" "galled" "galled" "galling" ;
+		gladden_V_Experiencer_obj = mkV "gladden" "gladdens" "gladdened" "gladdened" "gladdening" ;
+		impress_V_Experiencer_obj = mkV "impress" "impresses" "impressed" "impressed" "impressing" ;
+		infuriate_V_Experiencer_obj = mkV "infuriate" "infuriates" "infuriated" "infuriated" "infuriating" ;
+		irk_V_Experiencer_obj = mkV "irk" "irks" "irked" "irked" "irking" ;
+		irritate_V_Experiencer_obj = mkV "irritate" "irritates" "irritated" "irritated" "irritating" ;
+		mystify_V_Experiencer_obj = mkV "mystify" "mystifies" "mystified" "mystified" "mystifying" ;
 		offend_V_Experiencer_obj = mkV "offend" "offends" "offended" "offended" "offending" ;
 		rankle_V_Experiencer_obj = mkV "rankle" "rankles" "rankled" "rankled" "rankling" ;
-		sting_V_Experiencer_obj = IrregEng.sting_V ;
+		shock_V_Experiencer_obj = mkV "shock" "shocks" "shocked" "shocked" "shocking" ;
+		soothe_V_Experiencer_obj = mkV "soothe" "soothes" "soothed" "soothed" "soothing" ;
+		stimulate_V_Experiencer_obj = mkV "stimulate" "stimulates" "stimulated" "stimulated" "stimulating" ;
+		sting_V_Experiencer_obj = irregV "sting" "stung" "stung" ;
+		stupefy_V_Experiencer_obj = mkV "stupefy" "stupefies" "stupefied" "stupefied" "stupefying" ;
+		surprise_V_Experiencer_obj = mkV "surprise" "surprises" "surprised" "surprised" "surprising" ;
+		terrify_V_Experiencer_obj = mkV "terrify" "terrifies" "terrified" "terrified" "terrifying" ;
 		tickle_V_Experiencer_obj = mkV "tickle" "tickles" "tickled" "tickled" "tickling" ;
 		abash_V2_Experiencer_obj = mkV2 (mkV "abash" "abashes" "abashed" "abashed" "abashing") ;
 		aggravate_V2_Experiencer_obj = mkV2 (mkV "aggravate" "aggravates" "aggravated" "aggravated" "aggravating") ;
@@ -1473,7 +1600,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		sadden_V2_Experiencer_obj = mkV2 (mkV "sadden" "saddens" "saddened" "saddened" "saddening") ;
 		satisfy_V2_Experiencer_obj = mkV2 (mkV "satisfy" "satisfies" "satisfied" "satisfied" "satisfying") ;
 		scare_V2_Experiencer_obj = mkV2 (mkV "scare" "scares" "scared" "scared" "scaring") ;
-		shake_V2_Experiencer_obj = mkV2 (IrregEng.shake_V) ;
+		shake_V2_Experiencer_obj = mkV2 (irregV "shake" "shook" "shaken") ;
 		shame_V2_Experiencer_obj = mkV2 (mkV "shame" "shames" "shamed" "shamed" "shaming") ;
 		shock_V2_Experiencer_obj = mkV2 (mkV "shock" "shocks" "shocked" "shocked" "shocking") ;
 		sicken_V2_Experiencer_obj = mkV2 (mkV "sicken" "sickens" "sickened" "sickened" "sickening") ;
@@ -1483,7 +1610,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		spook_V2_Experiencer_obj = mkV2 (mkV "spook") ;
 		startle_V2_Experiencer_obj = mkV2 (mkV "startle" "startles" "startled" "startled" "startling") ;
 		stimulate_V2_Experiencer_obj = mkV2 (mkV "stimulate" "stimulates" "stimulated" "stimulated" "stimulating") ;
-		sting_V2_Experiencer_obj = mkV2 (IrregEng.sting_V) ;
+		sting_V2_Experiencer_obj = mkV2 (irregV "sting" "stung" "stung") ;
 		stir_V2_Experiencer_obj = mkV2 (mkV "stir" "stirs" "stirred" "stirred" "stirring") ;
 		stun_V2_Experiencer_obj = mkV2 (mkV "stun" "stuns" "stunned" "stunned" "stunning") ;
 		stupefy_V2_Experiencer_obj = mkV2 (mkV "stupefy" "stupefies" "stupefied" "stupefied" "stupefying") ;
@@ -1495,19 +1622,46 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		trouble_V2_Experiencer_obj = mkV2 (mkV "trouble" "troubles" "troubled" "troubled" "troubling") ;
 		unnerve_V2_Experiencer_obj = mkV2 (mkV "unnerve" "unnerves" "unnerved" "unnerved" "unnerving") ;
 		unsettle_V2_Experiencer_obj = mkV2 (mkV "unsettle" "unsettles" "unsettled" "unsettled" "unsettling") ;
-		upset_V2_Experiencer_obj = mkV2 (IrregEng.upset_V) ;
+		upset_V2_Experiencer_obj = mkV2 (irregDuplV "upset" "upset" "upset") ;
 		vex_V2_Experiencer_obj = mkV2 (mkV "vex" "vexes" "vexed" "vexed" "vexing") ;
+		alarm_V2S_Experiencer_obj = mkV2S (mkV "alarm" "alarms" "alarmed" "alarmed" "alarming") noPrep ;
+		amaze_V2S_Experiencer_obj = mkV2S (mkV "amaze" "amazes" "amazed" "amazed" "amazing") noPrep ;
+		anger_V2S_Experiencer_obj = mkV2S (mkV "anger" "angers" "angered" "angered" "angering") noPrep ;
+		annoy_V2S_Experiencer_obj = mkV2S (mkV "annoy" "annoys" "annoyed" "annoyed" "annoying") noPrep ;
+		astonish_V2S_Experiencer_obj = mkV2S (mkV "astonish" "astonishes" "astonished" "astonished" "astonishing") noPrep ;
+		astound_V2S_Experiencer_obj = mkV2S (mkV "astound" "astounds" "astounded" "astounded" "astounding") noPrep ;
+		confuse_V2S_Experiencer_obj = mkV2S (mkV "confuse" "confuses" "confused" "confused" "confusing") noPrep ;
+		depress_V2S_Experiencer_obj = mkV2S (mkV "depress" "depresses" "depressed" "depressed" "depressing") noPrep ;
+		disappoint_V2S_Experiencer_obj = mkV2S (mkV "disappoint" "disappoints" "disappointed" "disappointed" "disappointing") noPrep ;
+		disconcert_V2S_Experiencer_obj = mkV2S (mkV "disconcert" "disconcerts" "disconcerted" "disconcerted" "disconcerting") noPrep ;
+		distress_V2S_Experiencer_obj = mkV2S (mkV "distress" "distresses" "distressed" "distressed" "distressing") noPrep ;
+		disturb_V2S_Experiencer_obj = mkV2S (mkV "disturb" "disturbs" "disturbed" "disturbed" "disturbing") noPrep ;
+		enrage_V2S_Experiencer_obj = mkV2S (mkV "enrage" "enrages" "enraged" "enraged" "enraging") noPrep ;
+		frighten_V2S_Experiencer_obj = mkV2S (mkV "frighten" "frightens" "frightened" "frightened" "frightening") noPrep ;
+		frustrate_V2S_Experiencer_obj = mkV2S (mkV "frustrate" "frustrates" "frustrated" "frustrated" "frustrating") noPrep ;
+		gall_V2S_Experiencer_obj = mkV2S (mkV "gall" "galls" "galled" "galled" "galling") noPrep ;
+		hearten_V2S_Experiencer_obj = mkV2S (mkV "hearten" "heartens" "heartened" "heartened" "heartening") noPrep ;
+		infuriate_V2S_Experiencer_obj = mkV2S (mkV "infuriate" "infuriates" "infuriated" "infuriated" "infuriating") noPrep ;
+		irk_V2S_Experiencer_obj = mkV2S (mkV "irk" "irks" "irked" "irked" "irking") noPrep ;
+		irritate_V2S_Experiencer_obj = mkV2S (mkV "irritate" "irritates" "irritated" "irritated" "irritating") noPrep ;
+		perplex_V2S_Experiencer_obj = mkV2S (mkV "perplex" "perplexes" "perplexed" "perplexed" "perplexing") noPrep ;
+		perturb_V2S_Experiencer_obj = mkV2S (mkV "perturb" "perturbs" "perturbed" "perturbed" "perturbing") noPrep ;
 		puzzle_V2S_Experiencer_obj = mkV2S (mkV "puzzle" "puzzles" "puzzled" "puzzled" "puzzling") noPrep ;
+		rile_V2S_Experiencer_obj = mkV2S (mkV "rile" "riles" "riled" "riled" "riling") noPrep ;
 		sadden_V2S_Experiencer_obj = mkV2S (mkV "sadden" "saddens" "saddened" "saddened" "saddening") noPrep ;
+		shock_V2S_Experiencer_obj = mkV2S (mkV "shock" "shocks" "shocked" "shocked" "shocking") noPrep ;
+		startle_V2S_Experiencer_obj = mkV2S (mkV "startle" "startles" "startled" "startled" "startling") noPrep ;
+		surprise_V2S_Experiencer_obj = mkV2S (mkV "surprise" "surprises" "surprised" "surprised" "surprising") noPrep ;
 		thrill_V2S_Experiencer_obj = mkV2S (mkV "thrill" "thrills" "thrilled" "thrilled" "thrilling") noPrep ;
-		upset_V2S_Experiencer_obj = mkV2S (IrregEng.upset_V) noPrep ;
+		unsettle_V2S_Experiencer_obj = mkV2S (mkV "unsettle" "unsettles" "unsettled" "unsettled" "unsettling") noPrep ;
+		upset_V2S_Experiencer_obj = mkV2S (irregDuplV "upset" "upset" "upset") noPrep ;
 		discourage_V2_Experiencer_obj = mkV2 (mkV "discourage" "discourages" "discouraged" "discouraged" "discouraging") ;
 		flummox_V2_Experiencer_obj = mkV2 (mkV "flummox" "flummoxes" "flummoxed" "flummoxed" "flummoxing") ;
 		intrigue_VS_Experiencer_obj = mkVS (mkV "intrigue" "intrigues" "intrigued" "intrigued" "intriguing") ;
 		offend_VS_Experiencer_obj = mkVS (mkV "offend" "offends" "offended" "offended" "offending") ;
 		tickle_VS_Experiencer_obj = mkVS (mkV "tickle" "tickles" "tickled" "tickled" "tickling") ;
 
-		-- No target for Explaining_the_facts
+		explain_VQ_Explaining_the_facts = mkVQ (mkV "explain" "explains" "explained" "explained" "explaining") ;
 
 		export_V2_Exporting = mkV2 (mkV "export" "exports" "exported" "exported" "exporting") ;
 
@@ -1519,11 +1673,11 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		extradite_V2_Extradition = mkV2 (mkV "extradite" "extradites" "extradited" "extradited" "extraditing") ;
 
-		know_V2_Familiarity = mkV2 (mkV "know" "knows" "knew" "known" "knowing") ;
+		know_V2_Familiarity = mkV2 (irregV "know" "knew" "known") ;
 
-		feel_V_Feeling = IrregEng.feel_V ;
+		feel_V_Feeling = irregV "feel" "felt" "felt" ;
 		experience_V2_Feeling = mkV2 (mkV "experience" "experiences" "experienced" "experienced" "experiencing") ;
-		feel_V2_Feeling = mkV2 (IrregEng.feel_V) ;
+		feel_V2_Feeling = mkV2 (irregV "feel" "felt" "felt") ;
 
 		affect_V2_Feigning = mkV2 (mkV "affect" "affects" "affected" "affected" "affecting") ;
 		counterfeit_V2_Feigning = mkV2 (mkV "counterfeit" "counterfeits" "counterfeited" "counterfeited" "counterfeiting") ;
@@ -1549,12 +1703,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		flood_V2_Filling = mkV2 (mkV "flood" "floods" "flooded" "flooded" "flooding") ;
 		gild_V2_Filling = mkV2 (mkV "gild" "gilds" "gilded" "gilded" "gilding") ;
 		glaze_V2_Filling = mkV2 (mkV "glaze" "glazes" "glazed" "glazed" "glazing") ;
-		hang_V2_Filling = mkV2 (mkV "hang" "hangs" "hung" "hung" "hanging" | mkV "hang" "hangs" "hanged" "hanged" "hanging") ;
+		hang_V2_Filling = mkV2 (irregV "hang" "hung" "hung") ;
 		heap_V2_Filling = mkV2 (mkV "heap" "heaps" "heaped" "heaped" "heaping") ;
 		inject_V2_Filling = mkV2 (mkV "inject" "injects" "injected" "injected" "injecting") ;
 		load_V2_Filling = mkV2 (mkV "load" "loads" "loaded" "loaded" "loading") ;
 		pack_V2_Filling = mkV2 (mkV "pack" "packs" "packed" "packed" "packing") ;
-		paint_V2_Filling = mkV2 (mkV "paint" "paints" "painted" "painted" "painting") ;
+		paint_V2_Filling = mkV2 (regV "paint") ;
 		pave_V2_Filling = mkV2 (mkV "pave" "paves" "paved" "paved" "paving") ;
 		pile_V2_Filling = mkV2 (mkV "pile" "piles" "piled" "piled" "piling") ;
 		plaster_V2_Filling = mkV2 (mkV "plaster" "plasters" "plastered" "plastered" "plastering") ;
@@ -1563,11 +1717,11 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		seed_V2_Filling = mkV2 (mkV "seed" "seeds" "seeded" "seeded" "seeding") ;
 		shower_V2_Filling = mkV2 (mkV "shower" "showers" "showered" "showered" "showering") ;
 		smear_V2_Filling = mkV2 (mkV "smear" "smears" "smeared" "smeared" "smearing") ;
-		sow_V2_Filling = mkV2 (mkV "sow" "sows" "sowed" "sowed" "sowing") ;
+		sow_V2_Filling = mkV2 (irregV "sow" "sowed" (variants {"sowed" ; "sown"})) ;
 		spatter_V2_Filling = mkV2 (mkV "spatter" "spatters" "spattered" "spattered" "spattering") ;
 		splash_V2_Filling = mkV2 (mkV "splash" "splashes" "splashed" "splashed" "splashing") ;
 		spray_V2_Filling = mkV2 (mkV "spray" "sprays" "sprayed" "sprayed" "spraying") ;
-		spread_V2_Filling = mkV2 (IrregEng.spread_V) ;
+		spread_V2_Filling = mkV2 (irregV "spread" "spread" "spread") ;
 		sprinkle_V2_Filling = mkV2 (mkV "sprinkle" "sprinkles" "sprinkled" "sprinkled" "sprinkling") ;
 		squirt_V2_Filling = mkV2 (mkV "squirt" "squirts" "squirted" "squirted" "squirting") ;
 		strew_V2_Filling = mkV2 (mkV "strew" "strews" "strewed" "strewed" "strewing") ;
@@ -1577,29 +1731,29 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		varnish_V2_Filling = mkV2 (mkV "varnish" "varnishes" "varnished" "varnished" "varnishing") ;
 		wrap_V2_Filling = mkV2 (mkV "wrap" "wraps" "wrapped" "wrapped" "wrapping") ;
 
-		lose_V2_Finish_competition = mkV2 (IrregEng.lose_V) ;
-		tie_V2_Finish_competition = mkV2 (mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"})) ;
-		win_V2_Finish_competition = mkV2 (IrregEng.win_V) ;
+		lose_V2_Finish_competition = mkV2 (irregV "lose" "lost" "lost") ;
+		tie_V2_Finish_competition = mkV2 (regV "tie") ;
+		win_V2_Finish_competition = mkV2 (irregDuplV "win" "won" "won") ;
 
-		lose_V_Finish_game = IrregEng.lose_V ;
-		win_V_Finish_game = IrregEng.win_V ;
+		lose_V_Finish_game = irregV "lose" "lost" "lost" ;
+		win_V_Finish_game = irregDuplV "win" "won" "won" ;
 
 		fire_V2_Firing = mkV2 (mkV "fire" "fires" "fired" "fired" "firing") ;
 		terminate_V2_Firing = mkV2 (mkV "terminate" "terminates" "terminated" "terminated" "terminating") ;
 
 		bolt_V_Fleeing = mkV "bolt" "bolts" "bolted" "bolted" "bolting" ;
-		flee_V_Fleeing = IrregEng.flee_V ;
+		flee_V_Fleeing = irregV "flee" "fled" "fled" ;
 
 		bubble_V_Fluidic_motion = mkV "bubble" "bubbles" "bubbled" "bubbled" "bubbling" ;
 		cascade_V_Fluidic_motion = mkV "cascade" "cascades" "cascaded" "cascaded" "cascading" ;
 		course_V_Fluidic_motion = mkV "course" "courses" "coursed" "coursed" "coursing" ;
 		dribble_V_Fluidic_motion = mkV "dribble" "dribbles" "dribbled" "dribbled" "dribbling" ;
 		drip_V_Fluidic_motion = mkV "drip" "drips" "dripped" "dripped" "dripping" ;
-		flow_V_Fluidic_motion = mkV "flow" "flows" "flowed" "flowed" "flowing" ;
+		flow_V_Fluidic_motion = regV "flow" ;
 		jet_V_Fluidic_motion = mkV "jet" "jets" "jetted" "jetted" "jetting" ;
 		leak_V_Fluidic_motion = mkV "leak" "leaks" "leaked" "leaked" "leaking" ;
-		run_V_Fluidic_motion = IrregEng.run_V ;
-		spill_V_Fluidic_motion = mkV "spill" "spills" "spilled" "spilled" "spilling" ;
+		run_V_Fluidic_motion = irregDuplV "run" "ran" "run" ;
+		spill_V_Fluidic_motion = irregV "spill" (variants {"spilled" ; "spilt"}) (variants {"spilled" ; "spilt"}) ;
 		spurt_V_Fluidic_motion = mkV "spurt" "spurts" "spurted" "spurted" "spurting" ;
 		stream_V_Fluidic_motion = mkV "stream" "streams" "streamed" "streamed" "streaming" ;
 		trickle_V_Fluidic_motion = mkV "trickle" "trickles" "trickled" "trickled" "trickling" ;
@@ -1626,23 +1780,26 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		refrain_V_Forgoing = mkV "refrain" "refrains" "refrained" "refrained" "refraining" ;
 		forbear_VV_Forgoing = mkVV (mkV "for" IrregEng.bear_V) ;
 
-		leave_V_Forming_relationships = IrregEng.leave_V ;
+		divorce_V_Forming_relationships = mkV "divorce" "divorces" "divorced" "divorced" "divorcing" ;
+		leave_V_Forming_relationships = irregV "leave" "left" "left" ;
 		marry_V_Forming_relationships = mkV "marry" "marries" "married" "married" "marrying" ;
 		separate_V_Forming_relationships = mkV "separate" "separates" "separated" "separated" "separating" ;
-		wed_V_Forming_relationships = mkV "wed" "weds" "wedded" "wedded" "wedding" ;
+		wed_V_Forming_relationships = irregDuplV "wed" "wed" "wed" ;
 		befriend_V2_Forming_relationships = mkV2 (mkV "befriend" "befriends" "befriended" "befriended" "befriending") ;
 		divorce_V2_Forming_relationships = mkV2 (mkV "divorce" "divorces" "divorced" "divorced" "divorcing") ;
-		leave_V2_Forming_relationships = mkV2 (IrregEng.leave_V) ;
+		leave_V2_Forming_relationships = mkV2 (irregV "leave" "left" "left") ;
 		marry_V2_Forming_relationships = mkV2 (mkV "marry" "marries" "married" "married" "marrying") ;
-		wed_V2_Forming_relationships = mkV2 (mkV "wed" "weds" "wedded" "wedded" "wedding") ;
+		wed_V2_Forming_relationships = mkV2 (irregDuplV "wed" "wed" "wed") ;
 
 		grate_V_Friction = mkV "grate" "grates" "grated" "grated" "grating" ;
 		rasp_V_Friction = mkV "rasp" "rasps" "rasped" "rasped" "rasping" ;
 		scrape_V_Friction = mkV "scrape" "scrapes" "scraped" "scraped" "scraping" ;
 		screech_V_Friction = mkV "screech" "screeches" "screeched" "screeched" "screeching" ;
+		scrunch_V_Friction = mkV "scrunch" "scrunches" "scrunched" "scrunched" "scrunching" ;
 		squeal_V_Friction = mkV "squeal" "squeals" "squealed" "squealed" "squealing" ;
 
 		assemble_V2_Gathering_up = mkV2 (mkV "assemble" "assembles" "assembled" "assembled" "assembling") ;
+		bring_together_V2_Gathering_up = mkV2 (partV (irregV "bring" "brought" "brought") "together") ;
 		herd_V2_Gathering_up = mkV2 (mkV "herd" "herds" "herded" "herded" "herding") ;
 
 		beckon_V_Gesture = mkV "beckon" "beckons" "beckoned" "beckoned" "beckoning" ;
@@ -1662,9 +1819,9 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		acquire_V2_Getting = mkV2 (mkV "acquire" "acquires" "acquired" "acquired" "acquiring") ;
 		gain_V2_Getting = mkV2 (mkV "gain" "gains" "gained" "gained" "gaining") ;
-		get_V2_Getting = mkV2 (IrregEng.get_V) ;
+		get_V2_Getting = mkV2 (irregDuplV "get" "got" "gotten") ;
 		obtain_V2_Getting = mkV2 (mkV "obtain" "obtains" "obtained" "obtained" "obtaining") ;
-		win_V2_Getting = mkV2 (IrregEng.win_V) ;
+		win_V2_Getting = mkV2 (irregDuplV "win" "won" "won") ;
 
 		launch_V2_Getting_vehicle_underway = mkV2 (mkV "launch" "launches" "launched" "launched" "launching") ;
 
@@ -1674,27 +1831,31 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		endow_V2_Giving = mkV2 (mkV "endow" "endows" "endowed" "endowed" "endowing") ;
 		foist_V2_Giving = mkV2 (mkV "foist" "foists" "foisted" "foisted" "foisting") ;
 		gift_V2_Giving = mkV2 (mkV "gift" "gifts" "gifted" "gifted" "gifting") ;
-		give_V2_Giving = mkV2 (IrregEng.give_V) ;
+		give_V2_Giving = mkV2 (irregV "give" "gave" "given") ;
 		hand_V2_Giving = mkV2 (mkV "hand" "hands" "handed" "handed" "handing") ;
-		hand_in_V2_Giving = mkV2 (partV (mkV "hand") "in") ;
+		hand_in_V2_Giving = mkV2 (partV (mkV "hand" "hands" "handed" "handed" "handing") "in") ;
+		hand_out_V2_Giving = mkV2 (partV (mkV "hand" "hands" "handed" "handed" "handing") "out") ;
+		hand_over_V2_Giving = mkV2 (partV (mkV "hand" "hands" "handed" "handed" "handing") "over") ;
+		pass_out_V2_Giving = mkV2 (partV (mkV "pass" "passes" "passed" "passed" "passing") "out") ;
 
 		curl_V_Go_into_shape = mkV "curl" "curls" "curled" "curled" "curling" ;
 
-		back_out_V_Going_back_on_a_commitment = partV (mkV "back") "out" ;
+		back_out_V_Going_back_on_a_commitment = partV (mkV "back" "backs" "backed" "backed" "backing") "out" ;
 		renege_V_Going_back_on_a_commitment = mkV "renege" "reneges" "reneged" "reneged" "reneging" ;
 
 		comprehend_V2_Grasp = mkV2 (mkV "comprehend" "comprehends" "comprehended" "comprehended" "comprehending") ;
 		fathom_V2_Grasp = mkV2 (mkV "fathom" "fathoms" "fathomed" "fathomed" "fathoming") ;
 		grasp_V2_Grasp = mkV2 (mkV "grasp" "grasps" "grasped" "grasped" "grasping") ;
-		see_V2_Grasp = mkV2 (IrregEng.see_V) ;
-		understand_V2_Grasp = mkV2 (IrregEng.understand_V) ;
+		see_V2_Grasp = mkV2 (irregV "see" "saw" "seen") ;
+		understand_V2_Grasp = mkV2 (irregV "understand" "understood" "understood") ;
+		fathom_VQ_Grasp = mkVQ (mkV "fathom" "fathoms" "fathomed" "fathomed" "fathoming") ;
 		grasp_VQ_Grasp = mkVQ (mkV "grasp" "grasps" "grasped" "grasped" "grasping") ;
-		see_VQ_Grasp = mkVQ (IrregEng.see_V) ;
-		understand_VQ_Grasp = mkVQ (IrregEng.understand_V) ;
+		see_VQ_Grasp = mkVQ (irregV "see" "saw" "seen") ;
+		understand_VQ_Grasp = mkVQ (irregV "understand" "understood" "understood") ;
 
 		crush_V_Grinding = mkV "crush" "crushes" "crushed" "crushed" "crushing" ;
 		flake_V_Grinding = mkV "flake" "flakes" "flaked" "flaked" "flaking" ;
-		grind_V_Grinding = IrregEng.grind_V ;
+		grind_V_Grinding = irregV "grind" "ground" "ground" ;
 		mill_V_Grinding = mkV "mill" "mills" "milled" "milled" "milling" ;
 		pulverize_V_Grinding = mkV "pulverize" "pulverizes" "pulverized" "pulverized" "pulverizing" ;
 		chew_V2_Grinding = mkV2 (mkV "chew" "chews" "chewed" "chewed" "chewing") ;
@@ -1703,14 +1864,14 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		crush_V2_Grinding = mkV2 (mkV "crush" "crushes" "crushed" "crushed" "crushing") ;
 		flake_V2_Grinding = mkV2 (mkV "flake" "flakes" "flaked" "flaked" "flaking") ;
 		grate_V2_Grinding = mkV2 (mkV "grate" "grates" "grated" "grated" "grating") ;
-		grind_V2_Grinding = mkV2 (IrregEng.grind_V) ;
+		grind_V2_Grinding = mkV2 (irregV "grind" "ground" "ground") ;
 		masticate_V2_Grinding = mkV2 (mkV "masticate" "masticates" "masticated" "masticated" "masticating") ;
 		mill_V2_Grinding = mkV2 (mkV "mill" "mills" "milled" "milled" "milling") ;
 		pulverize_V2_Grinding = mkV2 (mkV "pulverize" "pulverizes" "pulverized" "pulverized" "pulverizing") ;
 		shred_V2_Grinding = mkV2 (mkV "shred" "shreds" "shredded" "shredded" "shredding") ;
 
-		wax_V_Grooming = mkV "wax" "waxes" "waxed" "waxed" "waxing" ;
 		bathe_V2_Grooming = mkV2 (mkV "bathe" "bathes" "bathed" "bathed" "bathing") ;
+		brush_V2_Grooming = mkV2 (mkV "brush" "brushes" "brushed" "brushed" "brushing") ;
 		cleanse_V2_Grooming = mkV2 (mkV "cleanse" "cleanses" "cleansed" "cleansed" "cleansing") ;
 		comb_V2_Grooming = mkV2 (mkV "comb" "combs" "combed" "combed" "combing") ;
 		groom_V2_Grooming = mkV2 (mkV "groom" "grooms" "groomed" "groomed" "grooming") ;
@@ -1719,24 +1880,24 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		plait_V2_Grooming = mkV2 (mkV "plait" "plaits" "plaited" "plaited" "plaiting") ;
 		pluck_V2_Grooming = mkV2 (mkV "pluck" "plucks" "plucked" "plucked" "plucking") ;
 		shampoo_V2_Grooming = mkV2 (mkV "shampoo" "shampoos" "shampooed" "shampooed" "shampooing") ;
-		shave_V2_Grooming = mkV2 (mkV "shave" "shaves" "shaved" "shaved" "shaving") ;
+		shave_V2_Grooming = mkV2 (irregV "shave" "shaved" (variants {"shaved" ; "shaven"})) ;
 		soap_V2_Grooming = mkV2 (mkV "soap" "soaps" "soaped" "soaped" "soaping") ;
-		wash_V2_Grooming = mkV2 (mkV "wash" "washes" "washed" "washed" "washing") ;
+		wash_V2_Grooming = mkV2 (regV "wash") ;
 		wax_V2_Grooming = mkV2 (mkV "wax" "waxes" "waxed" "waxed" "waxing") ;
 
 		halt_V_Halt = mkV "halt" "halts" "halted" "halted" "halting" ;
 		stop_V_Halt = mkV "stop" "stops" "stopped" "stopped" "stopping" ;
 
-		hear_V_Hear = IrregEng.hear_V ;
-		read_V_Hear = IrregEng.read_V ;
-		hear_V2_Hear = mkV2 (IrregEng.hear_V) ;
-		read_V2_Hear = mkV2 (IrregEng.read_V) ;
-		hear_VS_Hear = mkVS (IrregEng.hear_V) ;
-		read_VS_Hear = mkVS (IrregEng.read_V) ;
+		hear_V_Hear = irregV "hear" "heard" "heard" ;
+		read_V_Hear = irregV "read" "read" "read" ;
+		hear_V2_Hear = mkV2 (irregV "hear" "heard" "heard") ;
+		read_V2_Hear = mkV2 (irregV "read" "read" "read") ;
+		hear_VS_Hear = mkVS (irregV "hear" "heard" "heard") ;
+		read_VS_Hear = mkVS (irregV "read" "read" "read") ;
 
 		camouflage_V2_Hiding_objects = mkV2 (mkV "camouflage" "camouflages" "camouflaged" "camouflaged" "camouflaging") ;
 		conceal_V2_Hiding_objects = mkV2 (mkV "conceal" "conceals" "concealed" "concealed" "concealing") ;
-		hide_V2_Hiding_objects = mkV2 (IrregEng.hide_V) ;
+		hide_V2_Hiding_objects = mkV2 (irregV "hide" "hid" "hidden") ;
 
 		constrain_V2_Hindering = mkV2 (mkV "constrain" "constrains" "constrained" "constrained" "constraining") ;
 		hamper_V2_Hindering = mkV2 (mkV "hamper" "hampers" "hampered" "hampered" "hampering") ;
@@ -1754,13 +1915,13 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		brawl_V_Hostile_encounter = mkV "brawl" "brawls" "brawled" "brawled" "brawling" ;
 		clash_V_Hostile_encounter = mkV "clash" "clashes" "clashed" "clashed" "clashing" ;
 		duel_V_Hostile_encounter = mkV "duel" "duels" "duelled" "duelled" "duelling" ;
-		fight_V_Hostile_encounter = IrregEng.fight_V ;
+		fight_V_Hostile_encounter = irregV "fight" "fought" "fought" ;
 		scuffle_V_Hostile_encounter = mkV "scuffle" "scuffles" "scuffled" "scuffled" "scuffling" ;
 		skirmish_V_Hostile_encounter = mkV "skirmish" "skirmishes" "skirmished" "skirmished" "skirmishing" ;
 		struggle_V_Hostile_encounter = mkV "struggle" "struggles" "struggled" "struggled" "struggling" ;
 		war_V_Hostile_encounter = mkV "war" "wars" "warred" "warred" "warring" ;
 
-		hunt_V_Hunting = mkV "hunt" "hunts" "hunted" "hunted" "hunting" ;
+		hunt_V_Hunting = regV "hunt" ;
 
 		imitate_V2_Imitating = mkV2 (mkV "imitate" "imitates" "imitated" "imitated" "imitating") ;
 		mimic_V2_Imitating = mkV2 (mkV "mimic" "IRREG" "IRREG" "IRREG" "IRREG") ;
@@ -1782,7 +1943,8 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		crunch_V_Impact = mkV "crunch" "crunches" "crunched" "crunched" "crunching" ;
 		graze_V_Impact = mkV "graze" "grazes" "grazed" "grazed" "grazing" ;
 		hiss_V_Impact = mkV "hiss" "hisses" "hissed" "hissed" "hissing" ;
-		hit_V_Impact = IrregEng.hit_V ;
+		hit_V_Impact = irregDuplV "hit" "hit" "hit" ;
+		impact_V_Impact = mkV "impact" "impacts" "impacted" "impacted" "impacting" ;
 		patter_V_Impact = mkV "patter" "patters" "pattered" "pattered" "pattering" ;
 		plash_V_Impact = mkV "plash" "plashes" "plashed" "plashed" "plashing" ;
 		plop_V_Impact = mkV "plop" "plops" "plopped" "plopped" "plopping" ;
@@ -1790,6 +1952,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		rap_V_Impact = mkV "rap" "raps" "rapped" "rapped" "rapping" ;
 		rattle_V_Impact = mkV "rattle" "rattles" "rattled" "rattled" "rattling" ;
 		slam_V_Impact = mkV "slam" "slams" "slammed" "slammed" "slamming" ;
+		slap_V_Impact = mkV "slap" "slaps" "slapped" "slapped" "slapping" ;
 		smack_V_Impact = mkV "smack" "smacks" "smacked" "smacked" "smacking" ;
 		smash_V_Impact = mkV "smash" "smashes" "smashed" "smashed" "smashing" ;
 		thud_V_Impact = mkV "thud" "thuds" "thudded" "thudded" "thudding" ;
@@ -1798,12 +1961,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		bump_V2_Impact = mkV2 (mkV "bump" "bumps" "bumped" "bumped" "bumping") ;
 		crunch_V2_Impact = mkV2 (mkV "crunch" "crunches" "crunched" "crunched" "crunching") ;
 		graze_V2_Impact = mkV2 (mkV "graze" "grazes" "grazed" "grazed" "grazing") ;
-		hit_V2_Impact = mkV2 (IrregEng.hit_V) ;
+		hit_V2_Impact = mkV2 (irregDuplV "hit" "hit" "hit") ;
 		impact_V2_Impact = mkV2 (mkV "impact" "impacts" "impacted" "impacted" "impacting") ;
 		rap_V2_Impact = mkV2 (mkV "rap" "raps" "rapped" "rapped" "rapping") ;
 		slap_V2_Impact = mkV2 (mkV "slap" "slaps" "slapped" "slapped" "slapping") ;
 		smack_V2_Impact = mkV2 (mkV "smack" "smacks" "smacked" "smacked" "smacking") ;
-		strike_V2_Impact = mkV2 (IrregEng.strike_V) ;
+		strike_V2_Impact = mkV2 (irregV "strike" "struck" "struck") ;
 		thud_V2_Impact = mkV2 (mkV "thud" "thuds" "thudded" "thudded" "thudding") ;
 		thump_V2_Impact = mkV2 (mkV "thump" "thumps" "thumped" "thumped" "thumping") ;
 
@@ -1816,41 +1979,44 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		puff_V2_Ingest_substance = mkV2 (mkV "puff" "puffs" "puffed" "puffed" "puffing") ;
 		smoke_V2_Ingest_substance = mkV2 (mkV "smoke" "smokes" "smoked" "smoked" "smoking") ;
-		do_V2_Ingest_substance = mkV2 (IrregEng.do_V) ;
+		do_V2_Ingest_substance = mkV2 (mk5V "do" "does" "did" "done" "doing") ;
 		inject_V2_Ingest_substance = mkV2 (mkV "inject" "injects" "injected" "injected" "injecting") ;
 		pop_V2_Ingest_substance = mkV2 (mkV "pop" "pops" "popped" "popped" "popping") ;
-		shoot_V2_Ingest_substance = mkV2 (IrregEng.shoot_V) ;
+		shoot_V2_Ingest_substance = mkV2 (irregV "shoot" "shot" "shot") ;
 		sniff_V2_Ingest_substance = mkV2 (mkV "sniff" "sniffs" "sniffed" "sniffed" "sniffing") ;
 		snort_V2_Ingest_substance = mkV2 (mkV "snort" "snorts" "snorted" "snorted" "snorting") ;
-		take_V2_Ingest_substance = mkV2 (IrregEng.take_V) ;
+		take_V2_Ingest_substance = mkV2 (irregV "take" "took" "taken") ;
 		use_V2_Ingest_substance = mkV2 (mkV "use" "uses" "used" "used" "using") ;
 
 		breakfast_V_Ingestion = mkV "breakfast" "breakfasts" "breakfasted" "breakfasted" "breakfasting" ;
 		dine_V_Ingestion = mkV "dine" "dines" "dined" "dined" "dining" ;
-		drink_V_Ingestion = IrregEng.drink_V ;
-		eat_V_Ingestion = IrregEng.eat_V ;
+		drink_V_Ingestion = irregV "drink" "drank" "drunk" ;
+		eat_V_Ingestion = irregV "eat" "ate" "eaten" ;
 		feast_V_Ingestion = mkV "feast" "feasts" "feasted" "feasted" "feasting" ;
-		feed_V_Ingestion = IrregEng.feed_V ;
+		feed_V_Ingestion = irregV "feed" "fed" "fed" ;
 		gobble_V_Ingestion = mkV "gobble" "gobbles" "gobbled" "gobbled" "gobbling" ;
 		gulp_V_Ingestion = mkV "gulp" "gulps" "gulped" "gulped" "gulping" ;
 		guzzle_V_Ingestion = mkV "guzzle" "guzzles" "guzzled" "guzzled" "guzzling" ;
+		imbibe_V_Ingestion = mkV "imbibe" "imbibes" "imbibed" "imbibed" "imbibing" ;
 		lap_V_Ingestion = mkV "lap" "laps" "lapped" "lapped" "lapping" ;
 		lunch_V_Ingestion = mkV "lunch" "lunches" "lunched" "lunched" "lunching" ;
 		munch_V_Ingestion = mkV "munch" "munches" "munched" "munched" "munching" ;
 		nibble_V_Ingestion = mkV "nibble" "nibbles" "nibbled" "nibbled" "nibbling" ;
+		nurse_V_Ingestion = mkV "nurse" "nurses" "nursed" "nursed" "nursing" ;
 		sip_V_Ingestion = mkV "sip" "sips" "sipped" "sipped" "sipping" ;
 		sup_V_Ingestion = mkV "sup" "sups" "supped" "supped" "supping" ;
 		swig_V_Ingestion = mkV "swig" "swigs" "swigged" "swigged" "swigging" ;
 		consume_V_Ingestion = mkV "consume" "consumes" "consumed" "consumed" "consuming" ;
+		devour_V_Ingestion = mkV "devour" "devours" "devoured" "devoured" "devouring" ;
 		consume_V2_Ingestion = mkV2 (mkV "consume" "consumes" "consumed" "consumed" "consuming") ;
 		devour_V2_Ingestion = mkV2 (mkV "devour" "devours" "devoured" "devoured" "devouring") ;
 		down_V2_Ingestion = mkV2 (mkV "down" "downs" "downed" "downed" "downing") ;
-		drink_V2_Ingestion = mkV2 (IrregEng.drink_V) ;
-		eat_V2_Ingestion = mkV2 (IrregEng.eat_V) ;
+		drink_V2_Ingestion = mkV2 (irregV "drink" "drank" "drunk") ;
+		eat_V2_Ingestion = mkV2 (irregV "eat" "ate" "eaten") ;
 		gobble_V2_Ingestion = mkV2 (mkV "gobble" "gobbles" "gobbled" "gobbled" "gobbling") ;
 		gulp_V2_Ingestion = mkV2 (mkV "gulp" "gulps" "gulped" "gulped" "gulping") ;
 		guzzle_V2_Ingestion = mkV2 (mkV "guzzle" "guzzles" "guzzled" "guzzled" "guzzling") ;
-		have_V2_Ingestion = mkV2 (IrregEng.have_V) ;
+		have_V2_Ingestion = mkV2 (mk5V "have" "has" "had" "had" "having") ;
 		imbibe_V2_Ingestion = mkV2 (mkV "imbibe" "imbibes" "imbibed" "imbibed" "imbibing") ;
 		ingest_V2_Ingestion = mkV2 (mkV "ingest" "ingests" "ingested" "ingested" "ingesting") ;
 		lap_V2_Ingestion = mkV2 (mkV "lap" "laps" "lapped" "lapped" "lapping") ;
@@ -1863,13 +2029,16 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		swig_V2_Ingestion = mkV2 (mkV "swig" "swigs" "swigged" "swigged" "swigging") ;
 		swill_V2_Ingestion = mkV2 (mkV "swill" "swills" "swilled" "swilled" "swilling") ;
 
+		confine_V_Inhibit_movement = mkV "confine" "confines" "confined" "confined" "confining" ;
+		imprison_V_Inhibit_movement = mkV "imprison" "imprisons" "imprisoned" "imprisoned" "imprisoning" ;
 		lock_V_Inhibit_movement = mkV "lock" "locks" "locked" "locked" "locking" ;
-		tie_V_Inhibit_movement = mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"}) ;
+		tie_V_Inhibit_movement = regV "tie" ;
 		confine_V2_Inhibit_movement = mkV2 (mkV "confine" "confines" "confined" "confined" "confining") ;
 		imprison_V2_Inhibit_movement = mkV2 (mkV "imprison" "imprisons" "imprisoned" "imprisoned" "imprisoning") ;
 		lock_V2_Inhibit_movement = mkV2 (mkV "lock" "locks" "locked" "locked" "locking") ;
-		tie_V2_Inhibit_movement = mkV2 (mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"})) ;
+		tie_V2_Inhibit_movement = mkV2 (regV "tie") ;
 
+		doublecheck_V2_Inspecting = mkV2 (mkV "double-check" "double-checks" "double-checked" "double-checked" "double-checking") ;
 		examine_V2_Inspecting = mkV2 (mkV "examine" "examines" "examined" "examined" "examining") ;
 		frisk_V2_Inspecting = mkV2 (mkV "frisk" "frisks" "frisked" "frisked" "frisking") ;
 		inspect_V2_Inspecting = mkV2 (mkV "inspect" "inspects" "inspected" "inspected" "inspecting") ;
@@ -1881,16 +2050,19 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		institutionalize_V2_Institutionalization = mkV2 (mkV "institutionalize" "institutionalizes" "institutionalized" "institutionalized" "institutionalizing") ;
 		hospitalize_V2_Institutionalization = mkV2 (mkV "hospitalize" "hospitalizes" "hospitalized" "hospitalized" "hospitalizing") ;
 
-		cut_V_Intentional_traversing = IrregEng.cut_V ;
+		cut_V_Intentional_traversing = irregDuplV "cut" "cut" "cut" ;
 		ford_V2_Intentional_traversing = mkV2 (mkV "ford" "fords" "forded" "forded" "fording") ;
 
+		-- No target for Intentionally_affect
+
 		establish_V2_Intentionally_create = mkV2 (mkV "establish" "establishes" "established" "established" "establishing") ;
-		set_up_V2_Intentionally_create = mkV2 (partV IrregEng.set_V "up") ;
+		set_up_V2_Intentionally_create = mkV2 (partV (irregDuplV "set" "set" "set") "up") ;
 
 		intercept_V2_Intercepting = mkV2 (mkV "intercept" "intercepts" "intercepted" "intercepted" "intercepting") ;
 
 		interrupt_V2_Interrupt_process = mkV2 (mkV "interrupt" "interrupts" "interrupted" "interrupted" "interrupting") ;
 
+		invade_V_Invading = mkV "invade" "invades" "invaded" "invaded" "invading" ;
 		invade_V2_Invading = mkV2 (mkV "invade" "invades" "invaded" "invaded" "invading") ;
 		overrun_V2_Invading = mkV2 (mkV "over" IrregEng.run_V) ;
 
@@ -1950,7 +2122,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		reproach_V2_Judgment_direct_address = mkV2 (mkV "reproach" "reproaches" "reproached" "reproached" "reproaching") ;
 		reprove_V2_Judgment_direct_address = mkV2 (mkV "reprove" "reproves" "reproved" "reproved" "reproving") ;
 		scold_V2_Judgment_direct_address = mkV2 (mkV "scold" "scolds" "scolded" "scolded" "scolding") ;
-		tell_off_V2_Judgment_direct_address = mkV2 (partV IrregEng.tell_V "off") ;
+		tell_off_V2_Judgment_direct_address = mkV2 (partV (irregV "tell" "told" "told") "off") ;
 		thank_V2_Judgment_direct_address = mkV2 (mkV "thank" "thanks" "thanked" "thanked" "thanking") ;
 		upbraid_V2_Judgment_direct_address = mkV2 (mkV "upbraid" "upbraids" "upbraided" "upbraided" "upbraiding") ;
 
@@ -1971,12 +2143,12 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dispatch_V2_Killing = mkV2 (mkV "dispatch" "dispatches" "dispatched" "dispatched" "dispatching") ;
 		drown_V2_Killing = mkV2 (mkV "drown" "drowns" "drowned" "drowned" "drowning") ;
 		exterminate_V2_Killing = mkV2 (mkV "exterminate" "exterminates" "exterminated" "exterminated" "exterminating") ;
-		kill_V2_Killing = mkV2 (mkV "kill" "kills" "killed" "killed" "killing") ;
+		kill_V2_Killing = mkV2 (regV "kill") ;
 		liquidate_V2_Killing = mkV2 (mkV "liquidate" "liquidates" "liquidated" "liquidated" "liquidating") ;
 		massacre_V2_Killing = mkV2 (mkV "massacre" "massacres" "massacred" "massacred" "massacring") ;
 		silence_V2_Killing = mkV2 (mkV "silence" "silences" "silenced" "silenced" "silencing") ;
 		slaughter_V2_Killing = mkV2 (mkV "slaughter" "slaughters" "slaughtered" "slaughtered" "slaughtering") ;
-		slay_V2_Killing = mkV2 (IrregEng.slay_V) ;
+		slay_V2_Killing = mkV2 (irregV "slay" "slew" "slain") ;
 		starve_V2_Killing = mkV2 (mkV "starve" "starves" "starved" "starved" "starving") ;
 		butcher_V2_Killing = mkV2 (mkV "butcher" "butchers" "butchered" "butchered" "butchering") ;
 		crucify_V2_Killing = mkV2 (mkV "crucify" "crucifies" "crucified" "crucified" "crucifying") ;
@@ -1985,14 +2157,14 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		murder_V2_Killing = mkV2 (mkV "murder" "murders" "murdered" "murdered" "murdering") ;
 		smother_V2_Killing = mkV2 (mkV "smother" "smothers" "smothered" "smothered" "smothering") ;
 
-		tie_V2_Knot_creation = mkV2 (mkV "tie" "ties" "tied" "tied" (variants {"tying"; "tieing"})) ;
+		tie_V2_Knot_creation = mkV2 (regV "tie") ;
 
 		launch_V2_Launch_process = mkV2 (mkV "launch" "launches" "launched" "launched" "launching") ;
 
 		head_V2_Leadership = mkV2 (mkV "head" "heads" "headed" "headed" "heading") ;
-		lead_V2_Leadership = mkV2 (IrregEng.lead_V) ;
+		lead_V2_Leadership = mkV2 (irregV "lead" "led" "led") ;
 		preside_V2_Leadership = mkV2 (mkV "preside" "presides" "presided" "presided" "presiding") ;
-		run_V2_Leadership = mkV2 (IrregEng.run_V) ;
+		run_V2_Leadership = mkV2 (irregDuplV "run" "ran" "run") ;
 		spearhead_V2_Leadership = mkV2 (mkV "spearhead") ;
 		command_V2_Leadership = mkV2 (mkV "command" "commands" "commanded" "commanded" "commanding") ;
 		govern_V2_Leadership = mkV2 (mkV "govern" "governs" "governed" "governed" "governing") ;
@@ -2016,11 +2188,11 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		glow_V_Location_of_light = mkV "glow" "glows" "glowed" "glowed" "glowing" ;
 		scintillate_V_Location_of_light = mkV "scintillate" "scintillates" "scintillated" "scintillated" "scintillating" ;
 		shimmer_V_Location_of_light = mkV "shimmer" "shimmers" "shimmered" "shimmered" "shimmering" ;
-		shine_V_Location_of_light = IrregEng.shine_V ;
+		shine_V_Location_of_light = irregV "shine" "shone" "shone" ;
 		sparkle_V_Location_of_light = mkV "sparkle" "sparkles" "sparkled" "sparkled" "sparkling" ;
 		twinkle_V_Location_of_light = mkV "twinkle" "twinkles" "twinkled" "twinkled" "twinkling" ;
 
-		lose_V2_Losing = mkV2 (IrregEng.lose_V) ;
+		lose_V2_Losing = mkV2 (irregV "lose" "lost" "lost") ;
 
 		clatter_V_Make_noise = mkV "clatter" "clatters" "clattered" "clattered" "clattering" ;
 		drone_V_Make_noise = mkV "drone" "drones" "droned" "droned" "droning" ;
@@ -2032,7 +2204,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		tinkle_V2_Make_noise = mkV2 (mkV "tinkle" "tinkles" "tinkled" "tinkled" "tinkling") ;
 
 		permit_V2_Make_possible_to_do = mkV2 (mkV "permit" "permits" "permitted" "permitted" "permitting") ;
-		let_VS_Make_possible_to_do = mkVS (IrregEng.let_V) ;
+		let_VS_Make_possible_to_do = mkVS (irregDuplV "let" "let" "let") ;
 
 		frown_V_Making_faces = mkV "frown" "frowns" "frowned" "frowned" "frowning" ;
 		grimace_V_Making_faces = mkV "grimace" "grimaces" "grimaced" "grimaced" "grimacing" ;
@@ -2049,16 +2221,20 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		deceive_V2_Manipulate_into_doing = mkV2 (mkV "deceive" "deceives" "deceived" "deceived" "deceiving") ;
 		harass_V2_Manipulate_into_doing = mkV2 (mkV "harass" "harasses" "harassed" "harassed" "harassing") ;
 
+		claw_V_Manipulation = mkV "claw" "claws" "clawed" "clawed" "clawing" ;
 		clutch_V_Manipulation = mkV "clutch" "clutches" "clutched" "clutched" "clutching" ;
 		fumble_V_Manipulation = mkV "fumble" "fumbles" "fumbled" "fumbled" "fumbling" ;
 		grab_V_Manipulation = mkV "grab" "grabs" "grabbed" "grabbed" "grabbing" ;
 		grope_V_Manipulation = mkV "grope" "gropes" "groped" "groped" "groping" ;
+		massage_V_Manipulation = mkV "massage" "massages" "massaged" "massaged" "massaging" ;
 		nip_V_Manipulation = mkV "nip" "nips" "nipped" "nipped" "nipping" ;
-		paw_V_Manipulation = mkV "paw" ;
-		pull_V_Manipulation = mkV "pull" "pulls" "pulled" "pulled" "pulling" ;
-		push_V_Manipulation = mkV "push" "pushes" "pushed" "pushed" "pushing" ;
-		squeeze_V_Manipulation = mkV "squeeze" "squeezes" "squeezed" "squeezed" "squeezing" ;
+		nudge_V_Manipulation = mkV "nudge" "nudges" "nudged" "nudged" "nudging" ;
+		paw_V_Manipulation = mkV "paw" "paws" "pawed" "pawed" "pawing" ;
+		pull_V_Manipulation = regV "pull" ;
+		push_V_Manipulation = regV "push" ;
+		squeeze_V_Manipulation = regV "squeeze" ;
 		tug_V_Manipulation = mkV "tug" "tugs" "tugged" "tugged" "tugging" ;
+		yank_V_Manipulation = mkV "yank" "yanks" "yanked" "yanked" "yanking" ;
 		caress_V2_Manipulation = mkV2 (mkV "caress" "caresses" "caressed" "caressed" "caressing") ;
 		claw_V2_Manipulation = mkV2 (mkV "claw" "claws" "clawed" "clawed" "clawing") ;
 		clutch_V2_Manipulation = mkV2 (mkV "clutch" "clutches" "clutched" "clutched" "clutching") ;
@@ -2075,19 +2251,19 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		nudge_V2_Manipulation = mkV2 (mkV "nudge" "nudges" "nudged" "nudged" "nudging") ;
 		paw_V2_Manipulation = mkV2 (mkV "paw" "paws" "pawed" "pawed" "pawing") ;
 		pinch_V2_Manipulation = mkV2 (mkV "pinch" "pinches" "pinched" "pinched" "pinching") ;
-		pull_V2_Manipulation = mkV2 (mkV "pull" "pulls" "pulled" "pulled" "pulling") ;
-		push_V2_Manipulation = mkV2 (mkV "push" "pushes" "pushed" "pushed" "pushing") ;
+		pull_V2_Manipulation = mkV2 (regV "pull") ;
+		push_V2_Manipulation = mkV2 (regV "push") ;
 		rub_V2_Manipulation = mkV2 (mkV "rub" "rubs" "rubbed" "rubbed" "rubbing") ;
 		seize_V2_Manipulation = mkV2 (mkV "seize" "seizes" "seized" "seized" "seizing") ;
-		squeeze_V2_Manipulation = mkV2 (mkV "squeeze" "squeezes" "squeezed" "squeezed" "squeezing") ;
+		squeeze_V2_Manipulation = mkV2 (regV "squeeze") ;
 		tickle_V2_Manipulation = mkV2 (mkV "tickle" "tickles" "tickled" "tickled" "tickling") ;
 		tug_V2_Manipulation = mkV2 (mkV "tug" "tugs" "tugged" "tugged" "tugging") ;
 		tweak_V2_Manipulation = mkV2 (mkV "tweak" "tweaks" "tweaked" "tweaked" "tweaking") ;
-		wring_V2_Manipulation = mkV2 (IrregEng.wring_V) ;
+		wring_V2_Manipulation = mkV2 (irregV "wring" "wrung" "wrung") ;
 		yank_V2_Manipulation = mkV2 (mkV "yank" "yanks" "yanked" "yanked" "yanking") ;
 
 		fabricate_V2_Manufacturing = mkV2 (mkV "fabricate" "fabricates" "fabricated" "fabricated" "fabricating") ;
-		make_V2_Manufacturing = mkV2 (IrregEng.make_V) ;
+		make_V2_Manufacturing = mkV2 (irregV "make" "made" "made") ;
 		manufacture_V2_Manufacturing = mkV2 (mkV "manufacture" "manufactures" "manufactured" "manufactured" "manufacturing") ;
 		produce_V2_Manufacturing = mkV2 (mkV "produce" "produces" "produced" "produced" "producing") ;
 
@@ -2095,7 +2271,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		shower_V_Mass_motion = mkV "shower" "showers" "showered" "showered" "showering" ;
 		swarm_V_Mass_motion = mkV "swarm" "swarms" "swarmed" "swarmed" "swarming" ;
 		flock_V_Mass_motion = mkV "flock" "flocks" "flocked" "flocked" "flocking" ;
-		rain_V_Mass_motion = mkV "rain" "rains" "rained" "rained" "raining" ;
+		rain_V_Mass_motion = regV "rain" ;
 		flood_V_Mass_motion = mkV "flood" "floods" "flooded" "flooded" "flooding" ;
 		pelt_V_Mass_motion = mkV "pelt" "pelts" "pelted" "pelted" "pelting" ;
 		pour_V_Mass_motion = mkV "pour" "pours" "poured" "poured" "pouring" ;
@@ -2107,11 +2283,11 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		parade_V_Mass_motion = mkV "parade" "parades" "paraded" "paraded" "parading" ;
 		teem_V_Mass_motion = mkV "teem" "teems" "teemed" "teemed" "teeming" ;
 
-		meet_V2_Meet_specifications = mkV2 (IrregEng.meet_V) ;
+		meet_V2_Meet_specifications = mkV2 (irregV "meet" "met" "met") ;
 
-		meet_with_V2_Meet_with = prepV2 IrregEng.meet_V (mkPrep "with") ;
+		meet_with_V2_Meet_with = mkV2 (partV (irregV "meet" "met" "met") "with") ;
 
-		meet_V2_Meet_with_response = mkV2 (IrregEng.meet_V) ;
+		meet_V2_Meet_with_response = mkV2 (irregV "meet" "met" "met") ;
 
 		-- No target for Memorization
 
@@ -2126,24 +2302,24 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		sin_V_Misdeed = mkV "sin" "sins" "sinned" "sinned" "sinning" ;
 
-		blow_V_Motion = IrregEng.blow_V ;
+		blow_V_Motion = irregV "blow" "blew" "blown" ;
 		coast_V_Motion = mkV "coast" "coasts" "coasted" "coasted" "coasting" ;
 		drift_V_Motion = mkV "drift" "drifts" "drifted" "drifted" "drifting" ;
-		float_V_Motion = mkV "float" "floats" "floated" "floated" "floating" ;
+		float_V_Motion = regV "float" ;
 		glide_V_Motion = mkV "glide" "glides" "glided" "glided" "gliding" ;
-		go_V_Motion = IrregEng.go_V ;
+		go_V_Motion = mk5V "go" "goes" "went" "gone" "going" ;
 		meander_V_Motion = mkV "meander" "meanders" "meandered" "meandered" "meandering" ;
 		move_V_Motion = mkV "move" "moves" "moved" "moved" "moving" ;
-		slide_V_Motion = IrregEng.slide_V ;
+		slide_V_Motion = irregV "slide" "slid" "slid" ;
 		snake_V_Motion = mkV "snake" "snakes" "snaked" "snaked" "snaking" ;
 		soar_V_Motion = mkV "soar" "soars" "soared" "soared" "soaring" ;
 		swerve_V_Motion = mkV "swerve" "swerves" "swerved" "swerved" "swerving" ;
-		swing_V_Motion = IrregEng.swing_V ;
+		swing_V_Motion = irregV "swing" "swung" "swung" ;
 		travel_V_Motion = mkV "travel" "travels" "traveled" "traveled" "traveling" ;
-		weave_V_Motion = IrregEng.weave_V ;
-		wind_V_Motion = IrregEng.wind_V ;
+		weave_V_Motion = irregV "weave" (variants {"weaved" ; "wove"}) (variants {"weaved" ; "woven"}) ;
+		wind_V_Motion = irregV "wind" "wound" "wound" ;
 		zigzag_V_Motion = mkV "zigzag" "zigzags" "zigzagged" "zigzagged" "zigzagging" ;
-		fly_V_Motion = IrregEng.fly_V ;
+		fly_V_Motion = irregV "fly" "flew" "flown" ;
 		roll_V_Motion = mkV "roll" "rolls" "rolled" "rolled" "rolling" ;
 		undulate_V_Motion = mkV "undulate" "undulates" "undulated" "undulated" "undulating" ;
 
@@ -2151,10 +2327,10 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		descend_V_Motion_directional = mkV "descend" "descends" "descended" "descended" "descending" ;
 		dip_V_Motion_directional = mkV "dip" "dips" "dipped" "dipped" "dipping" ;
 		drop_V_Motion_directional = mkV "drop" "drops" "dropped" "dropped" "dropping" ;
-		fall_V_Motion_directional = IrregEng.fall_V ;
+		fall_V_Motion_directional = irregV "fall" "fell" "fallen" ;
 		plummet_V_Motion_directional = mkV "plummet" "plummets" "plummeted" "plummeted" "plummeting" ;
 		plunge_V_Motion_directional = mkV "plunge" "plunges" "plunged" "plunged" "plunging" ;
-		rise_V_Motion_directional = IrregEng.rise_V ;
+		rise_V_Motion_directional = irregV "rise" "rose" "risen" ;
 		slant_V_Motion_directional = mkV "slant" "slants" "slanted" "slanted" "slanting" ;
 		topple_V_Motion_directional = mkV "topple" "topples" "toppled" "toppled" "toppling" ;
 
@@ -2187,8 +2363,8 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		judder_V_Moving_in_place = mkV "judder" "judders" "juddered" "juddered" "juddering" ;
 		quiver_V_Moving_in_place = mkV "quiver" "quivers" "quivered" "quivered" "quivering" ;
 		rotate_V_Moving_in_place = mkV "rotate" "rotates" "rotated" "rotated" "rotating" ;
-		shake_V_Moving_in_place = IrregEng.shake_V ;
-		swing_V_Moving_in_place = IrregEng.swing_V ;
+		shake_V_Moving_in_place = irregV "shake" "shook" "shaken" ;
+		swing_V_Moving_in_place = irregV "swing" "swung" "swung" ;
 		twirl_V_Moving_in_place = mkV "twirl" "twirls" "twirled" "twirled" "twirling" ;
 		vibrate_V_Moving_in_place = mkV "vibrate" "vibrates" "vibrated" "vibrated" "vibrating" ;
 
@@ -2205,10 +2381,10 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		decay_V_Nuclear_process = mkV "decay" "decays" "decayed" "decayed" "decaying" ;
 
-		show_V_Obviousness = IrregEng.show_V ;
+		show_V_Obviousness = irregV "show" "showed" (variants {"showed" ; "shown"}) ;
 
 		rank_V_Occupy_rank = mkV "rank" "ranks" "ranked" "ranked" "ranking" ;
-		stand_V_Occupy_rank = IrregEng.stand_V ;
+		stand_V_Occupy_rank = irregV "stand" "stood" "stood" ;
 
 		augur_V_Omen = mkV "augur" "augurs" "augured" "augured" "auguring" ;
 		bode_V_Omen = mkV "bode" "bodes" "boded" "boded" "boding" ;
@@ -2225,9 +2401,10 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		bicycle_V_Operate_vehicle = mkV "bicycle" "bicycles" "bicycled" "bicycled" "bicycling" ;
 		bike_V_Operate_vehicle = mkV "bike" "bikes" "biked" "biked" "biking" ;
 		boat_V_Operate_vehicle = mkV "boat" "boats" "boated" "boated" "boating" ;
+		canoe_V_Operate_vehicle = mkV "canoe" "canoes" "canoed" "canoed" "canoeing" ;
 		cycle_V_Operate_vehicle = mkV "cycle" "cycles" "cycled" "cycled" "cycling" ;
-		drive_V_Operate_vehicle = IrregEng.drive_V ;
-		fly_V_Operate_vehicle = IrregEng.fly_V ;
+		drive_V_Operate_vehicle = irregV "drive" "drove" "driven" ;
+		fly_V_Operate_vehicle = irregV "fly" "flew" "flown" ;
 		motor_V_Operate_vehicle = mkV "motor" "motors" "motored" "motored" "motoring" ;
 		paddle_V_Operate_vehicle = mkV "paddle" "paddles" "paddled" "paddled" "paddling" ;
 		pedal_V_Operate_vehicle = mkV "pedal" "pedals" "pedalled" "pedalled" "pedalling" ;
@@ -2240,12 +2417,6 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		taxi_V_Operate_vehicle = mkV "taxi" "taxis" "taxied" "taxied" "taxiing" ;
 		toboggan_V_Operate_vehicle = mkV "toboggan" "toboggans" "tobogganed" "tobogganed" "tobogganing" ;
 		parachute_V_Operate_vehicle = mkV "parachute" "parachutes" "parachuted" "parachuted" "parachuting" ;
-		drive_V2_Operate_vehicle = mkV2 (IrregEng.drive_V) ;
-		fly_V2_Operate_vehicle = mkV2 (IrregEng.fly_V) ;
-		paddle_V2_Operate_vehicle = mkV2 (mkV "paddle" "paddles" "paddled" "paddled" "paddling") ;
-		pedal_V2_Operate_vehicle = mkV2 (mkV "pedal" "pedals" "pedalled" "pedalled" "pedalling") ;
-		row_V2_Operate_vehicle = mkV2 (mkV "row" "rows" "rowed" "rowed" "rowing") ;
-		taxi_V2_Operate_vehicle = mkV2 (mkV "taxi" "taxis" "taxied" "taxied" "taxiing") ;
 
 		manage_V2_Operating_a_system = mkV2 (mkV "manage" "manages" "managed" "managed" "managing") ;
 		operate_V2_Operating_a_system = mkV2 (mkV "operate" "operates" "operated" "operated" "operating") ;
@@ -2253,7 +2424,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		test_V2_Operational_testing = mkV2 (mkV "test" "tests" "tested" "tested" "testing") ;
 
 		expect_VS_Opinion = mkVS (mkV "expect") ;
-		feel_VS_Opinion = mkVS (IrregEng.feel_V) ;
+		feel_VS_Opinion = mkVS (irregV "feel" "felt" "felt") ;
 		figure_VS_Opinion = mkVS (mkV "figure" "figures" "figured" "figured" "figuring") ;
 		suppose_VS_Opinion = mkVS (mkV "suppose" "supposes" "supposed" "supposed" "supposing") ;
 
@@ -2276,17 +2447,17 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		dip_V_Path_shape = mkV "dip" "dips" "dipped" "dipped" "dipping" ;
 		drop_V_Path_shape = mkV "drop" "drops" "dropped" "dropped" "dropping" ;
 		reach_V_Path_shape = mkV "reach" "reaches" "reached" "reached" "reaching" ;
-		rise_V_Path_shape = IrregEng.rise_V ;
+		rise_V_Path_shape = irregV "rise" "rose" "risen" ;
 		slant_V_Path_shape = mkV "slant" "slants" "slanted" "slanted" "slanting" ;
 		swerve_V_Path_shape = mkV "swerve" "swerves" "swerved" "swerved" "swerving" ;
-		swing_V_Path_shape = IrregEng.swing_V ;
+		swing_V_Path_shape = irregV "swing" "swung" "swung" ;
 		undulate_V_Path_shape = mkV "undulate" "undulates" "undulated" "undulated" "undulating" ;
-		weave_V_Path_shape = IrregEng.weave_V ;
-		wind_V_Path_shape = IrregEng.wind_V ;
+		weave_V_Path_shape = irregV "weave" (variants {"weaved" ; "wove"}) (variants {"weaved" ; "woven"}) ;
+		wind_V_Path_shape = irregV "wind" "wound" "wound" ;
 		zigzag_V_Path_shape = mkV "zigzag" "zigzags" "zigzagged" "zigzagged" "zigzagging" ;
 		angle_V_Path_shape = mkV "angle" "angles" "angled" "angled" "angling" ;
 		ascend_V_Path_shape = mkV "ascend" "ascends" "ascended" "ascended" "ascending" ;
-		bend_V_Path_shape = mkV "bend" "bends" "bended" "bended" "bending" ;
+		bend_V_Path_shape = irregV "bend" "bent" "bent" ;
 		emerge_V_Path_shape = mkV "emerge" "emerges" "emerged" "emerged" "emerging" ;
 		meander_V_Path_shape = mkV "meander" "meanders" "meandered" "meandered" "meandering" ;
 		skirt_V_Path_shape = mkV "skirt" "skirts" "skirted" "skirted" "skirting" ;
@@ -2295,28 +2466,34 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		ache_V_Perception_body = mkV "ache" "aches" "ached" "ached" "aching" ;
 		ail_V_Perception_body = mkV "ail" "ails" "ailed" "ailed" "ailing" ;
-		hurt_V_Perception_body = IrregEng.hurt_V ;
+		hurt_V_Perception_body = irregV "hurt" "hurt" "hurt" ;
 		itch_V_Perception_body = mkV "itch" "itches" "itched" "itched" "itching" ;
 		prickle_V_Perception_body = mkV "prickle" "prickles" "prickled" "prickled" "prickling" ;
 		smart_V_Perception_body = mkV "smart" "smarts" "smarted" "smarted" "smarting" ;
-		sting_V_Perception_body = IrregEng.sting_V ;
+		sting_V_Perception_body = irregV "sting" "stung" "stung" ;
 		tingle_V_Perception_body = mkV "tingle" "tingles" "tingled" "tingled" "tingling" ;
-		burn_V_Perception_body = mkV "burn" "burns" "burned" "burned" "burning" ;
+		burn_V_Perception_body = irregV "burn" (variants {"burned" ; "burnt"}) (variants {"burned" ; "burnt"}) ;
 		tickle_V_Perception_body = mkV "tickle" "tickles" "tickled" "tickled" "tickling" ;
 
 		detect_V2_Perception_experience = mkV2 (mkV "detect" "detects" "detected" "detected" "detecting") ;
-		feel_V2_Perception_experience = mkV2 (IrregEng.feel_V) ;
-		hear_V2_Perception_experience = mkV2 (IrregEng.hear_V) ;
+		feel_V2_Perception_experience = mkV2 (irregV "feel" "felt" "felt") ;
+		hear_V2_Perception_experience = mkV2 (irregV "hear" "heard" "heard") ;
 		overhear_V2_Perception_experience = mkV2 (mkV "over" IrregEng.hear_V) ;
 		perceive_V2_Perception_experience = mkV2 (mkV "perceive" "perceives" "perceived" "perceived" "perceiving") ;
-		see_V2_Perception_experience = mkV2 (IrregEng.see_V) ;
+		see_V2_Perception_experience = mkV2 (irregV "see" "saw" "seen") ;
 		sense_V2_Perception_experience = mkV2 (mkV "sense" "senses" "sensed" "sensed" "sensing") ;
-		smell_V2_Perception_experience = mkV2 (mkV "smell" "smells" "smelled" "smelled" "smelling") ;
+		smell_V2_Perception_experience = mkV2 (regV "smell") ;
 		taste_V2_Perception_experience = mkV2 (mkV "taste" "tastes" "tasted" "tasted" "tasting") ;
-		hear_VQ_Perception_experience = mkVQ (IrregEng.hear_V) ;
+		detect_VQ_Perception_experience = mkVQ (mkV "detect" "detects" "detected" "detected" "detecting") ;
+		hear_VQ_Perception_experience = mkVQ (irregV "hear" "heard" "heard") ;
+		overhear_VQ_Perception_experience = mkVQ (mkV "over" IrregEng.hear_V) ;
+		perceive_VQ_Perception_experience = mkVQ (mkV "perceive" "perceives" "perceived" "perceived" "perceiving") ;
+		sense_VQ_Perception_experience = mkVQ (mkV "sense" "senses" "sensed" "sensed" "sensing") ;
 
+		costar_V_Performers_and_roles = mkV "co-star" "co-stars" "co-starred" "co-starred" "co-starring" ;
+		star_V_Performers_and_roles = mkV "star" "stars" "starred" "starred" "starring" ;
 		act_V2_Performers_and_roles = mkV2 (mkV "act" "acts" "acted" "acted" "acting") ;
-		play_V2_Performers_and_roles = mkV2 (mkV "play" "plays" "played" "played" "playing") ;
+		play_V2_Performers_and_roles = mkV2 (regV "play") ;
 		star_V2_Performers_and_roles = mkV2 (mkV "star" "stars" "starred" "starred" "starring") ;
 
 		permit_V2_Permitting = mkV2 (mkV "permit" "permits" "permitted" "permitted" "permitting") ;
@@ -2347,14 +2524,14 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		embed_V2_Placing = mkV2 (mkV "embed" "embeds" "embedded" "embedded" "embedding") ;
 		file_V2_Placing = mkV2 (mkV "file" "files" "filed" "filed" "filing") ;
 		garage_V2_Placing = mkV2 (mkV "garage" "garages" "garaged" "garaged" "garaging") ;
-		hang_V2_Placing = mkV2 (mkV "hang" "hangs" "hung" "hung" "hanging" | mkV "hang" "hangs" "hanged" "hanged" "hanging") ;
+		hang_V2_Placing = mkV2 (irregV "hang" "hung" "hung") ;
 		heap_V2_Placing = mkV2 (mkV "heap" "heaps" "heaped" "heaped" "heaping") ;
 		immerse_V2_Placing = mkV2 (mkV "immerse" "immerses" "immersed" "immersed" "immersing") ;
 		implant_V2_Placing = mkV2 (mkV "implant" "implants" "implanted" "implanted" "implanting") ;
 		inject_V2_Placing = mkV2 (mkV "inject" "injects" "injected" "injected" "injecting") ;
 		insert_V2_Placing = mkV2 (mkV "insert" "inserts" "inserted" "inserted" "inserting") ;
 		jam_V2_Placing = mkV2 (mkV "jam" "jams" "jammed" "jammed" "jamming") ;
-		lay_V2_Placing = mkV2 (IrregEng.lay_V) ;
+		lay_V2_Placing = mkV2 (irregV "lay" "laid" "laid") ;
 		lean_V2_Placing = mkV2 (mkV "lean" "leans" "leaned" "leaned" "leaning") ;
 		load_V2_Placing = mkV2 (mkV "load" "loads" "loaded" "loaded" "loading") ;
 		lodge_V2_Placing = mkV2 (mkV "lodge" "lodges" "lodged" "lodged" "lodging") ;
@@ -2369,53 +2546,57 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		pocket_V2_Placing = mkV2 (mkV "pocket" "pockets" "pocketed" "pocketed" "pocketing") ;
 		position_V2_Placing = mkV2 (mkV "position" "positions" "positioned" "positioned" "positioning") ;
 		pot_V2_Placing = mkV2 (mkV "pot" "pots" "potted" "potted" "potting") ;
-		put_V2_Placing = mkV2 (IrregEng.put_V) ;
+		put_V2_Placing = mkV2 (irregDuplV "put" "put" "put") ;
 		rest_V2_Placing = mkV2 (mkV "rest" "rests" "rested" "rested" "resting") ;
 		rub_V2_Placing = mkV2 (mkV "rub" "rubs" "rubbed" "rubbed" "rubbing") ;
-		set_V2_Placing = mkV2 (IrregEng.set_V) ;
+		set_V2_Placing = mkV2 (irregDuplV "set" "set" "set") ;
 		sheathe_V2_Placing = mkV2 (mkV "sheathe" "sheathes" "sheathed" "sheathed" "sheathing") ;
 		shelve_V2_Placing = mkV2 (mkV "shelve" "shelves" "shelved" "shelved" "shelving") ;
 		shoulder_V2_Placing = mkV2 (mkV "shoulder" "shoulders" "shouldered" "shouldered" "shouldering") ;
 		shower_V2_Placing = mkV2 (mkV "shower" "showers" "showered" "showered" "showering") ;
-		sit_V2_Placing = mkV2 (IrregEng.sit_V) ;
+		sit_V2_Placing = mkV2 (irregDuplV "sit" "sat" "sat") ;
 		situate_V2_Placing = mkV2 (mkV "situate") ;
 		smear_V2_Placing = mkV2 (mkV "smear" "smears" "smeared" "smeared" "smearing") ;
 		stable_V2_Placing = mkV2 (mkV "stable" "stables" "stabled" "stabled" "stabling") ;
-		stand_V2_Placing = mkV2 (IrregEng.stand_V) ;
+		stand_V2_Placing = mkV2 (irregV "stand" "stood" "stood") ;
 		stash_V2_Placing = mkV2 (mkV "stash" "stashes" "stashed" "stashed" "stashing") ;
-		stick_V2_Placing = mkV2 (mkV "stick" "sticks" "sticked" "sticked" "sticking") ;
+		stick_V2_Placing = mkV2 (irregV "stick" "stuck" "stuck") ;
 		stow_V2_Placing = mkV2 (mkV "stow" "stows" "stowed" "stowed" "stowing") ;
 		stuff_V2_Placing = mkV2 (mkV "stuff" "stuffs" "stuffed" "stuffed" "stuffing") ;
 		tuck_V2_Placing = mkV2 (mkV "tuck" "tucks" "tucked" "tucked" "tucking") ;
 		wrap_V2_Placing = mkV2 (mkV "wrap" "wraps" "wrapped" "wrapped" "wrapping") ;
 
 		plant_V2_Planting = mkV2 (mkV "plant" "plants" "planted" "planted" "planting") ;
-		sow_V2_Planting = mkV2 (mkV "sow" "sows" "sowed" "sowed" "sowing") ;
+		sow_V2_Planting = mkV2 (irregV "sow" "sowed" (variants {"sowed" ; "sown"})) ;
 
 		impersonate_V2_Posing_as = mkV2 (mkV "impersonate" "impersonates" "impersonated" "impersonated" "impersonating") ;
 
-		have_V2_Possession = mkV2 (IrregEng.have_V) ;
+		have_V2_Possession = mkV2 (mk5V "have" "has" "had" "had" "having") ;
 		own_V2_Possession = mkV2 (mkV "own" "owns" "owned" "owned" "owning") ;
 		possess_V2_Possession = mkV2 (mkV "possess" "possesses" "possessed" "possessed" "possessing") ;
 
-		bend_V_Posture = mkV "bend" "bends" "bended" "bended" "bending" ;
+		bend_V_Posture = irregV "bend" "bent" "bent" ;
 		crouch_V_Posture = mkV "crouch" "crouches" "crouched" "crouched" "crouching" ;
 		huddle_V_Posture = mkV "huddle" "huddles" "huddled" "huddled" "huddling" ;
-		kneel_V_Posture = mkV "kneel" "kneels" "kneeled" "kneeled" "kneeling" ;
+		hunch_V_Posture = mkV "hunch" "hunches" "hunched" "hunched" "hunching" ;
+		kneel_V_Posture = irregV "kneel" "knelt" "knelt" ;
 		lean_V_Posture = mkV "lean" "leans" "leaned" "leaned" "leaning" ;
-		sit_V_Posture = IrregEng.sit_V ;
+		lie_V_Posture = irregV "lie" "lay" "lain" ;
+		sit_V_Posture = irregDuplV "sit" "sat" "sat" ;
 		slouch_V_Posture = mkV "slouch" "slouches" "slouched" "slouched" "slouching" ;
 		sprawl_V_Posture = mkV "sprawl" "sprawls" "sprawled" "sprawled" "sprawling" ;
 		squat_V_Posture = mkV "squat" "squats" "squatted" "squatted" "squatting" ;
-		stand_V_Posture = IrregEng.stand_V ;
+		stand_V_Posture = irregV "stand" "stood" "stood" ;
 		stoop_V_Posture = mkV "stoop" "stoops" "stooped" "stooped" "stooping" ;
 
 		practice_V_Practice = mkV "practice" ;
 		rehearse_V_Practice = mkV "rehearse" "rehearses" "rehearsed" "rehearsed" "rehearsing" ;
+		run_V_Practice = irregDuplV "run" "ran" "run" ;
 		practice_V2_Practice = mkV2 (mkV "practice") ;
 		rehearse_V2_Practice = mkV2 (mkV "rehearse" "rehearses" "rehearsed" "rehearsed" "rehearsing") ;
+		run_V2_Practice = mkV2 (irregDuplV "run" "ran" "run") ;
 
-		rain_V_Precipitation = mkV "rain" "rains" "rained" "rained" "raining" ;
+		rain_V_Precipitation = regV "rain" ;
 		snow_V_Precipitation = mkV "snow" "snows" "snowed" "snowed" "snowing" ;
 		drizzle_V_Precipitation = mkV "drizzle" "drizzles" "drizzled" "drizzled" "drizzling" ;
 
@@ -2430,12 +2611,13 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		bullshit_V_Prevarication = mkV "bullshit" "bullshits" "bullshitted" "bullshitted" "bullshitting" ;
 		fib_V_Prevarication = mkV "fib" "fibs" "fibbed" "fibbed" "fibbing" ;
 		kid_V_Prevarication = mkV "kid" "kids" "kidded" "kidded" "kidding" ;
+		lie_V_Prevarication = irregV "lie" "lay" "lain" ;
 		prevaricate_V_Prevarication = mkV "prevaricate" "prevaricates" "prevaricated" "prevaricated" "prevaricating" ;
 
 		deny_V3_Prevent_from_having = mkV3 (mkV "deny" "denies" "denied" "denied" "denying") ;
 
 		avert_V2_Preventing = mkV2 (mkV "avert" "averts" "averted" "averted" "averting") ;
-		prevent_V2_Preventing = mkV2 (mkV "prevent" "prevents" "prevented" "prevented" "preventing") ;
+		prevent_V2_Preventing = mkV2 (mkV "prevent") ;
 		stop_V2_Preventing = mkV2 (mkV "stop" "stops" "stopped" "stopped" "stopping") ;
 
 		persist_V_Process_continue = mkV "persist" "persists" "persisted" "persisted" "persisting" ;
@@ -2443,7 +2625,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		conclude_V_Process_end = mkV "conclude" "concludes" "concluded" "concluded" "concluding" ;
 		end_V_Process_end = mkV "end" "ends" "ended" "ended" "ending" ;
 
-		begin_V_Process_start = IrregEng.begin_V ;
+		begin_V_Process_start = irregV "begin" "began" "begun" ;
 		commence_V_Process_start = mkV "commence" "commences" "commenced" "commenced" "commencing" ;
 
 		cease_V_Process_stop = mkV "cease" "ceases" "ceased" "ceased" "ceasing" ;
@@ -2462,24 +2644,24 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		argue_V_Quarreling = mkV "argue" "argues" "argued" "argued" "arguing" ;
 		bicker_V_Quarreling = mkV "bicker" "bickers" "bickered" "bickered" "bickering" ;
-		fight_V_Quarreling = IrregEng.fight_V ;
+		fight_V_Quarreling = irregV "fight" "fought" "fought" ;
 		quarrel_V_Quarreling = mkV "quarrel" "quarrels" "quarrelled" "quarrelled" "quarrelling" ;
 		quibble_V_Quarreling = mkV "quibble" "quibbles" "quibbled" "quibbled" "quibbling" ;
 		row_V_Quarreling = mkV "row" "rows" "rowed" "rowed" "rowing" ;
 		wrangle_V_Quarreling = mkV "wrangle" "wrangles" "wrangled" "wrangled" "wrangling" ;
 		squabble_V_Quarreling = mkV "squabble" "squabbles" "squabbled" "squabbled" "squabbling" ;
 
-		ask_V_Questioning = mkV "ask" "asks" "asked" "asked" "asking" ;
+		ask_V_Questioning = regV "ask" ;
 		inquire_V_Questioning = mkV "inquire" "inquires" "inquired" "inquired" "inquiring" ;
-		ask_V2_Questioning = mkV2 (mkV "ask") ;
+		ask_V2_Questioning = mkV2 (regV "ask") ;
 		grill_V2_Questioning = mkV2 (mkV "grill" "grills" "grilled" "grilled" "grilling") ;
 		interrogate_V2_Questioning = mkV2 (mkV "interrogate" "interrogates" "interrogated" "interrogated" "interrogating") ;
 		question_V2_Questioning = mkV2 (mkV "question" "questions" "questioned" "questioned" "questioning") ;
 		quiz_V2_Questioning = mkV2 (mkV "quiz" "quizzes" "quizzed" "quizzed" "quizzing") ;
-		ask_VQ_Questioning = mkVQ (mkV "ask" "asks" "asked" "asked" "asking") ;
+		ask_VQ_Questioning = mkVQ (regV "ask") ;
 		inquire_VQ_Questioning = mkVQ (mkV "inquire" "inquires" "inquired" "inquired" "inquiring") ;
 
-		quit_V_Quitting = variants {mkV "quit" "quits" "quit" "quit" "quitting"; mkV "quit" "quits" "quitted" "quitted" "quitting"} ;
+		quit_V_Quitting = irregDuplV "quit" "quit" "quit" ;
 		resign_V_Quitting = mkV "resign" "resigns" "resigned" "resigned" "resigning" ;
 		retire_V_Quitting = mkV "retire" "retires" "retired" "retired" "retiring" ;
 
@@ -2487,39 +2669,40 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		defect_V_Quitting_a_place = mkV "defect" "defects" "defected" "defected" "defecting" ;
 		desert_V_Quitting_a_place = mkV "desert" "deserts" "deserted" "deserted" "deserting" ;
 		emigrate_V_Quitting_a_place = mkV "emigrate" "emigrates" "emigrated" "emigrated" "emigrating" ;
-		quit_V_Quitting_a_place = variants {mkV "quit" "quits" "quit" "quit" "quitting"; mkV "quit" "quits" "quitted" "quitted" "quitting"} ;
+		quit_V_Quitting_a_place = irregDuplV "quit" "quit" "quit" ;
 		retreat_V_Quitting_a_place = mkV "retreat" "retreats" "retreated" "retreated" "retreating" ;
 		sally_V_Quitting_a_place = mkV "sally" "sallies" "sallied" "sallied" "sallying" ;
 		skedaddle_V_Quitting_a_place = mkV "skedaddle" "skedaddles" "skedaddled" "skedaddled" "skedaddling" ;
-		split_V_Quitting_a_place = IrregEng.split_V ;
+		split_V_Quitting_a_place = irregDuplV "split" "split" "split" ;
+		vacate_V_Quitting_a_place = mkV "vacate" "vacates" "vacated" "vacated" "vacating" ;
 		vamoose_V_Quitting_a_place = mkV "vamoose" "vamooses" "vamoosed" "vamoosed" "vamoosing" ;
 		desert_V2_Quitting_a_place = mkV2 (mkV "desert" "deserts" "deserted" "deserted" "deserting") ;
-		quit_V2_Quitting_a_place = mkV2 (variants {mkV "quit" "quits" "quit" "quit" "quitting"; mkV "quit" "quits" "quitted" "quitted" "quitting"}) ;
+		quit_V2_Quitting_a_place = mkV2 (irregDuplV "quit" "quit" "quit") ;
 		vacate_V2_Quitting_a_place = mkV2 (mkV "vacate" "vacates" "vacated" "vacated" "vacating") ;
 
 		ratify_V2_Ratification = mkV2 (mkV "ratify" "ratifies" "ratified" "ratified" "ratifying") ;
 
 		pore_V_Reading = mkV "pore" "pores" "pored" "pored" "poring" ;
-		read_V_Reading = IrregEng.read_V ;
+		read_V_Reading = irregV "read" "read" "read" ;
 		scan_V_Reading = mkV "scan" "scans" "scanned" "scanned" "scanning" ;
 		skim_V_Reading = mkV "skim" "skims" "skimmed" "skimmed" "skimming" ;
 		devour_V2_Reading = mkV2 (mkV "devour" "devours" "devoured" "devoured" "devouring") ;
 		peruse_V2_Reading = mkV2 (mkV "peruse" "peruses" "perused" "perused" "perusing") ;
 		pore_V2_Reading = mkV2 (mkV "pore" "pores" "pored" "pored" "poring") ;
-		read_V2_Reading = mkV2 (IrregEng.read_V) ;
+		read_V2_Reading = mkV2 (irregV "read" "read" "read") ;
 		scan_V2_Reading = mkV2 (mkV "scan" "scans" "scanned" "scanned" "scanning") ;
 		skim_V2_Reading = mkV2 (mkV "skim" "skims" "skimmed" "skimmed" "skimming") ;
 
-		read_V2_Reading_aloud = mkV2 (IrregEng.read_V) ;
-		read_out_V2_Reading_aloud = mkV2 (partV IrregEng.read_V "out") ;
+		read_V2_Reading_aloud = mkV2 (irregV "read" "read" "read") ;
+		read_out_V2_Reading_aloud = mkV2 (partV (irregV "read" "read" "read") "out") ;
 
 		argue_V_Reasoning = mkV "argue" "argues" "argued" "argued" "arguing" ;
 		argue_VS_Reasoning = mkVS (mkV "argue" "argues" "argued" "argued" "arguing") ;
 		demonstrate_VS_Reasoning = mkVS (mkV "demonstrate" "demonstrates" "demonstrated" "demonstrated" "demonstrating") ;
-		disprove_VS_Reasoning = mkVS (mkV "disprove") ;
-		prove_VS_Reasoning = mkVS (mkV "prove" "proves" "proved" "proved" "proving") ;
+		disprove_VS_Reasoning = mkVS (mkV "disprove" "disproves" "disproved" "disproved" "disproving") ;
+		prove_VS_Reasoning = mkVS (irregV "prove" "proved" (variants {"proved" ; "proven"})) ;
 		reason_VS_Reasoning = mkVS (mkV "reason" "reasons" "reasoned" "reasoned" "reasoning") ;
-		show_VS_Reasoning = mkVS IrregEng.show_V ;
+		show_VS_Reasoning = mkVS (irregV "show" "showed" (variants {"showed" ; "shown"})) ;
 
 		receive_V2_Receiving = mkV2 (mkV "receive" "receives" "received" "received" "receiving") ;
 
@@ -2534,7 +2717,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		-- No target for Redirecting
 
-		see_V2_Reference_text = mkV2 (IrregEng.see_V) ;
+		see_V2_Reference_text = mkV2 (irregV "see" "saw" "seen") ;
 
 		overhaul_V2_Reforming_a_system = mkV2 (mkV "overhaul" "overhauls" "overhauled" "overhauled" "overhauling") ;
 		restructure_V2_Reforming_a_system = mkV2 (mkV "restructure" "restructures" "restructured" "restructured" "restructuring") ;
@@ -2553,22 +2736,24 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		believe_V_Religious_belief = mkV "believe" "believes" "believed" "believed" "believing" ;
 		believe_VS_Religious_belief = mkVS (mkV "believe" "believes" "believed" "believed" "believing") ;
 
-		remain_V_Remainder = mkV "remain" ;
-		remain_V2_Remainder = mkV2 (mkV "remain") ;
+		remain_V_Remainder = mkV "remain" "remains" "remained" "remained" "remaining" ;
+		remain_V2_Remainder = mkV2 (mkV "remain" "remains" "remained" "remained" "remaining") ;
 
-		forget_VQ_Remembering_experience = mkVQ (IrregEng.forget_V) ;
+		forget_VQ_Remembering_experience = mkVQ (irregDuplV "forget" "forgot" "forgotten") ;
 
-		forget_VS_Remembering_information = mkVS (IrregEng.forget_V) ;
+		forget_VS_Remembering_information = mkVS (irregDuplV "forget" "forgot" "forgotten") ;
 
-		forget_VV_Remembering_to_do = mkVV (IrregEng.forget_V) ;
+		forget_VV_Remembering_to_do = mkVV (irregDuplV "forget" "forgot" "forgotten") ;
 
 		clear_V_Removing = mkV "clear" "clears" "cleared" "cleared" "clearing" ;
+		eliminate_V_Removing = mkV "eliminate" "eliminates" "eliminated" "eliminated" "eliminating" ;
+		evacuate_V_Removing = mkV "evacuate" "evacuates" "evacuated" "evacuated" "evacuating" ;
 		pluck_V2_Removing = mkV2 (mkV "pluck" "plucks" "plucked" "plucked" "plucking") ;
 		skim_V2_Removing = mkV2 (mkV "skim" "skims" "skimmed" "skimmed" "skimming") ;
 		strip_V2_Removing = mkV2 (mkV "strip" "strips" "stripped" "stripped" "stripping") ;
 		clear_V2_Removing = mkV2 (mkV "clear" "clears" "cleared" "cleared" "clearing") ;
 		confiscate_V2_Removing = mkV2 (mkV "confiscate" "confiscates" "confiscated" "confiscated" "confiscating") ;
-		cut_V2_Removing = mkV2 (IrregEng.cut_V) ;
+		cut_V2_Removing = mkV2 (irregDuplV "cut" "cut" "cut") ;
 		discard_V2_Removing = mkV2 (mkV "discard" "discards" "discarded" "discarded" "discarding") ;
 		dislodge_V2_Removing = mkV2 (mkV "dislodge" "dislodges" "dislodged" "dislodged" "dislodging") ;
 		drain_V2_Removing = mkV2 (mkV "drain" "drains" "drained" "drained" "draining") ;
@@ -2588,15 +2773,15 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		remove_V2_Removing = mkV2 (mkV "remove" "removes" "removed" "removed" "removing") ;
 		rinse_V2_Removing = mkV2 (mkV "rinse" "rinses" "rinsed" "rinsed" "rinsing") ;
 		rip_V2_Removing = mkV2 (mkV "rip" "rips" "ripped" "ripped" "ripping") ;
-		shave_V2_Removing = mkV2 (mkV "shave" "shaves" "shaved" "shaved" "shaving") ;
+		shave_V2_Removing = mkV2 (irregV "shave" "shaved" (variants {"shaved" ; "shaven"})) ;
 		snatch_V2_Removing = mkV2 (mkV "snatch" "snatches" "snatched" "snatched" "snatching") ;
 		swipe_V2_Removing = mkV2 (mkV "swipe" "swipes" "swiped" "swiped" "swiping") ;
-		take_V2_Removing = mkV2 (IrregEng.take_V) ;
-		tear_V2_Removing = mkV2 (IrregEng.tear_V) ;
+		take_V2_Removing = mkV2 (irregV "take" "took" "taken") ;
+		tear_V2_Removing = mkV2 (irregV "tear" "tore" "torn") ;
 		unload_V2_Removing = mkV2 (mkV "unload" "unloads" "unloaded" "unloaded" "unloading") ;
-		wash_V2_Removing = mkV2 (mkV "wash" "washes" "washed" "washed" "washing") ;
+		wash_V2_Removing = mkV2 (regV "wash") ;
 		withdraw_V2_Removing = mkV2 (mkV "with" IrregEng.draw_V) ;
-		take_V3_Removing = mkV3 (IrregEng.take_V) ;
+		take_V3_Removing = mkV3 (irregV "take" "took" "taken") ;
 
 		disable_V2_Render_nonfunctional = mkV2 (mkV "disable" "disables" "disabled" "disabled" "disabling") ;
 		incapacitate_V2_Render_nonfunctional = mkV2 (mkV "incapacitate" "incapacitates" "incapacitated" "incapacitated" "incapacitating") ;
@@ -2615,32 +2800,41 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		replace_V2_Replacing = mkV2 (mkV "replace" "replaces" "replaced" "replaced" "replacing") ;
 		substitute_V2_Replacing = mkV2 (mkV "substitute" "substitutes" "substituted" "substituted" "substituting") ;
 
-		rat_V_Reporting = mkV "rat" ;
+		rat_V_Reporting = mkV "rat" "rats" "ratted" "ratted" "ratting" ;
 		snitch_V_Reporting = mkV "snitch" "snitches" "snitched" "snitched" "snitching" ;
 
 		-- No target for Representing
 
-		ask_V_Request = mkV "ask" "asks" "asked" "asked" "asking" ;
+		ask_V_Request = regV "ask" ;
 		beg_V_Request = mkV "beg" "begs" "begged" "begged" "begging" ;
-		order_V_Request = mkV "order" ;
-		plead_V_Request = mkV "plead" "pleads" "pleaded" "pleaded" "pleading" ;
-		ask_V2_Request = mkV2 (mkV "ask") ;
+		demand_V_Request = mkV "demand" "demands" "demanded" "demanded" "demanding" ;
+		implore_V_Request = mkV "implore" "implores" "implored" "implored" "imploring" ;
+		order_V_Request = mkV "order" "orders" "ordered" "ordered" "ordering" ;
+		plead_V_Request = irregV "plead" "pled" "pled" ;
+		request_V_Request = mkV "request" "requests" "requested" "requested" "requesting" ;
+		summon_V_Request = mkV "summon" "summons" "summoned" "summoned" "summoning" ;
+		ask_V2_Request = mkV2 (regV "ask") ;
 		beg_V2_Request = mkV2 (mkV "beg" "begs" "begged" "begged" "begging") ;
 		beseech_V2_Request = mkV2 (mkV "beseech" "beseeches" "beseeched" "beseeched" "beseeching") ;
 		command_V2_Request = mkV2 (mkV "command" "commands" "commanded" "commanded" "commanding") ;
 		demand_V2_Request = mkV2 (mkV "demand" "demands" "demanded" "demanded" "demanding") ;
 		implore_V2_Request = mkV2 (mkV "implore" "implores" "implored" "implored" "imploring") ;
 		order_V2_Request = mkV2 (mkV "order" "orders" "ordered" "ordered" "ordering") ;
-		plead_V2_Request = mkV2 (mkV "plead" "pleads" "pleaded" "pleaded" "pleading") ;
+		plead_V2_Request = mkV2 (irregV "plead" "pled" "pled") ;
 		request_V2_Request = mkV2 (mkV "request" "requests" "requested" "requested" "requesting") ;
 		summon_V2_Request = mkV2 (mkV "summon" "summons" "summoned" "summoned" "summoning") ;
 		urge_V2_Request = mkV2 (mkV "urge" "urges" "urged" "urged" "urging") ;
-		ask_V2V_Request = mkV2V (mkV "ask") noPrep to_Prep ;
+		ask_V2V_Request = mkV2V (regV "ask") noPrep to_Prep ;
 		beg_V2V_Request = mkV2V (mkV "beg" "begs" "begged" "begged" "begging") noPrep to_Prep ;
+		beseech_V2V_Request = mkV2V (mkV "beseech" "beseeches" "beseeched" "beseeched" "beseeching") noPrep to_Prep ;
 		command_V2V_Request = mkV2V (mkV "command" "commands" "commanded" "commanded" "commanding") noPrep to_Prep ;
+		entreat_V2V_Request = mkV2V (mkV "entreat" "entreats" "entreated" "entreated" "entreating") noPrep to_Prep ;
+		implore_V2V_Request = mkV2V (mkV "implore" "implores" "implored" "implored" "imploring") noPrep to_Prep ;
 		order_V2V_Request = mkV2V (mkV "order" "orders" "ordered" "ordered" "ordering") noPrep to_Prep ;
-		tell_V2V_Request = mkV2V (IrregEng.tell_V) noPrep to_Prep ;
-		urge_V2V_Request = mkV2V (mkV "urge") noPrep to_Prep ;
+		request_V2V_Request = mkV2V (mkV "request" "requests" "requested" "requested" "requesting") noPrep to_Prep ;
+		summon_V2V_Request = mkV2V (mkV "summon" "summons" "summoned" "summoned" "summoning") noPrep to_Prep ;
+		tell_V2V_Request = mkV2V (irregV "tell" "told" "told") noPrep to_Prep ;
+		urge_V2V_Request = mkV2V (mkV "urge" "urges" "urged" "urged" "urging") noPrep to_Prep ;
 		entreat_V2_Request = mkV2 (mkV "entreat" "entreats" "entreated" "entreated" "entreating") ;
 
 		research_V_Research = mkV "research" "researches" "researched" "researched" "researching" ;
@@ -2658,21 +2852,22 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		warp_V2_Reshaping = mkV2 (mkV "warp" "warps" "warped" "warped" "warping") ;
 
 		camp_V_Residence = mkV "camp" "camps" "camped" "camped" "camping" ;
-		dwell_V_Residence = variants {mkV "dwell" "dwells" "dwelt" "dwelt" "dwelling"; mkV "dwell" "dwells" "dwelled" "dwelled" "dwelling"} ;
-		live_V_Residence = mkV "live" "lives" "lived" "lived" "living" ;
+		dwell_V_Residence = mkV "dwell" "dwells" "dwelt" "dwelt" "dwelling" ;
+		live_V_Residence = regV "live" ;
 		lodge_V_Residence = mkV "lodge" "lodges" "lodged" "lodged" "lodging" ;
 		reside_V_Residence = mkV "reside" "resides" "resided" "resided" "residing" ;
 		room_V_Residence = mkV "room" "rooms" "roomed" "roomed" "rooming" ;
 		squat_V_Residence = mkV "squat" "squats" "squatted" "squatted" "squatting" ;
 		stay_V_Residence = mkV "stay" "stays" "stayed" "stayed" "staying" ;
 
-		deal_V_Resolve_problem = IrregEng.deal_V ;
-		clear_up_V2_Resolve_problem = mkV2 (partV (mkV "clear") "up") ;
-		deal_V2_Resolve_problem = mkV2 (IrregEng.deal_V) ;
+		deal_V_Resolve_problem = irregV "deal" "dealt" "dealt" ;
+		work_through_V_Resolve_problem = partV (mkV "work" "works" "worked" "worked" "working") "through" ;
+		clear_up_V2_Resolve_problem = mkV2 (partV (mkV "clear" "clears" "cleared" "cleared" "clearing") "up") ;
+		deal_V2_Resolve_problem = mkV2 (irregV "deal" "dealt" "dealt") ;
 		fix_V2_Resolve_problem = mkV2 (mkV "fix" "fixes" "fixed" "fixed" "fixing") ;
 		resolve_V2_Resolve_problem = mkV2 (mkV "resolve" "resolves" "resolved" "resolved" "resolving") ;
 		solve_V2_Resolve_problem = mkV2 (mkV "solve" "solves" "solved" "solved" "solving") ;
-		work_through_V2_Resolve_problem = prepV2 (mkV "work") (mkPrep "through") ;
+		work_through_V2_Resolve_problem = mkV2 (partV (mkV "work" "works" "worked" "worked" "working") "through") ;
 
 		rebuff_V2_Respond_to_proposal = mkV2 (mkV "rebuff" "rebuffs" "rebuffed" "rebuffed" "rebuffing") ;
 		reject_V2_Respond_to_proposal = mkV2 (mkV "reject" "rejects" "rejected" "rejected" "rejecting") ;
@@ -2682,15 +2877,20 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		admit_V_Reveal_secret = mkV "admit" "admits" "admitted" "admitted" "admitting" ;
 		confess_V_Reveal_secret = mkV "confess" "confesses" "confessed" "confessed" "confessing" ;
 		confide_V_Reveal_secret = mkV "confide" "confides" "confided" "confided" "confiding" ;
-		disclose_V_Reveal_secret = mkV "disclose" ;
+		disclose_V_Reveal_secret = mkV "disclose" "discloses" "disclosed" "disclosed" "disclosing" ;
+		divulge_V_Reveal_secret = mkV "divulge" "divulges" "divulged" "divulged" "divulging" ;
+		reveal_V_Reveal_secret = mkV "reveal" "reveals" "revealed" "revealed" "revealing" ;
 		confess_V2_Reveal_secret = mkV2 (mkV "confess" "confesses" "confessed" "confessed" "confessing") ;
 		disclose_V2_Reveal_secret = mkV2 (mkV "disclose" "discloses" "disclosed" "disclosed" "disclosing") ;
 		divulge_V2_Reveal_secret = mkV2 (mkV "divulge" "divulges" "divulged" "divulged" "divulging") ;
 		confess_VQ_Reveal_secret = mkVQ (mkV "confess" "confesses" "confessed" "confessed" "confessing") ;
-		disclose_VQ_Reveal_secret = mkVQ (mkV "disclose") ;
+		disclose_VQ_Reveal_secret = mkVQ (mkV "disclose" "discloses" "disclosed" "disclosed" "disclosing") ;
+		divulge_VQ_Reveal_secret = mkVQ (mkV "divulge" "divulges" "divulged" "divulged" "divulging") ;
+		reveal_VQ_Reveal_secret = mkVQ (mkV "reveal" "reveals" "revealed" "revealed" "revealing") ;
 		confess_VS_Reveal_secret = mkVS (mkV "confess" "confesses" "confessed" "confessed" "confessing") ;
-		reveal_VS_Reveal_secret = mkVS (mkV "reveal") ;
+		reveal_VS_Reveal_secret = mkVS (mkV "reveal" "reveals" "revealed" "revealed" "revealing") ;
 
+		get_back_V_Revenge = partV (irregDuplV "get" "got" "gotten") "back" ;
 		retaliate_V_Revenge = mkV "retaliate" "retaliates" "retaliated" "retaliated" "retaliating" ;
 		retaliate_V2_Revenge = mkV2 (mkV "retaliate" "retaliates" "retaliated" "retaliated" "retaliating") ;
 
@@ -2698,10 +2898,10 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		punish_V2_Rewards_and_punishments = mkV2 (mkV "punish" "punishes" "punished" "punished" "punishing") ;
 		reward_V2_Rewards_and_punishments = mkV2 (mkV "reward" "rewards" "rewarded" "rewarded" "rewarding") ;
 
-		fly_V2_Ride_vehicle = mkV2 (IrregEng.fly_V) ;
-		take_V2_Ride_vehicle = mkV2 (IrregEng.take_V) ;
+		fly_V2_Ride_vehicle = mkV2 (irregV "fly" "flew" "flown") ;
+		take_V2_Ride_vehicle = mkV2 (irregV "take" "took" "taken") ;
 
-		rise_V_Rising_to_a_challenge = IrregEng.rise_V ;
+		rise_V_Rising_to_a_challenge = irregV "rise" "rose" "risen" ;
 
 		bless_V2_Rite = mkV2 (mkV "bless" "blesses" "blessed" "blessed" "blessing") ;
 		anoint_V2_Rite = mkV2 (mkV "anoint" "anoints" "anointed" "anointed" "anointing") ;
@@ -2718,7 +2918,6 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		decay_V_Rotting = mkV "decay" "decays" "decayed" "decayed" "decaying" ;
 		decompose_V_Rotting = mkV "decompose" "decomposes" "decomposed" "decomposed" "decomposing" ;
 		fester_V_Rotting = mkV "fester" "festers" "festered" "festered" "festering" ;
-		moulder_V_Rotting = mkV "moulder" "moulders" "mouldered" "mouldered" "mouldering" ;
 		perish_V_Rotting = mkV "perish" "perishes" "perished" "perished" "perishing" ;
 		putrefy_V_Rotting = mkV "putrefy" "putrefies" "putrefied" "putrefied" "putrefying" ;
 		rot_V_Rotting = mkV "rot" "rots" "rotted" "rotted" "rotting" ;
@@ -2727,22 +2926,23 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		rule_VS_Ruling_legally = mkVS (mkV "rule" "rules" "ruled" "ruled" "ruling") ;
 
 		risk_V2_Run_risk = mkV2 (mkV "risk" "risks" "risked" "risked" "risking") ;
-		risk_VV_Run_risk = ingVV (mkV "risk") ;
+		risk_VV_Run_risk = mkVV (mkV "risk" "risks" "risked" "risked" "risking") ;
 
 		comb_V2_Scouring = mkV2 (mkV "comb" "combs" "combed" "combed" "combing") ;
 		ransack_V2_Scouring = mkV2 (mkV "ransack" "ransacks" "ransacked" "ransacked" "ransacking") ;
 		scour_V2_Scouring = mkV2 (mkV "scour" "scours" "scoured" "scoured" "scouring") ;
 		sift_V2_Scouring = mkV2 (mkV "sift" "sifts" "sifted" "sifted" "sifting") ;
 
-		feel_V_Seeking = IrregEng.feel_V ;
+		feel_V_Seeking = irregV "feel" "felt" "felt" ;
 		forage_V_Seeking = mkV "forage" "forages" "foraged" "foraged" "foraging" ;
 		fumble_V_Seeking = mkV "fumble" "fumbles" "fumbled" "fumbled" "fumbling" ;
 		grope_V_Seeking = mkV "grope" "gropes" "groped" "groped" "groping" ;
-		hunt_V_Seeking = mkV "hunt" "hunts" "hunted" "hunted" "hunting" ;
-		listen_V_Seeking = mkV "listen" "listens" "listened" "listened" "listening" ;
+		hunt_V_Seeking = regV "hunt" ;
+		listen_V_Seeking = mkV "listen" "listened" ;
 		pan_V_Seeking = mkV "pan" "pans" "panned" "panned" "panning" ;
+		seek_V_Seeking = irregV "seek" "sought" "sought" ;
 
-		seek_V2_Seeking_to_achieve = mkV2 (IrregEng.seek_V) ;
+		seek_V2_Seeking_to_achieve = mkV2 (irregV "seek" "sought" "sought") ;
 
 		amble_V_Self_motion = mkV "amble" "ambles" "ambled" "ambled" "ambling" ;
 		back_V_Self_motion = mkV "back" "backs" "backed" "backed" "backing" ;
@@ -2755,14 +2955,14 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		clamber_V_Self_motion = mkV "clamber" "clambers" "clambered" "clambered" "clambering" ;
 		climb_V_Self_motion = mkV "climb" "climbs" "climbed" "climbed" "climbing" ;
 		crawl_V_Self_motion = mkV "crawl" "crawls" "crawled" "crawled" "crawling" ;
-		creep_V_Self_motion = IrregEng.creep_V ;
+		creep_V_Self_motion = irregV "creep" "crept" "crept" ;
 		dance_V_Self_motion = mkV "dance" "dances" "danced" "danced" "dancing" ;
 		dart_V_Self_motion = mkV "dart" "darts" "darted" "darted" "darting" ;
 		dash_V_Self_motion = mkV "dash" "dashes" "dashed" "dashed" "dashing" ;
-		drive_V_Self_motion = IrregEng.drive_V ;
+		drive_V_Self_motion = irregV "drive" "drove" "driven" ;
 		flit_V_Self_motion = mkV "flit" "flits" "flitted" "flitted" "flitting" ;
 		flounce_V_Self_motion = mkV "flounce" "flounces" "flounced" "flounced" "flouncing" ;
-		fly_V_Self_motion = IrregEng.fly_V ;
+		fly_V_Self_motion = irregV "fly" "flew" "flown" ;
 		frolic_V_Self_motion = mkV "frolic" "frolics" "frolicked" "frolicked" "frolicking" ;
 		gallivant_V_Self_motion = mkV "gallivant" "gallivants" "gallivanted" "gallivanted" "gallivanting" ;
 		gambol_V_Self_motion = mkV "gambol" "gambols" "gambolled" "gambolled" "gambolling" ;
@@ -2772,8 +2972,8 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		hop_V_Self_motion = mkV "hop" "hops" "hopped" "hopped" "hopping" ;
 		hurry_V_Self_motion = mkV "hurry" "hurries" "hurried" "hurried" "hurrying" ;
 		jog_V_Self_motion = mkV "jog" "jogs" "jogged" "jogged" "jogging" ;
-		jump_V_Self_motion = mkV "jump" "jumps" "jumped" "jumped" "jumping" ;
-		leap_V_Self_motion = mkV "leap" "leaps" "leaped" "leaped" "leaping" ;
+		jump_V_Self_motion = regV "jump" ;
+		leap_V_Self_motion = irregV "leap" (variants {"leaped" ; "lept"}) (variants {"leaped" ; "lept"}) ;
 		limp_V_Self_motion = mkV "limp" "limps" "limped" "limped" "limping" ;
 		lope_V_Self_motion = mkV "lope" "lopes" "loped" "loped" "loping" ;
 		lumber_V_Self_motion = mkV "lumber" "lumbers" "lumbered" "lumbered" "lumbering" ;
@@ -2810,28 +3010,28 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		slop_V_Self_motion = mkV "slop" "slops" "slopped" "slopped" "slopping" ;
 		slosh_V_Self_motion = mkV "slosh" "sloshes" "sloshed" "sloshed" "sloshing" ;
 		sneak_V_Self_motion = mkV "sneak" "sneaks" "sneaked" "sneaked" "sneaking" ;
-		spring_V_Self_motion = IrregEng.spring_V ;
+		spring_V_Self_motion = irregV "spring" (variants {"sprang" ; "sprung"}) "sprung" ;
 		sprint_V_Self_motion = mkV "sprint" "sprints" "sprinted" "sprinted" "sprinting" ;
 		stagger_V_Self_motion = mkV "stagger" "staggers" "staggered" "staggered" "staggering" ;
 		stalk_V_Self_motion = mkV "stalk" "stalks" "stalked" "stalked" "stalking" ;
-		steal_V_Self_motion = IrregEng.steal_V ;
+		steal_V_Self_motion = irregV "steal" "stole" "stolen" ;
 		step_V_Self_motion = mkV "step" "steps" "stepped" "stepped" "stepping" ;
 		stomp_V_Self_motion = mkV "stomp" "stomps" "stomped" "stomped" "stomping" ;
 		straggle_V_Self_motion = mkV "straggle" "straggles" "straggled" "straggled" "straggling" ;
-		stride_V_Self_motion = IrregEng.stride_V ;
+		stride_V_Self_motion = irregV "stride" "strod" "stridden" ;
 		stroll_V_Self_motion = mkV "stroll" "strolls" "strolled" "strolled" "strolling" ;
 		strut_V_Self_motion = mkV "strut" "struts" "strutted" "strutted" "strutting" ;
 		stumble_V_Self_motion = mkV "stumble" "stumbles" "stumbled" "stumbled" "stumbling" ;
 		swagger_V_Self_motion = mkV "swagger" "swaggers" "swaggered" "swaggered" "swaggering" ;
-		swim_V_Self_motion = IrregEng.swim_V ;
-		swing_V_Self_motion = IrregEng.swing_V ;
+		swim_V_Self_motion = irregDuplV "swim" "swam" "swum" ;
+		swing_V_Self_motion = irregV "swing" "swung" "swung" ;
 		taxi_V_Self_motion = mkV "taxi" "taxis" "taxied" "taxied" "taxiing" ;
 		tiptoe_V_Self_motion = mkV "tiptoe" "IRREG" "IRREG" "IRREG" "IRREG" ;
 		toddle_V_Self_motion = mkV "toddle" "toddles" "toddled" "toddled" "toddling" ;
 		totter_V_Self_motion = mkV "totter" "totters" "tottered" "tottered" "tottering" ;
 		traipse_V_Self_motion = mkV "traipse" "traipses" "traipsed" "traipsed" "traipsing" ;
 		tramp_V_Self_motion = mkV "tramp" "tramps" "tramped" "tramped" "tramping" ;
-		tread_V_Self_motion = IrregEng.tread_V ;
+		tread_V_Self_motion = irregV "tread" "trod" "trodden" ;
 		trek_V_Self_motion = mkV "trek" "treks" "trekked" "trekked" "trekking" ;
 		trip_V_Self_motion = mkV "trip" "trips" "tripped" "tripped" "tripping" ;
 		troop_V_Self_motion = mkV "troop" "troops" "trooped" "trooped" "trooping" ;
@@ -2841,7 +3041,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		venture_V_Self_motion = mkV "venture" "ventures" "ventured" "ventured" "venturing" ;
 		waddle_V_Self_motion = mkV "waddle" "waddles" "waddled" "waddled" "waddling" ;
 		wade_V_Self_motion = mkV "wade" "wades" "waded" "waded" "wading" ;
-		walk_V_Self_motion = mkV "walk" "walks" "walked" "walked" "walking" ;
+		walk_V_Self_motion = regV "walk" ;
 		waltz_V_Self_motion = mkV "waltz" "waltzes" "waltzed" "waltzed" "waltzing" ;
 		wander_V_Self_motion = mkV "wander" "wanders" "wandered" "wandered" "wandering" ;
 		wriggle_V_Self_motion = mkV "wriggle" "wriggles" "wriggled" "wriggled" "wriggling" ;
@@ -2854,7 +3054,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		sidle_V_Self_motion = mkV "sidle" "sidles" "sidled" "sidled" "sidling" ;
 		storm_V_Self_motion = mkV "storm" "storms" "stormed" "stormed" "storming" ;
 		vault_V_Self_motion = mkV "vault" "vaults" "vaulted" "vaulted" "vaulting" ;
-		make_V_Self_motion = IrregEng.make_V ;
+		make_V_Self_motion = irregV "make" "made" "made" ;
 		skim_V_Self_motion = mkV "skim" "skims" "skimmed" "skimmed" "skimming" ;
 
 		dispatch_V2_Sending = mkV2 (mkV "dispatch" "dispatches" "dispatched" "dispatched" "dispatching") ;
@@ -2863,7 +3063,7 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		mail_V2_Sending = mkV2 (mkV "mail" "mails" "mailed" "mailed" "mailing") ;
 		post_V2_Sending = mkV2 (mkV "post" "posts" "posted" "posted" "posting") ;
 		route_V2_Sending = mkV2 (mkV "route" "routes" "routed" "routed" "routing") ;
-		send_V2_Sending = mkV2 (IrregEng.send_V) ;
+		send_V2_Sending = mkV2 (irregV "send" "sent" "sent") ;
 		ship_V2_Sending = mkV2 (mkV "ship" "ships" "shipped" "shipped" "shipping") ;
 
 		sentence_V2_Sentencing = mkV2 (mkV "sentence" "sentences" "sentenced" "sentenced" "sentencing") ;
@@ -2873,39 +3073,44 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		partition_V2_Separating = mkV2 (mkV "partition" "partitions" "partitioned" "partitioned" "partitioning") ;
 		segregate_V2_Separating = mkV2 (mkV "segregate" "segregates" "segregated" "segregated" "segregating") ;
 		separate_V2_Separating = mkV2 (mkV "separate" "separates" "separated" "separated" "separating") ;
-		split_V2_Separating = mkV2 (IrregEng.split_V) ;
+		split_V2_Separating = mkV2 (irregDuplV "split" "split" "split") ;
 		segment_V2_Separating = mkV2 (mkV "segment" "segments" "segmented" "segmented" "segmenting") ;
 
 		ignite_V2_Setting_fire = mkV2 (mkV "ignite" "ignites" "ignited" "ignited" "igniting") ;
 		kindle_V2_Setting_fire = mkV2 (mkV "kindle" "kindles" "kindled" "kindled" "kindling") ;
-		light_V2_Setting_fire = mkV2 (mkV "light" "lights" "lighted" "lighted" "lighting") ;
+		light_V2_Setting_fire = mkV2 (irregV "light" (variants {"lighted" ; "lit"}) "lighted") ;
 		spark_V2_Setting_fire = mkV2 (mkV "spark" "sparks" "sparked" "sparked" "sparking") ;
 		torch_V2_Setting_fire = mkV2 (mkV "torch") ;
 
-		set_off_V_Setting_out = partV IrregEng.set_V "off" ;
+		set_off_V_Setting_out = partV (irregDuplV "set" "set" "set") "off" ;
 
 		fire_V2_Shoot_projectiles = mkV2 (mkV "fire" "fires" "fired" "fired" "firing") ;
-		fire_off_V2_Shoot_projectiles = mkV2 (partV (mkV "fire") "off") ;
+		fire_off_V2_Shoot_projectiles = mkV2 (partV (mkV "fire" "fires" "fired" "fired" "firing") "off") ;
 		launch_V2_Shoot_projectiles = mkV2 (mkV "launch" "launches" "launched" "launched" "launching") ;
-		shoot_V2_Shoot_projectiles = mkV2 (IrregEng.shoot_V) ;
+		shoot_V2_Shoot_projectiles = mkV2 (irregV "shoot" "shot" "shot") ;
 
-		rise_V_Sidereal_appearance = IrregEng.rise_V ;
+		rise_V_Sidereal_appearance = irregV "rise" "rose" "risen" ;
 
 		sign_V2_Sign_agreement = mkV2 (mkV "sign" "signs" "signed" "signed" "signing") ;
 
 		hush_V2_Silencing = mkV2 (mkV "hush" "hushes" "hushed" "hushed" "hushing") ;
+		hush_up_V2_Silencing = mkV2 (partV (mkV "hush" "hushes" "hushed" "hushed" "hushing") "up") ;
 		quiet_V2_Silencing = mkV2 (mkV "quiet" "quiets" "quieted" "quieted" "quieting") ;
+		quiet_down_V2_Silencing = mkV2 (partV (mkV "quiet" "quiets" "quieted" "quieted" "quieting") "down") ;
 		shush_V2_Silencing = mkV2 (mkV "shush" "shushes" "shushed" "shushed" "shushing") ;
+		shut_up_V2_Silencing = mkV2 (partV (irregDuplV "shut" "shut" "shut") "up") ;
 		silence_V2_Silencing = mkV2 (mkV "silence" "silences" "silenced" "silenced" "silencing") ;
 
 		differ_V_Similarity = mkV "differ" "differs" "differed" "differed" "differing" ;
+
+		-- No target for Simultaneity
 
 		doze_V_Sleep = mkV "doze" "dozes" "dozed" "dozed" "dozing" ;
 		drowse_V_Sleep = mkV "drowse" "drowses" "drowsed" "drowsed" "drowsing" ;
 		hibernate_V_Sleep = mkV "hibernate" "hibernates" "hibernated" "hibernated" "hibernating" ;
 		kip_V_Sleep = mkV "kip" "kips" "kipped" "kipped" "kipping" ;
 		nap_V_Sleep = mkV "nap" "naps" "napped" "napped" "napping" ;
-		sleep_V_Sleep = IrregEng.sleep_V ;
+		sleep_V_Sleep = irregV "sleep" "slept" "slept" ;
 		slumber_V_Sleep = mkV "slumber" "slumbers" "slumbered" "slumbered" "slumbering" ;
 		snooze_V_Sleep = mkV "snooze" "snoozes" "snoozed" "snoozed" "snoozing" ;
 
@@ -2921,33 +3126,38 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		lecture_V_Speak_on_topic = mkV "lecture" "lectures" "lectured" "lectured" "lecturing" ;
 		pontificate_V_Speak_on_topic = mkV "pontificate" "pontificates" "pontificated" "pontificated" "pontificating" ;
-		tell_V_Speak_on_topic = IrregEng.tell_V ;
+		tell_V_Speak_on_topic = irregV "tell" "told" "told" ;
 
 		pronounce_V2_Spelling_and_pronouncing = mkV2 (mkV "pronounce" "pronounces" "pronounced" "pronounced" "pronouncing") ;
 		spell_V2_Spelling_and_pronouncing = mkV2 (mkV "spell" "spells" "spelled" "spelled" "spelling") ;
 
-		remain_V_State_continue = mkV "remain" ;
+		remain_V_State_continue = mkV "remain" "remains" "remained" "remained" "remaining" ;
 
-		add_V_Statement = mkV "add" ;
+		add_V_Statement = regV "add" ;
+		address_V_Statement = mkV "address" "addresses" "addressed" "addressed" "addressing" ;
 		affirm_V_Statement = mkV "affirm" "affirms" "affirmed" "affirmed" "affirming" ;
 		attest_V_Statement = mkV "attest" "attests" "attested" "attested" "attesting" ;
+		aver_V_Statement = mkV "aver" "avers" "averred" "averred" "averring" ;
 		caution_V_Statement = mkV "caution" "cautions" "cautioned" "cautioned" "cautioning" ;
 		comment_V_Statement = mkV "comment" "comments" "commented" "commented" "commenting" ;
+		confirm_V_Statement = mkV "confirm" "confirms" "confirmed" "confirmed" "confirming" ;
 		contend_V_Statement = mkV "contend" "contends" "contended" "contended" "contending" ;
 		declare_V_Statement = mkV "declare" "declares" "declared" "declared" "declaring" ;
 		gloat_V_Statement = mkV "gloat" "gloats" "gloated" "gloated" "gloating" ;
 		insist_V_Statement = mkV "insist" "insists" "insisted" "insisted" "insisting" ;
 		mention_V_Statement = mkV "mention" "mentions" "mentioned" "mentioned" "mentioning" ;
 		preach_V_Statement = mkV "preach" "preaches" "preached" "preached" "preaching" ;
+		proclaim_V_Statement = mkV "proclaim" "proclaims" "proclaimed" "proclaimed" "proclaiming" ;
 		profess_V_Statement = mkV "profess" "professes" "professed" "professed" "professing" ;
 		relate_V_Statement = mkV "relate" "relates" "related" "related" "relating" ;
 		remark_V_Statement = mkV "remark" "remarks" "remarked" "remarked" "remarking" ;
 		report_V_Statement = mkV "report" "reports" "reported" "reported" "reporting" ;
-		say_V_Statement = IrregEng.say_V ;
-		speak_V_Statement = IrregEng.speak_V ;
-		suggest_V_Statement = mkV "suggest" ;
-		talk_V_Statement = mkV "talk" "talks" "talked" "talked" "talking" ;
-		write_V_Statement = IrregEng.write_V ;
+		say_V_Statement = irregV "say" "said" "said" ;
+		speak_V_Statement = irregV "speak" "spoke" "spoken" ;
+		suggest_V_Statement = mkV "suggest" "suggests" "suggested" "suggested" "suggesting" ;
+		explain_V_Statement = mkV "explain" "explains" "explained" "explained" "explaining" ;
+		talk_V_Statement = regV "talk" ;
+		write_V_Statement = irregV "write" "wrote" "written" ;
 		affirm_V2_Statement = mkV2 (mkV "affirm" "affirms" "affirmed" "affirmed" "affirming") ;
 		allege_V2_Statement = mkV2 (mkV "allege" "alleges" "alleged" "alleged" "alleging") ;
 		announce_V2_Statement = mkV2 (mkV "announce" "announces" "announced" "announced" "announcing") ;
@@ -2959,46 +3169,49 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		recount_V2_Statement = mkV2 (mkV "recount" "recounts" "recounted" "recounted" "recounting") ;
 		relate_V2_Statement = mkV2 (mkV "relate" "relates" "related" "related" "relating") ;
 		report_V2_Statement = mkV2 (mkV "report" "reports" "reported" "reported" "reporting") ;
-		say_V2_Statement = mkV2 (IrregEng.say_V) ;
-		speak_V2_Statement = mkV2 (IrregEng.speak_V) ;
-		tell_V2_Statement = mkV2 (IrregEng.tell_V) ;
-		acknowledge_VS_Statement = mkVS (mkV "acknowledge") ;
+		say_V2_Statement = mkV2 (irregV "say" "said" "said") ;
+		speak_V2_Statement = mkV2 (irregV "speak" "spoke" "spoken") ;
+		tell_V2_Statement = mkV2 (irregV "tell" "told" "told") ;
+		acknowledge_VS_Statement = mkVS (mkV "acknowledge" "acknowledges" "acknowledged" "acknowledged" "acknowledging") ;
 		affirm_VS_Statement = mkVS (mkV "affirm" "affirms" "affirmed" "affirmed" "affirming") ;
-		allege_VS_Statement = mkVS (mkV "allege") ;
+		allege_VS_Statement = mkVS (mkV "allege" "alleges" "alleged" "alleged" "alleging") ;
 		announce_VS_Statement = mkVS (mkV "announce" "announces" "announced" "announced" "announcing") ;
-		assert_VS_Statement = mkVS (mkV "assert") ;
+		assert_VS_Statement = mkVS (mkV "assert" "asserts" "asserted" "asserted" "asserting") ;
+		aver_VS_Statement = mkVS (mkV "aver" "avers" "averred" "averred" "averring") ;
 		comment_VS_Statement = mkVS (mkV "comment" "comments" "commented" "commented" "commenting") ;
-		confirm_VS_Statement = mkVS (mkV "confirm") ;
+		confirm_VS_Statement = mkVS (mkV "confirm" "confirms" "confirmed" "confirmed" "confirming") ;
 		conjecture_VS_Statement = mkVS (mkV "conjecture" "conjectures" "conjectured" "conjectured" "conjecturing") ;
 		contend_VS_Statement = mkVS (mkV "contend" "contends" "contended" "contended" "contending") ;
-		note_VS_Statement = mkVS (mkV "note") ;
-		proclaim_VS_Statement = mkVS (mkV "proclaim") ;
+		note_VS_Statement = mkVS (mkV "note" "notes" "noted" "noted" "noting") ;
+		proclaim_VS_Statement = mkVS (mkV "proclaim" "proclaims" "proclaimed" "proclaimed" "proclaiming") ;
 		propose_VS_Statement = mkVS (mkV "propose" "proposes" "proposed" "proposed" "proposing") ;
 		report_VS_Statement = mkVS (mkV "report" "reports" "reported" "reported" "reporting") ;
-		say_VS_Statement = mkVS (IrregEng.say_V) ;
-		state_VS_Statement = mkVS (mkV "state") ;
-		suggest_VS_Statement = mkVS (mkV "suggest") ;
-		add_VS_Statement = mkVS (mkV "add") ;
+		say_VS_Statement = mkVS (irregV "say" "said" "said") ;
+		state_VS_Statement = mkVS (mkV "state" "states" "stated" "stated" "stating") ;
+		suggest_VS_Statement = mkVS (mkV "suggest" "suggests" "suggested" "suggested" "suggesting") ;
+		add_VS_Statement = mkVS (regV "add") ;
 		attest_VS_Statement = mkVS (mkV "attest" "attests" "attested" "attested" "attesting") ;
+		avow_VS_Statement = mkVS (mkV "avow" "avows" "avowed" "avowed" "avowing") ;
 		caution_VS_Statement = mkVS (mkV "caution" "cautions" "cautioned" "cautioned" "cautioning") ;
 		declare_VS_Statement = mkVS (mkV "declare" "declares" "declared" "declared" "declaring") ;
 		exclaim_VS_Statement = mkVS (mkV "exclaim" "exclaims" "exclaimed" "exclaimed" "exclaiming") ;
-		explain_VS_Statement = mkVS (mkV "explain") ;
+		explain_VS_Statement = mkVS (mkV "explain" "explains" "explained" "explained" "explaining") ;
 		insist_VS_Statement = mkVS (mkV "insist" "insists" "insisted" "insisted" "insisting") ;
 		mention_VS_Statement = mkVS (mkV "mention" "mentions" "mentioned" "mentioned" "mentioning") ;
 		preach_VS_Statement = mkVS (mkV "preach" "preaches" "preached" "preached" "preaching") ;
 		profess_VS_Statement = mkVS (mkV "profess" "professes" "professed" "professed" "professing") ;
-		reiterate_VS_Statement = mkVS (mkV "reiterate") ;
+		reaffirm_VS_Statement = mkVS (mkV "reaffirm" "reaffirms" "reaffirmed" "reaffirmed" "reaffirming") ;
+		reiterate_VS_Statement = mkVS (mkV "reiterate" "reiterates" "reiterated" "reiterated" "reiterating") ;
 		relate_VS_Statement = mkVS (mkV "relate" "relates" "related" "related" "relating") ;
 		remark_VS_Statement = mkVS (mkV "remark" "remarks" "remarked" "remarked" "remarking") ;
 		venture_VS_Statement = mkVS (mkV "venture" "ventures" "ventured" "ventured" "venturing") ;
-		write_VS_Statement = mkVS (IrregEng.write_V) ;
-		acknowledge_VV_Statement = mkVV (mkV "acknowledge") ;
+		write_VS_Statement = mkVS (irregV "write" "wrote" "written") ;
+		acknowledge_VV_Statement = mkVV (mkV "acknowledge" "acknowledges" "acknowledged" "acknowledged" "acknowledging") ;
 		caution_VV_Statement = mkVV (mkV "caution" "cautions" "cautioned" "cautioned" "cautioning") ;
 		profess_VV_Statement = mkVV (mkV "profess" "professes" "professed" "professed" "professing") ;
 		propose_VV_Statement = mkVV (mkV "propose" "proposes" "proposed" "proposed" "proposing") ;
 		report_VV_Statement = mkVV (mkV "report" "reports" "reported" "reported" "reporting") ;
-		suggest_VV_Statement = mkVV (mkV "suggest") ;
+		suggest_VV_Statement = mkVV (mkV "suggest" "suggests" "suggested" "suggested" "suggesting") ;
 		attest_V2_Statement = mkV2 (mkV "attest" "attests" "attested" "attested" "attesting") ;
 		avow_V2_Statement = mkV2 (mkV "avow" "avows" "avowed" "avowed" "avowing") ;
 		caution_V2_Statement = mkV2 (mkV "caution" "cautions" "cautioned" "cautioned" "cautioning") ;
@@ -3006,15 +3219,15 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		profess_V2_Statement = mkV2 (mkV "profess" "professes" "professed" "professed" "professing") ;
 		reiterate_V2_Statement = mkV2 (mkV "reiterate" "reiterates" "reiterated" "reiterated" "reiterating") ;
 		suggest_V2_Statement = mkV2 (mkV "suggest" "suggests" "suggested" "suggested" "suggesting") ;
-		talk_V2_Statement = mkV2 (mkV "talk" "talks" "talked" "talked" "talking") ;
+		talk_V2_Statement = mkV2 (regV "talk") ;
 
-		keep_V2_Storing = mkV2 (IrregEng.keep_V) ;
+		keep_V2_Storing = mkV2 (irregV "keep" "kept" "kept") ;
 		store_V2_Storing = mkV2 (mkV "store" "stores" "stored" "stored" "storing") ;
 
 		study_V_Studying = mkV "study" "studies" "studied" "studied" "studying" ;
 		study_V2_Studying = mkV2 (mkV "study" "studies" "studied" "studied" "studying") ;
 
-		convince_V2V_Suasion = mkV2V (mkV "convince") noPrep to_Prep ;
+		convince_V2V_Suasion = mkV2V (mkV "convince" "convinces" "convinced" "convinced" "convincing") noPrep to_Prep ;
 		persuade_V2V_Suasion = mkV2V (mkV "persuade" "persuades" "persuaded" "persuaded" "persuading") noPrep to_Prep ;
 		convince_V2_Suasion = mkV2 (mkV "convince" "convinces" "convinced" "convinced" "convincing") ;
 		dissuade_V2_Suasion = mkV2 (mkV "dissuade" "dissuades" "dissuaded" "dissuaded" "dissuading") ;
@@ -3055,42 +3268,51 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		seize_V2_Taking = mkV2 (mkV "seize" "seizes" "seized" "seized" "seizing") ;
 
 		advise_V_Telling = mkV "advise" "advises" "advised" "advised" "advising" ;
-		tell_V_Telling = IrregEng.tell_V ;
+		tell_V_Telling = irregV "tell" "told" "told" ;
 		advise_V2_Telling = mkV2 (mkV "advise" "advises" "advised" "advised" "advising") ;
 		confide_V2_Telling = mkV2 (mkV "confide" "confides" "confided" "confided" "confiding") ;
 		notify_V2_Telling = mkV2 (mkV "notify" "notifies" "notified" "notified" "notifying") ;
-		tell_V2_Telling = mkV2 (IrregEng.tell_V) ;
+		tell_V2_Telling = mkV2 (irregV "tell" "told" "told") ;
 		advise_VS_Telling = mkVS (mkV "advise" "advises" "advised" "advised" "advising") ;
+		assure_VS_Telling = mkVS (mkV "assure" "assures" "assured" "assured" "assuring") ;
 		confide_VS_Telling = mkVS (mkV "confide" "confides" "confided" "confided" "confiding") ;
 
 		lodge_V_Temporary_stay = mkV "lodge" "lodges" "lodged" "lodged" "lodging" ;
 		room_V_Temporary_stay = mkV "room" "rooms" "roomed" "roomed" "rooming" ;
-		sleep_over_V_Temporary_stay = partV IrregEng.sleep_V "over" ;
+		sleep_over_V_Temporary_stay = partV (irregV "sleep" "slept" "slept") "over" ;
 		stay_V_Temporary_stay = mkV "stay" "stays" "stayed" "stayed" "staying" ;
-		stay_over_V_Temporary_stay = partV (mkV "stay") "over" ;
+		stay_over_V_Temporary_stay = partV (mkV "stay" "stays" "stayed" "stayed" "staying") "over" ;
 
 		compose_V_Text_creation = mkV "compose" "composes" "composed" "composed" "composing" ;
+		draft_V_Text_creation = mkV "draft" "drafts" "drafted" "drafted" "drafting" ;
+		print_out_V_Text_creation = partV (mkV "print" "prints" "printed" "printed" "printing") "out" ;
+		print_up_V_Text_creation = partV (mkV "print" "prints" "printed" "printed" "printing") "up" ;
+		type_in_V_Text_creation = partV (mkV "type" "types" "typed" "typed" "typing") "in" ;
+		utter_V_Text_creation = mkV "utter" "utters" "uttered" "uttered" "uttering" ;
 		chronicle_V2_Text_creation = mkV2 (mkV "chronicle" "chronicles" "chronicled" "chronicled" "chronicling") ;
 		compose_V2_Text_creation = mkV2 (mkV "compose" "composes" "composed" "composed" "composing") ;
 		draft_V2_Text_creation = mkV2 (mkV "draft" "drafts" "drafted" "drafted" "drafting") ;
 		jot_V2_Text_creation = mkV2 (mkV "jot" "jots" "jotted" "jotted" "jotting") ;
-		jot_down_V2_Text_creation = mkV2 (partV (mkV "jot") "down") ;
+		jot_down_V2_Text_creation = mkV2 (partV (mkV "jot" "jots" "jotted" "jotted" "jotting") "down") ;
 		pen_V2_Text_creation = mkV2 (mkV "pen" "pens" "penned" "penned" "penning") ;
-		say_V2_Text_creation = mkV2 (IrregEng.say_V) ;
+		print_out_V2_Text_creation = mkV2 (partV (mkV "print" "prints" "printed" "printed" "printing") "out") ;
+		print_up_V2_Text_creation = mkV2 (partV (mkV "print" "prints" "printed" "printed" "printing") "up") ;
+		say_V2_Text_creation = mkV2 (irregV "say" "said" "said") ;
 		type_V2_Text_creation = mkV2 (mkV "type" "types" "typed" "typed" "typing") ;
-		type_in_V2_Text_creation = mkV2 (partV (mkV "type") "in") ;
-		type_out_V2_Text_creation = mkV2 (partV (mkV "type") "out") ;
-		type_up_V2_Text_creation = mkV2 (partV (mkV "type") "up") ;
+		type_in_V2_Text_creation = mkV2 (partV (mkV "type" "types" "typed" "typed" "typing") "in") ;
+		type_out_V2_Text_creation = mkV2 (partV (mkV "type" "types" "typed" "typed" "typing") "out") ;
+		type_up_V2_Text_creation = mkV2 (partV (mkV "type" "types" "typed" "typed" "typing") "up") ;
 		utter_V2_Text_creation = mkV2 (mkV "utter" "utters" "uttered" "uttered" "uttering") ;
-		write_V2_Text_creation = mkV2 (IrregEng.write_V) ;
-		write_down_V2_Text_creation = mkV2 (partV IrregEng.write_V "down") ;
-		write_out_V2_Text_creation = mkV2 (partV IrregEng.write_V "out") ;
-		write_up_V2_Text_creation = mkV2 (partV IrregEng.write_V "up") ;
+		write_V2_Text_creation = mkV2 (irregV "write" "wrote" "written") ;
+		write_down_V2_Text_creation = mkV2 (partV (irregV "write" "wrote" "written") "down") ;
+		write_out_V2_Text_creation = mkV2 (partV (irregV "write" "wrote" "written") "out") ;
+		write_up_V2_Text_creation = mkV2 (partV (irregV "write" "wrote" "written") "up") ;
 
+		nick_V_Theft = mkV "nick" "nicks" "nicked" "nicked" "nicking" ;
 		pilfer_V_Theft = mkV "pilfer" "pilfers" "pilfered" "pilfered" "pilfering" ;
 		pinch_V_Theft = mkV "pinch" "pinches" "pinched" "pinched" "pinching" ;
 		shoplift_V_Theft = mkV "shoplift" "shoplifts" "shoplifted" "shoplifted" "shoplifting" ;
-		steal_V_Theft = IrregEng.steal_V ;
+		steal_V_Theft = irregV "steal" "stole" "stolen" ;
 		thieve_V_Theft = mkV "thieve" "thieves" "thieved" "thieved" "thieving" ;
 		embezzle_V2_Theft = mkV2 (mkV "embezzle" "embezzles" "embezzled" "embezzled" "embezzling") ;
 		filch_V2_Theft = mkV2 (mkV "filch" "filches" "filched" "filched" "filching") ;
@@ -3103,19 +3325,19 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		shoplift_V2_Theft = mkV2 (mkV "shoplift" "shoplifts" "shoplifted" "shoplifted" "shoplifting") ;
 		snatch_V2_Theft = mkV2 (mkV "snatch" "snatches" "snatched" "snatched" "snatching") ;
 		snitch_V2_Theft = mkV2 (mkV "snitch" "snitches" "snitched" "snitched" "snitching") ;
-		steal_V2_Theft = mkV2 (IrregEng.steal_V) ;
+		steal_V2_Theft = mkV2 (irregV "steal" "stole" "stolen") ;
 		swipe_V2_Theft = mkV2 (mkV "swipe" "swipes" "swiped" "swiped" "swiping") ;
 		thieve_V2_Theft = mkV2 (mkV "thieve" "thieves" "thieved" "thieved" "thieving") ;
 
 		flourish_V_Thriving = mkV "flourish" "flourishes" "flourished" "flourished" "flourishing" ;
-		thrive_V_Thriving = mkV "thrive" "thrives" "thrived" "thrived" "thriving" ;
+		thrive_V_Thriving = irregV "thrive" (variants {"thrived" ; "throve"}) "thrived" ;
 		flourish_V2_Thriving = mkV2 (mkV "flourish" "flourishes" "flourished" "flourished" "flourishing") ;
 
 		derail_V2_Thwarting = mkV2 (mkV "derail" "derails" "derailed" "derailed" "derailing") ;
 		foil_V2_Thwarting = mkV2 (mkV "foil" "foils" "foiled" "foiled" "foiling") ;
 		forestall_V2_Thwarting = mkV2 (mkV "forestall" "forestalls" "forestalled" "forestalled" "forestalling") ;
 		preclude_V2_Thwarting = mkV2 (mkV "preclude" "precludes" "precluded" "precluded" "precluding") ;
-		prevent_V2_Thwarting = mkV2 (mkV "prevent" "prevents" "prevented" "prevented" "preventing") ;
+		prevent_V2_Thwarting = mkV2 (mkV "prevent") ;
 		thwart_V2_Thwarting = mkV2 (mkV "thwart" "thwarts" "thwarted" "thwarted" "thwarting") ;
 
 		address_V2_Topic = mkV2 (mkV "address" "addresses" "addressed" "addressed" "addressing") ;
@@ -3135,34 +3357,37 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 		cross_V_Traversing = mkV "cross" "crosses" "crossed" "crossed" "crossing" ;
 		descend_V_Traversing = mkV "descend" "descends" "descended" "descended" "descending" ;
 		hop_V_Traversing = mkV "hop" "hops" "hopped" "hopped" "hopping" ;
-		jump_V_Traversing = mkV "jump" "jumps" "jumped" "jumped" "jumping" ;
-		leap_V_Traversing = mkV "leap" "leaps" "leaped" "leaped" "leaping" ;
+		jump_V_Traversing = regV "jump" ;
+		leap_V_Traversing = irregV "leap" (variants {"leaped" ; "lept"}) (variants {"leaped" ; "lept"}) ;
 		pass_V_Traversing = mkV "pass" "passes" "passed" "passed" "passing" ;
 		skirt_V_Traversing = mkV "skirt" "skirts" "skirted" "skirted" "skirting" ;
+		traverse_V_Traversing = mkV "traverse" "traverses" "traversed" "traversed" "traversing" ;
 
 		try_V2_Trying_out = mkV2 (mkV "try" "tries" "tried" "tried" "trying") ;
+		try_out_V2_Trying_out = mkV2 (partV (mkV "try" "tries" "tried" "tried" "trying") "out") ;
 
-		-- No target for Unattributed_information
+		rumor_VS_Unattributed_information = mkVS (mkV "rumor") ;
 
 		plummet_V_Undergo_change = mkV "plummet" "plummets" "plummeted" "plummeted" "plummeting" ;
-		swing_V_Undergo_change = IrregEng.swing_V ;
+		swing_V_Undergo_change = irregV "swing" "swung" "swung" ;
 		veer_V_Undergo_change = mkV "veer" "veers" "veered" "veered" "veering" ;
 
 		undergo_V2_Undergoing = mkV2 (mkV "under" IrregEng.go_V) ;
 
 		doff_V2_Undressing = mkV2 (mkV "doff" "doffs" "doffed" "doffed" "doffing") ;
-		kick_off_V2_Undressing = mkV2 (partV (mkV "kick") "off") ;
-		peel_off_V2_Undressing = mkV2 (partV (mkV "peel") "off") ;
-		pull_off_V2_Undressing = mkV2 (partV (mkV "pull") "off") ;
+		kick_off_V2_Undressing = mkV2 (partV (mkV "kick" "kicks" "kicked" "kicked" "kicking") "off") ;
+		peel_off_V2_Undressing = mkV2 (partV (mkV "peel" "peels" "peeled" "peeled" "peeling") "off") ;
+		pull_off_V2_Undressing = mkV2 (partV (regV "pull") "off") ;
 		remove_V2_Undressing = mkV2 (mkV "remove" "removes" "removed" "removed" "removing") ;
-		shed_V2_Undressing = mkV2 (IrregEng.shed_V) ;
+		shed_V2_Undressing = mkV2 (irregDuplV "shed" "shed" "shed") ;
 		slip_V2_Undressing = mkV2 (mkV "slip" "slips" "slipped" "slipped" "slipping") ;
-		take_off_V2_Undressing = mkV2 (partV IrregEng.take_V "off") ;
-		throw_off_V2_Undressing = mkV2 (partV IrregEng.throw_V "off") ;
+		strip_off_V2_Undressing = mkV2 (partV (mkV "strip" "strips" "stripped" "stripped" "stripping") "off") ;
+		take_off_V2_Undressing = mkV2 (partV (irregV "take" "took" "taken") "off") ;
+		throw_off_V2_Undressing = mkV2 (partV (irregV "throw" "threw" "thrown") "off") ;
 
 		discharge_V2_Use_firearm = mkV2 (mkV "discharge" "discharges" "discharged" "discharged" "discharging") ;
 		fire_V2_Use_firearm = mkV2 (mkV "fire" "fires" "fired" "fired" "firing") ;
-		shoot_V2_Use_firearm = mkV2 (IrregEng.shoot_V) ;
+		shoot_V2_Use_firearm = mkV2 (irregV "shoot" "shot" "shot") ;
 
 		apply_V2_Using = mkV2 (mkV "apply" "applies" "applied" "applied" "applying") ;
 		employ_V2_Using = mkV2 (mkV "employ" "employs" "employed" "employed" "employing") ;
@@ -3171,31 +3396,31 @@ concrete TargetsEng of TargetsEngAbs = CatEng ** open ParadigmsEng, IrregEng, St
 
 		clear_V2_Verdict = mkV2 (mkV "clear" "clears" "cleared" "cleared" "clearing") ;
 		convict_V2_Verdict = mkV2 (mkV "convict" "convicts" "convicted" "convicted" "convicting") ;
-		find_V2_Verdict = mkV2 (IrregEng.find_V) ;
+		find_V2_Verdict = mkV2 (irregV "find" "found" "found") ;
 
 		wager_VS_Wagering = mkVS (mkV "wager" "wagers" "wagered" "wagered" "wagering") ;
 
-		wait_V_Waiting = mkV "wait" "waits" "waited" "waited" "waiting" ;
+		wait_V_Waiting = regV "wait" ;
 
-		awake_V_Waking_up = IrregEng.awake_V ;
-		come_to_V_Waking_up = partV IrregEng.come_V "to" ;
-		get_up_V_Waking_up = partV IrregEng.get_V "up" ;
+		awake_V_Waking_up = irregV "awake" "awoke" "awoken" ;
+		come_to_V_Waking_up = partV (irregV "come" "came" "come") "to" ;
+		get_up_V_Waking_up = partV (irregDuplV "get" "got" "gotten") "up" ;
 		revive_V_Waking_up = mkV "revive" "revives" "revived" "revived" "reviving" ;
-		wake_V_Waking_up = mkV "wake" "wakes" "waked" "waked" "waking" ;
-		wake_up_V_Waking_up = partV (mkV "wake") "up" ;
+		wake_V_Waking_up = irregV "wake" "woke" "woken" ;
+		wake_up_V_Waking_up = partV (irregV "wake" "woke" "woken") "up" ;
 
 		dither_V_Waver_between_options = mkV "dither" "dithers" "dithered" "dithered" "dithering" ;
 		vacillate_V_Waver_between_options = mkV "vacillate" "vacillates" "vacillated" "vacillated" "vacillating" ;
 		waffle_V_Waver_between_options = mkV "waffle" "waffles" "waffled" "waffled" "waffling" ;
 		waver_V_Waver_between_options = mkV "waver" "wavers" "wavered" "wavered" "wavering" ;
 
-		have_on_V2_Wearing = mkV2 (partV IrregEng.have_V "on") ;
+		have_on_V2_Wearing = mkV2 (partV (mk5V "have" "has" "had" "had" "having") "on") ;
 		sport_V2_Wearing = mkV2 (mkV "sport" "sports" "sported" "sported" "sporting") ;
-		wear_V2_Wearing = mkV2 (IrregEng.wear_V) ;
+		wear_V2_Wearing = mkV2 (irregV "wear" "wore" "worn") ;
 
-		win_V2_Win_prize = mkV2 (IrregEng.win_V) ;
+		win_V2_Win_prize = mkV2 (irregDuplV "win" "won" "won") ;
 
-		pull_out_V_Withdraw_from_participation = partV (mkV "pull") "out" ;
+		pull_out_V_Withdraw_from_participation = partV (regV "pull") "out" ;
 		withdraw_V_Withdraw_from_participation = mkV "with" IrregEng.draw_V ;
 
 }

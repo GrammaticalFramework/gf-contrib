@@ -48,10 +48,9 @@ abstract TargetsEngAbs = Cat ** {
 		restart_V2_Activity_resume : V2 ; -- <Agent>[The umpires] tried to [RESTART] <Activity>[the game]
 		resume_V2_Activity_resume : V2 ; -- <Agent>[The fat woman] [RESUMED] <Activity>[the journey]
 
-		begin_V_Activity_start : V ; -- [BEGINS]
-		commence_V_Activity_start : V ; -- [COMMENCE]
-		enter_V_Activity_start : V ; -- [ENTER] <Activity>[into negotiations]
-		start_V_Activity_start : V ; -- [STARTED]
+		enter_V_Activity_start : V ; -- [ENTERING] <Activity>[into detailed debate on these contentious issues]
+		launch_V_Activity_start : V ; -- [LAUNCHING] <Activity>[into the saga of her engagement]
+		swing_V_Activity_start : V ; -- [SWUNG] <Activity>[into action]
 		begin_V2_Activity_start : V2 ; -- <Agent>[Kawasaki] [BEGAN] <Activity>[operations in their US plant at Nebraska]
 		commence_V2_Activity_start : V2 ; -- <Agent>[they] [COMMENCE] <Activity>[work]
 		enter_V2_Activity_start : V2 ; -- <Agent>[Major] has [ENTERED] <Activity>[phase two of his premiership]
@@ -136,6 +135,7 @@ abstract TargetsEngAbs = Cat ** {
 		approach_V_Arriving : V ; -- <Theme>[I] [APPROACHED] <Goal>[home]
 		arrive_V_Arriving : V ; -- <Theme>[she] [ARRIVED] <Goal>[home]
 		come_V_Arriving : V ; -- <Theme>[I] [CAME] <Goal>[back]
+		descend_V_Arriving : V ; -- <Theme>[a hundred men] had [DESCENDED] <Goal>[on the place]
 		enter_V_Arriving : V ; -- <Theme>[one of the maids] [ENTERED]
 		get_V_Arriving : V ; -- <Theme>[I] [GET] <Goal>[back]
 		make_it_V_Arriving : V ; -- <Theme>[they] [MADE IT] <Goal>[back to the house]
@@ -288,11 +288,14 @@ abstract TargetsEngAbs = Cat ** {
 		trounce_V2_Beat_opponent : V2 ; -- <Winner>[Wigan] [TROUNCED] <Loser>[Halifax]
 
 		hush_V_Become_silent : V ; -- <Speaker>[everyone] [HUSHED]
+		hush_up_V_Become_silent : V ; -- <Speaker>[he] has not been able to [HUSH UP]
+		quiet_down_V_Become_silent : V ; -- <Speaker>[They] [QUIETED DOWN]
 		quieten_V_Become_silent : V ; -- <Speaker>[The bar] [QUIETENED]
 		shush_V_Become_silent : V ; -- <Speaker>[him] to [SHUSH]
+		shut_up_V_Become_silent : V ; -- <Speaker>[I] just [SHUT UP]
 
 		become_V_Becoming : V ; -- <Entity>[Lizzie] [BECAME] <Final_state>[visible]
-		end_up_V_Becoming : V ; -- <Entity>[the garment] [ENDS] [up] <Final_state>[too small]
+		end_up_V_Becoming : V ; -- <Entity>[the garment] [ENDS UP] <Final_state>[too small]
 		get_V_Becoming : V ; -- <Entity>[they] [GET] <Final_state>[older]
 		go_V_Becoming : V ; -- <Entity>[her mind] [GO] <Final_state>[blank]
 		grow_V_Becoming : V ; -- <Entity>[She] [GREW] <Final_state>[concerned]
@@ -304,6 +307,7 @@ abstract TargetsEngAbs = Cat ** {
 		join_V2_Becoming_a_member : V2 ; -- <New_member>[her] to [JOIN] <Group>[us]
 
 		discern_V_Becoming_aware : V ; -- <Cognizer>[he] was unable to [DISCERN] <Phenomenon>[whether Miguelito was amongst their number]
+		find_out_V_Becoming_aware : V ; -- <Cognizer>[you] to [FIND OUT] <Phenomenon>[whether they 've kept any of their signing ability , and if so how much]
 		learn_V_Becoming_aware : V ; -- <Cognizer>[We] 've just got to [LEARN]
 		recognize_V_Becoming_aware : V ; -- <Cognizer>[she] [RECOGNISED]
 		spot_V_Becoming_aware : V ; -- <Cognizer>[He] 's [SPOTTING] <Phenomenon>[for their batteries]
@@ -315,6 +319,7 @@ abstract TargetsEngAbs = Cat ** {
 		encounter_V2_Becoming_aware : V2 ; -- <Cognizer>[JNA troops] [ENCOUNTERED] <Phenomenon>[numerous roadblocks]
 		espy_V2_Becoming_aware : V2 ; -- <Cognizer>[she] [ESPIED] <Phenomenon>[a flat be-ribboned box]
 		find_V2_Becoming_aware : V2 ; -- <Cognizer>[You] [FOUND] <Phenomenon>[an opportunity to lie]
+		find_out_V2_Becoming_aware : V2 ; -- <Cognizer>[he] [FOUND] <Phenomenon>[this] [OUT]
 		learn_V2_Becoming_aware : V2 ; -- <Cognizer>[we] 'd [LEARN] <Phenomenon>[the real reason why Bobby Orton walked off the field against Burnhope]
 		locate_V2_Becoming_aware : V2 ; -- <Cognizer>[It] [LOCATES] <Phenomenon>[its food]
 		note_V2_Becoming_aware : V2 ; -- <Cognizer>[the Serbs] should [NOTE] <Phenomenon>[a change]
@@ -324,6 +329,7 @@ abstract TargetsEngAbs = Cat ** {
 		register_V2_Becoming_aware : V2 ; -- <Cognizer>[she] [REGISTERED] <Phenomenon>[the journey]
 		spot_V2_Becoming_aware : V2 ; -- <Cognizer>[We] [SPOTTED] <Phenomenon>[you]
 		discern_VQ_Becoming_aware : VQ ; -- <Cognizer>[pupils] [DISCERN] <Phenomenon>[what is acceptable to the teacher]
+		find_out_VQ_Becoming_aware : VQ ; -- <Cognizer>[I] 'm going to [FIND OUT] <Phenomenon>[what it was]
 		locate_VQ_Becoming_aware : VQ ; -- <Cognizer>[you] [LOCATE] <Phenomenon>[where it is]
 		note_VQ_Becoming_aware : VQ ; -- <Cognizer>[Charles] [NOTED] <Phenomenon>[how Alex was rising to the challenge]
 		notice_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [NOTICED] <Phenomenon>[how quiet the school seemed]
@@ -331,8 +337,10 @@ abstract TargetsEngAbs = Cat ** {
 		recognize_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [RECOGNIZED] <Phenomenon>[where he was]
 		register_VQ_Becoming_aware : VQ ; -- <Cognizer>[he] [REGISTERED] <Phenomenon>[who she was]
 		spot_VQ_Becoming_aware : VQ ; -- <Cognizer>[You] [SPOT] <Phenomenon>[what season of the year is appropriate]
+		tell_VQ_Becoming_aware : VQ ; -- [TELL] <Phenomenon>[how effective Customs ' reorganization will be in responding to the pressures it faces]
 		discern_VS_Becoming_aware : VS ; -- [DISCERN] <Phenomenon>[that petomania is not a profession]
 		discover_VS_Becoming_aware : VS ; -- [DISCOVER] on returning much later to the apartment <Phenomenon>[that the detested clothes were waiting for her in her room]
+		find_out_VS_Becoming_aware : VS ; -- [FIND OUT] <Phenomenon>[that it 's been postponed]
 		learn_VS_Becoming_aware : VS ; -- [LEARNED] <Phenomenon>[that they were on their summer holidays]
 		note_VS_Becoming_aware : VS ; -- [NOTED] <Phenomenon>[that the letters would catch the 5.30 post the next morning]
 		notice_VS_Becoming_aware : VS ; -- [NOTICED] <Phenomenon>[I was in the room !]
@@ -340,6 +348,7 @@ abstract TargetsEngAbs = Cat ** {
 		recognize_VS_Becoming_aware : VS ; -- [RECOGNISED] <Phenomenon>[that there was something seriously wrong with her brother]
 		register_VS_Becoming_aware : VS ; -- [REGISTERED] <Phenomenon>[that there was no child]
 		spot_VS_Becoming_aware : VS ; -- [SPOTS] <Phenomenon>[that there are no tin roofs]
+		tell_VS_Becoming_aware : VS ; -- [TELL] <Phenomenon>[that they are not]
 
 		dehydrate_V_Becoming_dry : V ; -- <Entity>[they] will [DEHYDRATE]
 		dry_V_Becoming_dry : V ; -- <Entity>[he] 's [DRYING]
@@ -430,13 +439,14 @@ abstract TargetsEngAbs = Cat ** {
 		fashion_V2_Building : V2 ; -- <Agent>[themselves] to [FASHION] <Created_entity>[something beautiful] <Components>[from their desolate lot]
 		glue_V2_Building : V2 ; -- <Agent>[the guy] with the job of [GLUING] <Created_entity>[you]
 		make_V2_Building : V2 ; -- <Agent>[she] [MADE] <Created_entity>[my clothes]
-		piece_together_V2_Building : V2 ; -- <Agent>[He] [PIECED] <Created_entity>[it] [together]
+		piece_together_V2_Building : V2 ; -- <Agent>[He] [PIECED] <Created_entity>[it] [TOGETHER]
 
-		fuck_up_V_Bungling : V ; -- <Agent>[I] [FUCKED] [up]
+		blow_it_V_Bungling : V ; -- <Agent>[I] [BLEW IT]
+		fuck_up_V_Bungling : V ; -- <Agent>[I] [FUCKED UP]
 		fumble_V_Bungling : V ; -- <Agent>[you] are unsure of the keystrokes and tend to [FUMBLE]
-		screw_up_V_Bungling : V ; -- <Agent>[I] [SCREW] [up]
+		screw_up_V_Bungling : V ; -- <Agent>[I] [SCREW UP]
 		ruin_V2_Bungling : V2 ; -- <Patient>[His uniform] would be [RUINED]
-		screw_up_V2_Bungling : V2 ; -- <Patient>[a piece of paper] gets [SCREWED] [up]
+		screw_up_V2_Bungling : V2 ; -- <Patient>[a piece of paper] gets [SCREWED UP]
 
 		carry_V2_Carry_goods : V2 ; -- <Distributor>[the NASM store] does [CARRY] <Goods>[some very rare Japanese types]
 		stock_V2_Carry_goods : V2 ; -- <Distributor>[I] did n't [STOCK] <Goods>[those]
@@ -451,6 +461,8 @@ abstract TargetsEngAbs = Cat ** {
 		pigeonhole_V2_Categorization : V2 ; -- <Item>[These] were [PIGEONHOLED]
 		typecast_V2_Categorization : V2 ; -- <Item>[FEW actors] enjoy being [TYPECAST]
 
+		lead_V_Causation : V ; -- <Cause>[a chain of events] <Cause>[that] [LED] <Effect>[to the Trojan War9]
+		bring_about_V2_Causation : V2 ; -- <Actor>[businessmen] proved unable to [BRING ABOUT] <Effect>[industrial recovery]
 		cause_V2_Causation : V2 ; -- <Actor>[Passengers] [CAUSE] <Effect>[jets ' corrosion]
 		induce_V2_Causation : V2 ; -- <Actor>[Maggie] , it quickly emerged , [INDUCED] <Effect>[a turning of mood] <Affected>[in the rest of them]
 		wreak_V2_Causation : V2 ; -- <Actor>[The monster] [WREAKED] <Effect>[destruction] <Affected>[on him and his house]
@@ -627,6 +639,9 @@ abstract TargetsEngAbs = Cat ** {
 		dehydrate_V2_Cause_to_be_dry : V2 ; -- [DEHYDRATE] <Dryee>[them]
 		desiccate_V2_Cause_to_be_dry : V2 ; -- <Agent>[Peter Maylam] , has no winter barley , but was planning to [DESICCATE] <Dryee>[oilseed rape]
 		dry_V2_Cause_to_be_dry : V2 ; -- <Agent>[She] [DRIED] <Dryee>[herself]
+		dry_off_V2_Cause_to_be_dry : V2 ; -- <Agent>[he] [DRIED] <Dryee>[it] [OFF]
+		dry_out_V2_Cause_to_be_dry : V2 ; -- <Agent>[We] are still [DRYING] <Dryee>[them] [OUT]
+		dry_up_V2_Cause_to_be_dry : V2 ; -- <Cause>[drought] [DRIED UP] <Dryee>[the lawns]
 
 		add_V2_Cause_to_be_included : V2 ; -- <Agent>[they] do n't [ADD] <New_member>[anything]
 
@@ -656,12 +671,14 @@ abstract TargetsEngAbs = Cat ** {
 		fragment_V2_Cause_to_fragment : V2 ; -- [FRAGMENTING] <Whole_patient>[the DNA of human bladder tumour cells]
 		rend_V2_Cause_to_fragment : V2 ; -- <Agent>[men] [REND] <Whole_patient>[their clothes]
 		rip_V2_Cause_to_fragment : V2 ; -- <Agent>[you] 're [RIPPING] <Whole_patient>[wood]
+		rip_up_V2_Cause_to_fragment : V2 ; -- <Agent>[Gail] [RIPPED UP] <Whole_patient>[a brochure]
 		shatter_V2_Cause_to_fragment : V2 ; -- <Agent>[he] [SHATTERED] <Whole_patient>[the mirror]
 		shred_V2_Cause_to_fragment : V2 ; -- <Agent>[Daddy] [SHREDS] <Whole_patient>[them]
 		smash_V2_Cause_to_fragment : V2 ; -- <Agent>[You] must [SMASH] <Whole_patient>[the egg]
 		snap_V2_Cause_to_fragment : V2 ; -- <Agent>[you] do [SNAP] <Whole_patient>[a twig]
 		splinter_V2_Cause_to_fragment : V2 ; -- <Agent>[other species] can easily draw blood and even [SPLINTER] <Whole_patient>[wood]
 		tear_V2_Cause_to_fragment : V2 ; -- <Agent>[he] agrees to [TEAR] <Whole_patient>[the tickets]
+		tear_up_V2_Cause_to_fragment : V2 ; -- <Agent>[I] [TORE UP] <Whole_patient>[the letter]
 
 		blast_V2_Cause_to_make_noise : V2 ; -- <Agent>[The Cortina] [BLASTED] <Sound_maker>[his horn]
 		creak_V2_Cause_to_make_noise : V2 ; -- <Agent>[Emmie] got up , trying not to [CREAK] <Sound_maker>[the chair]
@@ -693,6 +710,7 @@ abstract TargetsEngAbs = Cat ** {
 		awaken_V2_Cause_to_wake : V2 ; -- <Agent>[Nichols] [AWAKENED] <Sleeper>[Turman]
 		rouse_V2_Cause_to_wake : V2 ; -- <Agent>[Alice] [ROUSED] <Sleeper>[herself]
 		wake_V2_Cause_to_wake : V2 ; -- <Agent>[I] 'll [WAKE] <Sleeper>[you]
+		wake_up_V2_Cause_to_wake : V2 ; -- <Agent>[I] [WOKE UP] <Sleeper>[Tony]
 
 		disappear_V_Ceasing_to_be : V ; -- <Entity>[The symptoms] [DISAPPEARED]
 
@@ -765,28 +783,28 @@ abstract TargetsEngAbs = Cat ** {
 
 		bend_V_Change_posture : V ; -- <Protagonist>[He] [BENT]
 		crouch_V_Change_posture : V ; -- <Protagonist>[He] [CROUCHED]
-		crouch_down_V_Change_posture : V ; -- <Protagonist>[she] [CROUCHED] [down]
+		crouch_down_V_Change_posture : V ; -- <Protagonist>[she] [CROUCHED DOWN]
 		drop_V_Change_posture : V ; -- <Protagonist>[Pringle] had reached her first and [DROPPED]
 		huddle_V_Change_posture : V ; -- <Protagonist>[We] [HUDDLED]
 		hunch_V_Change_posture : V ; -- <Protagonist>[Derek] , [HUNCHING]
-		hunch_up_V_Change_posture : V ; -- <Protagonist>[You] could not [HUNCH] [up]
+		hunch_up_V_Change_posture : V ; -- <Protagonist>[You] could not [HUNCH UP]
 		kneel_V_Change_posture : V ; -- <Protagonist>[She] [KNELT]
 		kneel_down_V_Change_posture : V ; -- <Protagonist>[he] [KNELT DOWN]
 		kneel_up_V_Change_posture : V ; -- <Protagonist>[He] [KNELT UP]
 		lean_V_Change_posture : V ; -- <Protagonist>[Sam] [LEANT]
 		lie_V_Change_posture : V ; -- <Protagonist>[you] [LIE]
-		lie_down_V_Change_posture : V ; -- <Protagonist>[I] [LAY] [down]
+		lie_down_V_Change_posture : V ; -- <Protagonist>[I] [LAY DOWN]
 		rise_V_Change_posture : V ; -- <Protagonist>[He] [ROSE]
 		sit_V_Change_posture : V ; -- <Protagonist>[him] to [SIT]
-		sit_down_V_Change_posture : V ; -- <Protagonist>[he] [SAT] [down]
-		sit_up_V_Change_posture : V ; -- <Protagonist>[You] [SIT] [up]
+		sit_down_V_Change_posture : V ; -- <Protagonist>[he] [SAT DOWN]
+		sit_up_V_Change_posture : V ; -- <Protagonist>[You] [SIT UP]
 		slouch_V_Change_posture : V ; -- <Protagonist>[Chuck] [SLOUCHED]
 		sprawl_V_Change_posture : V ; -- <Protagonist>[Shearer] to be sent [SPRAWLING]
-		sprawl_out_V_Change_posture : V ; -- <Protagonist>[He] [SPRAWLED] [out]
+		sprawl_out_V_Change_posture : V ; -- <Protagonist>[He] [SPRAWLED OUT]
 		squat_V_Change_posture : V ; -- <Protagonist>[He] [SQUATTED]
-		squat_down_V_Change_posture : V ; -- <Protagonist>[He] [SQUATTED] [down]
+		squat_down_V_Change_posture : V ; -- <Protagonist>[He] [SQUATTED DOWN]
 		stand_V_Change_posture : V ; -- <Protagonist>[she] went and [STOOD]
-		stand_up_V_Change_posture : V ; -- <Protagonist>[He] [STOOD] [up]
+		stand_up_V_Change_posture : V ; -- <Protagonist>[He] [STOOD UP]
 		stoop_V_Change_posture : V ; -- <Protagonist>[He] [STOOPED]
 
 		transfer_V_Change_tool : V ; -- <Agent>[people] to [TRANSFER] <New_tool>[to public transport]
@@ -831,10 +849,12 @@ abstract TargetsEngAbs = Cat ** {
 		consider_VQ_Cogitation : VQ ; -- <Cognizer>[I] was almost predestined to [CONSIDER] <Topic>[how the two great nations of Western Europe , the Germans and the English , related to one another]
 		contemplate_VQ_Cogitation : VQ ; -- <Cognizer>[he] [CONTEMPLATED] <Topic>[what he might say next]
 		meditate_VQ_Cogitation : VQ ; -- <Cognizer>[I] [MEDITATED] <Topic>[what to do]
+		mull_over_VQ_Cogitation : VQ ; -- <Cognizer>[She] [MULLED OVER] <Topic>[what the object might be]
 		ponder_VQ_Cogitation : VQ ; -- <Cognizer>[Control] [PONDERED] <Topic>[what to do]
 		reflect_VQ_Cogitation : VQ ; -- <Cognizer>[you] [REFLECT] <Topic>[how common it is that poetic plans do n't get fulfilled]
 		contemplate_VS_Cogitation : VS ; -- <Cognizer>[the Act] apparently [CONTEMPLATES] <Topic>[that one may be produced from the other]
 		deliberate_VS_Cogitation : VS ; -- <Cognizer>[Taylor] [DELIBERATES] <Topic>[just who should be his partner]
+		mull_over_VS_Cogitation : VS ; -- <Cognizer>[Adam] [MULLED OVER] <Topic>[the tasks that still needed to be carried out next]
 		muse_VS_Cogitation : VS ; -- <Cognizer>[Daedalus] [MUSED] <Topic>[that if the metal was not uniformly heated , upwelling convection cells would form within it]
 		reflect_VS_Cogitation : VS ; -- <Cognizer>[Reg] was able to [REFLECT] <Topic>[that all things come to those who wait]
 
@@ -842,6 +862,7 @@ abstract TargetsEngAbs = Cat ** {
 		collude_V_Collaboration : V ; -- <Partner_1>[women] [COLLUDED] <Partner_2>[with doctors]
 		conspire_V_Collaboration : V ; -- <Partner_1>[we] should [CONSPIRE] <Partner_2>[with the enemy] <Undertaking>[against our emperor]
 		partner_V_Collaboration : V ; -- <Undertaking>[a Solution Providers Program] May 17 <Undertaking>[in which] <Partner_1>[it] will [PARTNER] <Partner_2>[with systems integrators such as EDS]
+		team_up_V_Collaboration : V ; -- <Partner_1>[I] [TEAMED UP] <Partner_2>[with two other volunteers] <Undertaking>[for a three week holiday]
 
 		come_together_V_Come_together : V ; -- <Party_1>[Small groups of patients and their family members] [COME TOGETHER] <Party_2>[with the staff members]
 		meet_V_Come_together : V ; -- <Party_1>[health professionals] to [MEET] <Party_2>[with parents]
@@ -878,6 +899,7 @@ abstract TargetsEngAbs = Cat ** {
 		conceive_V2_Coming_up_with : V2 ; -- <Cognizer>[This despot] [CONCEIVED] <Idea>[great projects]
 		concoct_V2_Coming_up_with : V2 ; -- <Cognizer>[him] [CONCOCT] <Idea>[the elixir of life]
 		contrive_V2_Coming_up_with : V2 ; -- <Cognizer>[We] have [CONTRIVED] <Idea>[the ` Big Bang " theory]
+		cook_up_V2_Coming_up_with : V2 ; -- <Cognizer>[he] [COOKED UP] <Idea>[this present plan]
 		design_V2_Coming_up_with : V2 ; -- <Cognizer>[Who on earth] [DESIGNS] <Idea>[them]
 		devise_V2_Coming_up_with : V2 ; -- <Cognizer>[they] [DEVISE] <Idea>[stratagems]
 		formulate_V2_Coming_up_with : V2 ; -- <Cognizer>[one] can [FORMULATE] <Idea>[the blueprint]
@@ -1048,7 +1070,7 @@ abstract TargetsEngAbs = Cat ** {
 
 		cable_V2_Contacting : V2 ; -- <Communicator>[His son , Michael , who lived in Hindhead ,] [CABLED] <Addressee>[him]
 		call_V2_Contacting : V2 ; -- <Communicator>[he] [CALLED] <Addressee>[the police]
-		call_up_V2_Contacting : V2 ; -- <Communicator>[She] [CALLS] <Addressee>[me] [up]
+		call_up_V2_Contacting : V2 ; -- <Communicator>[She] [CALLS] <Addressee>[me] [UP]
 		contact_V2_Contacting : V2 ; -- <Communicator>[Victim Support] [CONTACTED] <Addressee>[local charities]
 		page_V2_Contacting : V2 ; -- <Communicator>[I] [PAGED] <Addressee>[him]
 		phone_V2_Contacting : V2 ; -- <Communicator>[He] [PHONED] <Addressee>[me]
@@ -1064,6 +1086,7 @@ abstract TargetsEngAbs = Cat ** {
 
 		depend_V_Contingency : V ; -- <Outcome>[his life] [DEPENDED] <Determinant>[on it]
 		depends_V_Contingency : V ; -- <Outcome>[It] [DEPENDS] <Determinant>[whether they want to own up to it]
+		hang_V_Contingency : V ; -- <Outcome>[It] [HANGS] <Determinant>[on that sort of knife-edge]
 		hinge_V_Contingency : V ; -- <Outcome>[Money] [HINGED] <Determinant>[on the fact]
 		turn_V_Contingency : V ; -- <Outcome>[Nothing] [TURNS] <Determinant>[on this]
 
@@ -1079,9 +1102,10 @@ abstract TargetsEngAbs = Cat ** {
 		bake_V2_Cooking_creation : V2 ; -- <Cook>[they] [BAKE] <Produced_food>[their own bread]
 		concoct_V2_Cooking_creation : V2 ; -- <Cook>[Dr William Najaar] has [CONCOCTED] <Produced_food>[a mint-flavoured mouth-wash]
 		cook_V2_Cooking_creation : V2 ; -- <Cook>[I] had [COOKED] <Produced_food>[her supper]
-		cook_up_V2_Cooking_creation : V2 ; -- <Cook>[we] [COOK] [up] <Produced_food>[all the scraps in the kitchen]
+		cook_up_V2_Cooking_creation : V2 ; -- <Cook>[we] [COOK UP] <Produced_food>[all the scraps in the kitchen]
 		make_V2_Cooking_creation : V2 ; -- <Cook>[Mum] [MADE] <Produced_food>[a pot of tea]
 		prepare_V2_Cooking_creation : V2 ; -- <Cook>[Ling] [PREPARES] <Produced_food>[the food]
+		whip_up_V2_Cooking_creation : V2 ; -- <Cook>[The chefs of Brighton & Hove 's excellent restaurants] can [WHIP UP] <Produced_food>[a piquant sauce]
 
 		corrode_V_Corroding : V ; -- <Undergoer>[The unit] will not [CORRODE]
 		rust_V_Corroding : V ; -- <Undergoer>[the barbed wire] [RUSTS]
@@ -1103,6 +1127,9 @@ abstract TargetsEngAbs = Cat ** {
 		shepherd_V2_Cotheme : V2 ; -- <Theme>[Teversham and his sergeant] closed round Morgan , [SHEPHERDING] <Cotheme>[him] <Goal>[to the waiting Land Rover]
 		show_V2_Cotheme : V2 ; -- <Theme>[the girl] said , [SHOWING] <Cotheme>[her] <Goal>[into the room]
 		usher_V2_Cotheme : V2 ; -- <Theme>[He] [USHERED] <Cotheme>[them] <Goal>[to the door]
+
+		crossexamine_V2_Court_examination : V2 ; -- [CROSS-EXAMINE] <Witness>[the witness]
+		examine_V2_Court_examination : V2 ; -- [EXAMINING] and cross-examining <Witness>[witnesses]
 
 		draw_V2_Create_physical_artwork : V2 ; -- <Creator>[Mortimer] was [DRAWING] <Representation>[diagrams]
 		paint_V2_Create_physical_artwork : V2 ; -- <Creator>[Modigliani] [PAINTED] <Representation>[his wedding portrait]
@@ -1177,12 +1204,14 @@ abstract TargetsEngAbs = Cat ** {
 		crave_V2_Desiring : V2 ; -- <Experiencer>[you] [CRAVE] <Focal_participant>[food]
 		desire_V2_Desiring : V2 ; -- <Experiencer>[I] neither [DESIRE] <Focal_participant>[this house]
 		fancy_V2_Desiring : V2 ; -- <Experiencer>[she] [FANCIES] <Focal_participant>[a new outfit]
+		feel_like_V2_Desiring : V2 ; -- <Experiencer>[I] [FEEL LIKE] <Focal_participant>[a glass]
 		want_V2_Desiring : V2 ; -- <Experiencer>[you] [WANT] <Focal_participant>[one]
 		yearn_V2_Desiring : V2 ; -- <Focal_participant>[what] <Experiencer>[you] [YEARN]
 		aspire_VV_Desiring : VV ; -- <Experiencer>[young players] <Experiencer>[who] [ASPIRE] <Event>[to get on the main Tour]
 		crave_VV_Desiring : VV ; -- <Experiencer>[I] [CRAVE] <Event>[to die]
 		desire_VV_Desiring : VV ; -- <Experiencer>[We] [DESIRE] <Event>[to finish with galactic war for ever]
 		fancy_VV_Desiring : VV ; -- <Experiencer>[you] [FANCY] <Event>[exploring further afield]
+		feel_like_VV_Desiring : VV ; -- <Experiencer>[I] [FELT LIKE] <Event>[shouting]
 		hanker_VV_Desiring : VV ; -- <Experiencer>[she] [HANKERED] <Event>[to go back]
 		long_VV_Desiring : VV ; -- <Experiencer>[I] [LONG] <Event>[to know]
 		lust_VV_Desiring : VV ; -- <Experiencer>[He] ground his teeth together , [LUSTING] <Event>[to tear the alien apart and eat of its lurid vitals , so as to comprehend something of its strange nature]
@@ -1191,7 +1220,7 @@ abstract TargetsEngAbs = Cat ** {
 		want_VV_Desiring : VV ; -- <Experiencer>[I] would n't [WANT] <Event>[to know]
 		yearn_VV_Desiring : VV ; -- <Experiencer>[He] 'd [YEARNED] <Event>[to phone Liz]
 
-		blow_up_V2_Destroying : V2 ; -- <Cause>[a mine] [BLEW] [up] <Undergoer>[the Land-Rover he was travelling in]
+		blow_up_V2_Destroying : V2 ; -- <Cause>[a mine] [BLEW UP] <Undergoer>[the Land-Rover he was travelling in]
 		demolish_V2_Destroying : V2 ; -- [DEMOLISH] <Undergoer>[these homes]
 		destroy_V2_Destroying : V2 ; -- <Cause>[his minimum wage policy] would [DESTROY] <Undergoer>[jobs]
 		devastate_V2_Destroying : V2 ; -- <Cause>[the fire] <Cause>[that] [DEVASTATED] <Undergoer>[Windsor]
@@ -1227,14 +1256,14 @@ abstract TargetsEngAbs = Cat ** {
 		dominate_V2_Dominate_situation : V2 ; -- <Agent>[the overdraft] would [DOMINATE] <Situation>[the lending market]
 
 		dress_V_Dressing : V ; -- <Wearer>[Students] [DRESS] <Clothing>[in colourful garb]
-		dress_up_V_Dressing : V ; -- [DRESSING] <Wearer>[them] [up] <Clothing>[in the toffee-brown and pale uniform Elizabeth Jarvis had selected]
+		dress_up_V_Dressing : V ; -- [DRESSING] <Wearer>[them] [UP] <Clothing>[in the toffee-brown and pale uniform Elizabeth Jarvis had selected]
 		don_V2_Dressing : V2 ; -- <Wearer>[She] simply [DONNED] <Clothing>[a flowing outfit by Amanda Wakely]
 		dress_V2_Dressing : V2 ; -- <Wearer>[a tall , handsome woman] [DRESSED] with careful and expensive informality in <Clothing>[a black cashmere sweater with a silk scarf at the throat and fawn trousers]
-		get_on_V2_Dressing : V2 ; -- <Wearer>[he] was [GETTING] <Clothing>[his pyjamas] [on]
-		pull_on_V2_Dressing : V2 ; -- <Wearer>[He] had [PULLED] [on] <Clothing>[jeans]
-		put_on_V2_Dressing : V2 ; -- <Wearer>[I] [PUT] [on] <Clothing>[my kilt]
-		slip_on_V2_Dressing : V2 ; -- <Wearer>[Michael] [SLIPPED] [on] <Clothing>[his overcoat]
-		throw_on_V2_Dressing : V2 ; -- <Wearer>[I] 'd just [THROW] [on] <Clothing>[a cotton frock and a pair of sandals]
+		get_on_V2_Dressing : V2 ; -- <Wearer>[he] was [GETTING] <Clothing>[his pyjamas] [ON]
+		pull_on_V2_Dressing : V2 ; -- <Wearer>[He] had [PULLED ON] <Clothing>[jeans]
+		put_on_V2_Dressing : V2 ; -- <Wearer>[I] [PUT ON] <Clothing>[my kilt]
+		slip_on_V2_Dressing : V2 ; -- <Wearer>[Michael] [SLIPPED ON] <Clothing>[his overcoat]
+		throw_on_V2_Dressing : V2 ; -- <Wearer>[I] 'd just [THROW ON] <Clothing>[a cotton frock and a pair of sandals]
 
 		drop_in_V_Drop_in_on : V ; -- <Visitor>[you] [DROPPED IN]
 
@@ -1243,10 +1272,12 @@ abstract TargetsEngAbs = Cat ** {
 		lose_V_Earnings_and_losses : V ; -- <Earner>[the Arab states as a whole] had [LOST] <Earnings>[about US$25,000 million]
 		lose_V2_Earnings_and_losses : V2 ; -- <Earner>[he] [LOSES] <Earnings>[money]
 
+		blot_out_V_Eclipse : V ; -- <Eclipsed>[it] turned a dusty red , [BLOTTED OUT] <Obstruction>[by the dark wings of vultures]
 		obscure_V_Eclipse : V ; -- <Eclipsed>[Claudia 's face] is [OBSCURED] <Obstruction>[by the dust which rises]
 		screen_V_Eclipse : V ; -- <Eclipsed>[a Tudor grange] , [SCREENED] <Obstruction>[by a belt of trees]
 		shroud_V_Eclipse : V ; -- <Eclipsed>[a sky] [SHROUDED] <Obstruction>[by deep snow clouds]
 		block_V2_Eclipse : V2 ; -- <Obstruction>[the moon] [BLOCKING] <Eclipsed>[our view of it]
+		blot_out_V2_Eclipse : V2 ; -- <Obstruction>[They] [BLOTTED OUT] <Eclipsed>[the sun]
 		cloak_V2_Eclipse : V2 ; -- <Obstruction>[mist] [CLOAKING] <Eclipsed>[the branches of the trees]
 		conceal_V2_Eclipse : V2 ; -- <Obstruction>[An embroidered cloth] [CONCEALING] <Eclipsed>[her hair]
 		cover_V2_Eclipse : V2 ; -- <Obstruction>[the sun] [COVERS] <Eclipsed>[the moon]
@@ -1288,6 +1319,7 @@ abstract TargetsEngAbs = Cat ** {
 		agonize_V_Emotion_active : V ; -- <Experiencer>[I] do not need to [AGONISE] <Topic>[about that sort of discontinuity of experience]
 		fret_V_Emotion_active : V ; -- <Experiencer>[he] is [FRETTING] <Topic>[about possessions]
 		fuss_V_Emotion_active : V ; -- <Experiencer>[you] were [FUSSING] <Topic>[about your dress]
+		lose_sleep_V_Emotion_active : V ; -- <Experiencer>[I] [LOSE SLEEP] <Topic>[about it]
 		worry_V_Emotion_active : V ; -- <Experiencer>[The family] [WORRIED] <Topic>[about it]
 
 		boil_V_Emotion_heat : V ; -- <Experiencer>[she] [BOILED] <Emotion>[with anger]
@@ -1296,8 +1328,10 @@ abstract TargetsEngAbs = Cat ** {
 		fume_V_Emotion_heat : V ; -- <Experiencer>[they] must have boiled and [FUMED] <Emotion>[with indignation]
 		seethe_V_Emotion_heat : V ; -- <Experiencer>[she] [SEETHED] <Emotion>[with anger]
 		simmer_V_Emotion_heat : V ; -- <Experiencer>[Lucy] was still [SIMMERING] <Emotion>[with resentment]
-		smoulder_V_Emotion_heat : V ; -- <Experiencer>[he] was [SMOULDERING] <Emotion>[with rage]
+		smolder_V_Emotion_heat : V ; -- <Experiencer>[he] was [SMOULDERING] <Emotion>[with rage]
 		stew_V_Emotion_heat : V ; -- <Experiencer>[him] [STEW] <Emotion>[in it]
+
+		delight_V_Emotions_of_mental_activity : V ; -- <Experiencer>[God] [DELIGHTS] <Stimulus>[in himself]
 
 		employ_V2_Employing : V2 ; -- <Employer>[I] [EMPLOY] <Employee>[someone]
 
@@ -1361,11 +1395,11 @@ abstract TargetsEngAbs = Cat ** {
 		guess_VS_Estimating : VS ; -- <Cognizer>[I] [GUESS] <Estimation>[it will all work out]
 
 		flee_V_Evading : V ; -- <Evader>[he] [FLED] <Pursuer>[from five masked youths]
-		get_away_V_Evading : V ; -- <Evader>[He] had decided to [GET] [away] <Pursuer>[from his chaperons]
+		get_away_V_Evading : V ; -- <Evader>[He] had decided to [GET AWAY] <Pursuer>[from his chaperons]
 		elude_V2_Evading : V2 ; -- <Evader>[He] [ELUDED] <Pursuer>[Kinnear]
 		evade_V2_Evading : V2 ; -- <Evader>[it] [EVADED] <Pursuer>[him]
 		flee_V2_Evading : V2 ; -- <Evader>[refugees] [FLEEING] <Pursuer>[Genghis Khan]
-		give_the_slip_V2_Evading : V2 ; -- <Evader>[Kerry] [GAVE] <Pursuer>[them] [the slip]
+		give_the_slip_V2_Evading : V2 ; -- <Evader>[Kerry] [GAVE] <Pursuer>[them] [THE SLIP]
 
 		compare_V_Evaluative_comparison : V ; -- <Profiled_item>[she] [COMPARED] <Attribute>[in that respect] <Standard_item>[with this Sybil]
 
@@ -1429,7 +1463,6 @@ abstract TargetsEngAbs = Cat ** {
 		hang_V2_Execution : V2 ; -- <Executed>[Inmates] were [HANGED]
 
 		exist_V_Existence : V ; -- <Entity>[sexual reproduction] [EXISTS]
-		there_be_V_Existence : V ; -- [there] [WAS] <Entity>[no way of shutting it off completely]
 		exist_V2_Existence : V2 ; -- <Entity>[the world] [EXISTED]
 
 		anticipate_VQ_Expectation : VQ ; -- <Cognizer>[Sukarno] should have [ANTICIPATED] <Phenomenon>[what happened]
@@ -1662,7 +1695,7 @@ abstract TargetsEngAbs = Cat ** {
 		air_V2_Expressing_publicly : V2 ; -- <Communicator>[speakers] [AIRED] <Content>[grievances]
 		articulate_V2_Expressing_publicly : V2 ; -- <Communicator>[The right hemisphere of his brain] could not [ARTICULATE] <Content>[what it registered]
 		express_V2_Expressing_publicly : V2 ; -- <Communicator>[I] [EXPRESS] <Content>[our deep sympathy]
-		put_into_words_V2_Expressing_publicly : V2 ; -- <Communicator>[I] ca n't [put] <Content>[it] [into] [WORDS]
+		put_into_words_V2_Expressing_publicly : V2 ; -- <Communicator>[I] ca n't [PUT] <Content>[it] [INTO WORDS]
 		vent_V2_Expressing_publicly : V2 ; -- <Communicator>[he] would need to [VENT] <Content>[the anger she felt already gathering]
 		voice_V2_Expressing_publicly : V2 ; -- <Communicator>[She] [VOICED] <Content>[the lie]
 
@@ -1797,7 +1830,7 @@ abstract TargetsEngAbs = Cat ** {
 		squeal_V_Friction : V ; -- <Theme>[A spear] [SQUEALED] <Static_object>[on the rim of his shield]
 
 		assemble_V2_Gathering_up : V2 ; -- <Agent>[I] started by [ASSEMBLING] <Aggregate>[a collection of objects]
-		bring_together_V2_Gathering_up : V2 ; -- <Agent>[The exhibition] [BRINGS] [together] <Individuals>[work from artists]
+		bring_together_V2_Gathering_up : V2 ; -- <Agent>[The exhibition] [BRINGS TOGETHER] <Individuals>[work from artists]
 		herd_V2_Gathering_up : V2 ; -- <Agent>[Peasants] tilled the soil and [HERDED] <Individuals>[sheep]
 
 		beckon_V_Gesture : V ; -- <Communicator>[He] peeled one glove off and [BECKONED]
@@ -1830,8 +1863,12 @@ abstract TargetsEngAbs = Cat ** {
 		foist_V2_Giving : V2 ; -- <Donor>[the old Kelly agency] would n't [FOIST] <Theme>[this gig] <Recipient>[on them]
 		gift_V2_Giving : V2 ; -- <Donor>[Lady Weighall] was also responsible for laying out Jubilee Park , opposite Petwood , and later [GIFTING] <Theme>[it] <Recipient>[to the authorities]
 		give_V2_Giving : V2 ; -- <Donor>[He] [GIVES] <Theme>[money] <Recipient>[to local charities]
+		give_out_V2_Giving : V2 ; -- <Donor>[at least two nurses] [GAVE OUT] <Theme>[the drugs] <Recipient>[to patients]
 		hand_V2_Giving : V2 ; -- <Donor>[He] [HANDED] <Theme>[the letter] <Recipient>[to Weir]
-		hand_in_V2_Giving : V2 ; -- <Donor>[I] would not [HAND] <Theme>[this] [in] <Recipient>[to my superior]
+		hand_in_V2_Giving : V2 ; -- <Donor>[I] would not [HAND] <Theme>[this] [IN] <Recipient>[to my superior]
+		hand_out_V2_Giving : V2 ; -- <Donor>[Pickets] [HANDING OUT] <Theme>[leaflets] <Recipient>[to passers]
+		hand_over_V2_Giving : V2 ; -- <Donor>[He] [HANDED] <Theme>[her] [OVER] <Recipient>[to Simon]
+		pass_out_V2_Giving : V2 ; -- <Donor>[I] 'll be [PASSING OUT] <Theme>[drinks]
 
 		curl_V_Go_into_shape : V ; -- <Theme>[my lip] [CURL]
 
@@ -1865,9 +1902,8 @@ abstract TargetsEngAbs = Cat ** {
 		pulverize_V2_Grinding : V2 ; -- <Grinder>[peasants] [PULVERISE] <Undergoer>[the plump triticale kernels]
 		shred_V2_Grinding : V2 ; -- <Grinder>[them] [SHREDDING] and splintering <Undergoer>[the wood]
 
-		plait_V_Grooming : V ; -- <Body_part>[the pale-gold hair] [PLAITED]
-		wax_V_Grooming : V ; -- <Body_part>[underarm hair] [WAXED]
 		bathe_V2_Grooming : V2 ; -- <Agent>[you] [BATHE] <Body_part>[the injury]
+		brush_V2_Grooming : V2 ; -- <Agent>[she] was [BRUSHING] <Body_part>[her teeth]
 		cleanse_V2_Grooming : V2 ; -- <Agent>[we] should do to [CLEANSE] <Body_part>[our skin]
 		comb_V2_Grooming : V2 ; -- <Agent>[He] drew on socks , a tight pair of Italian jeans , and plimsolls , [COMBED] <Body_part>[his receding hair]
 		groom_V2_Grooming : V2 ; -- <Agent>[he] would pick up the silver hair-brush and [GROOM] <Body_part>[her hair]
@@ -2038,9 +2074,11 @@ abstract TargetsEngAbs = Cat ** {
 		lock_V2_Inhibit_movement : V2 ; -- <Agent>[you] [LOCKED] <Theme>[me]
 		tie_V2_Inhibit_movement : V2 ; -- <Agent>[We] used to [TIE] <Theme>[her]
 
+		doublecheck_V2_Inspecting : V2 ; -- <Inspector>[Manville] began to [DOUBLE-CHECK] <Ground>[it]
 		examine_V2_Inspecting : V2 ; -- <Inspector>[Benjamin] [EXAMINED] <Ground>[the yellowing teeth]
 		frisk_V2_Inspecting : V2 ; -- <Inspector>[they] [FRISK] <Ground>[you]
 		inspect_V2_Inspecting : V2 ; -- <Inspector>[He] [INSPECTED] <Ground>[the baby]
+		proofread_V2_Inspecting : V2 ; -- <Inspector>[Mark] was [PROOF-READING] <Ground>[them]
 		reconnoitre_V2_Inspecting : V2 ; -- <Inspector>[Mr Handford] [RECONNOITRED] <Ground>[the surrounding area]
 
 		install_V2_Installing : V2 ; -- <Agent>[the BCR] had [INSTALLED] <Component>[a turntable] <Fixed_location>[at Stretford Bridge]
@@ -2052,8 +2090,10 @@ abstract TargetsEngAbs = Cat ** {
 		cut_V_Intentional_traversing : V ; -- <Self_mover>[Blazer 's forelegs] [CUT] <Path>[through the air]
 		ford_V2_Intentional_traversing : V2 ; -- <Self_mover>[They] had to [FORD] <Path>[these hazards]
 
+		do_something_V_Intentionally_affect : V ; -- <Agent>[we] can [DO SOMETHING] <Patient>[with these plants]
+
 		establish_V2_Intentionally_create : V2 ; -- <Creator>[she] [ESTABLISHED] <Created_entity>[the Medau Society of South Africa]
-		set_up_V2_Intentionally_create : V2 ; -- <Creator>[you] [SET] <Created_entity>[it] [up]
+		set_up_V2_Intentionally_create : V2 ; -- <Creator>[you] [SET] <Created_entity>[it] [UP]
 
 		intercept_V2_Intercepting : V2 ; -- <Interceptor>[A man] [INTERCEPTED] <Theme>[him]
 
@@ -2119,8 +2159,8 @@ abstract TargetsEngAbs = Cat ** {
 		reproach_V2_Judgment_direct_address : V2 ; -- <Communicator>[she] never [REPROACHED] <Addressee>[him] <Reason>[for his failings]
 		reprove_V2_Judgment_direct_address : V2 ; -- <Communicator>[Charles] [REPROVED] <Addressee>[her] <Reason>[for rushing on ahead of his story]
 		scold_V2_Judgment_direct_address : V2 ; -- <Communicator>[He] [SCOLDS] <Addressee>[me] <Reason>[for leaving the flat]
-		take_to_task_V2_Judgment_direct_address : V2 ; -- <Communicator>[she] were [TAKING] <Addressee>[him] [to task] <Reason>[for something he 'd done to me]
-		tell_off_V2_Judgment_direct_address : V2 ; -- <Communicator>[He] just [TOLD] <Addressee>[you] [off] <Reason>[for being a pain]
+		take_to_task_V2_Judgment_direct_address : V2 ; -- <Communicator>[she] were [TAKING] <Addressee>[him] [TO TASK] <Reason>[for something he 'd done to me]
+		tell_off_V2_Judgment_direct_address : V2 ; -- <Communicator>[He] just [TOLD] <Addressee>[you] [OFF] <Reason>[for being a pain]
 		thank_V2_Judgment_direct_address : V2 ; -- <Communicator>[I] [THANKED] <Addressee>[God] <Reason>[for typecasting]
 		upbraid_V2_Judgment_direct_address : V2 ; -- <Communicator>[Sam] had a mental vision of a handful of ants thrown at a charging bull , but [UPBRAIDED] <Addressee>[himself] <Reason>[for cowardice]
 
@@ -2288,6 +2328,7 @@ abstract TargetsEngAbs = Cat ** {
 
 		meet_V2_Meet_with_response : V2 ; -- <Trigger>[they] were [MET] <Response>[with some resistance]
 
+		commit_to_memory_V2_Memorization : V2 ; -- <Cognizer>[you] write them down or [COMMIT] <Pattern>[them] [TO MEMORY]
 		memorise_V2_Memorization : V2 ; -- <Cognizer>[I] 'll [MEMORIZE] <Pattern>[this lot]
 
 		recall_V2_Memory : V2 ; -- <Cognizer>[I] [RECALL] <Content>[the event]
@@ -2417,12 +2458,6 @@ abstract TargetsEngAbs = Cat ** {
 		taxi_V_Operate_vehicle : V ; -- <Driver>[Hoffmann] landed prettily -- he was getting to like this machine -- and [TAXIED] <Area>[behind a small truck in which an airman held up a board reading FOLLOW ME]
 		toboggan_V_Operate_vehicle : V ; -- <Driver>[boys] throwing snowballs , wind-surfing , skating and [TOBOGGANING]
 		parachute_V_Operate_vehicle : V ; -- <Driver>[they] [PARACHUTE] <Goal>[down]
-		drive_V2_Operate_vehicle : V2 ; -- <Driver>[I] [DROVE] <Vehicle>[the Truck]
-		fly_V2_Operate_vehicle : V2 ; -- <Driver>[He] [FLIES] <Vehicle>[a plane]
-		paddle_V2_Operate_vehicle : V2 ; -- <Driver>[you] should be confident reefing your mainsail or [PADDLING] <Vehicle>[your rubber dinghy]
-		pedal_V2_Operate_vehicle : V2 ; -- <Driver>[who] was [PEDALLING] <Vehicle>[whose bike]
-		row_V2_Operate_vehicle : V2 ; -- <Driver>[Tom] , <Driver>[who] [ROWS] <Vehicle>[the baggage boat]
-		taxi_V2_Operate_vehicle : V2 ; -- <Driver>[John] assured me that it did n't matter in the least , and amused himself by [TAXYING] <Vehicle>[the machine]
 
 		manage_V2_Operating_a_system : V2 ; -- <Operator>[Tom] was [MANAGING] <System>[the manor farm]
 		operate_V2_Operating_a_system : V2 ; -- <Operator>[Brighton] [OPERATES] <System>[a voucher parking scheme]
@@ -2496,6 +2531,8 @@ abstract TargetsEngAbs = Cat ** {
 		perceive_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[he] too [PERCEIVED] <Phenomenon>[what she meant]
 		sense_VQ_Perception_experience : VQ ; -- <Perceiver_passive>[he] [SENSES] <Phenomenon>[when I 'm ` soft]
 
+		costar_V_Performers_and_roles : V ; -- <Performer1>[Nicholson] to [CO-STAR] <Performer2>[alongside Barbra Streisand]
+		star_V_Performers_and_roles : V ; -- <Performer1>[Singer Carole Lore] will [STAR] <Performer2>[alongside Bronson]
 		act_V2_Performers_and_roles : V2 ; -- <Performer>[Will] was [ACTING] <Role>[four small parts] <Performance>[in two different plays]
 		play_V2_Performers_and_roles : V2 ; -- <Performer>[a girl] <Performer>[who] [PLAYS] <Role>[Gemma] <Performance>[in Neighbours]
 		star_V2_Performers_and_roles : V2 ; -- [STARRING] <Performer>[Val Kilmer]
@@ -2510,7 +2547,7 @@ abstract TargetsEngAbs = Cat ** {
 
 		hijack_V2_Piracy : V2 ; -- <Perpetrator>[her attacker] [HIJACKED] <Vehicle>[a taxi]
 
-		place_weight_V_Place_weight_on : V ; -- [weight] <Agent>[John Paul] [PLACES] <Consideration>[on the issue]
+		place_weight_V_Place_weight_on : V ; -- [WEIGHT] <Agent>[John Paul] [PLACES] <Consideration>[on the issue]
 
 		archive_V2_Placing : V2 ; -- [ARCHIVE] <Theme>[many thousands of historic documents] <Goal>[within a networked database]
 		bag_V2_Placing : V2 ; -- <Agent>[We] spent two or three hours [BAGGING] up <Theme>[clothes to take to the charity shops]
@@ -2600,8 +2637,10 @@ abstract TargetsEngAbs = Cat ** {
 
 		practice_V_Practice : V ; -- <Agent>[he] [PRACTISES] <Action>[on our old piano]
 		rehearse_V_Practice : V ; -- <Agent>[The 20-stone Italian tenor] was [REHEARSING] <Action>[as painter Mario Cavaradossi]
+		run_V_Practice : V ; -- <Agent>[I] can [RUN] <Action>[through it]
 		practice_V2_Practice : V2 ; -- <Agent>[We] 'd spent a couple of days [PRACTISING] <Action>[the relay]
 		rehearse_V2_Practice : V2 ; -- <Agent>[WE] started to [REHEARSE] <Action>[our routine] <Occasion>[for the show]
+		run_V2_Practice : V2 ; -- <Agent>[she] [RAN THROUGH] <Action>[her presentation]
 
 		rain_V_Precipitation : V ; -- [RAINS] <Place>[in Amantani]
 		snow_V_Precipitation : V ; -- [SNOW] <Place>[in London]
@@ -2625,7 +2664,7 @@ abstract TargetsEngAbs = Cat ** {
 		deny_V3_Prevent_from_having : V3 ; -- <Agent>[you] [DENIED] <Protagonist>[her]
 
 		avert_V2_Preventing : V2 ; -- <Agent>[he] still hoped to [AVERT] <Event>[war]
-		nip_in_the_bud_V2_Preventing : V2 ; -- <Agent>[I] shall [NIP] <Event>[it] [in the bud]
+		nip_in_the_bud_V2_Preventing : V2 ; -- <Agent>[I] shall [NIP] <Event>[it] [IN THE BUD]
 		prevent_V2_Preventing : V2 ; -- <Preventing_cause>[this] will [PREVENT] <Event>[the dye penetrating]
 		stop_V2_Preventing : V2 ; -- <Preventing_cause>[the receivers orders] to [STOP] <Event>[disgruntled workers taking demonstration vehicles from the site]
 
@@ -2704,7 +2743,7 @@ abstract TargetsEngAbs = Cat ** {
 		skim_V2_Reading : V2 ; -- <Reader>[I] [SKIMMED] <Text>[the financial sections of the newspapers]
 
 		read_V2_Reading_aloud : V2 ; -- <Speaker>[somebody] [READ] <Text>[it]
-		read_out_V2_Reading_aloud : V2 ; -- <Speaker>[a fruity voice] was [READING] [out] <Text>[a list of figures which had something to do with the production of pig-iron]
+		read_out_V2_Reading_aloud : V2 ; -- <Speaker>[a fruity voice] was [READING OUT] <Text>[a list of figures which had something to do with the production of pig-iron]
 
 		argue_V_Reasoning : V ; -- <Arguer>[he] [ARGUED] <Content>[for the cut-off in American aid to Pakistan]
 		argue_VS_Reasoning : VS ; -- <Arguer>[You] can [ARGUE] <Content>[these wars were corrective]
@@ -2814,7 +2853,7 @@ abstract TargetsEngAbs = Cat ** {
 		rat_V_Reporting : V ; -- <Informer>[We] have n't [RATTED] <Wrongdoer>[on our friends]
 		snitch_V_Reporting : V ; -- <Informer>[citizens] to [SNITCH] <Wrongdoer>[on white farmers who use racist epithets]
 
-		be_symbol_V_Representing : V ; -- [IS] <Entity>[this] a [symbol] <Phenomenon>[of hope]
+		be_symbol_V_Representing : V ; -- [IS] <Entity>[this] a [SYMBOL] <Phenomenon>[of hope]
 
 		ask_V_Request : V ; -- <Speaker>[I] now have need to [ASK] <Message>[for your help]
 		beg_V_Request : V ; -- <Speaker>[he] tried to [BEG] <Message>[for money]
@@ -2872,13 +2911,13 @@ abstract TargetsEngAbs = Cat ** {
 		stay_V_Residence : V ; -- <Resident>[I] [STAYED] <Location>[in Athens]
 
 		deal_V_Resolve_problem : V ; -- <Agent>[we] have to [DEAL] <Problem>[with matters as they now stand]
-		work_through_V_Resolve_problem : V ; -- <Problem>[treatments for such patients] tend to be chosen empirically and [WORKED] [through]
-		clear_up_V2_Resolve_problem : V2 ; -- <Agent>[I] 'd better [CLEAR] <Problem>[that little matter] [up]
+		work_through_V_Resolve_problem : V ; -- <Problem>[treatments for such patients] tend to be chosen empirically and [WORKED THROUGH]
+		clear_up_V2_Resolve_problem : V2 ; -- <Agent>[I] 'd better [CLEAR] <Problem>[that little matter] [UP]
 		deal_V2_Resolve_problem : V2 ; -- <Agent>[outside bodies] wish to [DEAL] with <Problem>[the civil service]
 		fix_V2_Resolve_problem : V2 ; -- <Agent>[manufacturer] does n't have to [FIX] <Problem>[it]
 		resolve_V2_Resolve_problem : V2 ; -- <Agent>[you] here for -- to [RESOLVE] <Problem>[our problems]
 		solve_V2_Resolve_problem : V2 ; -- <Agent>[he] [SOLVED] <Problem>[this]
-		work_through_V2_Resolve_problem : V2 ; -- <Agent>[they] [WORK] [through] <Problem>[their problems]
+		work_through_V2_Resolve_problem : V2 ; -- <Agent>[they] [WORK THROUGH] <Problem>[their problems]
 
 		rebuff_V2_Respond_to_proposal : V2 ; -- <Speaker>[Pan Am] has [REBUFFED] <Proposal>[TWA 's first advances]
 		reject_V2_Respond_to_proposal : V2 ; -- <Speaker>[He] [REJECTED] <Proposal>[an initial request for a meeting]
@@ -2886,12 +2925,13 @@ abstract TargetsEngAbs = Cat ** {
 		respond_V_Response : V ; -- <Agent>[He] does n't [RESPOND] <Trigger>[to my friendly greeting]
 
 		admit_V_Reveal_secret : V ; -- <Speaker>[She] saw fit to [ADMIT] <Information>[to her musical background]
+		come_clean_V_Reveal_secret : V ; -- <Speaker>[Labour] will not [COME CLEAN] <Information>[with its figures]
 		confess_V_Reveal_secret : V ; -- <Speaker>[I] [CONFESS] <Information>[to this failing]
 		confide_V_Reveal_secret : V ; -- <Speaker>[he] [CONFIDED] <Information>[that he felt betrayed by Scotland]
 		disclose_V_Reveal_secret : V ; -- <Speaker>[doctors] had not [DISCLOSED] <Information>[whether the tumour was cancerous]
 		divulge_V_Reveal_secret : V ; -- <Speaker>[I] 'm not at liberty to [DIVULGE]
 		reveal_V_Reveal_secret : V ; -- <Information>[As] <Speaker>[she] [REVEALED]
-		spill_beans_V_Reveal_secret : V ; -- <Speaker>[OSF] [SPILLING] the [beans]
+		spill_beans_V_Reveal_secret : V ; -- <Speaker>[OSF] [SPILLING] the [BEANS]
 		confess_V2_Reveal_secret : V2 ; -- <Medium>[a letter] [CONFESSING] <Information>[the weakness]
 		disclose_V2_Reveal_secret : V2 ; -- [DISCLOSE] <Information>[it]
 		divulge_V2_Reveal_secret : V2 ; -- <Medium>[the accounts] do not [DIVULGE] <Information>[the whereabouts of specific monies paid into it]
@@ -2902,6 +2942,8 @@ abstract TargetsEngAbs = Cat ** {
 		confess_VS_Reveal_secret : VS ; -- <Information>[a " provocatively contentious and quite unacceptable " conclusion] , [CONFESSED] <Medium>[the report]
 		reveal_VS_Reveal_secret : VS ; -- <Information>[SPELLING everyday words is beyond the grasp of millions of Britons] , <Medium>[a survey] [REVEALED]
 
+		get_back_V_Revenge : V ; -- <Avenger>[he] wanted to [GET BACK] <Injury>[for an unpaid debt]
+		get_even_V_Revenge : V ; -- <Avenger>[I] 'll [GET EVEN] <Injury>[for this]
 		retaliate_V_Revenge : V ; -- <Avenger>[local citizens] [RETALIATED] <Injury>[against the Zulus ' attacks]
 		retaliate_V2_Revenge : V2 ; -- <Avenger>[They] [RETALIATED] <Punishment>[by cruelly nicknaming him ` the Chinese Jew "]
 
@@ -2929,7 +2971,7 @@ abstract TargetsEngAbs = Cat ** {
 		decay_V_Rotting : V ; -- <Undergoer>[his teeth] [DECAYING]
 		decompose_V_Rotting : V ; -- <Undergoer>[the drug] [DECOMPOSE]
 		fester_V_Rotting : V ; -- <Undergoer>[hostility] had [FESTERED]
-		moulder_V_Rotting : V ; -- <Undergoer>[them] to simply [MOULDER]
+		molder_V_Rotting : V ; -- <Undergoer>[them] to simply [MOULDER]
 		perish_V_Rotting : V ; -- <Undergoer>[goods] [PERISH]
 		putrefy_V_Rotting : V ; -- <Undergoer>[the body] was beginning to [PUTREFY]
 		rot_V_Rotting : V ; -- <Undergoer>[the fruit] to [ROT]
@@ -3090,7 +3132,7 @@ abstract TargetsEngAbs = Cat ** {
 		partition_V2_Separating : V2 ; -- <Agent>[You] could [PARTITION] off <Part_1>[part of the tank]
 		segregate_V2_Separating : V2 ; -- <Agent>[Kossoff] prefers to [SEGREGATE] <Part_1>[his drawings] <Part_2>[from his paintings]
 		separate_V2_Separating : V2 ; -- <Agent>[Who] would [SEPARATE] <Part_1>[the clean] <Part_2>[from the unclean]
-		split_V2_Separating : V2 ; -- <Agent>[the Provisionals and the property owners] [SPLIT] <Part_1>[the profit] <Part_2>[from the government compensation]
+		split_V2_Separating : V2 ; -- <Agent>[we] [SPLIT] <Part_1>[our business] <Part_2>[from Healthcare]
 		section_V2_Separating : V2 ; -- <Whole>[specimen] was [SECTIONED] <Parts>[into four pieces]
 		segment_V2_Separating : V2 ; -- <Whole>[Neighbourhoods of terraced streets , shops , and warehouses] were [SEGMENTED] <Parts>[into one-hour slots]
 
@@ -3102,10 +3144,10 @@ abstract TargetsEngAbs = Cat ** {
 		set_fire_to_V2_Setting_fire : V2 ; -- <Kindler>[who] [SET FIRE TO] <Flammables>[the truck]
 		torch_V2_Setting_fire : V2 ; -- <Kindler>[Mobs of Right-wing thugs] set ablaze a tent city housing refugees outside Leipzig and [TORCHED] <Flammables>[a hostel in Zielitz]
 
-		set_off_V_Setting_out : V ; -- <Self_mover>[I] [SET] [off]
+		set_off_V_Setting_out : V ; -- <Self_mover>[I] [SET OFF]
 
 		fire_V2_Shoot_projectiles : V2 ; -- <Agent>[who] had [FIRED] <Projectile>[the fatal arrow]
-		fire_off_V2_Shoot_projectiles : V2 ; -- <Agent>[they] [FIRED] [off] <Projectile>[a couple of rounds]
+		fire_off_V2_Shoot_projectiles : V2 ; -- <Agent>[they] [FIRED OFF] <Projectile>[a couple of rounds]
 		launch_V2_Shoot_projectiles : V2 ; -- <Agent>[it] had [LAUNCHED] <Projectile>[a 48-tonne three-stage rocket]
 		shoot_V2_Shoot_projectiles : V2 ; -- <Agent>[the archers] [SHOOT] <Projectile>[two arrows]
 
@@ -3114,11 +3156,16 @@ abstract TargetsEngAbs = Cat ** {
 		sign_V2_Sign_agreement : V2 ; -- <Signatory>[I] had to [SIGN] <Agreement>[a paper saying I 'd be responsible for the arrears]
 
 		hush_V2_Silencing : V2 ; -- <Agent>[He] [HUSHED] <Speaker>[her]
+		hush_up_V2_Silencing : V2 ; -- <Agent>[They] 'd [HUSH] <Speaker>[you] [UP]
 		quiet_V2_Silencing : V2 ; -- <Agent>[She] [QUIETED] <Speaker>[the children]
+		quiet_down_V2_Silencing : V2 ; -- <Agent>[the strong-man] holds his arm up to [QUIET] <Speaker>[us] [DOWN]
 		shush_V2_Silencing : V2 ; -- <Agent>[Lampard] [SHUSHED] <Speaker>[him]
+		shut_up_V2_Silencing : V2 ; -- <Agent>[they] tried to [SHUT] <Speaker>[me] [UP]
 		silence_V2_Silencing : V2 ; -- <Agent>[she] did her best to [SILENCE] <Speaker>[them]
 
 		differ_V_Similarity : V ; -- <Entity_1>[West Germany] [DIFFERS] <Entity_2>[from both France and Britain]
+
+		cooccur_V_Simultaneity : V ; -- <Events>[planning and production] to [CO-OCCUR]
 
 		catnap_V_Sleep : V ; -- <Sleeper>[she] [CATNAPPED]
 		doze_V_Sleep : V ; -- <Sleeper>[you] [DOZE]
@@ -3296,32 +3343,36 @@ abstract TargetsEngAbs = Cat ** {
 
 		lodge_V_Temporary_stay : V ; -- <Guest>[They] could [LODGE] <Host>[with Grandpa]
 		room_V_Temporary_stay : V ; -- <Guest>[we] [ROOMED]
-		sleep_over_V_Temporary_stay : V ; -- <Guest>[You] can [SLEEP] [over]
+		sleep_over_V_Temporary_stay : V ; -- <Guest>[You] can [SLEEP OVER]
 		stay_V_Temporary_stay : V ; -- <Guest>[I] was [STAYING] <Host>[with a friend]
-		stay_over_V_Temporary_stay : V ; -- <Guest>[I] 'll [STAY] [over]
+		stay_over_V_Temporary_stay : V ; -- <Guest>[I] 'll [STAY OVER]
 		overnight_V_Temporary_stay : V ; -- <Guest>[It] was scheduled to [OVERNIGHT] <Location>[in Croatian Serb-held territory]
 
 		compose_V_Text_creation : V ; -- [COMPOSED]
 		draft_V_Text_creation : V ; -- [DRAFTED] <Author>[by Parents against Tobacco]
-		type_in_V_Text_creation : V ; -- [TYPED] [in] <Author>[by the user]
+		print_out_V_Text_creation : V ; -- [PRINTED OUT]
+		print_up_V_Text_creation : V ; -- [PRINTED UP]
+		type_in_V_Text_creation : V ; -- [TYPED IN] <Author>[by the user]
 		utter_V_Text_creation : V ; -- [UTTERED]
 		author_V2_Text_creation : V2 ; -- <Author>[Mr MacAulay] had himself [AUTHORED] <Text>[the history of the island of St Kilda , which bore his name]
 		chronicle_V2_Text_creation : V2 ; -- <Author>[Trudi] [CHRONICLED] <Text>[the lives of the rich and famous]
 		compose_V2_Text_creation : V2 ; -- <Author>[Mr Vinct] [COMPOSED] <Text>[a special lullaby]
 		draft_V2_Text_creation : V2 ; -- <Author>[He] [DRAFTED] <Text>[another memo]
 		jot_V2_Text_creation : V2 ; -- <Author>[he] [JOTTED] <Text>[some notes]
-		jot_down_V2_Text_creation : V2 ; -- <Author>[I] 'll [JOT] <Text>[the address] [down]
+		jot_down_V2_Text_creation : V2 ; -- <Author>[I] 'll [JOT] <Text>[the address] [DOWN]
 		pen_V2_Text_creation : V2 ; -- <Author>[she] [PENNED] <Text>[the note]
+		print_out_V2_Text_creation : V2 ; -- <Author>[you] can [PRINT OUT] <Text>[the graph]
+		print_up_V2_Text_creation : V2 ; -- <Author>[he] simply [PRINTED UP] <Text>[the first three chapters]
 		say_V2_Text_creation : V2 ; -- <Author>[Dad] to [SAY] <Text>[grace]
 		type_V2_Text_creation : V2 ; -- <Author>[you] [TYPE] <Text>[the command]
-		type_in_V2_Text_creation : V2 ; -- <Author>[you] [TYPE] [in] <Text>[the error code]
-		type_out_V2_Text_creation : V2 ; -- <Author>[I] [TYPED] [out] <Text>[my notice]
-		type_up_V2_Text_creation : V2 ; -- <Author>[she] [TYPED] [up] <Text>[her interviews]
+		type_in_V2_Text_creation : V2 ; -- <Author>[you] [TYPE IN] <Text>[the error code]
+		type_out_V2_Text_creation : V2 ; -- <Author>[I] [TYPED OUT] <Text>[my notice]
+		type_up_V2_Text_creation : V2 ; -- <Author>[she] [TYPED UP] <Text>[her interviews]
 		utter_V2_Text_creation : V2 ; -- <Author>[she] [UTTERED] <Text>[the word]
 		write_V2_Text_creation : V2 ; -- <Author>[I] [WRITE] <Text>[my diary]
-		write_down_V2_Text_creation : V2 ; -- <Author>[I] [WROTE] <Text>[it] [down]
-		write_out_V2_Text_creation : V2 ; -- <Author>[He] [WROTE] [out] <Text>[cheques]
-		write_up_V2_Text_creation : V2 ; -- <Author>[Shelley] [WROTE] [up] <Text>[the case]
+		write_down_V2_Text_creation : V2 ; -- <Author>[I] [WROTE] <Text>[it] [DOWN]
+		write_out_V2_Text_creation : V2 ; -- <Author>[He] [WROTE OUT] <Text>[cheques]
+		write_up_V2_Text_creation : V2 ; -- <Author>[Shelley] [WROTE UP] <Text>[the case]
 
 		nick_V_Theft : V ; -- <Perpetrator>[Everyone I know] [NICKS] <Source>[from shops]
 		pilfer_V_Theft : V ; -- <Perpetrator>[She] could be [PILFERING]
@@ -3379,6 +3430,7 @@ abstract TargetsEngAbs = Cat ** {
 		traverse_V_Traversing : V ; -- <Theme>[Katie , my wife ,] is [TRAVERSING] <Path>[towards our gear at the base of the crag]
 
 		try_V2_Trying_out : V2 ; -- <Evaluator>[they] [TRY] <Entity>[new things]
+		try_out_V2_Trying_out : V2 ; -- <Evaluator>[aspiring filmmakers] could [TRY OUT] <Entity>[ideas]
 
 		rumor_VS_Unattributed_information : VS ; -- [RUMOURED] <Reported_fact>[that the relationship had at times been stormy]
 
@@ -3389,15 +3441,15 @@ abstract TargetsEngAbs = Cat ** {
 		undergo_V2_Undergoing : V2 ; -- <Entity>[All volunteers] [UNDERWENT] <Event>[manometry]
 
 		doff_V2_Undressing : V2 ; -- <Wearer>[He] [DOFFED] <Clothing>[his cap]
-		kick_off_V2_Undressing : V2 ; -- <Wearer>[Melissa] [KICKED] [off] <Clothing>[her shoes]
-		peel_off_V2_Undressing : V2 ; -- <Wearer>[She] [PEELED] [off] <Clothing>[her glove]
-		pull_off_V2_Undressing : V2 ; -- <Wearer>[she] [PULLED] [off] <Clothing>[her cap]
+		kick_off_V2_Undressing : V2 ; -- <Wearer>[Melissa] [KICKED OFF] <Clothing>[her shoes]
+		peel_off_V2_Undressing : V2 ; -- <Wearer>[She] [PEELED OFF] <Clothing>[her glove]
+		pull_off_V2_Undressing : V2 ; -- <Wearer>[she] [PULLED OFF] <Clothing>[her cap]
 		remove_V2_Undressing : V2 ; -- <Wearer>[He] [REMOVES] <Clothing>[his parka]
 		shed_V2_Undressing : V2 ; -- <Wearer>[She] [SHED] <Clothing>[her clothes]
 		slip_V2_Undressing : V2 ; -- <Wearer>[I] [SLIPPED] <Clothing>[my old dress]
-		strip_off_V2_Undressing : V2 ; -- <Wearer>[she] had [STRIPPED] [off] <Clothing>[her top clothes]
-		take_off_V2_Undressing : V2 ; -- <Wearer>[he] [TOOK] <Clothing>[it] [off]
-		throw_off_V2_Undressing : V2 ; -- <Wearer>[He] [THREW] [off] <Clothing>[his load]
+		strip_off_V2_Undressing : V2 ; -- <Wearer>[she] had [STRIPPED OFF] <Clothing>[her top clothes]
+		take_off_V2_Undressing : V2 ; -- <Wearer>[he] [TOOK] <Clothing>[it] [OFF]
+		throw_off_V2_Undressing : V2 ; -- <Wearer>[He] [THREW OFF] <Clothing>[his load]
 
 		discharge_V2_Use_firearm : V2 ; -- <Agent>[he] [DISCHARGED] <Firearm>[his second barrel]
 		fire_V2_Use_firearm : V2 ; -- <Agent>[she] 'd [FIRED] <Firearm>[a pistol]
@@ -3429,7 +3481,7 @@ abstract TargetsEngAbs = Cat ** {
 		waffle_V_Waver_between_options : V ; -- <Cognizer>[Los Angeles Dodgers lefty Odalis Perez] [WAFFLED] <Issue>[about his need to get time off to clear his mind and invigorate his body]
 		waver_V_Waver_between_options : V ; -- <Cognizer>[people] have been [WAVERING] <Issue>[about giving us information]
 
-		have_on_V2_Wearing : V2 ; -- <Wearer>[I] 've [HAD] <Clothing>[my hat] [on]
+		have_on_V2_Wearing : V2 ; -- <Wearer>[I] 've [HAD] <Clothing>[my hat] [ON]
 		sport_V2_Wearing : V2 ; -- <Wearer>[lorry driver] [SPORTING] <Clothing>[gold neck chains]
 		wear_V2_Wearing : V2 ; -- <Wearer>[he] [WEAR] <Clothing>[a corset]
 
