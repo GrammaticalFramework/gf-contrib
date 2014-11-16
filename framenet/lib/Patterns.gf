@@ -158,6 +158,7 @@ abstract Patterns = Elements ** {
 
 		Categorization_V2_Pass : Criteria_Adv -> Item_NP -> V2 -> Clause ;
 
+		Causation_V : Cause_NP -> Effect_Adv -> V -> Clause ;
 		Causation_V2_1 : Actor_NP -> Affected_Adv -> Effect_NP -> V2 -> Clause ;
 		Causation_V2_2 : Actor_NP -> Affected_NP -> Effect_Adv -> V2 -> Clause ;
 		Causation_V2_3 : Cause_NP -> Effect_NP -> V2 -> Clause ;
@@ -373,6 +374,8 @@ abstract Patterns = Elements ** {
 		Cotheme_V2_4 : Cotheme_NP -> Source_Adv -> Theme_NP -> V2 -> Clause ;
 		Cotheme_V2_Pass : Cotheme_NP -> Theme_NP -> V2 -> Clause ;
 
+		Court_examination_V2 : Witness_NP -> V2 -> Clause ;
+
 		Create_physical_artwork_V2 : Creator_NP -> Representation_NP -> V2 -> Clause ;
 
 		Create_representation_V2 : Creator_NP -> Represented_NP -> V2 -> Clause ;
@@ -460,6 +463,8 @@ abstract Patterns = Elements ** {
 
 		Emotion_heat_V_1 : Emotion_Adv -> Experiencer_NP -> V -> Clause ;
 		Emotion_heat_V_2 : Experiencer_NP -> Seat_of_emotion_Adv -> V -> Clause ;
+
+		Emotions_of_mental_activity_V : Experiencer_NP -> Stimulus_Adv -> V -> Clause ;
 
 		Employing_V2 : Employee_NP -> Employer_NP -> V2 -> Clause ;
 
@@ -593,7 +598,6 @@ abstract Patterns = Elements ** {
 		Grinding_V : Undergoer_NP -> V -> Clause ;
 		Grinding_V2 : Grinder_NP -> Undergoer_NP -> V2 -> Clause ;
 
-		Grooming_V : Body_part_NP -> V -> Clause ;
 		Grooming_V2 : Agent_NP -> Body_part_NP -> V2 -> Clause ;
 
 		Halt_V : Theme_NP -> V -> Clause ;
@@ -647,6 +651,8 @@ abstract Patterns = Elements ** {
 
 		Intentional_traversing_V : Path_Adv -> Self_mover_NP -> V -> Clause ;
 		Intentional_traversing_V2 : Path_NP -> Self_mover_NP -> V2 -> Clause ;
+
+		Intentionally_affect_V : Agent_NP -> Patient_Adv -> V -> Clause ;
 
 		Intentionally_create_V2 : Created_entity_NP -> Creator_NP -> V2 -> Clause ;
 		Intentionally_create_V2_Pass : Created_entity_NP -> V2 -> Clause ;
@@ -751,8 +757,7 @@ abstract Patterns = Elements ** {
 		Needing_V2_Pass : Requirement_NP -> V2 -> Clause ;
 
 		Notification_of_charges_V2 : Accused_NP -> Arraign_authority_NP -> Charges_Adv -> V2 -> Clause ;
-		Notification_of_charges_V2_Pass_1 : Accused_NP -> Arraign_authority_NP -> V2 -> Clause ;
-		Notification_of_charges_V2_Pass_2 : Accused_NP -> Charges_Adv -> V2 -> Clause ;
+		Notification_of_charges_V2_Pass : Accused_NP -> Charges_Adv -> V2 -> Clause ;
 
 		Nuclear_process_V : Element_NP -> V -> Clause ;
 
@@ -765,7 +770,6 @@ abstract Patterns = Elements ** {
 
 		Operate_vehicle_V_1 : Area_Adv -> Driver_NP -> V -> Clause ;
 		Operate_vehicle_V_2 : Driver_NP -> Goal_Adv -> Path_Adv -> Source_Adv -> V -> Clause ;
-		Operate_vehicle_V2 : Driver_NP -> Vehicle_NP -> V2 -> Clause ;
 
 		Operating_a_system_V2 : Operator_NP -> System_NP -> V2 -> Clause ;
 
@@ -796,6 +800,7 @@ abstract Patterns = Elements ** {
 		Perception_experience_VQ : Perceiver_passive_NP -> Phenomenon_QS -> VQ -> Clause ;
 		Perception_experience_V2_Pass : Phenomenon_NP -> V2 -> Clause ;
 
+		Performers_and_roles_V : Performer1_NP -> Performer2_Adv -> V -> Clause ;
 		Performers_and_roles_V2_1 : Performance_Adv -> Performer_NP -> Role_NP -> V2 -> Clause ;
 		Performers_and_roles_V2_2 : Performer_NP -> V2 -> Clause ;
 
@@ -1023,6 +1028,8 @@ abstract Patterns = Elements ** {
 		Silencing_V2 : Agent_NP -> Speaker_NP -> V2 -> Clause ;
 
 		Similarity_V : Entity_1_NP -> Entity_2_Adv -> V -> Clause ;
+
+		Simultaneity_V : Events_NP -> V -> Clause ;
 
 		Sleep_V : Sleeper_NP -> V -> Clause ;
 

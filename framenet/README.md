@@ -1,14 +1,14 @@
 A FrameNet-based API to GF Resource Grammar Library
 ===================================================
 
-Version 0.9.5
+Version 0.9.6
 
 Introduction
 ------------
 
 The aim of this project is to make existing FrameNet-based lexical resources computationally accessible for multilingual natural language generation via a shared semantico-syntactic grammar API.
 
-We provide a currently bilingual but potentially multilingual FrameNet-based grammar library implemented in [Grammatical Framework](http://www.grammaticalframework.org/), based on its Resource Grammar Library (RGL). The API of the library represents a shared set of automatically extracted semantico-syntactic valence patterns from ~68,700 annotated sentences in [Berkeley FrameNet](https://framenet.icsi.berkeley.edu/) (BFN 1.5) and ~3,700 annotated sentences in [Swedish FrameNet](http://spraakbanken.gu.se/eng/swefn) (SweFN, a snapshot taken in February 2014). The concise set of 720 patterns covers 422 shared BFN frames and ~70% of sentences evoking the shared frames in both BFN and SweFN.
+We provide a currently bilingual but potentially multilingual FrameNet-based grammar and lexicon library implemented in [Grammatical Framework](http://www.grammaticalframework.org/), based on its Resource Grammar Library (RGL). The API of the library represents a shared set of automatically extracted semantico-syntactic verb valence patterns from ~66,900 annotated sentences in [Berkeley FrameNet](https://framenet.icsi.berkeley.edu/) (BFN 1.5) and ~3,300 annotated sentences in [Swedish FrameNet](http://spraakbanken.gu.se/eng/swefn) (SweFN, a snapshot taken in February 2014). The concise set of 723 patterns covers 426 shared BFN frames and ~70% of sentences evoking the shared frames in both BFN and SweFN.
 
 As a side result, a unified method for comparing semantic and syntactic valence patterns across framenets is provided.
 
@@ -19,18 +19,18 @@ All grammar modules have been automatically generated based on the automatically
 
 ### Abstract syntax
 
-  - `Elements.gf` – 483 core frame elements (FE) declared as semantic categories that are subcategorized by the syntactic RGL types.
-  - `Patterns.gf` – 720 valence patterns declared as functions that take one or more core FEs and a target verb as arguments, and return a clause. For each frame, the set of core FEs is often split into several alternative functions according to the corpus evidence.
-  - `TargetsEngAbs.gf` – 3,012 lexical units (LU) from BFN.
-  - `TargetsSweAbs.gf` – 1,251 LUs from SweFN.
+  - `Elements.gf` – 489 core frame elements (FE) declared as semantic categories that are subcategorized by the syntactic RGL types.
+  - `Patterns.gf` – 723 valence patterns declared as functions that take one or more core FEs and a target verb as arguments, and return a clause. For each frame, the set of core FEs is often split into several alternative functions according to the corpus evidence.
+  - `TargetsEngAbs.gf` – 3,060 lexical units (LU) from BFN.
+  - `TargetsSweAbs.gf` – 1,323 LUs from SweFN.
 
 ### Concrete syntax
 
   - `ElementsI.gf` – mapping from the semantic types to the syntactic types, shared for all languages.
   - `ElementsEng.gf` and `ElementsSwe.gf` – language-specific instantiations of `ElementsI.gf`.
   - `PatternsEng.gf` and `PatternsSwe.gf` – language-specific implementation of the shared valence patterns (frame building functions).
-  - `TargetsEng.gf` – implementation of 2,764 BFN LUs (reusing [`DictEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/DictEng.gf)).
-  - `TargetsSwe.gf` – implementation of 1,206 SweFN LUs (reusing [`DictSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/DictSwe.gf)).
+  - `TargetsEng.gf` – implementation of 2,986 BFN LUs (reusing [`DictEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/DictEng.gf), [`DictionaryEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/translator/DictionaryEng.gf), [`LexiconEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/LexiconEng.gf), [`IrregEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/IrregEng.gf), [`StructuralEng.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/english/StructuralEng.gf)).
+  - `TargetsSwe.gf` – implementation of 1,252 SweFN LUs (reusing [`DictSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/DictSwe.gf), [`DictionarySwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/translator/DictionarySwe.gf), [`LexiconSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/LexiconSwe.gf), [`IrregSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/IrregSwe.gf), [`StructuralSwe.gf`](https://github.com/GrammaticalFramework/GF/blob/master/lib/src/swedish/StructuralSwe.gf)).
 
 LUs between BFN and SweFN are not directly aligned, therefore a framenet-specific lexicon is generated for each language.
 
@@ -58,7 +58,7 @@ Publications
 
   - Dana Dannélls and Normunds Gruzitis. [Extracting a bilingual semantic grammar from FrameNet-annotated corpora](http://www.lrec-conf.org/proceedings/lrec2014/pdf/1079_Paper.pdf). In: Proceedings of the 9th International Language Resources and Evaluation Conference (LREC), 2014, pp. 2466-2473
 
-  - Dana Dannélls and Normunds Gruzitis. [Controlled natural language generation from a multilingual FrameNet-based grammar](http://arxiv.org/pdf/1406.2400v1.pdf). In: Proceedings of the 4th Workshop on Controlled Natural Language (CNL), LNCS 8625, Springer, 2014, pp. 155-166 (to appear)
+  - Dana Dannélls and Normunds Gruzitis. [Controlled natural language generation from a multilingual FrameNet-based grammar](http://arxiv.org/pdf/1406.2400v1.pdf). In: Proceedings of the 4th Workshop on Controlled Natural Language (CNL), LNCS 8625, Springer, 2014, pp. 155-166 ([slides](http://attempto.ifi.uzh.ch/site/cnl2014/slides/gruzitis.pdf))
 
 Acknowledgements
 ----------------

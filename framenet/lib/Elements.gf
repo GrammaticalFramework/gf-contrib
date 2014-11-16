@@ -155,6 +155,7 @@ abstract Elements = Cat ** {
 		Event_Adv ;
 		Event_NP ;
 		Event_VP ;
+		Events_NP ;
 		Evidence_NP ;
 		Exchanger_1_NP ;
 		Exchanger_2_Adv ;
@@ -326,10 +327,13 @@ abstract Elements = Cat ** {
 		Party_2_NP ;
 		Path_Adv ;
 		Path_NP ;
+		Patient_Adv ;
 		Patient_NP ;
 		Pattern_NP ;
 		Perceiver_passive_NP ;
 		Performance_Adv ;
+		Performer1_NP ;
+		Performer2_Adv ;
 		Performer_NP ;
 		Perpetrator_NP ;
 		Phenomena_NP ;
@@ -430,6 +434,7 @@ abstract Elements = Cat ** {
 		State_of_affairs_NP ;
 		State_of_affairs_QS ;
 		Static_object_Adv ;
+		Stimulus_Adv ;
 		Stimulus_NP ;
 		Stimulus_S ;
 		Student_NP ;
@@ -484,6 +489,7 @@ abstract Elements = Cat ** {
 		Whole_NP ;
 		Whole_patient_NP ;
 		Winner_NP ;
+		Witness_NP ;
 		Wrong_NP ;
 		Wrongdoer_Adv ;
 		Wrongdoer_NP ;
