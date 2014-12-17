@@ -3,15 +3,16 @@
 
 concrete WordsSwe of Words = SentencesSwe **
   open
-    PatternsSwe, -- FrameNet API
-    TargetsSwe,  -- FrameNet API
+    PatternsSwe,          -- FrameNet API
+    TargetsSwe,           -- FrameNet API
+    (T = TargetsSweCnc),  -- FrameNet API
     SyntaxSwe,
     ParadigmsSwe,
     (L = LexiconSwe),
     IrregSwe,
     ExtraSwe,
     Prelude,
-    Maybe        -- from RGL; used with FrameNet API
+    Maybe                 -- from RGL; used with FrameNet API
   in {
 
   lin
@@ -134,7 +135,7 @@ concrete WordsSwe of Words = SentencesSwe **
     --AHasChildren p num = mkCl p.name have_V2 (mkNP num L.child_N) ;
     -- FrameNet API:
     AHasChildren p num = let cl : Clause =
-      Possession_V2 (Just NP p.name) (Just NP (mkNP num L.child_N)) ha_V2_Possession
+      Possession_V2 (Just NP p.name) (Just NP (mkNP num L.child_N)) have_V2_Possession
         in mkCl cl.np cl.vp ;
 
     --AHasRoom p num = mkCl p.name have_V2
@@ -145,7 +146,7 @@ concrete WordsSwe of Words = SentencesSwe **
       Possession_V2
         (Just NP p.name)
         (Just NP (mkNP (mkNP a_Det (mkN "rum" "rum")) (SyntaxSwe.mkAdv for_Prep (mkNP num (mkN "person" "personer")))))
-        ha_V2_Possession
+        have_V2_Possession
       in mkCl cl.np cl.vp ;
 
     --AHasTable p num = mkCl p.name have_V2
@@ -156,7 +157,7 @@ concrete WordsSwe of Words = SentencesSwe **
       Possession_V2
         (Just NP p.name)
         (Just NP (mkNP (mkNP a_Det (mkN "bord" "bord")) (SyntaxSwe.mkAdv for_Prep (mkNP num (mkN "person" "personer")))))
-        ha_V2_Possession
+        have_V2_Possession
       in mkCl cl.np cl.vp ;
 
     AHungry p = mkCl p.name (mkA "hungrig") ;
@@ -172,13 +173,13 @@ concrete WordsSwe of Words = SentencesSwe **
     --ALive p co = mkCl p.name (mkVP (mkVP (mkV "bo")) (SyntaxSwe.mkAdv in_Prep co)) ;
     -- FrameNet API:
     ALive p co = let cl : Clause =
-      Residence_V (Just Adv (SyntaxSwe.mkAdv in_Prep co)) (Just NP p.name) bo_V_Residence
+      Residence_V (Just Adv (SyntaxSwe.mkAdv in_Prep co)) (Just NP p.name) live_V_Residence
         in mkCl cl.np cl.vp ;
 
     --ALove p q = mkCl p.name (mkV2 (mkV "älska")) q.name ;
     -- FrameNet API:
     ALove p q = let cl : Clause =
-      Experiencer_focus_V2 (Just NP q.name) (Just NP p.name) älska_V2_Experiencer_focus
+      Experiencer_focus_V2 (Just NP q.name) (Just NP p.name) love_V2_Experiencer_focus
         in mkCl cl.np cl.vp ;
 
     AMarried p = mkCl p.name (mkA "gift") ;
@@ -188,7 +189,7 @@ concrete WordsSwe of Words = SentencesSwe **
     --ASpeak p lang = mkCl p.name  (mkV2 (mkV "tala")) lang ;
     -- FrameNet API:
     ASpeak p lang = let cl : Clause =
-      Text_creation_V2 (Just NP p.name) (Just NP lang) (mkV2 tala_V_Statement)
+      Text_creation_V2 (Just NP p.name) (Just NP lang) (mkV2 speak_V_Statement)
         in mkCl cl.np cl.vp ;
 
     AThirsty p = mkCl p.name (mkA "törstig") ;
@@ -203,11 +204,11 @@ concrete WordsSwe of Words = SentencesSwe **
           (Possession_V2
             (Nothing' NP)       -- Possession.Owner
             (Just NP obj)       -- Possession.Possession
-            ha_V2_Possession
+            have_V2_Possession
           ).vp
         )
         (Just NP p.name)        -- Desiring.Experiencer
-        vilja_VV_Desiring
+        want_VV_Desiring
       in mkCl cl.np cl.vp ;
 
     --AWantGo p place = mkCl p.name want_VV (mkVP (mkVP L.go_V) place.to) ;
@@ -219,11 +220,11 @@ concrete WordsSwe of Words = SentencesSwe **
             (Just Adv place.to) -- Motion.Goal
             (Nothing' Adv)      -- Motion.Source
             (Nothing' NP)       -- Motion.Theme
-            gå_V_Motion
+            go_V_Motion
           ).vp
         )
         (Just NP p.name)        -- Desiring.Experiencer
-        vilja_VV_Desiring
+        want_VV_Desiring
       in mkCl cl.np cl.vp ;
 
 -- miscellaneous

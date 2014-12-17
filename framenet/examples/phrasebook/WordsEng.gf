@@ -2,8 +2,9 @@
 
 concrete WordsEng of Words = SentencesEng **
   open
-    PatternsEng, -- FrameNet API
-    TargetsEng,  -- FrameNet API
+    PatternsEng,          -- FrameNet API
+    TargetsEng,           -- FrameNet API
+    (T = TargetsEngCnc),  -- FrameNet API
     SyntaxEng,
     ParadigmsEng,
     (L = LexiconEng),
@@ -11,7 +12,7 @@ concrete WordsEng of Words = SentencesEng **
     IrregEng,
     ExtraEng,
     Prelude,
-    Maybe        -- from RGL; used with FrameNet API
+    Maybe                 -- from RGL; used with FrameNet API
   in {
 
   lin
@@ -166,7 +167,7 @@ concrete WordsEng of Words = SentencesEng **
     --ALike p item = mkCl p.name (mkV2 (mkV "like")) item ;
     -- FrameNet API:
     ALike p item = let cl : Clause =
-      Experiencer_focus_V2 (Just NP item) (Just NP p.name) like_V2_Experiencer_focus
+      Experiencer_focus_V2 (Just NP item) (Just NP p.name) T.like_V2_Experiencer_focus
         in mkCl cl.np cl.vp ;
 
     --ALive p co = mkCl p.name (mkVP (mkVP (mkV "live")) (SyntaxEng.mkAdv in_Prep co)) ;
@@ -188,7 +189,7 @@ concrete WordsEng of Words = SentencesEng **
     --ASpeak p lang = mkCl p.name (mkV2 IrregEng.speak_V) lang ;
     -- FrameNet API:
     ASpeak p lang = let cl : Clause =
-      Text_creation_V2 (Just NP p.name) (Just NP lang) (mkV2 speak_V_Chatting)
+      Text_creation_V2 (Just NP p.name) (Just NP lang) (mkV2 speak_V_Statement)
         in mkCl cl.np cl.vp ;
 
     AThirsty p = mkCl p.name (mkA "thirsty") ;
@@ -198,7 +199,7 @@ concrete WordsEng of Words = SentencesEng **
     --AWant p obj = mkCl p.name (mkV2 (mkV "want")) obj ;
     -- FrameNet API:
     AWant p obj = let cl : Clause =
-      Desiring_V2 (Just NP p.name) (Just NP obj) want_V2_Desiring
+      Desiring_V2 (Just NP p.name) (Just NP obj) T.want_V2_Desiring
         in mkCl cl.np cl.vp ;
 
     --AWantGo p place = mkCl p.name want_VV (mkVP (mkVP IrregEng.go_V) place.to) ;
