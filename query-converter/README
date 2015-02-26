@@ -1,0 +1,37 @@
+Query Converter
+
+(c) aarne.ranta@cse.gu.se 2015 under the BSD License
+
+A simple converter for SQL, relational algebra, E-R diagrams, database schemas,
+and some natural language.
+
+To compile:
+
+  ghc --make -o qconv QConv.hs
+
+To run:
+
+  ./sconv
+
+Facilities:
+
+- convert SQL queries to relational algebra expressions
+- convert simple text scripts to E-R diagrams and database schemas
+- build and use databases in SQL via relational algebra
+
+Examples:
+
+- edu.txt    -- E-R design: try with 'd edu.txt'
+- course.sql -- SQL script: try with 'i course.sql'
+
+Needed:
+
+- ghc       -- to compile sconv
+- pdflatex  -- to display algebra formulas
+- graphviz  -- to display E-R diagrams
+
+ToDo:
+
+- many features of SQL: types, constraints, updates, deletes...
+- natural language generation and parsing (rudiments included)
+

@@ -1,0 +1,70 @@
+entrypoints Rels, Rel ;
+
+RRels. Rels ::= [Rel] ;
+
+terminator Rel "" ;
+
+RTable.     Rel3 ::= Ident ;
+RSelect.    Rel2 ::= "\\sigma_{" Cond "}" Rel3 ;
+RProject.   Rel2 ::= "\\pi_{" [Exp] "}" Rel3 ;
+RRename.    Rel2 ::= "\\rho_{" Renaming "}" Rel3 ;
+RGroup.     Rel2 ::= "\\gamma_{" [Ident] [Aggregation] "}" Rel3 ;
+RSort.      Rel2 ::= "\\tau_{" [Ident] "}" Rel3 ;
+RDistinct.  Rel2 ::= "\\delta" Rel3 ;
+RUnion.     Rel1 ::= Rel1 "\\cup" Rel2 ;
+RJoin.      Rel1 ::= Rel1 "\\bowtie" Rel2 ;
+RThetaJoin. Rel1 ::= Rel1 "\\bowtie_{" Cond "}" Rel2 ;
+RIntersect. Rel1 ::= Rel1 "\\cap" Rel2 ;
+RCartesian. Rel1 ::= Rel1 "\\times" Rel2 ;
+RExcept.    Rel1 ::= Rel1 "\\backslash" Rel2 ;
+
+coercions Rel 3 ;
+
+CEq.        Cond2 ::= Exp "=" Exp ;
+CNEq.       Cond2 ::= Exp "<>" Exp ;
+CLt.        Cond2 ::= Exp "<" Exp ;
+CGt.        Cond2 ::= Exp ">" Exp ;
+CLike.      Cond2 ::= Exp "LIKE" Exp ;
+CNot.       Cond2 ::= "NOT" Cond3 ;
+CAnd.       Cond1 ::= Cond1 "AND" Cond2 ;
+COr.        Cond1 ::= Cond1 "OR" Cond2 ;
+
+coercions Cond 3 ;
+
+EIdent.     Exp3  ::= Ident ;
+EString.    Exp3  ::= String ;
+EInt.       Exp3  ::= Integer ;
+EFloat.     Exp3  ::= Double ;
+EAggr.      Exp3  ::= Function "(" Ident ")" ;
+EMul.       Exp2  ::= Exp2 "*" Exp3 ;
+EDiv.       Exp2  ::= Exp2 "/" Exp3 ;
+EAdd.       Exp1  ::= Exp1 "+" Exp2 ;
+ESub.       Exp1  ::= Exp1 "-" Exp2 ;
+
+coercions Exp 3 ;
+
+RRelation.   Renaming ::= Ident ;
+RAttributes. Renaming ::= Ident "(" [Ident] ")" ;
+RReplace.    Renaming ::= Ident "/" Ident ;
+
+AgFun.      Aggregation ::= Function "(" Ident ")" "\\rightarrow" Exp ;
+
+FAvg.   Function ::= "AVG" ;
+FSum.   Function ::= "SUM" ;
+FMax.   Function ::= "MAX" ;
+FMin.   Function ::= "MIN" ;
+FCount. Function ::= "COUNT" ;
+
+
+separator Ident "," ;
+separator Exp "," ;
+separator Aggregation "," ;
+
+comment "\\d" ;
+comment "\\b" ;
+comment "\\[" ;
+comment "\\]" ;
+comment "\\e" ;
+comment "\\H" ;
+comment "\\n" ;
+comment "%" ;

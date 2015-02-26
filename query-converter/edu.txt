@@ -1,0 +1,16 @@
+ENTITY Department _name abbreviation
+ENTITY Programme _name abbreviation
+WEAK ENTITY Branch Programme IsABranchOf _name 
+RELATIONSHIP BelongsTo Programme -- Department
+ENTITY Course _courseId name numberOfCredits
+RELATIONSHIP IsHostedBy Course -> Department
+ISA LimitedCourse Course studentLimit
+RELATIONSHIP IsRecommendedIn Course -- Branch
+RELATIONSHIP IsMandatoryIn Course -- Branch
+RELATIONSHIP IsRequiredBy Course -- Course
+ENTITY Student _idNumber name
+RELATIONSHIP IsOnTheWaitingListFor Student -- Course date
+RELATIONSHIP HasCompleted Student -- Course grade
+RELATIONSHIP IsRegisteredFor Student -- Course
+
+
