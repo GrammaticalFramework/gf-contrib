@@ -1,0 +1,21 @@
+Conversion from Smultron treebank to GF trees
+Work in progress!
+
+Smultron has 4 English, Swedish, German, French and Spanish.
+English version uses Penn Treebank tags.
+
+SmultronFormat.hs 
+   - reads the sentences in a Smultron .xml file into a Haskell tree.
+ConvertEng.hs 
+   - converts the English sentences in Smultron into GF trees.
+All the rest
+   - mostly copied from http://www.grammaticalframework.org/treebanks/PennTreebank/
+
+data/nonsense_data_in_smultron_format.xml 
+   - a sentence which *does not appear* in the original Smultron treebank 
+     (nor is it translatable just by changing the words), but shows the format.
+
+TODO
+  - Finish English conversion
+  - Add Convert(Swe|Spa|Ger|Fre)
+  - Support other tag formats
