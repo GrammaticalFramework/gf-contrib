@@ -11,7 +11,7 @@ To compile:
 
 To run:
 
-  ./sconv
+  ./qconv
 
 Facilities:
 
@@ -34,4 +34,5 @@ ToDo:
 
 - many features of SQL: types, constraints, updates, deletes...
 - natural language generation and parsing (rudiments included)
+- improve and document the E-R input language
 
