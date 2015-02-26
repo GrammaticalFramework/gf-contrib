@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<corpus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="NONSENSE_DATA_in_Smultron_format" xsi:noNamespaceSchemaLocation="http://www.cl.uzh.ch/kitt/treealigner/data/schema/TigerXML.xsd"> 
+  <head>
+  </head>
+  <body>
+    <s id="s1">
+      <graph root="s1_501">
+        <terminals>
+          <t id="s1_1" word="very" pos="JJ" morph="--"/>
+          <t id="s1_2" word="small" pos="NN" morph="--"/>
+          <t id="s1_3" word="cars" pos="NN" morph="--"/>
+        </terminals>
+        <nonterminals>
+          <nt id="s1_500" cat="NP">
+            <edge label="--" idref="s1_1"/>
+            <edge label="--" idref="s1_2"/>
+            <edge label="--" idref="s1_3"/>
+          </nt>
+          <nt id="s1_501" cat="FRAG">
+            <edge label="TTL" idref="s1_500"/>
+          </nt>
+        </nonterminals>
+      </graph>
+    </s>
+    <s id="s2">
+      <graph root="s2_506">
+        <terminals>
+          <t id="s2_1" word="find" pos="VB" morph="--"/>
+          <t id="s2_2" word="the" pos="DT" morph="--"/>
+          <t id="s2_3" word="cars" pos="NNS" morph="--"/>
+          <t id="s2_4" word="and" pos="CC" morph="--"/>
+          <t id="s2_5" word="apples" pos="NNS" morph="--"/>
+          <t id="s2_6" word="singing" pos="VBN" morph="--"/>
+          <t id="s2_7" word="in" pos="IN" morph="--"/>
+          <t id="s2_8" word="this" pos="DT" morph="--"/>
+          <t id="s2_9" word="party" pos="NN" morph="--"/>
+          <t id="s2_10" word="house" pos="NN" morph="--"/>
+          <t id="s2_11" word="." pos="." morph="--"/>
+        </terminals>
+        <nonterminals>
+          <nt id="s2_500" cat="VP">
+            <edge label="--" idref="s2_1"/>
+          </nt>
+          <nt id="s2_501" cat="NP">
+            <edge label="--" idref="s2_2"/>
+            <edge label="--" idref="s2_3"/>
+            <edge label="--" idref="s2_4"/>
+            <edge label="--" idref="s2_5"/>
+          </nt>
+          <nt id="s2_502" cat="NP">
+            <edge label="--" idref="s2_8"/>
+            <edge label="--" idref="s2_9"/>
+            <edge label="--" idref="s2_10"/>
+          </nt>
+          <nt id="s2_503" cat="PP">
+            <edge label="--" idref="s2_7"/>
+            <edge label="--" idref="s2_502"/>
+          </nt>
+          <nt id="s2_504" cat="VP">
+            <edge label="--" idref="s2_6"/>
+            <edge label="--" idref="s2_503"/>
+          </nt>
+          <nt id="s2_505" cat="NP">
+            <edge label="--" idref="s2_501"/>
+            <edge label="--" idref="s2_504"/>
+          </nt>
+          <nt id="s2_506" cat="S">
+            <edge label="--" idref="s2_11"/>
+            <edge label="--" idref="s2_500"/>
+            <edge label="--" idref="s2_505"/>
+          </nt>
+        </nonterminals>
+      </graph>
+    </s>
+</body>
+</corpus>
