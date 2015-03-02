@@ -3,6 +3,7 @@ module Main where
 import Converter
 import Algebra
 import Design (file2ER)
+import ToXML (prDatabaseXML)
 
 import LexMinSQL
 import ParMinSQL
@@ -42,6 +43,9 @@ loop env = do
       loop env
     "a":ws -> do
       alg2latex env (takeWhile (/=';') (unwords ws)) 
+      loop env
+    "x":_ -> do
+      putStrLn $ prDatabaseXML "QConvData" env
       loop env
     _ -> do
       env' <- runSQLScript env s
@@ -92,5 +96,10 @@ alg2latex env s = case pTable (preprocSQL (myLexer s)) of
 
 mintex = "minsql-latex-tmp.tex"
 
-helpMsg = "a <SQL> = show algebra ; d <File> = read design ; i <File> = read SQL ; h = help ; q = quit ; <SQL> = run sql"
+helpMsg = unlines $ [
+  "Query converter v0.1 (A. Ranta 2015). Commands:",
+  "  <SQL> = run sql ; a <SQL> = show algebra",
+  "  d <File> = read and show design ; i <File> = read SQL",
+  "  h = help ; q = quit ; x = print xml"
+  ]
 

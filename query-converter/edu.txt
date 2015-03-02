@@ -2,4 +2,4 @@ ENTITY Course _code name
 ENTITY Teacher _name title
 WEAK ENTITY TaughtCourse Course IsInstanceOf _period
 RELATIONSHIP IsTaughtBy TaughtCourse -- Teacher 
-ISA LabCourse Course numberOfLabs
+ISA LabCourse Course 
