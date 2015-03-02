@@ -49,7 +49,7 @@ data XDocument = XDoc {name :: Id, mdtd :: Maybe [DTDClause], xdata :: XElement}
 
 prXDocument :: XDocument -> String
 prXDocument d = unlines $ filter (not . all isSpace) $ 
-  ("<?xml version=\"1.0\" encoding)\"utf-8\" standalone=" ++ quote standalone ++ "?>") :
+  ("<?xml version=\"1.0\" encoding=\"utf-8\" standalone=" ++ quote standalone ++ "?>") :
   maybe [] (\cls -> prDTD (DTD nam cls)) (mdtd d) ++
   prXElement (xdata d)
  where
@@ -121,7 +121,7 @@ prDTDClause c = case c of
   DElement e typ -> ["<!ELEMENT " ++ e ++ " " ++ prXEType typ ++ ">"]
   DAttlist a adefs -> 
     ("<!ATTLIST " ++ a) :
-    map (indent 2) ([unwords [a,show ty, show st] | (a,(ty,st)) <- adefs] ++ [">"])
+    map (indent 2) ([unwords [a,show ty, "#"++show st] | (a,(ty,st)) <- adefs] ++ [">"])
 
 prXEType :: XEType -> String
 prXEType t = case t of
