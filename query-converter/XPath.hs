@@ -20,11 +20,16 @@ queryXPath xp doc = getXPValues $ pathsXPath xp (xdata doc)
 
 getXPValues = XPElements ----
 
----- only works for the root element so far
+---- only works for plain elements so far
 pathsXPath :: XPath -> XElement -> [XElement]
 pathsXPath xp elm = case (xp,elm) of
+  (XPCont axis_ item cond_ XPEnd, XE name attrs_ elems_) -> case item of
+    XINone                       -> [elm]
+    XIElem (Ident i) | i == name -> [elm]
+    XIAttr (Ident i)             -> [XData s | (a,s) <- attrs_, a == i] ---- XData
+    _ -> []
   (XPCont axis_ item cond_ xp2, XE name attrs_ elems) -> case item of
-    XINone -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
+    XINone                       -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
     XIElem (Ident i) | i == name -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
     _ -> []
   (XPEnd,_) -> [elm]
