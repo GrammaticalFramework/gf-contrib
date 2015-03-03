@@ -16,12 +16,18 @@ execQueryXPath dbname env s = putStrLn $ case pXPath (myLexer s) of
 
 
 queryXPath :: XPath -> XDocument -> XPValue
-queryXPath xp doc = queryElem xp (xdata doc) where
-  queryElem xp xd@(XE name_ attrs_ elems) = case xp of
-    XPRoot axis_ elem_ cond_ -> XPElements elems
+queryXPath xp doc = getXPValues $ pathsXPath xp (xdata doc) 
 
+getXPValues = XPElements ----
 
-
+---- only works for the root element so far
+pathsXPath :: XPath -> XElement -> [XElement]
+pathsXPath xp elm = case (xp,elm) of
+  (XPCont axis_ item cond_ xp2, XE name attrs_ elems) -> case item of
+    XINone -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
+    XIElem (Ident i) | i == name -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
+    _ -> []
+  (XPEnd,_) -> [elm]
 
 data XPValue = XPElements [XElement] | XPAttributes [String]
   deriving Show

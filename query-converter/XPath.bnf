@@ -1,14 +1,14 @@
-XPRoot.  XPath ::= XAxis XItem XCond ;
-XPElem.  XPath ::= XPath XAxis XItem XCond ;
+XPCont.  XPath ::= XAxis XItem XCond XPath ;
+XPEnd.   XPath ::= ;
 
 XAPlain. XAxis ::= "/" ;
 XADesc.  XAxis ::= "//" ;
-XAAnc.   XAxis ::= "/.." ;
----XAIdent. XAxis ::= "/" Ident "::" ; ---- s-r conflict, overshadows XAPlain
 
 XINone.  XItem ::= ;
 XIElem.  XItem ::= Ident ;
 XIAttr.  XItem ::= "@" Ident ;
+XIAxis.  XItem ::= Ident "::" Ident ;
+XIAnces. XItem ::= ".." ;
 
 XCNone.  XCond ::= ;
 XCOp.    XCond ::= "[" XExp XOp XExp "]" ;

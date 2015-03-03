@@ -5,20 +5,21 @@ module AbsXPath where
 
 newtype Ident = Ident String deriving (Eq,Ord,Show)
 data XPath =
-   XPRoot XAxis XItem XCond
- | XPElem XPath XAxis XItem XCond
+   XPCont XAxis XItem XCond XPath
+ | XPEnd
   deriving (Eq,Ord,Show)
 
 data XAxis =
    XAPlain
  | XADesc
- | XAAnc
   deriving (Eq,Ord,Show)
 
 data XItem =
    XINone
  | XIElem Ident
  | XIAttr Ident
+ | XIAxis Ident Ident
+ | XIAnces
   deriving (Eq,Ord,Show)
 
 data XCond =

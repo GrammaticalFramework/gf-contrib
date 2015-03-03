@@ -85,15 +85,14 @@ instance Print Ident where
 
 instance Print XPath where
   prt i e = case e of
-   XPRoot xaxis xitem xcond -> prPrec i 0 (concatD [prt 0 xaxis , prt 0 xitem , prt 0 xcond])
-   XPElem xpath xaxis xitem xcond -> prPrec i 0 (concatD [prt 0 xpath , prt 0 xaxis , prt 0 xitem , prt 0 xcond])
+   XPCont xaxis xitem xcond xpath -> prPrec i 0 (concatD [prt 0 xaxis , prt 0 xitem , prt 0 xcond , prt 0 xpath])
+   XPEnd  -> prPrec i 0 (concatD [])
 
 
 instance Print XAxis where
   prt i e = case e of
    XAPlain  -> prPrec i 0 (concatD [doc (showString "/")])
    XADesc  -> prPrec i 0 (concatD [doc (showString "//")])
-   XAAnc  -> prPrec i 0 (concatD [doc (showString "/..")])
 
 
 instance Print XItem where
@@ -101,6 +100,8 @@ instance Print XItem where
    XINone  -> prPrec i 0 (concatD [])
    XIElem id -> prPrec i 0 (concatD [prt 0 id])
    XIAttr id -> prPrec i 0 (concatD [doc (showString "@") , prt 0 id])
+   XIAxis id0 id -> prPrec i 0 (concatD [prt 0 id0 , doc (showString "::") , prt 0 id])
+   XIAnces  -> prPrec i 0 (concatD [doc (showString "..")])
 
 
 instance Print XCond where
