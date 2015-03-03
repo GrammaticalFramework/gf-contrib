@@ -4,6 +4,7 @@ import Converter
 import Algebra
 import Design (file2ER)
 import ToXML (prDatabaseXML)
+import XPath (execQueryXPath)
 
 import LexMinSQL
 import ParMinSQL
@@ -43,6 +44,9 @@ loop env = do
       loop env
     "a":ws -> do
       alg2latex env (takeWhile (/=';') (unwords ws)) 
+      loop env
+    "x":ws@(_:_) -> do
+      execQueryXPath "QConvData" env (unwords ws)
       loop env
     "x":_ -> do
       putStrLn $ prDatabaseXML "QConvData" env
@@ -98,8 +102,9 @@ mintex = "minsql-latex-tmp.tex"
 
 helpMsg = unlines $ [
   "Query converter v0.1 (A. Ranta 2015). Commands:",
-  "  <SQL> = run sql ; a <SQL> = show algebra",
-  "  d <File> = read and show design ; i <File> = read SQL",
-  "  h = help ; q = quit ; x = print xml"
+  "  <SQL>     = run sql command          a <SQL>  = show algebra for sql query",
+  "  d <File>  = read and show design     i <File> = execute SQL commands",
+  "  x <XPath> = run xpath query          x        = print database in xml",
+  "  h         = help                     q        = quit"
   ]
 
