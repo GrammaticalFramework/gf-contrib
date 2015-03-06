@@ -17,6 +17,10 @@ closure (allAttrs, deps) attrs = iter attrs where
 follows :: [Fundep] -> [Attr] -> Attr -> Bool
 follows deps xs a = or [all (flip elem xs) args | (args,b) <- deps, b == a]
 
+-- the transitive closure of functional dependencies
+closureFundep :: Relation -> [Fundep]
+closureFundep rel@(allAttrs,deps) = [(xs, a) | xs <- subsets allAttrs, a <- closure rel xs, notElem a xs] 
+
 -- attrs is a superkey, if allAttrs is included in the closure of attrs
 isSuperkey :: Relation -> [Attr] -> Bool
 isSuperkey rel@(allAttrs, deps) attrs = all (flip elem (closure rel attrs)) allAttrs
@@ -45,7 +49,7 @@ isPrime rel attr = elem attr (concat (keys rel))
 
 -- find violations of the Boyce-Codd Normal Form
 violateBCNF :: Relation -> [Fundep]
-violateBCNF rel@(allAttrs,deps) = [dep | dep@(args,val) <- deps, not (isSuperkey rel args)]
+violateBCNF rel@(allAttrs,deps) = [dep | dep@(args,val) <- closureFundep rel, not (isSuperkey rel args)]
 
 -- check if a relation is in the Boyce-Codd Normal Form
 isBCNF :: Relation -> Bool
@@ -53,7 +57,7 @@ isBCNF rel = null (violateBCNF rel)
 
 -- find violations of the Third Normal Form
 violate3NF :: Relation -> [Fundep]
-violate3NF rel@(allAttrs,deps) = [dep | dep@(args,val) <- deps, not (isSuperkey rel args || isPrime rel val)]
+violate3NF rel@(allAttrs,deps) = [dep | dep@(args,val) <- closureFundep rel, not (isSuperkey rel args || isPrime rel val)]
 
 -- check if a relation is in the Third Normal Form
 is3NF :: Relation -> Bool
@@ -70,8 +74,32 @@ pDeps s = case break (=="->") (words s) of
   (args@(_:_), _:vals@(_:_)) -> [(args,val) | val <- vals]
   _ -> []
 
+prFundep :: Fundep -> String
+prFundep (xs,a) = unwords (xs ++ ["->", a])
 
+prRelation :: Relation -> String
+prRelation (attrs,fundeps) = unlines (
+  "Attributes:" :
+  unwords attrs :
+  "":
+  "Functional dependencies:" :
+  map prFundep fundeps
+  )
 
+prRelationInfo :: Relation -> String
+prRelationInfo rel@(attrs,fundeps) = unlines [
+  prRelation rel,
+  "Derived functional dependencies:",
+  unlines (map prFundep (filter (flip notElem fundeps) (closureFundep rel))),
+  "Superkeys:",
+  unlines (map unwords (superkeys rel)),
+  "Keys:",
+  unlines (map unwords (keys rel)),
+  "BCNF violations:",
+  unlines (map prFundep (violateBCNF rel)),
+  "3NF violations:",
+  unlines (map prFundep (violate3NF rel))
+  ]
  
 
 
