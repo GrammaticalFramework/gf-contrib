@@ -3,7 +3,7 @@ module Main where
 import Converter
 import Algebra
 import Design (file2ER)
-import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF)
+import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize4NF)
 import ToXML (prDatabaseXML)
 import XPath (execQueryXPath)
 
@@ -46,7 +46,11 @@ loop env = do
       loop env
     "n":file:_ -> do
       rel <- readFile file >>= return . pRelation . lines
+      putStrLn "BCNF decomposition:"
       let rels = normalizeBCNF rel
+      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
+      putStrLn "4NF decomposition (maybe not complete):"
+      let rels = normalize4NF rel
       putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       loop env
     "h":[] -> do
@@ -118,7 +122,7 @@ helpMsg = unlines $ [
   "  i <File>  = read SQL, run commands",
   "  d <File>  = read design, show E-R, schema, English",
   "  f <File>  = read relation, analyse dependencies and keys",
-  "  n <File>  = read relation, normalize to BCNF",
+  "  n <File>  = read relation, normalize to BCNF and 4NF",
   "  x <XPath> = run xpath query",
   "  x         = print database in xml",
   "  h         = help", 
