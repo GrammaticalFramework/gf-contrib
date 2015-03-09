@@ -3,7 +3,7 @@ module Main where
 import Converter
 import Algebra
 import Design (file2ER)
-import Fundep (prRelationInfo,pRelation)
+import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF)
 import ToXML (prDatabaseXML)
 import XPath (execQueryXPath)
 
@@ -43,6 +43,11 @@ loop env = do
     "f":file:_ -> do
       rel <- readFile file >>= return . pRelation . lines
       putStrLn $ prRelationInfo rel
+      loop env
+    "n":file:_ -> do
+      rel <- readFile file >>= return . pRelation . lines
+      let rels = normalizeBCNF rel
+      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       loop env
     "h":[] -> do
       putStrLn helpMsg
@@ -107,10 +112,15 @@ mintex = "minsql-latex-tmp.tex"
 
 helpMsg = unlines $ [
   "Query converter v0.1 (A. Ranta 2015). Commands:",
-  "  <SQL>     = run sql command ",        
-  "  a <SQL>   = show algebra for sql query   i <File> = execute SQL commands",
-  "  d <File>  = read and show design         f <File> = read relation, analyse dependencies and keys",
-  "  x <XPath> = run xpath query              x        = print database in xml",
-  "  h         = help                         q        = quit"
+  "  <SQL>     = run  SQL command ",        
+  "  a <SQL>   = show algebra for sql query", 
+  "  i <File>  = read SQL, run commands",
+  "  d <File>  = read design, show E-R, schema, English",
+  "  f <File>  = read relation, analyse dependencies and keys",
+  "  n <File>  = read relation, normalize to BCNF",
+  "  x <XPath> = run xpath query",
+  "  x         = print database in xml",
+  "  h         = help", 
+  "  q         = quit"
   ]
 

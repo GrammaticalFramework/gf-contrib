@@ -63,6 +63,22 @@ violate3NF rel@(allAttrs,deps) = [dep | dep@(args,val) <- closureFundep rel, not
 is3NF :: Relation -> Bool
 is3NF rel = null (violateBCNF rel)
 
+-- bring relation to BCNF
+normalizeBCNF :: Relation -> [Relation]
+normalizeBCNF rel = case violateBCNF rel of
+  [] -> [rel]
+  f:fs -> concatMap normalizeBCNF (decompose f rel)
+ where
+  decompose (xs,a) rel@(attrs,fundeps) = let 
+                                            cxs = closure rel xs
+                                            noncxs = filter (\a -> notElem a cxs || elem a xs) attrs
+                                         in [restrictRel rel cxs, restrictRel rel noncxs]
+
+restrictRel :: Relation -> [Attr] -> Relation
+restrictRel rel@(_,fundeps) attrs = (attrs, [(xs,a) | (xs,a) <- fundeps, all (flip elem attrs) (a:xs)])
+
+
+------------ printing and parsing
 
 -- get a relation from a list of lines: the attribute list plus a list of functional dependencies
 pRelation :: [String] -> Relation
