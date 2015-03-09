@@ -66,7 +66,8 @@ tex5 = getERDiagram [
 displayER e = do
   writeFile "er-tmp.dot" $ prERDiagram e
   system "fdp -Tpng er-tmp.dot >er-tmp.png" -- dot or neato sometimes better
-  system "open er-tmp.png"
+  system "open er-tmp.png"  -- mac
+--  system "eog er-tmp.png" -- linux
   putStrLn $ prSchema $ erdiagram2schema SER e  -- only E-R strategy implemented; OO and Null TODO
   putStrLn ""
   putStrLn $ erdiagram2text e

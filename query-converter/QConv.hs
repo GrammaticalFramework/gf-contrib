@@ -22,15 +22,15 @@ import Data.Char
 
 main = do
   putStrLn helpMsg
-  writeFile "minsql-history.tmp" ""
+  writeFile "qconv-history.tmp" ""
   env <- loop initSEnv
   return ()
 
 loop env = do
-  putStr "minsql=# "
+  putStr "qconv=# "
   hFlush stdout
   s <- getLine
-  appendFile "minsql-history.tmp" s
+  appendFile "qconv-history.tmp" s
   case words s of
     "q":[]        -> return env
     "i":file:_ -> do
@@ -104,11 +104,12 @@ alg2latex env s = case pTable (preprocSQL (myLexer s)) of
       "",
       "\\end{document}"
       ]
-    system "pdflatex minsql-latex-tmp.tex > //dev//null"
-    system "open minsql-latex-tmp.pdf"
+    system "pdflatex qconv-latex-tmp.tex > //dev//null"
+    system "open qconv-latex-tmp.pdf" -- mac
+--    system "evince qconv-latex-tmp.pdf" -- linux
     return ()
 
-mintex = "minsql-latex-tmp.tex"
+mintex = "qconv-latex-tmp.tex"
 
 helpMsg = unlines $ [
   "Query converter v0.1 (A. Ranta 2015). Commands:",
