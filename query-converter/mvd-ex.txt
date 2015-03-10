@@ -1,6 +1,5 @@
-courseName teacherName teacherTitle roomName #students weekday hour #seats studentName studentHouse studentYear book author
+courseName teacherName teacherTitle roomName weekday hour #seats studentName studentHouse studentYear book author
 courseName -> teacherName
-courseName -> #students
 teacherName -> teacherTitle
 teacherName -> roomName
 roomName -> #seats
