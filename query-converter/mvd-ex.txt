@@ -1,0 +1,14 @@
+courseName teacherName teacherTitle roomName #students weekday hour #seats studentName studentHouse studentYear book author
+courseName -> teacherName
+courseName -> #students
+teacherName -> teacherTitle
+teacherName -> roomName
+roomName -> #seats
+courseName weekday hour -> roomName
+roomName weekday hour -> courseName
+studentName -> studentHouse studentYear
+studentName ->> courseName teacherName teacherTitle roomName weekday hour book author
+courseName ->> studentName studentHouse studentYear
+courseName ->> book author
+book ->> author
+author ->> book
