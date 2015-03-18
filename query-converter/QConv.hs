@@ -45,13 +45,16 @@ loop env = do
       putStrLn $ prRelationInfo rel
       loop env
     "n":file:_ -> do
-      rel <- readFile file >>= return . pRelation . lines
+      rel@(_,(_,mvds)) <- readFile file >>= return . pRelation . lines
       putStrLn "BCNF decomposition:"
       let rels = normalizeBCNF rel
       putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
-      putStrLn "4NF decomposition (maybe not complete):"
-      let rels = normalize4NF rel
-      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
+      if null mvds
+         then return ()
+         else do
+           putStrLn "4NF decomposition (maybe not complete):"
+           let rels = normalize4NF rel
+           putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       loop env
     "h":[] -> do
       putStrLn helpMsg

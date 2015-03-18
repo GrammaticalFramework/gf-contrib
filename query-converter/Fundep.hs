@@ -139,10 +139,9 @@ prRelation (attrs,(fundeps,mvds)) = unlines [
   unwords attrs,
   "",
   "Functional dependencies:",
-  unlines (map prFundep fundeps),
-  "Multivalued dependencies:",
-  unlines (map prMultidep mvds),
-  ""
+  if null fundeps then "none" else unlines (map prFundep fundeps),
+  if null mvds then ""
+               else unlines ("Multivalued dependencies:": map prMultidep mvds ++ [""])
   ]
 
 prRelationInfo :: Relation -> String
@@ -157,7 +156,11 @@ prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
   "3NF violations:",
   unlines (map prFundep (violate3NF rel)),
   "BCNF violations:",
-  unlines (map prFundep (violateBCNF rel)),
+  case violateBCNF rel of
+    [] -> "none"
+    vs -> unlines (map prFundep vs),
   "4NF violations:",
-  unlines (map prMultidep (violate4NF rel))
+  case violate4NF rel of
+    [] -> "none"
+    vs -> unlines (map prMultidep vs)
   ]
