@@ -1,17 +1,27 @@
 Query Converter
 
-(c) aarne.ranta@cse.gu.se 2015 under the BSD License
+(c) Aarne Ranta 2015 under the BSD License
 
-A simple converter for SQL, relational algebra, E-R diagrams, database schemas,
-XML, and some natural language.
+A simple converter for SQL, relational algebra, E-R diagrams, functional dependencies, normal forms, 
+database schemas, XML, and some natural language.
 
-To compile:
+To unpack the binary: do this in a terminal in the directory where you have the .gz file:
 
-  ghc --make -o qconv QConv.hs
+  gunzip qconv-mac.gz
+  mv qconv-mac qconv
+
+or 
+
+  gunzip qconv-linux.gz
+  mv qconv-linux qconv
 
 To run:
 
   ./qconv
+
+To compile from source:
+
+  ghc --make -o qconv QConv.hs
 
 Facilities:
 
@@ -23,17 +33,33 @@ Facilities:
 Examples:
 
 - edu.txt    -- E-R design: try with 'd edu.txt'
+- fd-ex.txt  -- functional dependencies, try with 'f fd-ex.txt' or 'n fd-ex.txt'
 - course.sql -- SQL script: try with 'i course.sql'
 
-Needed:
+These examples, together with qconv sources, can be found from
 
-- ghc       -- to compile sconv
+  https://github.com/GrammaticalFramework/gf-contrib/tree/master/query-converter/
+
+Other programs needed:
+
 - pdflatex  -- to display algebra formulas
 - graphviz  -- to display E-R diagrams
+
+and possibly:
+
+- ghc       -- to compile sconv from source
 
 ToDo:
 
 - many features of SQL: types, constraints, updates, deletes...
 - natural language generation and parsing (rudiments included)
-- improve and document the E-R input language
+- fix bugs
+
+More documentation:
+
+  http://www.grammaticalframework.org/~aarne/query-converter/database-maths.pdf
+
+
+
+
 
