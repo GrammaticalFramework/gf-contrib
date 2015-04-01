@@ -1,7 +1,7 @@
 concrete MusicC of Music = open Prelude in {
 
   lincat
-    Score, Piece, Phrase = SS ;
+    Score, Piece, Phrase = SS ; --{s:Str}; 
     Note = Str ;
 
   lin

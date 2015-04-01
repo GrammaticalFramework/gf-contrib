@@ -234,30 +234,30 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
       } ;
 
     who_IP  = ss "chi" ;
-    here_Adv = ss "quí" ;
+    here_Adv = ss "quÃ­" ;
     by_Prep = {s = [] ; c = C_da} ;
     in_Prep = {s = [] ; c = C_in} ;
     of_Prep = {s = [] ; c = Gen} ;
     with_Prep = {s = [] ; c = C_con} ;
 
     can_VV = mkVerb "potere"
-      "posso" "puoi" "può" "possiamo" "potete" "possono"
-      "potevo" "potrò" "possa" "possiamo" "potuto" Avere ;
+      "posso" "puoi" "puÃ²" "possiamo" "potete" "possono"
+      "potevo" "potrÃ²" "possa" "possiamo" "potuto" Avere ;
 
     must_VV = mkVerb "dovere"
       "devo" "devi" "deve" "dobbiamo" "dovete" "devono"
-      "dovevo" "dovrò" "debba" "dobbiamo" "dovuto" Avere ;
+      "dovevo" "dovrÃ²" "debba" "dobbiamo" "dovuto" Avere ;
 
     want_VV = mkVerb "volere"
       "voglio" "vuoi" "vuole" "vogliamo" "volete" "vogliono"
-      "volevo" "vorrò" "voglia" "volessi" "voluto" Avere ;
+      "volevo" "vorrÃ²" "voglia" "volessi" "voluto" Avere ;
 
-    although_Subj = {s = "benché" ; m = Con} ;
-    because_Subj = {s = "perché" ; m = Ind} ;
+    although_Subj = {s = "benchÃ©" ; m = Con} ;
+    because_Subj = {s = "perchÃ©" ; m = Ind} ;
     when_Subj = {s = "quando" ; m = Ind} ;
 
     when_IAdv = ss "quando" ;
     where_IAdv = ss "dove" ;
-    why_IAdv = ss "perché" ;
+    why_IAdv = ss "perchÃ©" ;
 
 }

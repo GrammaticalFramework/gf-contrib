@@ -12,19 +12,19 @@ lin
   arrive_V = essereV (mkV "arrivare") ;
   sleep_V = mkV "dormire"
     "dormo" "dormi" "dorme" "dormiamo" "dormite" "dormono"
-    "dormivo" "dormirò" "dorma" "dormissi" "dormito" ;
+    "dormivo" "dormirÃ²" "dorma" "dormissi" "dormito" ;
   love_V2 = mkV2 "amare" ;
   look_V2 = mkV2 "guardare" ;
   please_V2 = mkV2 (essereV (mkV "piacere" "piaccio" "piaci" "piace" 
                         "piacciamo" "piacete" "piacciono"
-                        "piacevo" "piacerò" 
+                        "piacevo" "piacerÃ²" 
                         "piaccia" "piacessi" "piaciuto")) dative ;
 
   believe_VS = mkVS (mkV "credere") conjunctive ;
 
   know_VS = mkVS (mkV 
      "sapere" "so" "sai" "sa" "sappiamo" "sapete" "sanno"
-     "sapevo" "saprò" "sappia" "sapessi" "saputo") indicative ;
+     "sapevo" "saprÃ²" "sappia" "sapessi" "saputo") indicative ;
 
   wonder_VQ = mkVQ (mkV "domandare") ; ---- domandarsi
   john_PN = mkPN "Giovanni" ;

@@ -4,6 +4,7 @@ abstract Music = {
 
   cat
     Score ;
+
     Piece ;
     Phrase ;
     Note ;
