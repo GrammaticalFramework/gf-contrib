@@ -41,6 +41,7 @@ fun
   COr        : [Cond] -> Cond ;
 
   EAttr      : Attribute -> Exp ;
+  ETableAttr : Table -> Attribute -> Exp ;
   EString    : String -> Exp ;
   EInt       : Int -> Exp ;
   EFloat     : Float -> Exp ;

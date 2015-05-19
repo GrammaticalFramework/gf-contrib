@@ -48,6 +48,7 @@ lin
   COr        : [Cond] -> Cond ;
 -}
   EAttr a = mkNP the_Det a ;
+  ETableAttr t a = mkNP the_Det (mkCN a (mkAdv possess_Prep (mkNP the_Det t))) ;
   EString s = symb s ;
   EInt i = symb i ;
   EFloat d = symb d ;
