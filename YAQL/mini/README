@@ -1,0 +1,15 @@
+Miniature query language
+
+(c) Aarne Ranta 2015 under BSD/LGPL
+
+Copied from the examples for the book "Implementing Programming Languages".
+
+See book slides, Chapter 8: http://www1.digitalgrammars.com/ipl-book/slides/8-slides-ipl-book.pdf pp. 38-59
+
+This is a mini YAQL, but has some of hte same functionality. Try:
+
+  ./query.sh "is 81 prime"
+  False
+
+
+
