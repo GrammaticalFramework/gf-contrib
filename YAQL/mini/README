@@ -6,10 +6,18 @@ Copied from the examples for the book "Implementing Programming Languages".
 
 See book slides, Chapter 8: http://www1.digitalgrammars.com/ipl-book/slides/8-slides-ipl-book.pdf pp. 38-59
 
-This is a mini YAQL, but has some of hte same functionality. Try:
+This is a mini YAQL, but has some of the same functionality. Try:
 
   ./query.sh "is 81 prime"
   False
+
+For another way to implement this, see
+
+  http://www.grammaticalframework.org/~hallgren/Talks/GF/Tutorial2012/Ex4/answer.html
+
+which uses a semantic interpreter built in Haskell (instead of linearization to Haskell); this is the more
+scalable solution explained in the GF book, Chapter 7.
+
 
 
 
