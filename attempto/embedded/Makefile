@@ -1,0 +1,13 @@
+RUNGHC=runghc
+RUNMAKE=$(RUNGHC) Make.hs
+
+TPROBSFILE=attempto.probs
+
+all: EmbeddedAttemptoEng.pgf
+
+S=-s
+GFMKT=mkdir -p ../translator && gf $S -make -literal=PN,Symb -probs=$(TPROBSFILE)
+
+
+# Translate grammars for individual languages
+EmbeddedAttemptoEng.pgf:: ; $(GFMKT) -name=EmbeddedAttemptoEng EmbeddedAttemptoEng.gf

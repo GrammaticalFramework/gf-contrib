@@ -7,7 +7,7 @@ in {
 
 lincat CN_ACE = Syntax.CN ;
 lincat NP_ACE = Syntax.NP ;
-lincat Card = Syntax.Card ;
+lincat Card_ACE = Syntax.Card ;
 --lincat Numeral = Syntax.Numeral ;
 lincat PN_ACE = Syntax.PN ;
 lincat A_ACE = Syntax.A ;
@@ -245,8 +245,8 @@ lin qsText_ACE = mkText ;
 
 lin npVP_ACE = mkVP ;
 lin impVP_ACE vp = mkText (mkImp vp) ;
-lin numeralCard n = mkCard <lin Numeral n : Numeral> ;
-lin digitsCard n = mkCard <lin Digits n : Digits> ;
+lin numeralCard_ACE n = mkCard <lin Numeral n : Numeral> ;
+lin digitsCard_ACE n = mkCard <lin Digits n : Digits> ;
 lin have_V2_ACE = Syntax.have_V2 ;
 lin v2_byVP_ACE v2 np = mkVP (passiveVP v2) (mkAdv by8agent_Prep np) ;
 

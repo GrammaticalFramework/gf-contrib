@@ -1,0 +1,43 @@
+Embedded Attempto Controlled English
+(c) Aarne Ranta 2015 under BSD/LGPL
+
+Files:
+
+  EmbeddedAttempto.gf       -- main
+  EmbeddedAttemptoEng.gf
+
+  Attempto.gf             -- copies of old Attempto, with suffix _ACE in cats and funs
+  AttemptoEng.gf
+  AttemptoI.gf
+  LexAttempto.gf
+  LexAttemptoEng.gf
+  Symbols.gf
+  SymbolsC.gf
+
+  libsrc           -- symbolic link to GF/lib/src
+  attempto.probs   -- probability file, favouring ACE functions
+  Makefile
+  README
+
+
+This grammar compiles and is able to parse both Attempto and else:
+
+-- in GF
+  EmbeddedAttempto> p -cat=Text_ACE "the cat goes to the bank ."
+  sText_ACE (vpS_ACE (theNP_ACE (dictCN_ACE cat_N)) (v2VP_ACE (dictV2_ACE go_to_V2) (theNP_ACE (dictCN_ACE bank_N))))
+
+  169 msec
+
+-- try robust parsing in the C runtime
+
+  make
+  pgf-translate EmbeddedAttemptoEng.pgf Start EmbeddedAttemptoEng EmbeddedAttemptoEng
+
+
+TODO:
+  - use and coerce more lexical categories?
+  - use just a part of Translate.gf: copy its imports to EmbeddedAttempto
+  - revise probabilities
+
+
+

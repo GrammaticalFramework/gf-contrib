@@ -5,7 +5,7 @@ flags startcat = Text_ACE ;
 
 cat CN_ACE ;
 cat NP_ACE ;
-cat Card ;
+cat Card_ACE ;
 ---cat Numeral ;
 cat PN_ACE ;
 cat A_ACE ;
@@ -30,7 +30,7 @@ cat RP_ACE ;
 
 fun aNP_ACE : CN_ACE -> NP_ACE ;
 fun theNP_ACE : CN_ACE -> NP_ACE ;
-fun cardNP_ACE : Card -> CN_ACE -> NP_ACE ;
+fun cardNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
 fun noNP_ACE : CN_ACE -> NP_ACE ;
 fun everyNP_ACE : CN_ACE -> NP_ACE ;
 fun eachNP_ACE : CN_ACE -> NP_ACE ;
@@ -46,7 +46,7 @@ fun noCollNP_ACE : CN_ACE -> NP_ACE ;
 
 fun eachTheNP_ACE : CN_ACE -> NP_ACE ;
 fun eachSomeNP_ACE : CN_ACE -> NP_ACE ;
-fun eachNumNP_ACE : Card -> CN_ACE -> NP_ACE ;
+fun eachNumNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
 
 cat MCN_ACE ;
 
@@ -93,12 +93,12 @@ fun nothing_NP_ACE : NP_ACE ;
 fun not_everybodyNP_ACE : NP_ACE ;
 fun not_everythingNP_ACE : NP_ACE ;
 
-fun at_leastNP_ACE : Card -> CN_ACE -> NP_ACE ;
-fun not_at_leastNP_ACE : Card -> CN_ACE -> NP_ACE ;
-fun at_mostNP_ACE : Card -> CN_ACE -> NP_ACE ;
-fun not_at_mostNP_ACE : Card -> CN_ACE -> NP_ACE ;
-fun more_thanNP_ACE : Card -> CN_ACE -> NP_ACE ;
-fun not_more_thanNP_ACE : Card -> CN_ACE -> NP_ACE ;
+fun at_leastNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
+fun not_at_leastNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
+fun at_mostNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
+fun not_at_mostNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
+fun more_thanNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
+fun not_more_thanNP_ACE : Card_ACE -> CN_ACE -> NP_ACE ;
 
 fun nothing_butNP_ACE : CN_ACE -> NP_ACE ; -- nothing but apples
 fun nothing_butMassNP_ACE : MCN_ACE -> NP_ACE ; -- nothing but water
@@ -107,9 +107,9 @@ fun no_butNP_ACE : CN_ACE -> PN_ACE -> NP_ACE ; -- no man but John
 
 cat Unit ; -- SI measurement units
 
-fun unitNP_ACE : Card -> Unit -> NP_ACE ;
-fun unit_ofNP_ACE : Card -> Unit -> CN_ACE -> NP_ACE ; -- 3 kg of apples
-fun unit_ofMassNP_ACE : Card -> Unit -> MCN_ACE -> NP_ACE ; -- 3 l of water
+fun unitNP_ACE : Card_ACE -> Unit -> NP_ACE ;
+fun unit_ofNP_ACE : Card_ACE -> Unit -> CN_ACE -> NP_ACE ; -- 3 kg of apples
+fun unit_ofMassNP_ACE : Card_ACE -> Unit -> MCN_ACE -> NP_ACE ; -- 3 l of water
 
 fun apposVarCN_ACE : CN_ACE -> Var -> CN_ACE ; -- a man X
 fun termNP_ACE : Term -> NP_ACE ;
@@ -205,7 +205,7 @@ fun commaOr_Conj_ACE : Conj_ACE ;
 
 fun for_everyS_ACE : CN_ACE -> S_ACE -> S_ACE ;
 fun for_eachS_ACE : CN_ACE -> S_ACE -> S_ACE ;
-fun for_each_ofS_ACE : Card -> CN_ACE -> S_ACE -> S_ACE ; -- for each of 3 men
+fun for_each_ofS_ACE : Card_ACE -> CN_ACE -> S_ACE -> S_ACE ; -- for each of 3 men
 fun for_allMassS_ACE : MCN_ACE -> S_ACE -> S_ACE ; -- for all water
 
 -- 3.4.4
@@ -251,8 +251,8 @@ fun qsText_ACE : QS_ACE -> Text_ACE ;
 
 fun npVP_ACE : NP_ACE -> VP_ACE ; -- is a bank
 fun impVP_ACE : VP_ACE -> Text_ACE ; -- go to the bank!
-fun numeralCard : Numeral -> Card ; -- fifteen banks
-fun digitsCard : Digits -> Card ; -- 8 banks
+fun numeralCard_ACE : Numeral -> Card_ACE ; -- fifteen banks
+fun digitsCard_ACE : Digits -> Card_ACE ; -- 8 banks
 fun have_V2_ACE : V2_ACE ; -- has (an apple)
 fun v2_byVP_ACE : V2_ACE -> NP_ACE -> VP_ACE ; -- is bought by a customer
 
