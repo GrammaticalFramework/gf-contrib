@@ -1,0 +1,144 @@
+Yet Another Query Language
+
+-- (c) Aarne Ranta 2012 under BSD
+
+-------------------
+This package intends to replace all old query languages by one. Main features:
+- a common architecture with base module + domain (examples Phil, Arithm)
+- straightforward abstract syntax generation from ontology, with just the minimum of lexical types
+    Kind       -- usually CN
+    Entity     -- usually NP
+    Property   -- can be VP, AP, ClSlash
+    Relation   -- VPSlash built from V2, AP, comparatives...
+- all kinds of queries, from which applications can select a subset
+
+Files:
+  arithm.sh           -- shell script for arithm queries answered by Haskell
+  BuildQuery*.gf      -- modules for lexicon building for domains (interface and instances)
+  QueryArithm*.gf     -- arithmetic application example
+  QueryPhil*.gf       -- philosopher application example (toy)
+  YAQL.gf             -- the base abstract syntax
+  YAQLFunctor.gf      -- the base concrete syntax functor
+  YAQL*.gf            -- the base concrete syntaxes for each language
+
+  painting/DataPainting.hs     -- toy database and run-time system for painting queries
+  painting/DataPainting*.gf    -- grammar modules generated from painting database
+  painting/GeneratePainting.hs -- generate modules with names for painting entities
+  painting/QueryPainting*.gf   -- painting application query language
+  painting/painting.sh         -- shell script for painting queries answered by Haskell
+  painting/lexicon/LexiconPainting*.gf    -- common categories and lexicon for text and queries
+  painting/text/TextPainting*.gf          -- text generation grammars, copied from wp8/d8.2
+
+------------------
+
+13 November
+
+Removed semantical overgenerating from QueryPainting by using restricted inheritance of YAQL. 
+Added systematic Query/Property pairs for all painting attributes.
+Size and material now supported.
+Strange inheritance clash bug prevents importing NumeralHaskell in QueryPaintingHaskell.
+Using QS for Query instead of QCl to get natural tenses, e.g. "who painted Guernica".
+
+Refactored QueryPaintingEng so that all strings are at the end. Conceptually simpler than a functor... 
+This was modified to QueryPaintingSwe in 10 minutes. In addition to the words, changed a passiveVP
+to ExtraSwe.PassV2.
+
+Later this date, restructured the code to the directory structure above and refactored Text and Query
+to use the same Lexicon.
+
+
+12 November
+
+After a break, came back to QueryPainting and did some improvements:
+- x is painted by y / y painted x as variants / x is by y
+- questions "when is x painted" and "where is x (displayed)" as special forms
+- x is from 1937
+
+Also a Haskell interpretation of MShowTerm: it shows the first element of the list of
+lists corresponding to the (generalized) quantifier. Thus a Term in Haskell now has a
+record of two linearizations. But in Haskell, we can still just use a single term string,
+which is a pair. E.g. "all painters" translates to the pair
+
+  ((\ p -> (all p painterList)) , painterList)
+
+The worst thing now is that there is a lot of overgeneration, e.g. "some painter is a museum".
+None of the three approaches in "best practices" really attracts...
+
+
+
+28 September
+
+Refactored BuildQuery to share code; renamed YAQLI to YAQLFunctor.
+
+
+27 September
+
+Simplified the semantics of painting so that the functional approach of YAQLHaskell works.
+
+Create the grammar modules for painters, titles, and museums by running GeneratePainting. 
+
+
+26 September
+
+Generalized YAQL with queries printing whole relations (corresponding to SPARQL "construct" queries),
+
+  YAQL$ ./arithm.sh "show all odd numbers that are smaller than 20 with the numbers that they are divisible by "
+  [(1,[1]),(3,[1,3]),(5,[1,5]),(7,[1,7]),(9,[1,3,9]),(11,[1,11]),(13,[1,13]),(15,[1,3,5,15]),(17,[1,17]),(19,[1,19])]
+
+and also with richer arithmetic:
+
+  YAQL$ ./arithm.sh "what is the sum of the even numbers from 1 to 100"
+  2550
+
+Also started Painting with a Haskell "database", DataPainting.hs.
+
+  YAQL$ ./painting.sh "is Sigrid Heurlin painted by Saga Wallin"
+  True
+  YAQL$ ./painting.sh "is Sigrid Heurlin painted by Sigrid Heurlin"
+  False
+  YAQL$ ./painting.sh "is Saga Wallin painted by Sigrid Heurlin"
+  <interactive>: painting not found
+
+In the last case, title Saga Wallin is not in the database.
+
+
+24 September
+
+Started some SPARQL modules. Not as easy map as to Haskell, due to the lack of
+higher-order functions.
+
+
+23 September
+
+Added French and Finnish. 
+
+Added Haskell semantics with Arithm as an example. Try with the shell script:
+
+  ./arithm.sh "which numbers that are smaller than 100 are prime"
+
+
+TODO
+- Fre, Fin, Ger are slow to compile, and word order for 2-place predication is wrong (RGL issue)
+- Haskell semantics still incomplete
+
+
+22 September 2012
+
+Intended to replace the old query languages by one. Main features:
+- a common architecture with base module + domain (examples Phil, Arithm)
+- straightforward abstract syntax generation from ontology, with just the minimum of lexical types
+    Kind       -- usually CN
+    Entity     -- usually NP
+    Property   -- can be VP, AP, ClSlash
+    Relation   -- VPSlash built from V2, AP, comparatives...
+- all kinds of queries, from which applications can select a subset
+
+
+TODO
+- semantics in SPARQL and Haskell
+- port all old examples
+- instantiate to all languages
+- solve inefficiency in Ger compilation
+
+
+
