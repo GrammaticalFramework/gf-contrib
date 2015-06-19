@@ -16,9 +16,16 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		börja_på_verksamhet np = mkVP (mkV2 (mkV "börjar") (mkPrep "på")) np ;
 
-		deponens_medial vp = vp ;
+		--deontiska_hjälpverb_passiv
 
-		deponens_reciprok vp = vp ;
+		deponens_absolut v = mkVP (suffixV v "s") ;
+
+		deponens_intransitiv_1 v adv = mkVP (mkVP (suffixV v "s")) adv ;
+		deponens_intransitiv_2 v = mkVP (suffixV v "s") ;
+
+		deponens_medial v = mkVP (suffixV v "s") ;
+
+		deponens_reciprok v = mkVP (suffixV v "s") ;
 
 		det_är_AP_med_NP v ap np = mkVP (mkVP (mkVA v) ap) (SyntaxSwe.mkAdv (mkPrep "med") np) ;
 
@@ -28,11 +35,25 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		få_resultativ_ofrivillig np vp = mkVP (mkV2A (mkV "få" "måste" "få" "fick" "måst" "måst")) np (PresPartAP vp) ;
 
+		ge_NP_på_båten_1 np = mkVP (mkVP (mkV2 (irregV "ge" "gav" "givit")) np) (SyntaxSwe.mkAdv (mkPrep "på") (mkNP theSg_Det (regGenN "båt" utrum))) ;
+		ge_NP_på_båten_2 np = mkVP (mkVP (mkV2 (irregV "ge" "gav" "givit")) np) (SyntaxSwe.mkAdv (mkPrep "på") (mkNP thePl_Det (regGenN "båt" utrum))) ;
+
+		gå_en_NP_1 cn = mkVP (mkV2 (irregV "gå" "gick" "gått")) (mkNP aSg_Det cn) ;
+		gå_en_NP_2 cn = mkVP (mkV2 (irregV "gå" "gick" "gått")) (mkNP cn) ;
+
 		--gå_och_V_durativ
+
+		gå_och_V_oväntat vp = variants {} ;
+
+		göra_en_X_person n = mkVP (mkV2 (mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord")) (mkNP aSg_Det n) ;
 
 		göra_NP_plats pn = mkVP (mkV2 (mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord")) (mkNP pn) ;
 
 		göra_sig_AdvP adv = mkVP (mkVP (reflV (mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord"))) adv ;
+
+		göra_anaforisk = mkVP (mkV2 (mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord")) (mkNP it_Pron) ;
+
+		ha_det_AdvP adv = mkVP (mkVP (mkV2 (mkV "ha" "har" "ha" "hade" "haft" "havd")) (mkNP it_Pron)) adv ;
 
 		ha_med_Y_att_göra_1 pron np_2 = variants {} ;
 		ha_med_Y_att_göra_2 np_2 = variants {} ;
@@ -40,6 +61,8 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		ha_med_Y_att_göra_4 np_2 = mkVP (mkVV (mkV "ha" "har" "ha" "hade" "haft" "havd")) (mkVP (mkV2 (mkV "göra" "gör" "gör" "gjorde" "gjort" "gjord" | mkV "skaffa") (mkPrep "med")) np_2) ;
 
 		hjälpverb_med_riktningsadverbial adv = mkVP (mkVP (mkV "vilja" "vill" "vilj" "ville" "velat" "velad" | mkV "skolar")) adv ;
+
+		hålla_naket_N cn = mkVP (mkV2 (irregV "hålla" "höll" "hållit")) (mkNP cn) ;
 
 		hålla_på_prog_1 vp = mkVP (mkVV (partV (irregV "hålla" "höll" "hållit") (toStr (mkPrep "på")))) vp ;
 		hålla_på_prog_2 vp = variants {} ;
@@ -51,7 +74,17 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		intransitiv_verba_iväg_1 v adv = mkVP (mkVP (partV v "iväg")) adv ;
 		intransitiv_verba_iväg_2 v = mkVP (partV v "iväg") ;
 
+		komma_att_resultat vp = mkVP (mkVV (irregV "komma" "kom" "kommit")) vp ;
+
+		komma_NP_till_godo np = mkVP (mkVP (mkV2 (irregV "komma" "kom" "kommit")) np) (SyntaxSwe.mkAdv (mkPrep "till") (mkNP (mkN "del" "delen" "delar" "delarna" | mkN "undsättning" ))) ;
+
+		--låta_sig_verbas
+
+		lägga_upp_NP np = mkVP (mkV2 (irregV "lägga" "lade" "lagt") (mkPrep "upp")) np ;
+
 		N_vägra n = mkVP (prefixV (toStr n) (mkV "vägra")) ;
+
+		objektsundertryckande_reflexiv v = mkVP (reflV v) ;
 
 		om_jag_så_ska pron vp = variants {} ;
 
@@ -62,12 +95,18 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		progpart_sätt vp v = mkVP vp (GerundAdv (mkVP v)) ;
 
+		pseudosamordning v vp = variants {} ;
+
 		pseudosamordning_vara vp = variants {} ;
+
+		reciprok_refl v = mkVP (reflV v) ;
 
 		--redupl_VP_1
 		redupl_VP_2 vp = variants {} ;
 
 		reflexiv_resultativ v ap = mkVP (mkVA (reflV v)) ap ;
+
+		SI_refl v = mkVP (reflV v) ;
 
 		skapa_en_adjektivare_NP_1 a cn = mkVP (mkV2 (mkV "skapa")) (mkNP aSg_Det (mkCN (comparAP a) cn)) ;
 		skapa_en_adjektivare_NP_2 a cn = mkVP (mkV2 (mkV "skapa")) (mkNP aPl_Det (mkCN (comparAP a) cn)) ;
@@ -76,6 +115,17 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		snacka_NP_1 cn = mkVP (mkV2 (mkV "snacka" | regV "prata" | regV "tala")) (mkNP aSg_Det cn) ;
 		snacka_NP_2 cn = mkVP (mkV2 (mkV "snacka" | regV "prata" | regV "tala")) (mkNP aPl_Det cn) ;
 		snacka_NP_3 cn = mkVP (mkV2 (mkV "snacka" | regV "prata" | regV "tala")) (mkNP cn) ;
+
+		snacka_NP_emfas_1 ap cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP aSg_Det (mkCN ap cn)) ;
+		snacka_NP_emfas_2 ap cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP aPl_Det (mkCN ap cn)) ;
+		snacka_NP_emfas_3 ap cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP (mkCN ap cn)) ;
+		snacka_NP_emfas_4 cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP aSg_Det cn) ;
+		snacka_NP_emfas_5 cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP aPl_Det cn) ;
+		snacka_NP_emfas_6 cn = mkVP (mkV2 (mkV "snacka" | regV "prata")) (mkNP cn) ;
+
+		stå_som_negativ_NP_1 cn = variants {} ;
+		stå_som_negativ_NP_2 cn = variants {} ;
+		stå_som_negativ_NP_3 cn = variants {} ;
 
 		sätta_upp_mål_1 cn = mkVP (mkV2 (partV (irregV "sätta" "satte" "satt") "upp")) (mkNP aSg_Det cn) ;
 		sätta_upp_mål_2 cn = mkVP (mkV2 (partV (irregV "sätta" "satte" "satt") "upp")) (mkNP aPl_Det cn) ;
@@ -94,12 +144,32 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		ta_sig_Det_NP_2 cn = mkVP (mkV2 (reflV (mkV "ta" "tar" "ta" "tog" "tagit" "tagen"))) (mkNP aPl_Det cn) ;
 		ta_sig_Det_NP_3 cn = mkVP (mkV2 (reflV (mkV "ta" "tar" "ta" "tog" "tagit" "tagen"))) (mkNP cn) ;
 
+		trans_refl v = mkVP (reflV v) ;
+
 		transitiv_resultativ v np ap = mkVP (mkV2A v) np ap ;
+
+		ute_och_verbar vp = variants {} ;
+
+		V_av_NP v cn = mkVP (mkV2 v (mkPrep "av")) (mkNP cn) ;
+
+		v_och_v v = variants {} ;
+
+		V_PcP_1 v vp = mkVP (mkVP v) (GerundAdv vp) ;
+		V_PcP_2 v ap = mkVP (mkVA v) ap ;
+
+		V_refl_rörelse v adv = mkVP (mkVP (reflV v)) adv ;
+
+		--V_som_particip
 
 		V_vad_som_helst v = mkVP (mkV2 v) (mkNP (mkPN "vad som helst" neutrum)) ;
 
-		vara_vid_liv_1 cn = mkVP (mkV2 (mkV "vara") (mkPrep "vid")) (mkNP aSg_Det cn) ;
-		vara_vid_liv_2 cn = mkVP (mkV2 (mkV "vara") (mkPrep "vid")) (mkNP cn) ;
+		vara_AP_av_sig ap = variants {} ;
+
+		--vara_beredd_på_VP
+
+		vara_vid_liv cn = mkVP (mkV2 (mkV "vara") (mkPrep "vid")) (mkNP cn) ;
+
+		verba_av_sig v = mkVP (reflV (partV v (toStr (mkPrep "av")))) ;
 
 		verba_av_sig_frigöra v = mkVP (reflV (partV v (toStr (mkPrep "av")))) ;
 
@@ -112,9 +182,50 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		verba_in_sig_skydd v = mkVP (reflV (partV v (toStr (mkPrep "in")))) ;
 
+		--verba_lagom
+
 		verba_loss v = mkVP (partV v (toStr (mkPrep "loss"))) ;
 
+		verba_ner_sig_minska v = mkVP (reflV (partV v (toStr (mkPrep "ner")))) ;
+
+		verba_ner_sig_resultat v = mkVP (reflV (partV v (toStr (mkPrep "ner")))) ;
+
+		verba_ner_sig_smuts v = mkVP (reflV (partV v (toStr (mkPrep "ner")))) ;
+
+		verba_ner_sig_sänka_rang v = mkVP (reflV (partV v (toStr (mkPrep "ner")))) ;
+
+		verba_om_reciprok v = mkVP (mkVP (partV v (toStr (mkPrep "om")))) (mkAdv "varandra") ;
+
 		verba_pa_forts v = mkVP (partV v (toStr (mkPrep "på"))) ;
+
+		verba_skiten_ur_sig_1 v = variants {} ;
+		verba_skiten_ur_sig_2 v = variants {} ;
+
+		--verba_som_en_X_verbar
+
+		verba_så_det_verbar vp_1 vp_1 = variants {} ;
+
+		verba_till_sig_erhålla v np = mkVP (mkV2 (reflV (partV v (toStr (mkPrep "till"))))) np ;
+
+		verba_till_sig_process v = mkVP (reflV (partV v (toStr (mkPrep "till")))) ;
+
+		verba_till_sig_process_agens v = mkVP (reflV (partV v (toStr (mkPrep "till")))) ;
+
+		verba_till_sig_rörelse v np = mkVP (mkV2 (reflV (partV v (toStr (mkPrep "till"))))) np ;
+
+		verba_upp_sig_alstra v = mkVP (reflV (partV v (toStr (mkPrep "upp")))) ;
+
+		verba_upp_sig_attityd v = mkVP (reflV (partV v (toStr (mkPrep "upp")))) ;
+
+		verba_upp_sig_försköna v = mkVP (reflV (partV v (toStr (mkPrep "upp")))) ;
+
+		verba_upp_sig_höja_rang v = mkVP (reflV (partV v (toStr (mkPrep "upp")))) ;
+
+		verba_upp_sig_upplösa v = mkVP (reflV (partV v (toStr (mkPrep "upp")))) ;
+
+		verba_ur_sig_prata v = mkVP (reflV (partV v (toStr (mkPrep "ur")))) ;
+
+		verba_ur_sig_produktion v np = mkVP (mkV2 (reflV (partV v (toStr (mkPrep "ur"))))) np ;
 
 		x_städa_1 n = mkVP (prefixV (toStr n) (mkV "städar")) ;
 		x_städa_2 a = mkVP (prefixV (toStr a) (mkV "städar")) ;
@@ -139,6 +250,8 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		--det_Adj_i_S_InfP_1
 		--det_Adj_i_S_InfP_2
 
+		--egennamn_den_adjektiv
+
 		Egennamn_på_NP pn pn = variants {} ;
 
 		--en_NP_kort_1
@@ -154,6 +267,8 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		--en_tids_aktivitet_7
 		--en_tids_aktivitet_8
 		--en_tids_aktivitet_9
+
+		--exklamativ_vilken
 
 		Flerledad_fras_predikativ_själv_1 vp = variants {} ;
 		Flerledad_fras_predikativ_själv_2 ap = variants {} ;
@@ -179,6 +294,11 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		--kalenderplacering_NP_framtid_2
 		--kalenderplacering_NP_framtid_3
 
+		--Klockslag_1
+		--Klockslag_2
+		--Klockslag_3
+		--Klockslag_4
+
 		--kollektiviserande_genitiv
 
 		--lite_av_en_NP_1
@@ -188,8 +308,13 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		--multiplicering_dimension
 
+		--mycket_X_och_lite_Y
+
 		--nominal_bisats_som_attribut_1
 		--nominal_bisats_som_attribut_2
+
+		--NP_definit_possessiv_1
+		--NP_definit_possessiv_2
 
 		--NP_ensam
 
@@ -243,6 +368,8 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 		--vad_som_attribut_3
 
 		vilken_NP_som_helst pron np = variants {} ;
+
+		--världens_alla_hörn
 
 		--x_som_x
 
@@ -303,13 +430,6 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		reaktiv_dubbel_aux v = variants {} ;
 
-		snacka_NP_exklamativ_1 ap cn = variants {} ;
-		snacka_NP_exklamativ_2 ap cn = variants {} ;
-		snacka_NP_exklamativ_3 ap cn = variants {} ;
-		snacka_NP_exklamativ_4 cn = variants {} ;
-		snacka_NP_exklamativ_5 cn = variants {} ;
-		snacka_NP_exklamativ_6 cn = variants {} ;
-
 		som_vore_1 np ap = variants {} ;
 		som_vore_2 np adv = variants {} ;
 		som_vore_3 np np = variants {} ;
@@ -318,9 +438,13 @@ open SyntaxSwe, ExtensionsSwe, ParadigmsSwe, CxnSweRes in {
 
 		--tänk_om_suppositiv
 
+		--tänk_interjektion
+
 		X_går_före_Y np_1 np_2 = variants {} ;
 
 		--X_så_länge_inte_Y_polaritet_1
 		--X_så_länge_inte_Y_polaritet_2
+
+		--x_är_ys_z
 
 }
