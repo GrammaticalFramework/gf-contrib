@@ -2,7 +2,7 @@
 
 concrete EmbeddedAttemptoEng of EmbeddedAttempto =
    AttemptoEng,
-   TranslateEng ---- could also take a subset, as in GF/examples/App
+   TranslateEng - [SymbPN,Symb_Chunk] ---- could also take a subset, as in GF/examples/App
    ** open
     SyntaxEng,
     ParadigmsEng,
@@ -37,4 +37,6 @@ concrete EmbeddedAttemptoEng of EmbeddedAttempto =
 
     ---- Adv: we only want to import lexical Adv's
 
+
+    ApposPN pn noun = {s = \\n,c => pn.s ! R.Nom ++ noun.s ! n ! c ; g = noun.g} ;
 }

@@ -30,4 +30,8 @@ abstract EmbeddedAttempto =
     dictV2_ACE : V2 -> V2_ACE ;
     ---- Adv: we only want to import lexical Adv's
     ---- more categories
+
+-- for "a UK visa"
+    ApposPN : PN -> N -> CN ; -- UK visa
+
 }

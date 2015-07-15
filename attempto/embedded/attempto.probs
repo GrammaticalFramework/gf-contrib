@@ -65057,7 +65057,7 @@ V2Q_V		0.01
 V2S_V		0.01
 V2V_V		0.01
 PhrUtt 		0.9
-PhrChunk 	1.0e-9
+PhrChunk 	1.0e-19
 OneChunk 	0.98
 PlusChunk 	0.02
 refl_SgP1_Chunk	5.751177721092363e-4
@@ -65144,8 +65144,8 @@ swedish_Language	0.01
 thai_Language	0.01
 turkish_Language	0.01
 urdu_Language	0.01
-AceStart	0.99
-BackupStart	0.01
+AceStart	0.9999
+BackupStart	0.0001
 AceCN		0.9
 AceNP		0.9
 AceAP		0.9
@@ -65154,3 +65154,4 @@ dictCN_ACE	0.9
 dictA_ACE	0.9
 dictV_ACE	0.9
 dictV2_ACE	0.9
+ApposPN		0.01
