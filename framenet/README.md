@@ -1,5 +1,5 @@
-A FrameNet-based API to GF Resource Grammar Library
-===================================================
+FrameNet-based API to Grammatical Framework
+===========================================
 
 Version 0.9.7
 
@@ -10,9 +10,11 @@ The aim of this project is to make existing FrameNet (FN) resources computationa
 
 We provide a currently bilingual but potentially multilingual FN-based grammar and lexicon library implemented in [Grammatical Framework](http://www.grammaticalframework.org/) (GF) on top of GF Resource Grammar Library (RGL). The API of the FN-based library represents a shared set of automatically extracted semantico-syntactic verb valence patterns from 66,918 annotated sentences in [Berkeley FrameNet](https://framenet.icsi.berkeley.edu/) (BFN 1.5) and 4,267 sentences in [Swedish FrameNet](http://spraakbanken.gu.se/eng/swefn) (SweFN, a snapshot taken in December 3, 2014). The concise set of 869 patterns covers 483 shared frames (using BFN frames as interlingua) and 77.5% of sentences evoking the shared frames in both BFN and SweFN (44,645 and 2,596 sentences respectively).
 
-Based on the FN-annotated sentences covered by the shared valence patterns, and the GF RGL type system for verbs, we have extracted 3,432 lexical entries (subcategorized lexical units, LUs) from BFN, and 1,899 entries form SweFN. LUs between BFN and SweFN are not directly aligned, therefore a specific lexicon is generated for each language. However, a partial shared lexicon has been automatically derived on top of the language-specific lexicons, currently providing a mapping between 703 LUs in BFN and 900 LUs in SweFN. The shared lexicon covers 25.1% (11,223) of BFN sentences and 35.8% (928) of SweFN sentences – of the above mentioned sentences which are represented by the shared valence patterns.
+Based on the FN-annotated sentences covered by the shared valence patterns, and the GF RGL type system for verbs, we have extracted 3,432 lexical entries (subcategorized lexical units, LUs) from BFN, and 1,899 entries form SweFN. LUs between BFN and SweFN are not directly aligned, therefore a specific lexicon is generated for each language. However, a partial shared lexicon has been automatically derived on top of the language-specific lexicons, currently providing a mapping between 703 LUs in BFN and 900 LUs in SweFN. The shared lexicon covers 25.1% (11,223) of BFN sentences and 35.8% (928) of SweFN sentences &ndash; of the above mentioned sentences which are represented by the shared valence patterns.
 
-As a side result, a unified method for comparing and mapping semantic and syntactic valence patterns and lexical units across framenets is provided.
+All numbers are indicative and a subject to change if more corpus examples, translation equivalents or improved heuristics is provided.
+
+As a side result, a unified method for comparing and mapping semantic and syntactic valence patterns and lexical units across framenets is proposed. Thus, from the perspective of developers of FN-annotated corpora, this can be seen as a tool providing cross-lingual hints on how to improve the coverage.
 
 Structure
 ---------
@@ -41,12 +43,12 @@ _Note_: The RGL modules `DictL`, `DictionaryL`, `LexiconL`, `IrregL` and `Struct
 Documentation
 -------------
 
-The API specification and a change log are available at http://remu.grammaticalframework.org/framenet/
+The API specification and a change log are available at http://grammaticalframework.org/framenet/
 
 Requirements
 ------------
 
-[GF 3.6](http://www.grammaticalframework.org/download/index.html) installed from a recent developer source code (at least 2014-07-02).
+[GF 3.6](http://www.grammaticalframework.org/download/index.html) installed from a recent developer source code (at least 2014-07-02), or a later version.
 
 Usage example
 -------------
@@ -58,13 +60,18 @@ Search for "FrameNet API" in `WordsEng.gf`, `PhrasebookEng.gf` and `WordsSwe.gf`
 Publications
 ------------
 
-  - Normunds Gruzitis, Peteris Paikens and Guntis Barzdins. [FrameNet Resource Grammar Library for GF](http://arxiv.org/pdf/1406.6844v1.pdf). In: Proceedings of the 3rd Workshop on Controlled Natural Language (CNL), LNCS 7427, Springer, 2012, pp. 121-137
+  - Dana Dannélls and Normunds Gruzitis. [Controlled natural language generation from a multilingual FrameNet-based grammar](http://link.springer.com/chapter/10.1007%2F978-3-319-10223-8_15). In: Proceedings of the 4th Workshop on Controlled Natural Language (CNL), LNCS 8625, Springer, 2014, pp. 155-166 ([preprint](http://arxiv.org/pdf/1406.2400v1.pdf), [slides](http://attempto.ifi.uzh.ch/site/cnl2014/slides/gruzitis.pdf), [video](https://www.youtube.com/watch?v=-qQpQxg5-GQ&list=PL9MDHk_EFeGtHqFl9DKh5zB5abiTDZhps))
 
   - Dana Dannélls and Normunds Gruzitis. [Extracting a bilingual semantic grammar from FrameNet-annotated corpora](http://www.lrec-conf.org/proceedings/lrec2014/pdf/1079_Paper.pdf). In: Proceedings of the 9th International Language Resources and Evaluation Conference (LREC), 2014, pp. 2466-2473
 
-  - Dana Dannélls and Normunds Gruzitis. [Controlled natural language generation from a multilingual FrameNet-based grammar](http://arxiv.org/pdf/1406.2400v1.pdf). In: Proceedings of the 4th Workshop on Controlled Natural Language (CNL), LNCS 8625, Springer, 2014, pp. 155-166 ([slides](http://attempto.ifi.uzh.ch/site/cnl2014/slides/gruzitis.pdf), [video](https://www.youtube.com/watch?v=-qQpQxg5-GQ))
+  - Normunds Gruzitis, Peteris Paikens and Guntis Barzdins. [FrameNet Resource Grammar Library for GF](http://link.springer.com/chapter/10.1007%2F978-3-642-32612-7_9). In: Proceedings of the 3rd Workshop on Controlled Natural Language (CNL), LNCS 7427, Springer, 2012, pp. 121-137 ([preprint](http://arxiv.org/pdf/1406.6844v1.pdf))
 
 Acknowledgements
 ----------------
 
-This work has been supported by Swedish Research Council under grant No. 2012-5746 (Reliable Multilingual Digital Communication: Methods and Applications) and by Centre for Language Technology in Gothenburg. The initial research has been supported by Latvian National Research Programme in Information Technology.
+This work has been supported by the Swedish Research Council under Grant No. 2012-5746 (Reliable Multilingual Digital Communication: Methods and Applications) and by the Centre for Language Technology in Gothenburg. The research leading to these results has received funding also from the Latvian State Research Programme NexIT.
+
+Licence
+-------
+
+This library is licensed under [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl.html), version 3.
