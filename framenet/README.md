@@ -43,12 +43,12 @@ _Note_: The RGL modules `DictL`, `DictionaryL`, `LexiconL`, `IrregL` and `Struct
 Documentation
 -------------
 
-The API specification and a change log are available at http://remu.grammaticalframework.org/framenet/
+The API specification and a change log are available at http://grammaticalframework.org/framenet/
 
 Requirements
 ------------
 
-[GF 3.6](http://www.grammaticalframework.org/download/index.html) installed from a recent developer source code (at least 2014-07-02).
+[GF 3.6](http://www.grammaticalframework.org/download/index.html) installed from a recent developer source code (at least 2014-07-02), or a later version.
 
 Usage example
 -------------
@@ -69,7 +69,7 @@ Publications
 Acknowledgements
 ----------------
 
-This work has been supported by Swedish Research Council under grant No. 2012-5746 (Reliable Multilingual Digital Communication: Methods and Applications) and by Centre for Language Technology in Gothenburg. The initial research has been supported by Latvian National Research Programme in Information Technology.
+This work has been supported by the Swedish Research Council under Grant No. 2012-5746 (Reliable Multilingual Digital Communication: Methods and Applications) and by the Centre for Language Technology in Gothenburg. The research leading to these results has received funding also from the Latvian State Research Programme NexIT.
 
 Licence
 -------
