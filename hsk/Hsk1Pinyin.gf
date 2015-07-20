@@ -36,6 +36,10 @@ PhraseChi [
 Utt,S,QS,
 UttS,UttQS
 ],
+  IdiomChi [
+    NP,Cl,
+    ExistNP
+    ],
 
 
 

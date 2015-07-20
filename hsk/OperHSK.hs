@@ -2,6 +2,7 @@ import Data.Char
 import Data.List
 
 quote s = "\"" ++ s ++ "\""
+unquote = tail . init
 
 fromTabs = map (getSep '\t') . lines
 toTabs = unlines . map (blocks2sep "\t")
@@ -45,3 +46,11 @@ engRules rs = [unwords ["lin",f,"=",mkLin c eng,";"] | f:c:_:_:eng:_ <- rs]
   putStrLn $ unlines $ absRules rs
 -}
 
+{-
+  hs <- readFile "hsk2.txt" >>= return . fromTabs
+  let pmap = Data.Map.fromList [(c,head (words p)) | c:p:_ <- hs]
+  let pin w = case w of '"':_ -> maybe w quote (Data.Map.lookup (tail (init w)) pmap) ; _ -> w
+  gf <- readFile "Hsk2Chi.gf" >>= return . lines
+  let pgf = map (unwords . map pin . words) gf
+  writeFile "Hsk2Pinyin.gf" $ unlines pgf
+-}

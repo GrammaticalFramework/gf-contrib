@@ -34,8 +34,10 @@ concrete Hsk1Chi of Hsk1 =
    Utt,S,QS,
    UttS,UttQS
    ],
-
-
+  IdiomChi [
+    NP,Cl,
+    ExistNP
+    ],
 
 -- lexicon
   NumeralChi - [pot2,pot2plus,pot3,pot3plus]  -- from 1 to 99

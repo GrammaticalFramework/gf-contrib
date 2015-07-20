@@ -35,8 +35,10 @@ concrete Hsk1Eng of Hsk1 =
    Utt,S,QS,
    UttS,UttQS
    ],
-
-
+  IdiomEng [
+    NP,Cl,
+    ExistNP
+    ],
 
 -- lexicon
   NumeralEng - [pot2,pot2plus,pot3,pot3plus],  -- from 1 to 99
@@ -138,7 +140,7 @@ lin learn_V = mkV "learn" ;
 lin study_V = mkV "study" ;
 lin youre_welcome_Utt = lin Utt (mkInterj "you're welcome") ;
 lin in_front_Adv = pmkAdv "in front" ;
-lin china_PN = mkPN "china" ;
+lin china_PN = mkPN "China" ;
 lin dish_N = mkN "dish" ;
 lin vegetable_N = mkN "vegetable" ;
 lin desk_N = mkN "desk" ;

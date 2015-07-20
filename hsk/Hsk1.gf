@@ -36,7 +36,10 @@ abstract Hsk1 =
    Utt,S,QS,
    UttS,UttQS
    ],
-
+  Idiom [
+    NP,Cl,
+    ExistNP
+    ],
 
 -- lexicon
   Numeral - [pot2,pot2plus,pot3,pot3plus]  -- from 1 to 99
