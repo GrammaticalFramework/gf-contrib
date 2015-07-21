@@ -33,12 +33,19 @@ abstract Hsk1 =
     QuestCl, QuestVP, QuestSlash,QuestIAdv,QuestComp,IdetCN,IdetQuant,PrepIP,CompIAdv,CompIP
     ],
   Phrase [
-   Utt,S,QS,
-   UttS,UttQS
+   Utt,S,QS,Interj,
+   UttS,UttQS,UttInterj
    ],
   Idiom [
     NP,Cl,
     ExistNP
+    ],
+  Construction [
+    Monthday, Month, Year, Adv,
+    dayMonthYearAdv, intYear, intMonthday,
+    january_Month, february_Month, march_Month, april_Month,  
+    may_Month, june_Month, july_Month, august_Month, september_Month,  
+    october_Month, november_Month, december_Month
     ],
 
 -- lexicon
@@ -83,7 +90,7 @@ fun look_V2 : V2 ;
 fun how_IAdv : IAdv ;
 fun now_Adv : Adv ;
 fun oclock_Adv : Card -> Adv ;
-fun how_about_Utt : NP -> Utt ; -- how about you
+fun how_about_Interj : NP -> Interj ; -- how about you
 fun too_AdA : AdA ;
 fun inside_Adv : Adv ;
 fun listen_V2 : V2 ;
@@ -93,7 +100,7 @@ fun many_Det : Det ;
 fun time_N : N ;
 fun fall_V : V ;
 fun below_Prep : Prep ;
-fun thank_you_Utt : Utt ;
+fun thank_you_Interj : Interj ;
 fun mr_NP : PN -> NP ;
 fun like_V2 : V2 ;
 fun big_A : A ;
@@ -104,7 +111,7 @@ fun young_A : A ;
 fun have_name_Cl : NP -> PN -> Cl ; -- my name is Wang
 fun love_V2 : V2 ;
 fun year_N : N ;
-fun please_Utt : Utt ;
+fun please_Interj : Interj ;
 fun invite_V2 : V2 ;
 fun return_V : V ;
 fun reply_V : V ;
@@ -124,7 +131,7 @@ fun several_Det : Det ;
 fun dad_N : N ;
 fun some_Quant : Quant ;
 fun a_few_Det : Det ;
-fun sorry_Utt : Utt ;
+fun sorry_Interj : Interj ;
 fun live_V : V ;
 fun reside_V : V ;
 fun happy_A : A ;
@@ -147,12 +154,12 @@ fun dog_N : N ;
 fun years_old_AP : Card -> AP ;
 fun age_N : N ;
 fun telephone_V : V ;
-fun hello_Utt : Utt ;
+fun hello_Interj : Interj ;
 fun son_N : N ;
 fun pretty_A : A ;
 fun beautiful_A : A ;
 fun minute_N : N ;
-fun goodbye_Utt : Utt ;
+fun goodbye_Interj : Interj ;
 fun book_N : N ;
 fun tomorrow_Adv : Adv ;
 fun few_Det : Det ;
@@ -171,7 +178,7 @@ fun movie_N : N ;
 fun film_N : N ;
 fun letter_document_N : N ;
 fun hospital_N : N ;
-fun never_mind_Utt : Utt ;
+fun never_mind_Interj : Interj ;
 fun airplane_N : N ;
 fun television_N : N ;
 fun read_V2 : V2 ;
@@ -191,10 +198,10 @@ fun afternoon_N : N ;
 fun learn_V : V ;
 fun study_V : V ;
 fun cold_A : A ;
-fun youre_welcome_Utt : Utt ;
+fun youre_welcome_Interj : Interj ;
 fun in_front_Adv : Adv ;
 fun in8front_Prep : Prep ;
-fun china_PN : PN ;
+fun china_NP : NP ;
 fun dish_N : N ;
 fun vegetable_N : N ;
 fun table_N : N ;
@@ -214,8 +221,8 @@ fun fruit_N : N ;
 fun cup_N : N ;
 fun rain_V0 : V ;
 fun cooked_rice_N : N ;
-fun beijing_PN : PN ;
-fun chinese_PN : PN ;
+fun beijing_NP : NP ;
+fun chinese_NP : NP ;
 fun wang_PN : PN ;
 
 }

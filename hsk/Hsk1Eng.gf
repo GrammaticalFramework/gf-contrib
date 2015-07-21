@@ -32,12 +32,19 @@ concrete Hsk1Eng of Hsk1 =
     QuestCl, QuestVP, QuestSlash,QuestIAdv,QuestComp,IdetCN,IdetQuant,PrepIP,CompIAdv,CompIP
     ],
   PhraseEng [
-   Utt,S,QS,
-   UttS,UttQS
+   Utt,S,QS,Interj,
+   UttS,UttQS,UttInterj
    ],
   IdiomEng [
     NP,Cl,
     ExistNP
+    ],
+  ConstructionEng [
+    Monthday, Month, Year, Adv,
+    dayMonthYearAdv, intYear, intMonthday,
+    january_Month, february_Month, march_Month, april_Month,  
+    may_Month, june_Month, july_Month, august_Month, september_Month,  
+    october_Month, november_Month, december_Month
     ],
 
 -- lexicon
@@ -70,18 +77,18 @@ lin do_V2 = mkV2 "do" ;
 lin up_Adv = pmkAdv "up" ;
 lin look_V2 = mkV2 (mkV "look") (mkPrep "at") | mkV2 "watch" ;
 lin oclock_Adv card = pmkAdv ((mkUtt card).s ++ "oclock") ;
-lin how_about_Utt np = lin Utt {s = "how about" ++ (mkUtt np).s} ;
+lin how_about_Interj np = lin Interj {s = "how about" ++ (mkUtt np).s} ;
 lin inside_Adv = pmkAdv "inside" ;
 lin listen_V2 = mkV2 "listen" ;
 lin time_N = mkN "time" ;
 lin fall_V = mkV "fall" ;
 lin below_Prep = mkPrep "below" ;
-lin thank_you_Utt = lin Utt (mkInterj "thank you") ;
+lin thank_you_Interj = mkInterj "thank you" ;
 lin mr_NP pn = mkNP (mkCN (mkN "Mr") (mkNP pn)) ;
 lin large_A = mkA "large" ;
 lin stuff_N = mkN "stuff" ;
 lin have_name_Cl np pn = mkCl (mkNP (E.GenNP np) (mkN "name")) (mkNP pn) ;
-lin please_Utt = lin Utt (mkInterj "please") ;
+lin please_Interj = mkInterj "please" ;
 lin invite_V2 = mkV2 "invite" ;
 lin return_V = mkV "return" ;
 lin reply_V = mkV "reply" ;
@@ -99,7 +106,7 @@ lin some_Quant = mkQuant "some" "some" ;
 lin next_A = mkA "next" ;
 lin all_Det = M.mkDeterminer plural "all" ;
 lin a_few_Det = M.mkDeterminer plural "a few" ;
-lin sorry_Utt = lin Utt (mkInterj "sorry") ;
+lin sorry_Interj = mkInterj "sorry" ;
 lin reside_V = mkV "reside" ;
 lin happy_A = mkA "happy" ;
 lin glad_A = mkA "glad" ;
@@ -112,11 +119,11 @@ lin monthday_N = mkN "monthday" ;
 lin years_old_AP card = mkAP (lin AdA (mkUtt (mkNP card (mkCN (mkN "year"))))) (mkA "old") ;
 lin age_N = mkN "age" ;
 lin telephone_V = mkV "telephone" ;
-lin hello_Utt = lin Utt (mkInterj "hello") ;
+lin hello_Interj = mkInterj "hello" ;
 lin son_N = mkN "son" ;
 lin pretty_A = mkA "pretty" ;
 lin minute_N = mkN "minute" ;
-lin goodbye_Utt = lin Utt (mkInterj "goodbye") ;
+lin goodbye_Interj = mkInterj "goodbye" ;
 lin tomorrow_Adv = pmkAdv "tomorrow" ;
 lin little_Det = M.mkDeterminer singular "little" ;
 lin piece_N = mkN "piece" ;
@@ -129,7 +136,7 @@ lin movie_N = mkN "movie" ;
 lin film_N = mkN "film" ;
 lin letter_document_N = mkN "letter" ;
 lin hospital_N = mkN "hospital" ;
-lin never_mind_Utt = lin Utt (mkInterj "never mind") ;
+lin never_mind_Interj = mkInterj "never mind" ;
 lin study_V2 = mkV2 "study" ;
 lin back_Adv = pmkAdv "back" ;
 lin yesterday_Adv = pmkAdv "yesterday" ;
@@ -138,9 +145,9 @@ lin heat_N = mkN "heat" ;
 lin afternoon_N = mkN "afternoon" ;
 lin learn_V = mkV "learn" ;
 lin study_V = mkV "study" ;
-lin youre_welcome_Utt = lin Utt (mkInterj "you're welcome") ;
+lin youre_welcome_Interj = mkInterj "you're welcome" ;
 lin in_front_Adv = pmkAdv "in front" ;
-lin china_PN = mkPN "China" ;
+lin china_NP = mkNP (mkPN "China") ;
 lin dish_N = mkN "dish" ;
 lin vegetable_N = mkN "vegetable" ;
 lin desk_N = mkN "desk" ;
@@ -154,8 +161,8 @@ lin noon_N = mkN "noon" ;
 lin late_morning_N = mkN "late morning" ;
 lin cup_N = mkN "cup" ;
 lin cooked_rice_N = mkN "cooked rice" ;
-lin beijing_PN = mkPN "Beijing" ;
-lin chinese_PN = mkPN "Chinese" ;
+lin beijing_NP = mkNP (mkPN "Beijing") ;
+lin chinese_NP = mkNP (mkPN "Chinese") ;
 lin wang_PN = mkPN "Wang" ;
 
 }

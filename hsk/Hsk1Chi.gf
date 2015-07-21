@@ -31,14 +31,18 @@ concrete Hsk1Chi of Hsk1 =
     QuestCl, QuestVP, QuestSlash,QuestIAdv,QuestComp,IdetCN,IdetQuant,PrepIP,CompIAdv,CompIP
     ],
   PhraseChi [
-   Utt,S,QS,
-   UttS,UttQS
+   Utt,S,QS,Interj,
+   UttS,UttQS,UttInterj
    ],
   IdiomChi [
     NP,Cl,
     ExistNP
     ],
-
+  ConstructionChi [
+    Monthday, Month, Year, Adv,
+    dayMonthYearAdv, intYear, intMonthday
+    ],
+    
 -- lexicon
   NumeralChi - [pot2,pot2plus,pot3,pot3plus]  -- from 1 to 99
 
@@ -83,7 +87,7 @@ lin watch_V2 = mkV2 "看" ;
 lin how_IAdv = R.ssword "怎么" | R.ssword "哪" ;
 lin now_Adv = mkAdv "现在" timeAdvType ;
 lin oclock_Adv card = lin Adv {s = card.s ++ "点" ; advType = timeAdvType} ;
-lin how_about_Utt np = lin Utt (ss (np.s ++ "呢")) | lin Utt (ss (np.s ++ R.word "怎么样")) ;
+lin how_about_Interj np = lin Interj (ss (np.s ++ "呢")) | lin Interj (ss (np.s ++ R.word "怎么样")) ;
 lin too_AdA = mkAdA "太" ;
 lin inside_Adv = mkAdv "里" placeAdvType ;
 lin listen_V2 = mkV2 "听" ;
@@ -93,7 +97,7 @@ lin many_Det = R.mkDet "多" ;
 lin time_N = mkN "时候" "个" ;
 lin fall_V = mkV "下" ;
 lin below_Prep = mkPrep "下" "" placeAdvType ;
-lin thank_you_Utt = lin Utt (R.ssword "谢谢") ;
+lin thank_you_Interj = lin Interj (R.ssword "谢谢") ;
 lin mr_NP pn = lin NP (ss (pn.s ++ R.word "先生")) ;
 lin like_V2 = mkV2 "喜欢" ;
 lin big_A = mkA "大" ;
@@ -104,7 +108,7 @@ lin young_A = mkA "小" ;
 lin have_name_Cl np pn = mkCl np (mkV2 "叫") (mkNP pn) ;
 lin love_V2 = mkV2 "爱" ;
 lin year_N = cmkN "年" "個" ;
-lin please_Utt = lin Utt (ss "请") ;
+lin please_Interj = lin Interj (ss "请") ;
 lin invite_V2 = mkV2 "请" ;
 lin return_V = mkV "回" ;
 lin reply_V = mkV "回" ;
@@ -124,7 +128,7 @@ lin several_Det = R.mkDet "些" | R.mkDet "几" ;
 lin dad_N = cmkN "爸爸" "個" ;
 lin some_Quant = mkQuant "些" ;
 lin a_few_Det = R.mkDet "些" | R.mkDet "几" ;
-lin sorry_Utt = lin Utt (R.ssword "对不起") ;
+lin sorry_Interj = lin Interj (R.ssword "对不起") ;
 lin live_V = mkV "住" ;
 lin reside_V = mkV "住" ;
 lin happy_A = mkA "高兴" ;
@@ -147,12 +151,12 @@ lin dog_N = cmkN "狗" "隻" ;
 lin years_old_AP card = mkAP (lin A (ss (card.s ++ "岁"))) ;
 lin age_N = mkN "岁" "个" ;
 lin telephone_V = mkV "打电话" ;
-lin hello_Utt = lin Utt (ss "喂") ;
+lin hello_Interj = lin Interj (ss "喂") ;
 lin son_N = mkN "儿子" "个" ;
 lin pretty_A = mkA "漂亮" ;
 lin beautiful_A = mkA "漂亮" ;
 lin minute_N = mkN "分钟" "个" ;
-lin goodbye_Utt = lin Utt (R.ssword "再见") ;
+lin goodbye_Interj = lin Interj (R.ssword "再见") ;
 lin book_N = mkN "书" | mkN "本" "本" ;
 lin tomorrow_Adv = mkAdv "明天" timeAdvType ;
 lin few_Det = R.mkDet "少" ;
@@ -171,7 +175,7 @@ lin movie_N = cmkN "电影" "部" ;
 lin film_N = cmkN "电影" "部" ;
 lin letter_document_N = mkN "书" "本" ;
 lin hospital_N = cmkN "医院" "所" ;
-lin never_mind_Utt = lin Utt (R.ssword "没关系") ;
+lin never_mind_Interj = lin Interj (R.ssword "没关系") ;
 lin airplane_N = cmkN "飞机" "架" ;
 lin television_N = cmkN "电视" "臺" ;
 lin read_V2 = mkV2 "读" ;
@@ -191,10 +195,10 @@ lin afternoon_N = cmkN "下午" "個" ;
 lin learn_V = mkV "学习" ;
 lin study_V = mkV "学习" ;
 lin cold_A = mkA "冷" ;
-lin youre_welcome_Utt = lin Utt (R.ssword "不客气") ;
+lin youre_welcome_Interj = lin Interj (R.ssword "不客气") ;
 lin in_front_Adv = mkAdv "前面" placeAdvType ;
 lin in8front_Prep = mkPrep "前面" "" placeAdvType ;
-lin china_PN = mkPN "中国" ;
+lin china_NP = mkNP (mkPN "中国") ;
 lin dish_N = cmkN "菜" "盤" ;
 lin vegetable_N = cmkN "菜" "盤" ;
 lin table_N = cmkN "桌子" "張" ;
@@ -214,9 +218,23 @@ lin fruit_N = cmkN "水果" "個" ;
 lin cup_N = cmkN "杯子" "個" ;
 lin rain_V0 = mkV "下雨" ;
 lin cooked_rice_N = mkN "米饭" "个" ;
-lin beijing_PN = mkPN "北京" ;
-lin chinese_PN = mkPN "汉语" ;
+lin beijing_NP = mkNP (mkPN "北京") ;
+lin chinese_NP = mkNP (mkPN "汉语") ;
 lin wang_PN = mkPN "王" ;
+
+---- with arabic numerals in HSK
+lin january_Month = lin N {s = "1" ++ "月" ; c = []} ;  
+lin february_Month = lin N {s = "2" ++ "月" ; c = []} ;  
+lin march_Month = lin N {s = "3" ++ "月" ; c = []} ;  
+lin april_Month = lin N {s = "4" ++ "月" ; c = []} ;  
+lin may_Month = lin N {s = "5" ++ "月" ; c = []} ;  
+lin june_Month = lin N {s = "6" ++ "月" ; c = []} ;  
+lin july_Month = lin N {s = "7" ++ "月" ; c = []} ;  
+lin august_Month = lin N {s = "8" ++ "月" ; c = []} ;  
+lin september_Month = lin N {s = "9" ++ "月" ; c = []} ;  
+lin october_Month = lin N {s = "10" ++ "月" ; c = []} ;  
+lin november_Month = lin N {s = "11" ++ "月" ; c = []} ;  
+lin december_Month = lin N {s = "12" ++ "月" ; c = []} ;  
 
 }
 

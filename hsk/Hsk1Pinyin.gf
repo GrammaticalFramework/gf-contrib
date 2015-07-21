@@ -33,15 +33,17 @@ QCl,Cl,VP,VPSlash,ClSlash,IP,IDet,IQuant,IComp,IAdv,NP,CN,Num,Prep,Tense,
 QuestCl, QuestVP, QuestSlash,QuestIAdv,QuestComp,IdetCN,IdetQuant,PrepIP,CompIAdv,CompIP
 ],
 PhraseChi [
-Utt,S,QS,
-UttS,UttQS
+Utt,S,QS,Interj,
+UttS,UttQS,UttInterj
 ],
   IdiomChi [
     NP,Cl,
     ExistNP
     ],
-
-
+  ConstructionChi [
+    Monthday, Month, Year, Adv,
+    dayMonthYearAdv, intYear, intMonthday
+    ],
 
 -- lexicon
 NumeralChi - [pot2,pot2plus,pot3,pot3plus] -- from 1 to 99
@@ -87,7 +89,7 @@ lin watch_V2 = mkV2 "kàn" ;
 lin how_IAdv = R.ssword "zěnme" | R.ssword "nǎa" ;
 lin now_Adv = mkAdv "xiànzài" timeAdvType ;
 lin oclock_Adv card = lin Adv {s = card.s ++ "diǎn" ; advType = timeAdvType} ;
-lin how_about_Utt np = lin Utt (ss (np.s ++ "ne" )) | lin Utt (ss (np.s ++ "zěnmeyàng" )) ;
+lin how_about_Interj np = lin Interj (ss (np.s ++ "ne" )) | lin Interj (ss (np.s ++ "zěnmeyàng" )) ;
 lin too_AdA = mkAdA "tài" ;
 lin inside_Adv = mkAdv "lǐ" placeAdvType ;
 lin listen_V2 = mkV2 "tīng" ;
@@ -97,7 +99,7 @@ lin many_Det = R.mkDet "duō" ;
 lin time_N = mkN "shíhou" "ge" ;
 lin fall_V = mkV "xià" ;
 lin below_Prep = mkPrep "xià" "" placeAdvType ;
-lin thank_you_Utt = lin Utt (ss "xièxie" ) ;
+lin thank_you_Interj = lin Interj (ss "xièxie" ) ;
 lin mr_NP pn = lin NP (ss (pn.s ++ "xiānsheng" )) ;
 lin like_V2 = mkV2 "xǐhuan" ;
 lin big_A = mkA "dà, dài" ;
@@ -108,7 +110,7 @@ lin young_A = mkA "xiǎo" ;
 lin have_name_Cl np pn = mkCl np (mkV2 "jiào" ) (mkNP pn) ;
 lin love_V2 = mkV2 "ài" ;
 lin year_N = cmkN "nián" "個" ;
-lin please_Utt = lin Utt (ss "qǐng" ) ;
+lin please_Interj = lin Interj (ss "qǐng" ) ;
 lin invite_V2 = mkV2 "qǐng" ;
 lin return_V = mkV "huí" ;
 lin reply_V = mkV "huí" ;
@@ -128,7 +130,7 @@ lin several_Det = R.mkDet "xiē" | R.mkDet "jǐ" ;
 lin dad_N = cmkN "bàba" "個" ;
 lin some_Quant = mkQuant "xiē" ;
 lin a_few_Det = R.mkDet "xiē" | R.mkDet "jǐ" ;
-lin sorry_Utt = lin Utt (ss "duìbuqǐ" ) ;
+lin sorry_Interj = lin Interj (ss "duìbuqǐ" ) ;
 lin live_V = mkV "zhù" ;
 lin reside_V = mkV "zhù" ;
 lin happy_A = mkA "gāoxìng" ;
@@ -151,12 +153,12 @@ lin dog_N = cmkN "gǒu" "隻" ;
 lin years_old_AP card = mkAP (lin A (ss (card.s ++ "suì" ))) ;
 lin age_N = mkN "suì" "ge" ;
 lin telephone_V = mkV "dǎ diànhuà" ;
-lin hello_Utt = lin Utt (ss "wèi" ) ;
+lin hello_Interj = lin Interj (ss "wèi" ) ;
 lin son_N = mkN "érzi" "ge" ;
 lin pretty_A = mkA "piàoliang" ;
 lin beautiful_A = mkA "piàoliang" ;
 lin minute_N = mkN "fēnzhōng" "ge" ;
-lin goodbye_Utt = lin Utt (ss "zàijiàn" ) ;
+lin goodbye_Interj = lin Interj (ss "zàijiàn" ) ;
 lin book_N = mkN "shū" | mkN "běn" "běn" ;
 lin tomorrow_Adv = mkAdv "míngtiān" timeAdvType ;
 lin few_Det = R.mkDet "shǎo" ;
@@ -175,7 +177,7 @@ lin movie_N = cmkN "diànyǐng" "部" ;
 lin film_N = cmkN "diànyǐng" "部" ;
 lin letter_document_N = mkN "shū" "běn" ;
 lin hospital_N = cmkN "yīyuàn" "所" ;
-lin never_mind_Utt = lin Utt (ss "méi guānxi" ) ;
+lin never_mind_Interj = lin Interj (ss "méi guānxi" ) ;
 lin airplane_N = cmkN "fēijī" "架" ;
 lin television_N = cmkN "diànshì" "臺" ;
 lin read_V2 = mkV2 "dú" ;
@@ -195,10 +197,10 @@ lin afternoon_N = cmkN "xiàwǔ" "個" ;
 lin learn_V = mkV "xuéxí" ;
 lin study_V = mkV "xuéxí" ;
 lin cold_A = mkA "lěng" ;
-lin youre_welcome_Utt = lin Utt (ss "bú kèqi" ) ;
+lin youre_welcome_Interj = lin Interj (ss "bú kèqi" ) ;
 lin in_front_Adv = mkAdv "qiánmiàn" placeAdvType ;
 lin in8front_Prep = mkPrep "qiánmiàn" "" placeAdvType ;
-lin china_PN = mkPN "zhōngguó" ;
+lin china_NP = mkNP (mkPN "zhōngguó") ;
 lin dish_N = cmkN "cài" "盤" ;
 lin vegetable_N = cmkN "cài" "盤" ;
 lin table_N = cmkN "zhuōzi" "張" ;
@@ -218,9 +220,24 @@ lin fruit_N = cmkN "shuǐguǒ" "個" ;
 lin cup_N = cmkN "bēizi" "個" ;
 lin rain_V0 = mkV "xiàyǔ" ;
 lin cooked_rice_N = mkN "mǐfàn" "ge" ;
-lin beijing_PN = mkPN "běijīng" ;
-lin chinese_PN = mkPN "hànyǔ" ;
+lin beijing_NP = mkNP (mkPN "běijīng") ;
+lin chinese_NP = mkNP (mkPN "hànyǔ") ;
 lin wang_PN = mkPN "wáng" ;
+
+---- with arabic numerals in HSK
+lin january_Month = lin N {s = "1" ++ "yuè" ; c = []} ;  
+lin february_Month = lin N {s = "2" ++ "yuè" ; c = []} ;  
+lin march_Month = lin N {s = "3" ++ "yuè" ; c = []} ;  
+lin april_Month = lin N {s = "4" ++ "yuè" ; c = []} ;  
+lin may_Month = lin N {s = "5" ++ "yuè" ; c = []} ;  
+lin june_Month = lin N {s = "6" ++ "yuè" ; c = []} ;  
+lin july_Month = lin N {s = "7" ++ "yuè" ; c = []} ;  
+lin august_Month = lin N {s = "8" ++ "yuè" ; c = []} ;  
+lin september_Month = lin N {s = "9" ++ "yuè" ; c = []} ;  
+lin october_Month = lin N {s = "10" ++ "yuè" ; c = []} ;  
+lin november_Month = lin N {s = "11" ++ "yuè" ; c = []} ;  
+lin december_Month = lin N {s = "12" ++ "yuè" ; c = []} ;  
+
 
 }
 
