@@ -1,0 +1,435 @@
+955: At arccosh (product_range x (minus (Var2Num x) (Var2Num y)) (At arccos (Var2Num z)) nums1_gamma)
+جب x x اور y كا فرق تك z كا ارچ التمام سے ریتا ہے گاما كا حاصل ظرب كا معكوسی ہایپربولك التمام
+
+955: Laplacian arccos
+ارچ التمام كا لیپلیسین
+
+955: Var2Num x
+x
+
+955: Var2Num y
+y
+
+955: Var2Num z
+z
+
+955: a_inverse (defint (Var2Set B) cos)
+B پر التمام كا انٹیگرل كا معكوسی عدد
+
+955: abs (nums1_rational (Var2Num x) (Var2Num z))
+z پر كسر x كی قطعی قیمت
+
+955: and (BaseProp false p)
+غلط اور p
+
+955: arccos
+ارچ التمام
+
+955: arccosh
+معكوسی ہایپربولك التمام
+
+955: arccot
+ارچ مماس التمام
+
+955: arccoth
+معكوسی ہایپربولك مماس التمام
+
+955: arccsc
+ارچ قاطع التمام
+
+955: arccsch
+معكوسی ہایپربولك قاطع التمام
+
+955: arcsec
+ارچ قاطی
+
+955: arcsech
+معكوسی ہایپربولك قاطی
+
+955: arcsin
+ارچ جیب
+
+955: arcsinh
+معكوسی ہایپربولك جیب
+
+955: arctan
+ارچ مماس
+
+955: arctanh
+معكوسی ہایپربولك مماس
+
+955: argument (Var2Num z)
+z كا ارگومنٹ
+
+955: based_integer10 "1234"
+اشاریہ عدد 1234
+
+955: based_integer16 "a56c"
+ہیگزا ڈیسیمل عدد a56c
+
+955: based_integer2 "10001"
+دوہرا عدد 10001
+
+955: based_integer8 "761"
+آكٹل عدد 761
+
+955: cartesian_product (BaseValSet (Var2Set A) (Var2Set B))
+A اور B كا كارتیسی حاصل ظرب
+
+955: ceiling (sum x (Var2Set B) (Var2Num x))
+جب x B پر ریتا ہے x كا مجموعہ كا سیلنگ
+
+955: complex_cartesian (nums1_rational (Var2Num z) (Var2Num y)) (trunc nums1_e)
+كارتیسی محدد y پر كسر z اور e كا چھانٹ كے ساتھ مركبہ عدد
+
+955: complex_polar (power2 (Var2Num z)) (product_range z (Var2Num x) (Var2Num y) (Var2Num z))
+قطبی محدد z كا مربع اور جب z x تك y سے ریتا ہے z كا حاصل ظرب كے ساتھ مركبہ عدد
+
+955: conjugate (power3 nums1_pi)
+pi كا مكعب كا مركبہ زوج
+
+955: cos
+التمام
+
+955: cosh
+ہایپربولك التمام
+
+955: cot
+مماس التمام
+
+955: coth
+ہایپربولك مماس التمام
+
+955: csc
+قاطع التمام
+
+955: csch
+ہایپربولك قاطع التمام
+
+955: curl (grad arccos)
+ارچ التمام كا گریڈینٹ كا كرل
+
+955: defint (interval_oc (Var2Num z) (Var2Num y)) arcsec
+y كو z سے بایاں سے كھلا وقفہ پر ارچ قاطی كا انٹیگرل
+
+955: defint_interval arcsin (power3 nums1_pi) (unary_minus nums1_gamma)
+گاما كی منفی كو pi كا مكعب سے ارچ جیب كا انٹیگرل
+
+955: determinant (Var2Tensor M)
+M كا مقطعہ
+
+955: diff (diff csc)
+قاطع التمام كا مشتق كا مشتق
+
+955: divergence (Var2Fun3 g)
+g كا پھیلاو
+
+955: divide (Var2Num x) (root2 (Var2Num y))
+x اور y كا مربعی اصل كا حاصل
+
+955: divides (Var2Num x) (Var2Num y)
+x y كو تقسیم كرتا ہے
+
+955: domain (left_compose arccosh tanh)
+معكوسی ہایپربولك التمام اور ہایپربولك مماس كا بایاں سے تركیب كا حلقہ اثر
+
+955: emptyset
+خالی مجمویہ
+
+955: exist (BaseVarNum x) (Var2Set C) (mkProp (divides (Var2Num y) (Var2Num x)))
+وہاں تا كہ y x كو تقسیم كرتا ہے C میں x ہے
+
+955: exp
+سریع
+
+955: factorial (trunc nums1_e)
+e كا چھانٹ كا جزو ضربیہ
+
+955: factorof (Var2Num y) (Var2Num x)
+y ایك x كی جزو ظربی ہے
+
+955: false
+غلط
+
+955: floor (min (Var2Set A))
+A كا مینیمل عنصر كا فلور
+
+955: forall (BaseVarNum z) p
+تمام z كیلیے , p
+
+955: forall_set (BaseVarNum z) (Var2Set A) p
+تمام A میں z كیلیے , p
+
+955: gcd (BaseValNum (Var2Num x) (Var2Num y))
+x اور y كا اعظم مشترك مقسوم علیہ
+
+955: grad exp
+سریع كا گریڈینٹ
+
+955: identity
+اكای
+
+955: imaginary (Var2Num y)
+y كا خیالی حصہ
+
+955: incident (Var2Geo Q) (Var2Geo P)
+Q اور P انسیڈنٹ ہیں
+
+955: int (left_inverse cot)
+مماس التمام كا بایاں سے معكوسی تفعل كا جامد
+
+955: intersect (BaseValSet (Var2Set A) (Var2Set B))
+A اور B كا تقاطع
+
+955: inverse cosh
+ہایپربولك التمام كا معكوسی تفعل
+
+955: lambda y (minus (Var2Num y) (Var2Num z))
+y اور z كا فرق سے y تفعل
+
+955: lcm (BaseValNum (Var2Num y) (Var2Num z))
+y اور z كا كم مشترك اظعاف
+
+955: left_compose (diff cosh) exp
+ہایپربولك التمام كا مشتق اور سریع كا بایاں سے تركیب
+
+955: left_inverse (right_inverse cosh)
+ہایپربولك التمام كا قایمہ سے معكوسی تفعل كا بایاں سے معكوسی تفعل
+
+955: limit (Var2Num y) both_sides z (conjugate nums1_pi)
+دو طرف سے جیسا كہ z y كو جھكتا ہے pi كا مركبہ زوج كا انتہا
+
+955: ln
+قدرتی لوگارتھم
+
+955: log nums1_gamma
+گاما كا لوگارتھم
+
+955: map y (factorial (Var2Num x)) (suchthat (Var2Set A) x r)
+تا كہ y تا كہ r A میں x میں ہے قسم x كا جزو ضربیہ كی قیمتیں كا مجمویہ
+
+955: matrix (BaseMatrixRow (matrixrow (BaseValNum (Var2Num x) (Var2Num y))) (matrixrow (BaseValNum (Var2Num y) (Var2Num x))))
+ایك Ø¹Ù†ØµØ± x اور y كے ساتھ رoو اور ایك Ø¹Ù†ØµØ± y اور x كے ساتھ رoو كے ساتھ قالب
+
+955: matrix_base (matrixrow_base (Var2Num x))
+ایك صرف Ø¹Ù†ØµØ± x كے ساتھ رoو كے ساتھ قالب
+
+955: matrixrow (BaseValNum (Var2Num x) (Var2Num y))
+ایك Ø¹Ù†ØµØ± x اور y كے ساتھ رoو
+
+955: matrixrow_base (max (Var2Set A))
+ایك صرف Ø¹Ù†ØµØ± A كا میكسیمل عنصر كے ساتھ رoو
+
+955: max (setdiff (Var2Set A) (Var2Set B))
+A اور B كا فرق كا میكسیمل عنصر
+
+955: mean (BaseValNum (Var2Num z) (Var2Num y))
+z اور y كا اوسط
+
+955: median (ConsValNum (Var2Num x) (BaseValNum (Var2Num y) (Var2Num z)))
+x , y اور z كا وسطانیہ
+
+955: min (interval_cc (Var2Num x) (Var2Num y))
+y كو x سے بند وقفہ كا مینیمل عنصر
+
+955: minus (quotient (Var2Num x) (Var2Num z)) (sum x (Var2Set A) nums1_pi)
+x اور z كا صیح عدد تقسیم اور جب x A پر ریتا ہے pi كا مجموعہ كا فرق
+
+955: mkConfiguration (Var2Geo Q)
+Q
+
+955: mkProp (gt_num (Var2Num y) nums1_gamma)
+y گامے سے بڑا ہے
+
+955: mkProp (notin (complex_cartesian (Var2Num x) (Var2Num z)) (domain sin))
+كارتیسی محدد x اور z كے ساتھ مركبہ عدد ایك جیب كا حلقہ اثر كا عنصر نہیں ہے
+
+955: mkProp (notprsubset (interval_oo (Var2Num x) (Var2Num y)) (Var2Set A))
+y كو x سے كھلا وقفہ ایك A كا اصلی sub مجمویہ نہیں ہے
+
+955: mkProp (notsubset (interval_oc (Var2Num y) (Var2Num x)) (interval_oo (Var2Num x) (Var2Num y)))
+x كو y سے بایاں سے كھلا وقفہ ایك y كو x سے كھلا وقفہ كا sub مجمویہ نہیں ہے
+
+955: mkQProp (eq_num (Var2Num x) (Var2Num x))
+كیا x x كے برابر ہے
+
+955: mode (ConsValNum (Var2Num x) (BaseValNum (Var2Num y) (Var2Num z)))
+x , y اور z كا عادہ
+
+955: moment seven (minus nums1_pi (Var2Num x)) (ConsValNum (Var2Num x) (BaseValNum (Var2Num y) (Var2Num z)))
+pi اور x كا فرق پر x , y اور z كا سات واں لمحہ
+
+955: not p
+صیح كہ p نہیں ہے
+
+955: nthdiff six sech
+ہایپربولك قاطی كا چھ واں ایٹریٹڈ مشتق
+
+955: nums1_e
+e
+
+955: nums1_gamma
+گاما
+
+955: nums1_i
+i
+
+955: nums1_pi
+pi
+
+955: nums1_rational (power2 (Var2Num x)) (ceiling (Var2Num y))
+y كا سیلنگ پر كسر x كا مربع
+
+955: or (BaseProp p r)
+p یا r
+
+955: partialdiff two (inverse sec)
+قاطی كا معكوسی تفعل كا دو واں جزوی مشتق
+
+955: plus (BaseValNum (Var2Num x) (Var2Num z))
+x اور z كا مجموعہ
+
+955: power (Var2Num y) (sum_range z (Var2Num x) (Var2Num y) (Var2Num z))
+جب z x تك y سے ریتا ہے z كا مجموعہ كو بڑھایا y
+
+955: power2 (Var2Num z)
+z كا مربع
+
+955: power3 (product_range z (Var2Num x) (At csc (Var2Num x)) (Var2Num z))
+جب z x تك x كا قاطع التمام سے ریتا ہے z كا حاصل ظرب كا مكعب
+
+955: product z (interval_co nums1_gamma (Var2Num y)) (root2 (Var2Num z))
+جب z y كو گاما سے بایاں سے بند وقفہ پر ریتا ہے z كا مربعی اصل كا حاصل ظرب
+
+955: prsubset (interval nums1_pi (Var2Num x)) (domain csc)
+x كو pi سے وقفہ ایك قاطع التمام كا حلقہ اثر كا اصلی sub مجمویہ ہے
+
+955: quotient (Var2Num x) (sum_range z (argument (Var2Num z)) (remainder (Var2Num x) (Var2Num y)) (Var2Num z))
+x اور جب z z كا ارگومنٹ تك y سے تقسیم كیا x كی باقی سے ریتا ہے z كا مجموعہ كا صیح عدد تقسیم
+
+955: range sec
+قاطی كی وسعت
+
+955: real (floor nums1_gamma)
+گاما كا فلور كا حقیقی حصہ
+
+955: remainder (quotient nums1_gamma (Var2Num z)) nums1_pi
+pi سے تقسیم كیا گاما اور z كا صیح عدد تقسیم كی باقی
+
+955: right_compose arccosh exp
+معكوسی ہایپربولك التمام اور سریع كا قایمہ سے تركیب
+
+955: right_inverse (diff tan)
+مماس كا مشتق كا قایمہ سے معكوسی تفعل
+
+955: root (Var2Num x) five
+پانچ واں x كا اصل
+
+955: root2 (real (Var2Num x))
+x كا حقیقی حصہ كا مربعی اصل
+
+955: root3 (power2 (Var2Num x))
+x كا مربع كا مكعبی اصل
+
+955: round nums1_e
+e كا رونڈنگ
+
+955: sdev (BaseValNum (Var2Num y) (Var2Num z))
+y اور z كا معاری انحراف
+
+955: sec
+قاطی
+
+955: sech
+ہایپربولك قاطی
+
+955: set (BaseValNum (Var2Num y) (Var2Num z))
+عنصر y اور z كا مجمویہ
+
+955: set1_in (divide (Var2Num x) nums1_pi) (interval_cc (Var2Num x) (Var2Num z))
+x اور pi كا حاصل ایك z كو x سے بند وقفہ كا عنصر ہے
+
+955: set_C
+مركبہ عدد
+
+955: set_N
+قدرتی عدد
+
+955: set_P
+مثبت مفرد عدد
+
+955: set_Q
+ناطق عدد
+
+955: set_R
+حقیقی عدد
+
+955: set_Z
+صیح عدد عدد
+
+955: set_base (power3 nums1_pi)
+صرف عنصر pi كا مكعب كے ساتھ مجمویہ
+
+955: setdiff (setdiff (Var2Set A) (Var2Set B)) (interval_oo (Var2Num z) (Var2Num y))
+A اور B كا فرق اور y كو z سے كھلا وقفہ كا فرق
+
+955: sin
+جیب
+
+955: sinh
+ہایپربولك جیب
+
+955: size (interval_co (Var2Num y) (Var2Num x))
+x كو y سے بایاں سے بند وقفہ كا سiزع
+
+955: subset (interval_oo (Var2Num y) (Var2Num x)) (interval_oc (Var2Num x) (Var2Num y))
+x كو y سے كھلا وقفہ ایك y كو x سے بایاں سے كھلا وقفہ كا sub مجمویہ ہے
+
+955: suchthat (set_base (Var2Num x)) z r
+تا كہ r صرف عنصر x كے ساتھ مجمویہ میں z
+
+955: sum x (integer_interval (Var2Num z) nums1_pi) (root (Var2Num x) five)
+جب x pi كو z سے صیح عدد وقفہ پر ریتا ہے پانچ واں x كا اصل كا مجموعہ
+
+955: tan
+مماس
+
+955: tanh
+ہایپربولك مماس
+
+955: times (BaseValNum (Var2Num x) (Var2Num y))
+x اور y كا حاصل ظرب
+
+955: transpose (Var2Tensor v)
+v كا ٹرانسپوز
+
+955: true
+صیح
+
+955: trunc (sum_range y (root3 (Var2Num x)) (a_inverse nums1_pi) (Var2Num y))
+جب y x كا مكعبی اصل تك pi كا معكوسی عدد سے ریتا ہے y كا مجموعہ كا چھانٹ
+
+955: unary_minus (ceiling (Var2Num y))
+y كا سیلنگ كی منفی
+
+955: union (BaseValSet (Var2Set A) (Var2Set B))
+A اور B كا اتصال
+
+955: variance (BaseValNum (Var2Num z) (Var2Num x))
+z اور x كی مغایرت
+
+955: vector (BaseValNum (Var2Num y) (Var2Num x))
+Ø¹Ù†ØµØ± y اور x كے ساتھ سمتیہ
+
+955: vector_base (size (Var2Set A))
+صرف Ø¹Ù†ØµØ± A كا سiزع كے ساتھ سمتیہ
+
+955: vector_selector four (Var2Tensor v)
+چار واں v كا Ø¹Ù†ØµØ±
+
+955: vectorproduct (vector_base nums1_gamma) (Var2Tensor v)
+صرف Ø¹Ù†ØµØ± گاما كے ساتھ سمتیہ اور v كا راسی حاصل ظرب
+
+955: xor (BaseProp true false)
+كوی ایك صیح یا غلط
+

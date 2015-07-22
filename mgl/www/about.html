@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>About Minibar</title>
+<link rel=stylesheet type="text/css" href="minibar.css">
+</head>
+
+<body>
+<h1>About Minibar</h1>
+
+<a href="minibar.html">Minibar</a> is an alternative implementation of the
+<a href="http://www.grammaticalframework.org:41296/fridge/">Fridge Poetry web app</a>.
+It doesn't do everything the original Fridge Poetry does (e.g. drag-and-drop is missing),
+so I refer to it as a minibar rather than a full refrigerator :-)
+
+<p>
+Some implementation details:
+
+<ul class=space>
+  <li>It is implemented directly in JavaScipt. It does not use Google Web Toolkit or any big JavaScript libraries.
+  <li>It has been tested and found to work in the following browsers:
+  <ul>
+    <li>On the Mac: Firefox 3.5 &amp; 3.6, Safari 4.0, Opera 10.10 and
+    Google Chrome 4.0.249.49.
+    <li>On Linux: Firefox 3.0.18 & 3.5, Opera 10.10.
+    <li>On the Android Dev Phone: Android Mobile Safari 3.0.4 & 3.1.2
+    and Android Opera Mini 4.2.
+  </ul>
+  It does not seem work in Internet Explorer 7
+  (there are both styling and scripting issues). There seems to be some rendering bugs
+  in Chrome 5.0.342.9 β.
+  <li>The implementation consist of two JavaScript files:
+  <a href="minibar.js">minibar.js</a> and <a href="support.js">support.js</a>
+  The latter is also used in a small web app based on the
+  <a href="http://spraakbanken.gu.se/sal/ws/">SALDO web services</a>.
+  <li>To access the GF web service, it uses the
+  <a href="http://en.wikipedia.org/wiki/JSON#JSONP">JSONP method</a>
+  mentioned in the GF
+  web services paper, which allows the web app to be hosted on a different server
+  from the GF web service. (To demonstrate this, I put the Minibar demo on
+  www.cs.chalmers.se, while the GF server that it calls is on
+  www.grammaticalframework.org.)
+  <li>As an experiment, it does no use the <code>grammars.xml</code> file,
+  but instead calls a little CGI script,
+  <a href="http://www.grammaticalframework.org:41296/grammars/grammars.cgi.txt">grammars.cgi</a>
+  which lists the .pgf in the directory, in JSONP format. (Note: if you want to install
+  this on your own computer,
+  <ul>
+    <li>if you click on the link,
+        the CGI script will be downloaded as <code>grammars.cgi.txt</code>,
+        but it should be called <code>grammars.cgi</code> and stored on the server
+        in the same directory as the grammar files.
+    <li>for CGI scripts to work with lighttpd, <code>"mod_cgi"</code> needs to be included
+    in the definition of <code>server.modules</code> in the
+    <code>lighttpd.conf</code> file.)
+  </ul>
+  <li>[Added 2010-02-16] There is a button for generating random sentences.
+  <li>[Added 2010-02-23] All translations are shown, not just the first one, if there are
+  multiple parses.
+  <li>[Added 2010-02-25] Next to each translation, there is now a little tree icon that
+  you can click on to see a drawing of an abstract syntax tree or a parse tree. If you click
+  on a drawing it collapses back into a tree icon.
+  <li>[Added 2010-04-09] Preparations to support different ways to access the grammar:
+  currently we access a PGF server via JSONP, but I would also like to support AJAX,
+  and local/downloaded JavaScript grammars.
+  <li>[Added 2010-04-19] A text entry field appears when you click in
+  the sentence area (with a dashed border). This allows you to enter words by typing on
+  the keyboard. As you start typing word magnets that don't match what you are typing
+  are removed. When only one magnet remains, you can press enter to complete the word.
+  <li>[Added 2010-04-19] There is a menu for choosing the output language:
+  you can pick "All" to translate to all available languages, or pick one particular
+  language.
+  <li>[Added 2010-04-19] You can pass options to the function <code>start_minibar</code>
+  to customize the user interface. The default is
+  <code>{show_abstract:true,show_trees:true}</code> to show the abstract syntax of parsed
+  sentences, and to show icons that expand to syntax/parse trees next each translation.
+  These features can be turned off by setting the fields to <code>false</code>.
+  <li>[Added 2010-04-30] Grammar menu is omitted if there is only one grammar in
+  the grammar list.
+  <li>[Added 2010-04-30] Fewer hardwired constants and new
+  <code>start_minibar</code> options (server, grammars_url, grammar_list,
+  show_grouped_translations, delete_button_text) to make
+  <code>minibar.js</code> more resuable.)
+</ul>
+
+<hr>
+<small class=modtime>
+<!-- hhmts start --> Last modified: Fri Apr 30 16:47:43 CEST 2010 <!-- hhmts end -->
+</small>
+<address>
+<a href="http://www.cs.chalmers.se/~hallgren/">TH</a>
+<img src="http://www.altocumulus.org/~hallgren/online.cgi?icon" alt=""></address>
+</address>
+</body> </html>

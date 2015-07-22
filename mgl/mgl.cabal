@@ -1,0 +1,7 @@
+name:     mgl
+version:  0.1
+
+executable mgl
+  hs-source-dirs:  src
+  main-is:         Main.hs
+

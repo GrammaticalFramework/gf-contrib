@@ -1,0 +1,5 @@
+export CLASSPATH='@classpath@'
+export JAVA_OPTS='@java_opts@'
+bin/wpserver maybe-start
+scala -Yrepl-sync -i pre.scala
+bin/wpserver maybe-stop

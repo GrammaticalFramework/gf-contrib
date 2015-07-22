@@ -1,0 +1,30 @@
+--# -path=present:../abstract:../resources:../latex
+
+concrete OpenMathEng of OpenMath =
+VariablesEng,
+LiteralsEng,
+PlanGeo1Eng,
+Arith1Eng,
+Arith2Eng,
+Calculus1Eng,
+Complex1Eng,
+Fns1Eng,
+--Fns2Eng,
+Integer1Eng,
+Integer2Eng,
+Interval1Eng,
+Limit1Eng,
+LinAlg1Eng,
+LinAlg2Eng,
+Logic1Eng,
+MinMax1Eng,
+Nums1Eng,
+Relation1Eng,
+Rounding1Eng,
+Set1Eng,
+SetName1Eng,
+Transc1Eng,
+VecCalc1Eng,
+Quant1Eng,
+SData1Eng
+** { flags language = en_US; } ;

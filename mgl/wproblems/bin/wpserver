@@ -1,0 +1,46 @@
+#!/bin/bash
+. bin/setvars
+
+pgrep () {
+    ps -axo command| grep -i "$1"| grep -vq grep
+}
+
+start_gf () {
+  export GF_RESTRICTED=yes
+  nohup gf --server --document-root . &
+}
+
+stop_gf () {
+  echo "Stopping server"
+  killall gf
+}
+
+case "$1" in
+    start)
+      start_gf
+    ;;
+    stop)
+      stop_gf
+    ;;
+    status)
+      pgrep "gf --server"
+      if [ $? == 0 ]; then
+            echo "It is running"; else
+            echo "It is stopped"; fi
+    ;;
+    maybe-start)
+      pgrep "gf --server"
+      if [ $? == 0 ]; then
+        echo "gf server already running"; else
+        start_gf; fi
+    ;;
+    maybe-stop)
+      pgrep "gf --server"
+      if [ $? == 0 ]; then
+        stop_gf; else
+        echo "gf server already stopped"; fi
+    ;;
+    *)
+        echo "Use: $0 {start|stop}"
+    ;;
+esac

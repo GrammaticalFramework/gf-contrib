@@ -1,0 +1,8 @@
+The Mathematical Grammar Library for OpenMath
+================================
+J. Saludes, A. Ranta, O. Caprotti
+
+We release under LGPL 3 the Mathematical Grammar Library (MGL) developed during the WebALT project between 2006-2008. These libraries implement OpenMath as a GF interlingua for communicating mathematics in natural language in several European languages. GF is the grammatical framework multilingual translation system, where meaning-preserving translation is automatically provided as a composition of parsing and generation via an
+abstract syntax (in this case OpenMath). More precisely, GF implements a framework for defining abstract syntaxes and additionally provides RGL, the GF Resource Grammar Library, implementing the basic linguistic details of languages: inflectional morphology and syntactic combination functions.  The MGL use OpenMath to provide in GF the resources to "talk about maths" and have the potential to be usable for designing, for instance, mathematical interfaces in natural language.
+
+

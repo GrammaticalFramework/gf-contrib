@@ -1,0 +1,115 @@
+body {   
+      background: url("content-gradient.png") repeat-x scroll 0 1px #FFFCFB;
+}
+
+h1, h2, h3, small, th { font-family: sans-serif; }
+
+th, td { vertical-align: baseline; text-align: left; }
+
+div#minibar {
+	    margin: 50px;
+            width: 800;
+            align: center;
+}
+
+div.sitename {
+	    color:#6D2427;
+	    line-height:125%;
+	    font-family:"Myriad Pro","Myriad Web Pro Regular","Lucida Grande",Geneva,Trebuchet MS,sans-serif;
+	    font-size:200%;			
+
+	     }
+div#languages {
+	      margin: 15px;
+	      }
+div#surface {
+    min-height: 3ex;
+    margin: 5px;
+    padding: 5px;
+    border: 3px dashed #e0e0e0;
+}
+
+div#menubar {
+	    background: #6D2427;
+	    color: #FDF8F5;
+	    text-indent: 5px;
+}
+
+div#words {
+    min-height: 3ex;
+    margin: 5px;
+    padding: 6px;
+    border: 3px solid #e0e0e0;
+}
+
+div.word, span.word, div#words div {
+    display: inline-block;
+    font-family: sans-serif;
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px;
+    margin: 3px;
+}
+
+.invalid { color: red; }
+
+div.modtime { float: right; }
+.modtime { color: #444; white-space: nowrap; }
+
+ul.space>li { margin-top: 0.5ex; }
+
+div#saldospel input[type=button] { font-size: 100%; }
+
+div#saldospel input.correct { color: green; }
+div#saldospel input.incorrect { color: red; }
+
+input[type=text] { width: 5em; }
+
+input.cmd{
+	background:url(img/button.gif);
+	color:#555555;
+	font-weight:bold;
+	height:30px;
+	line-height:29px;
+	margin-bottom:14px;
+        margin-right:14px;
+	text-decoration:none;
+	width:191px;
+}
+
+select {
+	background:url(img/button.gif);
+        color:#6D2427;
+	font-weight:bold;
+	height:30px;
+	line-height:49px;
+        margin-top: 14px;
+	margin-bottom:14px;
+        margin-right:14px;
+	align:top;
+	width:100px;
+       font-size: 100%;
+}
+
+option {
+       margin:0 4px 0 0;
+       padding:0 0 0 10px;
+       color: #FDF8F5;
+       font-size: 100%;
+}
+
+a,
+button{
+	background: url("img/button.gif") repeat scroll 0 0 transparent; 
+	color:#555555;
+/*        font-size: 80%; */
+	padding: 5px;
+	border:10px;
+	height:30px;
+	margin:4px;
+        padding:4px;
+	width:191px;
+	text-decoration: none;
+	font-weight:bold;
+}
+

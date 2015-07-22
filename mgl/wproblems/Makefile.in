@@ -1,0 +1,47 @@
+CLASSPATH = '@classpath@'
+SRC_DIR = src
+SCALA_DIR = $(SRC_DIR)/scala
+PROLOG_DIR = $(SRC_DIR)/prolog
+GF_DIR = $(SRC_DIR)/gf
+TARGET_DIR = target
+
+FSC = fsc
+SCALA_SRC = $(SCALA_DIR)/gf.scala  $(SCALA_DIR)/prolog.scala  $(SCALA_DIR)/dsl.scala  
+LANGS =Eng Swe Cat Spa
+GRAMMAR =Dialog
+GRAMMAR_DIR =grammars
+PGF_OPTIONS =-path=.:present -make
+PGF_FILE =$(GRAMMAR_DIR)/$(GRAMMAR).pgf
+
+all: model $(PGF_FILE)
+
+unpack: 
+	tar zxf lib.tgz
+
+$(PGF_FILE): $(GF_DIR)/*.gf
+	find $(GF_DIR) -name "$(GRAMMAR)*.gf" | xargs gf $(PGF_OPTIONS)
+	mkdir -p $(GRAMMAR_DIR)
+	mv $(GRAMMAR).pgf $(GRAMMAR_DIR)
+
+compilesc: $(SCALA_SRC:.scala=.class)
+
+%.class: %.scala
+	@echo "Compiling $*.scala."
+	@$(FSC) -cp $(CLASSPATH) $*.scala -d .
+
+model:  compilesc
+	bin/wpserver maybe-stop
+
+distclean:
+	rm -f configure
+	rm -f config.*
+	make clean
+
+clean:
+	@bin/wpserver maybe-stop
+	@$(FSC) -shutdown
+	rm -rf $(GRAMMAR_DIR)
+	rm -rf wp/ 
+	rm -f *.gfo
+
+.PHONY: all clean
