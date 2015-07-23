@@ -1,0 +1,4 @@
+rf -file=src/LexiconHin.gf | ps -env=quotes -to_devanagari | wf -file=LexiconHin.gf
+rf -file=src/MathHin.gf | ps -env=quotes -to_devanagari | wf -file=MathHin.gf
+rf -file=src/MathHin0.gf | ps -env=quotes -to_devanagari | wf -file=MathHin0.gf
+

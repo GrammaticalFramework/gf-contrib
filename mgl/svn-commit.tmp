@@ -1,0 +1,8 @@
+Make it compilable in gf-3.7.
+--This line, and those below, will be ignored--
+
+M    swedish/LexiconSwe.gf
+M    Makefile
+M    italian/LexiconIta.gf
+M    bulgarian/LexiconBul.gf
+M    german/LexiconGer.gf

@@ -1,0 +1,367 @@
+BEGIN spanish
+calcula el factorial del número octal 11.
+' 362880 '
+es 362880 .
+END
+BEGIN english
+let x be 4 .
+
+
+compute the sum of x and 5.
+' 9 '
+it is 9 .
+compute the sum of it and 5.
+' 14 '
+it is 14.
+END
+BEGIN
+approximate the truncation of the remainder of the minimal element of the integer interval from 3 to 6 divided by 2.
+1.0
+it is 1.
+END
+BEGIN
+compute the product of the octal number 12 and the binary number 100.
+' 40 '
+it is 40.
+END
+BEGIN
+compute the greatest common divisor of x and the product of x and y.
+' x '
+it is x.
+compute the greatest common divisor of x and the sum of x and y.
+' 1 '
+it is 1.
+END
+BEGIN
+compute the real part of the derivative of the exponential at pi.
+' e^pi '
+it is e raised to pi .
+compute the imaginary part of the derivative of the exponential at pi .
+' 0 '
+it is 0 .
+END
+BEGIN
+compute the second iterated derivative of the cosine at pi.
+' 1 '
+it is 1 .
+END
+BEGIN
+compute the sum of 1 , 2 , 3 , 4 and 5.
+' 15 '
+it is 15 .
+END
+BEGIN
+compute the summation of x when x ranges from 1 to 100.
+' 5050 '
+it is 5050 .
+END
+BEGIN
+compute the integral of the cosine on the open interval from 0 to the quotient of pi and 2.
+' 1 '
+it is 1 .
+END
+BEGIN
+compute the summation of 1 over the factorial of x when x ranges from 0 to 5.
+' 163/60 '
+it is the fraction 163 over 60.
+approximate it.
+2.7166666666666663
+it is 2.7166666666666663.
+is it approximately equal to e?
+(True, 3)
+yes . up to three decimal places.
+END
+BEGIN
+let A be the open interval by the right from 0 to 4 .
+
+ 
+let B be the closed interval from 3 to 5 .
+
+ 
+let C be the intersection of A and B .
+
+ 
+let D be the open interval from 2 to 4 .
+
+ 
+unite C with D .
+'] 2 , 4 ['
+it is the open interval from 2 to 4 .
+compute the intersection of A and D .
+'] 2 , 4 ['
+it is the open interval from 2 to 4 .
+END
+BEGIN
+compute the factorial of 4.
+' 24 '
+it is 24 .
+add it to the greatest common divisor of 6 and 8 .
+' 26 '
+it is 26 .
+END
+BEGIN
+compute Gamma.
+' euler_gamma '
+it is Gamma.
+approximate it.
+0.5772156649015329
+it is 0.5772156649015329 .
+approximate Gamma to six digits.
+0.577216
+it is 0.577216.
+multiply it by 2.
+' 2*euler_gamma '
+it is 2 times Gamma.
+END
+BEGIN
+compute the range of the sixth iterated derivative of the sine .
+'[ -1 , 1 ]'
+it is the closed interval from minus 1 to 1 .
+compute the domain of the sixth iterated derivative of the cosine .
+'] -Infinity , +Infinity ['
+it is the open interval from minus infinity to infinity .
+compute the domain of the inverse function of the hyperbolic tangent .
+'] -1 , 1 ['
+it is the open interval from minus 1 to 1 .
+END
+BEGIN
+compute the natural logarithm of e.
+' 1 '
+it is 1 .
+END
+BEGIN
+let A be the range of the exponential.
+
+ 
+let B be the closed interval from minus 3 to 1.
+
+
+compute the intersection of A and B .
+'] 0 , 1 ]'
+it is the open interval by the left from 0 to 1 .
+let C be the empty set.
+
+ 
+compute the union of B and C.
+'[ -3 , 1 ]'
+it is the closed interval from minus 3 to 1 .
+END
+BEGIN
+let A be the set with only element 1.
+
+ 
+let B be the set with elements pi and minus 4.
+
+ 
+compute the union of A and B.
+'{pi , 1 , -4}'
+it is the set with elements pi , 1 and minus 4.
+END
+BEGIN
+compute the derivative of the sine.
+' X |--> cos(X) '
+it is the cosine.
+compute the primitive of it.
+' X |--> sin(X) '
+it is the sine.
+END
+BEGIN
+let f be the arctangent.
+
+
+compute the domain of f.
+'] -Infinity , +Infinity ['
+it is the open interval from minus infinity to infinity .
+END
+BEGIN
+compute the left-composition of the arcsine and the tangent.
+' X |--> arcsin(tan(X)) '
+it is the function mapping X to the arcsine of the tangent of X.
+END
+BEGIN
+let A be the open interval from minus 1 to 0.
+
+
+let B be the open interval from 0 to 1.
+
+
+compute the intersection of A and B.
+'{}'
+it is the empty set .
+END
+BEGIN
+compute the left-composition of the sine and the cosine.
+' X |--> sin(cos(X)) '
+it is the function mapping X to the sine of the cosine of X .
+END
+BEGIN
+let A be the open interval by the left from 0 to 4 .
+
+ 
+let B be the closed interval from 4 to 5 .
+
+ 
+compute the intersection of A and B .
+'{4}'
+it is the set with only element 4 .
+END
+BEGIN
+let A be the open interval by the right from 0 to 4.
+
+
+let B be the closed interval from 3 to 5.
+
+
+let C be the intersection of A and B.
+
+
+let D be the union of A and B.
+
+
+compute the difference of D and C.
+'{ [ 4 , 5 ] , [ 0 , 3 [ }'
+it is the union of the closed interval from 4 to 5 and the closed interval by the left from 0 to 3 .
+let D be the set with elements 1,2,3 and 4.
+
+
+compute the intersection of A and B.
+'[ 3 , 4 ['
+it is the closed interval by the left from 3 to 4 .
+unite it with D.
+'{ [ 3 , 4 ] , {1 , 2} }'
+it is the union of the closed interval from 3 to 4 and the set with elements 1 and 2 .
+compute the union of A and D.
+'{ [ 0 , 4 ] , {2} }'
+it is the union of the open interval by the left from 0 to 4 and the set with only element 2 .
+compute the difference of D and the set with only element 4. 
+'{1 , 2 , 3}'
+it is the set with elements 1 , 2 and 3 .
+END
+BEGIN
+let A be the open interval by the right from 0 to 4.
+
+
+let B be the set with only element 1.
+
+
+unite A with B.
+'[ 0 , 4 ['
+it is the closed interval by the left from 0 to 4 .
+let C be the set with only element 5.
+
+
+unite A with C.
+'{ [ 0 , 4 [ , {5} }'
+it is the union of the closed interval by the left from 0 to 4 and the set with only element 5 .
+let D be the set with only element 4.
+
+
+unite A with D.
+'[ 0 , 4 ]'
+it is the closed interval from 0 to 4 .
+END
+BEGIN
+let A be the closed interval from 0 to 1.
+
+
+let B be the open interval from 2 to 3.
+
+
+let C be the open interval from 3.1 to pi.
+
+
+let D be the set with elements 0, 2, pi, 4 and 5.
+
+
+compute the union of A, B, C and D.
+'{ [ 0 , 1 ] , ] 3.10000000000000 , pi ] , [ 2 , 3 [ , {4 , 5} }'
+it is the union of the closed interval from 0 to 1 , the open interval by the left from 3.1 to pi , the closed interval by the left from 2 to 3 and the set with elements 4 and 5.
+END
+BEGIN
+let x be 4.
+
+
+begin the block test1.
+'BEGIN  test1 '
+now we begin the block test1.
+let x be 0.
+
+
+compute x plus 1.
+' 1 '
+it is 1.
+end the block test1.
+'END  test1 '
+now we end the block test1.
+compute x plus 1.
+' 5 '
+it is 5.
+END
+BEGIN
+compute 10 raised to 1.
+' 10 '
+it is 10.
+let x be it plus 1.
+
+
+begin the block test1.
+'BEGIN  test1 '
+now we begin the block test1 .
+compute 10 raised to 2.
+' 100 '
+it is 100.
+let x be it plus x.
+
+
+begin the block test2.
+'BEGIN  test2 '
+now we begin the block test2 .
+compute 10 raised to 3.
+' 1000 '
+it is 1000.
+let x be x plus it.
+
+ 
+compute x.
+' 1111 '
+it is 1111 .
+end the block test2.
+'END  test2 '
+now we end the block test2 .
+compute x.
+' 111 '
+it is 111.
+end the block test1.
+'END  test1 '
+now we end the block test1 .
+compute x.
+' 11 '
+it is 11.
+END
+BEGIN
+begin the block fermat.
+'BEGIN  fermat '
+now we begin the block fermat .
+let x be 4.
+
+
+begin the block fermat2.
+'BEGIN  fermat2 '
+now we begin the block fermat2 .
+let x be 5.
+
+
+compute x plus 1.
+' 6 '
+it is 6 .
+end the block fermat2.
+'END  fermat2 '
+now we end the block fermat2 .
+compute x plus 1.
+' 5 '
+it is 5 .
+end the block fermat.
+'END  fermat '
+now we end the block fermat .
+END
+

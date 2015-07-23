@@ -1,0 +1,58 @@
+#!/usr/bin/expect
+set timeout 1
+
+set right "it is right ."
+set notEntailed "it isn't entailed ."
+
+
+proc getHint {hint} {
+	expect "next?"
+	send "help\n"
+	expect { 
+		$hint {}
+		timeout { exit 1}
+	}
+}
+
+proc continueWith {answer {result [$right]}} {
+	send "$answer\n"
+	expect {
+		$result {}
+		timeout { exit 1}
+	}
+}
+
+proc ckDefine {cl v {ret [$right]}} { 
+	getHint "you must assign a variable to the $cl that John has ."
+	continueWith "let $v denote the $cl that John has" $ret
+}
+
+proc ckPartite {cl amount {ret [$right]}} {
+	getHint "you must split the $cl that John has ."
+	continueWith "the $cl that John has are $amount" $ret
+}
+
+spawn "./model" "examples/fruit.pl" 
+
+expect "..."
+expect ".*John has seven fruit ."
+expect "John has two apples , some oranges and three bananas ."
+expect "how many oranges does John have ?.*"
+
+ckDefine oranges x
+ckPartite fruit "the oranges that John has , the bananas that John has and the apples that John has"
+
+getHint "you must write an equation which says that the fruit that John has are the bananas that John has , the apples that John has and the oranges that John has ."
+
+proc xey {n m} { return "$n is equal to $m" }
+proc xpxynen {a b n m} { return "$a plus $b plus $n is equal to $m" }
+
+continueWith [xpxynen y 2 3 7] "it doesn't follow ."
+continueWith [xpxynen x 2 3 8] "it isn't compatible with the fruit that John has ."
+continueWith [xpxynen x 2 3 7] right
+
+getHint "the oranges that John has are two oranges ."
+
+getHint right
+
+interact

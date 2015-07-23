@@ -1,0 +1,30 @@
+Patching WebALT library to be forward compatible with resource library changes.
+Aarne Ranta, 13 September 2008
+
+
+Main idea: Use the user API only, not the linguistic core grammar.
+
+This includes:
+- Syntax
+- Symbolic
+- Paradigms, Besch, Irreg
+
+Do *not* use
+- Lang, Grammar, Noun, Verb,...
+- Mathematical (to become obsolete in RG 1.5, anyway)
+- Morpho, Res, Diff,...
+
+
+The current refactored version will work with RG 1.5 out of the box.
+
+What was not done in the revision:
+- "greater than or equal to" -- wait for next RG
+- variant orders of subjunction
+- Finnish symbol inflection -- wait for patch
+
+
+What was done as a by-product:
+- WebaltRules eliminated
+- Most contents of Math?? moved to MathForms
+
+

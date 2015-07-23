@@ -1,0 +1,58 @@
+body {
+    background: #ccc url("brushed-metal.png");
+}
+
+h1, h2, h3, small, th { font-family: sans-serif; }
+
+th, td { vertical-align: baseline; text-align: left; }
+
+div#surface {
+    min-height: 3ex;
+    margin: 5px;
+    padding: 5px;
+    border: 3px dashed #e0e0e0;
+}
+
+div#latex {
+	min-height: 3ex;
+	margin: 5px;
+	border: 3px solid #e0e000;
+	background-color: #e0e0d0;
+}
+
+div#words {
+    min-height: 3ex;
+    margin: 5px;
+    padding: 6px;
+    border: 3px solid #e0e0e0;
+}
+
+div.word, span.word, div#words div, div#words input[type=button] {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 100%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px;
+    margin: 3px;
+}
+
+.invalid { color: red; }
+
+div.modtime { float: right; }
+.modtime { color: #444; white-space: nowrap; }
+
+ul.space>li { margin-top: 0.75ex; }
+
+div#saldospel input[type=button] { font-size: 100%; }
+
+div#saldospel input.correct { color: green; }
+div#saldospel input.incorrect { color: red; }
+
+#surface input[type=text] { width: 5em; }
+
+.feedback textarea { width: 95%; }
+
+span.field { background-color: #eee; }
+
+pre.feedbacklist { background: white }
