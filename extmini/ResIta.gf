@@ -84,10 +84,10 @@ oper
   auxVerb : Aux -> Verb = \a -> case a of {
     Avere => 
       mkVerb "avere" "ho" "hai" "ha" "abbiamo" "avete" "hanno" 
-             "avevo" "avrò" "abbia" "avessi" "avuto" Avere ;
+             "avevo" "avrÃ²" "abbia" "avessi" "avuto" Avere ;
     Essere => 
-      mkVerb "essere" "sono" "sei" "è" "siamo" "siete" "sono" 
-             "ero" "sarò" "sia" "fossi" "stato" Essere ---- eravamo
+      mkVerb "essere" "sono" "sei" "Ã¨" "siamo" "siete" "sono" 
+             "ero" "sarÃ²" "sia" "fossi" "stato" Essere ---- eravamo
     } ;
 
   agrPart : Verb -> Agr -> ClitAgr -> Str = \v,a,c -> case v.aux of {
@@ -204,7 +204,7 @@ oper
 
           VFut Sg Per1 => amero ;
           VFut Sg Per2 => amer + "ai" ;
-          VFut Sg Per3 => amer + "à" ;
+          VFut Sg Per3 => amer + "Ã " ;
           VFut Pl Per1 => amer + "emo" ;
           VFut Pl Per2 => amer + "ete" ;
           VFut Pl Per3 => amer + "ono" ;
@@ -217,15 +217,15 @@ oper
   regVerb : Str -> Verb = \amare -> case amare of {
     am  + "are" => mkVerb amare (am+"o") (am+"i") (am+"a") 
                      (am+"iamo") (am+"ate") (am+"ano") 
-                     (am +"avo") (am+"erò") (am+"i") (am+"assi") 
+                     (am +"avo") (am+"erÃ²") (am+"i") (am+"assi") 
                      (am+"ato") Avere ;
     tem + "ere" => mkVerb amare (tem+"o") (tem+"i") (tem+"e") 
                      (tem+"iamo") (tem+"ete") (tem+"ono") 
-                     (tem +"evo") (tem+"erò") (tem+"a") (tem+"essi") 
+                     (tem +"evo") (tem+"erÃ²") (tem+"a") (tem+"essi") 
                      (tem+"uto") Avere ;
     fin + "ire" => mkVerb amare (fin+"isco") (fin+"isci") (fin+"isce") 
                      (fin+"iamo") (fin+"ite") (fin+"iscono") 
-                     (fin +"ivo") (fin+"irò") (fin+"isca") (fin+"issi") 
+                     (fin +"ivo") (fin+"irÃ²") (fin+"isca") (fin+"issi") 
                      (fin+"ito") Avere
     } ; 
 
