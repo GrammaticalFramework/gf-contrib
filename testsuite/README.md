@@ -24,4 +24,4 @@ ChunkPhr (OneChunk (S_Chunk (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he
 
 ## german-disco.txt
 
-Extra interesting sentences from TIGER
+Sentences extracted from the TIGER, see http://cl.indiana.edu/~skuebler/papers/disco.pdf
