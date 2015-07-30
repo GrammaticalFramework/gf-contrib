@@ -1,5 +1,0 @@
---the woman is green
-UseCl Pres Pos (PredVP (DetCN the_Det (UseN woman_N)) (CompAP (UseA green_A)))
-
---I have arrived
-UseCl Perf Pos (PredVP i_NP (UseV arrive_V))
