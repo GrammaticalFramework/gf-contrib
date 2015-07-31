@@ -48,13 +48,12 @@ The `diff` command will show that the linearisation for `warm_A` in the output (
 ### miniresource.gfs
 
 This file contains constructions implemented by the miniresource.
-examples:
 
---the woman is green
-UseCl Pres Pos (PredVP (DetCN the_Det (UseN woman_N)) (CompAP (UseA green_A)))
+Examples:
 
---I have arrived
-UseCl Perf Pos (PredVP i_NP (UseV arrive_V))
+ * gt UseCl ? ? (PredVP i_NP (UseV walk_V))
+ * UseCl Pres Pos (PredVP (DetCN the_Det (UseN woman_N)) (CompAP (UseA green_A)))
+
 
 
 ## resource.gfs and resource.gfs.gold
@@ -62,12 +61,15 @@ UseCl Perf Pos (PredVP i_NP (UseV arrive_V))
  * Examples from GF/testsuite/libraries, with gold standard in English, Swedish and Bulgarian.
 
 
-## wide-coverage.txt
+## wide-coverage.gfs
 
 --he transplanted the cell by publishing the document
-ChunkPhr (OneChunk (S_Chunk (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplV2 transplant_V2 (DetCN (DetQuant DefArt NumSg) (UseN cell_N))) (ByVP (ComplV2 publish_V2 (DetCN (DetQuant DefArt NumSg) (UseN document_N)))))))))
+
+```ChunkPhr (OneChunk (S_Chunk (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplV2 transplant_V2 (DetCN (DetQuant DefArt NumSg) (UseN cell_N))) (ByVP (ComplV2 publish_V2 (DetCN (DetQuant DefArt NumSg) (UseN document_N)))))))))```
 
 
 ## german-disco.txt
 
-Sentences extracted from the TIGER, see http://cl.indiana.edu/~skuebler/papers/disco.pdf
+Discontinuous sentences from the TIGER treebank, collected by Wolfgang Meier et al. See http://cl.indiana.edu/~skuebler/papers/disco.pdf
+
+Currently there are no GF parses or gold standard for this, just the sentences extracted.
