@@ -1,0 +1,5 @@
+i TranslateEng.gfo
+-- add languages of your choice
+
+--he transplanted the cell by publishing the document
+l -treebank ChunkPhr (OneChunk (S_Chunk (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (AdvVP (ComplV2 transplant_V2 (DetCN (DetQuant DefArt NumSg) (UseN cell_N))) (ByVP (ComplV2 publish_V2 (DetCN (DetQuant DefArt NumSg) (UseN document_N)))))))))

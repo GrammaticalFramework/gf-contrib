@@ -1,0 +1,684 @@
+Lang> Lang: PositA warm_A
+LangBul: топъл
+LangEng: warm
+LangSwe: varm ERR
+Lang> Lang: ComparA warm_A (UsePron i_Pron)
+LangBul: по - топъл от мен
+LangEng: warmer than I
+LangSwe: varmare än jag
+Lang> Lang: ComplA2 married_A2 (UsePron she_Pron)
+LangBul: женен за нея
+LangEng: married to her
+LangSwe: gift med henne
+Lang> Lang: ComplA2 married_A2 (DetNP (DetQuant (PossPron she_Pron) NumPl))
+LangBul: женен за нейните
+LangEng: married to hers
+LangSwe: gift med hennes
+Lang> Lang: ComplA2 married_A2 (DetNP (DetQuant (PossPron she_Pron) NumSg))
+LangBul: женен за нейното
+LangEng: married to hers
+LangSwe: gift med hennes
+Lang> Lang: ReflA2 married_A2
+LangBul: женен за себе си
+LangEng: married to myself
+LangSwe: gift med sig
+Lang> Lang: SentAP (PositA good_A) (EmbedS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseComp (CompAdv here_Adv)))))
+LangBul: добър , че тя е тук
+LangEng: good that she is here
+LangSwe: god att hon är här
+Lang> Lang: AdAP very_AdA (PositA warm_A)
+LangBul: много топъл
+LangEng: very warm
+LangSwe: mycket varm
+Lang> Lang: PositAdvAdj warm_A
+LangBul: топло
+LangEng: warmly
+LangSwe: varmt
+Lang> Lang: PrepNP in_Prep (DetCN (DetQuant DefArt NumSg) (UseN house_N))
+LangBul: в къщата
+LangEng: in the house
+LangSwe: i huset
+Lang> Lang: ComparAdvAdj more_CAdv warm_A (UsePN john_PN)
+LangBul: по - топло от Джон
+LangEng: more warmly than John
+LangSwe: mer varmt än Johan
+Lang> Lang: ComparAdvAdjS more_CAdv warm_A (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (UseV run_V)))
+LangBul: по - топло от колкото той бяга
+LangEng: more warmly than he runs
+LangSwe: mer varmt än han springer
+Lang> Lang: SubjS when_Subj (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV sleep_V)))
+LangBul: когато тя спи
+LangEng: when she sleeps
+LangSwe: när hon sover
+Lang> Lang: AdNum (AdnCAdv more_CAdv) (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))
+LangBul: повече от петима
+LangEng: more than five
+LangSwe: mer än fem
+Lang> Lang: ConjS and_Conj (BaseS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (UseV walk_V))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV run_V))))
+LangBul: той ходи и тя бяга
+LangEng: he walks and she runs
+LangSwe: han går och hon springer
+Lang> Lang: ConjAP and_Conj (BaseAP (PositA cold_A) (PositA warm_A))
+LangBul: студен и топъл
+LangEng: cold and warm
+LangSwe: kall och varm
+Lang> Lang: ConjNP or_Conj (BaseNP (UsePron she_Pron) (UsePron we_Pron))
+LangBul: тя или ние
+LangEng: she or we
+LangSwe: hon eller vi
+Lang> Lang: ConjAdv or_Conj (BaseAdv here_Adv there_Adv)
+LangBul: тук или там
+LangEng: here or there
+LangSwe: här eller där
+Lang> Lang: ConjS either7or_DConj (BaseS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (UseV walk_V))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV run_V))))
+LangBul: или той ходи или тя бяга
+LangEng: either he walks or she runs
+LangSwe: antingen går han eller hon springer
+Lang> Lang: ConjAP both7and_DConj (BaseAP (PositA warm_A) (PositA cold_A))
+LangBul: и топъл и студен
+LangEng: both warm and cold
+LangSwe: både varm och kall
+Lang> Lang: ConjNP either7or_DConj (BaseNP (UsePron he_Pron) (UsePron she_Pron))
+LangBul: или той или тя
+LangEng: either he or she
+LangSwe: antingen han eller hon
+Lang> Lang: ConjAdv both7and_DConj (BaseAdv here_Adv there_Adv)
+LangBul: и тук и там
+LangEng: both here and there
+LangSwe: både här och där
+Lang> Lang: ImpersCl (UseComp (CompAP (PositA hot_A)))
+LangBul: е горещо
+LangEng: it is hot
+LangSwe: det är hett
+Lang> Lang: GenericCl (UseV sleep_V)
+LangBul: някой спи
+LangEng: one sleeps
+LangSwe: man sover
+Lang> Lang: CleftNP (UsePron i_Pron) (UseRCl (TTAnt TPast ASimul) PPos (RelVP IdRP (ComplSlash (SlashV2a do_V2) (UsePron it_Pron))))
+LangBul: аз съм този който направих него
+LangEng: it is I who did it
+LangSwe: det är jag som gjorde det
+Lang> Lang: CleftAdv here_Adv (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (UseV sleep_V)))
+LangBul: тук тя спа
+LangEng: it is here that she slept
+LangSwe: det är här hon sov
+Lang> Lang: ExistNP (DetCN (DetQuant IndefArt NumSg) (UseN house_N))
+LangBul: има къща
+LangEng: there is a house
+LangSwe: det finns ett hus
+Lang> Lang: ExistIP (IdetCN (IdetQuant which_IQuant NumPl) (UseN house_N))
+LangBul: кои къщи са тук
+LangEng: which houses are there
+LangSwe: vilka hus finns det
+Lang> Lang: PredVP (UsePron i_Pron) (ProgrVP (UseV sleep_V))
+LangBul: аз спя
+LangEng: I am sleeping
+LangSwe: jag håller på att sova
+Lang> Lang: ImpPl1 (UseV go_V)
+LangBul: нека да отидем
+LangEng: let's go
+LangSwe: låt oss gå
+Lang> Lang: DetCN (DetQuant DefArt NumSg) (UseN man_N)
+LangBul: мъжът
+LangEng: the man
+LangSwe: mannen
+Lang> Lang: UsePN john_PN
+LangBul: Джон
+LangEng: John
+LangSwe: Johan
+Lang> Lang: UsePron he_Pron
+LangBul: той
+LangEng: he
+LangSwe: han
+Lang> Lang: PredetNP only_Predet (DetCN (DetQuant DefArt NumSg) (UseN man_N))
+LangBul: само мъжът
+LangEng: only the man
+LangSwe: bara mannen
+Lang> Lang: PPartNP (DetCN (DetQuant DefArt NumSg) (UseN man_N)) see_V2
+LangBul: мъжът видян
+LangEng: the man seen
+LangSwe: mannen sedd
+Lang> Lang: AdvNP (UsePN paris_PN) today_Adv
+LangBul: Париж днес
+LangEng: Paris today
+LangSwe: Paris idag
+Lang> Lang: RelNP (UsePN paris_PN) (UseRCl (TTAnt TPres ASimul) PPos (RelVP IdRP (UseComp (CompAdv here_Adv))))
+LangBul: Париж който е тук
+LangEng: Paris , which is here
+LangSwe: Paris , som är här
+Lang> Lang: DetNP (DetQuant this_Quant (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))))
+LangBul: тези пет
+LangEng: these five
+LangSwe: de här fem
+Lang> Lang: DetCN (DetQuantOrd this_Quant (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))) (OrdSuperl good_A)) (UseN man_N)
+LangBul: тези петима най - добри мъже
+LangEng: these five best men
+LangSwe: de här fem bästa männen
+Lang> Lang: DetCN (DetQuant this_Quant (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))))) (UseN man_N)
+LangBul: тези петима мъже
+LangEng: these five men
+LangSwe: de här fem männen
+Lang> Lang: DetCN (DetQuant this_Quant NumPl) (UseN man_N)
+LangBul: тези мъже
+LangEng: these men
+LangSwe: de här männen
+Lang> Lang: DetCN (DetQuant this_Quant NumSg) (UseN man_N)
+LangBul: този мъж
+LangEng: this man
+LangSwe: den här mannen
+Lang> Lang: NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))
+LangBul: петима
+LangEng: five
+LangSwe: fem
+Lang> Lang: NumCard (NumDigits (IIDig D_5 (IDig D_1)))
+LangBul: 5 &+ 1
+LangEng: 5 &+ 1
+LangSwe: 5 &+ 1
+Lang> Lang: NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot1plus n5 pot01)))))
+LangBul: петдесет и един
+LangEng: fifty &+ - &+ one
+LangSwe: femtio &+ en
+Lang> Lang: NumCard (AdNum almost_AdN (NumDigits (IIDig D_5 (IDig D_1))))
+LangBul: почти 5 &+ 1
+LangEng: almost 5 &+ 1
+LangSwe: nästan 5 &+ 1
+Lang> Lang: OrdDigits (IIDig D_5 (IDig D_1))
+LangBul: 5 &+ 1ви
+LangEng: 5 &+ 1st
+LangSwe: 5 &+ 1:a
+Lang> Lang: OrdNumeral (num (pot2as3 (pot1as2 (pot1plus n5 pot01))))
+LangBul: петдесет и първи
+LangEng: fifty &+ - &+ first
+LangSwe: femtio &+ första
+Lang> Lang: OrdSuperl warm_A
+LangBul: най - топъл
+LangEng: warmest
+LangSwe: varmaste
+Lang> Lang: DetCN (DetQuantOrd DefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))) (OrdSuperl good_A)) (UseN man_N)
+LangBul: петимата най - добри мъже
+LangEng: the five best men
+LangSwe: de fem bästa männen
+Lang> Lang: DetCN (DetQuant DefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))))) (UseN man_N)
+LangBul: петимата мъже
+LangEng: the five men
+LangSwe: de fem männen
+Lang> Lang: DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 pot01))))))) (UseN man_N)
+LangBul: един мъж
+LangEng: one man
+LangSwe: en man
+Lang> Lang: DetCN (DetQuant DefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 pot01))))))) (UseN man_N)
+LangBul: единият мъж
+LangEng: the one man
+LangSwe: den en mannen
+Lang> Lang: DetCN (DetQuant DefArt NumSg) (UseN man_N)
+LangBul: мъжът
+LangEng: the man
+LangSwe: mannen
+Lang> Lang: DetCN (DetQuant DefArt NumPl) (UseN man_N)
+LangBul: мъжете
+LangEng: the men
+LangSwe: männen
+Lang> Lang: MassNP (UseN beer_N)
+LangBul: бира
+LangEng: beer
+LangSwe: öl
+Lang> Lang: DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN house_N)
+LangBul: моята къща
+LangEng: my house
+LangSwe: mitt hus
+Lang> Lang: UseN house_N
+LangBul: къща
+LangEng: house
+LangSwe: hus
+Lang> Lang: ComplN2 mother_N2 (DetCN (DetQuant DefArt NumSg) (UseN king_N))
+LangBul: майка на царя
+LangEng: mother of the king
+LangSwe: mor till kungen
+Lang> Lang: ComplN2 (ComplN3 distance_N3 (DetCN (DetQuant this_Quant NumSg) (UseN city_N))) (UsePN paris_PN)
+LangBul: разстояние от този град до Париж
+LangEng: distance from this city to Paris
+LangSwe: avstånd från den här staden till Paris
+Lang> Lang: UseN2 mother_N2
+LangBul: майка
+LangEng: mother
+LangSwe: mor
+Lang> Lang: ComplN2 (Use2N3 distance_N3) (DetCN (DetQuant this_Quant NumSg) (UseN city_N))
+LangBul: разстояние от този град
+LangEng: distance from this city
+LangSwe: avstånd från den här staden
+Lang> Lang: ComplN2 (Use3N3 distance_N3) (UsePN paris_PN)
+LangBul: разстояние до Париж
+LangEng: distance to Paris
+LangSwe: avstånd till Paris
+Lang> Lang: UseN2 (Use2N3 distance_N3)
+LangBul: разстояние
+LangEng: distance
+LangSwe: avstånd
+Lang> Lang: AdjCN (PositA big_A) (UseN house_N)
+LangBul: голяма къща
+LangEng: big house
+LangSwe: stort hus
+Lang> Lang: RelCN (UseN house_N) (UseRCl (TTAnt TPast ASimul) PPos (RelSlash IdRP (SlashVP (UsePN john_PN) (SlashV2a buy_V2))))
+LangBul: къща която Джон купи
+LangEng: house which John bought
+LangSwe: hus som Johan köpte
+Lang> Lang: AdvCN (UseN house_N) (PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN hill_N)))
+LangBul: къща на хълма
+LangEng: house on the hill
+LangSwe: hus på kullen
+Lang> Lang: SentCN (UseN question_N) (EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (QuestIAdv where_IAdv (PredVP (UsePron she_Pron) (UseV sleep_V)))))
+LangBul: въпрос където тя спи
+LangEng: question where she sleeps
+LangSwe: fråga var hon sover
+Lang> Lang: DetCN (DetQuant DefArt NumSg) (ApposCN (UseN city_N) (UsePN paris_PN))
+LangBul: градът Париж
+LangEng: the city Paris
+LangSwe: staden Paris
+Lang> Lang: DetCN (DetQuant (PossPron i_Pron) NumSg) (ApposCN (UseN friend_N) (UsePN john_PN))
+LangBul: моят приятел Джон
+LangEng: my friend John
+LangSwe: min vän Johan
+Lang> Lang: num (pot2as3 (pot1as2 (pot0as1 (pot0 n6))))
+LangBul: шестима
+LangEng: six
+LangSwe: sex
+Lang> Lang: num (pot2as3 (pot1as2 (pot0as1 pot01)))
+LangBul: един
+LangEng: one
+LangSwe: en
+Lang> Lang: num (pot2as3 (pot1as2 (pot1 n6)))
+LangBul: шестдесетима
+LangEng: sixty
+LangSwe: sextio
+Lang> Lang: num (pot2as3 (pot1as2 pot110))
+LangBul: десетима
+LangEng: ten
+LangSwe: tio
+Lang> Lang: num (pot2as3 (pot1as2 pot111))
+LangBul: единадесетима
+LangEng: eleven
+LangSwe: elva
+Lang> Lang: num (pot2as3 (pot1as2 (pot1to19 n6)))
+LangBul: шестнадесетима
+LangEng: sixteen
+LangSwe: sexton
+Lang> Lang: num (pot2as3 (pot1as2 (pot1 n6)))
+LangBul: шестдесетима
+LangEng: sixty
+LangSwe: sextio
+Lang> Lang: num (pot2as3 (pot1as2 (pot1plus n6 (pot0 n5))))
+LangBul: шестдесет и петима
+LangEng: sixty &+ - &+ five
+LangSwe: sextio &+ fem
+Lang> Lang: num (pot2as3 (pot2 (pot0 n4)))
+LangBul: четиристотин
+LangEng: four hundred
+LangSwe: fyra &+ hundra
+Lang> Lang: num (pot2as3 (pot2plus (pot0 n4) (pot1plus n6 (pot0 n7))))
+LangBul: четиристотин шестдесет и седмина
+LangEng: four hundred and sixty &+ - &+ seven
+LangSwe: fyra &+ hundra sextio &+ sju
+Lang> Lang: num (pot3 (pot2plus (pot0 n4) (pot1plus n6 (pot0 n7))))
+LangBul: четиристотин шестдесет и седем хиляди
+LangEng: four hundred and sixty &+ - &+ seven thousand
+LangSwe: fyra &+ hundra sextio &+ sju tusen
+Lang> Lang: num (pot3plus (pot2plus (pot0 n4) (pot1plus n6 (pot0 n7))) (pot1as2 (pot1plus n8 (pot0 n9))))
+LangBul: четиристотин шестдесет и седем хиляди осемдесет и деветима
+LangEng: four hundred and sixty &+ - &+ seven thousand eighty &+ - &+ nine
+LangSwe: fyra &+ hundra sextio &+ sju &+ tusen åttio &+ nio
+Lang> Lang: IDig D_8
+LangBul: 8на
+LangEng: 8
+LangSwe: 8
+Lang> Lang: IIDig D_8 (IIDig D_0 (IIDig D_0 (IIDig D_1 (IIDig D_7 (IIDig D_8 (IDig D_9))))))
+LangBul: 8 0 &+ 0 &+ 1 7 &+ 8 &+ 9има
+LangEng: 8 &+ , &+ 0 &+ 0 &+ 1 &+ , &+ 7 &+ 8 &+ 9
+LangSwe: 8 &+ 0 &+ 0 &+ 1 &+ 7 &+ 8 &+ 9
+Lang> Lang: PhrUtt but_PConj (UttImpSg PPos (ImpVP (AdvVP (UseV come_V) here_Adv))) (VocNP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN friend_N)))
+LangBul: но ела тук , мой приятелю
+LangEng: but come here , my friend
+LangSwe: men kom här , min vän
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePN john_PN) (UseV walk_V)))) NoVoc
+LangBul: Джон ходи
+LangEng: John walks
+LangSwe: Johan går
+Lang> Lang: UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron it_Pron) (UseComp (CompAP (PositA good_A))))))
+LangBul: то е ли добро
+LangEng: is it good
+LangSwe: är det gott
+Lang> Lang: UttImpSg PNeg (ImpVP (ReflVP (SlashV2a love_V2)))
+LangBul: не се обичай
+LangEng: don't love yourself
+LangSwe: älska inte dig
+Lang> Lang: UttImpPl PNeg (ImpVP (ReflVP (SlashV2a love_V2)))
+LangBul: не се обичайте
+LangEng: don't love yourselves
+LangSwe: älska inte er
+Lang> Lang: UttImpPol PNeg (ImpVP (UseV sleep_V))
+LangBul: не спете
+LangEng: don't sleep
+LangSwe: sov inte
+Lang> Lang: UttIP whoPl_IP
+LangBul: кои
+LangEng: who
+LangSwe: vilka
+Lang> Lang: UttIP whoSg_IP
+LangBul: кой
+LangEng: who
+LangSwe: vem
+Lang> Lang: UttIAdv why_IAdv
+LangBul: защо
+LangEng: why
+LangSwe: varför
+Lang> Lang: UttNP (DetCN (DetQuant this_Quant NumSg) (UseN man_N))
+LangBul: този мъж
+LangEng: this man
+LangSwe: den här mannen
+Lang> Lang: UttAdv here_Adv
+LangBul: тук
+LangEng: here
+LangSwe: här
+Lang> Lang: UttVP (UseV sleep_V)
+LangBul: да спи
+LangEng: to sleep
+LangSwe: att sova
+Lang> Lang: VocNP (DetCN (DetQuant (PossPron i_Pron) NumSg) (UseN friend_N))
+LangBul: , мой приятелю
+LangEng: , my friend
+LangSwe: , min vän
+Lang> Lang: QuestCl (PredVP (UsePN john_PN) (UseV walk_V))
+LangBul: Джон ходи ли
+LangEng: does John walk
+LangSwe: går Johan
+Lang> Lang: QuestVP whoSg_IP (UseV walk_V)
+LangBul: кой ходи
+LangEng: who walks
+LangSwe: vem går
+Lang> Lang: QuestSlash whoSg_IP (SlashVP (UsePN john_PN) (SlashV2a love_V2))
+LangBul: кого обича Джон
+LangEng: whom does John love
+LangSwe: vem älskar Johan
+Lang> Lang: QuestIAdv why_IAdv (PredVP (UsePN john_PN) (UseV walk_V))
+LangBul: защо ходи Джон
+LangEng: why does John walk
+LangSwe: varför går Johan
+Lang> Lang: QuestIComp (CompIAdv where_IAdv) (UsePN john_PN)
+LangBul: къде е Джон
+LangEng: where is John
+LangSwe: var är Johan
+Lang> Lang: IdetCN (IdetQuant which_IQuant (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))))))) (UseN song_N)
+LangBul: кои пет песни
+LangEng: which five songs
+LangSwe: vilka fem sånger
+Lang> Lang: IdetIP (IdetQuant which_IQuant (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))))))
+LangBul: кои пет
+LangEng: which five
+LangSwe: vilka fem
+Lang> Lang: AdvIP whoSg_IP (PrepNP in_Prep (UsePN paris_PN))
+LangBul: кой в Париж
+LangEng: who in Paris
+LangSwe: vem i Paris
+Lang> Lang: IdetIP (IdetQuant which_IQuant NumSg)
+LangBul: кое
+LangEng: which
+LangSwe: vilket
+Lang> Lang: PrepIP with_Prep whoSg_IP
+LangBul: с кой
+LangEng: with whom
+LangSwe: med vem
+Lang> Lang: QuestIComp (CompIAdv where_IAdv) (UsePron it_Pron)
+LangBul: къде е то
+LangEng: where is it
+LangSwe: var är det
+Lang> Lang: QuestIComp (CompIP whoSg_IP) (UsePron it_Pron)
+LangBul: кой е то
+LangEng: who is it
+LangSwe: vem är det
+Lang> Lang: ExistNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN woman_N) (UseRCl (TTAnt TPres ASimul) PPos (RelCl (PredVP (UsePN john_PN) (ComplSlash (SlashV2a love_V2) (UsePron she_Pron)))))))
+LangBul: има жена такава че Джон обича нея
+LangEng: there is a woman such that John loves her
+LangSwe: det finns en kvinna sådan att Johan älskar henne
+Lang> Lang: ExistNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN woman_N) (UseRCl (TTAnt TPres ASimul) PPos (RelVP IdRP (ComplSlash (SlashV2a love_V2) (UsePN john_PN))))))
+LangBul: има жена която обича Джон
+LangEng: there is a woman who loves John
+LangSwe: det finns en kvinna som älskar Johan
+Lang> Lang: ExistNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN woman_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePN john_PN) (SlashV2a love_V2))))))
+LangBul: има жена която Джон обича
+LangEng: there is a woman whom John loves
+LangSwe: det finns en kvinna som Johan älskar
+Lang> Lang: ExistNP (DetCN (DetQuant IndefArt NumSg) (RelCN (UseN woman_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash (FunRP possess_Prep (DetCN (DetQuant DefArt NumSg) (UseN2 mother_N2)) IdRP) (SlashVP (UsePN john_PN) (SlashV2a love_V2))))))
+LangBul: има жена майката на която Джон обича
+LangEng: there is a woman the mother of whom John loves
+LangSwe: det finns en kvinna modern av vilken Johan älskar
+Lang> Lang: PredVP (UsePN john_PN) (UseV walk_V)
+LangBul: Джон ходи
+LangEng: John walks
+LangSwe: Johan går
+Lang> Lang: PredSCVP (EmbedS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV go_V)))) (UseComp (CompAP (PositA good_A)))
+LangBul: , че тя отива е добър
+LangEng: that she goes is good
+LangSwe: att hon går är gott
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePron he_Pron) (SlashV2a see_V2))))
+LangBul: момиче което той вижда
+LangEng: girl whom he sees
+LangSwe: flicka som han ser
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (AdvSlash (SlashVP (UsePron he_Pron) (SlashV2a see_V2)) today_Adv)))
+LangBul: момиче което той вижда днес
+LangEng: girl whom he sees today
+LangSwe: flicka som han ser idag
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashPrep (PredVP (UsePron he_Pron) (UseV walk_V)) with_Prep)))
+LangBul: момиче с което той ходи
+LangEng: girl with whom he walks
+LangSwe: flicka med vilken han går
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVS (UsePron she_Pron) say_VS (UseSlash (TTAnt TPres ASimul) PPos (SlashVP (UsePron he_Pron) (SlashV2a love_V2))))))
+LangBul: момиче което тя казва че той обича
+LangEng: girl whom she says that he loves
+LangSwe: flicka som hon säger att han älskar
+Lang> Lang: ImpVP (ReflVP (SlashV2a love_V2))
+LangBul: обичай се
+LangEng: love yourself
+LangSwe: älska dig
+Lang> Lang: EmbedS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV go_V)))
+LangBul: , че тя отива
+LangEng: that she goes
+LangSwe: att hon går
+Lang> Lang: EmbedQS (UseQCl (TTAnt TPres ASimul) PPos (QuestVP whoSg_IP (UseV go_V)))
+LangBul: който отива
+LangEng: who goes
+LangSwe: vem som går
+Lang> Lang: EmbedVP (UseV go_V)
+LangBul: да отида
+LangEng: to go
+LangSwe: att gå
+Lang> Lang: UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePN john_PN) (UseV walk_V))
+LangBul: Джон не би ходил
+LangEng: John wouldn't have walked
+LangSwe: Johan skulle inte ha gått
+Lang> Lang: UseQCl (TTAnt TCond AAnter) PNeg (QuestCl (PredVP (UsePN john_PN) (UseV walk_V)))
+LangBul: Джон не би ли ходил
+LangEng: wouldn't John have walked
+LangSwe: skulle Johan inte ha gått
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TCond AAnter) PNeg (RelVP IdRP (UseV walk_V)))
+LangBul: момиче което не би ходило
+LangEng: girl who wouldn't have walked
+LangSwe: flicka som inte skulle ha gått
+Lang> Lang: RelCN (UseN girl_N) (UseRCl (TTAnt TCond AAnter) PNeg (RelSlash IdRP (SlashPrep (PredVP (UsePron i_Pron) (UseV walk_V)) with_Prep)))
+LangBul: момиче с което аз не бих ходил
+LangEng: girl with whom I wouldn't have walked
+LangSwe: flicka med vilken jag inte skulle ha gått
+Lang> Lang: RelS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV sleep_V))) (UseRCl (TTAnt TPres ASimul) PPos (RelVP IdRP (UseComp (CompAP (PositA good_A)))))
+LangBul: тя спи , което е добро
+LangEng: she sleeps , which is good
+LangSwe: hon sover , vilket är gott
+Lang> Lang: TEmpty
+LangBul: 
+LangEng: 
+LangSwe: 
+Lang> Lang: TFullStop (PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePN john_PN) (UseV walk_V)))) NoVoc) TEmpty
+LangBul: Джон ходи .
+LangEng: John walks .
+LangSwe: Johan går .
+Lang> Lang: TQuestMark (PhrUtt NoPConj (UttQS (UseQCl (TTAnt TPres ASimul) PPos (QuestCl (PredVP (UsePron they_Pron) (UseComp (CompAdv here_Adv)))))) NoVoc) TEmpty
+LangBul: те са ли тук ?
+LangEng: are they here ?
+LangSwe: är de här ?
+Lang> Lang: TExclMark (PhrUtt NoPConj (ImpPl1 (UseV go_V)) NoVoc) TEmpty
+LangBul: нека да отидем !
+LangEng: let's go !
+LangSwe: låt oss gå !
+Lang> Lang: PredVP (UsePron i_Pron) (UseV sleep_V)
+LangBul: аз спя
+LangEng: I sleep
+LangSwe: jag sover
+Lang> Lang: PredVP (UsePron i_Pron) (ComplVV want_VV (UseV run_V))
+LangBul: аз искам да бягам
+LangEng: I want to run
+LangSwe: jag vill springa
+Lang> Lang: PredVP (UsePron i_Pron) (ComplVS say_VS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV run_V))))
+LangBul: аз казвам , че тя бяга
+LangEng: I say that she runs
+LangSwe: jag säger att hon springer
+Lang> Lang: PredVP (UsePron i_Pron) (ComplVQ wonder_VQ (UseQCl (TTAnt TPres ASimul) PPos (QuestVP whoSg_IP (UseV run_V))))
+LangBul: аз се учудвам кой бяга
+LangEng: I wonder who runs
+LangSwe: jag undrar vem som springer
+Lang> Lang: PredVP (UsePron they_Pron) (ComplVA become_VA (PositA red_A))
+LangBul: те стават червени
+LangEng: they become red
+LangSwe: de blir röda
+Lang> Lang: PredVP (UsePron i_Pron) (ComplSlash (Slash3V3 give_V3 (UsePron he_Pron)) (UsePron it_Pron))
+LangBul: аз давам него на него
+LangEng: I give it to him
+LangSwe: jag ger det till honom
+Lang> Lang: PredVP (UsePron i_Pron) (ComplSlash (SlashV2V beg_V2V (UseV go_V)) (UsePron she_Pron))
+LangBul: аз моля нея за да отиде
+LangEng: I beg her to go
+LangSwe: jag ber henne att gå
+Lang> Lang: PredVP (UsePron i_Pron) (ComplSlash (SlashV2S answer_V2S (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron it_Pron) (UseComp (CompAP (PositA good_A)))))) (UsePron he_Pron))
+LangBul: аз отговарям на него , че то е добро
+LangEng: I answer to him that it is good
+LangSwe: jag svarar till honom att det är gott
+Lang> Lang: PredVP (UsePron i_Pron) (ComplSlash (SlashV2Q ask_V2Q (UseQCl (TTAnt TPast ASimul) PPos (QuestVP whoSg_IP (UseV come_V)))) (UsePron he_Pron))
+LangBul: аз питам него кой дойде
+LangEng: I ask him who came
+LangSwe: jag frågar honom vem som kom
+Lang> Lang: PredVP (UsePron i_Pron) (ComplSlash (SlashV2A paint_V2A (PositA red_A)) (UsePron it_Pron))
+LangBul: аз рисувам него червено
+LangEng: I paint it red
+LangSwe: jag målar det rött
+Lang> Lang: RelCN (UseN car_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePron i_Pron) (SlashVV want_VV (SlashV2a buy_V2)))))
+LangBul: кола която аз искам да купя
+LangEng: car which I want to buy
+LangSwe: bil som jag vill köpa
+Lang> Lang: RelCN (UseN car_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePron they_Pron) (SlashV2VNP beg_V2V (UsePron i_Pron) (SlashV2a buy_V2)))))
+LangBul: кола която те молят мен да купя
+LangEng: car which they beg me to buy
+LangSwe: bil som de ber mig att köpa
+Lang> Lang: PredVP (UsePron he_Pron) (ReflVP (SlashV2a love_V2))
+LangBul: той се обича
+LangEng: he loves himself
+LangSwe: han älskar sig
+Lang> Lang: PredVP (DetNP (DetQuant this_Quant NumSg)) (UseComp (CompAP (PositA warm_A)))
+LangBul: това е топло
+LangEng: this is warm
+LangSwe: det här är varmt
+Lang> Lang: PredVP (UsePron we_Pron) (PassV2 love_V2)
+LangBul: ние сме обичани
+LangEng: we are loved
+LangSwe: vi blir älskade
+Lang> Lang: PredVP (UsePron we_Pron) (AdvVP (UseV sleep_V) here_Adv)
+LangBul: ние спим тук
+LangEng: we sleep here
+LangSwe: vi sover här
+Lang> Lang: PredVP (UsePron we_Pron) (AdVVP always_AdV (UseV sleep_V))
+LangBul: ние винаги спим
+LangEng: we always sleep
+LangSwe: vi sover alltid
+Lang> Lang: PredVP (UsePron we_Pron) (UseComp (CompAP (PositA small_A)))
+LangBul: ние сме малки
+LangEng: we are small
+LangSwe: vi är små
+Lang> Lang: PredVP (UsePron i_Pron) (UseComp (CompNP (DetCN (DetQuant IndefArt NumSg) (UseN man_N))))
+LangBul: аз съм мъж
+LangEng: I am a man
+LangSwe: jag är en man
+Lang> Lang: PredVP (UsePron i_Pron) (UseComp (CompAdv here_Adv))
+LangBul: аз съм тук
+LangEng: I am here
+LangSwe: jag är här
+Lang> Lang: RelCN (UseN car_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePron they_Pron) (SlashV2VNP beg_V2V (UsePron i_Pron) (SlashVV want_VV (SlashV2A paint_V2A (PositA red_A)))))))
+LangBul: кола която те молят мен да искам да нарисувам червена
+LangEng: car which they beg me to want to paint red
+LangSwe: bil som de ber mig att vilja måla röd
+Lang> Lang: PhrUtt NoPConj (UttImpSg PPos (ImpVP (AdVVP always_AdV (ComplSlash (SlashV2a listen_V2) (DetCN (DetQuant DefArt NumSg) (UseN sea_N)))))) NoVoc
+LangBul: винаги слушай морето
+LangEng: always listen to the sea
+LangSwe: lyssna alltid på havet
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (ExistNP (PredetNP only_Predet (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (AdvCN (RelCN (UseN woman_N) (UseRCl (TTAnt TCond ASimul) PPos (RelSlash IdRP (SlashPrep (PredVP (UsePron i_Pron) (ComplVV want_VV (PassV2 see_V2))) with_Prep)))) (PrepNP in_Prep (DetCN (DetQuant DefArt NumSg) (UseN rain_N))))))))) NoVoc
+LangBul: има само две жени с които аз бих искал да съм видян в дъжда
+LangEng: there are only two women with whom I would want to be seen in the rain
+LangSwe: det finns bara två kvinnor med vilka jag skulle vilja bli sedd i regnet
+Lang> Lang: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ComplSlash (SlashV2A paint_V2A (ConjAP both7and_DConj (BaseAP (ComparA small_A (DetCN (DetQuant DefArt NumSg) (UseN sun_N))) (ComparA big_A (DetCN (DetQuant DefArt NumSg) (UseN moon_N)))))) (DetCN (DetQuant DefArt NumSg) (UseN earth_N))))) NoVoc
+LangBul: нарисувай земята и по - малка от слънцето и по - голяма от луната
+LangEng: paint the earth both smaller than the sun and bigger than the moon
+LangSwe: måla jorden både mindre än solen och större än månen
+Lang> Lang: PhrUtt NoPConj (ImpPl1 (ComplVS hope_VS (ConjS either7or_DConj (BaseS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (ComplN2 father_N2 (DetCN (DetQuant DefArt NumSg) (UseN baby_N)))) (UseV run_V))) (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumSg) (UseN2 (Use2N3 distance_N3))) (UseComp (CompAP (PositA small_A))))))))) NoVoc
+LangBul: нека да се надяваме , че или бащата на бебето бяга или разстоянието е малко
+LangEng: let's hope that either the father of the baby runs or the distance is small
+LangSwe: låt oss hoppas att antingen springer fadern till bebisen eller avståndet är litet
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN every_Det (UseN baby_N)) (UseComp (CompNP (ConjNP either7or_DConj (BaseNP (DetCN (DetQuant IndefArt NumSg) (UseN boy_N)) (DetCN (DetQuant IndefArt NumSg) (UseN girl_N))))))))) NoVoc
+LangBul: всяко бебе е или момче или момиче
+LangEng: every baby is either a boy or a girl
+LangSwe: varje bebis är antingen en pojke eller en flicka
+Lang> Lang: PhrUtt NoPConj (UttAdv (ConjAdv either7or_DConj (ConsAdv here7from_Adv (BaseAdv there_Adv everywhere_Adv)))) NoVoc
+LangBul: или от тук или там или навсякъде
+LangEng: either from here , there or everywhere
+LangSwe: antingen härifrån , där eller överallt
+Lang> Lang: PhrUtt NoPConj (UttVP (PassV2 know_V2)) NoVoc
+LangBul: да е известно
+LangEng: to be known
+LangSwe: att bli kännd
+Lang> Lang: RelCN (UseN bird_N) (UseRCl (TTAnt TPres ASimul) PPos (RelSlash IdRP (SlashVP (UsePron i_Pron) (SlashVV want_VV (SlashV2A paint_V2A (PositA red_A))))))
+LangBul: птица която аз искам да нарисувам червена
+LangEng: bird which I want to paint red
+LangSwe: fågel som jag vill måla röd
+Lang> Lang: UttImpSg PPos (ImpVP (ComplVV want_VV (ComplSlash (SlashV2a buy_V2) (UsePron it_Pron))))
+LangBul: искай да купиш него
+LangEng: want to buy it
+LangSwe: vilj köpa det
+Lang> Lang: UttImpSg PPos (ImpVP (ComplVV want_VV (ComplSlash (SlashV2A paint_V2A (PositA red_A)) (UsePron it_Pron))))
+LangBul: искай да нарисуваш него червено
+LangEng: want to paint it red
+LangSwe: vilj måla det rött
+Lang> Lang: UttImpSg PPos (ImpVP (ComplSlash (SlashVV want_VV (SlashV2VNP beg_V2V (UsePron i_Pron) (SlashV2a buy_V2))) (UsePron it_Pron)))
+LangBul: искай да молиш мен да купя него
+LangEng: want it to beg me to buy
+LangSwe: vilj be mig att köpa det
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant DefArt NumPl) (UseN fruit_N)) (ReflVP (Slash3V3 sell_V3 (DetCN (DetQuant DefArt NumSg) (UseN road_N))))))) NoVoc
+LangBul: плодовете се продават на пътя
+LangEng: the fruit sell themselves to the road
+LangSwe: frukterna säljer sig till vägen
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (ReflVP (SlashV2V beg_V2V (UseV live_V)))))) NoVoc
+LangBul: аз се моля за да живея
+LangEng: I beg myself to live
+LangSwe: jag ber mig att leva
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (ReflVP (SlashV2S answer_V2S (UseCl (TTAnt TPres ASimul) PPos (ImpersCl (ComplVV must_VV (ReflVP (SlashV2a understand_V2)))))))))) NoVoc
+LangBul: аз си отговарям , че трябва да се разбере
+LangEng: I answer to myself that it must understand itself
+LangSwe: jag svarar till mig att det måste förstå sig
+Lang> Lang: PhrUtt NoPConj (UttImpSg PPos (ImpVP (ReflVP (SlashV2Q ask_V2Q (UseQCl (TTAnt TPast ASimul) PPos (QuestVP whoSg_IP (UseV come_V))))))) NoVoc
+LangBul: питай се кой дойде
+LangEng: ask yourself who came
+LangSwe: fråga dig vem som kom
+Lang> Lang: PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (ReflVP (SlashV2A paint_V2A (ComparA beautiful_A (UsePN john_PN))))))) NoVoc
+LangBul: аз се нарисувах по - красив от Джон
+LangEng: I painted myself more beautiful than John
+LangSwe: jag målade mig vackrare än Johan
+Lang> Lang: UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (DetCN (DetQuant this_Quant NumSg) (UseN grammar_N)) (ComplSlash (SlashV2a speak_V2) (DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot1to19 n2))))))) (UseN language_N)))))
+LangBul: тази граматика говори дванадесет езика
+LangEng: this grammar speaks twelve languages
+LangSwe: den här grammatiken talar tolv språk
+Lang> Lang: UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron she_Pron) (ComplSlash (SlashV2a buy_V2) (DetCN (DetQuant IndefArt NumSg) (AdjCN (PositA red_A) (UseN house_N)))))
+LangBul: тя беше купилa червена къща
+LangEng: she had bought a red house
+LangSwe: hon hade köpt ett rött hus

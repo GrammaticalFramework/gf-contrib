@@ -1,0 +1,17 @@
+i MiniresourceEng.gf
+--TODO: import the language of your choice
+
+-- Intransitive clauses in all persons and tenses
+-- I/you/he/she/... walk/don't walk/have walked/haven't walked
+gt UseCl ? ? (PredVP i_NP     (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP youSg_NP (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP he_NP    (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP she_NP   (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP we_NP    (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP youPl_NP (UseV walk_V)) | l -treebank
+gt UseCl ? ? (PredVP they_NP  (UseV walk_V)) | l -treebank
+
+
+-- Adjectival phrase as predicative
+-- the woman is green
+l -treebank UseCl Pres Pos (PredVP (DetCN the_Det (UseN woman_N)) (CompAP (UseA green_A)))
