@@ -90,7 +90,7 @@ lin
       mkCN kind (mkRS (slashRCl idRP (mkClSlash pred.arg pred.vps))) ;
     PSubjectOnly        =>         -- philosopher that sleeps
       mkCN kind (mkRS (mkRCl idRP (useAsVP pred.vps pred.arg))) ;
-    PAdjective => mkCN kind pred.adv; --changed from (pred.qualif kind) to solve the 'gamle' issue in the Scandinavian languages 
+    PAdjective => mkCN pred.qualif kind ; ---- mkCN kind pred.adv; --changed from (pred.qualif kind) to solve the 'gamle' issue in the Scandinavian languages 
     PAdverb => mkCN kind pred.adv
     } ;
 
