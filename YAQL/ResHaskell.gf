@@ -15,6 +15,7 @@ oper
   x_var = "x" ; 
   y_var = "y" ;
   p_var = "p" ;
+  q_var = "q" ;
 
   abstr = overload {
     abstr : (x   : Str) -> Str -> Str = \x,b -> parenth ("\\" ++ x ++ "->" ++ b) ;
