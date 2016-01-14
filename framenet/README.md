@@ -60,16 +60,23 @@ Search for "FrameNet API" in `WordsEng.gf`, `PhrasebookEng.gf` and `WordsSwe.gf`
 Publications
 ------------
 
+  - Normunds Gruzitis and Dana Dannélls. [A multilingual FrameNet-based grammar and lexicon for controlled natural language](http://link.springer.com/article/10.1007%2Fs10579-015-9321-8). Journal of Language Resources and Evaluation, 2015 ([preprint](http://arxiv.org/pdf/1511.03924v1.pdf))
+
   - Dana Dannélls and Normunds Gruzitis. [Controlled natural language generation from a multilingual FrameNet-based grammar](http://link.springer.com/chapter/10.1007%2F978-3-319-10223-8_15). In: Proceedings of the 4th Workshop on Controlled Natural Language (CNL), LNCS 8625, Springer, 2014, pp. 155-166 ([preprint](http://arxiv.org/pdf/1406.2400v1.pdf), [slides](http://attempto.ifi.uzh.ch/site/cnl2014/slides/gruzitis.pdf), [video](https://www.youtube.com/watch?v=-qQpQxg5-GQ&list=PL9MDHk_EFeGtHqFl9DKh5zB5abiTDZhps))
 
   - Dana Dannélls and Normunds Gruzitis. [Extracting a bilingual semantic grammar from FrameNet-annotated corpora](http://www.lrec-conf.org/proceedings/lrec2014/pdf/1079_Paper.pdf). In: Proceedings of the 9th International Language Resources and Evaluation Conference (LREC), 2014, pp. 2466-2473
 
   - Normunds Gruzitis, Peteris Paikens and Guntis Barzdins. [FrameNet Resource Grammar Library for GF](http://link.springer.com/chapter/10.1007%2F978-3-642-32612-7_9). In: Proceedings of the 3rd Workshop on Controlled Natural Language (CNL), LNCS 7427, Springer, 2012, pp. 121-137 ([preprint](http://arxiv.org/pdf/1406.6844v1.pdf))
 
+Related work
+------------
+
+[Swedish Constructicon in GF](https://github.com/normundsg/gf-contrib/tree/master/SweCcn)
+
 Acknowledgements
 ----------------
 
-This work has been supported by the Swedish Research Council under Grant No. 2012-5746 (Reliable Multilingual Digital Communication: Methods and Applications) and by the Centre for Language Technology in Gothenburg. The research leading to these results has received funding also from the Latvian State Research Programme NexIT.
+This work has been supported by the Swedish Research Council under Grant No. 2012-5746 ([Reliable Multilingual Digital Communication: Methods and Applications](http://remu.grammaticalframework.org/)) and by the Centre for Language Technology in Gothenburg. The research leading to these results has received funding also from the Latvian State Research Programme NexIT.
 
 Licence
 -------
