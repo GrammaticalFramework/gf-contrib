@@ -6,6 +6,11 @@ Publication
 
 Normunds Gruzitis, Dana Dannélls, Benjamin Lyngfelt, Aarne Ranta. [Formalising the Swedish Constructicon in Grammatical Framework](http://www.aclweb.org/anthology/W/W15/W15-3307.pdf). In: Proceedings of the ACL/IJCNLP Workshop on Grammar Engineering Across Frameworks (GEAF), 2015, pp. 49–56 ([slides](http://www.slideshare.net/normundsg/formalising-the-swedish-constructicon-in-grammatical-framework))
 
+Related work
+------------
+
+[FrameNet-based API to Grammatical Framework](https://github.com/GrammaticalFramework/gf-contrib/tree/master/framenet)
+
 Acknowledgements
 ----------------
 
