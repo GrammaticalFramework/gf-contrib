@@ -155,11 +155,11 @@ quote s = "\"" ++ s ++ "\""
 ex1 :: ERDiagram
 ex1 = [
   EEntity EStrong "Course" [("code",True),("name",False)],
-  EEntity (EWeak "Course" "Given") "GivenCourse" [("period",True)],
-  ESubEntity EStrong "LimitedCourse" "Course" ["nplaces"],
+  EEntity (EWeak "Course" "Given") "TeachingInstance" [("period",True)],
+  ESubEntity EStrong "LimitedCourse" "Course" ["numberOfPlaces"],
   EEntity EStrong "Teacher" [("name",True)],
-  ERelationship "TaughtBy" [("GivenCourse",(EMany,Nothing)),("Teacher",(EAtMostOne,Nothing))] ["ntimes"],
-  ERelationship "Required" [("Course",(EMany,Just "before")),("Course",(EAtMostOne,Just "after"))] []
+  ERelationship "IsTaughtBy" [("TeachingInstance",(EMany,Nothing)),("Teacher",(EAtMostOne,Nothing))] ["numberOfTimes"],
+  ERelationship "Requires" [("Course",(EMany,Just "before")),("Course",(EAtMostOne,Just "after"))] []
   ]
 
 ---------------------------
