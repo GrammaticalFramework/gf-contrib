@@ -5,7 +5,7 @@ import Data.Char
 import System.Process
 
 --------------------------
--- AR 6/2/2015
+-- AR 6/2/2015 - 25/1/2016
 -- conversions of E-R models and database schemas:
 --
 --    simple text format for E-R  -->  Haskell data object   -->  graphviz   
@@ -23,11 +23,12 @@ import System.Process
 --
 --   "ENTITY" Name Attr*
 --   "WEAK ENTITY" Name StrongName RelName Attr*
---   "RELATIONSHIP" Name FromName ("--" | "-)" | "->") Attr*
+--   "RELATIONSHIP" Entity (("--" | "-)" | "->") EntityName Role?)+ (":" Attr+)?
 --   "ISA" Name SuperName Attr*
 --
 -- one entry per line, tokens separated by spaces
 -- attribute syntax: _a means key attribute
+-- role syntax: use parentheses around role name: (role)
 
 ------------------- Jonas's examples using the simple text format
 
@@ -57,6 +58,12 @@ tex4 = getERDiagram [
 tex5 = getERDiagram [
   "ENTITY B _b1 b2",
   "ISA A B a1"
+  ]
+
+tex6 = getERDiagram [
+  "ENTITY Currency _code",
+  "ENTITY Date _day",
+  "RELATIONSHIP HasValue -- Currency (of)  -- Currency (in) -- Date : value"
   ]
 
 
@@ -232,7 +239,8 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     mqualif mi e k = case mi of
       Just i -> i
       _ -> qualif e k  
-    functions = [(f,(a,b)) | ERelationship f [(a,_), (b,(EExactlyOne,_))] _ <- er] ---- attrs? many-place?
+    functions = [(f,(a,b)) | ERelationship f abs _ <- er, (a,_) <- abs, (b,(EExactlyOne,_)) <- abs, a/=b] ---- attrs? 
+----    functions = [(f,(a,b)) | ERelationship f [(a,_), (b,(EExactlyOne,_))] _ <- er] ---- attrs? many-place?
     isFunction e = case e of
       ERelationship f _ _ -> elem f (map fst functions)
       _ -> False
@@ -247,8 +255,8 @@ data Style = SER | SOO | SNull
 getERDiagram :: [String] -> ERDiagram
 getERDiagram = map getERElement
 
-getERElement :: String -> ERElement
-getERElement s = case words s of
+getERElement0 :: String -> ERElement
+getERElement0 s = case words s of
   "WEAK":"ENTITY":e:d:r:xs    -> EEntity (EWeak d r) e (map getAttr xs) 
   "ENTITY":e:xs               -> EEntity EStrong e (map getAttr xs)
   "RELATIONSHIP":f:e:arr:d:xs -> ERelationship f [(e,(EMany,Nothing)), (d,(getArrow arr,Nothing))] xs
@@ -263,6 +271,34 @@ getERElement s = case words s of
      "->" -> EAtMostOne
      "-)" -> EExactlyOne
      _ -> error $ "cannot get arrow from " ++ x
+
+getERElement :: String -> ERElement
+getERElement s = case words s of
+  "WEAK":"ENTITY":e:d:r:xs    -> EEntity (EWeak d r) e (map getAttr xs) 
+  "ENTITY":e:xs               -> EEntity EStrong e (map getAttr xs)
+  "RELATIONSHIP":f:xs         -> ERelationship f es ys where (es,ys) = getArrAndAttr xs -- general case -> A -> B -> C 
+  "ISA":e:d:xs                -> ESubEntity EStrong e d xs
+  _ -> error $ "cannot get E-R element from " ++ s
+ where
+   getAttr x = case x of
+     '_':cs -> (cs,True)
+     _ -> (x,False)
+   getArrow x = case x of
+     "--" -> EMany
+     "->" -> EAtMostOne
+     "-)" -> EExactlyOne
+     _ -> error $ "cannot get arrow from " ++ x
+   getArrAndAttr xs = case span (/=":") xs of
+     (es,_:ys) -> (getArrows es, ys)
+     _         -> (getArrows xs, [])
+   getArrows xs = case xs of
+     a@('-':_) : e :   ('(':r) : ys -> (e,(getArrow a, Just (init r))) : getArrows ys
+     a@('-':_) : e : b@('-':_) : ys -> (e,(getArrow a, Nothing)) : getArrows (b:ys)
+     a@('-':_) : e : []             -> (e,(getArrow a, Nothing)) : []
+     e         : a@('-':_) : d : [] -> [(e,(EMany,Nothing)), (d,(getArrow a,Nothing))] --- special case A -> B
+     []                             -> []
+     _                              -> error $ "cannot get related entities from " ++ unwords xs
+
 
 
 ------------- natural language generation
@@ -316,9 +352,5 @@ uncamel = map toLower . uncam where
      ([],c:s2) -> c : uncam s2 
      (s1,c:s2) -> s1 ++ " " ++ c:uncam s2
      (s1,[]) -> s1
-
-
-
-
 
 
