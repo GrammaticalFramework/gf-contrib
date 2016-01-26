@@ -1,6 +1,6 @@
-ENTITY Course _code name
-ENTITY Teacher _name title
-WEAK ENTITY TaughtCourse Course IsInstanceOf _period
-RELATIONSHIP IsTaughtBy TaughtCourse -- Teacher 
-ISA LimitedCourse Course limitedNumberOfStudents
+ENTITY Course : _code name
+ENTITY Teacher : _name title
+WEAK ENTITY CourseInstance Course Of : _period
+RELATIONSHIP IsTaughtBy CourseInstance -- Teacher 
+ISA LimitedCourse Course : limitedNumberOfStudents
 
