@@ -68,7 +68,14 @@ is3NF rel = null (violateBCNF rel)
 -- find violations of the Fourth Normal Form
 violate4NF :: Relation -> [Multidep]
 violate4NF rel@(_,(deps,mvds)) = [dep |
-  dep@(xs,ys) <- mvds ++ [(xs,[y]) | (xs,y) <- closureFundep rel], not (isSuperkey rel xs)]
+  dep@(xs,ys) <- mvds ++ [(xs,[y]) | (xs,y) <- closureFundep rel],
+  not (isSuperkey rel xs),
+  not (isTrivialMultidep rel dep)]
+
+
+isTrivialMultidep :: Relation -> Multidep -> Bool
+isTrivialMultidep rel@(attrs,_) mvd@(xs,ys) =
+  all (\y -> elem y xs) ys || all (\a -> elem a (xs ++ ys)) attrs
 
 -- check if a relation is in the Fourth Normal Form
 is4NF :: Relation -> Bool
@@ -97,7 +104,7 @@ restrictRel rel@(_,(fundeps,mvds)) attrs =
 normalize4NF :: Relation -> [Relation]
 normalize4NF rel = case violate4NF rel of
   [] -> [rel]
-  f:fs -> concatMap normalize4NF (decompose f rel)
+  f:fs -> concatMap normalize4NF (decompose f rel) ----
  where
   decompose (xs,ys) rel@(attrs,(fundeps,_)) =
     let 

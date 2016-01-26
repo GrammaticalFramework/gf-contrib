@@ -57,7 +57,7 @@ oper cmkN : Str -> Str -> N = \s,c -> mkN s ; --- classifier not in Hsk1
 
 lin i_Pron = R.pronNP "wǒ" ;
 lin youSg_Pron = R.pronNP "nǐ" ;
-lin in_Prep = mkPrep "zài" ;
+lin in_Prep = mkPrep "zài" "" (R.ATPlace True) ;
 lin he_Pron = R.pronNP "tā" ;
 lin we_Pron = R.pronNP "wǒmen" ;
 lin good_A = mkA "hǎo" ;
