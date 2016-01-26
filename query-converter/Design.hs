@@ -216,8 +216,8 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     trSchema :: ERElement -> Relation
     trSchema e = case e of
       EEntity (EWeak strongrels) name attrs -> (relation name){
-        attributes = attrs ++ [(k,True)       | (strong,_) <- strongrels, k <- keys strong],
-        references =          [(k,(strong,k)) | (strong,_) <- strongrels, k <- keys strong]
+        attributes = attrs ++ [(qualif rel k, True)       | (strong,rel) <- strongrels, k <- keys strong],
+        references =          [(qualif rel k, (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
         }
       EEntity EStrong name attrs -> 
           let exacts = [(k,b) | fab@(f,(a,b)) <- functions, a == name, k <- keys b] 
@@ -241,7 +241,7 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
       _ -> error $ "entity " ++ y ++ " not found"
     qualif (e:es) (k:ks) = toLower e : es ++ [toUpper k] ++ ks
     mqualif mi e k = case mi of
-      Just i -> i
+      Just i -> qualif i k
       _ -> qualif e k  
     functions = [(f,(a,b)) | ERelationship f abs _ <- er, (a,_) <- abs, (b,(EExactlyOne,_)) <- abs, a/=b] ---- attrs? 
 ----    functions = [(f,(a,b)) | ERelationship f [(a,_), (b,(EExactlyOne,_))] _ <- er] ---- attrs? many-place?
@@ -293,7 +293,7 @@ getERElement s = case words s of
      _ -> error $ "cannot get weak entity support from " ++ unwords xs
 
 
-------------- natural language generation
+------------- natural language generation: very experimental and brittle
 
 erdiagram2text :: ERDiagram -> String
 erdiagram2text = unlines . map (mkSentence . unwords . trEl)
@@ -325,7 +325,8 @@ erdiagram2text = unlines . map (mkSentence . unwords . trEl)
                   in case words ue of
                        "is":ws -> "be":ws
                        "has":ws -> "have":ws
-                       v:ws     -> init v : ws  ---- removing s to form infinitive
+                       v:ws | last v == 's'  -> init v : ws  ---- removing s to form infinitive
+                       v:ws     -> init v : ws  ---- leave the verb as it is
 
    conj ts = concat $ intersperse ["and"] ts
 
