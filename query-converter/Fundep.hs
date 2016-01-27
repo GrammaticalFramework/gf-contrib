@@ -20,6 +20,10 @@ closure (allAttrs, (deps,_)) attrs = iter attrs where
 subset :: Eq a => [a] -> [a] -> Bool
 subset a b = all (\x -> elem x b) a
 
+-- a and b are equal as sets
+equalSets :: Eq a => [a] -> [a] -> Bool
+equalSets a b = subset a b && subset b a
+
 -- whether a is determined by xs, given deps
 follows :: [Fundep] -> [Attr] -> Attr -> Bool
 follows deps xs a = or [subset args xs | (args,b) <- deps, b == a]
@@ -28,20 +32,31 @@ follows deps xs a = or [subset args xs | (args,b) <- deps, b == a]
 closureFundep :: Relation -> [Fundep]
 closureFundep rel@(allAttrs,(deps,_)) = [(xs, a) | xs <- subsets allAttrs, a <- closure rel xs, notElem a xs]
 
--- a minimal basis of functional dependencies FD has the FD in its closure but no smaller one does
-basesFundep ::  Relation -> [[Fundep]]
-basesFundep rel@(attrs,(fundep,mvd)) = L.nub [fd |
-  fd <- minimizes,
-  sufficient fd
-  ]
- where
-   minimizes      = concatMap subsets (sequence (map weakenings nontrivials))
-   nontrivials    = [fd | fd <- fundep, not (isTrivialFundep rel fd)]
-   weakenings (xs,a) = [(x,a) | x <- subsets xs, not (null x)] 
-   sufficient fd  = subset origClosureRel (closureFundep (attrs,(fd,mvd)))
-   origClosureRel = closureFundep rel
-   ---- TODO: minimize
+-- one minimal basis of functional dependencies FD has the FD in its closure but no smaller one does
+-- algorithm from http://stackoverflow.com/questions/10284004/minimal-cover-and-functional-dependencies
+basisFundep :: Relation -> [Fundep]
+basisFundep rel@(allAttrs,(fundeps,mvds)) = pruneDeps [] $ pruneAttrs [] $ nontrivials
+  where
+    nontrivials = [fd | fd <- fundeps, not (isTrivialFundep rel fd)]
 
+    pruneAttrs earlier fds = case fds of
+      fd@(xs,a) : fdd ->    -- minimize fd's one by one
+        let fd_ = head $ [fd_ | fd_@(xs_,_) <- weakenings fd,                      -- the smallest replacing fd
+                              elem a (closure (relWith (fd:fdd ++ earlier)) xs_)]  -- from which a (RHS) can be derived
+                        ++ [error $ "cannot minimize FD " ++ show fd]              --- should only happen if rel spec is wrong
+        in  pruneAttrs (fd_:earlier) fdd                                           -- move to next fd, this change in place
+      _ -> earlier                  -- when you are done, you have an attribute-pruned set
+
+    pruneDeps earlier fds = case fds of
+      fd@(xs,a) : fdd -> if   elem a (closure (relWith (earlier ++ fdd)) xs) -- if fd is redundant
+                         then pruneDeps earlier      fdd                     -- drop it and consider next fd
+                         else pruneDeps (fd:earlier) fdd                     -- else keep it and consider next fd
+      _ -> earlier
+
+    weakenings (xs,a) = tail $ L.sortBy (\ (u,_) (v,_) -> compare (length u) (length v)) [(x,a) | x <- subsets xs] -- tail leaves out []
+
+    relWith fds = (allAttrs,(fds,mvds))
+    
 -- attrs is a superkey, if allAttrs is included in the closure of attrs
 isSuperkey :: Relation -> [Attr] -> Bool
 isSuperkey rel@(allAttrs, (deps,_)) attrs = subset allAttrs (closure rel attrs)
@@ -130,11 +145,13 @@ restrictRel rel@(_,(fundeps,mvds)) attrs =
 -- bring relation to 3NF
 normalize3NF :: Relation -> [Relation]
 normalize3NF rel@(attrs,(fundeps,_)) =
-    [rel] ---- TODO
+    [restrictRel rel ats | ats <- keyrels ++ signatures]
   where
-    basis = case basesFundep rel of
-      b:_ -> b                     --  take any basis - why not the first one
-      _ -> error "no basis found"  --- should not happen
+    basis = basisFundep rel
+    groups = L.groupBy (\ (xs,_) (ys,_) -> equalSets xs ys) basis
+    signatures = [ L.nub (xs ++ map snd gs) | gs@((xs,_):_) <- groups ]
+    relkeys = keys rel
+    keyrels = if any (\s -> any (\k -> subset k s) relkeys) signatures then [] else [head relkeys]
 
 -- bring relation to 4NF
 normalize4NF :: Relation -> [Relation]
@@ -190,12 +207,12 @@ prRelation rel@(attrs,(fundeps,mvds)) = unlines [
 prRelationInfo :: Relation -> String
 prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
   prRelation rel,
-  "Bases of functional dependencies:",
-  unlines [unlines ([]:map prFundep fds) | fds <- basesFundep rel],
-  "Derived functional dependencies:",
-  unlines (map prFundep (filter (flip notElem fundeps) (closureFundep rel))),
-  "Superkeys:",
-  unlines (map unwords (superkeys rel)),
+  "A minimal basis of functional dependencies:",
+  unlines (map prFundep (basisFundep rel)),
+----  "Derived functional dependencies:",
+----  unlines (map prFundep (filter (flip notElem fundeps) (closureFundep rel))),
+----  "Superkeys:",
+----  unlines (map unwords (superkeys rel)),
   "Keys:",
   unlines (map unwords (keys rel)),
   "3NF violations:",

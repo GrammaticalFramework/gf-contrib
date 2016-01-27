@@ -3,7 +3,7 @@ module Main where
 import Converter
 import Algebra
 import Design (file2ER)
-import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize4NF)
+import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
 import ToXML (prDatabaseXML)
 import XPath (execQueryXPath)
 
@@ -46,6 +46,9 @@ loop env = do
       loop env
     "n":file:_ -> do
       rel@(_,(_,mvds)) <- readFile file >>= return . pRelation . lines
+      putStrLn "3NF decomposition:"
+      let rels = normalize3NF rel
+      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       putStrLn "BCNF decomposition:"
       let rels = normalizeBCNF rel
       putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
