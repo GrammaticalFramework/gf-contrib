@@ -13,6 +13,7 @@ import PrintMinSQL
 import AbsMinSQL
 
 import ErrM
+import Viewer
 
 import System.IO ( stdin, stdout, hFlush, hGetContents )
 import System.Environment ( getArgs, getProgName )
@@ -115,8 +116,7 @@ alg2latex env s = case pTable (preprocSQL (myLexer s)) of
       "\\end{document}"
       ]
     system "pdflatex qconv-latex-tmp.tex > //dev//null"
-    system "open qconv-latex-tmp.pdf" -- mac
---    system "evince qconv-latex-tmp.pdf" -- linux
+    system $ pdfviewer os ++ " qconv-latex-tmp.pdf"
     return ()
 
 mintex = "qconv-latex-tmp.tex"
