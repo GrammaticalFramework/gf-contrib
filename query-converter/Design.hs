@@ -236,9 +236,10 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
         attributes = [(mqualif mi e k,status arr)  | (e,(arr,mi)) <- ents, k <- keys e] ++ [(a,False) | a <- attrs],
         references = [(mqualif mi e k,(e,k))       | (e,(arr,mi)) <- ents, k <- keys e]
         }
-    keys y = case lookup y [(r,[k | (k,True) <- attrs]) | EEntity _ r attrs <- er] of
+    keys y = case lookup y entitiesWithKeys of
       Just ks -> ks
       _ -> error $ "entity " ++ y ++ " not found"
+    entitiesWithKeys = [(r,[k | (k,True) <- attrs]) | EEntity _ r attrs <- er] ++ [(r,[]) | ESubEntity _ r _ attrs <- er]
     qualif (e:es) (k:ks) = toLower e : es ++ [toUpper k] ++ ks
     mqualif mi e k = case mi of
       Just i -> qualif i k
@@ -300,17 +301,19 @@ erdiagram2text = unlines . map (mkSentence . unwords . trEl)
  where
    trEl e = case e of
      EEntity EStrong name attrs -> 
-       trEnt indef name ++ ["has"] ++ conj (map (trAttr . fst) attrs)
+       trEnt indef name ++ hasAttrs attrs
 
      EEntity (EWeak strongrels) name attrs ->
        let strongs = concat [uncamel rel : trEnt indef strong | (strong,rel) <- strongrels]  --- relations are prepositions...
-       in  trEnt indef name ++ strongs ++ ["has"] ++ conj (map (trAttr . fst) attrs)
+       in  trEnt indef name ++ strongs ++ hasAttrs attrs
 
      ESubEntity strength name y attrs -> 
-       trEnt indef name ++ ["is"] ++ trEnt indef y ++ ["that has"] ++ conj (map trAttr attrs)
+       trEnt indef name ++ ["is"] ++ trEnt indef y ++ ifn attrs ["that", "has"] ++ conj (map trAttr attrs)
 
      ERelationship name ents@((x,(_,_)):(y,(arr,_)):_) attrs ->  ---- ignoring first arrow, arrow labels, more than two args
-       trEnt indef x ++ ["can"] ++ trRel infinitive name ++ trModEnt indef arr y ++ ifn attrs "with" ++ conj (map trAttr attrs)
+       trEnt indef x ++ ["can"] ++ trRel infinitive name ++ trModEnt indef arr y ++ ifn attrs ["with"] ++ conj (map trAttr attrs)
+
+   hasAttrs attrs = ifn attrs ["has"] ++ conj (map (trAttr . fst) attrs)
 
    trEnt form e = let ue = uncamel e in [indefArt ue, ue]
 
@@ -326,11 +329,11 @@ erdiagram2text = unlines . map (mkSentence . unwords . trEl)
                        "is":ws -> "be":ws
                        "has":ws -> "have":ws
                        v:ws | last v == 's'  -> init v : ws  ---- removing s to form infinitive
-                       v:ws     -> init v : ws  ---- leave the verb as it is
+                       v:ws     -> v : ws  ---- leave the verb as it is
 
    conj ts = concat $ intersperse ["and"] ts
 
-   ifn xs s = if null xs then [] else [s]
+   ifn xs s = if null xs then [] else s
 
    indef = "indef"
    infinitive = "infinitive"
