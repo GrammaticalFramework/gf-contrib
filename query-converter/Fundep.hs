@@ -105,7 +105,7 @@ violate3NF rel@(_,(deps,_)) =
 
 -- check if a relation is in the Third Normal Form
 is3NF :: Relation -> Bool
-is3NF rel = null (violateBCNF rel)
+is3NF rel = null (violate3NF rel)
 
 -- find violations of the Fourth Normal Form
 violate4NF :: Relation -> [Multidep]
@@ -145,7 +145,9 @@ restrictRel rel@(_,(fundeps,mvds)) attrs =
 -- bring relation to 3NF
 normalize3NF :: Relation -> [Relation]
 normalize3NF rel@(attrs,(fundeps,_)) =
-    [restrictRel rel ats | ats <- keyrels ++ signatures]
+  if is3NF rel
+    then [rel]
+    else [restrictRel rel ats | ats <- keyrels ++ signatures]
   where
     basis = basisFundep rel
     groups = L.groupBy (\ (xs,_) (ys,_) -> equalSets xs ys) basis

@@ -46,7 +46,7 @@ loop env = do
       loop env
     "n":file:_ -> do
       rel@(_,(_,mvds)) <- readFile file >>= return . pRelation . lines
-      putStrLn "3NF decomposition:"
+      putStrLn "3NF decomposition (experimental feature):"
       let rels = normalize3NF rel
       putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       putStrLn "BCNF decomposition:"
@@ -55,7 +55,7 @@ loop env = do
       if null mvds
          then return ()
          else do
-           putStrLn "4NF decomposition (maybe not complete):"
+           putStrLn "4NF decomposition (experimental feature):"
            let rels = normalize4NF rel
            putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
       loop env
