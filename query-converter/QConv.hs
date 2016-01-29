@@ -117,7 +117,7 @@ alg2latex env s = case pTable (preprocSQL (myLexer s)) of
       "\\end{document}"
       ]
     system "pdflatex qconv-latex-tmp.tex > //dev//null"
-    system $ pdfviewer os ++ " qconv-latex-tmp.pdf"
+    system $ viewer ++ " qconv-latex-tmp.pdf"
     return ()
 
 mintex = "qconv-latex-tmp.tex"
