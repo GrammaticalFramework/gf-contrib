@@ -216,8 +216,8 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     trSchema :: ERElement -> Relation
     trSchema e = case e of
       EEntity (EWeak strongrels) name attrs -> (relation name){
-        attributes = attrs ++ [(qualif rel k, True)       | (strong,rel) <- strongrels, k <- keys strong],
-        references =          [(qualif rel k, (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
+        attributes = attrs ++ [(qualif strong k, True)       | (strong,rel) <- strongrels, k <- keys strong],
+        references =          [(qualif strong k, (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
         }
       EEntity EStrong name attrs -> 
           let exacts = [(k,b) | fab@(f,(a,b)) <- functions, a == name, k <- keys b] 
@@ -237,9 +237,12 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
         references = [(mqualif mi e k,(e,k))       | (e,(arr,mi)) <- ents, k <- keys e]
         }
     keys y = case lookup y entitiesWithKeys of
-      Just ks -> ks
+      Just (e,ks) -> case e of
+         EEntity (EWeak strongrels) _ _ -> ks ++ [qualif strong k | (strong,rel) <- strongrels, k <- keys strong] 
+         _ -> ks
       _ -> error $ "entity " ++ y ++ " not found"
-    entitiesWithKeys = [(r,[k | (k,True) <- attrs]) | EEntity _ r attrs <- er] ++ [(r,[]) | ESubEntity _ r _ attrs <- er]
+    entitiesWithKeys = [(r,(e,[k | (k,True) <- attrs])) | e@(EEntity _ r attrs) <- er] ++
+                       [(r,(e,[])) | e@(ESubEntity _ r _ attrs) <- er]
     qualif (e:es) (k:ks) = toLower e : es ++ [toUpper k] ++ ks
     mqualif mi e k = case mi of
       Just i -> qualif i k
