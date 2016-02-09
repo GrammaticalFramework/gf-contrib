@@ -44,7 +44,6 @@ alex_accept = listArray (0::Int,123) [AlexAccNone,AlexAccNone,AlexAccNone,AlexAc
 {-# LINE 44 "LexRelAlgebra.x" #-}
 
 
-tok :: (Posn -> String -> Token) -> (Posn -> String -> Token)
 tok f p s = f p s
 
 share :: String -> String
@@ -60,30 +59,21 @@ data Tok =
 
  deriving (Eq,Show,Ord)
 
-data Token =
+data Token = 
    PT  Posn Tok
  | Err Posn
   deriving (Eq,Show,Ord)
 
-tokenPos :: [Token] -> String
 tokenPos (PT (Pn _ l _) _ :_) = "line " ++ show l
 tokenPos (Err (Pn _ l _) :_) = "line " ++ show l
 tokenPos _ = "end of file"
 
-tokenPosn :: Token -> Posn
 tokenPosn (PT p _) = p
 tokenPosn (Err p) = p
-
-tokenLineCol :: Token -> (Int, Int)
 tokenLineCol = posLineCol . tokenPosn
-
-posLineCol :: Posn -> (Int, Int)
 posLineCol (Pn _ l c) = (l,c)
-
-mkPosToken :: Token -> ((Int, Int), String)
 mkPosToken t@(PT p _) = (posLineCol p, prToken t)
 
-prToken :: Token -> String
 prToken t = case t of
   PT _ (TS s _) -> s
   PT _ (TL s)   -> s
@@ -103,7 +93,6 @@ eitherResIdent tv s = treeFind resWords
                               | s > a  = treeFind right
                               | s == a = t
 
-resWords :: BTree
 resWords = b "NOT" 18 (b "<>" 9 (b "," 5 (b "*" 3 (b ")" 2 (b "(" 1 N N) N) (b "+" 4 N N)) (b "/" 7 (b "-" 6 N N) (b "<" 8 N N))) (b "COUNT" 14 (b "AND" 12 (b ">" 11 (b "=" 10 N N) N) (b "AVG" 13 N N)) (b "MAX" 16 (b "LIKE" 15 N N) (b "MIN" 17 N N)))) (b "\\gamma_{" 27 (b "\\bowtie_{" 23 (b "\\backslash" 21 (b "SUM" 20 (b "OR" 19 N N) N) (b "\\bowtie" 22 N N)) (b "\\cup" 25 (b "\\cap" 24 N N) (b "\\delta" 26 N N))) (b "\\sigma_{" 31 (b "\\rho_{" 29 (b "\\pi_{" 28 N N) (b "\\rightarrow" 30 N N)) (b "\\times" 33 (b "\\tau_{" 32 N N) (b "}" 34 N N))))
    where b s n = let bs = id s
                   in B bs (TS bs n)
@@ -165,7 +154,7 @@ alexGetByte (p, _, [], s) =
 alexInputPrevChar :: AlexInput -> Char
 alexInputPrevChar (p, c, bs, s) = c
 
--- | Encode a Haskell String to a list of Word8 values, in UTF8 format.
+  -- | Encode a Haskell String to a list of Word8 values, in UTF8 format.
 utf8Encode :: Char -> [Word8]
 utf8Encode = map fromIntegral . go . ord
  where

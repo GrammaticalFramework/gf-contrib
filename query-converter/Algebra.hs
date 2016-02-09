@@ -2,6 +2,7 @@ module Algebra where
 
 import Relation
 import Data.List
+import Data.Char
 import qualified Data.Map as M
 import AbsRelAlgebra
 import PrintRelAlgebra
@@ -9,7 +10,20 @@ import PrintRelAlgebra
 --------------
 
 prRel :: Rel -> String
-prRel = unwords . lines . printTree -- removing newlines with brackets
+prRel = unwords . lines . printTree -- remove newlines due to latex braces
+
+prRelLatex :: Rel -> String
+prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . printTree 
+ where
+  splitToLines l s = case s of   -- split at each operator
+    o : ws | operator o -> (if null l then [] else [unwords (reverse l)]) ++ splitToLines [o] ws
+    w : ws | ident w    -> splitToLines (mbox w:l) ws
+    w : ws              -> splitToLines (w:l) ws
+    _                   -> [unwords (reverse l)]
+  operator o = elem o ["(\\sigma_{","(\\pi_{","(\\rho_{","(\\gamma_{","(\\tau_{","(\\delta"]
+  ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
+  mbox w = "\\mbox{" ++ w ++ "}"
+  mkLine (i,l) = "\\mbox{\\hspace{" ++ show (6*i) ++ "mm}} " ++ l ++ "\\\\"
 
 ident2id :: Ident -> Id
 ident2id (Ident x) = x

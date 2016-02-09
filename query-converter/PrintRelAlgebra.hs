@@ -98,7 +98,7 @@ instance Print Rel where
    RSelect cond rel -> prPrec i 2 (concatD [doc (showString "\\sigma_{") , prt 0 cond , doc (showString "}") , prt 3 rel])
    RProject exps rel -> prPrec i 2 (concatD [doc (showString "\\pi_{") , prt 0 exps , doc (showString "}") , prt 3 rel])
    RRename renaming rel -> prPrec i 2 (concatD [doc (showString "\\rho_{") , prt 0 renaming , doc (showString "}") , prt 3 rel])
-   RGroup ids aggregations rel -> prPrec i 2 (concatD [doc (showString "\\gamma_{") , prt 0 ids , prt 0 aggregations , doc (showString "}") , prt 3 rel])
+   RGroup ids aggregations rel -> prPrec i 2 (concatD [doc (showString "\\gamma_{") , prt 0 ids , doc (showString ",") , prt 0 aggregations , doc (showString "}") , prt 3 rel])
    RSort ids rel -> prPrec i 2 (concatD [doc (showString "\\tau_{") , prt 0 ids , doc (showString "}") , prt 3 rel])
    RDistinct rel -> prPrec i 2 (concatD [doc (showString "\\delta") , prt 3 rel])
    RUnion rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "\\cup") , prt 2 rel])

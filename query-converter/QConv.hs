@@ -102,16 +102,17 @@ alg2latex env s = case pTable (preprocSQL (myLexer s)) of
   Bad s -> putStrLn s
   Ok c -> do
     let rel = transTable c
-    let s = prRel rel
+    let s = prRelLatex rel
     writeFile mintex $ unlines [
       "\\batchmode",
       "\\documentclass[12pt]{article}",
       "\\begin{document}",
       "",
-      "\\Large",
-      "\\[",
+----      "\\Large",
+      "\\noindent",
+      "\\begin{multline}",
       s,
-      "\\]",
+      "\\end{multline}",
       "",
       "\\end{document}"
       ]
