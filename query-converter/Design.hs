@@ -83,7 +83,7 @@ displayER e = do
 -- reading a textfile
 
 file2ER file = do
-  s <- readFile file >>= return . filter (not . all isSpace) . lines
+  s <- readFile file >>= return . filter (not isPrefixOf "#") . filter (not . all isSpace) . lines
   let er = getERDiagram s
   displayER er
 
