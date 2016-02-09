@@ -1,0 +1,62 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  max-width: 42rem;
+  margin: 2rem auto;
+}
+header {
+  margin: 3rem 0;
+  text-align: center;
+}
+h1, #tagline {
+  margin:0;
+}
+h1::first-letter {
+  color: purple;
+}
+#tagline {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: purple;
+  font-size: .8rem;
+}
+#input-area {
+  position: relative;
+}
+#press {
+  font-family: 'Roboto Condensed', sans-serif;
+  position: absolute;
+  right: 1rem;
+  top: .7rem;
+  background: purple;
+  color: white;
+ border-radius:2px;
+ border: none;
+}
+textarea {
+  font-family: 'Roboto Mono', ;
+  padding: .5rem 1rem;
+  width: 100%;
+  resize: vertical;
+  border: thick purple solid;
+  border-radius: .5rem;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.box {
+  margin: .2rem 0;
+  padding: .3rem 1.5rem .5rem;
+  border-bottom: thin solid #ddd;
+}
+.error { color: red }
+
+#output-area {
+  border-radius: .5rem;
+  box-shadow: 0 0 1px 0 #ccc,0 0 10px #ccc;
+  margin-top: 2rem;
+}
+
