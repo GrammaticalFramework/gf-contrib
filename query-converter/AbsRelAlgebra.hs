@@ -29,7 +29,10 @@ data Cond =
  | CNEq Exp Exp
  | CLt Exp Exp
  | CGt Exp Exp
+ | CLeq Exp Exp
+ | CGeq Exp Exp
  | CLike Exp Exp
+ | CNotLike Exp Exp
  | CNot Cond
  | CAnd Cond Cond
  | COr Cond Cond

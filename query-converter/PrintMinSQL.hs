@@ -176,6 +176,7 @@ instance Print ON where
   prt i e = case e of
    OnNone  -> prPrec i 0 (concatD [])
    OnCondition condition -> prPrec i 0 (concatD [doc (showString "ON") , prt 0 condition])
+   OnUsing ids -> prPrec i 0 (concatD [doc (showString "USING") , doc (showString "(") , prt 0 ids , doc (showString ")")])
 
 
 instance Print ALL where
@@ -258,10 +259,12 @@ instance Print Condition where
    CAnd condition0 condition -> prPrec i 2 (concatD [prt 2 condition0 , doc (showString "AND") , prt 3 condition])
    COr condition0 condition -> prPrec i 1 (concatD [prt 1 condition0 , doc (showString "OR") , prt 2 condition])
    CNot condition -> prPrec i 3 (concatD [doc (showString "NOT") , prt 3 condition])
-   CExists exp -> prPrec i 3 (concatD [doc (showString "EXISTS") , prt 0 exp])
+   CExists table -> prPrec i 3 (concatD [doc (showString "EXISTS") , prt 2 table])
    CIsNotNull exp -> prPrec i 3 (concatD [prt 0 exp , doc (showString "IS") , doc (showString "NOT") , doc (showString "NULL")])
    CBetween exp0 exp1 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "BETWEEN") , prt 0 exp1 , doc (showString "AND") , prt 0 exp])
    CNotBetween exp0 exp1 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "NOT") , doc (showString "BETWEEN") , prt 0 exp1 , doc (showString "AND") , prt 0 exp])
+   CIn exp values -> prPrec i 2 (concatD [prt 0 exp , doc (showString "IN") , prt 0 values])
+   CNotIn exp values -> prPrec i 2 (concatD [prt 0 exp , doc (showString "NOT") , doc (showString "IN") , prt 0 values])
 
 
 instance Print Oper where
@@ -274,8 +277,6 @@ instance Print Oper where
    OLeq  -> prPrec i 0 (concatD [doc (showString "<=")])
    OLike  -> prPrec i 0 (concatD [doc (showString "LIKE")])
    ONotLike  -> prPrec i 0 (concatD [doc (showString "NOT") , doc (showString "LIKE")])
-   OIn  -> prPrec i 0 (concatD [doc (showString "IN")])
-   ONotIn  -> prPrec i 0 (concatD [doc (showString "NOT") , doc (showString "IN")])
 
 
 instance Print Typing where

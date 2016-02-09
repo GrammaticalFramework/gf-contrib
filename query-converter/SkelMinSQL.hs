@@ -99,6 +99,7 @@ transON :: ON -> Result
 transON x = case x of
   OnNone  -> failure x
   OnCondition condition  -> failure x
+  OnUsing ids  -> failure x
 
 
 transALL :: ALL -> Result
@@ -178,10 +179,12 @@ transCondition x = case x of
   CAnd condition1 condition2  -> failure x
   COr condition1 condition2  -> failure x
   CNot condition  -> failure x
-  CExists exp  -> failure x
+  CExists table  -> failure x
   CIsNotNull exp  -> failure x
   CBetween exp1 exp2 exp3  -> failure x
   CNotBetween exp1 exp2 exp3  -> failure x
+  CIn exp values  -> failure x
+  CNotIn exp values  -> failure x
 
 
 transOper :: Oper -> Result
@@ -194,8 +197,6 @@ transOper x = case x of
   OLeq  -> failure x
   OLike  -> failure x
   ONotLike  -> failure x
-  OIn  -> failure x
-  ONotIn  -> failure x
 
 
 transTyping :: Typing -> Result

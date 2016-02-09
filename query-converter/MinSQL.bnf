@@ -39,6 +39,7 @@ TNatJoin.      Table1 ::= Table1 "NATURAL" "JOIN" Table2 ;
 TNatFullJoin.  Table1 ::= Table1 "NATURAL" "FULL" "OUTER" "JOIN" Table2 ;
 TLeftJoin.     Table1 ::= Table1 "LEFT" "OUTER" "JOIN" Table2 ON ;
 TRightJoin.    Table1 ::= Table1 "RIGHT" "OUTER" "JOIN" Table2 ON ;
+TRightJoin.    Table1 ::= Table1 "FULL" "OUTER" "JOIN" Table2 ON ;
 TQuery.        Table  ::= Query ;
 
 coercions Table 2 ;
@@ -67,6 +68,7 @@ coercions Exp 8 ;
 
 OnNone.      ON ::= ;
 OnCondition. ON ::= "ON" Condition ;
+OnUsing.     ON ::= "USING" "(" [Ident] ")" ;
 
 ANone.     ALL ::= ;
 AAll.      ALL ::= "ALL" ;
@@ -115,11 +117,12 @@ COper.    Condition3 ::= Exp Oper Exp ;
 CAnd.     Condition2 ::= Condition2 "AND" Condition3 ;
 COr.      Condition1 ::= Condition1 "OR"  Condition2 ;
 CNot.     Condition3 ::= "NOT" Condition3 ;
-CExists.  Condition3 ::= "EXISTS" Exp ;
+CExists.  Condition3 ::= "EXISTS" Table2 ;
 CIsNotNull. Condition3 ::= Exp "IS" "NOT" "NULL" ;
 CBetween. Condition2 ::= Exp "BETWEEN" Exp "AND" Exp ;
 CNotBetween. Condition2 ::= Exp "NOT" "BETWEEN" Exp "AND" Exp ;
-
+CIn.    Condition2 ::= Exp "IN" VALUES ;
+CNotIn. Condition2 ::= Exp "NOT" "IN" VALUES ;
 
 coercions Condition 3 ;
 
@@ -131,8 +134,6 @@ OGeq.  Oper ::= ">=" ;
 OLeq.  Oper ::= "<=" ;
 OLike. Oper ::= "LIKE" ;
 ONotLike. Oper ::= "NOT" "LIKE" ;
-OIn.    Oper ::= "IN" ;
-ONotIn. Oper ::= "NOT" "IN" ;
 
 TColumn.     Typing ::= Ident Type [Constraint] DEFAULT ;
 TConstraint. Typing ::= Constraint "(" [Ident] ")" ;

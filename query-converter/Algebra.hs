@@ -91,8 +91,9 @@ evalCond tb c t = case c of
 evalExp :: Table -> Tuple -> Exp -> Value
 evalExp tb t e = case e of
   EInt i -> VInt i
+  EFloat i -> VFloat i
   EString s -> VString s
-  EIdent l -> lookTupleValue (tindex tb) t (ident2id l)
+  EIdent l -> lookTupleValue (tindex tb) t (snd (unqualify (ident2id l))) ---- qualify?
 --  EFloat d
   EAggr fun id -> case (fun,id) of
     (FCount, Ident "*") -> countAggr $ tdata tb  -- COUNT(*) special case

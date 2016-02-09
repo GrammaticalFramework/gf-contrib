@@ -19,10 +19,15 @@ type Id = String
 qualify :: Id -> Id -> Id
 qualify q c = if null q then c else (q ++ "." ++ c)
 
+unqualify :: Id -> (Id,Id)
+unqualify qc = case break (=='.') qc of
+  (q,_:c) -> (q,c)
+  _ -> ("",qc)
+
 type Tuple = [Value]
 type LabelMap = M.Map Id (Int,Type)
 
-data Value = VString String | VInt Integer | VNull | VError String
+data Value = VString String | VInt Integer | VFloat Double | VNull | VError String
   deriving (Eq,Ord,Show)
 
 data Type = TString | TInt
@@ -61,6 +66,7 @@ prValue :: Value -> String
 prValue v = case v of
   VString s -> "'" ++ s ++ "'"
   VInt i -> show i
+  VFloat i -> show i
   VNull  -> "NULL"
   VError s -> "ERROR " ++ s
 

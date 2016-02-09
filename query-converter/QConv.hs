@@ -81,7 +81,7 @@ runSQLScript env s = case pScript (preprocSQL (myLexer s)) of
   Ok c -> transScript env c
   Bad s -> putStrLn s >> return env    
 
--- convert keywords to upper case
+-- convert keywords to upper case, idents to lower case
 
 preprocSQL :: [Token] -> [Token]
 preprocSQL = map prep where
@@ -90,7 +90,7 @@ preprocSQL = map prep where
             let us =  map toUpper s 
             in case treeFind us resWords of 
               Just u -> PT p u
-              _ -> t
+              _ -> PT p (TV (map toLower s))
     _ -> t
   treeFind s N = Nothing
   treeFind s (B a t left right) | s < a  = treeFind s left

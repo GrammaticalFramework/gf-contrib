@@ -42,7 +42,10 @@ transCond x = case x of
   CNEq exp1 exp2  -> failure x
   CLt exp1 exp2  -> failure x
   CGt exp1 exp2  -> failure x
+  CLeq exp1 exp2  -> failure x
+  CGeq exp1 exp2  -> failure x
   CLike exp1 exp2  -> failure x
+  CNotLike exp1 exp2  -> failure x
   CNot cond  -> failure x
   CAnd cond1 cond2  -> failure x
   COr cond1 cond2  -> failure x
