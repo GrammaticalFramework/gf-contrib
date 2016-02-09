@@ -1,0 +1,33 @@
+name:                qconv
+version:             0.1.0.0
+synopsis:            Relational query converter
+-- description:
+homepage:            https://github.com/GrammaticalFramework/gf-contrib/tree/master/query-converter#readme
+-- license:
+-- license-file:
+author:              Aarne Ranta
+maintainer:          aarne@chalmers.se
+-- copyright:
+category:            Database
+build-type:          Simple
+extra-source-files:  README
+cabal-version:       >=1.10
+
+library
+  other-modules:       Relation, Natural, Design, Viewer, ToXML, XPath
+                     , AbsXPath, LexXPath, ParXPath
+                     , PrintMinSQL
+  exposed-modules:     Fundep, Algebra, Converter
+                     , AbsMinSQL, LexMinSQL, ParMinSQL
+                     , AbsRelAlgebra, PrintRelAlgebra, ErrM
+  other-extensions:    CPP, MagicHash, OverloadedStrings
+  build-depends:       base, array, containers, process, text
+  default-language:    Haskell2010
+
+
+executable qconv
+  main-is:             QConv.hs
+  -- other-modules:
+  other-extensions:    CPP, MagicHash, OverloadedStrings
+  build-depends:       base, array, containers, process, text
+  default-language:    Haskell2010
