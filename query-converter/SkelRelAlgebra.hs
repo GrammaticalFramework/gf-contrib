@@ -54,6 +54,7 @@ transCond x = case x of
 transExp :: Exp -> Result
 transExp x = case x of
   EIdent id  -> failure x
+  EQIdent id1 id2  -> failure x
   EString str  -> failure x
   EInt n  -> failure x
   EFloat d  -> failure x

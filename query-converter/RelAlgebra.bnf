@@ -35,6 +35,7 @@ COr.        Cond1 ::= Cond1 "OR" Cond2 ;
 coercions Cond 3 ;
 
 EIdent.     Exp3  ::= Ident ;
+EQIdent.    Exp3  ::= Ident "." Ident ;
 EString.    Exp3  ::= String ;
 EInt.       Exp3  ::= Integer ;
 EFloat.     Exp3  ::= Double ;

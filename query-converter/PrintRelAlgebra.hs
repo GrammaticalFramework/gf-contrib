@@ -130,6 +130,7 @@ instance Print Cond where
 instance Print Exp where
   prt i e = case e of
    EIdent id -> prPrec i 3 (concatD [prt 0 id])
+   EQIdent id0 id -> prPrec i 3 (concatD [prt 0 id0 , doc (showString ".") , prt 0 id])
    EString str -> prPrec i 3 (concatD [prt 0 str])
    EInt n -> prPrec i 3 (concatD [prt 0 n])
    EFloat d -> prPrec i 3 (concatD [prt 0 d])

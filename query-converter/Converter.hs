@@ -19,7 +19,7 @@ import Control.Monad
 
 type SEnv = Alg.Env
 
-initSEnv = Alg.Env M.empty
+initSEnv = Alg.initEnv
 
 trueCond :: A.Cond
 trueCond = A.CEq (A.EInt 0) (A.EInt 0) ---- trivially true condition
@@ -153,7 +153,7 @@ transTable t = case t of
 transExp :: Exp -> A.Exp
 transExp x = case x of
   EName i        -> A.EIdent (transIdent i) 
-  EQual i q      -> A.EIdent (A.Ident (Rel.qualify (transId i) (transId q)))
+  EQual q i      -> A.EQIdent (transIdent q) (transIdent i)
   ENameAlias i q -> A.EIdent (transIdent q) ---- as used in table heading, TODO get value
   EInt n         -> A.EInt n
   EFloat n       -> A.EFloat n

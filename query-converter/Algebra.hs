@@ -31,13 +31,24 @@ ident2id (Ident x) = x
 --------------
 
 data Env = Env {
-  tables :: M.Map Id Table ---- todo: views
+  tables     :: M.Map Id Table,
+  views      :: M.Map Id Rel,
+  assertions :: M.Map Id Assertion,
+  triggers   :: M.Map Id Trigger
   }
+
+type Assertion = M.Map Id Table -> Bool ----
+type Trigger   = Env -> Env ----
+
+initEnv :: Env
+initEnv = Env M.empty M.empty M.empty M.empty
 
 lookEnv :: Env -> Id -> Table
 lookEnv env x = case M.lookup x (tables env) of
   Just t -> t
-  _ -> error $ "table not found: " ++ x
+  _ -> case M.lookup x (views env) of
+    Just v -> evalRel env v 
+    _ -> error $ "table not found: " ++ x
 
 evalRel :: Env -> Rel -> Table
 evalRel env r = case r of
@@ -90,10 +101,11 @@ evalCond tb c t = case c of
 
 evalExp :: Table -> Tuple -> Exp -> Value
 evalExp tb t e = case e of
-  EInt i -> VInt i
-  EFloat i -> VFloat i
+  EInt i    -> VInt i
+  EFloat i  -> VFloat i
   EString s -> VString s
-  EIdent l -> lookTupleValue (tindex tb) t (snd (unqualify (ident2id l))) ---- qualify?
+  EIdent l  -> lookTupleValue (tindex tb) t (ident2id l) 
+  EQIdent q i -> lookTupleValue (tindex tb) t (ident2id i) ---- qualify?
 --  EFloat d
   EAggr fun id -> case (fun,id) of
     (FCount, Ident "*") -> countAggr $ tdata tb  -- COUNT(*) special case
