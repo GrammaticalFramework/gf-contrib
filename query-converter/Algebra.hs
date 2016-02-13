@@ -22,7 +22,7 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
     _                   -> [unwords (reverse l)]
   operator o = elem o ["(\\sigma_{","(\\pi_{","(\\rho_{","(\\gamma_{","(\\tau_{","(\\delta"]
   ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
-  mbox w = "\\mbox{" ++ w ++ "}"
+  mbox w = w ---- "\\mbox{" ++ w ++ "}"
   mkLine (i,l) = "\\mbox{\\hspace{" ++ show (6*i) ++ "mm}} " ++ l ++ "\\\\"
 
 ident2id :: Ident -> Id
@@ -70,7 +70,8 @@ evalRenaming :: Table -> Renaming -> [Id]
 evalRenaming rel ren = case ren of
   RRelation r      -> map (qualify (ident2id r)) (attributes rel) -- qualify all names  ---- no change of rel name
   RAttributes r ls -> map ident2id ls                 -- all attributes must be changed ---- no change of rel name
-  RReplace a0 b0   -> let [a,b] = map ident2id [a0,b0] in map (\x -> if x==b then a else x) (attributes rel)   -- rename one attr
+  RReplaces rs -> let reps = [(ident2id a, ident2id b) | RReplace (EIdent a) b <- rs] ---- rename other exps?
+                  in [maybe a id  (lookup a reps) | a <- attributes rel]
 
 evalAggregation :: Aggregation -> ([Value] -> Value, (Id,Id))
 evalAggregation (AgFun fun arg exp) = case (fun,exp) of

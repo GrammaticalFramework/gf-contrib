@@ -36,7 +36,6 @@ data Cond =
  | CLeq Exp Exp
  | CGeq Exp Exp
  | CLike Exp Exp
- | CNotLike Exp Exp
  | CNot Cond
  | CAnd Cond Cond
  | COr Cond Cond
@@ -51,6 +50,7 @@ data Exp =
  | EAggr Function Ident
  | EMul Exp Exp
  | EDiv Exp Exp
+ | ERem Exp Exp
  | EAdd Exp Exp
  | ESub Exp Exp
   deriving (Eq,Ord,Show,Read)
@@ -58,7 +58,11 @@ data Exp =
 data Renaming =
    RRelation Ident
  | RAttributes Ident [Ident]
- | RReplace Ident Ident
+ | RReplaces [Replacement]
+  deriving (Eq,Ord,Show,Read)
+
+data Replacement =
+   RReplace Exp Ident
   deriving (Eq,Ord,Show,Read)
 
 data Aggregation =

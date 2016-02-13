@@ -45,7 +45,6 @@ transCond x = case x of
   CLeq exp1 exp2  -> failure x
   CGeq exp1 exp2  -> failure x
   CLike exp1 exp2  -> failure x
-  CNotLike exp1 exp2  -> failure x
   CNot cond  -> failure x
   CAnd cond1 cond2  -> failure x
   COr cond1 cond2  -> failure x
@@ -61,6 +60,7 @@ transExp x = case x of
   EAggr function id  -> failure x
   EMul exp1 exp2  -> failure x
   EDiv exp1 exp2  -> failure x
+  ERem exp1 exp2  -> failure x
   EAdd exp1 exp2  -> failure x
   ESub exp1 exp2  -> failure x
 
@@ -69,7 +69,12 @@ transRenaming :: Renaming -> Result
 transRenaming x = case x of
   RRelation id  -> failure x
   RAttributes id ids  -> failure x
-  RReplace id1 id2  -> failure x
+  RReplaces replacements  -> failure x
+
+
+transReplacement :: Replacement -> Result
+transReplacement x = case x of
+  RReplace exp id  -> failure x
 
 
 transAggregation :: Aggregation -> Result

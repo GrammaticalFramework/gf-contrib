@@ -104,7 +104,7 @@ eitherResIdent tv s = treeFind resWords
                               | s == a = t
 
 resWords :: BTree
-resWords = b "MAX" 19 (b "<=" 10 (b "," 5 (b "*" 3 (b ")" 2 (b "(" 1 N N) N) (b "+" 4 N N)) (b "/" 8 (b "." 7 (b "-" 6 N N) N) (b "<" 9 N N))) (b "AND" 15 (b ">" 13 (b "=" 12 (b "<>" 11 N N) N) (b ">=" 14 N N)) (b "COUNT" 17 (b "AVG" 16 N N) (b "LIKE" 18 N N)))) (b "\\delta" 29 (b "\\backslash" 24 (b "OR" 22 (b "NOT" 21 (b "MIN" 20 N N) N) (b "SUM" 23 N N)) (b "\\cap" 27 (b "\\bowtie_{" 26 (b "\\bowtie" 25 N N) N) (b "\\cup" 28 N N))) (b "\\sigma_{" 34 (b "\\rho_{" 32 (b "\\pi_{" 31 (b "\\gamma_{" 30 N N) N) (b "\\rightarrow" 33 N N)) (b "\\times" 36 (b "\\tau_{" 35 N N) (b "}" 37 N N))))
+resWords = b "MAX" 20 (b "<" 10 (b "+" 5 (b ")" 3 (b "(" 2 (b "%" 1 N N) N) (b "*" 4 N N)) (b "." 8 (b "-" 7 (b "," 6 N N) N) (b "/" 9 N N))) (b ">=" 15 (b "=" 13 (b "<>" 12 (b "<=" 11 N N) N) (b ">" 14 N N)) (b "COUNT" 18 (b "AVG" 17 (b "AND" 16 N N) N) (b "LIKE" 19 N N)))) (b "\\delta" 30 (b "\\backslash" 25 (b "OR" 23 (b "NOT" 22 (b "MIN" 21 N N) N) (b "SUM" 24 N N)) (b "\\cap" 28 (b "\\bowtie_{" 27 (b "\\bowtie" 26 N N) N) (b "\\cup" 29 N N))) (b "\\sigma_{" 35 (b "\\rho_{" 33 (b "\\pi_{" 32 (b "\\gamma_{" 31 N N) N) (b "\\rightarrow" 34 N N)) (b "\\times" 37 (b "\\tau_{" 36 N N) (b "}" 38 N N))))
    where b s n = let bs = id s
                   in B bs (TS bs n)
 

@@ -1,6 +1,6 @@
 module Main where
 
-import Converter
+import SQLCompiler ---- Converter
 import Algebra
 import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
@@ -98,10 +98,10 @@ preprocSQL = map prep where
                                 | s == a = Just t
 
 alg2latex :: SEnv -> String -> IO ()
-alg2latex env s = case pTable (preprocSQL (myLexer s)) of
+alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
   Bad s -> putStrLn s
   Ok c -> do
-    let rel = transTable c
+    let rel = transQuery c
     let s = prRelLatex rel
     writeFile mintex $ unlines [
       "\\batchmode",

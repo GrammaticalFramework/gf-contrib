@@ -40,19 +40,19 @@ SELECT code, title FROM Courses, Teachers ;
 
 SELECT name, teacher FROM Courses, TaughtCourses WHERE code = course ;
 
-SELECT T.name, C.name FROM Teachers AS T, Courses AS C ;
+----SELECT T.name, C.name FROM Teachers AS T, Courses AS C ;
 
-SELECT T.name, C.name 
-FROM Teachers T, Courses C, TaughtCourses T 
-WHERE T.course = C.code AND T.teacher = T.name ;
+----SELECT T.name, C.name 
+----FROM Teachers T, Courses C, TaughtCourses T 
+----WHERE T.course = C.code AND T.teacher = T.name ;
 
 SELECT * FROM Courses, Teachers ORDER BY code ;
 
-SELECT * FROM Courses, Teachers AS T ORDER BY T.name ;
+----SELECT * FROM Courses, Teachers AS T ORDER BY T.name ;
 
 SELECT DISTINCT course FROM TaughtCourses ;
 
-SELECT Count(code) AS codes FROM Courses ;
+SELECT COUNT(code) AS codes FROM Courses ;
 
 SELECT period+5 FROM TaughtCourses ;
 
@@ -60,13 +60,13 @@ SELECT SUM(numberOfStudents) AS sumper FROM TaughtCourses ;
 
 SELECT AVG(numberOfStudents) FROM TaughtCourses ;
 
-SELECT SUM(period) FROM (SELECT * FROM TaughtCourses WHERE teacher = 'Kemp') ;
+----SELECT SUM(period) FROM (SELECT * FROM TaughtCourses WHERE teacher = 'Kemp') AS K ;
 
 SELECT teacher, SUM(numberOfStudents) FROM TaughtCourses GROUP BY teacher ;
 
 SELECT teacher, COUNT(period) AS numper FROM TaughtCourses GROUP BY teacher ;
 
-SELECT teacher, SUM(numberOfStudents) AS totalNumberOfStudents FROM TaughtCourses GROUP BY teacher HAVING totalNumberOfStudents > 100 ;
+----SELECT teacher, SUM(numberOfStudents) AS totalNumberOfStudents FROM TaughtCourses GROUP BY teacher HAVING totalNumberOfStudents > 100 ;
 
 SELECT COUNT(*) FROM Courses ;
 

@@ -1,0 +1,202 @@
+-- source: http://www.w3schools.com/sql/sql_update.asp
+
+SStm. Script ::= [Command] ;
+
+terminator Command ";" ;
+
+CQuery.           Command ::= Table ;
+CInsert.          Command ::= "INSERT" "INTO" Ident VALUES ;
+CUpdate.          Command ::= "UPDATE" Ident "SET" [Setting] WHERE ;
+CDelete.          Command ::= "DELETE" STAR "FROM" Ident WHERE ;
+CCreateDatabase.  Command ::= "CREATE" "DATABASE" Ident ;
+CCreateTable.     Command ::= "CREATE" "TABLE" Ident "(" [Typing] ")" ;
+CAlterTable.      Command ::= "ALTER" "TABLE" Ident Alter ;
+CCreateView.      Command ::= "CREATE" "VIEW" Ident "AS" Table ;
+CCreateAssertion. Command ::= "CREATE" "ASSERTION" Ident "CHECK" "(" Condition ")" ;
+CDescribe.        Command ::= "DESCRIBE" Ident ;
+
+QSelect.          Query   ::= "SELECT" TOP DISTINCT Columns "FROM" Table1 WHERE GROUP HAVING ORDER ;
+QSelectWith.      Query   ::= "WITH" [Definition] Query ;
+
+CCAll.   Columns ::= "*" ;
+CCExps.  Columns ::= [Exp] ;
+
+separator nonempty Ident "," ;   -- used in insert column names
+separator nonempty Exp "," ;     -- used in insert values and in IN lists
+
+WNone.      WHERE ::= ;
+WCondition. WHERE ::= "WHERE" Condition ;
+
+TName.         Table2 ::= Ident ;
+TNameAlias.    Table2 ::= Table2 "AS" Ident ;
+TNameAlias.    Table2 ::= Table2 Ident ;                  --- deprecated in standard SQL
+TProduct.      Table1 ::= Table1 "," Table2 ;
+TUnion.        Table1 ::= Table1 "UNION" ALL Table2 ;
+TIntersect.    Table1 ::= Table1 "INTERSECT" ALL Table2 ; --- ALL not in Oracle
+TExcept.       Table1 ::= Table1 "EXCEPT" ALL Table2 ;    --- ALL not in Oracle
+TJoin.         Table1 ::= Table1 "JOIN" Table2 ON ;
+TNatJoin.      Table1 ::= Table1 "NATURAL" "JOIN" Table2 ;
+TNatFullJoin.  Table1 ::= Table1 "NATURAL" "FULL" "OUTER" "JOIN" Table2 ;
+TLeftJoin.     Table1 ::= Table1 "LEFT" "OUTER" "JOIN" Table2 ON ;
+TRightJoin.    Table1 ::= Table1 "RIGHT" "OUTER" "JOIN" Table2 ON ;
+TRightJoin.    Table1 ::= Table1 "FULL" "OUTER" "JOIN" Table2 ON ;
+TQuery.        Table  ::= Query ;
+
+coercions Table 2 ;
+
+EName.      Exp8 ::= Ident ;
+EQual.      Exp8 ::= Ident "." Ident ;
+ENameAlias. Exp8 ::= Exp8 "AS" Ident ;
+EQuery.     Exp8 ::= "(" Query ")" ;
+EInt.       Exp8 ::= Integer ;
+EFloat.     Exp8 ::= Double ;
+EStr.       Exp8 ::= Str ;      -- single quotes
+EString.    Exp8 ::= String ;   -- double quotes
+ENull.      Exp8 ::= "NULL" ;
+EList.      Exp8 ::= "(" Exp "," [Exp] ")" ; --- City IN ('Paris','Berlin')
+EAggr.      Exp8 ::= AggrOper "(" DISTINCT Exp ")" ;
+EAggrAll.   Exp8 ::= AggrOper "(" DISTINCT "*" ")" ;
+EDef.       Exp8 ::= "DEFAULT" ;
+EAny.       Exp7 ::= "ANY" Exp8 ;
+EAll.       Exp7 ::= "ALL" Exp8 ;
+EMul.       Exp6 ::= Exp6 "*" Exp7 ;
+EDiv.       Exp6 ::= Exp6 "/" Exp7 ;
+EAdd.       Exp5 ::= Exp5 "+" Exp6 ;
+ESub.       Exp5 ::= Exp5 "-" Exp6 ;
+
+coercions Exp 8 ;
+
+OnNone.      ON ::= ;
+OnCondition. ON ::= "ON" Condition ;
+OnUsing.     ON ::= "USING" "(" [Ident] ")" ;
+
+ANone.     ALL ::= ;
+AAll.      ALL ::= "ALL" ;
+
+---terminator nonempty Alias "" ;
+
+DNone.      DISTINCT ::= ;
+DDISTINCT.  DISTINCT ::= "DISTINCT" ;
+
+TNone.      TOP ::= ;
+TNumber.    TOP ::= "TOP" Integer ;
+TPercent.   TOP ::= "TOP" Integer "PERCENT" ;
+
+GNone.      GROUP ::= ;
+GGroupBy.   GROUP ::= "GROUP" "BY" [Exp] ;
+
+HNone.      HAVING ::= ;
+HCondition. HAVING ::= "HAVING" Condition ;
+
+ONone.    ORDER ::= ;
+OOrderBy. ORDER ::= "ORDER" "BY" [Exp] DESC ;
+
+DAsc.     DESC ::= ;
+DAsc.     DESC ::= "ASC" ; 
+DDesc.    DESC ::= "DESC" ;
+
+VColVal.   VALUES ::= "(" [Ident] ")" "VALUES" "(" [Exp] ")" ;
+VVal.      VALUES ::= "VALUES" "(" [Exp] ")" ;
+VTable.    VALUES ::= "(" Table ")" ;
+VColTable. VALUES ::= Ident "(" [Ident] ")" "(" Table ")" ;
+
+
+SVal.  Setting ::= Ident "=" Exp ;
+separator nonempty Setting "," ;
+
+StNone. STAR ::= ;
+StStar. STAR ::= "*" ;
+
+AOMax.   AggrOper ::= "MAX" ;
+AOMin.   AggrOper ::= "MIN" ;
+AOAvg.   AggrOper ::= "AVG" ;
+AOCount. AggrOper ::= "COUNT" ;
+AOSum.   AggrOper ::= "SUM" ;
+
+COper.    Condition3 ::= Exp Oper Exp ;
+CAnd.     Condition2 ::= Condition2 "AND" Condition3 ;
+COr.      Condition1 ::= Condition1 "OR"  Condition2 ;
+CNot.     Condition3 ::= "NOT" Condition3 ;
+CExists.  Condition3 ::= "EXISTS" Table2 ;
+CIsNotNull. Condition3 ::= Exp "IS" "NOT" "NULL" ;
+CBetween. Condition2 ::= Exp "BETWEEN" Exp "AND" Exp ;
+CNotBetween. Condition2 ::= Exp "NOT" "BETWEEN" Exp "AND" Exp ;
+CIn.    Condition2 ::= Exp "IN" VALUES ;
+CNotIn. Condition2 ::= Exp "NOT" "IN" VALUES ;
+
+coercions Condition 3 ;
+
+OEq.   Oper ::= "=" ;
+ONeq.  Oper ::= "<>" ;
+OGt.   Oper ::= ">" ;
+OLt.   Oper ::= "<" ;
+OGeq.  Oper ::= ">=" ;
+OLeq.  Oper ::= "<=" ;
+OLike. Oper ::= "LIKE" ;
+ONotLike. Oper ::= "NOT" "LIKE" ;
+
+TColumn.     Typing ::= Ident Type [Constraint] DEFAULT ;
+TConstraint. Typing ::= Constraint "(" [Ident] ")" ;
+TForeignKey. Typing ::= "FOREIGN" "KEY" Exp "REFERENCES" Ident "(" [Ident] ")" [Policy] ;
+TReferences. Typing ::= Ident "REFERENCES" Ident "(" [Ident] ")" [Policy] ;
+TNamedConstraint. Typing ::= "CONSTRAINT" Ident Constraint ; 
+
+separator nonempty Typing "," ;
+
+TIdent. Type ::= Ident ;
+TSized. Type ::= Ident "(" Integer ")" ;
+
+DefNone.  DEFAULT ::= ;
+DefExp.   DEFAULT ::= "DEFAULT" Exp ;
+
+CNotNull. Constraint ::= "NOT" "NULL" ;
+CUnique.  Constraint ::= "UNIQUE" ;
+CPrimaryKey. Constraint ::= "PRIMARY" "KEY" ;
+CForeignKey. Constraint ::= "FOREIGN" "KEY" Exp "REFERENCES" Ident "(" [Ident] ")" [Policy] ;
+CReferences. Constraint ::= "REFERENCES" Ident "(" [Ident] ")" [Policy] ;
+CCheck. Constraint ::= "CHECK" "(" Condition ")" ;
+CNamed. Constraint ::= "CONSTRAINT" Ident Constraint ; 
+
+terminator Constraint "" ;
+
+terminator Policy "" ;
+
+PDelete. Policy ::= "ON" "DELETE" Action ;
+PUpdate. Policy ::= "ON" "UPDATE" Action ;
+
+ACascade. Action ::= "CASCADE" ;
+ASetNull. Action ::= "SET" "NULL" ;
+
+DTable. Definition ::= Ident "AS" Table1 Query ;
+separator nonempty Definition "," ;
+
+AAdd.    Alter ::= "ADD" Typing ;
+ADrop.   Alter ::= "DROP" "COLUMN" Ident ;
+AAlter.  Alter ::= "MODIFY" "COLUMN" Ident Type ;
+AAlter.  Alter ::= "MODIFY" Ident Type ;
+AAlter.  Alter ::= "ALTER" "COLUMN" Ident Type ;
+ADropPrimaryKey.  Alter ::= "DROP" "PRIMARY" "KEY" ;
+ADropConstraint.  Alter ::= "DROP" "CONSTRAINT" Ident ;
+
+token Str '\'' (char-('\''))+ '\'' ;
+
+comment "--" ;
+comment "/*" "*/" ;
+
+
+
+
+{- TODO
+29a
+SELECT CustomerName, Address+', '+City+', '+PostalCode+', '+Country AS Address
+
+31a
+Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+LEFT JOIN
+RIGHT JOIN
+FULL OUTER JOIN
+UNION
+SELECT INTO
+INTO SELECT
+
+-}

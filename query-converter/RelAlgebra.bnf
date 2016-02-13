@@ -27,7 +27,6 @@ CGt.        Cond2 ::= Exp ">" Exp ;
 CLeq.       Cond2 ::= Exp "<=" Exp ;
 CGeq.       Cond2 ::= Exp ">=" Exp ;
 CLike.      Cond2 ::= Exp "LIKE" Exp ;
-CNotLike.   Cond2 ::= Exp "NOT" "LIKE" Exp ;
 CNot.       Cond2 ::= "NOT" Cond3 ;
 CAnd.       Cond1 ::= Cond1 "AND" Cond2 ;
 COr.        Cond1 ::= Cond1 "OR" Cond2 ;
@@ -42,14 +41,19 @@ EFloat.     Exp3  ::= Double ;
 EAggr.      Exp3  ::= Function "(" Ident ")" ;
 EMul.       Exp2  ::= Exp2 "*" Exp3 ;
 EDiv.       Exp2  ::= Exp2 "/" Exp3 ;
+ERem.       Exp2  ::= Exp2 "%" Exp3 ;
 EAdd.       Exp1  ::= Exp1 "+" Exp2 ;
 ESub.       Exp1  ::= Exp1 "-" Exp2 ;
 
 coercions Exp 3 ;
 
-RRelation.   Renaming ::= Ident ;
-RAttributes. Renaming ::= Ident "(" [Ident] ")" ;
-RReplace.    Renaming ::= Ident "/" Ident ;
+RRelation.   Renaming    ::= Ident ;
+RAttributes. Renaming    ::= Ident "(" [Ident] ")" ;
+RReplaces.   Renaming    ::= [Replacement] ;
+
+RReplace.    Replacement ::= Exp "\\rightarrow" Ident ;
+
+separator nonempty Replacement "," ;
 
 AgFun.      Aggregation ::= Function "(" Ident ")" "\\rightarrow" Exp ;
 
@@ -58,7 +62,6 @@ FSum.   Function ::= "SUM" ;
 FMax.   Function ::= "MAX" ;
 FMin.   Function ::= "MIN" ;
 FCount. Function ::= "COUNT" ;
-
 
 separator Ident "," ;
 separator Exp "," ;

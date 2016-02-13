@@ -30,7 +30,7 @@ type LabelMap = M.Map Id (Int,Type)
 data Value = VString String | VInt Integer | VFloat Double | VNull | VError String
   deriving (Eq,Ord,Show)
 
-data Type = TString | TInt
+data Type = TString | TInt | TFloat
   deriving (Eq,Ord,Show)
 
 lookLabel :: LabelMap -> Id -> (Int,Type)
@@ -73,7 +73,8 @@ prValue v = case v of
 prType :: Type -> String
 prType ty = case ty of
   TInt -> "INT"
-  TString -> "VARCHAR" 
+  TFloat -> "FLOAT"
+  TString -> "TEXT" 
 
 -- verify that label maps have the same labels with the same types; positions can differ
 isSameType :: Table -> Table -> Bool

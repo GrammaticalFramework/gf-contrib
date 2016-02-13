@@ -121,7 +121,6 @@ instance Print Cond where
    CLeq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "<=") , prt 0 exp])
    CGeq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString ">=") , prt 0 exp])
    CLike exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "LIKE") , prt 0 exp])
-   CNotLike exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "NOT") , doc (showString "LIKE") , prt 0 exp])
    CNot cond -> prPrec i 2 (concatD [doc (showString "NOT") , prt 3 cond])
    CAnd cond0 cond -> prPrec i 1 (concatD [prt 1 cond0 , doc (showString "AND") , prt 2 cond])
    COr cond0 cond -> prPrec i 1 (concatD [prt 1 cond0 , doc (showString "OR") , prt 2 cond])
@@ -137,6 +136,7 @@ instance Print Exp where
    EAggr function id -> prPrec i 3 (concatD [prt 0 function , doc (showString "(") , prt 0 id , doc (showString ")")])
    EMul exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "*") , prt 3 exp])
    EDiv exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "/") , prt 3 exp])
+   ERem exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "%") , prt 3 exp])
    EAdd exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "+") , prt 2 exp])
    ESub exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "-") , prt 2 exp])
 
@@ -149,8 +149,16 @@ instance Print Renaming where
   prt i e = case e of
    RRelation id -> prPrec i 0 (concatD [prt 0 id])
    RAttributes id ids -> prPrec i 0 (concatD [prt 0 id , doc (showString "(") , prt 0 ids , doc (showString ")")])
-   RReplace id0 id -> prPrec i 0 (concatD [prt 0 id0 , doc (showString "/") , prt 0 id])
+   RReplaces replacements -> prPrec i 0 (concatD [prt 0 replacements])
 
+
+instance Print Replacement where
+  prt i e = case e of
+   RReplace exp id -> prPrec i 0 (concatD [prt 0 exp , doc (showString "\\rightarrow") , prt 0 id])
+
+  prtList es = case es of
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
 
 instance Print Aggregation where
   prt i e = case e of
