@@ -185,10 +185,11 @@ intAggr f = \vs ->
 distinct :: Table -> Table
 distinct t = t{tdata = nub (tdata t)}
 
-sortby :: [Id] -> Table -> Table
-sortby ls t = t{tdata = sortBy projs (tdata t)}
+sortby :: [Table -> Tuple -> Value] -> Table -> Table
+sortby ls tbl = tbl{tdata = sortBy projs (tdata tbl)}
   where
-    proj u = [u !! i | (i,_) <- map (lookLabel (tindex t)) ls]
+----    proj u = [u !! i | (i,_) <- map (lookLabel (tindex t)) ls]
+    proj u = [f tbl u | f <- ls]
     projs u v = compare (proj u) (proj v)
 
 thetaJoin :: (Tuple -> Tuple -> Bool) -> Table -> Table -> Table

@@ -18,7 +18,7 @@ data Rel =
  | RProject [Projection] Rel
  | RRename Renaming Rel
  | RGroup [Ident] [Aggregation] Rel
- | RSort [Ident] Rel
+ | RSort [Exp] Rel
  | RDistinct Rel
  | RUnion Rel Rel
  | RJoin Rel Rel

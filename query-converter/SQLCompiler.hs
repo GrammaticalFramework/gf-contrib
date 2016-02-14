@@ -196,8 +196,8 @@ transExp x = case x of
   ENull          -> A.EIdent (A.Ident "NULL")
   EDefault       -> A.EIdent (A.Ident "DEFAULT")
   EQuery query   -> failure x
-  EAggr op dist_ arg -> A.EAggr (transAggrOper op) (exp2Ident arg)
-  EAggrAll op dist   -> A.EAggr (transAggrOper op) starIdent
+  EAggr op dist_ arg -> Alg.projectionExp $ A.EAggr (transAggrOper op) (exp2Ident arg)  -- refer to column in groups
+  EAggrAll op dist   -> Alg.projectionExp $ A.EAggr (transAggrOper op) starIdent
   EMul exp1 exp2  -> A.EMul (transExp exp1) (transExp exp2)
   EDiv exp1 exp2  -> A.EDiv (transExp exp1) (transExp exp2)
   ERem exp1 exp2  -> A.ERem (transExp exp1) (transExp exp2)
@@ -207,6 +207,7 @@ transExp x = case x of
 exp2Ident :: Exp -> A.Ident
 exp2Ident e = case transExp e of 
   A.EIdent i -> i
+  A.EQIdent q i -> i
   _ -> A.Ident "?column?" ; --- as in PostgreSQL
 
 transSetOperation :: SetOperation -> A.Rel -> A.Rel -> A.Rel
@@ -261,10 +262,10 @@ transOrder x rel = case x of
   ONone  -> rel
   OOrderBy attributeorders  -> A.RSort (map transAttributeOrder attributeorders) rel
 
-transAttributeOrder :: AttributeOrder -> A.Ident
+transAttributeOrder :: AttributeOrder -> A.Exp
 transAttributeOrder x = case x of
-  AOAsc exp  -> exp2Ident exp  ---- aggregation exp
-  AODesc exp -> exp2Ident exp  ---- desc in algebra
+  AOAsc exp  -> transExp exp
+  AODesc exp -> transExp exp  ---- no desc in algebra yet
 
 transSetting :: Setting -> Result
 transSetting x = case x of

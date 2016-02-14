@@ -26,7 +26,7 @@ transRel x = case x of
   RProject projections rel  -> failure x
   RRename renaming rel  -> failure x
   RGroup ids aggregations rel  -> failure x
-  RSort ids rel  -> failure x
+  RSort exps rel  -> failure x
   RDistinct rel  -> failure x
   RUnion rel1 rel2  -> failure x
   RJoin rel1 rel2  -> failure x

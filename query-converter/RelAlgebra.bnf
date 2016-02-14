@@ -9,7 +9,7 @@ RSelect.    Rel2 ::= "\\sigma_{" Cond "}" Rel3 ;
 RProject.   Rel2 ::= "\\pi_{" [Projection] "}" Rel3 ;
 RRename.    Rel2 ::= "\\rho_{" Renaming "}" Rel3 ;
 RGroup.     Rel2 ::= "\\gamma_{" [Ident] "," [Aggregation] "}" Rel3 ;
-RSort.      Rel2 ::= "\\tau_{" [Ident] "}" Rel3 ;
+RSort.      Rel2 ::= "\\tau_{" [Exp] "}" Rel3 ;
 RDistinct.  Rel2 ::= "\\delta" Rel3 ;
 RUnion.     Rel1 ::= Rel1 "\\cup" Rel2 ;
 RJoin.      Rel1 ::= Rel1 "\\bowtie" Rel2 ;
@@ -46,6 +46,8 @@ EAdd.       Exp1  ::= Exp1 "+" Exp2 ;
 ESub.       Exp1  ::= Exp1 "-" Exp2 ;
 
 coercions Exp 3 ;
+
+separator nonempty Exp "," ;
 
 PExp.        Projection  ::= Exp ;
 PRename.     Projection  ::= Exp "\\rightarrow" Ident ;

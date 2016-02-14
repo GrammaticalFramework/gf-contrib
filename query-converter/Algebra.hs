@@ -53,7 +53,7 @@ lookEnv env x = case M.lookup x (tables env) of
 evalRel :: Env -> Rel -> Table
 evalRel env r = case r of
   RTable i             -> lookEnv env (ident2id i)
-  RSelect cond rel     -> let tab = (evalRel env rel) in select (evalCond tab cond) tab
+  RSelect cond rel     -> let tab = (evalRel env rel) in select (evalCond env cond tab) tab
   RProject projs rel   -> genProject (map (evalProjection env) projs) (evalRel env rel)
   RRename ren rel      -> let tab = (evalRel env rel) in rename (evalRenaming tab ren) tab 
   RCartesian rela relb -> cartesian (evalRel env rela) (evalRel env relb)      -- assumes names are distinct
@@ -61,15 +61,20 @@ evalRel env r = case r of
   RIntersect rela relb -> Relation.intersect (evalRel env rela) (evalRel env relb)
   RExcept rela relb    -> Relation.subtract (evalRel env rela) (evalRel env relb)
   RJoin rela relb      -> naturalJoin (evalRel env rela) (evalRel env relb)
-  RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond tab cnd) tab
-  RSort ids rel        -> sortby (map ident2id ids) (evalRel env rel)
+  RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond env cnd tab) tab
+  RSort exps rel       -> sortby (map (\e tb t -> evalExp tb t e) exps) (evalRel env rel)
   RDistinct rel        -> distinct (evalRel env rel)
   RGroup ids ags rel   -> groupAggregate (map ident2id ids) (map evalAggregation ags) (evalRel env rel)
 
 evalProjection :: Env -> Projection -> (Table -> Tuple -> Value, Id)
 evalProjection env p = case p of
-  PExp e      -> (\tab t -> evalExp tab t e, printTree e)
-  PRename e i -> (\tab t -> evalExp tab t e, ident2id i)
+  PExp e      -> (\tab t -> evalExp tab t (projectionExp e), printTree e)
+  PRename e i -> (\tab t -> evalExp tab t (projectionExp e), ident2id i)
+
+projectionExp :: Exp -> Exp
+projectionExp e = case e of
+  EAggr _ _ -> EIdent (Ident (printTree e))  -- just select the aggregated value, don't aggregate again
+  _ -> e
 
 evalRenaming :: Table -> Renaming -> [Id]
 evalRenaming rel ren = case ren of
@@ -90,14 +95,11 @@ evalFunction f = case f of
   FMin -> minAggr
   FCount -> countAggr
 
-selectl :: Cond -> Table -> Table
-selectl cond t = select (evalCond t cond) t
-
-evalCond :: Table -> Cond -> Tuple -> Bool
-evalCond tb c t = case c of
-  CAnd a b -> evalCond tb a t && evalCond tb b t
-  COr  a b -> evalCond tb a t || evalCond tb b t
-  CNot a   -> not (evalCond tb a t)
+evalCond :: Env -> Cond -> Table -> Tuple -> Bool
+evalCond env c tb t = case c of
+  CAnd a b -> evalCond env a tb t && evalCond env b tb t
+  COr  a b -> evalCond env a tb t || evalCond env b tb t
+  CNot a   -> not (evalCond env a tb t)
   CEq x y  -> evalExp tb t x == evalExp tb t y
   CNEq x y -> evalExp tb t x /= evalExp tb t y
   CLt x y  -> evalExpInt tb t x < evalExpInt tb t y
@@ -110,7 +112,7 @@ evalExp tb t e = case e of
   EFloat i  -> VFloat i
   EString s -> VString s
   EIdent l  -> lookTupleValue (tindex tb) t (ident2id l) 
-  EQIdent q i -> lookTupleValue (tindex tb) t (ident2id i) ---- qualify?
+  EQIdent q i -> lookTupleValue (tindex tb) t (qualify (ident2id q) (ident2id i)) ----
 --  EFloat d
   EAggr fun id -> case (fun,id) of
     (FCount, Ident "*") -> countAggr $ tdata tb  -- COUNT(*) special case
