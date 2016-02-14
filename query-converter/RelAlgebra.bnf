@@ -6,7 +6,7 @@ terminator Rel "" ;
 
 RTable.     Rel3 ::= Ident ;
 RSelect.    Rel2 ::= "\\sigma_{" Cond "}" Rel3 ;
-RProject.   Rel2 ::= "\\pi_{" [Exp] "}" Rel3 ;
+RProject.   Rel2 ::= "\\pi_{" [Projection] "}" Rel3 ;
 RRename.    Rel2 ::= "\\rho_{" Renaming "}" Rel3 ;
 RGroup.     Rel2 ::= "\\gamma_{" [Ident] "," [Aggregation] "}" Rel3 ;
 RSort.      Rel2 ::= "\\tau_{" [Ident] "}" Rel3 ;
@@ -47,15 +47,18 @@ ESub.       Exp1  ::= Exp1 "-" Exp2 ;
 
 coercions Exp 3 ;
 
+PExp.        Projection  ::= Exp ;
+PRename.     Projection  ::= Exp "\\rightarrow" Ident ;
+
+separator nonempty Projection "," ;
+
 RRelation.   Renaming    ::= Ident ;
 RAttributes. Renaming    ::= Ident "(" [Ident] ")" ;
-RReplaces.   Renaming    ::= [Replacement] ;
 
-RReplace.    Replacement ::= Exp "\\rightarrow" Ident ;
+AApp.        Aggregation ::= Function "(" Ident ")" ;
+ARename.     Aggregation ::= Function "(" Ident ")" "\\rightarrow" Exp ;
 
-separator nonempty Replacement "," ;
-
-AgFun.      Aggregation ::= Function "(" Ident ")" "\\rightarrow" Exp ;
+separator Aggregation "," ;
 
 FAvg.   Function ::= "AVG" ;
 FSum.   Function ::= "SUM" ;
@@ -64,8 +67,6 @@ FMin.   Function ::= "MIN" ;
 FCount. Function ::= "COUNT" ;
 
 separator Ident "," ;
-separator Exp "," ;
-separator Aggregation "," ;
 
 comment "\\d" ;
 comment "\\b" ;

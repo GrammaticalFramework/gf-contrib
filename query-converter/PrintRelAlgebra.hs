@@ -96,7 +96,7 @@ instance Print Rel where
   prt i e = case e of
    RTable id -> prPrec i 3 (concatD [prt 0 id])
    RSelect cond rel -> prPrec i 2 (concatD [doc (showString "\\sigma_{") , prt 0 cond , doc (showString "}") , prt 3 rel])
-   RProject exps rel -> prPrec i 2 (concatD [doc (showString "\\pi_{") , prt 0 exps , doc (showString "}") , prt 3 rel])
+   RProject projections rel -> prPrec i 2 (concatD [doc (showString "\\pi_{") , prt 0 projections , doc (showString "}") , prt 3 rel])
    RRename renaming rel -> prPrec i 2 (concatD [doc (showString "\\rho_{") , prt 0 renaming , doc (showString "}") , prt 3 rel])
    RGroup ids aggregations rel -> prPrec i 2 (concatD [doc (showString "\\gamma_{") , prt 0 ids , doc (showString ",") , prt 0 aggregations , doc (showString "}") , prt 3 rel])
    RSort ids rel -> prPrec i 2 (concatD [doc (showString "\\tau_{") , prt 0 ids , doc (showString "}") , prt 3 rel])
@@ -140,8 +140,13 @@ instance Print Exp where
    EAdd exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "+") , prt 2 exp])
    ESub exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "-") , prt 2 exp])
 
+
+instance Print Projection where
+  prt i e = case e of
+   PExp exp -> prPrec i 0 (concatD [prt 0 exp])
+   PRename exp id -> prPrec i 0 (concatD [prt 0 exp , doc (showString "\\rightarrow") , prt 0 id])
+
   prtList es = case es of
-   [] -> (concatD [])
    [x] -> (concatD [prt 0 x])
    x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
 
@@ -149,20 +154,12 @@ instance Print Renaming where
   prt i e = case e of
    RRelation id -> prPrec i 0 (concatD [prt 0 id])
    RAttributes id ids -> prPrec i 0 (concatD [prt 0 id , doc (showString "(") , prt 0 ids , doc (showString ")")])
-   RReplaces replacements -> prPrec i 0 (concatD [prt 0 replacements])
 
-
-instance Print Replacement where
-  prt i e = case e of
-   RReplace exp id -> prPrec i 0 (concatD [prt 0 exp , doc (showString "\\rightarrow") , prt 0 id])
-
-  prtList es = case es of
-   [x] -> (concatD [prt 0 x])
-   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
 
 instance Print Aggregation where
   prt i e = case e of
-   AgFun function id exp -> prPrec i 0 (concatD [prt 0 function , doc (showString "(") , prt 0 id , doc (showString ")") , doc (showString "\\rightarrow") , prt 0 exp])
+   AApp function id -> prPrec i 0 (concatD [prt 0 function , doc (showString "(") , prt 0 id , doc (showString ")")])
+   ARename function id exp -> prPrec i 0 (concatD [prt 0 function , doc (showString "(") , prt 0 id , doc (showString ")") , doc (showString "\\rightarrow") , prt 0 exp])
 
   prtList es = case es of
    [] -> (concatD [])

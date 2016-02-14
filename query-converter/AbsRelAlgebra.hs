@@ -15,7 +15,7 @@ data Rels =
 data Rel =
    RTable Ident
  | RSelect Cond Rel
- | RProject [Exp] Rel
+ | RProject [Projection] Rel
  | RRename Renaming Rel
  | RGroup [Ident] [Aggregation] Rel
  | RSort [Ident] Rel
@@ -55,18 +55,19 @@ data Exp =
  | ESub Exp Exp
   deriving (Eq,Ord,Show,Read)
 
+data Projection =
+   PExp Exp
+ | PRename Exp Ident
+  deriving (Eq,Ord,Show,Read)
+
 data Renaming =
    RRelation Ident
  | RAttributes Ident [Ident]
- | RReplaces [Replacement]
-  deriving (Eq,Ord,Show,Read)
-
-data Replacement =
-   RReplace Exp Ident
   deriving (Eq,Ord,Show,Read)
 
 data Aggregation =
-   AgFun Function Ident Exp
+   AApp Function Ident
+ | ARename Function Ident Exp
   deriving (Eq,Ord,Show,Read)
 
 data Function =

@@ -23,7 +23,7 @@ transRel :: Rel -> Result
 transRel x = case x of
   RTable id  -> failure x
   RSelect cond rel  -> failure x
-  RProject exps rel  -> failure x
+  RProject projections rel  -> failure x
   RRename renaming rel  -> failure x
   RGroup ids aggregations rel  -> failure x
   RSort ids rel  -> failure x
@@ -65,21 +65,22 @@ transExp x = case x of
   ESub exp1 exp2  -> failure x
 
 
+transProjection :: Projection -> Result
+transProjection x = case x of
+  PExp exp  -> failure x
+  PRename exp id  -> failure x
+
+
 transRenaming :: Renaming -> Result
 transRenaming x = case x of
   RRelation id  -> failure x
   RAttributes id ids  -> failure x
-  RReplaces replacements  -> failure x
-
-
-transReplacement :: Replacement -> Result
-transReplacement x = case x of
-  RReplace exp id  -> failure x
 
 
 transAggregation :: Aggregation -> Result
 transAggregation x = case x of
-  AgFun function id exp  -> failure x
+  AApp function id  -> failure x
+  ARename function id exp  -> failure x
 
 
 transFunction :: Function -> Result

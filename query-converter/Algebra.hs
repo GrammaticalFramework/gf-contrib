@@ -53,31 +53,35 @@ lookEnv env x = case M.lookup x (tables env) of
 evalRel :: Env -> Rel -> Table
 evalRel env r = case r of
   RTable i             -> lookEnv env (ident2id i)
-  RSelect cond rel     -> let tab = (evalRel env rel) in select (evalCond tab cond) tab ---- TODO: push select lower
-  RProject exps rel    -> genProject [(\tab t -> evalExp tab t e, printTree e) | e <- exps] (evalRel env rel)
+  RSelect cond rel     -> let tab = (evalRel env rel) in select (evalCond tab cond) tab
+  RProject projs rel   -> genProject (map (evalProjection env) projs) (evalRel env rel)
   RRename ren rel      -> let tab = (evalRel env rel) in rename (evalRenaming tab ren) tab 
   RCartesian rela relb -> cartesian (evalRel env rela) (evalRel env relb)      -- assumes names are distinct
   RUnion rela relb     -> Relation.union (evalRel env rela) (evalRel env relb)
   RIntersect rela relb -> Relation.intersect (evalRel env rela) (evalRel env relb)
   RExcept rela relb    -> Relation.subtract (evalRel env rela) (evalRel env relb)
   RJoin rela relb      -> naturalJoin (evalRel env rela) (evalRel env relb)
-  RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond tab cnd) tab ---- TODO: push select
+  RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond tab cnd) tab
   RSort ids rel        -> sortby (map ident2id ids) (evalRel env rel)
   RDistinct rel        -> distinct (evalRel env rel)
   RGroup ids ags rel   -> groupAggregate (map ident2id ids) (map evalAggregation ags) (evalRel env rel)
+
+evalProjection :: Env -> Projection -> (Table -> Tuple -> Value, Id)
+evalProjection env p = case p of
+  PExp e      -> (\tab t -> evalExp tab t e, printTree e)
+  PRename e i -> (\tab t -> evalExp tab t e, ident2id i)
 
 evalRenaming :: Table -> Renaming -> [Id]
 evalRenaming rel ren = case ren of
   RRelation r      -> map (qualify (ident2id r)) (attributes rel) -- qualify all names  ---- no change of rel name
   RAttributes r ls -> map ident2id ls                 -- all attributes must be changed ---- no change of rel name
-  RReplaces rs -> let reps = [(ident2id a, ident2id b) | RReplace (EIdent a) b <- rs] ---- rename other exps?
-                  in [maybe a id  (lookup a reps) | a <- attributes rel]
 
 evalAggregation :: Aggregation -> ([Value] -> Value, (Id,Id))
-evalAggregation (AgFun fun arg exp) = case (fun,exp) of
-  (_,EIdent val) -> (evalFunction fun, (ident2id arg,ident2id val))
-  _ -> (evalFunction fun, (ident2id arg,  printTree exp)) ---- can only be EAggr
-
+evalAggregation a = case a of
+  ARename fun arg (EIdent val) -> (evalFunction fun, (ident2id arg,  ident2id val))
+  ARename fun arg exp          -> (evalFunction fun, (ident2id arg,  printTree exp)) --- can only be EAggr
+  AApp    fun arg              -> (evalFunction fun, (ident2id arg,  printTree (EAggr fun arg)))
+  
 evalFunction :: Function -> [Value] -> Value
 evalFunction f = case f of
   FAvg -> avgAggr

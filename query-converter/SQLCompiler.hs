@@ -94,30 +94,39 @@ transStatement env x = case x of
 transQuery :: Query -> A.Rel
 transQuery x = case x of
   QSelect distinct columns tables where' group having order  ->
-
-    transDistinct distinct $ transOrder order $ rel
+      delta $ tau $ pigamma $ sigma $ foldl1 A.RCartesian $ map transTable tables
      where
-       rel = grp $ transWhere where' $ foldl1 A.RCartesian $ map transTable tables
-
-       grp = case (transHaving having, group, aggrs) of
-         ([], GNone,[]) -> transColumns columns                         -- no aggregation
-         ([], _,    _ ) -> gamma                                        -- no HAVING: just gamma
-         ([c], _,   _ ) -> transColumns columns . A.RSelect c . gamma   -- HAVING: pi sigma gamma
+       delta = transDistinct distinct
+       tau   = transOrder order
+       sigma = transWhere where'
+       
+       pigamma = case (transHaving having, group, aggrs) of
+         ([], GNone, [])   -> pi                         -- no aggregation
+         ([], _,     _ )   -> pi               . gamma   -- no HAVING
+         ([c], _,    _ )   -> pi . A.RSelect c . gamma   -- HAVING
 
        gamma = A.RGroup (transGroup group) aggrs
-       
+
        aggrs = nub $
-           [transAggrExp e |  HCondition c <- [having], e <- condAggrExps c] ++       -- aggr in HAVING
-           [transAggrExp e | CCExps cs <- [columns], CExp e <- cs, isAggrExp e] ++    -- aggr in SELECT
-           [A.AgFun op arg (A.EIdent (transIdent i)) |                                -- aggr AS i in SELECT
-                  CCExps cs <- [columns], CExpAs e i <- cs,
-                  isAggrExp e, let A.AgFun op arg _ = transAggrExp e]
-           
+         [transAggrExp e | HCondition c <- [having], e <- condAggrExps c] ++      -- aggr in HAVING
+         [transAggrExp e | CCExps cs <- [columns], CExp e <- cs, isAggrExp e] ++  -- aggr in SELECT
+         [transAggrExp e | CCExps cs <- [columns], CExpAs e _ <- cs, isAggrExp e]
+
+       pi = case (columns,group) of
+         (CCAll,GGroupBy exps) -> A.RProject (map (A.PExp . transExp) exps)   -- SELECT * FROM gamma hides aggrs
+         (CCExps cols, GGroupBy exps)
+            | null [() | CExpAs _ _ <- cols] &&                         -- if no renaming takes place
+              [e | CExp e <- cols, not (isAggrExp e)] == exps &&        --    all group attrs are kept
+              [transAggrExp e | CExp e <- cols, isAggrExp e] == aggrs   --    all aggrs are showh
+           -> id                                                        -- then no pi is needed ---- order might change
+         _ -> transColumns columns       
+       
        -- collecting aggregation expressions from conditions ---
        condAggrExps cond = case cond of
-         COper x _ (ComExp y)  -> aggrExps x  ++ aggrExps y
+         COper x _ (ComExp y)  -> aggrExps x     ++ aggrExps y
          CAnd c d              -> condAggrExps c ++ condAggrExps d
          COr  c d              -> condAggrExps c ++ condAggrExps d
+         CNot c                -> condAggrExps c
          _ -> error $ "not yet condExps " ++ show cond
        aggrExps exp = case exp of
          _ | isAggrExp exp -> [exp]
@@ -142,20 +151,12 @@ transTable x = case x of
 transColumns :: Columns -> A.Rel -> A.Rel
 transColumns cs rel = case cs of
   CCAll          -> rel       -- select *
-  CCExps columns ->
-    let
-      cols = map transColumn columns
-      exps = map fst cols 
-      ren  = case [i | (_,Just i) <- cols] of
-        [] -> id
-        _ -> A.RRename rens
-      rens = A.RReplaces [A.RReplace e i | (e, Just i) <- cols]
-    in ren $ A.RProject exps rel
+  CCExps columns -> A.RProject (map transColumn columns) rel
 
-transColumn :: Column -> (A.Exp, Maybe A.Ident)
+transColumn :: Column -> A.Projection
 transColumn x = case x of
-  CExp exp       -> (transExp exp, Nothing)
-  CExpAs exp id  -> (transExp exp, Just (transIdent id))
+  CExp exp       -> A.PExp (transExp exp)
+  CExpAs exp id  -> A.PRename (transExp exp) (transIdent id)
 
 transWhere :: Where -> A.Rel -> A.Rel
 transWhere wh rel = case wh of
@@ -280,8 +281,8 @@ transAggrOper op = case op of
 ---- very suspect, to revise
 transAggrExp :: Exp -> A.Aggregation
 transAggrExp exp = case exp of
-  EAggr op dist_ arg  -> A.AgFun (transAggrOper op) (exp2Ident arg) (A.EIdent (A.Ident (printTree exp)))
-  EAggrAll op dist_   -> A.AgFun (transAggrOper op) starIdent (A.EIdent (A.Ident (printTree exp)))
+  EAggr op dist_ arg  -> A.AApp (transAggrOper op) (exp2Ident arg) 
+  EAggrAll op dist_   -> A.AApp (transAggrOper op) starIdent 
   _ -> error $ "not aggregation expression " ++ show exp
   
 transOper :: Oper -> A.Exp -> A.Exp -> A.Cond
