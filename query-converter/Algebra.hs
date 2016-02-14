@@ -1,3 +1,4 @@
+{-# LANGUAGE GADTs, KindSignatures, DataKinds #-}
 module Algebra where
 
 import Relation

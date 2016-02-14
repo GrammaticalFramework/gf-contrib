@@ -2,6 +2,7 @@ module Main where
 
 import SQLCompiler ---- Converter
 import Algebra
+import OptimizeAlgebra
 import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
 import ToXML (prDatabaseXML)
@@ -102,16 +103,37 @@ alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
   Bad s -> putStrLn s
   Ok c -> do
     let rel = transQuery c
+    let orel = pushSelect env rel
+    let cs = printSQL c
     let s = prRelLatex rel
+    let os = prRelLatex orel
     writeFile mintex $ unlines [
       "\\batchmode",
       "\\documentclass[12pt]{article}",
       "\\begin{document}",
       "",
-----      "\\Large",
+      "\\noindent",
+      "Source:",
+      "",
+      "\\begin{verbatim}",
+      cs,
+      "\\end{verbatim}",
+      "",
+      "",
+      "\\noindent",
+      "Original query:",
+      "",
       "\\noindent",
       "\\begin{multline}",
       s,
+      "\\end{multline}",
+      "",
+      "\\noindent",
+      "Optimized query:",
+      "",
+      "\\noindent",
+      "\\begin{multline}",
+      os,
       "\\end{multline}",
       "",
       "\\end{document}"
@@ -120,6 +142,11 @@ alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
     system $ viewer ++ " qconv-latex-tmp.pdf"
     return ()
 
+printSQL :: Query -> String
+printSQL = unwords . map addNewline . words . printTree
+  where
+    addNewline w = if elem w ["FROM","WHERE","GROUP","HAVING","ORDER"] then '\n':w else w
+ 
 mintex = "qconv-latex-tmp.tex"
 
 helpMsg = unlines $ [

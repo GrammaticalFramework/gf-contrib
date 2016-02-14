@@ -205,9 +205,9 @@ transExp x = case x of
   ESub exp1 exp2  -> A.ESub (transExp exp1) (transExp exp2)
 
 exp2Ident :: Exp -> A.Ident
-exp2Ident e = case transExp e of 
-  A.EIdent i -> i
-  A.EQIdent q i -> i
+exp2Ident e = case e of 
+  EName i -> transIdent i
+  EQual q i -> transIdent i ----
   _ -> A.Ident "?column?" ; --- as in PostgreSQL
 
 transSetOperation :: SetOperation -> A.Rel -> A.Rel -> A.Rel
