@@ -7,11 +7,16 @@ import Data.Char
 import qualified Data.Map as M
 import AbsRelAlgebra
 import PrintRelAlgebra
+import qualified PrintKeywordRelAlgebra as KW
 
 --------------
 
 prRel :: Rel -> String
 prRel = unwords . lines . printTree -- remove newlines due to latex braces
+
+-- print in the keyword notation
+prKeywordRel :: Rel -> String
+prKeywordRel = unwords . lines . KW.printTree -- remove newlines due to latex braces
 
 prRelLatex :: Rel -> String
 prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . printTree 
@@ -21,7 +26,7 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
     w : ws | ident w    -> splitToLines (mbox w:l) ws
     w : ws              -> splitToLines (w:l) ws
     _                   -> [unwords (reverse l)]
-  operator o = elem o ["(\\sigma_{","(\\pi_{","(\\rho_{","(\\gamma_{","(\\tau_{","(\\delta"]
+  operator o = elem o ["(\\sigma_{","(\\pi_{","(\\rho_{","(\\gamma_{","(\\tau_{"] ----,"(\\delta"]
   ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
   mbox w = w ---- "\\mbox{" ++ w ++ "}"
   mkLine (i,l) = "\\mbox{\\hspace{" ++ show (6*i) ++ "mm}} " ++ l ++ "\\\\"

@@ -1,27 +1,29 @@
 entrypoints Rels, Rel ;
 
+-- the same as RelAlgebra, but with SQL-like keywords except for symbols
+
 RRels. Rels ::= [Rel] ;
 
 terminator Rel "" ;
 
 RTable.           Rel3 ::= Ident ;
-RSelect.          Rel2 ::= "\\sigma_{" Cond "}" Rel3 ;
-RProject.         Rel2 ::= "\\pi_{" [Projection] "}" Rel3 ;
-RRename.          Rel2 ::= "\\rho_{" Renaming "}" Rel3 ;
-RGroup.           Rel2 ::= "\\gamma_{" [Ident] "," [Aggregation] "}" Rel3 ;
-RSort.            Rel2 ::= "\\tau_{" [SortExp] "}" Rel3 ;
-RDistinct.        Rel2 ::= "\\delta" Rel3 ;
-RUnion.           Rel1 ::= Rel1 "\\cup" Rel2 ;
-RCartesian.       Rel1 ::= Rel1 "\\times" Rel2 ;
-RExcept.          Rel1 ::= Rel1 "\\backslash" Rel2 ;
-RNaturalJoin.     Rel1 ::= Rel1 "\\bowtie" Rel2 ;
-RThetaJoin.       Rel1 ::= Rel1 "\\bowtie_{" Cond "}" Rel2 ;
-RInnerJoin.       Rel1 ::= Rel1 "\\bowtie_{" [Ident] "}" Rel2 ;
-RFullOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{o}_{" [Ident] "}" Rel2 ;
-RLeftOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{oL}_{" [Ident] "}" Rel2 ;
-RRightOuterJoin.  Rel1 ::= Rel1 "\\bowtie^{oR}_{" [Ident] "}" Rel2 ;
-RIntersect.       Rel1 ::= Rel1 "\\cap" Rel2 ;
-RLet.             Rel  ::= "\\mbox{\\textbf{let}}" Ident "=" Rel1 "\\mbox{\\textbf{\;in\;}}" Rel ;
+RSelect.          Rel2 ::= "FILTER" "[" Cond "]" Rel3 ;
+RProject.         Rel2 ::= "PROJECT" "[" [Projection] "]" Rel3 ;
+RRename.          Rel2 ::= "RENAME" "[" Renaming "]" Rel3 ;
+RGroup.           Rel2 ::= "GROUP" "[" [Ident] "," [Aggregation] "]" Rel3 ;
+RSort.            Rel2 ::= "ORDER" "[" [SortExp] "]" Rel3 ;
+RDistinct.        Rel2 ::= "DISTINCT" Rel3 ;
+RUnion.           Rel1 ::= Rel1 "UNION" Rel2 ;
+RCartesian.       Rel1 ::= Rel1 "," Rel2 ;
+RExcept.          Rel1 ::= Rel1 "EXCEPT" Rel2 ;
+RNaturalJoin.     Rel1 ::= Rel1 "NATURAL" "JOIN" Rel2 ;
+RThetaJoin.       Rel1 ::= Rel1 "JOIN" "ON" "[" Cond "]" Rel2 ;
+RInnerJoin.       Rel1 ::= Rel1 "INNER" "JOIN" "USING" "[" [Ident] "]" Rel2 ;
+RFullOuterJoin.   Rel1 ::= Rel1 "FULL" "OUTER" "JOIN" "USING" "[" [Ident] "]" Rel2 ;
+RLeftOuterJoin.   Rel1 ::= Rel1 "LEFT" "OUTER" "JOIN" "USING" "[" [Ident] "]" Rel2 ;
+RRightOuterJoin.  Rel1 ::= Rel1 "RIGHT" "OUTER" "JOIN" "USING" "[" [Ident] "]" Rel2 ;
+RIntersect.       Rel1 ::= Rel1 "INTERSECT" Rel2 ;
+RLet.             Rel  ::= "LET" Ident "=" Rel1 "IN" Rel ;
 
 coercions Rel 3 ;
 
@@ -55,7 +57,7 @@ coercions Exp 3 ;
 separator nonempty Exp "," ;
 
 PExp.        Projection  ::= Exp ;
-PRename.     Projection  ::= Exp "\\rightarrow" Ident ;
+PRename.     Projection  ::= Exp "AS" Ident ;
 
 separator nonempty Projection "," ;
 
@@ -63,7 +65,7 @@ RRelation.   Renaming    ::= Ident ;
 RAttributes. Renaming    ::= Ident "(" [Ident] ")" ;
 
 AApp.        Aggregation ::= Function "(" Distinct Ident ")" ;
-ARename.     Aggregation ::= Function "(" Distinct Ident ")" "\\rightarrow" Exp ;
+ARename.     Aggregation ::= Function "(" Distinct Ident ")" "AS" Exp ;
 
 separator Aggregation "," ;
 
@@ -74,21 +76,14 @@ FMin.   Function ::= "MIN" ;
 FCount. Function ::= "COUNT" ;
 
 DNone.     Distinct ::= ;
-DDistinct. Distinct ::= "\\delta" ; -- used in aggregation
+DDistinct. Distinct ::= "DISTINCT" ; -- used in aggregation
 
 SEAsc.  SortExp  ::= Exp ;
-SEAsc.  SortExp  ::= Exp "\\uparrow" ;
-SEDesc. SortExp  ::= Exp "\\downarrow" ;
+SEAsc.  SortExp  ::= Exp "ASC" ;
+SEDesc. SortExp  ::= Exp "DESC" ;
 
 separator nonempty SortExp "," ;
 
 separator Ident "," ;
 
-comment "\\d" ;
-comment "\\b" ;
-comment "\\[" ;
-comment "\\]" ;
-comment "\\e" ;
-comment "\\H" ;
-comment "\\n" ;
-comment "%" ;
+comment "--" ;

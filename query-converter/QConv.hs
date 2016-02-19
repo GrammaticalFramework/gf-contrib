@@ -105,8 +105,12 @@ alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
     let rel = transQuery c
     let orel = pushSelect env rel
     let cs = printSQL c
+    let ks = prKeywordRel rel
+    let kos = prKeywordRel orel
     let s = prRelLatex rel
     let os = prRelLatex orel
+    putStrLn ks
+    putStrLn kos
     writeFile mintex $ unlines [
       "\\batchmode",
       "\\documentclass[12pt]{article}",
