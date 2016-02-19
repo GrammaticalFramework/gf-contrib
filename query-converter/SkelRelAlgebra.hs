@@ -18,14 +18,19 @@ transTree t = case t of
   RProject projections rel -> failure t
   RRename renaming rel -> failure t
   RGroup is aggregations rel -> failure t
-  RSort exps rel -> failure t
+  RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
-  RJoin rel0 rel1 -> failure t
-  RThetaJoin rel0 cond1 rel2 -> failure t
-  RIntersect rel0 rel1 -> failure t
   RCartesian rel0 rel1 -> failure t
   RExcept rel0 rel1 -> failure t
+  RNaturalJoin rel0 rel1 -> failure t
+  RThetaJoin rel0 cond1 rel2 -> failure t
+  RInnerJoin rel0 is1 rel2 -> failure t
+  RFullOuterJoin rel0 is1 rel2 -> failure t
+  RLeftOuterJoin rel0 is1 rel2 -> failure t
+  RRightOuterJoin rel0 is1 rel2 -> failure t
+  RIntersect rel0 rel1 -> failure t
+  RLet i rel0 rel1 -> failure t
   CEq exp0 exp1 -> failure t
   CNEq exp0 exp1 -> failure t
   CLt exp0 exp1 -> failure t
@@ -41,7 +46,7 @@ transTree t = case t of
   EString str -> failure t
   EInt n -> failure t
   EFloat d -> failure t
-  EAggr function i -> failure t
+  EAggr function distinct i -> failure t
   EMul exp0 exp1 -> failure t
   EDiv exp0 exp1 -> failure t
   ERem exp0 exp1 -> failure t
@@ -51,13 +56,17 @@ transTree t = case t of
   PRename exp i -> failure t
   RRelation i -> failure t
   RAttributes i is -> failure t
-  AApp function i -> failure t
-  ARename function i exp -> failure t
+  AApp function distinct i -> failure t
+  ARename function distinct i exp -> failure t
   FAvg  -> failure t
   FSum  -> failure t
   FMax  -> failure t
   FMin  -> failure t
   FCount  -> failure t
+  DNone  -> failure t
+  DDistinct  -> failure t
+  SEAsc exp -> failure t
+  SEDesc exp -> failure t
   Ident str -> failure t
 
 transRels :: Rels -> Result
@@ -71,14 +80,19 @@ transRel t = case t of
   RProject projections rel -> failure t
   RRename renaming rel -> failure t
   RGroup is aggregations rel -> failure t
-  RSort exps rel -> failure t
+  RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
-  RJoin rel0 rel1 -> failure t
-  RThetaJoin rel0 cond1 rel2 -> failure t
-  RIntersect rel0 rel1 -> failure t
   RCartesian rel0 rel1 -> failure t
   RExcept rel0 rel1 -> failure t
+  RNaturalJoin rel0 rel1 -> failure t
+  RThetaJoin rel0 cond1 rel2 -> failure t
+  RInnerJoin rel0 is1 rel2 -> failure t
+  RFullOuterJoin rel0 is1 rel2 -> failure t
+  RLeftOuterJoin rel0 is1 rel2 -> failure t
+  RRightOuterJoin rel0 is1 rel2 -> failure t
+  RIntersect rel0 rel1 -> failure t
+  RLet i rel0 rel1 -> failure t
 
 transCond :: Cond -> Result
 transCond t = case t of
@@ -100,7 +114,7 @@ transExp t = case t of
   EString str -> failure t
   EInt n -> failure t
   EFloat d -> failure t
-  EAggr function i -> failure t
+  EAggr function distinct i -> failure t
   EMul exp0 exp1 -> failure t
   EDiv exp0 exp1 -> failure t
   ERem exp0 exp1 -> failure t
@@ -119,8 +133,8 @@ transRenaming t = case t of
 
 transAggregation :: Aggregation -> Result
 transAggregation t = case t of
-  AApp function i -> failure t
-  ARename function i exp -> failure t
+  AApp function distinct i -> failure t
+  ARename function distinct i exp -> failure t
 
 transFunction :: Function -> Result
 transFunction t = case t of
@@ -129,6 +143,16 @@ transFunction t = case t of
   FMax  -> failure t
   FMin  -> failure t
   FCount  -> failure t
+
+transDistinct :: Distinct -> Result
+transDistinct t = case t of
+  DNone  -> failure t
+  DDistinct  -> failure t
+
+transSortExp :: SortExp -> Result
+transSortExp t = case t of
+  SEAsc exp -> failure t
+  SEDesc exp -> failure t
 
 transIdent :: Ident -> Result
 transIdent t = case t of

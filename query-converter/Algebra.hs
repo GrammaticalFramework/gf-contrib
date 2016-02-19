@@ -61,9 +61,9 @@ evalRel env r = case r of
   RUnion rela relb     -> Relation.union (evalRel env rela) (evalRel env relb)
   RIntersect rela relb -> Relation.intersect (evalRel env rela) (evalRel env relb)
   RExcept rela relb    -> Relation.subtract (evalRel env rela) (evalRel env relb)
-  RJoin rela relb      -> naturalJoin (evalRel env rela) (evalRel env relb)
+  RNaturalJoin rela relb -> naturalJoin (evalRel env rela) (evalRel env relb)
   RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond env cnd tab) tab
-  RSort exps rel       -> sortby (map (\e tb t -> evalExp tb t e) exps) (evalRel env rel)
+  RSort sortexps rel   -> sortby (map (evalSortExp env) sortexps) (evalRel env rel)
   RDistinct rel        -> distinct (evalRel env rel)
   RGroup ids ags rel   -> groupAggregate (map ident2id ids) (map evalAggregation ags) (evalRel env rel)
 
@@ -74,7 +74,7 @@ evalProjection env p = case p of
 
 projectionExp :: Exp -> Exp
 projectionExp e = case e of
-  EAggr _ _ -> EIdent (Ident (printTree e))  -- just select the aggregated value, don't aggregate again
+  EAggr _ _ _ -> EIdent (Ident (printTree e))  -- just select the aggregated value, don't aggregate again
   _ -> e
 
 evalRenaming :: Table -> Renaming -> [Id]
@@ -84,9 +84,9 @@ evalRenaming rel ren = case ren of
 
 evalAggregation :: Aggregation -> ([Value] -> Value, (Id,Id))
 evalAggregation a = case a of
-  ARename fun arg (EIdent val) -> (evalFunction fun, (ident2id arg,  ident2id val))
-  ARename fun arg exp          -> (evalFunction fun, (ident2id arg,  printTree exp)) --- can only be EAggr
-  AApp    fun arg              -> (evalFunction fun, (ident2id arg,  printTree (EAggr fun arg)))
+  ARename fun dist arg (EIdent val) -> (evalFunction fun, (ident2id arg,  ident2id val))
+  ARename fun dist arg exp          -> (evalFunction fun, (ident2id arg,  printTree exp)) --- can only be EAggr
+  AApp    fun dist arg              -> (evalFunction fun, (ident2id arg,  printTree (EAggr fun dist arg))) ---- TODO: interpret dist 
   
 evalFunction :: Function -> [Value] -> Value
 evalFunction f = case f of
@@ -115,7 +115,7 @@ evalExp tb t e = case e of
   EIdent l  -> lookTupleValue (tindex tb) t (ident2id l) 
   EQIdent q i -> lookTupleValue (tindex tb) t (qualify (ident2id q) (ident2id i)) ----
 --  EFloat d
-  EAggr fun id -> case (fun,id) of
+  EAggr fun dist id -> case (fun,id) of  ---- TODO: interpret dist
     (FCount, Ident "*") -> countAggr $ tdata tb  -- COUNT(*) special case
     _ -> aggregate (evalFunction fun) (ident2id id) tb
   EAdd x y -> case (eval x, eval y) of
@@ -136,6 +136,12 @@ evalExpString :: Table -> Tuple -> Exp -> String
 evalExpString tb t e = case evalExp tb t e of
   VString s -> s
   v -> error $ "not a string value " ++ show v
+
+evalSortExp :: Env -> SortExp -> (Table -> Tuple -> Value, Bool)
+evalSortExp env se = case se of
+  SEAsc e  -> (\tb t -> evalExp tb t e, False) -- the default
+  SEDesc e -> (\tb t -> evalExp tb t e, True)
+  
 
 
 -- string matching

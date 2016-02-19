@@ -96,7 +96,7 @@ transQuery x = case x of
   QSelect distinct columns tables where' group having order  ->
       delta $ tau $ pigamma $ sigma $ foldl1 A.RCartesian $ map transTable tables
      where
-       delta = transDistinct distinct
+       delta = transDistinctRel distinct
        tau   = transOrder order
        sigma = transWhere where'
        
@@ -137,16 +137,22 @@ transQuery x = case x of
          _ -> False 
 
   QSetOperation query1 setop all_ query2 -> transSetOperation setop (transQuery query1) (transQuery query2)
-  QWith definitions query  -> failure x
-
+  QWith definitions query  -> foldr (uncurry A.RLet) (transQuery query) (map transDefinition definitions) 
 
 transTable :: Table -> A.Rel
 transTable x = case x of
   TName id      -> A.RTable (transIdent id)
   TTableAs a u  -> A.RRename (A.RRelation (transIdent u)) (transTable a)
   TQuery q u    -> A.RRename (A.RRelation (transIdent u)) (transQuery q)
-  TJoin table1 jointype2 table3 joinon4  -> failure x
-  TNaturalJoin table1 jointype_ table2  -> A.RJoin (transTable table1) (transTable table2)
+  TNaturalJoin table1 jointype_ table2  -> A.RNaturalJoin (transTable table1) (transTable table2)
+  TJoin table1 jointype table3 joinon  -> (case jointype of
+    JTInner          -> A.RInnerJoin
+    JTFull  OutOuter -> A.RFullOuterJoin
+    JTLeft  OutOuter -> A.RLeftOuterJoin
+    JTRight OutOuter -> A.RRightOuterJoin
+    ) (transTable table1) (transJoinOn joinon) (transTable table3) 
+
+
 
 transColumns :: Columns -> A.Rel -> A.Rel
 transColumns cs rel = case cs of
@@ -196,8 +202,8 @@ transExp x = case x of
   ENull          -> A.EIdent (A.Ident "NULL")
   EDefault       -> A.EIdent (A.Ident "DEFAULT")
   EQuery query   -> failure x
-  EAggr op dist_ arg -> Alg.projectionExp $ A.EAggr (transAggrOper op) (exp2Ident arg)  -- refer to column in groups
-  EAggrAll op dist   -> Alg.projectionExp $ A.EAggr (transAggrOper op) starIdent
+  EAggr op dist arg -> Alg.projectionExp $ A.EAggr (transAggrOper op) (transDistinct dist) (exp2Ident arg)  -- refer to column in groups
+  EAggrAll op dist   -> Alg.projectionExp $ A.EAggr (transAggrOper op)  (transDistinct dist) starIdent
   EMul exp1 exp2  -> A.EMul (transExp exp1) (transExp exp2)
   EDiv exp1 exp2  -> A.EDiv (transExp exp1) (transExp exp2)
   ERem exp1 exp2  -> A.ERem (transExp exp1) (transExp exp2)
@@ -222,10 +228,10 @@ transAll x = case x of
   AAll  -> failure x
 
 
-transJoinOn :: JoinOn -> Result
+transJoinOn :: JoinOn -> [A.Ident] 
 transJoinOn x = case x of
-  JOCondition condition  -> failure x
-  JOUsing ids  -> failure x
+  JOCondition condition  -> failure x ---- not A.Ident
+  JOUsing ids  -> map transIdent ids
 
 
 transJoinType :: JoinType -> Result
@@ -242,8 +248,13 @@ transOuter x = case x of
   OutNone  -> failure x
 
 
-transDistinct :: Distinct -> A.Rel -> A.Rel
-transDistinct x rel = case x of
+transDistinct :: Distinct -> A.Distinct
+transDistinct x = case x of
+  DNone     -> A.DNone
+  DDistinct -> A.DDistinct
+
+transDistinctRel :: Distinct -> A.Rel -> A.Rel
+transDistinctRel x rel = case x of
   DNone     -> rel
   DDistinct -> A.RDistinct rel
 
@@ -262,10 +273,10 @@ transOrder x rel = case x of
   ONone  -> rel
   OOrderBy attributeorders  -> A.RSort (map transAttributeOrder attributeorders) rel
 
-transAttributeOrder :: AttributeOrder -> A.Exp
+transAttributeOrder :: AttributeOrder -> A.SortExp
 transAttributeOrder x = case x of
-  AOAsc exp  -> transExp exp
-  AODesc exp -> transExp exp  ---- no desc in algebra yet
+  AOAsc exp  -> A.SEAsc (transExp exp)
+  AODesc exp -> A.SEDesc (transExp exp)
 
 transSetting :: Setting -> Result
 transSetting x = case x of
@@ -282,8 +293,8 @@ transAggrOper op = case op of
 ---- very suspect, to revise
 transAggrExp :: Exp -> A.Aggregation
 transAggrExp exp = case exp of
-  EAggr op dist_ arg  -> A.AApp (transAggrOper op) (exp2Ident arg) 
-  EAggrAll op dist_   -> A.AApp (transAggrOper op) starIdent 
+  EAggr op dist arg  -> A.AApp (transAggrOper op) (transDistinct dist) (exp2Ident arg) 
+  EAggrAll op dist   -> A.AApp (transAggrOper op) (transDistinct dist) starIdent 
   _ -> error $ "not aggregation expression " ++ show exp
   
 transOper :: Oper -> A.Exp -> A.Exp -> A.Cond
@@ -356,11 +367,9 @@ transInsertValues x = case x of
   IVValues exps  -> map transExp exps
   IVQuery query  -> failure x
 
-
-transDefinition :: Definition -> Result
+transDefinition :: Definition -> (A.Ident, A.Rel)
 transDefinition x = case x of
-  DTable id query  -> failure x
-
+  DTable id query  -> (transIdent id, transQuery query)
 
 transAlteration :: Alteration -> Result
 transAlteration x = case x of
