@@ -21,6 +21,7 @@ transTree t = case t of
   RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
+  RIntersect rel0 rel1 -> failure t
   RCartesian rel0 rel1 -> failure t
   RExcept rel0 rel1 -> failure t
   RNaturalJoin rel0 rel1 -> failure t
@@ -29,7 +30,6 @@ transTree t = case t of
   RFullOuterJoin rel0 is1 rel2 -> failure t
   RLeftOuterJoin rel0 is1 rel2 -> failure t
   RRightOuterJoin rel0 is1 rel2 -> failure t
-  RIntersect rel0 rel1 -> failure t
   RLet i rel0 rel1 -> failure t
   CEq exp0 exp1 -> failure t
   CNEq exp0 exp1 -> failure t
@@ -83,6 +83,7 @@ transRel t = case t of
   RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
+  RIntersect rel0 rel1 -> failure t
   RCartesian rel0 rel1 -> failure t
   RExcept rel0 rel1 -> failure t
   RNaturalJoin rel0 rel1 -> failure t
@@ -91,7 +92,6 @@ transRel t = case t of
   RFullOuterJoin rel0 is1 rel2 -> failure t
   RLeftOuterJoin rel0 is1 rel2 -> failure t
   RRightOuterJoin rel0 is1 rel2 -> failure t
-  RIntersect rel0 rel1 -> failure t
   RLet i rel0 rel1 -> failure t
 
 transCond :: Cond -> Result

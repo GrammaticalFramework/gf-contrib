@@ -26,7 +26,7 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
     w : ws | ident w    -> splitToLines (mbox w:l) ws
     w : ws              -> splitToLines (w:l) ws
     _                   -> [unwords (reverse l)]
-  operator o = elem o ["(\\sigma_{","(\\pi_{","(\\rho_{","(\\gamma_{","(\\tau_{"] ----,"(\\delta"]
+  operator o = elem o ["\\sigma_{","\\pi_{","\\rho_{","\\gamma_{","\\tau_{"] ----,"\\delta"]
   ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
   mbox w = w ---- "\\mbox{" ++ w ++ "}"
   mkLine (i,l) = "\\mbox{\\hspace{" ++ show (6*i) ++ "mm}} " ++ l ++ "\\\\"

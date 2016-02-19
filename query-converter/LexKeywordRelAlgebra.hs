@@ -93,7 +93,7 @@ eitherResIdent tv s = treeFind resWords
                               | s > a  = treeFind right
                               | s == a = t
 
-resWords = b "FULL" 25 (b "=" 13 (b "-" 7 (b "*" 4 (b "(" 2 (b "%" 1 N N) (b ")" 3 N N)) (b "," 6 (b "+" 5 N N) N)) (b "<" 10 (b "/" 9 (b "." 8 N N) N) (b "<>" 12 (b "<=" 11 N N) N))) (b "AVG" 19 (b "AND" 16 (b ">=" 15 (b ">" 14 N N) N) (b "ASC" 18 (b "AS" 17 N N) N)) (b "DISTINCT" 22 (b "DESC" 21 (b "COUNT" 20 N N) N) (b "FILTER" 24 (b "EXCEPT" 23 N N) N)))) (b "ON" 38 (b "LET" 32 (b "INTERSECT" 29 (b "IN" 27 (b "GROUP" 26 N N) (b "INNER" 28 N N)) (b "LEFT" 31 (b "JOIN" 30 N N) N)) (b "MIN" 35 (b "MAX" 34 (b "LIKE" 33 N N) N) (b "NOT" 37 (b "NATURAL" 36 N N) N))) (b "RIGHT" 44 (b "OUTER" 41 (b "ORDER" 40 (b "OR" 39 N N) N) (b "RENAME" 43 (b "PROJECT" 42 N N) N)) (b "USING" 47 (b "UNION" 46 (b "SUM" 45 N N) N) (b "]" 49 (b "[" 48 N N) N))))
+resWords = b "FILTER" 24 (b "<>" 12 (b "," 6 (b ")" 3 (b "(" 2 (b "%" 1 N N) N) (b "+" 5 (b "*" 4 N N) N)) (b "/" 9 (b "." 8 (b "-" 7 N N) N) (b "<=" 11 (b "<" 10 N N) N))) (b "ASC" 18 (b ">=" 15 (b ">" 14 (b "=" 13 N N) N) (b "AS" 17 (b "AND" 16 N N) N)) (b "DESC" 21 (b "COUNT" 20 (b "AVG" 19 N N) N) (b "EXCEPT" 23 (b "DISTINCT" 22 N N) N)))) (b "NATURAL" 36 (b "JOIN" 30 (b "IN" 27 (b "GROUP" 26 (b "FULL" 25 N N) N) (b "INTERSECT" 29 (b "INNER" 28 N N) N)) (b "LIKE" 33 (b "LET" 32 (b "LEFT" 31 N N) N) (b "MIN" 35 (b "MAX" 34 N N) N))) (b "RENAME" 42 (b "ORDER" 39 (b "OR" 38 (b "NOT" 37 N N) N) (b "PROJECT" 41 (b "OUTER" 40 N N) N)) (b "UNION" 45 (b "SUM" 44 (b "RIGHT" 43 N N) N) (b "]" 47 (b "[" 46 N N) N))))
    where b s n = let bs = id s
                   in B bs (TS bs n)
 

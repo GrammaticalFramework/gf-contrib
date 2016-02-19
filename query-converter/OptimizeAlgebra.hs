@@ -7,6 +7,7 @@ import Algebra
 import Relation
 import AbsRelAlgebra
 import ErrM
+import qualified Data.Map as M
 
 pushSelect :: Env -> Tree a -> Tree a
 pushSelect env t = case t of
@@ -31,7 +32,7 @@ rSelect cs rel = if null cs then rel else RSelect (foldl1 CAnd cs) rel
 
 attributesIn :: Env -> Tree a -> [Ident]
 attributesIn env t = case t of
-  RTable t -> map Ident $ tlabels $ lookEnv env (ident2id t)
+  RTable t -> maybe [] (map Ident . tlabels) $ M.lookup (ident2id t) (tables env)
   EIdent i -> [i]
   EQIdent _ i -> [i] ----
   _ -> composOpMPlus (attributesIn env) t

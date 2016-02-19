@@ -31,6 +31,7 @@ data Tree :: Tag -> * where
     RSort :: [SortExp] -> Rel -> Tree Rel_
     RDistinct :: Rel -> Tree Rel_
     RUnion :: Rel -> Rel -> Tree Rel_
+    RIntersect :: Rel -> Rel -> Tree Rel_
     RCartesian :: Rel -> Rel -> Tree Rel_
     RExcept :: Rel -> Rel -> Tree Rel_
     RNaturalJoin :: Rel -> Rel -> Tree Rel_
@@ -39,7 +40,6 @@ data Tree :: Tag -> * where
     RFullOuterJoin :: Rel -> [Ident] -> Rel -> Tree Rel_
     RLeftOuterJoin :: Rel -> [Ident] -> Rel -> Tree Rel_
     RRightOuterJoin :: Rel -> [Ident] -> Rel -> Tree Rel_
-    RIntersect :: Rel -> Rel -> Tree Rel_
     RLet :: Ident -> Rel -> Rel -> Tree Rel_
     CEq :: Exp -> Exp -> Tree Cond_
     CNEq :: Exp -> Exp -> Tree Cond_
@@ -90,6 +90,7 @@ instance Compos Tree where
       RSort sortexps rel -> r RSort `a` foldr (a . a (r (:)) . f) (r []) sortexps `a` f rel
       RDistinct rel -> r RDistinct `a` f rel
       RUnion rel0 rel1 -> r RUnion `a` f rel0 `a` f rel1
+      RIntersect rel0 rel1 -> r RIntersect `a` f rel0 `a` f rel1
       RCartesian rel0 rel1 -> r RCartesian `a` f rel0 `a` f rel1
       RExcept rel0 rel1 -> r RExcept `a` f rel0 `a` f rel1
       RNaturalJoin rel0 rel1 -> r RNaturalJoin `a` f rel0 `a` f rel1
@@ -98,7 +99,6 @@ instance Compos Tree where
       RFullOuterJoin rel0 is1 rel2 -> r RFullOuterJoin `a` f rel0 `a` foldr (a . a (r (:)) . f) (r []) is1 `a` f rel2
       RLeftOuterJoin rel0 is1 rel2 -> r RLeftOuterJoin `a` f rel0 `a` foldr (a . a (r (:)) . f) (r []) is1 `a` f rel2
       RRightOuterJoin rel0 is1 rel2 -> r RRightOuterJoin `a` f rel0 `a` foldr (a . a (r (:)) . f) (r []) is1 `a` f rel2
-      RIntersect rel0 rel1 -> r RIntersect `a` f rel0 `a` f rel1
       RLet i rel0 rel1 -> r RLet `a` f i `a` f rel0 `a` f rel1
       CEq exp0 exp1 -> r CEq `a` f exp0 `a` f exp1
       CNEq exp0 exp1 -> r CNEq `a` f exp0 `a` f exp1
@@ -139,6 +139,7 @@ instance Show (Tree c) where
     RSort sortexps rel -> opar n . showString "RSort" . showChar ' ' . showsPrec 1 sortexps . showChar ' ' . showsPrec 1 rel . cpar n
     RDistinct rel -> opar n . showString "RDistinct" . showChar ' ' . showsPrec 1 rel . cpar n
     RUnion rel0 rel1 -> opar n . showString "RUnion" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
+    RIntersect rel0 rel1 -> opar n . showString "RIntersect" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
     RCartesian rel0 rel1 -> opar n . showString "RCartesian" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
     RExcept rel0 rel1 -> opar n . showString "RExcept" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
     RNaturalJoin rel0 rel1 -> opar n . showString "RNaturalJoin" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
@@ -147,7 +148,6 @@ instance Show (Tree c) where
     RFullOuterJoin rel0 is1 rel2 -> opar n . showString "RFullOuterJoin" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 is1 . showChar ' ' . showsPrec 1 rel2 . cpar n
     RLeftOuterJoin rel0 is1 rel2 -> opar n . showString "RLeftOuterJoin" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 is1 . showChar ' ' . showsPrec 1 rel2 . cpar n
     RRightOuterJoin rel0 is1 rel2 -> opar n . showString "RRightOuterJoin" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 is1 . showChar ' ' . showsPrec 1 rel2 . cpar n
-    RIntersect rel0 rel1 -> opar n . showString "RIntersect" . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
     RLet i rel0 rel1 -> opar n . showString "RLet" . showChar ' ' . showsPrec 1 i . showChar ' ' . showsPrec 1 rel0 . showChar ' ' . showsPrec 1 rel1 . cpar n
     CEq exp0 exp1 -> opar n . showString "CEq" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     CNEq exp0 exp1 -> opar n . showString "CNEq" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
@@ -201,6 +201,7 @@ johnMajorEq (RGroup is aggregations rel) (RGroup is_ aggregations_ rel_) = is ==
 johnMajorEq (RSort sortexps rel) (RSort sortexps_ rel_) = sortexps == sortexps_ && rel == rel_
 johnMajorEq (RDistinct rel) (RDistinct rel_) = rel == rel_
 johnMajorEq (RUnion rel0 rel1) (RUnion rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
+johnMajorEq (RIntersect rel0 rel1) (RIntersect rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
 johnMajorEq (RCartesian rel0 rel1) (RCartesian rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
 johnMajorEq (RExcept rel0 rel1) (RExcept rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
 johnMajorEq (RNaturalJoin rel0 rel1) (RNaturalJoin rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
@@ -209,7 +210,6 @@ johnMajorEq (RInnerJoin rel0 is1 rel2) (RInnerJoin rel0_ is1_ rel2_) = rel0 == r
 johnMajorEq (RFullOuterJoin rel0 is1 rel2) (RFullOuterJoin rel0_ is1_ rel2_) = rel0 == rel0_ && is1 == is1_ && rel2 == rel2_
 johnMajorEq (RLeftOuterJoin rel0 is1 rel2) (RLeftOuterJoin rel0_ is1_ rel2_) = rel0 == rel0_ && is1 == is1_ && rel2 == rel2_
 johnMajorEq (RRightOuterJoin rel0 is1 rel2) (RRightOuterJoin rel0_ is1_ rel2_) = rel0 == rel0_ && is1 == is1_ && rel2 == rel2_
-johnMajorEq (RIntersect rel0 rel1) (RIntersect rel0_ rel1_) = rel0 == rel0_ && rel1 == rel1_
 johnMajorEq (RLet i rel0 rel1) (RLet i_ rel0_ rel1_) = i == i_ && rel0 == rel0_ && rel1 == rel1_
 johnMajorEq (CEq exp0 exp1) (CEq exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (CNEq exp0 exp1) (CNEq exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
@@ -262,15 +262,15 @@ index (RGroup _ _ _) = 5
 index (RSort _ _) = 6
 index (RDistinct _) = 7
 index (RUnion _ _) = 8
-index (RCartesian _ _) = 9
-index (RExcept _ _) = 10
-index (RNaturalJoin _ _) = 11
-index (RThetaJoin _ _ _) = 12
-index (RInnerJoin _ _ _) = 13
-index (RFullOuterJoin _ _ _) = 14
-index (RLeftOuterJoin _ _ _) = 15
-index (RRightOuterJoin _ _ _) = 16
-index (RIntersect _ _) = 17
+index (RIntersect _ _) = 9
+index (RCartesian _ _) = 10
+index (RExcept _ _) = 11
+index (RNaturalJoin _ _) = 12
+index (RThetaJoin _ _ _) = 13
+index (RInnerJoin _ _ _) = 14
+index (RFullOuterJoin _ _ _) = 15
+index (RLeftOuterJoin _ _ _) = 16
+index (RRightOuterJoin _ _ _) = 17
 index (RLet _ _ _) = 18
 index (CEq _ _) = 19
 index (CNEq _ _) = 20
@@ -319,6 +319,7 @@ compareSame (RGroup is aggregations rel) (RGroup is_ aggregations_ rel_) = mappe
 compareSame (RSort sortexps rel) (RSort sortexps_ rel_) = mappend (compare sortexps sortexps_) (compare rel rel_)
 compareSame (RDistinct rel) (RDistinct rel_) = compare rel rel_
 compareSame (RUnion rel0 rel1) (RUnion rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
+compareSame (RIntersect rel0 rel1) (RIntersect rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
 compareSame (RCartesian rel0 rel1) (RCartesian rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
 compareSame (RExcept rel0 rel1) (RExcept rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
 compareSame (RNaturalJoin rel0 rel1) (RNaturalJoin rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
@@ -327,7 +328,6 @@ compareSame (RInnerJoin rel0 is1 rel2) (RInnerJoin rel0_ is1_ rel2_) = mappend (
 compareSame (RFullOuterJoin rel0 is1 rel2) (RFullOuterJoin rel0_ is1_ rel2_) = mappend (compare rel0 rel0_) (mappend (compare is1 is1_) (compare rel2 rel2_))
 compareSame (RLeftOuterJoin rel0 is1 rel2) (RLeftOuterJoin rel0_ is1_ rel2_) = mappend (compare rel0 rel0_) (mappend (compare is1 is1_) (compare rel2 rel2_))
 compareSame (RRightOuterJoin rel0 is1 rel2) (RRightOuterJoin rel0_ is1_ rel2_) = mappend (compare rel0 rel0_) (mappend (compare is1 is1_) (compare rel2 rel2_))
-compareSame (RIntersect rel0 rel1) (RIntersect rel0_ rel1_) = mappend (compare rel0 rel0_) (compare rel1 rel1_)
 compareSame (RLet i rel0 rel1) (RLet i_ rel0_ rel1_) = mappend (compare i i_) (mappend (compare rel0 rel0_) (compare rel1 rel1_))
 compareSame (CEq exp0 exp1) (CEq exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (CNEq exp0 exp1) (CNEq exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)

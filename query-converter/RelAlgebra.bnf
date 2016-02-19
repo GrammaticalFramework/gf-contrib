@@ -5,13 +5,14 @@ RRels. Rels ::= [Rel] ;
 terminator Rel "" ;
 
 RTable.           Rel3 ::= Ident ;
-RSelect.          Rel2 ::= "\\sigma_{" Cond "}" Rel3 ;
-RProject.         Rel2 ::= "\\pi_{" [Projection] "}" Rel3 ;
-RRename.          Rel2 ::= "\\rho_{" Renaming "}" Rel3 ;
-RGroup.           Rel2 ::= "\\gamma_{" [Ident] "," [Aggregation] "}" Rel3 ;
-RSort.            Rel2 ::= "\\tau_{" [SortExp] "}" Rel3 ;
-RDistinct.        Rel2 ::= "\\delta" Rel3 ;
+RSelect.          Rel2 ::= "\\sigma_{" Cond "}" Rel2 ;
+RProject.         Rel2 ::= "\\pi_{" [Projection] "}" Rel2 ;
+RRename.          Rel2 ::= "\\rho_{" Renaming "}" Rel2 ;
+RGroup.           Rel2 ::= "\\gamma_{" [Ident] "," [Aggregation] "}" Rel2 ;
+RSort.            Rel2 ::= "\\tau_{" [SortExp] "}" Rel2 ;
+RDistinct.        Rel2 ::= "\\delta" Rel2 ;
 RUnion.           Rel1 ::= Rel1 "\\cup" Rel2 ;
+RIntersect.       Rel1 ::= Rel1 "\\cap" Rel2 ;
 RCartesian.       Rel1 ::= Rel1 "\\times" Rel2 ;
 RExcept.          Rel1 ::= Rel1 "\\backslash" Rel2 ;
 RNaturalJoin.     Rel1 ::= Rel1 "\\bowtie" Rel2 ;
@@ -20,8 +21,7 @@ RInnerJoin.       Rel1 ::= Rel1 "\\bowtie_{" [Ident] "}" Rel2 ;
 RFullOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{o}_{" [Ident] "}" Rel2 ;
 RLeftOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{oL}_{" [Ident] "}" Rel2 ;
 RRightOuterJoin.  Rel1 ::= Rel1 "\\bowtie^{oR}_{" [Ident] "}" Rel2 ;
-RIntersect.       Rel1 ::= Rel1 "\\cap" Rel2 ;
-RLet.             Rel  ::= "\\mbox{\\textbf{let}}" Ident "=" Rel1 "\\mbox{\\textbf{\;in\;}}" Rel ;
+RLet.             Rel  ::= "\\mbox{\\textbf{let}}" Ident "=" Rel1 "\\mbox{\\textbf{\\;in\\;}}" Rel ;
 
 coercions Rel 3 ;
 
