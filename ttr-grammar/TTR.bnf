@@ -1,3 +1,6 @@
+-- Cooper & Ginzburg, Handbook, 2015. Numbers refer to example numbers in the book chapter.
+-- https://hal.archives-ouvertes.fr/hal-01138034/file/rc-jg-ttrsem-final%20(1).pdf
+
 TJments. Text ::= [Jment] ;
 
 JIn.     Jment ::= Exp ":" Exp ;
@@ -12,15 +15,23 @@ EId.     Exp5  ::= Id ;
 EStr.    Exp5  ::= String ;
 EInt.    Exp5  ::= Integer ;
 EFloat.  Exp5  ::= Double ;
+ERecTyp. Exp5  ::= "RecType" ;
 ERecord. Exp5  ::= "{" [Field] "}" ;
+ESetTy.  Exp5  ::= "{" Exp "}" ;
+EListTy. Exp5  ::= "[" Exp "]" ;
+ELamApp. Exp4  ::= "<" [Lambda] "." Exp4 "," "<" [Exp] ">" ">" ;
 EProj.   Exp4  ::= Exp4 "." Id ;
 EApps.   Exp4  ::= Exp4 "(" [Exp] ")" ;
 ECompl.  Exp3  ::= "~" Exp3 ;
+EJoin.   Exp3  ::= "JOIN" "[" Exp "]" "(" Id "->" Exp ")" ; -- p. 10 
 EUnion.  Exp2  ::= Exp2 "||" Exp3 ;
 EInters. Exp2  ::= Exp2 "&&" Exp3 ;
-ELambda. Exp1  ::= "(" "\\" Id ":" Exp ")" Exp1 ;
+EMerge.  Exp2  ::= Exp2 "&.&" Exp3 ;  -- p. 11
+EConcat. Exp2  ::= Exp2 "^" Exp3 ;    -- p. 12
+ELambs.  Exp1  ::= [Lambda] "." Exp1 ;
 EProd.   Exp1  ::= "(" Id ":" Exp ")" "->" Exp1 ;
 EFun.    Exp1  ::= Exp2 "->" Exp1 ;
+ECFun.   Exp1  ::= Exp2 "->_c" Exp1 ;
 
 coercions Exp 5 ;
 
@@ -31,6 +42,10 @@ FEq.     Field ::= Id "=" Exp ;
 FEqIn.   Field ::= Id "=" Exp ":" Exp ;
 
 separator Field ";" ;
+
+LAbs.    Lambda ::= "\\" Id ":" Exp5 ; 
+
+terminator nonempty Lambda "" ;
 
 token Id (letter (letter | digit | '_' | '-' | '\'')*) ;
 

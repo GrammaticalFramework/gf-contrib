@@ -1,0 +1,57 @@
+-- Cooper & Ginzburg, Handbook, 2015. Numbers refer to example numbers in the book chapter.
+-- https://hal.archives-ouvertes.fr/hal-01138034/file/rc-jg-ttrsem-final%20(1).pdf
+
+ex2 = {
+  x     : Ind ;
+  c_boy : boy(x) ;
+  y     : Ind ;
+  c_dog : dog(y) ;
+  e     : hug(x,y)
+  } ;
+
+ex3 = {
+  x     = a ;
+  c_boy = s_1 ;
+  y     = b ;
+  c_dog = s_2 ;
+  e     = s_3
+  } ;
+
+ex4 = {
+  f = {
+    f = {
+      ff = a ;
+      gg = b
+      }
+    } ;
+  g = {
+    h = {
+      g = a ;
+      h = d
+      }
+    }
+  } ;
+
+ex6 = {
+  x     : Ind ;
+  c_boy : < \v : Ind . boy(v) , <x> > ;
+  y     : Ind ;
+  c_dog : < \v : Ind . boy(v),<y> > ;
+  e     : < \v_1 : Ind \v_2 : Ind . hug(v_1,v_2),<x,y> >
+  } ;
+
+ex9 = \v_0 : RecType . {c_0:v_0} ;
+
+ex23 = JOIN [T_1] (X -> T_2) ;
+
+ex31 = \r : {
+  x       : Ind ;
+  c_human : human(x) ;
+  y       : Ind ;
+  c_dog   : dog(y) ;
+  z       : Ind ;
+  c_stick : stick(z) ;
+  e       : pick-up(x,z)^attract-attention(x,7)
+  } .
+      ({e : play-fetch(r.x, r.y)}) ;
+
