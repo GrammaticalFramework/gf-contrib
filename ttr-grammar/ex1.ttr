@@ -1,0 +1,40 @@
+-- Cooper & al 2012, p. 2
+
+e1 = {
+  x       : Ind ;
+  c_apple : apple(x) ;
+  c_ash   : apple-shape(x) ;
+  c_ac    : apple-colour(x) ;
+  c_at    : apple-taste(x) ;
+  c_as    : apple-smell(x)
+  } ;
+
+Point = {
+  a       : Ind ;
+  at      : RealVector_2 ;
+  C_point : point(a) ;
+  c_loc   : loc(a,at)
+  } ;
+
+g : Observation -> PointMap -> {
+  x       : Ind ;
+  at      : RealVector_2 ;
+  c_robot : robot(x) ;
+  c_loc   : loc(x,at)
+  } ;
+
+Robot = {
+  x        : Ind ;
+  loc      : RealVector_2 ;
+  sensor_1 : {
+    y        : Ind ;
+    focus    : RealVector_2 ;
+    reading  : Observation ;
+    c_sensor : sensor(y) ;
+    c_sloc   : equal(focus, reading.loc)
+    } ;
+  sfrec    : MSeconds ;
+  c_robot  : robot(x) ;
+  c_sense  : at(sense(x,x.sensor_1),sfreq)
+  } ;
+

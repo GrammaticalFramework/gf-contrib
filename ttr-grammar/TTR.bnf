@@ -1,0 +1,39 @@
+TJments. Text ::= [Jment] ;
+
+JIn.     Jment ::= Exp ":" Exp ;
+JEq.     Jment ::= Exp "=" Exp ;
+JEqIn.   Jment ::= Exp "=" Exp ":" Exp ;
+JSub.    Jment ::= Exp "<" Exp ;
+JSubIn.  Jment ::= Exp "<" Exp ":" Exp ;
+
+terminator Jment ";" ;
+
+EId.     Exp5  ::= Id ;
+EStr.    Exp5  ::= String ;
+EInt.    Exp5  ::= Integer ;
+EFloat.  Exp5  ::= Double ;
+ERecord. Exp5  ::= "{" [Field] "}" ;
+EProj.   Exp4  ::= Exp4 "." Id ;
+EApps.   Exp4  ::= Exp4 "(" [Exp] ")" ;
+ECompl.  Exp3  ::= "~" Exp3 ;
+EUnion.  Exp2  ::= Exp2 "||" Exp3 ;
+EInters. Exp2  ::= Exp2 "&&" Exp3 ;
+ELambda. Exp1  ::= "(" "\\" Id ":" Exp ")" Exp1 ;
+EProd.   Exp1  ::= "(" Id ":" Exp ")" "->" Exp1 ;
+EFun.    Exp1  ::= Exp2 "->" Exp1 ;
+
+coercions Exp 5 ;
+
+separator Exp "," ;
+
+FIn.     Field ::= Id ":" Exp ;
+FEq.     Field ::= Id "=" Exp ;
+FEqIn.   Field ::= Id "=" Exp ":" Exp ;
+
+separator Field ";" ;
+
+token Id (letter (letter | digit | '_' | '-' | '\'')*) ;
+
+comment "--" ;
+comment "{-" "-}" ;
+
