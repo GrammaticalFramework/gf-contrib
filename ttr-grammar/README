@@ -1,0 +1,25 @@
+(c) Aarne Ranta 2016 under BSD license
+
+Experimental implementation of Type Theory with Records
+
+-- Cooper & Ginzburg, Handbook, 2015. Numbers refer to example numbers in the book chapter.
+-- https://hal.archives-ouvertes.fr/hal-01138034/file/rc-jg-ttrsem-final%20(1).pdf
+
+Usage:
+
+  runhaskell TryTTR          -- open TTR shell where expressions can be evaluated
+                    <file>   -- type check file, open shell for evaluation in context of file
+		    - nocheck <file>    -- the same, without type checking
+		    - latex   <file>    -- convert file to latex code
+
+
+Examples:
+
+  runhaskell TryTTR ex2.ttr >ex2.tex   -- followed by pdflatex ex2.pdf
+  runhaskell TryTTR ex3.ttr            -- for evaluation
+
+
+To do:
+- dependent type support
+- subtyping
+

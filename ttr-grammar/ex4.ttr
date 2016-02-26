@@ -1,0 +1,32 @@
+-- testing type checking
+
+ind : Type ;
+
+boy : ind -> Type ;
+
+dog : ind -> Type ;
+
+hug : ind -> ind -> Type ;
+
+BoyHugDog = {
+  a : ind ;
+  b : boy(a) ;
+  c : Ind ;
+  d : dog(c) ;
+  e : hug(a,c)
+  }
+    : RecType ;
+
+Ind = {
+  a : Ind
+  } ;
+
+Boy = {
+  a : ind ;
+  b : boy(a)
+  }
+    : RecType ;
+
+father : Boy -> Ind ;
+
+
