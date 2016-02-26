@@ -1,0 +1,63 @@
+-- testing the evaluation of expressions
+
+City = {
+  name : String ;
+  population : String
+  }
+    : RecType ;
+
+Currency = {
+  code : String ;
+  name : String
+  }
+    : RecType ;
+  
+Country = {
+  name : String ;
+  capital : City ;
+  population : Int ;
+  currency : Currency
+  }
+    : RecType ;
+
+Stockholm = {
+  name = "Stockholm" ;
+  population = 100000
+  }
+    : City ;
+
+Sweden = {
+  name = "Sweden" ;
+  capital = Stockholm ;
+  population = 9000000 ;
+  currency = {
+    code = "SEK" ;
+    name = "crown"
+    }
+  }
+    : Country ;
+
+population = \x : Country . x.population
+  : Country -> Int ;
+
+summary = \x : Country . {
+  name = x.name ;
+  capital = x.capital.name ;
+  population = x.population ;
+  currency = x.currency.code
+  } 
+  : Country -> {
+      name : String ;
+      capital : String ;
+      population : Int ;
+      currency : String
+      } ;
+
+capital = \x : Country . summary(x).capital
+  : Country -> String ;
+
+countryMethods = {
+  capital = capital :  Country -> String ;
+  currency = \x : Country . x.currency.name : Country -> String
+  } ;
+  
