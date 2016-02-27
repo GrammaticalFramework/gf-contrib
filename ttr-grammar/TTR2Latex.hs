@@ -1,3 +1,4 @@
+{-# LANGUAGE GADTs #-}
 module TTR2Latex where
 
 -- translating TTR to Latex. AR 25/2/2016

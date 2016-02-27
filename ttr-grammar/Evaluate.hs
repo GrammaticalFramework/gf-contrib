@@ -1,3 +1,4 @@
+{-# LANGUAGE GADTs #-}
 module Evaluate where
 
 import AbsTTR
@@ -17,6 +18,7 @@ byValue = "-v"
 
 getSig :: [Jment] -> Sig
 getSig = concatMap sig where
+  sig :: Jment -> [(Id,Val)]
   sig d = case d of
     JEq   (EId f) e   -> [(f, vClos e)]
     JEqIn (EId f) e _ -> [(f, vClos e)]

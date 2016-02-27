@@ -2,12 +2,6 @@ Country : Type ;
 
 City : Country -> Type ;
 
-Address = {
-  co : Country ;
-  ci : City(co)
-  }
-  : RecType ;
-
 Sweden : Country ;
 Gothenburg : City(Sweden) ;
 
@@ -17,10 +11,22 @@ aGot = {
   ci = Gothenburg
   }
   : Address ;
+
+Address = {
+  co : Country ;
+  ci : City(co)
+  }
+  : RecType ;
 -}
 
 capital : (c : Country) -> City(c) ;
 
 Stockholm = capital(Sweden) : City(Sweden) ;
+
+Norway : Country ;
+--Oslo = capital(Norway) : City(Sweden) ;
+
+Lillehammer : City(Stockholm) ;
+
 
 

@@ -35,6 +35,9 @@ ECFun.   Exp1  ::= Exp2 "->_c" Exp1 ;
 
 coercions Exp 5 ;
 
+internal EAbs.    Exp1  ::= "\\" Id ":" Exp5 "." Exp1 ;   ---- for easier processing
+internal EApp.    Exp4  ::= Exp4 "(" Exp ")" ;
+
 separator Exp "," ;
 
 FIn.     Field ::= Id ":" Exp ;

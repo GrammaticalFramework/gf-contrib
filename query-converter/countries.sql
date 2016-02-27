@@ -180,7 +180,7 @@ INSERT INTO Countries VALUES ('Anguilla','The Valley',102,13254,'NA','XCD') ;
 INSERT INTO Countries VALUES ('Albania','Tirana',28748,2986952,'EU','ALL') ;
 INSERT INTO Countries VALUES ('Armenia','Yerevan',29800,2968000,'AS','AMD') ;
 INSERT INTO Countries VALUES ('Angola','Luanda',1246700,13068161,'AF','AOA') ;
-INSERT INTO Countries VALUES ('Antarctica','NONE',14000000,0,'AN') ;
+--INSERT INTO Countries VALUES ('Antarctica','NONE',14000000,0,'AN') ;
 INSERT INTO Countries VALUES ('Argentina','Buenos Aires',2766890,41343201,'SA','ARS') ;
 INSERT INTO Countries VALUES ('American Samoa','Pago Pago',199,57881,'OC','USD') ;
 INSERT INTO Countries VALUES ('Austria','Vienna',83858,8205000,'EU','EUR') ;
