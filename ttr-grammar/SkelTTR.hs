@@ -39,6 +39,7 @@ transTree t = case t of
   EProd id exp0 exp1 -> failure t
   EFun exp0 exp1 -> failure t
   ECFun exp0 exp1 -> failure t
+  ELet id exp0 exp1 exp2 -> failure t
   EAbs id exp0 exp1 -> failure t
   EApp exp0 exp1 -> failure t
   FIn id exp -> failure t
@@ -82,6 +83,7 @@ transExp t = case t of
   EProd id exp0 exp1 -> failure t
   EFun exp0 exp1 -> failure t
   ECFun exp0 exp1 -> failure t
+  ELet id exp0 exp1 exp2 -> failure t
   EAbs id exp0 exp1 -> failure t
   EApp exp0 exp1 -> failure t
 

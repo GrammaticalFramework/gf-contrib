@@ -44,6 +44,7 @@ data Tree :: Tag -> * where
     EProd :: Id -> Exp -> Exp -> Tree Exp_
     EFun :: Exp -> Exp -> Tree Exp_
     ECFun :: Exp -> Exp -> Tree Exp_
+    ELet :: Id -> Exp -> Exp -> Exp -> Tree Exp_
     EAbs :: Id -> Exp -> Exp -> Tree Exp_
     EApp :: Exp -> Exp -> Tree Exp_
     FIn :: Id -> Exp -> Tree Field_
@@ -77,6 +78,7 @@ instance Compos Tree where
       EProd id exp0 exp1 -> r EProd `a` f id `a` f exp0 `a` f exp1
       EFun exp0 exp1 -> r EFun `a` f exp0 `a` f exp1
       ECFun exp0 exp1 -> r ECFun `a` f exp0 `a` f exp1
+      ELet id exp0 exp1 exp2 -> r ELet `a` f id `a` f exp0 `a` f exp1 `a` f exp2
       EAbs id exp0 exp1 -> r EAbs `a` f id `a` f exp0 `a` f exp1
       EApp exp0 exp1 -> r EApp `a` f exp0 `a` f exp1
       FIn id exp -> r FIn `a` f id `a` f exp
@@ -114,6 +116,7 @@ instance Show (Tree c) where
     EProd id exp0 exp1 -> opar n . showString "EProd" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     EFun exp0 exp1 -> opar n . showString "EFun" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     ECFun exp0 exp1 -> opar n . showString "ECFun" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
+    ELet id exp0 exp1 exp2 -> opar n . showString "ELet" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . showChar ' ' . showsPrec 1 exp2 . cpar n
     EAbs id exp0 exp1 -> opar n . showString "EAbs" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     EApp exp0 exp1 -> opar n . showString "EApp" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     FIn id exp -> opar n . showString "FIn" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp . cpar n
@@ -154,6 +157,7 @@ johnMajorEq (ELambs lambdas exp) (ELambs lambdas_ exp_) = lambdas == lambdas_ &&
 johnMajorEq (EProd id exp0 exp1) (EProd id_ exp0_ exp1_) = id == id_ && exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (EFun exp0 exp1) (EFun exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (ECFun exp0 exp1) (ECFun exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
+johnMajorEq (ELet id exp0 exp1 exp2) (ELet id_ exp0_ exp1_ exp2_) = id == id_ && exp0 == exp0_ && exp1 == exp1_ && exp2 == exp2_
 johnMajorEq (EAbs id exp0 exp1) (EAbs id_ exp0_ exp1_) = id == id_ && exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (EApp exp0 exp1) (EApp exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (FIn id exp) (FIn id_ exp_) = id == id_ && exp == exp_
@@ -193,13 +197,14 @@ index (ELambs _ _) = 23
 index (EProd _ _ _) = 24
 index (EFun _ _) = 25
 index (ECFun _ _) = 26
-index (EAbs _ _ _) = 27
-index (EApp _ _) = 28
-index (FIn _ _) = 29
-index (FEq _ _) = 30
-index (FEqIn _ _ _) = 31
-index (LAbs _ _) = 32
-index (Id _) = 33
+index (ELet _ _ _ _) = 27
+index (EAbs _ _ _) = 28
+index (EApp _ _) = 29
+index (FIn _ _) = 30
+index (FEq _ _) = 31
+index (FEqIn _ _ _) = 32
+index (LAbs _ _) = 33
+index (Id _) = 34
 compareSame :: Tree c -> Tree c -> Ordering
 compareSame (TJments jments) (TJments jments_) = compare jments jments_
 compareSame (JIn exp0 exp1) (JIn exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
@@ -228,6 +233,7 @@ compareSame (ELambs lambdas exp) (ELambs lambdas_ exp_) = mappend (compare lambd
 compareSame (EProd id exp0 exp1) (EProd id_ exp0_ exp1_) = mappend (compare id id_) (mappend (compare exp0 exp0_) (compare exp1 exp1_))
 compareSame (EFun exp0 exp1) (EFun exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (ECFun exp0 exp1) (ECFun exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
+compareSame (ELet id exp0 exp1 exp2) (ELet id_ exp0_ exp1_ exp2_) = mappend (compare id id_) (mappend (compare exp0 exp0_) (mappend (compare exp1 exp1_) (compare exp2 exp2_)))
 compareSame (EAbs id exp0 exp1) (EAbs id_ exp0_ exp1_) = mappend (compare id id_) (mappend (compare exp0 exp0_) (compare exp1 exp1_))
 compareSame (EApp exp0 exp1) (EApp exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (FIn id exp) (FIn id_ exp_) = mappend (compare id id_) (compare exp exp_)

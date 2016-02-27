@@ -24,9 +24,22 @@ capital : (c : Country) -> City(c) ;
 Stockholm = capital(Sweden) : City(Sweden) ;
 
 Norway : Country ;
---Oslo = capital(Norway) : City(Sweden) ;
 
-Lillehammer : City(Stockholm) ;
+--- these should be errors
+---Oslo = capital(Norway) : City(Sweden) ;
+---Lillehammer : City(Stockholm) ;
+
+Street : (c : Country) -> City(c) -> Type ;
+
+---Bigatan : Street(Norway,Gothenburg) ;
+Bigatan : Street(Sweden,Gothenburg) ;
+
+street
+  = \c : Country \ci : City(c) \s : Street(c,ci) . s
+  : (d : Country) -> (di : City(d)) -> let St = Street(d,di) : Type in St -> St ;
+
+
+
 
 
 
