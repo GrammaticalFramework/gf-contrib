@@ -6,6 +6,14 @@ import AbsTTR
 
 import Data.List
 
+printLatex :: Text -> String
+printLatex tree = unlines [
+  "\\documentstyle{article}",
+  "\\begin{document}",
+  transText tree,
+  "\\end{document}"
+  ]
+  
 type Result = String
 failure x = "not yet implemented: " ++ show x
 

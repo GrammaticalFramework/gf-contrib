@@ -2,7 +2,7 @@
 
 City = {
   name : String ;
-  population : String
+  population : Int
   }
     : RecType ;
 
@@ -22,9 +22,9 @@ Country = {
 
 Stockholm = {
   name = "Stockholm" ;
-  population = 100000
+  population = 1000000
   }
-    : City ;
+  : City ;
 
 Sweden = {
   name = "Sweden" ;

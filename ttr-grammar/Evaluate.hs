@@ -4,17 +4,6 @@ import AbsTTR
 import PrintTTR
 import ErrM
 
-{-
-exec :: Strategy -> Text -> IO ()
-exec strat (TJments defs) = do
-  let sig = getSig defs
-  let env = (sig, [])
-  putStrLn $ case eval strat env (EVar (Ident "main")) of
-    Ok (VInt i) -> show i
-    Ok v   -> "cannot print value " ++ printTree v
-    Bad s  -> s
--}
-
 data Val = VClos [Id] Exp Subst  -- decomposing lambda abstracts
   deriving (Eq,Show)
 
@@ -109,7 +98,13 @@ eval strat env@(sig,cont) exp = case exp of
     FEq l e -> case evals env e of
       Ok (VClos [] e' _) -> return (FEq l e')
       _ -> return (FEq l e)  -- don't destroy abstracts
-    FEqIn l e _ -> evalField (FEq l e)
+    FEqIn l e t -> do
+      FEq _ e' <- evalField (FEq l e)
+      VClos [] t' _ <- evals env t
+      return (FEqIn l e' t')
+    FIn l t -> do
+      FEq _ t' <- evalField (FEq l t)
+      return (FIn l t')
 
 
 
