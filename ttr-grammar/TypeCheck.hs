@@ -99,9 +99,7 @@ inferExp env@(th,(sig,cont)) exp = case exp of
     let (argtyps,valtyp) = getProd ftyp
     if length argtyps /= length es                        ---- TODO partial application
       then fail ("too many arguments given in " ++ printTree exp)
-      else do
-        mapM (uncurry (checkExp env)) (zip es (map snd argtyps)) ---- TODO dependent product
-        return valtyp
+      else checkApps env [] (zip es argtyps) valtyp
         
   ELamApp lambdas body es -> inferExp env (EApps (ELambs lambdas body) es)
   
@@ -139,7 +137,12 @@ inferExp env@(th,(sig,cont)) exp = case exp of
       t <- inferExp env e
       return (l,t)
 
-
-
-      
-
+  checkApps env@(defs,_) g expstyps valtyp = case expstyps of
+    (e,(x,ty)):expstyps2 -> do
+      val@(VClos [] ty' _) <- eval "-s" (defs,g) ty ---- [] ??
+      checkExp env e ty'
+      let g' = (x,val) : g
+      checkApps env g' expstyps2 valtyp
+    _ -> do
+      VClos [] ty _ <- eval "-s" (defs,g) valtyp
+      return ty
