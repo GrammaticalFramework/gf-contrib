@@ -1,8 +1,6 @@
 {-# LANGUAGE GADTs #-}
 module TypeCheck where
 
-----import Evaluate
-
 import AbsTTR
 import PrintTTR
 import ErrM
@@ -41,6 +39,18 @@ baseTypings = [
   (Id "String",tType)
   ]
 
+isRecType :: Exp -> Bool
+isRecType e = case e of
+  ERecord []      -> True
+  ERecord fs@(_:_) -> null [() | FEq _ _ <- fs] -- both x : A and x = a : A
+  _ -> False
+
+isRecord :: Exp -> Bool
+isRecord e = case e of
+  ERecord []      -> True -- make sure not to confuse record {} with type {}
+  ERecord fs@(_:_) -> length [() | FEq _ _ <- fs] == length fs --- only x = a --- thus no typed fields
+  _ -> False
+
 baseConstants = [(t, vId t) | (t,_) <- baseTypings]
 
 vClos e = VClos e []
@@ -53,8 +63,9 @@ printVal v = case v of
   VClos e [] -> printTree e
   _ -> show v
 
-evalExp :: TCEnv -> Exp -> Err Val
-evalExp env exp = whnf env (VClos exp []) ----
+---- full evaluation defined separately in Evaluate
+--evalExp :: TCEnv -> Exp -> Err Val
+--evalExp env exp = whnf env (VClos exp []) ----
 
 whnf :: TCEnv -> Val -> Err Val
 whnf env v = case v of
@@ -89,7 +100,7 @@ whnf env v = case v of
 
     _ -> return $ VClos exp g
 
-
+-- in TC paper
 eqVal :: TCEnv -> Val -> Val -> Err ()
 eqVal env u v = do
   let i = gen env
@@ -114,10 +125,48 @@ eqVal env u v = do
     _ ->
       if wu == wv
         then return ()
-        else fail ("type equality fails: " ++ printVal wu ++ " <> " ++ printVal wv)
+        else fail ("type mismatch: inferred " ++ printVal wu ++ " <> expected " ++ printVal wv)
+
+-- not in TC paper
+subVal :: TCEnv -> Val -> Val -> Err ()
+subVal env u v = do
+  let i = gen env
+  wu <- whnf env u
+  wv <- whnf env v
+  case (wu,wv) of
+    (VApp f u, VApp h v) -> do
+      subVal env f h
+      subVal env u v
+    (VClos (EAbs x1 _ b1) g1 , VClos (EAbs x2 _ b2) g2) -> do
+      let v = VGen i
+      subVal (env{gen = i+1})
+         (VClos b1 ((x1,v):g1))
+         (VClos b2 ((x2,v):g2))
+    (VClos (EProd x1 a1 b1) g1 , VClos (EProd x2 a2 b2) g2) -> do
+      subVal env (VClos a2 g2) (VClos a1 g1) -- contravariance 
+      let v = VGen i
+      subVal (env{gen = i+1})
+         (VClos b1 ((x1,v):g1))
+         (VClos b2 ((x2,v):g2))
+
+    (VClos e1@(ERecord fs1) g1 , VClos e2@(ERecord fs2) g2) | isRecType e1 && isRecType e2 ->
+      if all (flip elem fs1) fs2 && g1 == g2   ---- TODO allow subtyping of components 
+        then return ()
+        else mismatch wu wv
+        
+    _ | wu == tRecType && wv == tType -> return ()
+    
+    _ ->
+      if wu == wv
+        then return ()
+        else mismatch wu wv
+ where
+   mismatch u v = fail ("inferred " ++ printVal u ++ " <> expected " ++ printVal v)
 
 checkType :: TCEnv -> Exp -> Err ()
-checkType env e = checkExp env e tType  ---- TODO rectype
+checkType env e
+  | isRecType e = checkExp env e tRecType
+  | otherwise   = checkExp env e tType
 
 checkExp :: TCEnv -> Exp -> Type -> Err ()
 checkExp env exp typ = case exp of
@@ -133,7 +182,9 @@ checkExp env exp typ = case exp of
             }
         checkExp env' e (VClos b ((y,VGen i):g))
       _ -> fail $ "checking " ++ printTree exp ++ " : expected function type, found " ++ printVal vtyp
+{- -- in TC paper; but we do inferExp 
   EProd x a b -> do
+    checkType env a
     let i = gen env
     vtyp <- whnf env typ
     if not (elem vtyp [tType,tRecType])
@@ -145,6 +196,7 @@ checkExp env exp typ = case exp of
             context = (x,VClos a (subst(env))) : context(env)
             }
         checkType env' b
+-}
   ELet x d t e -> do
     checkType env t
     let vt = VClos t (subst env) ---- in paper: <- eval env t ---- why not whnf
@@ -155,10 +207,25 @@ checkExp env exp typ = case exp of
             context = (x,vt) : context(env)
             }
     checkExp env' e typ
+
+-- not in TC
+  ERecord fs | isRecord exp -> do
+    vtyp <- whnf env typ
+    case vtyp of
+      VClos e@(ERecord ftys) g | isRecType e -> do
+        let fetys = [(x,d,t) | FIn x t <- ftys, Just d <- [lookup x [(y,d) | FEq y d <- fs]]]  -- sorting by record type order, ignoring irrelevant fields
+        if length fetys < length ftys                                                          -- TODO: manifest fields
+          then fail ("missing fields in " ++ printTree exp ++ " : " ++ printVal vtyp)
+          else checkRecordFields env fetys 
         
   _ -> do
     typ0 <- inferExp env exp
-    eqVal env typ typ0
+    let esub = subVal env typ0 typ
+    case esub of
+      Ok v -> return v
+      Bad s -> fail $ "type mismatch in " ++ printTree exp ++ ":\n" ++ s
+      
+--    eqVal env typ0 typ -- in TC paper: no subtyping
 
 inferExp :: TCEnv -> Exp -> Err Type
 inferExp env exp = case exp of
@@ -172,9 +239,71 @@ inferExp env exp = case exp of
       VClos (EProd x a b) g -> do
         checkExp env e (VClos a g)
         return $ VClos b ((x, VClos e (subst env)) : g)
+      _ -> fail $ "product type expected for " ++ printTree f ++ " but found " ++ printVal vf
+     
+  EProd x a b -> do  -- moved here from checkExp
+    checkType env a
+    let i = gen env
+    let env' = env{
+            gen = i+1,
+            subst   = (x,VGen (i+1))           : subst(env),
+            context = (x,VClos a (subst(env))) : context(env)
+            }
+    checkType env' b
+    return tType
+
+  -- records not in TC paper
   ERecTyp -> return tType
-  _ -> fail $ "inference not yet: " ++ printTree exp
-  
+
+  ERecord fs | isRecType exp -> do
+    checkRectypeFields env fs 
+    return tRecType
+    
+  EProj r l -> do
+    vr  <- inferExp env r
+    wvr <- whnf env vr
+    case wvr of
+      VClos e@(ERecord ftys) g | isRecType e -> do
+        let (rbeg,rend) = break ((==l) . fst) [(k,ty) | FIn k ty <- ftys] ---- TODO: manifest fields
+        case rend of
+          [] -> fail $ "type error: unknown record label " ++ printTree l ++ " in " ++ printTree r  --- could be checked earlier
+          (_,ty):_ -> return $ VClos ty ([(x,VClos d (subst env)) | (x,d) <- rbeg] ++ g) 
+      _ -> fail $ "projection of " ++ printTree l ++ ": record type expected for " ++ printTree r ++ " but found " ++ printVal wvr
+
+  EInt _ -> return tInt
+  EFloat _ -> return tFloat
+  EStr _ -> return tString
+
+  EMul x y -> inferArithmExp env x y
+  EDiv x y -> inferArithmExp env x y
+  EAdd x y -> inferArithmExp env x y
+  ESub x y -> inferArithmExp env x y
+  ECat x y -> do
+    checkExp env x tString
+    checkExp env y tString
+    return tString
+    
+  _ -> fail $ "cannot infer type of: " ++ printTree exp
+
+checkRecordFields env fetys = case fetys of
+  (x,e,ty) : fetys2 -> do
+    checkExp env e (VClos ty (subst(env)))
+    let env' = env {subst = (x, VClos e (subst(env))) : subst env}
+    checkRecordFields env' fetys2
+  _ -> return ()
+
+checkRectypeFields env fs = case fs of
+  FIn lab ty : fs2 -> do
+    checkType env ty
+    let env' = env {context = (lab,VClos ty (subst(env))) : context env}
+    checkRectypeFields env' fs2
+  _ -> return () ---- TODO: manifest fields
+
+inferArithmExp env x y = do
+  checkExp env x tInt
+  checkExp env y tInt
+  return tInt ---- TODO Float
+
 ----
 
 -- reduce to unary applications and abstractions: then we don't need to care about these forms
@@ -216,45 +345,13 @@ checkJment :: TCEnv -> Jment -> Err ()
 checkJment env jment = do
   let
    em = case jment of
-    JIn   (EId f) t -> checkType env t
-    JEqIn (EId f) e t -> do
+    JIn   _ t   -> checkType env t
+    JEqIn _ e t -> do
         checkType env t
         checkExp env e (vClos t)
-    _ -> return () ---- TODO: infer type of constant without type signature
+    JEq _ e -> do
+      inferExp env e
+      return () 
   case em of  
     Bad s -> fail $ s ++ "\nhappened in\n" ++ printTree jment
     _ -> return ()
-
-
-{-
-  EProj rec lab -> do
-    rectyp0 <- inferExp env rec
-    rectyp <- evalType env rectyp0 
-    case rectyp of
-      ERecord fs -> case lookup lab ([(i,t) | FIn i t <- fs] ++ [(i,t) | FEqIn i _ t <- fs]) of
-                    ---- TODO check against type-annotated field and manifest fields
-        Just t -> return t
-        _ -> fail $ "Type error: unknown record label " ++ printTree lab ++ " in " ++ printTree rectyp 
-      _ -> fail $ "Type error: projecting " ++ printTree lab ++ " from non-record " ++ printTree rec
-
-  ERecord fs | not (null [() | FIn _ _ <- fs]) -> return tRecType ---- TODO check the other types
-  ERecord fs -> do
-    fs' <- mapM inferField fs
-    return $ ERecord [FIn l ty | (l,ty) <- fs']
-    ---- can also be ERecType with only manifest fields
-  
-
-  _ -> return tType ---- for types
-  
- where
-  inferField f = case f of
-
-----    FIn l t -> return (l,t) --- captured by an earlier case
-    FEqIn l e t -> do
-      checkExp env e t
-      return (l,t)
-    FEq l e -> do
-      t <- inferExp env e
-      return (l,t)
-
--}

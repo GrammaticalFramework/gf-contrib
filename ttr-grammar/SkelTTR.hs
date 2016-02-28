@@ -26,9 +26,9 @@ transTree t = case t of
   ERecord fields -> failure t
   ESetTy exp -> failure t
   EListTy exp -> failure t
+  EApps exp exps -> failure t
   ELamApp lambdas exp exps -> failure t
   EProj exp id -> failure t
-  EApps exp exps -> failure t
   ECompl exp -> failure t
   EJoin exp0 id1 exp2 -> failure t
   EUnion exp0 exp1 -> failure t
@@ -40,6 +40,11 @@ transTree t = case t of
   EFun exp0 exp1 -> failure t
   ECFun exp0 exp1 -> failure t
   ELet id exp0 exp1 exp2 -> failure t
+  EMul exp0 exp1 -> failure t
+  EDiv exp0 exp1 -> failure t
+  EAdd exp0 exp1 -> failure t
+  ESub exp0 exp1 -> failure t
+  ECat exp0 exp1 -> failure t
   EAbs id exp0 exp1 -> failure t
   EApp exp0 exp1 -> failure t
   FIn id exp -> failure t
@@ -70,9 +75,9 @@ transExp t = case t of
   ERecord fields -> failure t
   ESetTy exp -> failure t
   EListTy exp -> failure t
+  EApps exp exps -> failure t
   ELamApp lambdas exp exps -> failure t
   EProj exp id -> failure t
-  EApps exp exps -> failure t
   ECompl exp -> failure t
   EJoin exp0 id1 exp2 -> failure t
   EUnion exp0 exp1 -> failure t
@@ -84,6 +89,11 @@ transExp t = case t of
   EFun exp0 exp1 -> failure t
   ECFun exp0 exp1 -> failure t
   ELet id exp0 exp1 exp2 -> failure t
+  EMul exp0 exp1 -> failure t
+  EDiv exp0 exp1 -> failure t
+  EAdd exp0 exp1 -> failure t
+  ESub exp0 exp1 -> failure t
+  ECat exp0 exp1 -> failure t
   EAbs id exp0 exp1 -> failure t
   EApp exp0 exp1 -> failure t
 

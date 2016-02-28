@@ -19,24 +19,32 @@ ERecTyp. Exp5  ::= "RecType" ;
 ERecord. Exp5  ::= "{" [Field] "}" ;
 ESetTy.  Exp5  ::= "{" Exp "}" ;
 EListTy. Exp5  ::= "[" Exp "]" ;
+EApps.   Exp5  ::= Exp5 "(" [Exp] ")" ;
 ELamApp. Exp4  ::= "<" [Lambda] "." Exp4 "," "<" [Exp] ">" ">" ;
 EProj.   Exp4  ::= Exp4 "." Id ;
-EApps.   Exp5  ::= Exp5 "(" [Exp] ")" ;
-ECompl.  Exp3  ::= "~" Exp3 ;
-EJoin.   Exp3  ::= "JOIN" "[" Exp "]" "(" Id "->" Exp ")" ; -- p. 10 
-EUnion.  Exp2  ::= Exp2 "||" Exp3 ;
-EInters. Exp2  ::= Exp2 "&&" Exp3 ;
-EMerge.  Exp2  ::= Exp2 "&.&" Exp3 ;  -- p. 11
-EConcat. Exp2  ::= Exp2 "^" Exp3 ;    -- p. 12
-ELambs.  Exp1  ::= [Lambda] "." Exp1 ;
-EProd.   Exp1  ::= "(" Id ":" Exp ")" "->" Exp1 ;
-EFun.    Exp1  ::= Exp2 "->" Exp1 ;
-ECFun.   Exp1  ::= Exp2 "->_c" Exp1 ;
-ELet.    Exp1  ::= "let" Id "=" Exp1 ":" Exp1 "in" Exp1 ; -- not in the paper; for coding convenience
+
+ECompl.  Exp2  ::= "~" Exp2 ;
+EJoin.   Exp2  ::= "JOIN" "[" Exp "]" "(" Id "->" Exp ")" ; -- p. 10 
+EUnion.  Exp1  ::= Exp1 "||" Exp2 ;
+EInters. Exp1  ::= Exp1 "&&" Exp2 ;
+EMerge.  Exp1  ::= Exp1 "&.&" Exp2 ;  -- p. 11
+EConcat. Exp1  ::= Exp1 "^" Exp2 ;    -- p. 12
+ELambs.  Exp   ::= [Lambda] "." Exp1 ;
+EProd.   Exp   ::= "(" Id ":" Exp ")" "->" Exp  ;
+EFun.    Exp   ::= Exp1 "->" Exp  ;
+ECFun.   Exp   ::= Exp1 "->_c" Exp  ;
+ELet.    Exp   ::= "let" Id "=" Exp  ":" Exp  "in" Exp  ; -- not in the paper; for coding convenience
+
+-- added to do some nice computations
+EMul.    Exp4  ::= Exp4 "*"  Exp5 ;
+EDiv.    Exp4  ::= Exp4 "/"  Exp5 ;
+EAdd.    Exp3  ::= Exp3 "+"  Exp4 ;
+ESub.    Exp3  ::= Exp3 "-"  Exp4 ;
+ECat.    Exp3  ::= Exp3 "++" Exp4 ; -- string concatenation
 
 coercions Exp 5 ;
 
-internal EAbs.    Exp1  ::= "\\" Id ":" Exp5 "." Exp1 ;   ---- for easier processing
+internal EAbs.    Exp1  ::= "\\" Id ":" Exp5 "." Exp1 ;   ---- for easier, unary processing
 internal EApp.    Exp4  ::= Exp5 "(" Exp ")" ;
 
 separator Exp "," ;

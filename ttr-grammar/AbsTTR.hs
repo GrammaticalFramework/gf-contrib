@@ -31,9 +31,9 @@ data Tree :: Tag -> * where
     ERecord :: [Field] -> Tree Exp_
     ESetTy :: Exp -> Tree Exp_
     EListTy :: Exp -> Tree Exp_
+    EApps :: Exp -> [Exp] -> Tree Exp_
     ELamApp :: [Lambda] -> Exp -> [Exp] -> Tree Exp_
     EProj :: Exp -> Id -> Tree Exp_
-    EApps :: Exp -> [Exp] -> Tree Exp_
     ECompl :: Exp -> Tree Exp_
     EJoin :: Exp -> Id -> Exp -> Tree Exp_
     EUnion :: Exp -> Exp -> Tree Exp_
@@ -45,6 +45,11 @@ data Tree :: Tag -> * where
     EFun :: Exp -> Exp -> Tree Exp_
     ECFun :: Exp -> Exp -> Tree Exp_
     ELet :: Id -> Exp -> Exp -> Exp -> Tree Exp_
+    EMul :: Exp -> Exp -> Tree Exp_
+    EDiv :: Exp -> Exp -> Tree Exp_
+    EAdd :: Exp -> Exp -> Tree Exp_
+    ESub :: Exp -> Exp -> Tree Exp_
+    ECat :: Exp -> Exp -> Tree Exp_
     EAbs :: Id -> Exp -> Exp -> Tree Exp_
     EApp :: Exp -> Exp -> Tree Exp_
     FIn :: Id -> Exp -> Tree Field_
@@ -65,9 +70,9 @@ instance Compos Tree where
       ERecord fields -> r ERecord `a` foldr (a . a (r (:)) . f) (r []) fields
       ESetTy exp -> r ESetTy `a` f exp
       EListTy exp -> r EListTy `a` f exp
+      EApps exp exps -> r EApps `a` f exp `a` foldr (a . a (r (:)) . f) (r []) exps
       ELamApp lambdas exp exps -> r ELamApp `a` foldr (a . a (r (:)) . f) (r []) lambdas `a` f exp `a` foldr (a . a (r (:)) . f) (r []) exps
       EProj exp id -> r EProj `a` f exp `a` f id
-      EApps exp exps -> r EApps `a` f exp `a` foldr (a . a (r (:)) . f) (r []) exps
       ECompl exp -> r ECompl `a` f exp
       EJoin exp0 id1 exp2 -> r EJoin `a` f exp0 `a` f id1 `a` f exp2
       EUnion exp0 exp1 -> r EUnion `a` f exp0 `a` f exp1
@@ -79,6 +84,11 @@ instance Compos Tree where
       EFun exp0 exp1 -> r EFun `a` f exp0 `a` f exp1
       ECFun exp0 exp1 -> r ECFun `a` f exp0 `a` f exp1
       ELet id exp0 exp1 exp2 -> r ELet `a` f id `a` f exp0 `a` f exp1 `a` f exp2
+      EMul exp0 exp1 -> r EMul `a` f exp0 `a` f exp1
+      EDiv exp0 exp1 -> r EDiv `a` f exp0 `a` f exp1
+      EAdd exp0 exp1 -> r EAdd `a` f exp0 `a` f exp1
+      ESub exp0 exp1 -> r ESub `a` f exp0 `a` f exp1
+      ECat exp0 exp1 -> r ECat `a` f exp0 `a` f exp1
       EAbs id exp0 exp1 -> r EAbs `a` f id `a` f exp0 `a` f exp1
       EApp exp0 exp1 -> r EApp `a` f exp0 `a` f exp1
       FIn id exp -> r FIn `a` f id `a` f exp
@@ -103,9 +113,9 @@ instance Show (Tree c) where
     ERecord fields -> opar n . showString "ERecord" . showChar ' ' . showsPrec 1 fields . cpar n
     ESetTy exp -> opar n . showString "ESetTy" . showChar ' ' . showsPrec 1 exp . cpar n
     EListTy exp -> opar n . showString "EListTy" . showChar ' ' . showsPrec 1 exp . cpar n
+    EApps exp exps -> opar n . showString "EApps" . showChar ' ' . showsPrec 1 exp . showChar ' ' . showsPrec 1 exps . cpar n
     ELamApp lambdas exp exps -> opar n . showString "ELamApp" . showChar ' ' . showsPrec 1 lambdas . showChar ' ' . showsPrec 1 exp . showChar ' ' . showsPrec 1 exps . cpar n
     EProj exp id -> opar n . showString "EProj" . showChar ' ' . showsPrec 1 exp . showChar ' ' . showsPrec 1 id . cpar n
-    EApps exp exps -> opar n . showString "EApps" . showChar ' ' . showsPrec 1 exp . showChar ' ' . showsPrec 1 exps . cpar n
     ECompl exp -> opar n . showString "ECompl" . showChar ' ' . showsPrec 1 exp . cpar n
     EJoin exp0 id1 exp2 -> opar n . showString "EJoin" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 id1 . showChar ' ' . showsPrec 1 exp2 . cpar n
     EUnion exp0 exp1 -> opar n . showString "EUnion" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
@@ -117,6 +127,11 @@ instance Show (Tree c) where
     EFun exp0 exp1 -> opar n . showString "EFun" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     ECFun exp0 exp1 -> opar n . showString "ECFun" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     ELet id exp0 exp1 exp2 -> opar n . showString "ELet" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . showChar ' ' . showsPrec 1 exp2 . cpar n
+    EMul exp0 exp1 -> opar n . showString "EMul" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
+    EDiv exp0 exp1 -> opar n . showString "EDiv" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
+    EAdd exp0 exp1 -> opar n . showString "EAdd" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
+    ESub exp0 exp1 -> opar n . showString "ESub" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
+    ECat exp0 exp1 -> opar n . showString "ECat" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     EAbs id exp0 exp1 -> opar n . showString "EAbs" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     EApp exp0 exp1 -> opar n . showString "EApp" . showChar ' ' . showsPrec 1 exp0 . showChar ' ' . showsPrec 1 exp1 . cpar n
     FIn id exp -> opar n . showString "FIn" . showChar ' ' . showsPrec 1 id . showChar ' ' . showsPrec 1 exp . cpar n
@@ -144,9 +159,9 @@ johnMajorEq ERecTyp ERecTyp = True
 johnMajorEq (ERecord fields) (ERecord fields_) = fields == fields_
 johnMajorEq (ESetTy exp) (ESetTy exp_) = exp == exp_
 johnMajorEq (EListTy exp) (EListTy exp_) = exp == exp_
+johnMajorEq (EApps exp exps) (EApps exp_ exps_) = exp == exp_ && exps == exps_
 johnMajorEq (ELamApp lambdas exp exps) (ELamApp lambdas_ exp_ exps_) = lambdas == lambdas_ && exp == exp_ && exps == exps_
 johnMajorEq (EProj exp id) (EProj exp_ id_) = exp == exp_ && id == id_
-johnMajorEq (EApps exp exps) (EApps exp_ exps_) = exp == exp_ && exps == exps_
 johnMajorEq (ECompl exp) (ECompl exp_) = exp == exp_
 johnMajorEq (EJoin exp0 id1 exp2) (EJoin exp0_ id1_ exp2_) = exp0 == exp0_ && id1 == id1_ && exp2 == exp2_
 johnMajorEq (EUnion exp0 exp1) (EUnion exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
@@ -158,6 +173,11 @@ johnMajorEq (EProd id exp0 exp1) (EProd id_ exp0_ exp1_) = id == id_ && exp0 == 
 johnMajorEq (EFun exp0 exp1) (EFun exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (ECFun exp0 exp1) (ECFun exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (ELet id exp0 exp1 exp2) (ELet id_ exp0_ exp1_ exp2_) = id == id_ && exp0 == exp0_ && exp1 == exp1_ && exp2 == exp2_
+johnMajorEq (EMul exp0 exp1) (EMul exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
+johnMajorEq (EDiv exp0 exp1) (EDiv exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
+johnMajorEq (EAdd exp0 exp1) (EAdd exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
+johnMajorEq (ESub exp0 exp1) (ESub exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
+johnMajorEq (ECat exp0 exp1) (ECat exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (EAbs id exp0 exp1) (EAbs id_ exp0_ exp1_) = id == id_ && exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (EApp exp0 exp1) (EApp exp0_ exp1_) = exp0 == exp0_ && exp1 == exp1_
 johnMajorEq (FIn id exp) (FIn id_ exp_) = id == id_ && exp == exp_
@@ -184,9 +204,9 @@ index (ERecTyp ) = 10
 index (ERecord _) = 11
 index (ESetTy _) = 12
 index (EListTy _) = 13
-index (ELamApp _ _ _) = 14
-index (EProj _ _) = 15
-index (EApps _ _) = 16
+index (EApps _ _) = 14
+index (ELamApp _ _ _) = 15
+index (EProj _ _) = 16
 index (ECompl _) = 17
 index (EJoin _ _ _) = 18
 index (EUnion _ _) = 19
@@ -198,13 +218,18 @@ index (EProd _ _ _) = 24
 index (EFun _ _) = 25
 index (ECFun _ _) = 26
 index (ELet _ _ _ _) = 27
-index (EAbs _ _ _) = 28
-index (EApp _ _) = 29
-index (FIn _ _) = 30
-index (FEq _ _) = 31
-index (FEqIn _ _ _) = 32
-index (LAbs _ _) = 33
-index (Id _) = 34
+index (EMul _ _) = 28
+index (EDiv _ _) = 29
+index (EAdd _ _) = 30
+index (ESub _ _) = 31
+index (ECat _ _) = 32
+index (EAbs _ _ _) = 33
+index (EApp _ _) = 34
+index (FIn _ _) = 35
+index (FEq _ _) = 36
+index (FEqIn _ _ _) = 37
+index (LAbs _ _) = 38
+index (Id _) = 39
 compareSame :: Tree c -> Tree c -> Ordering
 compareSame (TJments jments) (TJments jments_) = compare jments jments_
 compareSame (JIn exp0 exp1) (JIn exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
@@ -220,9 +245,9 @@ compareSame ERecTyp ERecTyp = EQ
 compareSame (ERecord fields) (ERecord fields_) = compare fields fields_
 compareSame (ESetTy exp) (ESetTy exp_) = compare exp exp_
 compareSame (EListTy exp) (EListTy exp_) = compare exp exp_
+compareSame (EApps exp exps) (EApps exp_ exps_) = mappend (compare exp exp_) (compare exps exps_)
 compareSame (ELamApp lambdas exp exps) (ELamApp lambdas_ exp_ exps_) = mappend (compare lambdas lambdas_) (mappend (compare exp exp_) (compare exps exps_))
 compareSame (EProj exp id) (EProj exp_ id_) = mappend (compare exp exp_) (compare id id_)
-compareSame (EApps exp exps) (EApps exp_ exps_) = mappend (compare exp exp_) (compare exps exps_)
 compareSame (ECompl exp) (ECompl exp_) = compare exp exp_
 compareSame (EJoin exp0 id1 exp2) (EJoin exp0_ id1_ exp2_) = mappend (compare exp0 exp0_) (mappend (compare id1 id1_) (compare exp2 exp2_))
 compareSame (EUnion exp0 exp1) (EUnion exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
@@ -234,6 +259,11 @@ compareSame (EProd id exp0 exp1) (EProd id_ exp0_ exp1_) = mappend (compare id i
 compareSame (EFun exp0 exp1) (EFun exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (ECFun exp0 exp1) (ECFun exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (ELet id exp0 exp1 exp2) (ELet id_ exp0_ exp1_ exp2_) = mappend (compare id id_) (mappend (compare exp0 exp0_) (mappend (compare exp1 exp1_) (compare exp2 exp2_)))
+compareSame (EMul exp0 exp1) (EMul exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
+compareSame (EDiv exp0 exp1) (EDiv exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
+compareSame (EAdd exp0 exp1) (EAdd exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
+compareSame (ESub exp0 exp1) (ESub exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
+compareSame (ECat exp0 exp1) (ECat exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (EAbs id exp0 exp1) (EAbs id_ exp0_ exp1_) = mappend (compare id id_) (mappend (compare exp0 exp0_) (compare exp1 exp1_))
 compareSame (EApp exp0 exp1) (EApp exp0_ exp1_) = mappend (compare exp0 exp0_) (compare exp1 exp1_)
 compareSame (FIn id exp) (FIn id_ exp_) = mappend (compare id id_) (compare exp exp_)

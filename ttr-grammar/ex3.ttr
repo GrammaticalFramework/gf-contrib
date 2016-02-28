@@ -26,6 +26,7 @@ Stockholm = {
   }
   : City ;
 
+
 Sweden = {
   name = "Sweden" ;
   capital = Stockholm ;
@@ -57,7 +58,11 @@ capital = \x : Country . summary(x).capital
   : Country -> String ;
 
 countryMethods = {
-  capital = capital :  Country -> String ;
-  currency = \x : Country . x.currency.name : Country -> String
+  capital = capital ;
+  currency = \x : Country . x.currency.name
+  }
+  : {
+  capital : Country -> String ;
+  currency : Country -> String
   } ;
   

@@ -5,6 +5,11 @@ import AbsTTR
 import PrintTTR
 import ErrM
 
+showEvalExp :: Sig -> Exp -> String
+showEvalExp env exp = case eval "-s" (env,[]) exp of
+  Ok v -> printVal v
+  Bad s -> s
+
 data Val = VClos [Id] Exp Subst  -- decomposing lambda abstracts
   deriving (Eq,Show)
 
@@ -91,6 +96,17 @@ eval strat env@(sig,cont) exp = case exp of
     fs' <- mapM evalField fs
     return $ vClosC (ERecord fs') cont
 
+  EMul x y -> evalArithm (*) (*) x y
+  EDiv x y -> evalArithm div (/) x y
+  EAdd x y -> evalArithm (+) (+) x y
+  ESub x y -> evalArithm (-) (-) x y
+  ECat x y -> do
+    x' <- evals env x
+    y' <- evals env y
+    case (x',y') of
+      (VClos [] (EStr s) _, VClos [] (EStr t) _) -> return $ VClos [] (EStr (s ++ t)) []
+      _ -> fail $ "illegal string concatenation: " ++ printTree exp
+
   _ -> return $ vClosC exp cont --- for base values
   
  where
@@ -107,6 +123,15 @@ eval strat env@(sig,cont) exp = case exp of
     FIn l t -> do
       FEq _ t' <- evalField (FEq l t)
       return (FIn l t')
+
+  evalArithm :: (Integer -> Integer -> Integer) -> (Double -> Double -> Double) -> Exp -> Exp -> Err Val
+  evalArithm iop fop x y = do
+    x' <- evals env x
+    y' <- evals env y
+    case (x',y') of
+      (VClos [] (EInt s) _, VClos [] (EInt t) _) -> return $ VClos [] (EInt (iop s t)) []
+      (VClos [] (EFloat s) _, VClos [] (EFloat t) _) -> return $ VClos [] (EFloat (fop s t)) []
+      _ -> fail $ "illegal arithmetic operation: " ++ printTree exp
 
 
 

@@ -48,7 +48,7 @@ transJment x = case x of
   JSub exp1 exp2  -> failure x
   JSubIn exp1 exp2 exp3  -> failure x
 
----- todo: precedences
+---- TODO: precedences
 transExp :: Exp -> Result
 transExp x = case x of
   EId id  -> transId id
@@ -69,9 +69,14 @@ transExp x = case x of
   EMerge exp1 exp2  -> transExp exp1 ++ "\\cap. " ++ transExp exp2 ----
   EConcat exp1 exp2  -> transExp exp1 ++ "\\frown " ++ transExp exp2
   ELambs lambdas exp  -> unwords (map transLambda lambdas) ++ "." ++ transExp exp
-  EProd id exp1 exp2  -> "(" ++ transId id ++ ":" ++ transExp exp1 ++ ")" ++ "\\;\\rightarrow\\;" ++ transExp exp2 ;
-  EFun exp1 exp2  -> transExp exp1 ++ "\\;\\rightarrow\\;" ++ transExp exp2 ;
-  ECFun exp1 exp2  -> transExp exp1 ++ "\\;\\rightarrow_{c}\\;" ++ transExp exp2 ;
+  EProd id exp1 exp2  -> "(" ++ transId id ++ ":" ++ transExp exp1 ++ ")" ++ "\\;\\rightarrow\\;" ++ transExp exp2
+  EFun exp1 exp2  -> transExp exp1 ++ "\\;\\rightarrow\\;" ++ transExp exp2
+  ECFun exp1 exp2  -> transExp exp1 ++ "\\;\\rightarrow_{c}\\;" ++ transExp exp2
+  EMul exp1 exp2 -> transExp exp1 ++ "*" ++ transExp exp2
+  EDiv exp1 exp2 -> transExp exp1 ++ "/" ++ transExp exp2
+  EAdd exp1 exp2 -> transExp exp1 ++ "+" ++ transExp exp2
+  ESub exp1 exp2 -> transExp exp1 ++ "-" ++ transExp exp2
+  ECat exp1 exp2 -> transExp exp1 ++ "+\\!\\!+" ++ transExp exp2
 
 transExps = unwords . intersperse "," . map transExp
 
