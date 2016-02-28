@@ -5,7 +5,7 @@ City : Country -> Type ;
 Sweden : Country ;
 Gothenburg : City(Sweden) ;
 
-{-
+
 aGot = {
   co = Sweden ;
   ci = Gothenburg
@@ -17,7 +17,6 @@ Address = {
   ci : City(co)
   }
   : RecType ;
--}
 
 capital : (c : Country) -> City(c) ;
 

@@ -24,12 +24,12 @@ type ParseFun a = [Token] -> Err a
 myLLexer = myLexer
 
 parseFile :: ParseFun a -> FilePath -> IO a
-parseFile p file = readFile file >>= parse p 
+parseFile p file = readFile file >>= parse p (error "no parse")
 
-parse :: ParseFun a -> String -> IO a
-parse p s = case p (myLLexer s) of
+parse :: ParseFun a -> a -> String -> IO a
+parse p d s = case p (myLLexer s) of
   Ok a -> return a
-  Bad s -> putStrLn s >>= undefined
+  Bad s -> putStrLn s >> return d
 
 type TTREnv = (Evaluate.Sig, TCEnv)
 initTTREnv = ([], initTCEnv)
@@ -59,8 +59,30 @@ loop env@(eenv,tcenv) = do
   s <- getLine
   case s of
     _ | all isSpace s -> loop env
+    '?':cs -> do
+      e <- parse pExp (EId (Id "?")) cs
+      case inferExp tcenv (desugar e) >>= whnf tcenv of
+        Ok ty -> putStrLn $ TypeCheck.printVal ty
+        Bad s -> putStrLn s
+      loop env
+    '!':cs -> do
+      j <- parse pJment (JIn (EInt 0) (EId (Id "Int"))) cs
+      case checkJment tcenv (desugar j) of
+        Ok _  -> putStrLn $ "OK"
+        Bad s -> putStrLn s
+      loop env
+    "q" -> putStrLn "Bye" >> return ()
+    "h" -> putStrLn helpMsg >> loop env
     _ -> do
-      e <- parse pExp s
+      e <- parse pExp (EId (Id "?")) s
       putStrLn $ showEvalExp eenv e
       loop env
+
+helpMsg = unlines [
+  "? <Exp>    infer type of expression"
+ ,"! <Jment>  check judgement"
+ ,"<Exp>      evaluate expression"
+ ,"q          quit"
+ ,"h          print this help message"
+  ]
 

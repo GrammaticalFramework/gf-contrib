@@ -96,7 +96,14 @@ whnf env v = case v of
     ELet x d _ e -> do  ---- not in TC's paper, which calls eval in checkExp
       vd <- eval g d
       eval ((x,vd):g) e
-    ---- TODO proj
+    EProj r l -> do
+      vr  <- eval g r
+      wvr <- whnf env{subst = g ++ subst env} vr ---- why eval doesn't suffice ??
+      case wvr of
+        VClos (ERecord fs) gr -> case lookup l [(k,d) | FEq k d <- fs] of
+          Just d -> eval gr d
+          _ -> fail $ "type check eval: cannot find label " ++ printTree l ++ " in " ++ printVal wvr
+        _ -> fail $ "type check eval: record expected to project " ++ printTree l ++ " but found " ++ printVal wvr
 
     _ -> return $ VClos exp g
 
@@ -267,7 +274,7 @@ inferExp env exp = case exp of
         let (rbeg,rend) = break ((==l) . fst) [(k,ty) | FIn k ty <- ftys] ---- TODO: manifest fields
         case rend of
           [] -> fail $ "type error: unknown record label " ++ printTree l ++ " in " ++ printTree r  --- could be checked earlier
-          (_,ty):_ -> return $ VClos ty ([(x,VClos d (subst env)) | (x,d) <- rbeg] ++ g) 
+          (_,ty):_ -> return $ VClos ty ([(x,VClos (EProj r x) (subst env)) | (x,_) <- rbeg] ++ g) 
       _ -> fail $ "projection of " ++ printTree l ++ ": record type expected for " ++ printTree r ++ " but found " ++ printVal wvr
 
   EInt _ -> return tInt
@@ -295,7 +302,11 @@ checkRecordFields env fetys = case fetys of
 checkRectypeFields env fs = case fs of
   FIn lab ty : fs2 -> do
     checkType env ty
-    let env' = env {context = (lab,VClos ty (subst(env))) : context env}
+    let env' = env {
+      gen = gen env + 1,
+      context = (lab,VClos ty (subst(env))) : context env,
+      subst = (lab,VGen (gen env)) : subst env
+      }
     checkRectypeFields env' fs2
   _ -> return () ---- TODO: manifest fields
 
@@ -344,14 +355,24 @@ getFunctions = concatMap sig where
 checkJment :: TCEnv -> Jment -> Err ()
 checkJment env jment = do
   let
+   ifOld e m = case e of
+     EId c | elem c (map fst (headers env)) -> m
+     EInt _ -> m
+     EFloat _ -> m
+     EStr _ -> m
+     _ -> return ()
    em = case jment of
-    JIn   _ t   -> checkType env t
-    JEqIn _ e t -> do
-        checkType env t
-        checkExp env e (vClos t)
+    JIn  e t -> do
+      checkType env t
+      ifOld e $ checkExp env e (vClos t)
+    JEqIn e d t -> do
+      checkType env t
+      checkExp env d (vClos t)
+---- TODO      ifOld e $ do
     JEq _ e -> do
       inferExp env e
-      return () 
+      return ()
+    ---- TODO      ifOld e $ do
   case em of  
     Bad s -> fail $ s ++ "\nhappened in\n" ++ printTree jment
     _ -> return ()
