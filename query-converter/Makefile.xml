@@ -1,0 +1,13 @@
+all:
+	happy -gca ParXML.y
+	alex -g LexXML.x
+	ghc --make TestXML.hs -o TestXML
+
+clean:
+	-rm -f *.log *.aux *.hi *.o *.dvi
+	-rm -f DocXML.ps
+
+distclean: clean
+	-rm -f DocXML.* LexXML.* ParXML.* LayoutXML.* SkelXML.* PrintXML.* TestXML.* AbsXML.* TestXML ErrM.* SharedString.* ComposOp.* XML.dtd XMLXML.* Makefile*
+	
+

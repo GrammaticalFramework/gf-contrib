@@ -1,0 +1,84 @@
+entrypoints Document, Element, XPath ;
+
+DXML.     Document ::= Header DTD Element ;
+
+ETag.     Element ::= StartTag [Element] EndTag ;  -- match of tags must be checked later
+EEmpty.   Element ::= EmptyTag ;
+EData.    Element ::= Word ; ---- not real PCData
+
+terminator Element "" ;
+
+WIdent.   Word ::= Ident ;
+WInt.     Word ::= Integer ;
+WFloat.   Word ::= Double ;
+
+---terminator Word "" ;
+
+STTag.    StartTag  ::= "<" Ident [Attr] ">" ;
+ETTag.    EndTag    ::= "</" Ident ">" ;
+ETEmpty.  EmptyTag  ::= "<" Ident "/>" ;
+
+AValue.   Attr ::= Ident "=" String ;
+
+terminator Attr "" ;
+
+HNone.    Header ::= ;
+HVersion. Header ::= "<?" "xml" "version=\"1.0\"" "encoding=\"utf-8\"" "standalone=\"no\"" "?>" ;
+
+DTDNone.  DTD ::= ;
+DTDDecl.  DTD ::= "<!" "DOCTYPE" Ident "[" [Definition] "]>" ;
+
+DElement. Definition ::= "<!" "ELEMENT" Ident RHS2 ">" ;
+DAttlist. Definition ::= "<!" "ATTLIST" Ident [Attribute] ">" ;
+
+terminator Definition "" ;
+
+REmpty.   RHS3 ::= "EMPTY" ;
+RPCData.  RHS2 ::= "#PCDATA" ;
+RIdent.   RHS2 ::= Ident ;
+RStar.    RHS2 ::= RHS2 "*" ;
+RSPlus.   RHS2 ::= RHS2 "+" ;
+ROpt.     RHS2 ::= RHS2 "?" ;
+RSeq.     RHS1 ::= RHS1 "," RHS2 ;
+RAlt.     RHS  ::= RHS "|" RHS1 ;
+
+coercions RHS 3 ;
+
+AAttr.    Attribute ::= Ident AType Required ;
+
+terminator Attribute "" ;
+
+ACData.   AType ::= "CDATA" ;
+AId.      AType ::= "ID" ;
+AIdRef.   AType ::= "IDREF" ;
+ 
+ReqRequired. Required ::= "#REQUIRED" ;
+ReqImplied.  Required ::= "#IMPLIED" ;
+
+-- XPath
+
+XPCont.  XPath ::= XAxis XItem XCond XPath ;
+XPEnd.   XPath ::= ;
+
+XAPlain. XAxis ::= "/" ;
+XADesc.  XAxis ::= "//" ;
+
+XINone.  XItem ::= ;
+XIElem.  XItem ::= Ident ;
+XIAttr.  XItem ::= "@" Ident ;
+XIAxis.  XItem ::= Ident "::" Ident ;
+XIAnces. XItem ::= ".." ;
+
+XCNone.  XCond ::= ;
+XCOp.    XCond ::= "[" XExp XOp XExp "]" ;
+
+XEPath.  XExp  ::= XPath ;
+XEIdent. XExp  ::= Ident ;
+XEAttr.  XExp  ::= "@" Ident ;
+XEInt.   XExp  ::= Integer ;
+XEStr.   XExp  ::= String ;
+
+XOEq.    XOp   ::= "=" ;
+XONEq.   XOp   ::= "!=" ;
+
+
