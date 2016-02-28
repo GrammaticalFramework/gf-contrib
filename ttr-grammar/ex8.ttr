@@ -1,0 +1,24 @@
+Country : Type ;
+
+City : Country -> Type ;
+
+Street : (x : Country) -> City(x) -> Type ;
+
+Sweden : Country ;
+Norway : Country ;
+
+Gothenburg : City (Sweden) ;
+Oslo : City(Norway) ;
+Bergen : City(Norway) ;
+
+Avenyn : Street(Sweden,Gothenburg) ;
+KarlJohan : Street(Norway,Oslo) ;
+
+Address = {
+  co : Country ;
+  ci : City(co) ;
+  st : Street(co,ci)
+  } : RecType ;
+
+mkAddress = \x : Country \y : City(x) \z : Street(x,y) . {co = x ; ci = y ; st = z}
+  : (x : Country) -> (y : City(x)) -> Street(x,y) -> Address ;
