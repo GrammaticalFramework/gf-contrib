@@ -14,19 +14,36 @@ Based on TTR examples in
 
 In addition, some arithmetical expressions are added to allow computations.
 
-Usage:
+Usage: from Unix shell
 
-  runhaskell TryTTR          -- open TTR shell where expressions can be evaluated
-                    <file>   -- type check file, open shell for evaluation in context of file
-		    - nocheck <file>    -- the same, without type checking
-		    - latex   <file>    -- convert file to latex code (no type checking)
+  runhaskell TryTTR                     -- open TTR shell where expressions can be evaluated and type checked
+                              <file>    -- type check file, open shell for evaluation an type checking in context of file
+		    - nocheck <file>    -- the same, without type checking the file
+		    - tex     <file>    -- convert file to latex code (no type checking)
 
+From TTR shell:
+
+  ? <Exp>    infer type of expression
+  ! <Jment>  check judgement
+  <Exp>      evaluate expression
+  q          quit
+  h          print this help message
 
 Examples:
 
-  runhaskell TryTTR ex2.ttr >ex2.tex   -- followed by pdflatex ex2.pdf
-  runhaskell TryTTR ex3.ttr            -- for evaluation
-  runhaskell TryTTR -nocheck ex2.ttr   -- for evaluation (does not type checked because contains undeclared constants)
+  runhaskell TryTTR -tex ex2.ttr >ex2.tex   -- followed by pdflatex ex2.pdf
+  runhaskell TryTTR ex6.ttr                 -- for evaluation and type checking
+  runhaskell TryTTR -nocheck ex2.ttr        -- for evaluation (does not type check because it contains undeclared constants)
+
+  TTR> 2+2
+  4
+  
+  TTR> ? "007"
+  String
+
+  TTR> ! 007 : String
+  type mismatch in 7:
+  inferred Int <> expected String
 
 
 The implementation is based on
@@ -47,7 +64,7 @@ Notice:
 
 To do:
 - more subtyping support (now supports limited structural record subtyping with co- and contravariance)
-- union, intersection, complement, join types
+- union, intersection, complement, join, merge types
 - bug fixes, in particular in the type checking of records
 
 
