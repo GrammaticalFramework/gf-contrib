@@ -107,6 +107,7 @@ whnf env v = case v of
 
     _ -> return $ VClos exp g
 
+{-
 -- in TC paper
 eqVal :: TCEnv -> Val -> Val -> Err ()
 eqVal env u v = do
@@ -133,8 +134,9 @@ eqVal env u v = do
       if wu == wv
         then return ()
         else fail ("type mismatch: inferred " ++ printVal wu ++ " <> expected " ++ printVal wv)
+-}
 
--- not in TC paper
+-- adapted to subtyping; not in TC paper
 subVal :: TCEnv -> Val -> Val -> Err ()
 subVal env u v = do
   let i = gen env
@@ -160,7 +162,21 @@ subVal env u v = do
       if all (flip elem fs1) fs2 && g1 == g2   ---- TODO allow subtyping of components 
         then return ()
         else mismatch wu wv
+
+---- a superficial interpretation of set-theoretic operations
+
+    (_, VClos (EUnion a b) g) -> do           -- c < a||b  if c < a or c < b 
+      let ea = subVal env u (VClos a g)
+      case ea of
+        Ok _ -> return ()
+        _  -> subVal env u (VClos b g)
         
+    (VClos (EInters a b) g, _) -> do         -- a&&b < c if a < c && b < c
+      let ea = subVal env (VClos a g) v
+      case ea of
+        Ok _ -> return ()
+        _  -> subVal env (VClos b g) v
+    
     _ | wu == tRecType && wv == tType -> return ()
     
     _ ->
@@ -289,7 +305,14 @@ inferExp env exp = case exp of
     checkExp env x tString
     checkExp env y tString
     return tString
-    
+
+  EUnion  a b -> checkType env a >> checkType env b >> return tType
+  EInters a b -> checkType env a >> checkType env b >> return tType
+  EMerge  a b -> checkType env a >> checkType env b >> return tType
+  EConcat a b -> checkType env a >> checkType env b >> return tType
+  EJoin a _ b -> checkType env a >> checkType env b >> return tType
+  ECompl a    -> checkType env a >> return tType
+
   _ -> fail $ "cannot infer type of: " ++ printTree exp
 
 checkRecordFields env fetys = case fetys of

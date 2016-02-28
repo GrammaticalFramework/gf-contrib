@@ -64,7 +64,7 @@ Notice:
 
 To do:
 - more subtyping support (now supports limited structural record subtyping with co- and contravariance)
-- union, intersection, complement, join, merge types
+- refine the treatment of union, intersection, complement, join, merge types
 - bug fixes, in particular in the type checking of records
 
 
