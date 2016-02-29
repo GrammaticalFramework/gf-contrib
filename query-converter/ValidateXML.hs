@@ -52,36 +52,46 @@ syntaxCheckElement t = case t of
 
 validate :: DTD -> Element -> Err ()
 validate (DTDDecl i definitions) el = do
-  case typeElement el of
-    j | j /= i -> fail $ "validation error: expected doctype " ++ printXML i ++ " but found " ++ printXML j
-    _ -> return ()
-  valEl el
- where
-   valEl el = case typeElement el of
-     t | t == pcdataIdent -> return ()
-     t -> do
-       rhs <- getRHS t
-       case rhs of
-         _ -> return ()
-       {-
-       REmpty -> 
-       RPCData  -> failure t
-       RIdent i -> failure t
-       RStar rhs -> failure t
-       RSPlus rhs -> failure t
-       ROpt rhs -> failure t
-       RSeq rhs0 rhs1 -> failure t
-       RAlt rhs0 rhs1 -> failure t
-       -}
-   getRHS t = case lookup t [(i,rhs) | DElement i rhs <- definitions] of
-     Just r -> return r
-     _ -> fail $ "validation error: DTD has no element type " ++ printXML t
-   
+----  trhs <- getRHS definitions i
+----  valEl definitions trhs el
+  return ()
+
+{-
+valEl definitions (ty,rhs) el = do
+  check (typeElement el == ty) ("expected element type " ++ printXML ty) 
+  let contents = contentsElement el
+  case rhs of
+    REmpty    -> check (null contents) ("exptected empty: " ++ printXML el)
+    RPCData   -> return ()  --- anything goes in PCDATA
+    RIdent i  -> check ([typeElement e | e <- contents] == i) ("expected exactly one " ++ printXML i) 
+----    RStar rhs -> mapM_ (valEl definitions rhs 
+----    RSPlus rhs -> failure t
+----    ROpt rhs -> failure t
+----    RSeq rhs0 rhs1 -> case contents of
+----      e:es -> do
+        
+----        valEl definitions (
+    RAlt rhs0 rhs1 -> failure el
+
+
+check cond msg = if cond then return () else fail msg
+      
+getRHS definitions t = case lookup t [(i,rhs) | DElement i rhs <- definitions] of
+  Just r -> return (t,r)
+  _ -> fail $ "validation error: DTD has no element type " ++ printXML t
+-}
+
 typeElement :: Element -> Ident
 typeElement t = case t of
   ETag (STTag i _) _ _ -> i -- end tag already syntax checked
   EEmpty (ETEmpty i _) -> i
   EData _ -> pcdataIdent
+
+contentsElement :: Element -> [Element]
+contentsElement t = case t of
+  ETag _ els _ -> els
+  EEmpty _ -> []
+  EData _ -> [t] ---- ??
 
 pcdataIdent = Ident "#PCData"
 
