@@ -309,6 +309,8 @@ inferExp env exp = case exp of
   EConcat a b -> checkType env a >> checkType env b >> return tType
   EJoin a _ b -> checkType env a >> checkType env b >> return tType
   ECompl a    -> checkType env a >> return tType
+  EListTy a   -> checkType env a >> return tType
+  ESetTy a    -> checkType env a >> return tType
 
   _ -> fail $ "cannot infer type of: " ++ printTree exp
 
