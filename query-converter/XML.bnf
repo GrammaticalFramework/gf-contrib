@@ -16,7 +16,7 @@ WFloat.   Word ::= Double ;
 
 STTag.    StartTag  ::= "<" Ident [Attr] ">" ;
 ETTag.    EndTag    ::= "</" Ident ">" ;
-ETEmpty.  EmptyTag  ::= "<" Ident "/>" ;
+ETEmpty.  EmptyTag  ::= "<" Ident [Attr] "/>" ;
 
 AValue.   Attr ::= Ident "=" String ;
 

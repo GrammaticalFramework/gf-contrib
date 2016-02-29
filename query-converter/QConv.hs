@@ -7,6 +7,7 @@ import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
 import ToXML (prDatabaseXML)
 import XPath (execQueryXPath)
+import ValidateXML
 
 import LexMinSQL
 import ParMinSQL
@@ -72,6 +73,9 @@ loop env = do
       loop env
     "x":_ -> do
       putStrLn $ prDatabaseXML "QConvData" env
+      loop env
+    "ix":file:_ -> do
+      sx <- getXML file
       loop env
     _ -> do
       env' <- runSQLScript env s
