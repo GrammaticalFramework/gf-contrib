@@ -56,6 +56,7 @@ main = do
 loop :: TTREnv -> IO ()
 loop env@(eenv,tcenv) = do
   putStr "TTR> "
+  hFlush stdout
   s <- getLine
   case s of
     _ | all isSpace s -> loop env
