@@ -5,9 +5,9 @@ import Algebra
 import OptimizeAlgebra
 import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
-import Relation2XML (prDatabaseXML)
+import Relation2XML (env2document)
 import AbsXML
-import XPath (execQueryXPath)
+import XPath (execXPath)
 import ValidateXML
 
 import LexMinSQL
@@ -73,14 +73,15 @@ loop env@(senv, xmls) = do
       alg2latex senv (takeWhile (/=';') (unwords ws)) 
       loop env
     "x":ws@(_:_) -> do
-      execQueryXPath "QConvData" senv (unwords ws)
+      execXPath (unwords ws) xmls
       loop env
     "x":_ -> do
-      putStrLn $ prDatabaseXML "QConvData" senv
-      loop env
+      let xml = env2document "QConvData" senv
+      putStrLn $ printXML xml
+      loop (senv,xml:xmls)
     "ix":file:_ -> do
-      sx <- getXML file
-      loop (senv, sx:xmls)
+      xml <- getXML file
+      loop (senv, xml : xmls)
     _ -> do
       senv' <- runSQLScript senv s
       loop (senv',xmls)

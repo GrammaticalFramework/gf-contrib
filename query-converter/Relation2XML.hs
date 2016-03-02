@@ -3,7 +3,6 @@
 module Relation2XML where
 
 import AbsXML
-import ValidateXML (printXML) ----
 
 import qualified Relation as R
 import qualified Algebra as A
@@ -14,8 +13,8 @@ import qualified Data.Map as M
 
 type Id = R.Id --- = String
 
-prDatabaseXML :: Id -> A.Env -> String
-prDatabaseXML name env = printXML $ database2document name [it | it <- M.assocs (A.tables env)]
+env2document :: Id -> A.Env -> Document
+env2document name env = database2document name [it | it <- M.assocs (A.tables env)]
 
 -- conversion from tables to XML
 

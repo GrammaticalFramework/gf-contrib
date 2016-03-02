@@ -57,8 +57,11 @@ ReqImplied.  Required ::= "#IMPLIED" ;
 
 -- XPath
 
-XPCont.  XPath ::= XAxis XItem XCond XPath ;
-XPEnd.   XPath ::= ;
+XPCont.  XPath1 ::= XAxis XItem XCond XPath1 ;
+XPEnd.   XPath1 ::= ;
+XPAlt.   XPath  ::= XPath "|" XPath1 ;
+
+coercions XPath 1 ;
 
 XAPlain. XAxis ::= "/" ;
 XADesc.  XAxis ::= "//" ;
@@ -67,6 +70,8 @@ XINone.  XItem ::= ;
 XIElem.  XItem ::= Ident ;
 XIAttr.  XItem ::= "@" Ident ;
 XIAxis.  XItem ::= Ident "::" Ident ;
+XIAny.   XItem ::= "*" ;
+XIAnyAt. XItem ::= "@*" ;
 XIAnces. XItem ::= ".." ;
 
 XCNone.  XCond ::= ;
