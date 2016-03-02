@@ -10,6 +10,8 @@ import LexXML
 
 import ErrM
 
+import Data.List
+
 type Result = Err String
 
 failure :: Show a => a -> Result
@@ -51,35 +53,58 @@ syntaxCheckElement t = case t of
   _ -> return ()
 
 validate :: DTD -> Element -> Err ()
-validate (DTDDecl i definitions) el = do
-----  trhs <- getRHS definitions i
-----  valEl definitions trhs el
-  return ()
+validate dtd@(DTDDecl i defs) = check i
+ where
+   check t el = do
+     let te = typeElement el
+     checkErr (t == te) ("validation error: element type expected " ++ printXML t ++ " found " ++ printXML te)
+     atts <- getAttlist defs t
+     checkAttlist atts el
+     rhs <- getRHS defs t
+     let els = contentsElement el
+     rest <- checkContents rhs els
+     checkErr (null rest) ("validation error at:\n" ++ unlines (map printXML (take 3 rest)))
+     
+   checkContents rhs els = case rhs of
+     REmpty   -> return els
+     RPCData  -> return []
+     RIdent i -> case els of
+       e:es -> case check i e of
+         Ok _ -> return es
+         Bad s -> fail s
+       _ -> fail $ "validation error: expected " ++ printXML i ++ " found nothing"
+     RSeq r1 r2 -> do
+       els2 <- checkContents r1 els
+       checkContents r2 els2
+     RAlt r1 r2 -> case checkContents r1 els of
+       Ok els2 -> return els2  ---- priority union ??
+       _ -> checkContents r2 els
+     RStar r -> case checkContents r els of
+       Ok els2 -> checkContents rhs els2 ---- longest match ??
+       _ -> return els ---- TODO if Bad s, show s if RStar is the last item in an element
+     RPlus r -> checkContents (RSeq r (RStar r)) els
+     ROpt r -> checkContents (RAlt r REmpty) els
+     
+   checkAttlist atts el = do
+     let required = [a | AAttr a _ ReqRequired <- atts]
+     let found = map fst (attributesElement el)
+     let notfound = [a | a <- required, notElem a found]
+     checkErr (null notfound) ("validation error: required attributes " ++ unwords (map printXML notfound) ++ " not found in:\n" ++ printXML el)
+     ---- TODO: check ID and IDREF
+     ---- check IMPLIED ??
 
-{-
-valEl definitions (ty,rhs) el = do
-  check (typeElement el == ty) ("expected element type " ++ printXML ty) 
-  let contents = contentsElement el
-  case rhs of
-    REmpty    -> check (null contents) ("exptected empty: " ++ printXML el)
-    RPCData   -> return ()  --- anything goes in PCDATA
-    RIdent i  -> check ([typeElement e | e <- contents] == i) ("expected exactly one " ++ printXML i) 
-----    RStar rhs -> mapM_ (valEl definitions rhs 
-----    RSPlus rhs -> failure t
-----    ROpt rhs -> failure t
-----    RSeq rhs0 rhs1 -> case contents of
-----      e:es -> do
-        
-----        valEl definitions (
-    RAlt rhs0 rhs1 -> failure el
+checkErr :: Bool -> String -> Err ()
+checkErr cond msg = if cond then return () else fail msg
 
-
-check cond msg = if cond then return () else fail msg
-      
+getRHS :: [Definition] -> Ident -> Err RHS
 getRHS definitions t = case lookup t [(i,rhs) | DElement i rhs <- definitions] of
-  Just r -> return (t,r)
-  _ -> fail $ "validation error: DTD has no element type " ++ printXML t
--}
+   Just r -> return r
+   _ -> fail $ "validation error: DTD has no element type " ++ printXML t
+
+getAttlist :: [Definition] -> Ident -> Err [Attribute]
+getAttlist definitions t = case lookup t [(i,atts) | DAttlist i atts <- definitions] of
+   Just a -> return a
+   _ -> return []
 
 typeElement :: Element -> Ident
 typeElement t = case t of
@@ -93,172 +118,11 @@ contentsElement t = case t of
   EEmpty _ -> []
   EData _ -> [t] ---- ??
 
+attributesElement :: Element -> [(Ident,String)]
+attributesElement el = case el of
+  ETag (STTag _ ats) _ _ -> [(a,s) | AValue a s <- ats]
+  EEmpty (ETEmpty _ ats) -> [(a,s) | AValue a s <- ats]
+  _ -> []
+
 pcdataIdent = Ident "#PCData"
-
-transAttr :: Attr -> Result
-transAttr t = case t of
-  AValue i str -> failure t
-
-transDTD :: DTD -> Result
-transDTD t = case t of
-  DTDNone  -> failure t
-  DTDDecl i definitions -> failure t
-
-transDefinition :: Definition -> Result
-transDefinition t = case t of
-  DElement i rhs -> failure t
-  DAttlist i attributes -> failure t
-
-transRHS :: RHS -> Result
-transRHS t = case t of
-  REmpty  -> failure t
-  RPCData  -> failure t
-  RIdent i -> failure t
-  RStar rhs -> failure t
-  RSPlus rhs -> failure t
-  ROpt rhs -> failure t
-  RSeq rhs0 rhs1 -> failure t
-  RAlt rhs0 rhs1 -> failure t
-
-transAttribute :: Attribute -> Result
-transAttribute t = case t of
-  AAttr i atype required -> failure t
-
-transAType :: AType -> Result
-transAType t = case t of
-  ACData  -> failure t
-  AId  -> failure t
-  AIdRef  -> failure t
-
-transRequired :: Required -> Result
-transRequired t = case t of
-  ReqRequired  -> failure t
-  ReqImplied  -> failure t
-
-
-
-
-
-transDocument :: Document -> Result
-transDocument t = case t of
-  DXML header dtd element -> failure t
-
-transWord :: Word -> Result
-transWord t = case t of
-  WIdent i -> failure t
-  WInt n -> failure t
-  WFloat d -> failure t
-
-transStartTag :: StartTag -> Result
-transStartTag t = case t of
-  STTag i attrs -> failure t
-
-transEndTag :: EndTag -> Result
-transEndTag t = case t of
-  ETTag i -> failure t
-
-transEmptyTag :: EmptyTag -> Result
-transEmptyTag t = case t of
-  ETEmpty i attrs -> failure t
-
-transHeader :: Header -> Result
-transHeader t = case t of
-  HNone  -> failure t
-  HVersion  -> failure t
-
-
-transXPath :: XPath -> Result
-transXPath t = case t of
-  XPCont xaxis xitem xcond xpath -> failure t
-  XPEnd  -> failure t
-
-transXAxis :: XAxis -> Result
-transXAxis t = case t of
-  XAPlain  -> failure t
-  XADesc  -> failure t
-
-transXItem :: XItem -> Result
-transXItem t = case t of
-  XINone  -> failure t
-  XIElem i -> failure t
-  XIAttr i -> failure t
-  XIAxis i0 i1 -> failure t
-  XIAnces  -> failure t
-
-transXCond :: XCond -> Result
-transXCond t = case t of
-  XCNone  -> failure t
-  XCOp xexp0 xop1 xexp2 -> failure t
-
-transXExp :: XExp -> Result
-transXExp t = case t of
-  XEPath xpath -> failure t
-  XEIdent i -> failure t
-  XEAttr i -> failure t
-  XEInt n -> failure t
-  XEStr str -> failure t
-
-transXOp :: XOp -> Result
-transXOp t = case t of
-  XOEq  -> failure t
-  XONEq  -> failure t
-
-transIdent :: Ident -> Result
-transIdent t = case t of
-  Ident str -> failure t
-
-
-
-transTree :: Tree c -> Result
-transTree t = case t of
-  DXML header dtd element -> failure t
-  ETag starttag elements endtag -> failure t
-  EEmpty emptytag -> failure t
-  EData word -> failure t
-  WIdent i -> failure t
-  WInt n -> failure t
-  WFloat d -> failure t
-  STTag i attrs -> failure t
-  ETTag i -> failure t
-  ETEmpty i _ -> failure t
-  AValue i str -> failure t
-  HNone  -> failure t
-  HVersion  -> failure t
-  DTDNone  -> failure t
-  DTDDecl i definitions -> failure t
-  DElement i rhs -> failure t
-  DAttlist i attributes -> failure t
-  REmpty  -> failure t
-  RPCData  -> failure t
-  RIdent i -> failure t
-  RStar rhs -> failure t
-  RSPlus rhs -> failure t
-  ROpt rhs -> failure t
-  RSeq rhs0 rhs1 -> failure t
-  RAlt rhs0 rhs1 -> failure t
-  AAttr i atype required -> failure t
-  ACData  -> failure t
-  AId  -> failure t
-  AIdRef  -> failure t
-  ReqRequired  -> failure t
-  ReqImplied  -> failure t
-  XPCont xaxis xitem xcond xpath -> failure t
-  XPEnd  -> failure t
-  XAPlain  -> failure t
-  XADesc  -> failure t
-  XINone  -> failure t
-  XIElem i -> failure t
-  XIAttr i -> failure t
-  XIAxis i0 i1 -> failure t
-  XIAnces  -> failure t
-  XCNone  -> failure t
-  XCOp xexp0 xop1 xexp2 -> failure t
-  XEPath xpath -> failure t
-  XEIdent i -> failure t
-  XEAttr i -> failure t
-  XEInt n -> failure t
-  XEStr str -> failure t
-  XOEq  -> failure t
-  XONEq  -> failure t
-  Ident str -> failure t
 
