@@ -72,7 +72,7 @@ loop env@(senv, xmls) = do
     "a":ws -> do
       alg2latex senv (takeWhile (/=';') (unwords ws)) 
       loop env
-    "x":ws@(_:_) -> do
+    "xp":ws@(_:_) -> do
       execXPath (unwords ws) xmls
       loop env
     "x":_ -> do
@@ -164,15 +164,16 @@ mintex = "qconv-latex-tmp.tex"
 
 helpMsg = unlines $ [
   "Query converter v0.1 (A. Ranta 2015). Commands:",
-  "  <SQL>     = run  SQL command ",        
-  "  a <SQL>   = show algebra for sql query", 
-  "  i <File>  = read SQL, run commands",
-  "  d <File>  = read design, show E-R, schema, English",
-  "  f <File>  = read relation, analyse dependencies and keys",
-  "  n <File>  = read relation, normalize to BCNF and 4NF",
-  "  x <XPath> = run xpath query",
-  "  x         = print database in xml",
-  "  h         = help", 
-  "  q         = quit"
+  "  <SQL>      = run  SQL command ",        
+  "  a  <SQL>   = show algebra for sql query", 
+  "  i  <File>  = read SQL, run commands",
+  "  d  <File>  = read design, show E-R, schema, English",
+  "  f  <File>  = read relation, analyse dependencies and keys",
+  "  n  <File>  = read relation, normalize to BCNF and 4NF",
+  "  ix <File>  = read XML file to an XML document",
+  "  x          = convert current SQLdatabase to an xml document",
+  "  xp <XPath> = run xpath query, using current XML documents",
+  "  h          = help", 
+  "  q          = quit"
   ]
 

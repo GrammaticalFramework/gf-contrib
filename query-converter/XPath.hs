@@ -17,7 +17,7 @@ execXPath s docs = putStrLn $ case pXPath (myLexer s) of
   Bad s -> s
 
 queryXPath :: XPath -> [Document] -> XPValue
-queryXPath xp docs = getXPValues $ concatMap (pathsXPath xp) [el | DXML _ _ el <- docs] 
+queryXPath xp docs = getXPValues $ concatMap (matchXPath xp) [el | DXML _ _ el <- docs] 
 
 getXPValues = XPElements ----
 
@@ -40,34 +40,16 @@ descendants e = case children e of
 matchXPath :: XPath -> Element -> [Element]
 matchXPath xp el = case xp of
   XPCont axis item cond xp2 -> case axis of
-    XAPlain -> concatMap (match item cond) $ concatMap (matchXPath xp2) (nexts item el)
-    XADesc  -> concatMap (matchXPath (XPCont XAPlain item cond xp2)) (el : descendants el)
+    XAPlain -> concatMap (matchXPath xp2) $ nexts item cond el 
+    XADesc  -> concatMap (matchXPath (XPCont XAPlain item cond xp2)) $ el : descendants el
   XPEnd -> [el]
   XPAlt xp1 xp2 -> matchXPath xp1 el ++ matchXPath xp2 el
  where
-   match :: XItem -> XCond -> Element -> [Element]
-   match item cond el = case item of
+   nexts :: XItem -> XCond -> Element -> [Element]
+   nexts item cond el = case item of
      XIElem t -> if typeElement el == t then [el] else []
      XIAttr a -> [EData (WIdent (Ident s)) | (b,s) <- attributesElement el, b == a]
-     _ -> [] ---- TODO
-   nexts :: XItem -> Element -> [Element]
-   nexts item el = case item of
-     XIElem t -> if typeElement el == t then children el else []
      XIAny    -> children el
      _ -> [] ---- TODO
+---- TODO some mismatch of levels
 
-
-
----- only works for plain elements so far
-pathsXPath :: XPath -> Element -> [Element]
-pathsXPath xp elm = case (xp,elm) of
-  (XPCont axis_ item cond_ XPEnd, ETag (STTag name attrs_) elems_ _) -> case item of
-    XINone               -> [elm]
-    XIElem i | i == name -> [elm]
-    XIAttr i             -> [EData (WIdent (Ident s)) | AValue a s <- attrs_, a == i]  ---- EData encoding attribute value
-    _ -> []
-  (XPCont axis_ item cond_ xp2, ETag (STTag name attrs_) elems _) -> case item of
-    XINone               -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
-    XIElem i | i == name -> concat [vs | el <- elems, vs <- [pathsXPath xp2 el]]
-    _ -> []
-  (XPEnd,_) -> [elm]

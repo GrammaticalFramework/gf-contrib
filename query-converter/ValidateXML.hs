@@ -116,7 +116,7 @@ contentsElement :: Element -> [Element]
 contentsElement t = case t of
   ETag _ els _ -> els
   EEmpty _ -> []
-  EData _ -> [t] ---- ??
+  EData _ -> [] ---- [t] ??
 
 attributesElement :: Element -> [(Ident,String)]
 attributesElement el = case el of
