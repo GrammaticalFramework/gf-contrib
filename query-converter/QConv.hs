@@ -5,7 +5,7 @@ import Algebra
 import OptimizeAlgebra
 import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
-import ToXML (prDatabaseXML)
+import Relation2XML (prDatabaseXML)
 import AbsXML
 import XPath (execQueryXPath)
 import ValidateXML

@@ -23,8 +23,8 @@ printXML = unspace . printTree where
   unspace s = case s of
     '<':' ':cs -> '<':unspace cs
     '<':'/':' ':cs -> '<':'/':unspace cs
-    ' ':'>':cs -> '>':unspace cs
-    ' ':'/':'>':cs -> '/':'>':unspace cs
+    ' ':'>':cs -> '>':'\n':unspace cs
+    ' ':'/':'>':cs -> '/':'>':'\n':unspace cs
     c      :cs -> c  :unspace cs
     _ -> s
 

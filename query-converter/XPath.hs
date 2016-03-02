@@ -2,8 +2,8 @@
 
 module XPath where
 
-----import ToXML
-----import qualified Algebra as A
+import Relation2XML
+import qualified Algebra as A
 
 import ValidateXML (printXML) ---
 
@@ -14,12 +14,10 @@ import LexXML
 import ErrM
 import qualified Data.Map as M
 
-{-
 execQueryXPath :: Id -> A.Env -> String -> IO () 
 execQueryXPath dbname env s = putStrLn $ case pXPath (myLexer s) of
-  Ok x  -> prXPValue $ queryXPath x (database2xdocument dbname [it | it <- M.assocs (A.tables env)])
+  Ok x  -> prXPValue $ queryXPath x (database2document dbname [it | it <- M.assocs (A.tables env)])
   Bad s -> s
--}
 
 queryXPath :: XPath -> Document -> XPValue
 queryXPath xp doc@(DXML _ _ el) = getXPValues $ pathsXPath xp el 

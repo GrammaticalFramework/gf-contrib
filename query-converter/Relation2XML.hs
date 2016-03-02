@@ -1,6 +1,6 @@
 {-# LANGUAGE GADTs #-}
 
-module ToXML where
+module Relation2XML where
 
 import AbsXML
 import ValidateXML (printXML) ----
