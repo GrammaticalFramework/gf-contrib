@@ -6,6 +6,7 @@ import OptimizeAlgebra
 import Design (file2ER)
 import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
 import ToXML (prDatabaseXML)
+import AbsXML
 import XPath (execQueryXPath)
 import ValidateXML
 
@@ -26,10 +27,13 @@ import Data.Char
 main = do
   putStrLn helpMsg
   writeFile "qconv-history.tmp" ""
-  env <- loop initSEnv
+  env <- loop initQEnv
   return ()
 
-loop env = do
+type QEnv = (SEnv, [AbsXML.Document])
+initQEnv = (initSEnv,[])
+
+loop env@(senv, xmls) = do
   putStr "qconv=# "
   hFlush stdout
   s <- getLine
@@ -38,8 +42,8 @@ loop env = do
     "q":[]        -> return env
     "i":file:_ -> do
        s <- readFile file
-       env' <- runSQLScript env s
-       loop env'
+       senv' <- runSQLScript senv s
+       loop (senv', xmls)
     "d":file:_ -> do
       file2ER file
       loop env
@@ -66,20 +70,20 @@ loop env = do
       putStrLn helpMsg
       loop env
     "a":ws -> do
-      alg2latex env (takeWhile (/=';') (unwords ws)) 
+      alg2latex senv (takeWhile (/=';') (unwords ws)) 
       loop env
     "x":ws@(_:_) -> do
-      execQueryXPath "QConvData" env (unwords ws)
+      execQueryXPath "QConvData" senv (unwords ws)
       loop env
     "x":_ -> do
-      putStrLn $ prDatabaseXML "QConvData" env
+      putStrLn $ prDatabaseXML "QConvData" senv
       loop env
     "ix":file:_ -> do
       sx <- getXML file
-      loop env
+      loop (senv, sx:xmls)
     _ -> do
-      env' <- runSQLScript env s
-      loop env'
+      senv' <- runSQLScript senv s
+      loop (senv',xmls)
 
 runSQLScript :: SEnv -> String -> IO Env
 runSQLScript env s = case pScript (preprocSQL (myLexer s)) of
