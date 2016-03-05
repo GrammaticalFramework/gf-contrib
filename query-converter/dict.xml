@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE Dictionary [
+  <!ELEMENT Dictionary (word)*>
+  <!ELEMENT word (english, swedish)>
+  <!ELEMENT english (#PCDATA)>
+  <!ELEMENT swedish (#PCDATA)>
+  <!ATTLIST word pos CDATA #REQUIRED>
+  ]>
+  
+<Dictionary>
+  <word pos="Noun">
+    <english>computer</english>
+    <swedish>dator</swedish>
+  </word>
+  <word pos="Verb">
+    <english>compute</english>
+    <swedish>beräkna</swedish>
+  </word>
+</Dictionary>

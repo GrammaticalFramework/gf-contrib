@@ -1,0 +1,12 @@
+ix dict.xml
+xp /Dictionary
+xp /Dictionary/word
+xp //word
+xp /Dictionary/word/english
+xp /Dictionary//english
+xp /Dictionary/*/english
+xp /Dictionary/*/*/*
+xp /Dictionary/
+xp //@pos
+xp /Dictionary//@pos
+q
