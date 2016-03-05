@@ -40,16 +40,18 @@ descendants e = case children e of
 matchXPath :: XPath -> Element -> [Element]
 matchXPath xp el = case xp of
   XPCont axis item cond xp2 -> case axis of
-    XAPlain -> concatMap (matchXPath xp2) $ nexts item cond el 
+    XAPlain -> nexts xp2 item cond el
     XADesc  -> concatMap (matchXPath (XPCont XAPlain item cond xp2)) $ el : descendants el
-  XPEnd -> [el]
-  XPAlt xp1 xp2 -> matchXPath xp1 el ++ matchXPath xp2 el
  where
-   nexts :: XItem -> XCond -> Element -> [Element]
-   nexts item cond el = case item of
-     XIElem t -> if typeElement el == t then [el] else []
+   matches el xp2 els = case xp2 of
+     XPEnd -> [el]
+     _ -> concatMap (matchXPath xp2) els
+   nexts :: XPath -> XItem -> XCond -> Element -> [Element]
+   nexts xp2 item cond el = case item of
+     XIElem t -> if (typeElement el == t) then matches el xp2 (children el) else []
      XIAttr a -> [EData (WIdent (Ident s)) | (b,s) <- attributesElement el, b == a]
-     XIAny    -> children el
-     _ -> [] ---- TODO
----- TODO some mismatch of levels
+     XIAny    -> matches el xp2 (children el)
+     XINone   -> matches el xp2 (children el) --- can only appear last in a path, but the syntax is more liberal
+
+---- TODO conditions; check if attributes are matched on the right level
 
