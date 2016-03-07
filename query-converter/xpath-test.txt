@@ -7,6 +7,14 @@ xp /Dictionary//english
 xp /Dictionary/*/english
 xp /Dictionary/*/*/*
 xp /Dictionary/
+xp /Dictionary/word/@pos
+xp /Dictionary/@pos
 xp //@pos
 xp /Dictionary//@pos
+xp //@*
+xp /Dictionary/word/@*
+xp /Dictionary/word[pos="Noun"]
+xp /Dictionary/word[1]
+xp /Dictionary/word[1]/english
+xp /Dictionary/word[1]/@pos
 q

@@ -76,14 +76,19 @@ XIAnces. XItem ::= ".." ;
 
 XCNone.  XCond ::= ;
 XCOp.    XCond ::= "[" XExp XOp XExp "]" ;
+XCOrd.   XCond ::= "[" Integer "]" ;
 
-XEPath.  XExp  ::= XPath ;
+---XEPath.  XExp  ::= XPath ;
 XEIdent. XExp  ::= Ident ;
-XEAttr.  XExp  ::= "@" Ident ;
+---XEAttr.  XExp  ::= "@" Ident ;
 XEInt.   XExp  ::= Integer ;
 XEStr.   XExp  ::= String ;
 
 XOEq.    XOp   ::= "=" ;
 XONEq.   XOp   ::= "!=" ;
+XOLt.    XOp   ::= "<" ;
+XOGt.    XOp   ::= ">" ;
+XOLEq.   XOp   ::= "<=" ;
+XOGEq.   XOp   ::= ">=" ;
 
 
