@@ -45,7 +45,7 @@ transJment x = case x of
   JIn exp1 exp2  -> transExp exp1 ++ "\\;:\\;" ++ transExp exp2
   JEq exp1 exp2  -> transExp exp1 ++ "\\;=\\;" ++ transExp exp2
   JEqIn exp1 exp2 exp3 -> transExp exp1 ++ "\\;=\\;" ++ transExp exp2 ++ "\\;:\\;" ++ transExp exp3
-  JSub exp1 exp2  -> failure x
+  JSub exp1 exp2  -> transExp exp1 ++ "\\;\\subseteq\\;" ++ transExp exp2
   JSubIn exp1 exp2 exp3  -> failure x
 
 ---- TODO: precedences

@@ -1,0 +1,96 @@
+\documentstyle{article}
+\begin{document}
+
+\[
+\frac{
+  \Gamma, x : A \vdash  B \;:\; \mbox{Type}
+}{
+  \Gamma \vdash  ( x:A )\rightarrow B \;:\; \mbox{Type}
+}
+\]
+
+\[
+\frac{
+  \Gamma \vdash  c \;:\; ( x:A )\rightarrow B \;\;\;\;  \Gamma \vdash a \;:\; A
+}{
+  \Gamma \vdash  c(a) \;:\; B \{ x := a \}
+}
+\]
+
+\[
+\frac{
+  \Gamma, x : A \vdash   b \;:\; B
+}{
+  \Gamma \vdash  \lambda x:A\;.b\;:\;(x:A)\;\rightarrow\;B
+}
+\]
+
+\[
+\frac{
+    \Gamma \vdash A_{1} \;:\; \mbox{Type}  
+     \;\;\;  \ldots \;\;\; 
+    \Gamma \vdash A_{n} \;:\; \mbox{Type}
+}{
+  \begin{array}{lclcl}
+  \Gamma & \vdash &\left[\begin{array}{lcl}x_{1} & \;:\; & A_{1} \\ \ldots & \\ x_{n} & \;:\; &  A_{n}\end{array}\right] 
+    & \;:\; & \mbox{RecType}
+  \end{array}
+}
+\]
+
+\[
+\frac{
+  \Gamma \vdash r \;:\; \left[\begin{array}{lcl}x_{1} & \;:\; & A_{1} \\ \ldots & \\ x_{n} & \;:\; &  A_{n}\end{array}\right]
+}{
+\begin{array}{lclcl}
+  \Gamma & \vdash & r.x_{i} & \;:\; & A_{i} \{ x_{1} := r.x_{1} , \ldots , x_{i-1} := r.x_{i-1} \}
+  \end{array}
+}
+\]
+
+\[
+\frac{
+    \Gamma \vdash a_{1} \;:\;  A_{1} 
+         \;\;\;  \ldots \;\;\; 
+    \Gamma \vdash a_{n} \;:\; A_{n} \{   x_{1} := a_{1} , \ldots , x_{n-1} := a_{n-1}  \}
+}{
+  \begin{array}{lclcl}
+  \Gamma & \vdash &\left[\begin{array}{lcl}x_{1} & \;=\; & a_{1} \\ \ldots & \\ x_{n} & \;=\; &  a_{n}\end{array}\right] 
+    & \;:\; & \left[\begin{array}{lcl}x_{1} & \;:\; & A_{1} \\ \ldots & \\ x_{n} & \;:\; & A_{n}\end{array}\right]
+  \end{array}
+}
+\]
+
+\[
+\frac{
+A \;:\; \mbox{Type} \;\;\;  B \;:\; \mbox{Type} 
+}{
+A\cup B \;:\; \mbox{Type} 
+}
+\;\;\;\;
+\frac{
+A \;:\; \mbox{Type} \;\;\;  B \;:\; \mbox{Type} 
+}{
+A\cap B \;:\; \mbox{Type} 
+}
+\]
+
+
+
+
+\[
+A \;\subseteq\; A\cup B
+\;\;\;\; 
+B \;\subseteq\; A\cup B
+\;\;\;\; 
+A\cap B\;\subseteq\;A
+\;\;\;\; 
+A\cap B\;\subseteq\;B
+\]
+
+\[
+R + \{ x : A \} \;\subseteq\; R
+\]
+
+\end{document}
+
