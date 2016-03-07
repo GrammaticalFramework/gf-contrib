@@ -1,6 +1,9 @@
 \documentstyle{article}
 \begin{document}
 
+\section*{Typing rules}
+
+\subsubsection*{Product type}
 \[
 \frac{
   \Gamma, x : A \vdash  B \;:\; \mbox{Type}
@@ -9,6 +12,7 @@
 }
 \]
 
+\subsubsection*{Application}
 \[
 \frac{
   \Gamma \vdash  c \;:\; ( x:A )\rightarrow B \;\;\;\;  \Gamma \vdash a \;:\; A
@@ -17,6 +21,7 @@
 }
 \]
 
+\subsubsection*{Abstraction}
 \[
 \frac{
   \Gamma, x : A \vdash   b \;:\; B
@@ -25,11 +30,12 @@
 }
 \]
 
+\subsubsection*{Record type}
 \[
 \frac{
     \Gamma \vdash A_{1} \;:\; \mbox{Type}  
      \;\;\;  \ldots \;\;\; 
-    \Gamma \vdash A_{n} \;:\; \mbox{Type}
+    \Gamma, x_{1} : A_{1} , \ldots , x_{n-1} : A_{n-1}  \vdash A_{n} \;:\; \mbox{Type}
 }{
   \begin{array}{lclcl}
   \Gamma & \vdash &\left[\begin{array}{lcl}x_{1} & \;:\; & A_{1} \\ \ldots & \\ x_{n} & \;:\; &  A_{n}\end{array}\right] 
@@ -38,6 +44,7 @@
 }
 \]
 
+\subsubsection*{Projection}
 \[
 \frac{
   \Gamma \vdash r \;:\; \left[\begin{array}{lcl}x_{1} & \;:\; & A_{1} \\ \ldots & \\ x_{n} & \;:\; &  A_{n}\end{array}\right]
@@ -48,6 +55,7 @@
 }
 \]
 
+\subsubsection*{Record}
 \[
 \frac{
     \Gamma \vdash a_{1} \;:\;  A_{1} 
@@ -61,6 +69,8 @@
 }
 \]
 
+
+\subsubsection*{Union}
 \[
 \frac{
 A \;:\; \mbox{Type} \;\;\;  B \;:\; \mbox{Type} 
@@ -69,15 +79,49 @@ A\cup B \;:\; \mbox{Type}
 }
 \;\;\;\;
 \frac{
+a \;:\;  A
+}{
+a \;:\; A\cup B
+}
+\;\;\;\;
+\frac{
+b \;:\;  B
+}{
+b \;:\; A\cup B
+}
+\]
+
+\subsubsection*{Intersection}
+\[
+\frac{
 A \;:\; \mbox{Type} \;\;\;  B \;:\; \mbox{Type} 
 }{
-A\cap B \;:\; \mbox{Type} 
+A\cap B \;:\; \mbox{Type}
+} 
+\;\;\;\;
+\frac{
+a \;:\;  A \;\;\;\; a \;:\;  B
+}{
+a \;:\; A\cap B 
 }
 \]
 
 
+\newpage
 
 
+\section*{Subtyping}
+
+\subsubsection*{Main rule}
+\[
+\frac{
+a \;:\; A \;\;\;\; A \;\subseteq\;  B
+}{
+a \;:\; B
+}
+\]
+
+\subsubsection*{Derived rules for union and intersection}
 \[
 A \;\subseteq\; A\cup B
 \;\;\;\; 
@@ -89,7 +133,7 @@ A\cap B\;\subseteq\;B
 \]
 
 \[
-R + \{ x : A \} \;\subseteq\; R
+R + [ x : A ] \;\subseteq\; R
 \]
 
 \end{document}
