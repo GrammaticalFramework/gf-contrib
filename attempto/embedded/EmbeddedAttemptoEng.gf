@@ -20,6 +20,7 @@ concrete EmbeddedAttemptoEng of EmbeddedAttempto =
     BackupStart p = mkText p ;
 
 -- coercions from ACE
+    AceVP vp = vp ;
     AceCN cn = cn ;
     AceNP np = np ;
     AceAP ap = ap ;
@@ -33,7 +34,7 @@ concrete EmbeddedAttemptoEng of EmbeddedAttempto =
     dictA_ACE a = a ;
     dictV_ACE v = v ;
     dictV2_ACE v2 = v2 ** {s = \\f => v2.s ! f ++ v2.c2 ; c2 = []} ; -- glue prep
-    
+
 
     ---- Adv: we only want to import lexical Adv's
 
