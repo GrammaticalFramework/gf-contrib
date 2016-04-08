@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style>
+#allContent {
+	width: 1200px;
+	padding-top: 10px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#newspapersImg {
+	width:1198px;
+	height:1300px;
+}
+
+#generateButton {
+	font-color: red;
+	background-color: grey;
+	border: 1px solid yellow;
+	cursor: pointer;
+	padding:1px;
+	border-radius:1px;
+	color:yellow;
+}
+
+#header {
+	padding:10px;
+	width:1180px;
+	font-family: 'Raleway', sans-serif;
+	background-color: lightgrey;
+	text-align:center;
+	margin-bottom:10px;
+}
+
+#headerTitle {
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#headerExplanation {
+	font-size:16px;
+	margin-bottom:2px;
+}
+
+#headerCredits {
+	font-size: 12px;
+}
+
+#headlineCont {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	font-weight: bold;
+}
+
+.line {
+
+}
+.newspaper {
+	margin-bottom:10px;
+	padding:10px;
+	width:369px;
+	min-height:80px;
+	margin-right:5px;
+	margin-left:5px;
+	box-shadow:2px 2px 2px grey;
+	display:inline-block;
+	vertical-align:top;
+    background: -webkit-linear-gradient(gainsboro, ghostwhite); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(gainsboro, ghostwhite); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(gainsboro, ghostwhite); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(gainsboro, ghostwhite); /* Standard syntax */
+}
+.langName {
+	font-family: 'Raleway', sans-serif;
+	font-size: 14px;
+	border-bottom: 1px dotted grey;
+	margin-bottom: 10px;
+}
+.headline {
+	font-size:28px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+#textAra {
+	text-align:right;
+	font-family: 'Tahoma';
+}
+#textHeb {
+	text-align: right;
+}
+.romanization {
+	text-align:left;
+	font-size: 12px;
+	margin-top:5px;
+	margin-bottom:2px;
+}
+.loudsp {
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #allContent {
+	width: 100%;
+}
+#newspapersImg {
+	width:99.8%;
+	height:auto;
+}
+
+#generateButton {
+	font-size:30px;
+}
+
+#header {
+	padding:10px;
+	width:99%;
+}
+
+.newspaper {
+
+	width:90%;
+	height:auto;
+    display: block;
+
+}
+
+}
+
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multilingual headlines generator made with Grammatical Framewok</title>
+<link href='https://fonts.googleapis.com/css?family=News+Cycle:700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+var synth = window.speechSynthesis;
+var voices = [];
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+document.addEventListener("keydown", function(event){
+	if (event.keyCode=='70') {
+		getInfo();
+	}
+});
+function getInfo() {
+$.ajax({
+  
+  //comment next line and uncomment following line to use in local server
+  url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
+  //url: "http://localhost:41296/headlines.pgf",
+  type: "get",
+  data:{command:"random"},
+  success: function(response) {
+    showInfo(response);
+  },
+  error: function(xhr) {
+    alert("There has been an error in the ajax request");
+  },
+  cache: false
+});
+}
+
+function showInfo(info) {
+	//ara baq cat chi eng fre ger glg gre heb hin hrv ita lav por que rum rus spa swa swe tgl tur
+	//0   1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20  21  22
+    var order = [18,2,7,1,14,5,12,16,4,6,20,13,17,11,8,22,9,0,19,10,3,21,15];
+    var langs = ["Arabic","Basque","Catalan","Chinese","English","French","German","Galician","Greek","Hebrew","Hindi","Croatian","Italian","Latvian","Portuguese","Quechua","Romanian","Russian","Spanish","Swahili","Swedish","Tagalog","Turkish"];
+    var answer = "";
+	
+
+	for (var i=0; i<order.length; i++) {
+		if (i%3==0) {answer += "<div class='line'>";}
+		answer += "<div class='newspaper'>";
+		answer += "<div class='langName'>" + langs[order[i]] + "</div><div class='headline'>";
+		if (info[0].linearizations[order[i]].texts.length>1) {
+			var z = Math.floor(Math.random()*info[0].linearizations[order[i]].texts.length);
+		}
+		else {
+			var z = 0;
+		}
+		
+		var retrievedLin = info[0].linearizations[order[i]].texts[z];
+		
+		//capitalize first letter of linearization
+		var defLin = retrievedLin.substring(0,1).toUpperCase() + retrievedLin.substring(1,retrievedLin.length);
+		//standardized apostrophe (otherwise it causes an error in speech synthesis)
+		var sign = "'";
+		var re = new RegExp(sign, "g");
+		retrievedLin = retrievedLin.replace(re,"&rsquo;");
+		defLin = defLin.replace(re,"&rsquo;");
+		
+		//Chinese, Hebrew and Arabic have special css (no-spaces (Chi) and right-aligned text (Heb-Ara))
+		if (langs[order[i]]=="Hebrew") {
+		answer += "<div class='text' id='textHeb'>" + defLin;
+		}
+		else if (langs[order[i]]=="Arabic") {
+		answer += "<div class='text' id='textAra'>" + defLin;
+		}
+		else if (langs[order[i]]=="Chinese") {
+		answer += "<div class='text' id='textChi'>" + defLin.replace(/\s+/g, ''); //this removes spaces from Chinese linearization
+		}
+		else {
+		answer += "<div class='text'>" + defLin;
+		}
+		
+		//add speech synthesis (only if Chrome is being used)
+		//languages supported can be checked here: http://mdn.github.io/web-speech-api/speak-easy-synthesis/
+		if (isChrome) {
+			switch (langs[order[i]]) {
+			case "Spanish":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;es-ES&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "Portuguese": 
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;pt-BR&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "French": 
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;fr-FR&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "Italian":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;it-IT&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "English":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;en-US&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "German":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;de-DE&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "Russian":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;ru-RU&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "Hindi":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;hi-IN&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			case "Chinese":
+				answer += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='loudsp' onclick='speak(&quot;zh-CN&quot;, &quot;" + defLin + "&quot;)'></img>";
+			break;
+			
+		}
+		}
+				
+		answer += "</div>";
+		
+		//add romanization where appliccable
+		
+		if (langs[order[i]]=="Russian") {
+			var romanizationRus = romanizeRus(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationRus + "</div>";
+		}
+		else if (langs[order[i]]=="Greek") {
+			var romanizationGre = romanizeGre(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationGre + "</div>";
+		}
+		else if (langs[order[i]]=="Hebrew") {
+			var romanizationHeb = romanizeHeb(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationHeb + "</div>";
+		}
+		else if (langs[order[i]]=="Arabic") {
+			var romanizationAra = romanizeAra(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationAra + "</div>";
+		}
+		else if (langs[order[i]]=="Hindi") {
+			var romanizationHin = romanizeHin(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationHin + "</div>";
+		}
+		else if (langs[order[i]]=="Chinese") {
+			var romanizationChi = romanizeChi(retrievedLin);
+			answer += "<div class='romanization'>" + romanizationChi + "</div>";
+		}
+			
+		answer += "</div></div>";
+		if (i%3==2 || i==order.length-1) {answer += "</div>";}
+	}
+		document.getElementById("headlinesCont").innerHTML = answer;
+}
+
+//functions for romanization. Russian/Greek are general, Heb/Ara/Hin/Chi have been made 'ad hoc' for this example
+function romanizeRus(txt) {
+	var RusAlph =   ['актер','Актер',  'а','б','в','г','д','е','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я',          'А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я'];
+	var RusRom = ['aktyor','Aktyor','a','b','v','g','d','e','zh','z','i','j','k','l','m','n','o','p','r','s','t','u','f','x','ts','ch','sh','shch','`','y','\'','è','yu','ya','A','B','V','G','D','E','ZH','Z','I','J','K','L','M','N','O','P','R','S','T','U','F','X','TS','CH','SH','SHCH','`','Y','\'','È','YU','YA'];
+	for (i=0; i<RusAlph.length; i++) {
+		var letter = RusAlph[i];
+		var re = new RegExp(letter, "g");
+		txt = txt.replace(re,RusRom[i]);
+	}
+	txt = txt.substring(0,1).toUpperCase() + txt.substring(1,txt.length);
+	return txt;
+}
+
+function romanizeGre(txt) {
+	var GreAlph =   ['ά','έ','ή','ί','ΰ','α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','ς','σ','τ','υ','φ','χ','ψ','ω','ϊ','ϋ','ό','ύ','ώ',   'Ή','Ί','Ό','Ύ','Ώ','ΐ','Α','Β','Γ','Δ','Ε','Ζ','Η','Θ','Ι','Κ','Λ','Μ','Ν','Ξ','Ο','Π','Ρ','Σ','Τ','Υ','Φ','Χ','Ψ','Ω','Ϊ','Ϋ'];
+	var GreRom = ['á','é','ì','í','ü','a','v','g','d','e','z','ī','th','i','k','l','m','n','x','o','p','r','s','s','t','u','f','kh','ps','ō','ï','ü','ó','ú','ò','Ì','Í','Ó','Ú','Ò','Ï','A','V','G','D','E','Z','Ī','TH','I','K','L','M','N','X','O','P','R','S','T','U','F','KH','PS','Ō','Ï','Ü'];
+	for (i=0; i<GreAlph.length; i++) {
+		var letter = GreAlph[i];
+		var re = new RegExp(letter, "g");
+		txt = txt.replace(re,GreRom[i]);
+	}
+	txt = txt.substring(0,1).toUpperCase() + txt.substring(1,txt.length);
+	return txt;
+}
+
+function romanizeHeb(txt) {
+	var HebWords = ["מנהיג המפלגה הסוציאליסטית","מתח ביקורת על","לפני שלושה ימים","לאחר שלושה ימים","הוא לבקר את","בארצות הברית","שר החוץ","חתם על","יחתום על","השתתף","את התערוכה","במרכז העיר","בשבוע שעבר","בארמון הלאומי","בשבוע הבא","בתערוכה","בברצלונה","במדריד","במלון","ביום שני","ביום שלישי","ביום רביעי","ביום חמישי","ביום שישי","ביום ראשון","לפני רגע","את הכנס","מחרתיים","בצרפת","בשבת","מכונית","ההסכם","אתמול","שלשום","הבוקר","הערב","בכנס","יחנוך","נשיא","בסין","שופט","שחקן","יקנה","נפגש","היום","יפגש","ידבר","יתמוך","קיבל","יקבל","בית","מחר","מלך","זמר","חנך","קנה","דיבר","תמך","מת","את","עם","ה","ב"];
+	var HebRom = ["manhig ha-miflagah ha-sotzi'alistit","matah biqoret :al","lifney shloshah yomim","l'axar shloshah yomim","ho' lebiqer 'et","ba-'artzot habrit","shar ha-xutz","xatam :al","yitxom :al","hishtatef","'et ha-ta:aruxah","b-merkaz ha-:ir","ba-shabu:a she-:abar","ba-'armon ha-l'umi","ba-shabu:a haba'","ba-ta:aruxah","b-bartzelonah","b-madrid","b-malon","ba-yom sheni","ba-yom shlishi","ba-yom rbi:i","ba-yom xamishi","ba-yom shishi","ba-yom ri'shon","lifney regah","'et ha-kenes","maxareteyim","b-tzarfat","b-shabat","mxonit","ha-heskem","'etmol","shilshom","ha-boqer","ha-:ereb","ba-kenes","yixnox","nasi'","b-sin","shofet","shaxqan","yiqneh","nifgash","ha-yom","yipagesh","yedaber","yitmox","qibel","yeqabel","bayt","maxar","melex","zammar","xanax","qanah","diber","tamax","met","'et",":im","ha-","ba-"];
+	for (i=0; i<HebWords.length; i++) {
+		var word = HebWords[i];
+		var re = new RegExp(word, "g");
+		txt = txt.replace(re,HebRom[i]);
+	}
+	return txt;
+}
+
+function romanizeAra(txt) {
+	var AraWords = ["زعيم الحزب الاشتراكي","وزير الخارجية","قبل ثلاثة أيام","بعد ثلاثة أيام","في مركز المدينة","في الولايات المتحدة","في القصر الوطني","قد ينتقد","على الاتفاق","يوم الإثنين","يوم الثلاثاء","يوم الاربعاء","يوم الخميس","يوم الجمعة","يوم السبت","يوم الأحد","لأسبوع القادم","الإسبوع الماضي","هذا المساء","هذا الصباح","في برشلونة","في مدريد","في فرنسا","في فندق","في الصين","أمس الأول","منذ لحظة","سيتحدث","سيفتتح","افتتح","سيشتري","سيلتقي","سيستقبل","بعد غد","المؤتمر","المعرض","الممثل","إستقبل","المغني","الرئيس","الملك","سيحضر","انتقد","سيوقع","القاضي","اشترى","سيارة","اليوم","توفي","التقى","سيؤيد","تحدث","منزلا","بيتا","أيد","وقع","حضر","غداً","أمس","مع","ب"];
+	var AraRom = ["za:īm al-Hizbi l-'ištirākiyy","wazīr al-xāriǧiyya","qabla thalathati 'ayyām","ba:da thalathati 'ayyām","fī markazi l-madīna","fī l-wilāyāti l-mutaHida","fī l-qaSri l-waTaniyy","qad yantaqidu",":alà l-'ittifāq","yawma l-'ithnayn","yawma th-thulāthā'","yawma l-'arbi:ā'","yawma l-xamīs","yawma l-ǧum:a","yawma s-sabt","yawma -l'aHad","al-'usbū:a l-qādim","al-'usbū:a l-māDī","hadhā l-masā'","hadhā S-Sabāh","fī baršilūna","fī madrīd","fī faransā","fī funduq","fī S-Sīn","'amsi l-'awwal","mundhu laHZa","sa-yataHaddathu","sa-yaftatiHu","iftataHa","sa-yaštarī","sa-yaltaqī","sa-yastaqbilu","ba:da gad","al-mu'tamar","al-ma:riD","al-mumaththil","istaqbala","al-mugannī","ar-ra'īs","al-malik","sa-yaHDuru","intaqada","sa-yuwaqqi:u","al-qaDī","ištarà","sayyāra","al-yawma","tawaffī","iltaqà","sa-yu'ayyidu","taHaddatha","manzilän","baytän","'ayyada","waqqa:a","HaDara","gadän","'amsi","ma:a","bi-"];
+	for (i=0; i<AraWords.length; i++) {
+		var word = AraWords[i];
+		var re = new RegExp(word, "g");
+		txt = txt.replace(re,AraRom[i]);
+	}
+	return txt;
+}
+
+function romanizeHin(txt) {
+	var HinWords = ["समाजवादी पार्टी के नेता","का समर्थन किया","का स्वागत किया","का स्वागत करेगा","का समर्थन करेगा","की आलोचना की","की आलोचना कर सख्ता है","एक क्षण पहले","तीन दिन पहले","तीन दिन में","हस्ताक्षर किए","हस्ताक्षर करेगा","समझौते पर","समझौता","न्यायाधीश","अभिनेता","अगले हफ़्ते","पिछले हफ़्ते","राष्ट्रीय पैलेस मे","विदेश मंत्री","प्रदर्शनी","सम्मेलन","राष्ट्रपति","शहर के केंद्र में","मर गया","मैड्रिड में","अमेरीका में","बार्सिलोना में","एक होटल में","आज सुबह","आज शाम","फ्रांस में","चीन में","सोमवार","मंगलवार","बुधवार","गुरुवार","शुक्रवार","शनिवार","रविवार","ख़रीदेगा","ख़रीदेगी","परसों","खरीदा","ख़रीदी","राजा","गायक","खोलेगा","खोलेगी","खोला","खोली","मिलेगा","मिलेगी","मिला","मिली","बोलेगा","बोलेगी","बोला","बोली","जाएगा","जाएगी","गया","गई","गाड़ी","घर","आज","कल","पर","को","ने","से","है"];
+	var HinRom = ["samájavádí parti ke netá","ká samarTan kiyá","ká svágat kiyá","ká svágat karegá","ká samarTan karegá","kí alocná kí","kí alocná kar sakhtá hai","ek kshaN pahle","tín din pahle","tín din mê","hastashkar kie","hastashkar karegá","samajhaute par","samajhautá","nyáyádhísh","abhinetá","agle hafte","pichle hafte","rastriy pailes mê","videsh mantrí","pradarshaní","sammelan","raStrapti","shahar ke kendr mê","mer gayá","maDriD mê","ameriká mê","bársiloná mê","ek hoTal mê","áj subah","áj shám","phrans mê","cín mê","somvár","manglavár","budhvár","guruvár","shukravár","shanivár","ravivár","xaridegá","xaridegí","parsô","xaridá","xaridí","rájá","gáyak","kholegá","kholegí","kholá","kholí","milegá","milegí","milá","milí","bolegá","bolegí","bolá","bolí","jaegá","jaegí","gayá","gaí","gaRHí","ghar","áj","kal","par","ko","ne","se","hai"];
+	for (i=0; i<HinWords.length; i++) {
+		var word = HinWords[i];
+		var re = new RegExp(word, "g");
+		txt = txt.replace(re,HinRom[i]);
+	}
+	return txt;
+}
+
+function romanizeChi(txt) {
+	var ChiWords = ["社会党领袖","在巴塞罗那","一套房子","在国家宫","在市中心","今天上午","今天晚上","下个星期","在马德里","在法国","在中国","在美国","在饭店","星期一","星期二","星期三","星期四","星期五","星期六","星期日","星期天","上星期","外交部","见了面","说了话","展览会","一辆车","三天前","在三天","刚才","今天","昨天","前天","后天","国王","明天","总统","法官","歌手","演员","开幕","购买","死了","见面","说话","支持","收到","批评","出席","会议","协议","签","上","下","跟","与","要","了"];
+	var ChiRom = ["shèhuì-dǎng lǐngxiù","zài bāsèluōnà","yī tào fángzi","zài guójiā-gōng","zài shì zhōngxīn","jīntiān shàngwǔ","jīntiān wǎnshàng","xiàge xīngqí","zài mǎdélǐ","zài fàguó","zài zhōngguó","zài měiguó","zài fàndiàn","xīngqíyī","xīngqí'èr","xīngqísān","xīngqísì","xīngqíwǔ","xīngqíliù","xīngqírì","xīngqítiān","shàng xīngqí","wàijiāo bù","jiàn-le-miàn","shuō-le-huà","zhǎnlànhuì","yī liàng chē","sān tiān qián","zài sān tiān","gāngcái","jīntiān","zuótiān","qiántiān","hòutiān","guówáng","míngtiān","zǒngtǒng","fǎguān","gēshǒu","yǎnyuán","kāimù","gòumǎi","sǐ le","jiànmiàn","shuōhuà","zhīchí","shōudào","pīpíng","chūxí","huìyì","xiéyì","qiān","shàng&nbsp;","xià&nbsp;","gēn","yǔ","yào","le"];
+	for (i=0; i<ChiWords.length; i++) {
+		var word = ChiWords[i];
+		var re = new RegExp(word, "g");
+		txt = txt.replace(re,ChiRom[i]);
+	}
+	return txt;
+}
+
+//web speech api: https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html
+function speak(language, txt) {
+	 voices = synth.getVoices();
+     var u = new SpeechSynthesisUtterance(txt);
+     u.rate = 1.3;
+	 for (i=0;i<voices.length;i++) {
+		if (voices[i].lang == language) {
+			u.voice = voices[i];
+			break;
+		}
+	 }
+     synth.speak(u);
+}
+
+</script>
+</head>
+<body>
+<div id="allContent">
+  <div id="header">
+  <div id="headerTitle">MULTILINGUAL HEADLINES GENERATOR</div>
+  <div class="headerExplanation">Click <span id="generateButton" onclick="getInfo()">here</span> or press the 'f' key in your keyboard to generate a headline</div>
+  <div id="headerCredits">Made by <a href="https://twitter.com/joseprzmoreno">me</a> with <a href="http://www.grammaticalframework.org/">Grammatical Framework</a> and the <a href="https://code.google.com/archive/p/grammatical-framework/wikis/GFWebServiceAPI.wiki">Grammatical Framework Web Service API</a>. (Hopefully,) to be improved in the future.</div>
+  </div>
+
+  <div id="headlinesCont">
+  <img id="newspapersImg" src="https://www.dropbox.com/s/g4zmwks582w3usa/periodicos.png?raw=1"></img>
+  </div>
+  
+</div>
+
+
+</body>
+</html>
