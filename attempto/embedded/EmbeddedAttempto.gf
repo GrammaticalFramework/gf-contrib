@@ -15,6 +15,7 @@ abstract EmbeddedAttempto =
     BackupStart : Phr -> Start ;
 
 -- coercions from ACE
+    AceVP : VP_ACE -> VP ;
     AceCN : CN_ACE -> CN ;
     AceNP : NP_ACE -> NP ;
     AceAP : AP_ACE -> AP ;

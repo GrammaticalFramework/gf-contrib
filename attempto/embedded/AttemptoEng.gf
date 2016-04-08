@@ -1,4 +1,4 @@
-concrete AttemptoEng of Attempto = SymbolsC,NumeralEng ** AttemptoI - [which_RP] with
+concrete AttemptoEng of Attempto = SymbolsC,NumeralEng ** AttemptoI - [which_RP_ACE] with
   (Syntax = SyntaxEng),
   (Symbolic = SymbolicEng),
   (LexAttempto = LexAttemptoEng) ** open SyntaxEng, ExtraEng in {
