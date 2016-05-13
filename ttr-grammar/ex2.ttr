@@ -36,7 +36,7 @@ ex6 = {
   x     : Ind ;
   c_boy : < \v : Ind . boy(v) , <x> > ;
   y     : Ind ;
-  c_dog : < \v : Ind . boy(v),<y> > ;
+  c_dog : < \v : Ind . dog(v) , <y> > ;
   e     : < \v_1 : Ind \v_2 : Ind . hug(v_1,v_2),<x,y> >
   } ;
 
