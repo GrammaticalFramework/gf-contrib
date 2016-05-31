@@ -18,11 +18,11 @@
 module PGFFFI where
 
 import PGF
-import CString
+import Foreign.C.String
 import Foreign
 import Foreign.C.Types
 import Control.Exception
-import IO
+import System.IO
 import Data.Maybe
 -- import GF.Text.Lexing
 
