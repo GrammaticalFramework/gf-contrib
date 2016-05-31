@@ -17,6 +17,6 @@
 # License along with this library; if not, see <http://www.gnu.org/licenses/>.
 src=../../src
 import=-i$src/runtime/haskell:$src/compiler
-gf --make ../../examples/tutorial/embedded/QueryEng.gf &&
+gf --make ../tutorial/embedded/QueryEng.gf &&
 ghc $import --make -fglasgow-exts -O2 -no-hs-main $* -c PGFFFI.hs &&
 ghc $import --make -fglasgow-exts -O2 -no-hs-main $* gfctest.c gf_lexing.c PGFFFI.hs -o gfctest
