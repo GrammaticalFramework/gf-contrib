@@ -67,6 +67,6 @@ oper
 
   sip  = table {Unit => "สิบ"   ; Thousand => "หมื่น"} ;
   roy  = table {Unit => "ร้อย" ; Thousand => "แสน"} ;
-  phan = table {Unit => []      ; Thousand => "พะน"} ;
+  phan = table {Unit => []      ; Thousand => "พัน"} ; -- "พะน" ?
 
 }
