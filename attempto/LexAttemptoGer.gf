@@ -4,8 +4,8 @@ instance LexAttemptoGer of LexAttempto =
     IrregGer, Prelude in {
 
 oper
-  possible_A = mkA "möglich" ;
-  necessary_A = mkA "nötig" ;
+  possible_A = mkA "mÃ¶glich" ;
+  necessary_A = mkA "nÃ¶tig" ;
   own_A = mkA "eigen" ;
   have_VV = SyntaxGer.must_VV ;
   provably_Adv = mkAdv "beweisbar" ;
@@ -17,7 +17,7 @@ oper
 
   each_Det = every_Det ;
 
-  that_Subj = mkSubj "daß" ;
+  that_Subj = mkSubj "daÃŸ" ;
 
   comma_and_Conj = mkConj [] ", und" plural ;
   comma_or_Conj = mkConj [] ", oder" singular ;

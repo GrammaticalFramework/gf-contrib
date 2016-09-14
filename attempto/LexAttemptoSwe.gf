@@ -3,14 +3,14 @@ instance LexAttemptoSwe of LexAttempto =
     MakeStructuralSwe, IrregSwe in {
 
 oper
-  possible_A = mkA "möjlig" ;
-  necessary_A = mkA "nödvändig" ;
+  possible_A = mkA "mÃ¶jlig" ;
+  necessary_A = mkA "nÃ¶dvÃ¤ndig" ;
   own_A = mkA "egen" "eget" "egna" "egnare" "egnast" ;
   have_VV = must_VV ;
   provably_Adv = mkAdv "bevisbart" ;
   provable_A = mkA "bevisbar" ;
   false_A = mkA "falsk" ;
-  such_A = mkA "sådan" ;
+  such_A = mkA "sÃ¥dan" ;
 
   genitiveNP np = mkNP (GenNP np) ;
 

@@ -5,11 +5,11 @@ instance LexAttemptoFre of LexAttempto =
 
 oper
   possible_A = mkA "possible" ;
-  necessary_A = mkA "nécessaire" ;
+  necessary_A = mkA "nÃ©cessaire" ;
   own_A = mkA "propre" ;
   have_VV = SyntaxFre.must_VV ;
-  provably_Adv = mkAdv "démontrablement" ;
-  provable_A = mkA "démontrable" ;
+  provably_Adv = mkAdv "dÃ©montrablement" ;
+  provable_A = mkA "dÃ©montrable" ;
   false_A = mkA "faux" ;
   such_A = mkA "tel" "telle" ;
 

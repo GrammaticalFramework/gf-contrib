@@ -11,12 +11,12 @@ instance LexAttemptoFin of LexAttempto =
 
 oper
   possible_A = mkA "mahdollinen" ;
-  necessary_A = mkA "v‰ltt‰m‰tˆn" ;
+  necessary_A = mkA "v√§ltt√§m√§t√∂n" ;
   own_A = mkA "oma" ;
-  have_VV = mkVV (caseV genitive (mkV "pit‰‰")) ;
+  have_VV = mkVV (caseV genitive (mkV "pit√§√§")) ;
   provably_Adv = mkAdv "todistettavasti" ;
   provable_A = mkA "todistettava" ;
-  false_A = mkA (mkN "ep‰tosi" "ep‰toden" "ep‰tosia") ;
+  false_A = mkA (mkN "ep√§tosi" "ep√§toden" "ep√§tosia") ;
   such_A = mkA "sellainen" ;
  
   genitiveNP np = mkNP (GenNP np) ;
@@ -25,7 +25,7 @@ oper
 
   each_Det = every_Det ; ----
 
-  that_Subj = M.mkSubj "ett‰" ;
+  that_Subj = M.mkSubj "ett√§" ;
 
   comma_and_Conj = M.mkConj [] ", ja" plural ;
   comma_or_Conj = M.mkConj [] ", tai" singular ;
