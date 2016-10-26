@@ -1,0 +1,125 @@
+TestTrees: t01_girls_see_a_boy
+TestTreesEng: a girl sees a boy
+TestTreesLav: meitene redz zēnu
+TestTreesRus: девушка видит мальчика
+
+TestTrees: t02_the_boy_is_seen_by_the_girls
+TestTreesEng: a girl sees a boy
+TestTreesLav: meitene redz zēnu
+TestTreesRus: девушка видит мальчика
+
+TestTrees: t03_two_girls_see_a_boy
+TestTreesEng: 2 girls see a boy
+TestTreesLav: 2 meitenes redz zēnu
+TestTreesRus: 2 девушки видят мальчика
+
+TestTrees: t04_two_pretty_girls_see_a_boy
+TestTreesEng: 2 pretty girls see a boy
+TestTreesLav: 2 jaukas meitenes redz zēnu
+TestTreesRus: 2 прелестные девушки видят мальчика
+
+TestTrees: t05_the_boy_sees_the_two_pretty_girls
+TestTreesEng: a boy sees 2 pretty girls
+TestTreesLav: zēns redz 2 jaukas meitenes
+TestTreesRus: мальчик видит 2 прелестных девушек
+
+TestTrees: t06_girls_and_boys_play_a_game
+TestTreesEng: a girl and a boy play a game
+TestTreesLav: meitene , un zēns spēlē spēli
+TestTreesRus: девушка и мальчик играют c игрой
+
+TestTrees: t07_boys_girls_and_a_dog_play_a_game
+TestTreesEng: a dog , a boy and a girl play a game
+TestTreesLav: suns , zēns , un meitene spēlē spēli
+TestTreesRus: мальчик , девушка и собака играют c игрой
+
+TestTrees: t08_many_persons_live
+TestTreesEng: many persons live
+TestTreesLav: daudzas personas dzīvo
+TestTreesRus: много лицoов живёт
+
+TestTrees: t09_some_persons_live_in_Ventspils
+TestTreesEng: some persons live in Ventspils
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t10_many_persons_live_in_Riga
+TestTreesEng: many persons live in Riga
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t11_more_persons_live_in_New_York
+TestTreesEng: more persons live in New York
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t13_few_persons_live_in_Riga_and_New_York
+TestTreesEng: few persons live in Riga and New York
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t14_boys_and_girls_play_games_in_Riga
+TestTreesEng: a boy and a girl play a game in Riga
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t15_boys_and_girls_play_games_in_Riga_and_New_York
+TestTreesEng: a boy and a girl play a game in Riga and New York
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t16_boys_see_Ann
+TestTreesEng: a boy sees Ann
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t17_John_plays_a_game
+TestTreesEng: John plays a game
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t18_John_sees_Ann
+TestTreesEng: John sees Ann
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t19_girls_see_some_boys_who_play_a_game
+TestTreesEng: a girl sees some boys who play a game
+TestTreesLav: meitene redz kādus zēnus , kas spēlē spēli
+TestTreesRus: девушка видит некоторого мальчиков , которых играют c игрой
+
+TestTrees: t20_girls_see_some_pretty_boys_who_play_a_ball_game
+TestTreesEng: a girl sees some pretty boys who play a ball game
+TestTreesLav: meitene redz kādus jaukus zēnus , kas spēlē bumbas spēli
+TestTreesRus: девушка видит некоторого прелестных мальчиков , которых играют c игрой
+
+TestTrees: t21_girls_who_see_the_game_like_the_boys_who_play
+TestTreesEng: a girl who sees a game likes a boy who plays
+TestTreesLav: meitenei , kas redz spēli , patīk zēns , kas spēlē
+TestTreesRus: девушка , которая видит игру нравдит мальчика , которого играет
+
+TestTrees: t22_Assad_spoke_about_the_city
+TestTreesEng: Assad speaks about a city
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t23_Assad_spoke_about_the_two_cities
+TestTreesEng: Assad speaks about 2 cities
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t24_Assad_spoke_a_word_about_the_city
+TestTreesEng: Assad speaks a word about a city
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t25_the_boy_is_a_person
+TestTreesEng: a boy is a person
+TestTreesLav: zēns ir persona
+TestTreesRus: мальчик лицo
+
+TestTrees: t26_Iceland_is_a_very_interesting_example
+TestTreesEng: Iceland is an example which is very interesting
+TestTreesLav: 
+TestTreesRus: 
+
