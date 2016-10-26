@@ -23,9 +23,10 @@ Task: for a given AMR graph, represented as a tree in the PENMAN notation, trans
 
 See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://alt.qcri.org/semeval2017/task9/index.php?id=important-dates). `!!`
 
-1. The current implementation produces GF API constructor application trees instead of the actual ASTs. This is suboptimal as it requires to generate and compile a grammar for each new AMR (or a batch of AMRs), but it seems a simpler solution in the short term, and this is also a workaround for handling the open list of named entities / proper names which, thus, can be linearized by directly applying the `mkPN` constructor. This works at least for English.
+1. The current implementation produces GF API constructor application trees instead of the actual ASTs. This is suboptimal as it requires to generate and compile a grammar for each new AMR (or a batch of AMRs), but it seems a simpler solution in the short term, and this is also a workaround for handling the open list of named entities / proper names which, thus, can be linearized by directly applying the `mkPN` constructor. This works for English.
 1. Add much more transformation rules (and test cases)!
-1. Can we reuse the AMR-to-Penn rules by Butler (2016)?
+  * Can we reuse the AMR-to-Penn rules by Butler (2016)?
+  * To what extent the conversion of `:ARG[2..N]` relations depends on the particular PropBank frames?
 1. At the end, prune all edges and nodes in the given AMR, so that at least a partial AMR is linearized.
 
 ### Future tasks
@@ -33,6 +34,7 @@ See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://al
 1. Conversion of AMRs into proper ASTs.
 1. Re-implementation in a programming language which has a native support for operations on trees, e.g. Haskell or LISP (a future task).
 1. AMR-to-English vs. multilingual text generation.
+  * Use of the `:wiki` relations and a multilingual named entity lexicon generated from DBpedia (instead of the `:name` + `:op[1..N]` relations). This should be an optional feature, as the automatic wikification is error-prone.
 
 
 ## Publications
