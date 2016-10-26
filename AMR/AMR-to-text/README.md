@@ -31,7 +31,7 @@ See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://al
 ### Future tasks
 
 1. Conversion of AMRs into proper ASTs.
-1. Re-implementation in a language which has a native support for operations on trees, e.g. Haskell or LISP (a future task).
+1. Re-implementation in a programming language which has a native support for operations on trees, e.g. Haskell or LISP (a future task).
 1. AMR-to-English vs. multilingual text generation.
 
 
