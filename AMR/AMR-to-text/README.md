@@ -1,16 +1,15 @@
-# AMR-to-text generation via GF abstract syntax trees (AST)
+# AMR-to-text generation via GF abstract syntax trees
 
 The initial proposal is concisely described in a position paper by Grūzītis and Bārzdiņš (2016).
 
-Task: for a given AMR graph, represented as a tree in the PENMAN notation, transform it to an AST and linearize it in the target language. The output sentence is in general a paraphrase of the input sentence represented by the AMR graph.
+Task: for a given AMR graph, represented as a tree in the PENMAN notation, transform it to a GF abstract syntax tree (AST), and linearize the AST in the target language. The output sentence is in general a paraphrase of the input sentence represented by the AMR graph.
 
 
 ## Structure
 
 1. `rules`: implementation-independent AMR-to-AST transformation rules (methodology).
-1. `lexicons`: language-specific GF lexicons, extending the wide-coverage lexicons provided by the GF resource grammar library, interlinked via an abstract lexicon. Extensions: lexical units from PropBank, named entities from DBpedia, etc.
+1. `lexicons`: language-specific GF lexicons extending the wide-coverage lexicons provided by the GF resource grammar library, interlinked via an abstract lexicon. Extensions: lexical units from PropBank, named entities from DBpedia, etc.
 1. `tregex`: implementation of the transformation rules, based on the [Tregex](http://nlp.stanford.edu/software/tregex.html) package provided by the Stanford JavaNLP library. The use of Tregex was inspired by Butler (2016).
-1. `haskell`/`lisp`: re-implementation in a language which has a native support for operations on trees (future task).
 
 
 ## Workflow
@@ -22,21 +21,18 @@ Task: for a given AMR graph, represented as a tree in the PENMAN notation, trans
 
 ### SemEval 2017 Task 9 Subtask 2
 
-See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://alt.qcri.org/semeval2017/task9/index.php?id=important-dates). `!`
+See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://alt.qcri.org/semeval2017/task9/index.php?id=important-dates). `!!`
 
 1. The current implementation produces GF API constructor application trees instead of the actual ASTs. This is suboptimal as it requires to generate and compile a grammar for each new AMR (or a batch of AMRs), but it seems a simpler solution in the short term, and this is also a workaround for handling the open list of named entities / proper names which, thus, can be linearized by directly applying the `mkPN` constructor. This works at least for English.
 1. Add much more transformation rules (and test cases)!
 1. Can we reuse the AMR-to-Penn rules by Butler (2016)?
 1. At the end, prune all edges and nodes in the given AMR, so that at least a partial AMR is linearized.
 
-### Mid-term goals
+### Future tasks
 
-1. ...
-
-
-### Long-term goals
-
-1. ...
+1. Conversion of AMRs into proper ASTs.
+1. Re-implementation in a language which has a native support for operations on trees, e.g. Haskell or LISP (a future task).
+1. AMR-to-English vs. multilingual text generation.
 
 
 ## Publications
