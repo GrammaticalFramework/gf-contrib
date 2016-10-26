@@ -1,0 +1,27 @@
+import TestTreesEng.gf TestTreesLav.gf TestTreesRus.gf
+
+lin -treebank t01_girls_see_a_boy
+lin -treebank t02_the_boy_is_seen_by_the_girls
+lin -treebank t03_two_girls_see_a_boy
+lin -treebank t04_two_pretty_girls_see_a_boy
+lin -treebank t05_the_boy_sees_the_two_pretty_girls
+lin -treebank t06_girls_and_boys_play_a_game
+lin -treebank t07_boys_girls_and_a_dog_play_a_game
+lin -treebank t08_many_persons_live
+lin -treebank t09_some_persons_live_in_Ventspils
+lin -treebank t10_many_persons_live_in_Riga
+lin -treebank t11_more_persons_live_in_New_York
+lin -treebank t13_few_persons_live_in_Riga_and_New_York
+lin -treebank t14_boys_and_girls_play_games_in_Riga
+lin -treebank t15_boys_and_girls_play_games_in_Riga_and_New_York
+lin -treebank t16_boys_see_Ann
+lin -treebank t17_John_plays_a_game
+lin -treebank t18_John_sees_Ann
+lin -treebank t19_girls_see_some_boys_who_play_a_game
+lin -treebank t20_girls_see_some_pretty_boys_who_play_a_ball_game
+lin -treebank t21_girls_who_see_the_game_like_the_boys_who_play
+lin -treebank t22_Assad_spoke_about_the_city
+lin -treebank t23_Assad_spoke_about_the_two_cities
+lin -treebank t24_Assad_spoke_a_word_about_the_city
+lin -treebank t25_the_boy_is_a_person
+lin -treebank t26_Iceland_is_a_very_interesting_example
