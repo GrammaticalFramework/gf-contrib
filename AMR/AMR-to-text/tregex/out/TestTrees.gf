@@ -27,5 +27,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t24_Assad_spoke_a_word_about_the_city : S ;
 	fun t25_the_boy_is_a_person : S ;
 	fun t26_Iceland_is_a_very_interesting_example : S ;
+	fun t27_they_are_thugs_and_deserve_a_bullet : S ;
 
 }

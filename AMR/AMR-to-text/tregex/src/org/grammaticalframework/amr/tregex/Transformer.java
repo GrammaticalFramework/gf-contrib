@@ -99,6 +99,13 @@ public class Transformer {
 				Tsurgeon.parseOperation("[move np $- var]"
 						+ "[delete var]")));
 		
+		// pron_NP
+		// (var pron) => (pron_NP)
+		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile("/^[a-z][0-9]*$/=var < /^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/=pron"),
+				Tsurgeon.parseOperation("[relabel pron /^(.+)$/$1_NP/]"
+						+ "[excise var var]")));
+		
 		// mkNP : Quant -> Num -> CN -> NP
 		// (var entity) => (mkNP a_Quant singularNum (mkCN (var entity))
 		// TODO: "!>" seems to be a computationally expensive relation to match...
@@ -228,6 +235,40 @@ public class Transformer {
 						+ "[relabel frame /^(.+)-.+$/$1ing_A/]" // TODO: make an adjective form from a verb form 
 						+ "[delete deg]")));
 		
+		// mkListS : S -> S -> ListS
+		// (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
+		// Note: this is a copy-paste from mkListNP, except the category
+		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile("/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < mkS=s1) $+ (/^:op[0-9]+$/=op2 < mkS=s2))"),
+				Tsurgeon.parseOperation("[adjoin (mkListS=list mkS@) s1]"
+						+ "[move s2 >2 list]"
+						+ "[excise op1 op1]"
+						+ "[delete op2]")));
+		
+		// mkListS : S -> ListS -> ListS
+		// (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
+		// Note: this is a copy-paste from mkListNP, except the category
+		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile("/^(and|or)$/ < (mkListS=list $+ (/^:op[0-9]+$/=op_n < mkS=s_n))"),
+				Tsurgeon.parseOperation("[adjoin (mkListS=list_prim mkS@) s_n]"
+						+ "[move list >2 list_prim]"
+						+ "[excise op_n op_n]")));
+		
+		// mkS : Conj -> ListS -> S
+		// (var (conj mkListS)) => (mkS (conj_Conj mkListS))
+		// Note: this is a copy-paste from mkListNP, except the category
+		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < mkListS=s)"),
+				Tsurgeon.parseOperation("[adjoin (mkS (var=temp@)) var]"
+						+ "[move s $- conj]"
+						+ "[relabel conj /^(.+)$/$1_Conj/]"
+						+ "[excise temp temp]")));		
+		
+		// Remove any unresolved variables
+		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile("/^[a-z][0-9]*$/=var"),
+				Tsurgeon.parseOperation("[delete var]")));
+		
 		return rules;
 	}
 
@@ -302,14 +343,12 @@ public class Transformer {
 	}
 
 	/**
-	 * 
-	 * @param args
-	 * @throws IOException
+	 * Used for development purposes.
 	 */
 	public static void main(String[] args) throws IOException {
 		Transformer t = new Transformer();
 		
-		String amr = t.transformToLISP("(h / horny :mode expressive :domain (w / woman) :degree (a / as-hell))");
+		String amr = t.transformToLISP("");
 		
 		System.out.println("AMR: " + amr);
 		

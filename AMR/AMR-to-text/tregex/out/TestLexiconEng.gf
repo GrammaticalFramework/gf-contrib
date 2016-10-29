@@ -8,18 +8,21 @@ concrete TestLexiconEng of TestLexicon = CatEng ** open ParadigmsEng, IrregEng, 
 		play_02_V = mkV "play" ;
 		speak_01_V = IrregEng.speak_V ;
 
+		deserve_01_V2 = mkV2 (mkV "deserve" "deserves" "deserved" "deserved" "deserving") ;
 		like_01_V2 = mkV2 (mkV "like") ;
 		play_02_V2 = mkV2 (mkV "play") ;
 		see_01_V2 = mkV2 IrregEng.see_V ;
 		speak_01_V2 = mkV2 IrregEng.speak_V ;
 
 		boy_N = mkN masculine (regN "boy") ;
+		bullet_N = mkN "bullet" "bullets" ;
 		city_N = mkN "city" "cities" ;
 		dog_N = regN "dog" ;
 		example_N = mkN "example" "examples" ;
 		game_N = regN "game" ;
 		girl_N = mkN feminine (regN "girl") ;
 		person_N = mkN human (regN "person") ;
+		thug_N = mkN "thug" "thugs" ;
 		woman_N = mkN feminine (mkN "woman" "women") ;
 		word_N = mkN "word" "words" ;
 
