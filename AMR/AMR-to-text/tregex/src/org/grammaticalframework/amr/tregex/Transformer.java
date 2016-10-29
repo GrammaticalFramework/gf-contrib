@@ -106,12 +106,12 @@ public class Transformer {
 				Tsurgeon.parseOperation("[relabel pron /^(.+)$/$1_NP/]"
 						+ "[excise var var]")));
 		
-		// mkNP : Quant -> Num -> CN -> NP
-		// (var entity) => (mkNP a_Quant singularNum (mkCN (var entity))
+		// mkNP : Quant -> CN -> NP
+		// (var entity) => (mkNP a_Quant (mkCN (var entity))
 		// TODO: "!>" seems to be a computationally expensive relation to match...
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
 				TregexPattern.compile("/^[a-z][0-9]*$/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/"),
-				Tsurgeon.parseOperation("[adjoinF (mkNP a_Quant singularNum (mkCN @)) entity]")));
+				Tsurgeon.parseOperation("[adjoinF (mkNP a_Quant (mkCN @)) entity]")));
 		
 		// mkListNP : NP -> NP -> ListNP
 		// (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
@@ -139,11 +139,11 @@ public class Transformer {
 						+ "[relabel conj /^(.+)$/$1_Conj/]"
 						+ "[excise temp temp]")));
 		
-		// (mkNP ([quant_Quant] num_Num mkCN (var (entity :quant)))) => (mkNP ([quant_Quant] :quant mkCN (var entity)))
+		// mkNP : Quant -> Num -> CN -> NP
+		// (mkNP ([quant_Quant] (mkCN (var (entity :quant))))) => (mkNP ([quant_Quant] :quant (mkCN (var entity))))
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkNP < (/^(singular|plural)Num$/=num1 $+ (mkCN < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:quant$/=num2))))"),
-				Tsurgeon.parseOperation("[replace num1 num2]"
-						+ "[delete num2]")));
+				TregexPattern.compile("mkNP=np < (mkCN < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:quant$/=num)))"),
+				Tsurgeon.parseOperation("[move num >2 np]")));
 						
 		// mkNP : Det -> CN -> NP
 		// (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN]) 
