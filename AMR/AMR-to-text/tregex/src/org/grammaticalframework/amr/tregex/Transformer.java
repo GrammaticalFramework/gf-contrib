@@ -48,7 +48,7 @@ public class Transformer {
 		// mkRCl : RP -> AP -> RCl
 		// mkAP : A -> AP
 		// (:ARG2-of (var (frame))) => (mkRS (mkRCl which_RP (mkAP frame)))
-		// TODO: Does it fit other ARG2-of cases as well?
+		// TODO: This most likely doesn't fit other ARG2-of cases...
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
 				TregexPattern.compile("/^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+\\-[0-9]+$/)"),
 				Tsurgeon.parseOperation("[adjoin (mkRS (mkRCl which_RP (mkAP@))) var]"
