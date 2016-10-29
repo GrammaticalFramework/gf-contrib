@@ -6,18 +6,21 @@ abstract TestLexicon = Cat ** {
 		play_02_V : V ;
 		speak_01_V : V ;
 
+		deserve_01_V2 : V2 ;
 		like_01_V2 : V2 ;
 		play_02_V2 : V2 ;
 		see_01_V2 : V2 ;
 		speak_01_V2 : V2 ;
 
 		boy_N : N ;
+		bullet_N : N ;
 		city_N : N ;
 		dog_N : N ;
 		example_N : N ;
 		game_N : N ;
 		girl_N : N ;
 		person_N : N ;
+		thug_N : N ;
 		woman_N : N ;
 		word_N : N ;
 

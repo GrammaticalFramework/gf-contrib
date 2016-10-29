@@ -123,3 +123,8 @@ TestTreesEng: Iceland is an example which is very interesting
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t27_they_are_thugs_and_deserve_a_bullet
+TestTreesEng: they are a thug and it deserves a bullet
+TestTreesLav: 
+TestTreesRus: 
+

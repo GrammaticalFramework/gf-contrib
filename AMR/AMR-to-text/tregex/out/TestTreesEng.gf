@@ -54,4 +54,6 @@ open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {
 
 	lin t26_Iceland_is_a_very_interesting_example = (mkS (mkCl (mkNP (mkPN "Iceland")) (mkNP a_Quant singularNum (mkCN (mkCN example_N) (mkRS (mkRCl which_RP (mkAP very_AdA (mkAP interesting_A)))))))) ;
 
+	lin t27_they_are_thugs_and_deserve_a_bullet = (mkS and_Conj (mkListS (mkS (mkCl they_NP (mkNP a_Quant singularNum (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP a_Quant singularNum (mkCN bullet_N))))))) ;
+
 }

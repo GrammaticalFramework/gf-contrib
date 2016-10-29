@@ -470,7 +470,7 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 	
-	// Iceland is a very interesting example.
+	// ::snt Iceland is a very interesting example.
 	@Test
 	public void t26_Iceland_is_a_very_interesting_example() {
 		Transformer t = new Transformer();
@@ -480,6 +480,22 @@ public class Tester {
 								
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP a_Quant singularNum (mkCN (mkCN example_N) (mkRS (mkRCl which_RP (mkAP very_AdA (mkAP interesting_A))))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// # ::snt They are thugs and deserve a bullet.
+	// TODO: the ellipsis/antecedent of the second subject (subject-verb agreement)
+	// FIXME: in the gold AMR, shouldn't it be ":ARG0 t2"?
+	@Test
+	public void t27_they_are_thugs_and_deserve_a_bullet() {
+		Transformer t = new Transformer();
+						
+		String amr = t.transformToLISP("(a / and :op1 (t / thug :domain (t2 / they)) :op2 (d / deserve-01 :ARG0 t :ARG1 (b / bullet)))");
+		assertEquals(amr, "(a (and (:op1 (t (thug (:domain (t2 they))))) (:op2 (d (deserve-01 (:ARG0 t) (:ARG1 (b bullet)))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS and_Conj (mkListS (mkS (mkCl they_NP (mkNP a_Quant singularNum (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP a_Quant singularNum (mkCN bullet_N)))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
