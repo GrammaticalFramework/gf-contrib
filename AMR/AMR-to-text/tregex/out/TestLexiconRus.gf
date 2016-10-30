@@ -1,28 +1,28 @@
-concrete TestLexiconRus of TestLexicon = CatRus ** open ParadigmsRus, MorphoRus in {
+--# -path=../../lexicons/translator
 
-	flags optimize=values ;
+concrete TestLexiconRus of TestLexicon = CatRus, DictionaryRus **
+open ParadigmsRus, MorphoRus in {
+
+	flags
+
+		coding = utf8 ;
+		language = ru_RU ;
+		optimize = values ;
 
 	lin
 
-		live_01_V = regV imperfective firstE "жив" "у" "жил" "живи" "жить" ;
-		play_02_V = regV imperfective first "игра" "ю" "играл" "играй" "играть" ;
-		speak_01_V = regV imperfective secondA "говор" "ю" "говорил" "говори" "говорить" ;
+		live_01_V = live_V ;
+		play_02_V = play_1_V ;
+		speak_01_V = speak_V ;
 
-		like_01_V2 = dirV2 (regV imperfective second "нрав" "лю" "нравил" "нравь" "нравить") ; -- FIXME(?)
-		play_02_V2 = mkV2 (regV imperfective first "игра" "ю" "играл" "играй" "играть") "c" instructive ;
-		see_01_V2 = dirV2 (regV imperfective second "ви" "жу" "видел" "видь" "видеть") ;
-		speak_01_V2 = mkV2 (regV imperfective secondA "говор" "ю" "говорил" "говори" "говорить") "на" prepositional ;
+		deserve_01_V2 = dirV2 (mkV Imperfective "заслужу" "заслужите" "заслужите" "заслужите" "заслужите" "заслужите" "заслужите" "заслужите" "заслужить") ; -- note: deserve_V2 = variants{} ;
+		like_01_V2 = dirV2 (regV imperfective second "нрав" "лю" "нравил" "нравь" "нравить") ; -- FIXME: Subj=Dat, DObj=Nom (note: like_V2 = variants{})
+		play_02_V2 = play_1_V2 ;
+		see_01_V2 = see_V2 ;
+		speak_01_V2 = speak_V2 ;
 
-		boy_N = mkN "мальчик" animate ;
-		city_N = mkN "город" ;
-		dog_N = mkN "собака" animate ;
-		game_N = mkN "игра" ;
-		girl_N = mkN "девушка" "девушки" "девушке" "девушку" "девушкою" "девушке" "девушками" "девушки" "девушек" "девушкам" "девушек" "девушками" "девушках" Fem Animate ;
-		person_N = mkN "лицo" animate ;
+		game_N = game_2_N ; -- note: game_1_N = variants{}
 
 		ball_A = mkA "" ; -- FIXME
-		pretty_A = mkA "прелестный" ;
-
-		about_Prep = {s = "перед" ; c = Inst} ;
 
 }

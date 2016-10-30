@@ -1,38 +1,30 @@
-concrete TestLexiconEng of TestLexicon = CatEng ** open ParadigmsEng, IrregEng, MorphoEng in {
+--# -path=../../lexicons/translator
 
-	flags optimize=values ;
+concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng **
+open ParadigmsEng, MorphoEng in {
+
+	flags
+
+		coding = utf8 ;
+		language = en_US ;
+		optimize = values ;
 
 	lin
 
-		live_01_V = mkV "live" ;
-		play_02_V = mkV "play" ;
-		speak_01_V = IrregEng.speak_V ;
+		live_01_V = live_V ;
+		play_02_V = play_1_V ;
+		speak_01_V = speak_V ;
 
-		deserve_01_V2 = mkV2 (mkV "deserve" "deserves" "deserved" "deserved" "deserving") ;
-		like_01_V2 = mkV2 (mkV "like") ;
-		play_02_V2 = mkV2 (mkV "play") ;
-		see_01_V2 = mkV2 IrregEng.see_V ;
-		speak_01_V2 = mkV2 IrregEng.speak_V ;
+		deserve_01_V2 = deserve_V2 ;
+		like_01_V2 = like_V2 ;
+		play_02_V2 = play_1_V2 ;
+		see_01_V2 = see_V2 ;
+		speak_01_V2 = speak_V2 ;
 
-		boy_N = mkN masculine (regN "boy") ;
-		bullet_N = mkN "bullet" "bullets" ;
-		city_N = mkN "city" "cities" ;
-		dog_N = regN "dog" ;
-		example_N = mkN "example" "examples" ;
-		game_N = regN "game" ;
-		girl_N = mkN feminine (regN "girl") ;
-		person_N = mkN human (regN "person") ;
-		thug_N = mkN "thug" "thugs" ;
-		woman_N = mkN feminine (mkN "woman" "women") ;
-		word_N = mkN "word" "words" ;
+		game_N = game_1_N ;
 
-		ball_A = mkA "ball" "ball" "ball" "ball" ; -- FIXME(?)
-		horny_A = mkA "horny" "hornier" ;
-		interesting_A = mkA "interesting" ;
-		pretty_A = irregAdv (mkA "pretty" "prettier") "pretty" ;
+		ball_A = mkA "ball" "ball" "ball" "ball" ;
 
-		more_Det = mkDeterminer plural "more" ; -- FIXME(?)
-
-		about_Prep = mkPrep "about" ;
+		more_Det = mkDeterminer plural "more" ;
 
 }
