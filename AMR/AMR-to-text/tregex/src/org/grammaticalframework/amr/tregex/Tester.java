@@ -35,20 +35,20 @@ public class Tester {
 			abs.println("abstract " + name + " = TestLexicon ** {");
 			abs.println("\n\tflags startcat = S ;\n");
 			
-			eng.println("--# -path=.:alltenses");
+			eng.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
 			eng.println("open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {");
-			eng.println("\n\tflags language = en_US ;\n");
+			eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 			
-			lav.println("--# -path=.:alltenses");
+			lav.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
 			lav.println("open SyntaxLav, (S = SyntaxLav), ParadigmsLav in {");
-			lav.println("\n\tflags language = lv_LV ;\n");
+			lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 			
-			rus.println("--# -path=.:alltenses");
+			rus.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
 			rus.println("open SyntaxRus, (S = SyntaxRus), ParadigmsRus in {");
-			rus.println("\n\tflags language = ru_RU ;\n");
+			rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");
 			
 			gfs.println("import " + name + "Eng.gf" + " " + name + "Lav.gf" + " " + name + "Rus.gf\n");
 			
@@ -121,7 +121,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 boy))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP a_Quant (mkCN boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -135,7 +135,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (see-01 (:ARG1 (x2 boy)) (:ARG0 (x7 girl))))");
 			
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP a_Quant (mkCN boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -149,7 +149,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 (girl (:quant 2)))) (:ARG1 (x5 boy))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkNum (mkDigits \"2\")) (mkCN girl_N)) (mkVP see_01_V2 (mkNP a_Quant (mkCN boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -163,7 +163,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (see-01 (:ARG0 (x3 (girl (:quant 2) (:mod (x2 pretty))))) (:ARG1 (x6 boy))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A girl_N)) (mkVP see_01_V2 (mkNP a_Quant (mkCN boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -177,7 +177,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 boy)) (:ARG1 (x7 (girl (:quant 2) (:mod (x6 pretty)))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN boy_N)) (mkVP see_01_V2 (mkNP a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A girl_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN boy_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A girl_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -191,7 +191,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 girl)) (:op2 (x3 boy))))) (:ARG1 (x6 game))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP and_Conj (mkListNP (mkNP a_Quant (mkCN girl_N)) (mkNP a_Quant (mkCN boy_N)))) (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN girl_N)) (mkNP S.a_Quant (mkCN boy_N)))) (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -205,7 +205,7 @@ public class Tester {
 		assertEquals(amr, "(x7 (play-02 (:ARG0 (x4 (and (:op1 (x1 boy)) (:op2 (x3 girl)) (:op2 (x6 dog))))) (:ARG1 (x9 game))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP and_Conj (mkListNP (mkNP a_Quant (mkCN dog_N)) (mkListNP (mkNP a_Quant (mkCN boy_N)) (mkNP a_Quant (mkCN girl_N))))) (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN dog_N)) (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N))))) (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -219,7 +219,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many)))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP many_Det (mkCN person_N)) (mkVP live_01_V)))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP live_01_V)))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -233,7 +233,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 some))))) (:location (x5 (country (:name (n (name (:op1 \"Ventspils\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"Ventspils\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Ventspils\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -247,12 +247,12 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many))))) (:location (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"Riga\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Riga\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 	
-	// More persons live in New York. TODO: more_Det vs. more_Quant vs. (?)
+	// More persons live in New York.
 	@Test
 	public void t11_more_persons_live_in_New_York() {
 		Transformer t = new Transformer();
@@ -261,12 +261,13 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 more))))) (:location (x5 (city (:name (n (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"New York\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"New York\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 	
-	// Much more persons live in New York City. TODO: much + more (?)
+	// Much more persons live in New York City.
+	// TODO: How to represent much + more in GF?
 	@Test
 	public void t12_much_more_persons_live_in_New_York_City() {
 		Transformer t = new Transformer();
@@ -289,7 +290,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 few))))) (:location (x6 (and (:op1 (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x7 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -303,7 +304,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP and_Conj (mkListNP (mkNP a_Quant (mkCN boy_N)) (mkNP a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP (mkPN \"Riga\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP (mkPN \"Riga\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -318,7 +319,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x8 (and (:op1 (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x9 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP and_Conj (mkListNP (mkNP a_Quant (mkCN boy_N)) (mkNP a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -332,7 +333,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 boy)) (:ARG1 (x3 (person (:name (n (name (:op1 \"Ann\")))))))))");
 			
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN boy_N)) (mkVP see_01_V2 (mkNP (mkPN \"Ann\")))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN boy_N)) (mkVP see_01_V2 (mkNP (mkPN \"Ann\")))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -347,7 +348,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (play-02 (:ARG0 (x1 (person (:name (n (name (:op1 \"John\")))) (:wiki \"-\")))) (:ARG1 (x4 game))))");
 			
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"John\")) (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"John\")) (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -376,7 +377,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 (boy (:quant (x3 some)) (:ARG0-of (x6 (play-02 (:ARG1 (x8 game))))))))))");
 			
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP somePl_Det (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP a_Quant (mkCN game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -391,7 +392,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP somePl_Det (mkCN (mkCN pretty_A boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP a_Quant (mkCN ball_A game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN pretty_A boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN ball_A game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -406,7 +407,7 @@ public class Tester {
 		assertEquals(amr, "(x6 (like-01 (:ARG0 (x1 (girl (:ARG0-of (x3 (see-01 (:ARG1 (x5 game)))))))) (:ARG1 (x8 (boy (:ARG0-of (x10 play-02)))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN (mkCN girl_N) (mkRS (mkRCl which_RP (mkVP see_01_V2 (mkNP a_Quant (mkCN game_N))))))) (mkVP like_01_V2 (mkNP a_Quant (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN girl_N) (mkRS (mkRCl which_RP (mkVP see_01_V2 (mkNP S.a_Quant (mkCN game_N))))))) (mkVP like_01_V2 (mkNP S.a_Quant (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -422,7 +423,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 city))))");
 					
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP (mkVP speak_01_V) (S.mkAdv about_Prep (mkNP a_Quant (mkCN city_N))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP (mkVP speak_01_V) (S.mkAdv about_Prep (mkNP S.a_Quant (mkCN city_N))))))");
 			
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -437,7 +438,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 (city (:quant 2))))))");
 						
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP (mkVP speak_01_V) (S.mkAdv about_Prep (mkNP a_Quant (mkNum (mkDigits \"2\")) (mkCN city_N))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP (mkVP speak_01_V) (S.mkAdv about_Prep (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN city_N))))))");
 				
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -451,7 +452,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:ARG1 (x4 (word (:topic (x7 city)))))))");
 							
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP speak_01_V2 (mkNP (mkNP a_Quant (mkCN word_N)) (S.mkAdv about_Prep (mkNP a_Quant (mkCN city_N)))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Assad\")) (mkVP speak_01_V2 (mkNP (mkNP S.a_Quant (mkCN word_N)) (S.mkAdv about_Prep (mkNP S.a_Quant (mkCN city_N)))))))");
 					
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -465,7 +466,7 @@ public class Tester {
 		assertEquals(amr, "(x5 (person (:domain (x2 boy))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP a_Quant (mkCN boy_N)) (mkNP a_Quant (mkCN person_N))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN person_N))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -479,7 +480,7 @@ public class Tester {
 		assertEquals(amr, "(e (example (:ARG2-of (i (interest-01 (:degree (v very))))) (:domain (c (country (:wiki \"Iceland\") (:name (n (name (:op1 \"Iceland\")))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP a_Quant (mkCN (mkCN example_N) (mkRS (mkRCl which_RP (mkAP very_AdA (mkAP interesting_A))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP S.a_Quant (mkCN (mkCN example_N) (mkRS (mkRCl which_RP (mkAP S.very_AdA (mkAP interesting_A))))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -495,9 +496,9 @@ public class Tester {
 		assertEquals(amr, "(a (and (:op1 (t (thug (:domain (t2 they))))) (:op2 (d (deserve-01 (:ARG0 t) (:ARG1 (b bullet)))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS and_Conj (mkListS (mkS (mkCl they_NP (mkNP a_Quant (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP a_Quant (mkCN bullet_N)))))))");
+		assertEquals(ast, "(mkS S.and_Conj (mkListS (mkS (mkCl they_NP (mkNP S.a_Quant (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP S.a_Quant (mkCN bullet_N)))))))");
 						
-		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 		
 }

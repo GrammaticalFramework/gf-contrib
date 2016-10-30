@@ -111,7 +111,7 @@ public class Transformer {
 		// TODO: "!>" seems to be a computationally expensive relation to match...
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
 				TregexPattern.compile("/^[a-z][0-9]*$/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/"),
-				Tsurgeon.parseOperation("[adjoinF (mkNP a_Quant (mkCN @)) entity]")));
+				Tsurgeon.parseOperation("[adjoinF (mkNP S.a_Quant (mkCN @)) entity]")));
 		
 		// mkListNP : NP -> NP -> ListNP
 		// (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
@@ -136,7 +136,7 @@ public class Transformer {
 				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < mkListNP=np)"),
 				Tsurgeon.parseOperation("[adjoin (mkNP (var=temp@)) var]"
 						+ "[move np $- conj]"
-						+ "[relabel conj /^(.+)$/$1_Conj/]"
+						+ "[relabel conj /^(.+)$/S.$1_Conj/]"
 						+ "[excise temp temp]")));
 		
 		// mkNP : Quant -> Num -> CN -> NP
@@ -148,9 +148,10 @@ public class Transformer {
 		// mkNP : Det -> CN -> NP
 		// (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN]) 
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkNP < (/^[a-z]+_Quant$/=quant $+ (/^:quant$/=temp < (/^[a-z][0-9]*$/ < /^(every|few|many|more|much|some)$/=det)))"),
-				Tsurgeon.parseOperation("[relabel det /^(.+)$/$1_Det/]"
-						+ "[relabel det /^some_Det$/somePl_Det/]"
+				TregexPattern.compile("mkNP < (/^S[.][a-z]+_Quant$/=quant $+ (/^:quant$/=temp < (/^[a-z][0-9]*$/ < /^(every|few|many|more|much|some)$/=det)))"),
+				Tsurgeon.parseOperation("[relabel det /^(.+)$/S.$1_Det/]"
+						+ "[relabel det /^S.some_Det$/S.somePl_Det/]"
+						+ "[relabel det /^S.more_Det$/more_Det/]"
 						+ "[replace quant det]"
 						+ "[delete temp]")));
 
@@ -215,7 +216,7 @@ public class Transformer {
 		// (:location mkNP) => (mkAdv in_Prep mkNP)
 		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
 				TregexPattern.compile("/^:location$/=rel < mkNP=np"),
-				Tsurgeon.parseOperation("[adjoinF (S.mkAdv in_Prep @) np]"
+				Tsurgeon.parseOperation("[adjoinF (S.mkAdv S.in_Prep @) np]"
 						+ "[excise rel rel]")));
 		
 		// mkAdv : Prep -> NP -> Adv
@@ -231,7 +232,7 @@ public class Transformer {
 				TregexPattern.compile("mkAP=ap_i < (/^[a-z]+\\-[0-9]+$/=frame < (/^:degree$/=deg < (/^[a-z][0-9]*$/ < /^[a-z]+$/=ada)))"),
 				Tsurgeon.parseOperation("[adjoinF (mkAP=ap_o @) ap_i]"
 						+ "[move ada >1 ap_o]"
-						+ "[relabel ada /^(.+)$/$1_AdA/]"
+						+ "[relabel ada /^(.+)$/S.$1_AdA/]"
 						+ "[relabel frame /^(.+)-.+$/$1ing_A/]" // TODO: make an adjective form from a verb form 
 						+ "[delete deg]")));
 		
@@ -261,7 +262,7 @@ public class Transformer {
 				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < mkListS=s)"),
 				Tsurgeon.parseOperation("[adjoin (mkS (var=temp@)) var]"
 						+ "[move s $- conj]"
-						+ "[relabel conj /^(.+)$/$1_Conj/]"
+						+ "[relabel conj /^(.+)$/S.$1_Conj/]"
 						+ "[excise temp temp]")));		
 		
 		// Remove any unresolved variables

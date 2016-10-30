@@ -1,37 +1,37 @@
 TestTrees: t01_girls_see_a_boy
 TestTreesEng: a girl sees a boy
 TestTreesLav: meitene redz zēnu
-TestTreesRus: девушка видит мальчика
+TestTreesRus: девочка видит мальчика
 
 TestTrees: t02_the_boy_is_seen_by_the_girls
 TestTreesEng: a girl sees a boy
 TestTreesLav: meitene redz zēnu
-TestTreesRus: девушка видит мальчика
+TestTreesRus: девочка видит мальчика
 
 TestTrees: t03_two_girls_see_a_boy
 TestTreesEng: 2 girls see a boy
 TestTreesLav: 2 meitenes redz zēnu
-TestTreesRus: 2 девушки видят мальчика
+TestTreesRus: 2 девочки видят мальчика
 
 TestTrees: t04_two_pretty_girls_see_a_boy
 TestTreesEng: 2 pretty girls see a boy
 TestTreesLav: 2 jaukas meitenes redz zēnu
-TestTreesRus: 2 прелестные девушки видят мальчика
+TestTreesRus: 2 хорошенькие девочки видят мальчика
 
 TestTrees: t05_the_boy_sees_the_two_pretty_girls
 TestTreesEng: a boy sees 2 pretty girls
 TestTreesLav: zēns redz 2 jaukas meitenes
-TestTreesRus: мальчик видит 2 прелестных девушек
+TestTreesRus: мальчик видит 2 хорошеньких девочк
 
 TestTrees: t06_girls_and_boys_play_a_game
 TestTreesEng: a girl and a boy play a game
 TestTreesLav: meitene , un zēns spēlē spēli
-TestTreesRus: девушка и мальчик играют c игрой
+TestTreesRus: девочка и мальчик играют игру
 
 TestTrees: t07_boys_girls_and_a_dog_play_a_game
 TestTreesEng: a dog , a boy and a girl play a game
 TestTreesLav: suns , zēns , un meitene spēlē spēli
-TestTreesRus: мальчик , девушка и собака играют c игрой
+TestTreesRus: мальчик , девочка и собака играют игру
 
 TestTrees: t08_many_persons_live
 TestTreesEng: many persons live
@@ -84,19 +84,19 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t19_girls_see_some_boys_who_play_a_game
-TestTreesEng: a girl sees some boys who play a game
+TestTreesEng: a girl sees some boys that play a game
 TestTreesLav: meitene redz kādus zēnus , kas spēlē spēli
-TestTreesRus: девушка видит некоторого мальчиков , которых играют c игрой
+TestTreesRus: девочка видит некоторого мальчиков , которых играют игру
 
 TestTrees: t20_girls_see_some_pretty_boys_who_play_a_ball_game
-TestTreesEng: a girl sees some pretty boys who play a ball game
+TestTreesEng: a girl sees some pretty boys that play a ball game
 TestTreesLav: meitene redz kādus jaukus zēnus , kas spēlē bumbas spēli
-TestTreesRus: девушка видит некоторого прелестных мальчиков , которых играют c игрой
+TestTreesRus: девочка видит некоторого хорошеньких мальчиков , которых играют игру
 
 TestTrees: t21_girls_who_see_the_game_like_the_boys_who_play
-TestTreesEng: a girl who sees a game likes a boy who plays
+TestTreesEng: a girl that sees a game likes a boy that plays
 TestTreesLav: meitenei , kas redz spēli , patīk zēns , kas spēlē
-TestTreesRus: девушка , которая видит игру нравдит мальчика , которого играет
+TestTreesRus: девочка , которая видит игру нравдит мальчика , которого играет
 
 TestTrees: t22_Assad_spoke_about_the_city
 TestTreesEng: Assad speaks about a city
@@ -119,12 +119,12 @@ TestTreesLav: zēns ir persona
 TestTreesRus: мальчик лицo
 
 TestTrees: t26_Iceland_is_a_very_interesting_example
-TestTreesEng: Iceland is an example which is very interesting
+TestTreesEng: Iceland is an example that is very interesting
 TestTreesLav: 
 TestTreesRus: 
 
 TestTrees: t27_they_are_thugs_and_deserve_a_bullet
 TestTreesEng: they are a thug and it deserves a bullet
-TestTreesLav: 
-TestTreesRus: 
+TestTreesLav: viņi ir slepkava , un pelna lodi
+TestTreesRus: они буян и заслужите пулю
 
