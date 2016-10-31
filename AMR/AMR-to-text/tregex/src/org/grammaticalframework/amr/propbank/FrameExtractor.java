@@ -18,6 +18,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * Extracts frames and their lexical alternatives from the PropBank dataset.
+ * See https://github.com/propbank/propbank-frames
  */
 public class FrameExtractor {
 	
