@@ -7,7 +7,7 @@ Task: for a given AMR graph, represented as a tree in the PENMAN notation, trans
 
 ## Structure
 
-1. `lexicons`: language-specific GF lexicons extending the wide-coverage lexicons provided by the GF resource grammar library, interlinked via an abstract lexicon. Extensions: lexical units from PropBank, named entities from DBpedia, etc.
+1. `lexicons`: monolingual and multilingual GF lexicons &ndash; extensions to the wide coverage lexicons provided by the GF resource grammar library (RGL).
 1. `rules`: implementation-independent AMR-to-AST transformation rules (methodology).
 1. `tregex`: implementation of the transformation rules, based on the [Tregex](http://nlp.stanford.edu/software/tregex.html) package provided by the Stanford JavaNLP library. The use of Tregex was inspired by Butler (2016).
 
@@ -29,13 +29,16 @@ See the [task](http://alt.qcri.org/semeval2017/task9/) and [deadlines](http://al
   * To what extent the conversion of `:ARG[2..N]` relations depends on the particular PropBank frames?
 1. At the end, prune all edges and nodes in the given AMR, so that at least a partial AMR is linearized.
 
-### Future tasks
+### Next tasks
 
 1. Conversion of AMRs into proper ASTs.
 1. Re-implementation in a programming language which has a native support for operations on trees, e.g. Haskell or LISP (a future task).
 1. AMR-to-English vs. multilingual text generation.
   * Use of the `:wiki` relations and a multilingual named entity lexicon generated from DBpedia (instead of the `:name` + `:op[1..N]` relations). This should be an optional feature, as the automatic wikification is error-prone.
-
+1. Machine learning of the AMR to AST conversion in order to scale up the coverage (vs. precision).
+  * Learning human-readable (post-editable) transformation rules, using e.g. the [C6.0](http://c60.ailab.lv/)) approach, vs. learning a vector space model for 'end-to-end' transformation, using e.g. the neural networks approach (AMR2vec &rarr; vec2AST).
+  * A missing 'variable' &ndash; training data. Explicit examples: AMR and AST pairs. Implicit examples: an AST treebank for a subset of input sentences from the AMR sembank.
+  * Conceptually, it is *not* quite right to learn a mapping back to the input sentence, as the linearization of AMR is, in general, via *paraphrasing*.
 
 ## Publications
 
