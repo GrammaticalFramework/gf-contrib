@@ -1,3 +1,22 @@
+# (var ('person' (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
+/^[a-z][0-9]*$/=var1 < (/^person$/ < (/^:ARG0-of$/ < (/^[a-z][0-9]*$/=var2 < /^have-org-role-91$/)))
+[excise var1 var2]
+
+# mkN2 : N -> Prep -> N2
+# ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
+/^have-org-role-91$/ < (/^:ARG2$/=title < (/^[a-z][0-9]*$/=var < /^[a-z]+$/=entity))
+[relabel entity /^(.+)$/$1_N/]
+[adjoinF (mkN2=n2 @) entity]
+[insert (of_Prep) >2 n2]
+[excise title var]
+
+# mkCN : N2 -> NP -> CN
+# ('have-org-role-91' :ARG1 mkN2) => (mkCN (mkN2 :ARG1))
+/^have-org-role-91$/=cn < (/^:ARG1$/=org $ /^mkN2$/=title)
+[move title $+ org]
+[adjoin (mkCN TEMP=temp@) cn]
+[excise temp temp]
+
 # mkRCl : RP -> VP -> RCl
 # mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
 # TODO: Tense, Ant, Pol
@@ -13,6 +32,14 @@
 /^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
 [adjoin (mkRS (mkRCl which_RP (mkAP@))) var]
 [excise inv inv]
+
+# mkVP : VV -> VP -> VP
+# (frame (:ARG2 (var (frame :ARG1)))) => (frame (mkVP frame :ARG1))
+/^[a-z]+-[0-9]+$/=frame < (/^:ARG2$/=vp < (/^[a-z][0-9]*$/=var < (/^[a-z]+-[0-9]+$/=vv < /^:ARG1$/=compl)))
+[move vv >1 vp]
+[move compl >2 vp]
+[relabel vp /^.+$/mkVP/]
+[delete var]
 
 # mkCl : VP -> Cl
 # mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
@@ -32,6 +59,11 @@
 /^mkVP$/=vp < (/^[a-z]+-[0-9]+$/ < /^:ARG1$/=obj)
 [move obj >2 vp]
 [excise obj obj]
+
+# mkVP : VV -> VP -> VP
+# (mkVP (frame mkVP)) => (mkVP frame mkVP)
+/^mkVP$/=vp_o < (/^[a-z]+-[0-9]+$/ < /^mkVP$/=vp_i)
+[move vp_i >2 vp_o]
 
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
@@ -197,6 +229,16 @@
 [move s $- conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
 [excise temp temp]
+
+# Post-editing
+
+# (mkCl mkCN) => (mkCl (mkNP mkCN))
+/^mkCl$/ < /^mkCN$/=cn
+[adjoinF (mkNP @) cn]
+
+# (:ARG1 mkNP) => (mkNP)
+/^:ARG[0-9]$/=arg < /^mkNP$/
+[excise arg arg]
 
 # Remove any unresolved variables
 /^[a-z][0-9]*$/=var

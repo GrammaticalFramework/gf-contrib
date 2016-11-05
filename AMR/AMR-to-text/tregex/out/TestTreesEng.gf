@@ -59,4 +59,6 @@ open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {
 
 	lin t27_they_are_thugs_and_deserve_a_bullet = (mkS S.and_Conj (mkListS (mkS (mkCl they_NP (mkNP S.a_Quant (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP S.a_Quant (mkCN bullet_N))))))) ;
 
+	lin t28_China_president_urges_child_safety = (mkS (mkCl (mkNP (mkCN (mkN2 president_N of_Prep) (mkNP (mkPN "China")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN child_N)))))) ;
+
 }

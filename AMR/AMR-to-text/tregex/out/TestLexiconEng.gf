@@ -18,10 +18,14 @@ open ParadigmsEng, MorphoEng in {
 		deserve_01_V2 = deserve_V2 ;
 		like_01_V2 = like_V2 ;
 		play_02_V2 = play_1_V2 ;
+		protect_01_V2 = protect_V2 ;
 		see_01_V2 = see_V2 ;
 		speak_01_V2 = speak_V2 ;
 
+		urge_01_VV = mkVV (mkV "urge") ;
+
 		game_N = game_1_N ;
+		president_N = presidentMasc_N ;
 
 		ball_A = mkA "ball" "ball" "ball" "ball" ;
 

@@ -501,5 +501,21 @@ public class Tester {
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
+	
+	// ::snt China president urges child safety [after school killings]
+	// FIXME: safe-01 changed to protect-01 (Did the AMR annotator made a mistake?)
+	// TODO: "after school killings"
+	@Test
+	public void t28_China_president_urges_child_safety() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(u / urge-01 :ARG0 (p / person :ARG0-of (h / have-org-role-91 :ARG1 (c / country :wiki \"China\" :name (n / name :op1 \"China\")) :ARG2 (p2 / president))) :ARG2 (s / protect-01 :ARG1 (c2 / child)))");
+		assertEquals(amr, "(u (urge-01 (:ARG0 (p (person (:ARG0-of (h (have-org-role-91 (:ARG1 (c (country (:wiki \"China\") (:name (n (name (:op1 \"China\"))))))) (:ARG2 (p2 president)))))))) (:ARG2 (s (protect-01 (:ARG1 (c2 child)))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkCN (mkN2 president_N of_Prep) (mkNP (mkPN \"China\")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN child_N))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
 		
 }

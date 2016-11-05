@@ -104,6 +104,7 @@ public class Transformer {
 		tree = tree.replaceAll("\\(mkCN ([a-z]+)\\)", "(mkCN $1_N)");
 		
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkNP", "(mkVP $1_$2_V2 (mkNP");
+		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkVP", "(mkVP $1_$2_VV (mkVP");
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+)\\)", "(mkVP $1_$2_V)");
 		
 		return tree;
@@ -176,7 +177,7 @@ public class Transformer {
 	public static void main(String[] args) {
 		Transformer t = new Transformer("../rules/amr2api.tsurgeon");
 		
-		String amr = t.transformToLISP("");
+		String amr = t.transformToLISP("(u / urge-01 :ARG0 (p / person :ARG0-of (h / have-org-role-91 :ARG1 (c / country :wiki \"China\" :name (n / name :op1 \"China\")) :ARG2 (p2 / president))) :ARG2 (s / safe-01 :ARG1 (c2 / child)) :time (a / after :op1 (k / kill-01 :location (s2 / school))))");
 		
 		System.out.println("AMR: " + amr);
 		
