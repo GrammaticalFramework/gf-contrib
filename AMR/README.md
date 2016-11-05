@@ -3,7 +3,7 @@ Abstract Meaning Representation (AMR)
 
 AMR is a semantic representation language. A sentence is represented in AMR as a rooted, directed, acyclic graph where semantic relations are represented as edges, and concepts are represented as nodes. AMRs include PropBank semantic roles, within-sentence coreferences, named entities and types, modality, negation, questions, quantities, wikification, etc.
 
-See AMR [project page](http://amr.isi.edu/) and [specification](https://github.com/amrisi/amr-guidelines/blob/master/amr.md).
+See AMR [project page](http://amr.isi.edu/), [specification](https://github.com/amrisi/amr-guidelines) and [tutorial](https://github.com/nschneid/amr-tutorial).
 
 We propose:
 

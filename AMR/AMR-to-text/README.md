@@ -8,8 +8,8 @@ Task: for a given AMR graph, represented as a tree in the PENMAN notation, trans
 ## Structure
 
 1. `lexicons`: monolingual and multilingual GF lexicons &ndash; extensions to the wide coverage lexicons provided by the GF resource grammar library (RGL).
-1. `rules`: implementation-independent AMR-to-AST transformation rules (methodology).
-1. `tregex`: implementation of the transformation rules, based on the [Tregex](http://nlp.stanford.edu/software/tregex.html) package provided by the Stanford JavaNLP library. The use of Tregex was inspired by Butler (2016).
+1. `rules`: transformation rule sets (AMR-to-GF, Penn-to-GF, etc.).
+1. `tregex`: implementation of the AMR-to-GF transformation and GF-to-text generation pipeline, based on the [Tregex](http://nlp.stanford.edu/software/tregex.html) package provided by the Stanford JavaNLP library, and [GF](http://www.grammaticalframework.org/). The use of Tregex was inspired by Butler (2016).
 
 
 ## Workflow
