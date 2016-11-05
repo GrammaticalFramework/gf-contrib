@@ -1,5 +1,7 @@
 package org.grammaticalframework.amr.tregex;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -30,253 +32,72 @@ public class Transformer {
 	private List<Pair<TregexPattern,TsurgeonPattern>> tregex;
 
 	/**
-	 * Compiles a list of Tregex pattern-matching and Tsurgeon transformation rules for the AMR to GF AST conversion.
-	 * @return an ordered list of rules.
+	 * Reads a list of Tregex pattern-matching and Tsurgeon transformation rules.
+	 * @param file - a plan-text file containing the list of rules.
+	 * @return an ordered list of AMR graph patterns and transformation operations.
 	 */
-	private List<Pair<TregexPattern,TsurgeonPattern>> compileTregexRules() {
-		List<Pair<TregexPattern,TsurgeonPattern>> rules = new ArrayList<Pair<TregexPattern,TsurgeonPattern>>();
-
-		// mkRCl : RP -> VP -> RCl
-		// mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
-		// TODO: Tense, Ant, Pol
-		// (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP (mkVP frame)))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:ARG0-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+\\-[0-9]+$/)"),
-				Tsurgeon.parseOperation("[adjoin (mkRS (mkRCl which_RP (mkVP@))) var]"
-						+ "[excise inv inv]")));
+	private List<Pair<String,String>> readRules(String file) throws Exception {
+		List<Pair<String,String>> rules = new ArrayList<Pair<String,String>>();
 		
-		// mkRCl : RP -> AP -> RCl
-		// mkAP : A -> AP
-		// (:ARG2-of (var (frame))) => (mkRS (mkRCl which_RP (mkAP frame)))
-		// TODO: This most likely doesn't fit other ARG2-of cases...
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+\\-[0-9]+$/)"),
-				Tsurgeon.parseOperation("[adjoin (mkRS (mkRCl which_RP (mkAP@))) var]"
-						+ "[excise inv inv]")));
+		BufferedReader input = new BufferedReader(new FileReader(file));
+		String line = null;
+		String pattern = null;
+		StringBuilder ops = new StringBuilder();
 		
-		// mkCl : VP -> Cl
-		// mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
-		// TODO: Tense, Ant, Pol
-		// (var frame) => (mkS (mkCl (mkVP frame)))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var < /^[a-z]+\\-[0-9]+$/"),
-				Tsurgeon.parseOperation("[adjoin (mkS (mkCl (mkVP@))) var]")));
-
-		// mkCl : NP -> VP -> Cl
-		// (mkCl (mkVP (frame :ARG0))) => (mkCl :ARG0 (mkVP frame))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkCl=cl < (mkVP < (/^[a-z]+\\-[0-9]+$/ < /^:ARG0$/=subj))"),
-				Tsurgeon.parseOperation("[move subj >1 cl]"
-						+ "[excise subj subj]")));
-
-		// mkVP : V2 -> NP -> VP
-		// (mkVP (frame :ARG1)) => (mkVP frame :ARG1) 
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkVP=vp < (/^[a-z]+\\-[0-9]+$/ < /^:ARG1$/=obj)"),
-				Tsurgeon.parseOperation("[move obj >2 vp]"
-						+ "[excise obj obj]")));
-		
-		// ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
-		// ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("name < ((/^:op[0-9]+$/ < /^\"[A-Z a-z -]+\"$/=x) $+ (/^:op[0-9]+$/=op2 < /^\"[A-Za-z-]+\"$/=y))"),
-				Tsurgeon.parseOperation("[relabel y /^\"(.+)\"$/$1/]"
-						+ "[relabel x /^\"(.+)\"$/\"$1 ={y}\"/]"
-						+ "[delete op2]")));
-		
-		// mkPN : Str -> PN
-		// mkNP : PN -> NP
-		// (:name (var ('name' (:op "Named Entity")))) => (:name (mkNP (mkPN "Named Entity")))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:name$/=ne < (/^[a-z][0-9]*$/=var < (name < (/^:op[0-9]+$/ < /^\"[A-Z a-z -]+\"$/=str)))"),
-				Tsurgeon.parseOperation("[adjoinF (mkNP=np (mkPN @)) str]"
-						+ "[move np >1 ne]"
-						+ "[delete var]")));
-		
-		// (var (type (:name mkNP))) => (mkNP)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < mkNP=np))"),
-				Tsurgeon.parseOperation("[move np $- var]"
-						+ "[delete var]")));
-		
-		// pron_NP
-		// (var pron) => (pron_NP)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var < /^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/=pron"),
-				Tsurgeon.parseOperation("[relabel pron /^(.+)$/$1_NP/]"
-						+ "[excise var var]")));
-		
-		// mkNP : Quant -> CN -> NP
-		// (var entity) => (mkNP a_Quant (mkCN (var entity))
-		// TODO: "!>" seems to be a computationally expensive relation to match...
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/"),
-				Tsurgeon.parseOperation("[adjoinF (mkNP S.a_Quant (mkCN @)) entity]")));
-		
-		// mkListNP : NP -> NP -> ListNP
-		// (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < mkNP=np1) $+ (/^:op[0-9]+$/=op2 < mkNP=np2))"),
-				Tsurgeon.parseOperation("[adjoin (mkListNP=list mkNP@) np1]"
-						+ "[move np2 >2 list]"
-						+ "[excise op1 op1]"
-						+ "[delete op2]")));
-		
-		// mkListNP : NP -> ListNP -> ListNP
-		// (conj mkListNP (:op mkNP)) => (conj (mkListNP mkNP mkListNP))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^(and|or)$/ < (mkListNP=list $+ (/^:op[0-9]+$/=op_n < mkNP=np_n))"),
-				Tsurgeon.parseOperation("[adjoin (mkListNP=list_prim mkNP@) np_n]"
-						+ "[move list >2 list_prim]"
-						+ "[excise op_n op_n]")));
-		
-		// mkNP : Conj -> ListNP -> NP
-		// (var (conj mkListNP)) => (mkNP (conj_Conj mkListNP))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < mkListNP=np)"),
-				Tsurgeon.parseOperation("[adjoin (mkNP (var=temp@)) var]"
-						+ "[move np $- conj]"
-						+ "[relabel conj /^(.+)$/S.$1_Conj/]"
-						+ "[excise temp temp]")));
-		
-		// mkNP : Quant -> Num -> CN -> NP
-		// (mkNP ([quant_Quant] (mkCN (var (entity :quant))))) => (mkNP ([quant_Quant] :quant (mkCN (var entity))))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkNP=np < (mkCN < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:quant$/=num)))"),
-				Tsurgeon.parseOperation("[move num >2 np]")));
-						
-		// mkNP : Det -> CN -> NP
-		// (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN]) 
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkNP < (/^S[.][a-z]+_Quant$/=quant $+ (/^:quant$/=temp < (/^[a-z][0-9]*$/ < /^(every|few|many|more|much|some)$/=det)))"),
-				Tsurgeon.parseOperation("[relabel det /^(.+)$/S.$1_Det/]"
-						+ "[relabel det /^S.some_Det$/S.somePl_Det/]"
-						+ "[relabel det /^S.more_Det$/more_Det/]"
-						+ "[replace quant det]"
-						+ "[delete temp]")));
-
-		// mkCl : NP -> NP -> Cl
-		// mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
-		// TODO: Tense, Ant, Pol
-		// 1. (mkNP (mkCN (var (entity (:domain mkNP))))) => (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP)))))))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("(mkNP=nom < (mkCN < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:domain$/)))) !> mkCl"),
-				Tsurgeon.parseOperation("[adjoinF (mkS (mkCl @)) nom]")));
-		// 2. (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP))))))) => (mkS (mkCl mkNP (mkNP (mkCN (var entity)))))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkCl=cl < (mkNP < (mkCN < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:domain$/=subj))))"),
-				Tsurgeon.parseOperation("[move subj >1 cl]"
-						+ "[excise subj subj]")));
-		
-		// mkRCl : RP -> NP -> RCl
-		// TODO
-		
-		// mkCN : A -> N -> CN
-		// (mkCN (var (entity (:mod (var adj))))) => (mkCN (var adj) (var entity))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkCN=cn < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < (/^:mod$/=mod < /^[a-z][0-9]*$/=adj)))"),
-				Tsurgeon.parseOperation("[move adj >1 cn]"
-						+ "[delete mod]")));
+		while ((line = input.readLine()) != null) {
+			line = line.trim();
+			
+			if (line.contains("#")) {
+				line = line.substring(0, line.indexOf("#")).trim();
+			}
+			
+			if (line.isEmpty()) {
+				continue;
+			}
+			
+			if (line.startsWith("[") && line.endsWith("]")) {
+				ops.append(line);
+			} else {
+				if (ops.length() > 0) {
+					rules.add(new Pair<String,String>(pattern, ops.toString()));
+					ops.setLength(0);
+				}
 				
-		// mkCN : CN -> RS -> CN
-		// (mkCN (var (entity mkRS))) => (mkCN (mkCN (var entity)) mkRS)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkCN=cn1 < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < mkRS=rs))"),
-				Tsurgeon.parseOperation("[adjoin (mkCN=cn2 mkCN@) cn1]"
-						+ "[move rs >2 cn2]")));
-				
-		// (mkCN (var entity)) => (mkCN entity)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkCN < (/^[a-z][0-9]*$/=var < /^[a-z]+$/)"),
-				Tsurgeon.parseOperation("[excise var var]")));
-
-		// mkNum : Digits -> Num
-		// mkDigits : Str -> Digits
-		// (:quant digits) => (mkNum (mkDigits "digits"))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:quant$/=quant < /^[0-9]+$/=digits"),
-				Tsurgeon.parseOperation("[relabel digits /^(.+)$/\"$1\"/]"
-						+ "[adjoin (mkNum (mkDigits@)) quant]")));
-
-		// mkVP : VP -> Adv -> VP
-		// (mkVP (frame (:adv mkNP))) => (mkVP (mkVP frame) (:adv mkNP))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkVP=vp_i < (/^[a-z]+\\-[0-9]+$/ < /^:(location|topic)$/=adv)"),
-				Tsurgeon.parseOperation("[adjoinF (mkVP=vp_o @) vp_i]"
-						+ "[move adv >2 vp_o]")));
+				pattern = line;
+			}
+		}
 		
-		// mkNP : NP -> Adv -> NP
-		// (mkNP (mkCN (entity (:adv mkNP)))) => (mkNP (mkNP (mkCN entity)) (:adv mkNP))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkNP=np_i < (mkCN < (/^[a-z]+$/ < /^:(location|topic)$/=adv))"),
-				Tsurgeon.parseOperation("[adjoinF (mkNP=np_o @) np_i]"
-						+ "[move adv >2 np_o]")));
+		input.close();
 		
-		// mkAdv : Prep -> NP -> Adv
-		// (:location mkNP) => (mkAdv in_Prep mkNP)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:location$/=rel < mkNP=np"),
-				Tsurgeon.parseOperation("[adjoinF (S.mkAdv S.in_Prep @) np]"
-						+ "[excise rel rel]")));
-		
-		// mkAdv : Prep -> NP -> Adv
-		// (:topic mkNP) => (mkAdv about_Prep mkNP)
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^:topic$/=rel < mkNP=np"),
-				Tsurgeon.parseOperation("[adjoinF (S.mkAdv about_Prep @) np]"
-						+ "[excise rel rel]")));
-		
-		// mkAP : AdA -> AP -> AP
-		// (mkAP (frame (:degree (var ada))))
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("mkAP=ap_i < (/^[a-z]+\\-[0-9]+$/=frame < (/^:degree$/=deg < (/^[a-z][0-9]*$/ < /^[a-z]+$/=ada)))"),
-				Tsurgeon.parseOperation("[adjoinF (mkAP=ap_o @) ap_i]"
-						+ "[move ada >1 ap_o]"
-						+ "[relabel ada /^(.+)$/S.$1_AdA/]"
-						+ "[relabel frame /^(.+)-.+$/$1ing_A/]" // TODO: make an adjective form from a verb form 
-						+ "[delete deg]")));
-		
-		// mkListS : S -> S -> ListS
-		// (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
-		// Note: this is a copy-paste from mkListNP, except the category
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < mkS=s1) $+ (/^:op[0-9]+$/=op2 < mkS=s2))"),
-				Tsurgeon.parseOperation("[adjoin (mkListS=list mkS@) s1]"
-						+ "[move s2 >2 list]"
-						+ "[excise op1 op1]"
-						+ "[delete op2]")));
-		
-		// mkListS : S -> ListS -> ListS
-		// (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
-		// Note: this is a copy-paste from mkListNP, except the category
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^(and|or)$/ < (mkListS=list $+ (/^:op[0-9]+$/=op_n < mkS=s_n))"),
-				Tsurgeon.parseOperation("[adjoin (mkListS=list_prim mkS@) s_n]"
-						+ "[move list >2 list_prim]"
-						+ "[excise op_n op_n]")));
-		
-		// mkS : Conj -> ListS -> S
-		// (var (conj mkListS)) => (mkS (conj_Conj mkListS))
-		// Note: this is a copy-paste from mkListNP, except the category
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < mkListS=s)"),
-				Tsurgeon.parseOperation("[adjoin (mkS (var=temp@)) var]"
-						+ "[move s $- conj]"
-						+ "[relabel conj /^(.+)$/S.$1_Conj/]"
-						+ "[excise temp temp]")));		
-		
-		// Remove any unresolved variables
-		rules.add(new Pair<TregexPattern,TsurgeonPattern>(
-				TregexPattern.compile("/^[a-z][0-9]*$/=var"),
-				Tsurgeon.parseOperation("[delete var]")));
+		// Last rule
+		if (pattern != null) {
+			rules.add(new Pair<String,String>(pattern, ops.toString()));
+		}
 		
 		return rules;
 	}
+	
+	/**
+	 * Compiles a list of Tregex pattern-matching and Tsurgeon transformation rules.
+	 * @param rules - a list of rules provided by readRules().
+	 * @return an ordered list of compiled rules.
+	 */
+	private List<Pair<TregexPattern,TsurgeonPattern>> compileRules(List<Pair<String,String>> rules) {
+		List<Pair<TregexPattern,TsurgeonPattern>> c_rules = new ArrayList<Pair<TregexPattern,TsurgeonPattern>>();
+
+		for (Pair<String,String> r : rules) { 
+			c_rules.add(new Pair<TregexPattern,TsurgeonPattern>(
+				TregexPattern.compile(r.first),
+				Tsurgeon.parseOperation(r.second)));
+		}
+		
+		return c_rules;
+	}
 
 	/**
-	 * TODO: use relabel, remove this method
-	 * @param tree
-	 * @return
+	 * TODO: use Tsurgeon.relabel, remove this method; Tsurgeon.relabel is limited, though
+	 * @param tree - AST
+	 * @return AST'
 	 */
 	private String postprocessAST(String tree) {
 		tree = tree.replaceAll("\\(mkCN ([a-z]+) ([a-z]+)\\)", "(mkCN $1_A $2_N)");
@@ -290,14 +111,20 @@ public class Transformer {
 
 	/**
 	 * Constructor.
+	 * @param file - a plain-text file containing Tregex/Tsurgeon rules.
 	 */
-	public Transformer() {
+	public Transformer(String file) {
 		peg = Parboiled.createParser(AMRGrammar.class);
-		tregex = compileTregexRules();
+		
+		try {
+			tregex = compileRules(readRules(file));
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
 	}
 
 	/**
-	 * 
+	 * Converts the PENMAN notation to a LISP-like syntax.
 	 * @param amr - an AMR graph in the tree-like PENMAN notation.
 	 * @return a slightly rewritten AMR representation compliant with the LISP-like bracketing tree syntax,
 	 * or null if the AMR graph is not recognized.
@@ -315,7 +142,7 @@ public class Transformer {
 	}
 
 	/**
-	 * 
+	 * Transforms an AMR graph into a GF abstract syntax tree.
 	 * @param amr - one or more AMR graphs in the LISP-like bracketing tree syntax.
 	 * @return a list of GF abstract syntax trees (AST) acquired from the AMR graphs.
 	 */
@@ -344,10 +171,10 @@ public class Transformer {
 	}
 
 	/**
-	 * Used for development purposes.
+	 * Used for development purposes only.
 	 */
-	public static void main(String[] args) throws IOException {
-		Transformer t = new Transformer();
+	public static void main(String[] args) {
+		Transformer t = new Transformer("../rules/amr2api.tsurgeon");
 		
 		String amr = t.transformToLISP("");
 		

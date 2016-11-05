@@ -22,6 +22,7 @@ public class Tester {
 
 	public static final String name = "TestTrees";
 	public static final String path = "out" + File.separator + name;
+	public static final String rules = "../rules/amr2api.tsurgeon";
 	
 	@BeforeClass
 	public static void generateHeader() {
@@ -115,7 +116,7 @@ public class Tester {
 	// Girls see a boy.
 	@Test
 	public void t01_girls_see_a_boy() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x4 / boy))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 boy))))");
@@ -129,7 +130,7 @@ public class Tester {
 	// The boy is seen by the girls.
 	@Test
 	public void t02_the_boy_is_seen_by_the_girls() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 			
 		String amr = t.transformToLISP("(x4 / see-01\n\t:ARG1 (x2 / boy)\n\t:ARG0 (x7 / girl))");
 		assertEquals(amr, "(x4 (see-01 (:ARG1 (x2 boy)) (:ARG0 (x7 girl))))");
@@ -143,7 +144,7 @@ public class Tester {
 	// Two girls see a boy.
 	@Test
 	public void t03_two_girls_see_a_boy() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / see-01\n\t:ARG0 (x2 / girl\n\t\t:quant 2)\n\t:ARG1 (x5 / boy))");
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 (girl (:quant 2)))) (:ARG1 (x5 boy))))");
@@ -157,7 +158,7 @@ public class Tester {
 	// Two pretty girls see a boy.
 	@Test
 	public void t04_two_pretty_girls_see_a_boy() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x4 / see-01\n\t:ARG0 (x3 / girl\n\t\t:quant 2\n\t\t:mod (x2 / pretty))\n\t:ARG1 (x6 / boy))");
 		assertEquals(amr, "(x4 (see-01 (:ARG0 (x3 (girl (:quant 2) (:mod (x2 pretty))))) (:ARG1 (x6 boy))))");
@@ -171,7 +172,7 @@ public class Tester {
 	// The boy sees the two pretty girls.
 	@Test
 	public void t05_the_boy_sees_the_two_pretty_girls() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / see-01\n\t:ARG0 (x2 / boy)\n\t:ARG1 (x7 / girl\n\t\t:quant 2\n\t\t:mod (x6 / pretty)))");
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 boy)) (:ARG1 (x7 (girl (:quant 2) (:mod (x6 pretty)))))))");
@@ -185,7 +186,7 @@ public class Tester {
 	// Girls and boys play a game.
 	@Test
 	public void t06_girls_and_boys_play_a_game() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x4 / play-02\n\t:ARG0 (x2 / and\n\t\t:op1 (x1 / girl)\n\t\t:op2 (x3 / boy))\n\t:ARG1 (x6 / game))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 girl)) (:op2 (x3 boy))))) (:ARG1 (x6 game))))");
@@ -199,7 +200,7 @@ public class Tester {
 	// Boys, girls and a dog play a game.
 	@Test
 	public void t07_boys_girls_and_a_dog_play_a_game() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x7 / play-02\n\t:ARG0 (x4 / and\n\t\t:op1 (x1 / boy)\n\t\t:op2 (x3 / girl)\n\t\t:op2 (x6 / dog))\n\t:ARG1 (x9 / game))");
 		assertEquals(amr, "(x7 (play-02 (:ARG0 (x4 (and (:op1 (x1 boy)) (:op2 (x3 girl)) (:op2 (x6 dog))))) (:ARG1 (x9 game))))");
@@ -213,7 +214,7 @@ public class Tester {
 	// Many persons live.
 	@Test
 	public void t08_many_persons_live() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / many)))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many)))))))");
@@ -227,7 +228,7 @@ public class Tester {
 	// Some persons live in Ventspils.
 	@Test
 	public void t09_some_persons_live_in_Ventspils() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / some))\n\t:location (x5 / country\n\t\t:name (n / name\n\t\t\t:op1 \"Ventspils\")))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 some))))) (:location (x5 (country (:name (n (name (:op1 \"Ventspils\")))))))))");
@@ -241,7 +242,7 @@ public class Tester {
 	// Many persons live in Riga.
 	@Test
 	public void t10_many_persons_live_in_Riga() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / many))\n\t:location (x5 / city\n\t\t:name (n / name\n\t\t\t:op1 \"Riga\")\n\t\t:wiki \"Riga\"))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many))))) (:location (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
@@ -255,7 +256,7 @@ public class Tester {
 	// More persons live in New York.
 	@Test
 	public void t11_more_persons_live_in_New_York() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / more))\n\t:location (x5 / city\n\t\t:name (n / name\n\t\t\t:op1 \"New\"\n\t\t\t:op2 \"York\")\n\t\t:wiki \"New_York_City\"))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 more))))) (:location (x5 (city (:name (n (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\"))))))");
@@ -270,7 +271,7 @@ public class Tester {
 	// TODO: How to represent much + more in GF?
 	@Test
 	public void t12_much_more_persons_live_in_New_York_City() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x4 / live-01\n\t:ARG0 (x3 / person\n\t\t:quant (x2 / more\n\t\t\t:degree (x1 / much)))\n\t:location (x6 / city\n\t\t:name (n / name\n\t\t\t:op1 \"New\"\n\t\t\t:op2 \"York\"\n\t\t\t:op3 \"City\")))");
 		assertEquals(amr, "(x4 (live-01 (:ARG0 (x3 (person (:quant (x2 (more (:degree (x1 much)))))))) (:location (x6 (city (:name (n (name (:op1 \"New\") (:op2 \"York\") (:op3 \"City\")))))))))");
@@ -284,7 +285,7 @@ public class Tester {
 	// Few persons live in Riga and New York. 
 	@Test
 	public void t13_few_persons_live_in_Riga_and_New_York() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / few))\n\t:location (x6 / and\n\t\t:op1 (x5 / city\n\t\t\t:name (n / name\n\t\t\t\t:op1 \"Riga\")\n\t\t\t:wiki \"Riga\")\n\t\t:op2 (x7 / city\n\t\t\t:name (n1 / name\n\t\t\t\t:op1 \"New\"\n\t\t\t\t:op2 \"York\")\n\t\t\t:wiki \"New_York_City\")))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 few))))) (:location (x6 (and (:op1 (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x7 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
@@ -298,7 +299,7 @@ public class Tester {
 	// Boys and girls play games in Riga.
 	@Test
 	public void t14_boys_and_girls_play_games_in_Riga() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x4 / play-02\n\t:ARG0 (x2 / and\n\t\t:op1 (x1 / boy)\n\t\t:op2 (x3 / girl))\n\t:ARG1 (x5 / game)\n\t:location (x7 / city\n\t\t:name (n / name\n\t\t\t:op1 \"Riga\")\n\t\t:wiki \"Riga\"))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
@@ -313,7 +314,7 @@ public class Tester {
 	// FIXME: CAMR
 	@Test
 	public void t15_boys_and_girls_play_games_in_Riga_and_New_York() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 		
 		String amr = t.transformToLISP("(x4 / play-02 :ARG0 (x2 / and :op1 (x1 / boy) :op2 (x3 / girl)) :ARG1 (x5 / game) :location (x8 / and :op1 (x7 / city :name (n / name :op1 \"Riga\") :wiki \"Riga\") :op2 (x9 / city :name (n1 / name :op1 \"New\" :op2 \"York\") :wiki \"New_York_City\")))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x8 (and (:op1 (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x9 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
@@ -327,7 +328,7 @@ public class Tester {
 	// Boys see Ann.
 	@Test
 	public void t16_boys_see_Ann() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / boy)\n\t:ARG1 (x3 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Ann\")))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 boy)) (:ARG1 (x3 (person (:name (n (name (:op1 \"Ann\")))))))))");
@@ -342,7 +343,7 @@ public class Tester {
 	// FIXME: wiki
 	@Test
 	public void t17_John_plays_a_game() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 			
 		String amr = t.transformToLISP("(x2 / play-02\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"John\")\n\t\t:wiki \"-\")\n\t:ARG1 (x4 / game))");
 		assertEquals(amr, "(x2 (play-02 (:ARG0 (x1 (person (:name (n (name (:op1 \"John\")))) (:wiki \"-\")))) (:ARG1 (x4 game))))");
@@ -357,7 +358,7 @@ public class Tester {
 	// FIXME: wiki
 	@Test
 	public void t18_John_sees_Ann() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"John\")\n\t\t:wiki \"-\")\n\t:ARG1 (x3 / person\n\t\t:name (n1 / name\n\t\t\t:op1 \"Ann\")))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"John\")))) (:wiki \"-\")))) (:ARG1 (x3 (person (:name (n1 (name (:op1 \"Ann\")))))))))");
@@ -371,7 +372,7 @@ public class Tester {
 	// Girls see some boys who play a game.
 	@Test
 	public void t19_girls_see_some_boys_who_play_a_game() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x4 / boy\n\t\t:quant (x3 / some)\n\t\t:ARG0-of (x6 / play-02\n\t\t\t:ARG1 (x8 / game))))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 (boy (:quant (x3 some)) (:ARG0-of (x6 (play-02 (:ARG1 (x8 game))))))))))");
@@ -386,7 +387,7 @@ public class Tester {
 	// FIXME: ':mod A' ("pretty boys") vs. ':mod N' ("ball game")
 	@Test
 	public void t20_girls_see_some_pretty_boys_who_play_a_ball_game() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 				
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x5 / boy\n\t\t:quant (x3 / some)\n\t\t:mod (x4 / pretty)\n\t\t:ARG0-of (x7 / play-02\n\t\t\t:ARG1 (x10 / game\n\t\t\t\t:mod (x9 / ball)))))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
@@ -401,7 +402,7 @@ public class Tester {
 	// FIXME: "A girl who sees the game likes the boys who play." (CAMR)
 	@Test
 	public void t21_girls_who_see_the_game_like_the_boys_who_play() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 				
 		String amr = t.transformToLISP("(x6 / like-01\n\t:ARG0 (x1 / girl\n\t\t:ARG0-of (x3 / see-01\n\t\t\t:ARG1 (x5 / game)))\n\t:ARG1 (x8 / boy\n\t\t:ARG0-of (x10 / play-02)))");
 		assertEquals(amr, "(x6 (like-01 (:ARG0 (x1 (girl (:ARG0-of (x3 (see-01 (:ARG1 (x5 game)))))))) (:ARG1 (x8 (boy (:ARG0-of (x10 play-02)))))))");
@@ -417,7 +418,7 @@ public class Tester {
 	// TODO: Asma_al-Assad vs. Bashar_al-Assad (wiki)
 	@Test
 	public void t22_Assad_spoke_about_the_city() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 				
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:topic (x4 / city))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 city))))");
@@ -432,7 +433,7 @@ public class Tester {
 	// FIXME: CAMR
 	@Test
 	public void t23_Assad_spoke_about_the_two_cities() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 					
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:topic (x4 / city :quant 2))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 (city (:quant 2))))))");
@@ -446,7 +447,7 @@ public class Tester {
 	// Assad spoke a word about the city.
 	@Test
 	public void t24_Assad_spoke_a_word_about_the_city() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 					
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:ARG1 (x4 / word\n\t\t:topic (x7 / city)))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:ARG1 (x4 (word (:topic (x7 city)))))))");
@@ -460,7 +461,7 @@ public class Tester {
 	// The boy is a person.
 	@Test
 	public void t25_the_boy_is_a_person() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(x5 / person\n\t:domain (x2 / boy))");
 		assertEquals(amr, "(x5 (person (:domain (x2 boy))))");
@@ -474,7 +475,7 @@ public class Tester {
 	// ::snt Iceland is a very interesting example.
 	@Test
 	public void t26_Iceland_is_a_very_interesting_example() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(e / example :ARG2-of (i / interest-01 :degree (v / very)) :domain (c / country :wiki \"Iceland\" :name (n / name :op1 \"Iceland\")))");
 		assertEquals(amr, "(e (example (:ARG2-of (i (interest-01 (:degree (v very))))) (:domain (c (country (:wiki \"Iceland\") (:name (n (name (:op1 \"Iceland\")))))))))");
@@ -490,7 +491,7 @@ public class Tester {
 	// FIXME: in the gold AMR, shouldn't it be ":ARG0 t2"?
 	@Test
 	public void t27_they_are_thugs_and_deserve_a_bullet() {
-		Transformer t = new Transformer();
+		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(a / and :op1 (t / thug :domain (t2 / they)) :op2 (d / deserve-01 :ARG0 t :ARG1 (b / bullet)))");
 		assertEquals(amr, "(a (and (:op1 (t (thug (:domain (t2 they))))) (:op2 (d (deserve-01 (:ARG0 t) (:ARG1 (b bullet)))))))");

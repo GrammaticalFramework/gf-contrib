@@ -1,0 +1,203 @@
+# mkRCl : RP -> VP -> RCl
+# mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
+# TODO: Tense, Ant, Pol
+# (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP (mkVP frame)))
+/^:ARG0-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
+[adjoin (mkRS (mkRCl which_RP (mkVP@))) var]
+[excise inv inv]
+
+# mkRCl : RP -> AP -> RCl
+# mkAP : A -> AP
+# (:ARG2-of (var (frame))) => (mkRS (mkRCl which_RP (mkAP frame)))
+# TODO: This most likely doesn't fit other ARG2-of cases...
+/^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
+[adjoin (mkRS (mkRCl which_RP (mkAP@))) var]
+[excise inv inv]
+
+# mkCl : VP -> Cl
+# mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
+# TODO: Tense, Ant, Pol
+# (var frame) => (mkS (mkCl (mkVP frame)))
+/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/
+[adjoin (mkS (mkCl (mkVP@))) var]
+
+# mkCl : NP -> VP -> Cl
+# (mkCl (mkVP (frame :ARG0))) => (mkCl :ARG0 (mkVP frame))
+/^mkCl$/=cl < (/^mkVP$/ < (/^[a-z]+-[0-9]+$/ < /^:ARG0$/=subj))
+[move subj >1 cl]
+[excise subj subj]
+
+# mkVP : V2 -> NP -> VP
+# (mkVP (frame :ARG1)) => (mkVP frame :ARG1)
+/^mkVP$/=vp < (/^[a-z]+-[0-9]+$/ < /^:ARG1$/=obj)
+[move obj >2 vp]
+[excise obj obj]
+
+# ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
+# ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
+/^name$/ < ((/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=x) $+ (/^:op[0-9]+$/=op2 < /^"[A-Za-z-]+"$/=y))
+[relabel y /^"(.+)"$/$1/]
+[relabel x /^"(.+)"$/"$1 ={y}"/]
+[delete op2]
+
+# mkPN : Str -> PN
+# mkNP : PN -> NP
+# (:name (var ('name' (:op "Named Entity")))) => (:name (mkNP (mkPN "Named Entity")))
+/^:name$/=ne < (/^[a-z][0-9]*$/=var < (/^name$/ < (/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=str)))
+[adjoinF (mkNP=np (mkPN @)) str]
+[move np >1 ne]
+[delete var]
+
+# (var (type (:name mkNP))) => (mkNP)
+/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))
+[move np $- var]
+[delete var]
+
+# pron_NP
+# (var pron) => (pron_NP)
+/^[a-z][0-9]*$/=var < /^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/=pron
+[relabel pron /^(.+)$/$1_NP/]
+[excise var var]
+
+# mkNP : Quant -> CN -> NP
+# (var entity) => (mkNP a_Quant (mkCN (var entity))
+# TODO: "!>" seems to be a computationally expensive relation to match...
+/^[a-z][0-9]*$/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/
+[adjoinF (mkNP S.a_Quant (mkCN @)) entity]
+
+# mkListNP : NP -> NP -> ListNP
+# (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
+/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < /^mkNP$/=np1) $+ (/^:op[0-9]+$/=op2 < /^mkNP$/=np2))
+[adjoin (mkListNP=list mkNP@) np1]
+[move np2 >2 list]
+[excise op1 op1]
+[delete op2]
+
+# mkListNP : NP -> ListNP -> ListNP
+# (conj mkListNP (:op mkNP)) => (conj (mkListNP mkNP mkListNP))
+/^(and|or)$/ < (/^mkListNP$/=list $+ (/^:op[0-9]+$/=op_n < /^mkNP$/=np_n))
+[adjoin (mkListNP=list_prim mkNP@) np_n]
+[move list >2 list_prim]
+[excise op_n op_n]
+
+# mkNP : Conj -> ListNP -> NP
+# (var (conj mkListNP)) => (mkNP (conj_Conj mkListNP))
+/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < /^mkListNP$/=np)
+[adjoin (mkNP (var=temp@)) var]
+[move np $- conj]
+[relabel conj /^(.+)$/S.$1_Conj/]
+[excise temp temp]
+
+# mkNP : Quant -> Num -> CN -> NP
+# (mkNP ([quant_Quant] (mkCN (var (entity :quant))))) => (mkNP ([quant_Quant] :quant (mkCN (var entity))))
+/^mkNP$/=np < (/^mkCN$/ < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:quant$/=num)))
+[move num >2 np]
+
+# mkNP : Det -> CN -> NP
+# (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN])
+/^mkNP$/ < (/^S[.][a-z]+_Quant$/=quant $+ (/^:quant$/=temp < (/^[a-z][0-9]*$/ < /^(every|few|many|more|much|some)$/=det)))
+[relabel det /^(.+)$/S.$1_Det/]
+[relabel det /^S.some_Det$/S.somePl_Det/]
+[relabel det /^S.more_Det$/more_Det/]
+[replace quant det]
+[delete temp]
+
+# mkCl : NP -> NP -> Cl
+# mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
+# TODO: Tense, Ant, Pol
+# 1. (mkNP (mkCN (var (entity (:domain mkNP))))) => (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP)))))))
+(/^mkNP$/=nom < (/^mkCN$/ < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:domain$/)))) !> /^mkCl$/
+[adjoinF (mkS (mkCl @)) nom]
+# 2. (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP))))))) => (mkS (mkCl mkNP (mkNP (mkCN (var entity)))))
+/^mkCl$/=cl < (/^mkNP$/ < (/^mkCN$/ < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^:domain$/=subj))))
+[move subj >1 cl]
+[excise subj subj]
+
+# mkRCl : RP -> NP -> RCl
+# TODO
+
+# mkCN : A -> N -> CN
+# (mkCN (var (entity (:mod (var adj))))) => (mkCN (var adj) (var entity))
+/^mkCN$/=cn < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < (/^:mod$/=mod < /^[a-z][0-9]*$/=adj)))
+[move adj >1 cn]
+[delete mod]
+
+# mkCN : CN -> RS -> CN
+# (mkCN (var (entity mkRS))) => (mkCN (mkCN (var entity)) mkRS)
+/^mkCN$/=cn1 < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^mkRS$/=rs))
+[adjoin (mkCN=cn2 mkCN@) cn1]
+[move rs >2 cn2]
+
+# (mkCN (var entity)) => (mkCN entity)
+/^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/)
+[excise var var]
+
+# mkNum : Digits -> Num
+# mkDigits : Str -> Digits
+# (:quant digits) => (mkNum (mkDigits "digits"))
+/^:quant$/=quant < /^[0-9]+$/=digits
+[relabel digits /^(.+)$/"$1"/]
+[adjoin (mkNum (mkDigits@)) quant]
+
+# mkVP : VP -> Adv -> VP
+# (mkVP (frame (:adv mkNP))) => (mkVP (mkVP frame) (:adv mkNP))
+/^mkVP$/=vp_i < (/^[a-z]+-[0-9]+$/ < /^:(location|topic)$/=adv)
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
+
+# mkNP : NP -> Adv -> NP
+# (mkNP (mkCN (entity (:adv mkNP)))) => (mkNP (mkNP (mkCN entity)) (:adv mkNP))
+/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+$/ < /^:(location|topic)$/=adv))
+[adjoinF (mkNP=np_o @) np_i]
+[move adv >2 np_o]
+
+# mkAdv : Prep -> NP -> Adv
+# (:location mkNP) => (mkAdv in_Prep mkNP)
+/^:location$/=rel < /^mkNP$/=np
+[adjoinF (S.mkAdv S.in_Prep @) np]
+[excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:topic mkNP) => (mkAdv about_Prep mkNP)
+/^:topic$/=rel < /^mkNP$/=np
+[adjoinF (S.mkAdv about_Prep @) np]
+[excise rel rel]
+
+# mkAP : AdA -> AP -> AP
+# (mkAP (frame (:degree (var ada))))
+/^mkAP$/=ap_i < (/^[a-z]+-[0-9]+$/=frame < (/^:degree$/=deg < (/^[a-z][0-9]*$/ < /^[a-z]+$/=ada)))
+[adjoinF (mkAP=ap_o @) ap_i]
+[move ada >1 ap_o]
+[relabel ada /^(.+)$/S.$1_AdA/]
+[relabel frame /^(.+)-.+$/$1ing_A/] # TODO: make an adjective form from a verb form (consult PropBank)
+[delete deg]
+
+# mkListS : S -> S -> ListS
+# (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
+# Note: this is a copy-paste from mkListNP, except the category
+/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < /^mkS$/=s1) $+ (/^:op[0-9]+$/=op2 < /^mkS$/=s2))
+[adjoin (mkListS=list mkS@) s1]
+[move s2 >2 list]
+[excise op1 op1]
+[delete op2]
+
+# mkListS : S -> ListS -> ListS
+# (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
+# Note: this is a copy-paste from mkListNP, except the category
+/^(and|or)$/ < (/^mkListS$/=list $+ (/^:op[0-9]+$/=op_n < /^mkS$/=s_n))
+[adjoin (mkListS=list_prim mkS@) s_n]
+[move list >2 list_prim]
+[excise op_n op_n]
+
+# mkS : Conj -> ListS -> S
+# (var (conj mkListS)) => (mkS (conj_Conj mkListS))
+# Note: this is a copy-paste from mkListNP, except the category
+/^[a-z][0-9]*$/=var < (/^(and|or)$/=conj < /^mkListS$/=s)
+[adjoin (mkS (var=temp@)) var]
+[move s $- conj]
+[relabel conj /^(.+)$/S.$1_Conj/]
+[excise temp temp]
+
+# Remove any unresolved variables
+/^[a-z][0-9]*$/=var
+[delete var]
