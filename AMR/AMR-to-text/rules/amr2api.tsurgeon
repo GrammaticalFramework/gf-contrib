@@ -25,6 +25,7 @@
 [adjoin (mkRS (mkRCl S.which_RP (mkVP@))) var]
 [excise inv inv]
 
+# passiveVP : V2 -> VP
 # mkRCl : RP -> VP -> RCl
 # mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
 # TODO: Tense, Ant, Pol
@@ -61,6 +62,14 @@
 /^mkCl$/=cl < (/^mkVP$/ < (/^[a-z]+-[0-9]+$/ < /^:ARG0$/=subj))
 [move subj >1 cl]
 [excise subj subj]
+
+# passiveVP : V2 -> VP
+# (mkCl !:ARG0 (mkVP (frame :ARG1 !:ARG0))) => (mkCl :ARG1 (mkVP (passiveVP frame)))
+/^mkCl$/=cl < (/^mkVP$/ < (/^[a-z]+-[0-9]+$/=frame < /^:ARG1$/=subj !< /^:ARG0$/)) !<1 /^[a-z][0-9]*$/
+[relabel subj /^:ARG1$/:ARG0/]
+[move subj >1 cl]
+[excise subj subj]
+[adjoinF (passiveVP @) frame]
 
 # mkVP : V2 -> NP -> VP
 # (mkVP (frame :ARG1)) => (mkVP frame :ARG1)
@@ -305,6 +314,10 @@
 # (:ARG1 mkNP) => (mkNP)
 /^:ARG[0-9]$/=arg < /^mkNP$/
 [excise arg arg]
+
+# (mkVP (mkVP)) => (mkVP)
+/^mkVP$/=vp_o <: /^mkVP$/
+[excise vp_o vp_o]
 
 # Remove any unresolved variables and relations
 

@@ -564,7 +564,6 @@ public class Tester {
 	
 	// ::snt We must look at their reasons.
 	// TODO: look-at
-	// TODO: obligate => must/have vs. passive (we are obligated)
 	@Test
 	public void t32_We_must_look_at_their_reasons() {
 		Transformer t = new Transformer(rules);
@@ -573,13 +572,12 @@ public class Tester {
 		assertEquals(amr, "(o (obligate-01 (:ARG1 (w we)) (:ARG2 (l (look-01 (:ARG1 (r (reason (:poss (t they))))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkVP obligate_01_V2V S.we_NP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N))))))");
+		assertEquals(ast, "(mkS (mkCl S.we_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N)))))))");
 						
-		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 	
 	// ::snt The man, Xu Yuyuan, wielded a knife usually used to slaughter pigs.
-	// TODO: "usually" (:mod)
 	// TODO: "the man [named] Xu Yuyuan"
 	@Test
 	public void t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs() {
@@ -590,6 +588,22 @@ public class Tester {
 								
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Xu Yuyuan\")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV \"usually\") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N))))))))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt Libyan Abdel Basset Ali al-Megrahi was convicted of blowing up the plane.
+	// FIXME: blow-up-06 => blow_up_06
+	// FIXME: "from Libya"
+	@Test
+	public void t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(c / convict-01 :ARG1 (p / person :wiki \"Abdelbaset_al-Megrahi\" :name (n / name :op1 \"Abdel\" :op2 \"Basset\" :op3 \"Ali\" :op4 \"al-Megrahi\") :mod (c2 / country :wiki \"Libya\" :name (n2 / name :op1 \"Libya\"))) :ARG2 (b / blow-06 :ARG0 p :ARG1 (p2 / plane)))");
+		assertEquals(amr, "(c (convict-01 (:ARG1 (p (person (:wiki \"Abdelbaset_al-Megrahi\") (:name (n (name (:op1 \"Abdel\") (:op2 \"Basset\") (:op3 \"Ali\") (:op4 \"al-Megrahi\")))) (:mod (c2 (country (:wiki \"Libya\") (:name (n2 (name (:op1 \"Libya\")))))))))) (:ARG2 (b (blow-06 (:ARG0 p) (:ARG1 (p2 plane)))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Abdel Basset Ali al-Megrahi\")) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_06_V2 (mkNP S.a_Quant (mkCN plane_N)))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

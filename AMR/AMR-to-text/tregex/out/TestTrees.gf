@@ -34,5 +34,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t31_Gadhafi_attacks_US_in_speech_in_Italy : S ;
 	fun t32_We_must_look_at_their_reasons : S ;
 	fun t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs : S ;
+	fun t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane : S ;
 
 }

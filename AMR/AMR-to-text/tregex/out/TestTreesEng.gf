@@ -67,8 +67,10 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t31_Gadhafi_attacks_US_in_speech_in_Italy = (mkS (mkCl (mkNP (mkPN "Gadhafi")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN "US"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "Italy")))))))))) ;
 
-	lin t32_We_must_look_at_their_reasons = (mkS (mkCl (mkVP obligate_01_V2V S.we_NP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N)))))) ;
+	lin t32_We_must_look_at_their_reasons = (mkS (mkCl S.we_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N))))))) ;
 
 	lin t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV "usually") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
+
+	lin t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane = (mkS (mkCl (mkNP (mkPN "Abdel Basset Ali al-Megrahi")) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_06_V2 (mkNP S.a_Quant (mkCN plane_N))))))) ;
 
 }

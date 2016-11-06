@@ -11,11 +11,14 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		assail_01_V2 : V2 ;
 		attack_01_V2 : V2 ;
+		blow_06_V2 : V2 ;
 		commit_02_V2 : V2 ;
+		convict_01_V2 : V2 ;
 		deserve_01_V2 : V2 ;
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
 		look_01_V2 : V2 ;
+		obligate_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
 		see_01_V2 : V2 ;
