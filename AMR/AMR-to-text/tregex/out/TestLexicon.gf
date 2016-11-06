@@ -4,11 +4,13 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 	fun
 
+		kill_01_V : V ;
 		live_01_V : V ;
 		play_02_V : V ;			-- note: play_1_V (etc.) in Dictionary (no default play_V)
 		speak_01_V : V ;
 
 		deserve_01_V2 : V2 ;
+		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;

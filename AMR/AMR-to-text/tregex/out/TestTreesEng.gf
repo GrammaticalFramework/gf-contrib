@@ -61,4 +61,6 @@ open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {
 
 	lin t28_China_president_urges_child_safety = (mkS (mkCl (mkNP (mkCN (mkN2 president_N of_Prep) (mkNP (mkPN "China")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN child_N)))))) ;
 
+	lin t29_French_far_left_killer_leaves_jail = (mkS (mkCl (mkNP S.a_Quant (mkCN far_A (mkCN (mkCN (mkCN left_A person_N) (S.mkAdv S.from_Prep (mkNP (mkPN "France")))) (mkRS (mkRCl which_RP (mkVP kill_01_V)))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N))))) ;
+
 }

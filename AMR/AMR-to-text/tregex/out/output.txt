@@ -133,3 +133,8 @@ TestTreesEng: president of China urges to protect a child
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t29_French_far_left_killer_leaves_jail
+TestTreesEng: a far left person from France that kills leaves a jail
+TestTreesLav: 
+TestTreesRus: 
+

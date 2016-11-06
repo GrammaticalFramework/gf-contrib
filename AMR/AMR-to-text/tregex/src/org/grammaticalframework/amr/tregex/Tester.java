@@ -502,7 +502,7 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 	
-	// ::snt China president urges child safety [after school killings]
+	// ::snt China president urges child safety [after school killings].
 	// FIXME: safe-01 changed to protect-01 (Did the AMR annotator made a mistake?)
 	// TODO: "after school killings"
 	@Test
@@ -514,6 +514,20 @@ public class Tester {
 								
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl (mkNP (mkCN (mkN2 president_N of_Prep) (mkNP (mkPN \"China\")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN child_N))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt French far-left killer leaves jail.
+	@Test
+	public void t29_French_far_left_killer_leaves_jail() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(l2 / leave-11 :ARG0 (p2 / person :ARG0-of (k2 / kill-01) :mod (c / country :wiki \"France\" :name (n2 / name :op1 \"France\")) :mod (l / left :degree (f / far))) :ARG1 (j / jail))");
+		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN far_A (mkCN (mkCN (mkCN left_A person_N) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl which_RP (mkVP kill_01_V)))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

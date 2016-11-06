@@ -81,7 +81,7 @@
 [delete var]
 
 # (var (type (:name mkNP))) => (mkNP)
-/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))
+(/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))) !> /^:mod$/
 [move np $- var]
 [delete var]
 
@@ -149,20 +149,40 @@
 # TODO
 
 # mkCN : A -> N -> CN
-# (mkCN (var (entity (:mod (var adj))))) => (mkCN (var adj) (var entity))
-/^mkCN$/=cn < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < (/^:mod$/=mod < /^[a-z][0-9]*$/=adj)))
+# (mkCN (var (entity (:mod (var adj))))) => (mkCN adj noun)
+/^mkCN$/=cn < (/^[a-z][0-9]*$/=var < (/^[a-z]+$/=noun < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj !< (/^country$/ < /^:name$/)))))
+[relabel noun /^(.+)$/$1_N/]
+[relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn]
 [delete mod]
+[excise var var]
 
-# mkCN : CN -> RS -> CN
-# (mkCN (var (entity mkRS))) => (mkCN (mkCN (var entity)) mkRS)
-/^mkCN$/=cn1 < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^mkRS$/=rs))
-[adjoin (mkCN=cn2 mkCN@) cn1]
-[move rs >2 cn2]
+# mkCN : A -> CN -> CN
+# (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
+/^mkCN$/=cn1 < (/^[a-z]+_A$/ < (/^:degree$/=degree < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj2)))
+[relabel adj2 /^(.+)$/$1_A/]
+[adjoinF (mkCN=cn2 @) cn1]
+[move adj2 >1 cn2]
+[delete degree]
 
 # (mkCN (var entity)) => (mkCN entity)
-/^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/)
+/^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/=noun)
+[relabel noun /^(.+)$/$1_N/]
 [excise var var]
+
+# mkCN : CN -> RS -> CN
+# (mkCN (noun mkRS)) => (mkCN (mkCN noun) mkRS)
+/^mkCN$/=cn1 < (/^[a-z]+_N$/ < /^mkRS$/=rs)
+[adjoinF (mkCN=cn2 @) cn1]
+[move rs >2 cn2]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
+/^mkCN$/=cn1 < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < (/^country$/ < (/^:name$/ < /^mkNP$/=np)))))
+[adjoinF (S.mkAdv=adv S.from_Prep @) np]
+[adjoinF (mkCN=cn2 @) cn1]
+[move adv >2 cn2]
+[delete mod]
 
 # mkNum : Digits -> Num
 # mkDigits : Str -> Digits
@@ -178,8 +198,8 @@
 [move adv >2 vp_o]
 
 # mkNP : NP -> Adv -> NP
-# (mkNP (mkCN (entity (:adv mkNP)))) => (mkNP (mkNP (mkCN entity)) (:adv mkNP))
-/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+$/ < /^:(location|topic)$/=adv))
+# (mkNP (mkCN (noun (:adv mkNP)))) => (mkNP (mkNP (mkCN noun)) (:adv mkNP))
+/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+_N$/ < /^:(location|topic)$/=adv))
 [adjoinF (mkNP=np_o @) np_i]
 [move adv >2 np_o]
 
