@@ -15,12 +15,15 @@ abstract TestLexicon = Cat, Dictionary ** {
 		deserve_01_V2 : V2 ;
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
+		look_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
 		see_01_V2 : V2 ;
 		speak_01_V2 : V2 ;
 
 		urge_01_VV : VV ;		-- note: no urge_VV in Dictionary
+
+		obligate_01_V2V : V2V ;
 
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)

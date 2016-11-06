@@ -35,4 +35,6 @@ open SyntaxRus, (S = SyntaxRus), ParadigmsRus in {
 
 	lin t30_Two_other_school_assailants_have_committed_suicide = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN other_A person_N) (mkRS (mkRCl which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN suicide_N))))) ;
 
+	lin t32_We_must_look_at_their_reasons = (mkS (mkCl (mkVP obligate_01_V2V we_NP (mkVP look_01_V2 (mkNP they_Pron (mkCN reason_N)))))) ;
+
 }

@@ -190,6 +190,13 @@
 [move adj2 >1 cn2]
 [delete degree]
 
+# mkNP : Pron -> CN -> NP
+# (mkNP a_Quant (mkCN (reason_N (:poss they_NP)))) => (mkNP pron_Pron (mkCN entity_N))
+/^mkNP$/ < (/^S.a_Quant$/=quant $ (/^mkCN$/ < (/^[a-z]+_N$/ < (/^:poss$/=poss < /^(i|you|he|she|it|we|they)_NP$/=pron))))
+[relabel pron /^(.+)_NP$/$1_Pron/]
+[replace quant pron]
+[delete poss]
+
 # mkNum : Digits -> Num
 # mkDigits : Str -> Digits
 # (:quant digits) => (mkNum (mkDigits "digits"))
@@ -257,6 +264,12 @@
 [excise temp temp]
 
 # Post-editing
+
+# mkVP : V2V -> NP -> VP -> VP
+# (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
+/^mkVP$/=vp <1 /^[a-z]+-[0-9]+$/=frame <2 /^mkVP$/ <3 /^[a-z]+_NP$/=np
+[relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
+[move np >2 vp]
 
 # (mkCl mkCN) => (mkCl (mkNP mkCN))
 /^mkCl$/ < /^mkCN$/=cn

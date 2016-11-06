@@ -148,3 +148,8 @@ TestTreesEng: Gadhafi attacks US when it speaks in Italy
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t32_We_must_look_at_their_reasons
+TestTreesEng: it obligates us to look their reason
+TestTreesLav: uzdod mums skatīties viņu iemeslu
+TestTreesRus: обяжет смотреть их причину нас
+

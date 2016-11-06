@@ -32,5 +32,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t29_French_far_left_killer_leaves_jail : S ;
 	fun t30_Two_other_school_assailants_have_committed_suicide : S ;
 	fun t31_Gadhafi_attacks_US_in_speech_in_Italy : S ;
+	fun t32_We_must_look_at_their_reasons : S ;
 
 }

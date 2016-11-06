@@ -559,5 +559,19 @@ public class Tester {
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
+	
+	// ::snt We must look at their reasons.
+	@Test
+	public void t32_We_must_look_at_their_reasons() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(o / obligate-01 :ARG1 (w / we) :ARG2 (l / look-01 :ARG1 (r / reason :poss (t / they))))");
+		assertEquals(amr, "(o (obligate-01 (:ARG1 (w we)) (:ARG2 (l (look-01 (:ARG1 (r (reason (:poss (t they))))))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkVP obligate_01_V2V we_NP (mkVP look_01_V2 (mkNP they_Pron (mkCN reason_N))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
+	}
 
 }

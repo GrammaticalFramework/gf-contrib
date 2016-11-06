@@ -67,4 +67,6 @@ open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {
 
 	lin t31_Gadhafi_attacks_US_in_speech_in_Italy = (mkS (mkCl (mkNP (mkPN "Gadhafi")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN "US"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "Italy")))))))))) ;
 
+	lin t32_We_must_look_at_their_reasons = (mkS (mkCl (mkVP obligate_01_V2V we_NP (mkVP look_01_V2 (mkNP they_Pron (mkCN reason_N)))))) ;
+
 }
