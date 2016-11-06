@@ -138,3 +138,13 @@ TestTreesEng: a far left person from France that kills leaves a jail
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t30_Two_other_school_assailants_have_committed_suicide
+TestTreesEng: 2 other persons that assail a school commit a suicide
+TestTreesLav: 2 citas personas , kas uzbrūk skolai , izdara pašnāvību
+TestTreesRus: 
+
+TestTrees: t31_Gadhafi_attacks_US_in_speech_in_Italy
+TestTreesEng: Gadhafi attacks US when it speaks in Italy
+TestTreesLav: 
+TestTreesRus: 
+

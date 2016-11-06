@@ -69,7 +69,7 @@ public class AMRGrammar extends BaseParser<AMRNode> {
 		);
 	}
 
-	// X = Instance | Mode | Var | Str | Num
+	// X = Instance | Mode | Var | Str | Num | Null
 	@SkipNode
 	public Rule X() {
  		return FirstOf(
@@ -77,7 +77,8 @@ public class AMRGrammar extends BaseParser<AMRNode> {
  			Sequence(Mode(), (peek()).addChild(new AMRNode(match()))),
  			Sequence(Var(), (peek()).addChild(new AMRNode(match()))),
  			Sequence(Str(), (peek()).addChild(new AMRNode(match()))),
- 			Sequence(Num(), (peek()).addChild(new AMRNode(match())))
+ 			Sequence(Num(), (peek()).addChild(new AMRNode(match()))),
+ 			Sequence(Null(), (peek()).addChild(new AMRNode(match())))
  		);
 	}
 
@@ -101,6 +102,12 @@ public class AMRGrammar extends BaseParser<AMRNode> {
 	@SuppressSubnodes
 	public Rule Mode() {
  		return FirstOf(String("interrogative"), String("expressive"), String("imperative"));
+	}
+	
+	// Null
+	@SuppressSubnodes
+	public Rule Null() {
+		return String("-");
 	}
 
 	@SuppressNode

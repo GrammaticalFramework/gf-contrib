@@ -16,6 +16,9 @@ open ParadigmsEng, MorphoEng in {
 		play_02_V = play_1_V ;
 		speak_01_V = speak_V ;
 
+		assail_01_V2 = assail_V2 ;
+		attack_01_V2 = attack_V2 ;
+		commit_02_V2 = commit_V2 ;
 		deserve_01_V2 = deserve_V2 ;
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
@@ -28,6 +31,7 @@ open ParadigmsEng, MorphoEng in {
 
 		game_N = game_1_N ;
 		president_N = presidentMasc_N ;
+		school_N = school_1_N ;
 
 		ball_A = mkA "ball" "ball" "ball" "ball" ;
 
