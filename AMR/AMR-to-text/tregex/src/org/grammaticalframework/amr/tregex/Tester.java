@@ -593,17 +593,15 @@ public class Tester {
 	}
 	
 	// ::snt Libyan Abdel Basset Ali al-Megrahi was convicted of blowing up the plane.
-	// FIXME: blow-up-06 => blow_up_06
-	// FIXME: "from Libya"
 	@Test
 	public void t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane() {
 		Transformer t = new Transformer(rules);
 						
-		String amr = t.transformToLISP("(c / convict-01 :ARG1 (p / person :wiki \"Abdelbaset_al-Megrahi\" :name (n / name :op1 \"Abdel\" :op2 \"Basset\" :op3 \"Ali\" :op4 \"al-Megrahi\") :mod (c2 / country :wiki \"Libya\" :name (n2 / name :op1 \"Libya\"))) :ARG2 (b / blow-06 :ARG0 p :ARG1 (p2 / plane)))");
-		assertEquals(amr, "(c (convict-01 (:ARG1 (p (person (:wiki \"Abdelbaset_al-Megrahi\") (:name (n (name (:op1 \"Abdel\") (:op2 \"Basset\") (:op3 \"Ali\") (:op4 \"al-Megrahi\")))) (:mod (c2 (country (:wiki \"Libya\") (:name (n2 (name (:op1 \"Libya\")))))))))) (:ARG2 (b (blow-06 (:ARG0 p) (:ARG1 (p2 plane)))))))");
+		String amr = t.transformToLISP("(c / convict-01 :ARG1 (p / person :wiki \"Abdelbaset_al-Megrahi\" :name (n / name :op1 \"Abdel\" :op2 \"Basset\" :op3 \"Ali\" :op4 \"al-Megrahi\") :mod (c2 / country :wiki \"Libya\" :name (n2 / name :op1 \"Libya\"))) :ARG2 (b / blow-up-06 :ARG0 p :ARG1 (p2 / plane)))");
+		assertEquals(amr, "(c (convict-01 (:ARG1 (p (person (:wiki \"Abdelbaset_al-Megrahi\") (:name (n (name (:op1 \"Abdel\") (:op2 \"Basset\") (:op3 \"Ali\") (:op4 \"al-Megrahi\")))) (:mod (c2 (country (:wiki \"Libya\") (:name (n2 (name (:op1 \"Libya\")))))))))) (:ARG2 (b (blow-up-06 (:ARG0 p) (:ARG1 (p2 plane)))))))");
 
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Abdel Basset Ali al-Megrahi\")) (S.mkAdv S.from_Prep (mkNP (mkPN \"Libya\")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_06_V2 (mkNP S.a_Quant (mkCN plane_N)))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Abdel Basset Ali al-Megrahi\")) (S.mkAdv S.from_Prep (mkNP (mkPN \"Libya\")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N)))))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

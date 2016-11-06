@@ -19,6 +19,7 @@ open ParadigmsEng, MorphoEng in {
 		assail_01_V2 = assail_V2 ;
 		attack_01_V2 = attack_V2 ;
 		blow_06_V2 = blow_V2 ;
+		blow_up_06_V2 = blow_up_V2 ;
 		commit_02_V2 = commit_V2 ;
 		convict_01_V2 = convict_V2 ;
 		deserve_01_V2 = deserve_V2 ;

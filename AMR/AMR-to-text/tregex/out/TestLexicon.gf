@@ -12,6 +12,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		assail_01_V2 : V2 ;
 		attack_01_V2 : V2 ;
 		blow_06_V2 : V2 ;
+		blow_up_06_V2 : V2 ;
 		commit_02_V2 : V2 ;
 		convict_01_V2 : V2 ;
 		deserve_01_V2 : V2 ;

@@ -71,6 +71,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV "usually") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
 
-	lin t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane = (mkS (mkCl (mkNP (mkNP (mkPN "Abdel Basset Ali al-Megrahi")) (S.mkAdv S.from_Prep (mkNP (mkPN "Libya")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_06_V2 (mkNP S.a_Quant (mkCN plane_N))))))) ;
+	lin t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane = (mkS (mkCl (mkNP (mkNP (mkPN "Abdel Basset Ali al-Megrahi")) (S.mkAdv S.from_Prep (mkNP (mkPN "Libya")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N))))))) ;
 
 }

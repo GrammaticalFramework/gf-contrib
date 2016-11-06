@@ -159,7 +159,7 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane
-TestTreesEng: Abdel Basset Ali al-Megrahi from Libya is convicted to blow a plane
+TestTreesEng: Abdel Basset Ali al-Megrahi from Libya is convicted to blow up a plane
 TestTreesLav: 
 TestTreesRus: 
 
