@@ -26,7 +26,10 @@ open ParadigmsEng, MorphoEng in {
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
 		see_01_V2 = see_V2 ;
+		slaughter_01_V2 = slaughter_V2 ;
 		speak_01_V2 = speak_V2 ;
+		use_01_V2 = use_V2 ;
+		wield_01_V2 = wield_V2 ;
 
 		urge_01_VV = mkVV (mkV "urge") ;
 

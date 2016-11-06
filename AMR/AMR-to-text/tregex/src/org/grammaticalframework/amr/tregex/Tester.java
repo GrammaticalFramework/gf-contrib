@@ -38,17 +38,17 @@ public class Tester {
 			
 			eng.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
-			eng.println("open SyntaxEng, (S = SyntaxEng), ParadigmsEng in {");
+			eng.println("open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {");
 			eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 			
 			lav.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
-			lav.println("open SyntaxLav, (S = SyntaxLav), ParadigmsLav in {");
+			lav.println("open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), ParadigmsLav in {");
 			lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 			
 			rus.println("--# -path=.:alltenses:../../lexicons/translator\n");
 			rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
-			rus.println("open SyntaxRus, (S = SyntaxRus), ParadigmsRus in {");
+			rus.println("open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), ParadigmsRus in {");
 			rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");
 			
 			gfs.println("import " + name + "Eng.gf" + " " + name + "Lav.gf" + " " + name + "Rus.gf\n");
@@ -378,7 +378,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 (boy (:quant (x3 some)) (:ARG0-of (x6 (play-02 (:ARG1 (x8 game))))))))))");
 			
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -393,7 +393,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN pretty_A boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN ball_A game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN pretty_A boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN ball_A game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -408,7 +408,7 @@ public class Tester {
 		assertEquals(amr, "(x6 (like-01 (:ARG0 (x1 (girl (:ARG0-of (x3 (see-01 (:ARG1 (x5 game)))))))) (:ARG1 (x8 (boy (:ARG0-of (x10 play-02)))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN girl_N) (mkRS (mkRCl which_RP (mkVP see_01_V2 (mkNP S.a_Quant (mkCN game_N))))))) (mkVP like_01_V2 (mkNP S.a_Quant (mkCN (mkCN boy_N) (mkRS (mkRCl which_RP (mkVP play_02_V))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN girl_N) (mkRS (mkRCl S.which_RP (mkVP see_01_V2 (mkNP S.a_Quant (mkCN game_N))))))) (mkVP like_01_V2 (mkNP S.a_Quant (mkCN (mkCN boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -481,7 +481,7 @@ public class Tester {
 		assertEquals(amr, "(e (example (:ARG2-of (i (interest-01 (:degree (v very))))) (:domain (c (country (:wiki \"Iceland\") (:name (n (name (:op1 \"Iceland\")))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP S.a_Quant (mkCN (mkCN example_N) (mkRS (mkRCl which_RP (mkAP S.very_AdA (mkAP interesting_A))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP S.a_Quant (mkCN (mkCN example_N) (mkRS (mkRCl S.which_RP (mkAP S.very_AdA (mkAP interesting_A))))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -497,7 +497,7 @@ public class Tester {
 		assertEquals(amr, "(a (and (:op1 (t (thug (:domain (t2 they))))) (:op2 (d (deserve-01 (:ARG0 t) (:ARG1 (b bullet)))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS S.and_Conj (mkListS (mkS (mkCl they_NP (mkNP S.a_Quant (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP S.a_Quant (mkCN bullet_N)))))))");
+		assertEquals(ast, "(mkS S.and_Conj (mkListS (mkS (mkCl S.they_NP (mkNP S.a_Quant (mkCN thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP S.a_Quant (mkCN bullet_N)))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -519,6 +519,7 @@ public class Tester {
 	}
 	
 	// ::snt French far-left killer leaves jail.
+	// TODO: person that kills => killer (etc.)
 	@Test
 	public void t29_French_far_left_killer_leaves_jail() {
 		Transformer t = new Transformer(rules);
@@ -527,7 +528,7 @@ public class Tester {
 		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -541,12 +542,13 @@ public class Tester {
 		assertEquals(amr, "(c (commit-02 (:ARG0 (p (person (:quant 2) (:ARG0-of (a (assail-01 (:ARG1 (s2 school))))) (:mod (o other))))) (:ARG1 (s suicide))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkCN other_A person_N) (mkRS (mkRCl which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN suicide_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkCN other_A person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN suicide_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 
 	// ::snt Gadhafi attacks US in speech in Italy.
+	// TODO: when_Subj [it_NP] => when_Subj he_NP (:wiki "Muammar_Gaddafi")
 	@Test
 	public void t31_Gadhafi_attacks_US_in_speech_in_Italy() {
 		Transformer t = new Transformer(rules);
@@ -561,6 +563,8 @@ public class Tester {
 	}
 	
 	// ::snt We must look at their reasons.
+	// TODO: look-at
+	// TODO: obligate => must/have vs. passive (we are obligated)
 	@Test
 	public void t32_We_must_look_at_their_reasons() {
 		Transformer t = new Transformer(rules);
@@ -569,9 +573,25 @@ public class Tester {
 		assertEquals(amr, "(o (obligate-01 (:ARG1 (w we)) (:ARG2 (l (look-01 (:ARG1 (r (reason (:poss (t they))))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkVP obligate_01_V2V we_NP (mkVP look_01_V2 (mkNP they_Pron (mkCN reason_N))))))");
+		assertEquals(ast, "(mkS (mkCl (mkVP obligate_01_V2V S.we_NP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
+	}
+	
+	// ::snt The man, Xu Yuyuan, wielded a knife usually used to slaughter pigs.
+	// TODO: "usually" (:mod)
+	// TODO: "the man [named] Xu Yuyuan"
+	@Test
+	public void t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(w / wield-01 :ARG0 (m / man :wiki - :name (n / name :op1 \"Xu\" :op2 \"Yuyuan\")) :ARG1 (k / knife :ARG1-of (u / use-01 :ARG2 (s / slaughter-01 :ARG1 (p / pig)) :mod (u2 / usual))))");
+		assertEquals(amr, "(w (wield-01 (:ARG0 (m (man (:wiki -) (:name (n (name (:op1 \"Xu\") (:op2 \"Yuyuan\"))))))) (:ARG1 (k (knife (:ARG1-of (u (use-01 (:ARG2 (s (slaughter-01 (:ARG1 (p pig))))) (:mod (u2 usual))))))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Xu Yuyuan\")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP use_01_V2) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N))))))))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 
 }

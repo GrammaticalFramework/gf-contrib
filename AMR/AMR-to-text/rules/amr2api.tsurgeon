@@ -22,7 +22,15 @@
 # TODO: Tense, Ant, Pol
 # (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP (mkVP frame)))
 /^:ARG0-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
-[adjoin (mkRS (mkRCl which_RP (mkVP@))) var]
+[adjoin (mkRS (mkRCl S.which_RP (mkVP@))) var]
+[excise inv inv]
+
+# mkRCl : RP -> VP -> RCl
+# mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
+# TODO: Tense, Ant, Pol
+# (:ARG1-of (var frame)) => (mkRS (mkRCl which_RP (passiveVP frame)))
+/^:ARG1-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
+[adjoin (mkRS (mkRCl S.which_RP (passiveVP@))) var]
 [excise inv inv]
 
 # mkRCl : RP -> AP -> RCl
@@ -30,7 +38,7 @@
 # (:ARG2-of (var (frame))) => (mkRS (mkRCl which_RP (mkAP frame)))
 # TODO: This most likely doesn't fit other ARG2-of cases...
 /^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
-[adjoin (mkRS (mkRCl which_RP (mkAP@))) var]
+[adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
 [excise inv inv]
 
 # mkVP : VV -> VP -> VP
@@ -96,7 +104,7 @@
 # pron_NP
 # (var pron) => (pron_NP)
 /^[a-z][0-9]*$/=var < /^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/=pron
-[relabel pron /^(.+)$/$1_NP/]
+[relabel pron /^(.+)$/S.$1_NP/]
 [excise var var]
 
 # mkNP : Quant -> CN -> NP
@@ -192,7 +200,7 @@
 
 # mkNP : Pron -> CN -> NP
 # (mkNP a_Quant (mkCN (reason_N (:poss they_NP)))) => (mkNP pron_Pron (mkCN entity_N))
-/^mkNP$/ < (/^S.a_Quant$/=quant $ (/^mkCN$/ < (/^[a-z]+_N$/ < (/^:poss$/=poss < /^(i|you|he|she|it|we|they)_NP$/=pron))))
+/^mkNP$/ < (/^S.a_Quant$/=quant $ (/^mkCN$/ < (/^[a-z]+_N$/ < (/^:poss$/=poss < /^S.(i|you|he|she|it|we|they)_NP$/=pron))))
 [relabel pron /^(.+)_NP$/$1_Pron/]
 [replace quant pron]
 [delete poss]
@@ -263,11 +271,19 @@
 [relabel conj /^(.+)$/S.$1_Conj/]
 [excise temp temp]
 
+# PurposeVP : VP -> Adv
+# (passiveVP (frame mkVP)) => (mkVP (passiveVP frame) (PurposeVP mkVP))
+/^passiveVP$/=pass < (/^[a-z]+-[0-9]+$/=frame < /^mkVP$/=vp_i)
+[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
+[adjoinF (mkVP=vp_o @) pass]
+[adjoinF (E.PurposeVP=adv @) vp_i]
+[move adv >2 vp_o]
+
 # Post-editing
 
 # mkVP : V2V -> NP -> VP -> VP
 # (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
-/^mkVP$/=vp <1 /^[a-z]+-[0-9]+$/=frame <2 /^mkVP$/ <3 /^[a-z]+_NP$/=np
+/^mkVP$/=vp <1 /^[a-z]+-[0-9]+$/=frame <2 /^mkVP$/ <3 /^S.[a-z]+_NP$/=np
 [relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
 [move np >2 vp]
 
@@ -279,6 +295,10 @@
 /^:ARG[0-9]$/=arg < /^mkNP$/
 [excise arg arg]
 
-# Remove any unresolved variables
+# Remove any unresolved variables and relations
+
 /^[a-z][0-9]*$/=var
 [delete var]
+
+/^:.+$/=rel
+[delete rel]

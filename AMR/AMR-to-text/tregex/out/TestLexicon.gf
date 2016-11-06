@@ -19,7 +19,10 @@ abstract TestLexicon = Cat, Dictionary ** {
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
 		see_01_V2 : V2 ;
+		slaughter_01_V2 : V2 ;
 		speak_01_V2 : V2 ;
+		use_01_V2 : V2 ;
+		wield_01_V2 : V2 ;
 
 		urge_01_VV : VV ;		-- note: no urge_VV in Dictionary
 
