@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.grammaticalframework.amr.peg.AMRGrammar;
 import org.parboiled.Parboiled;
@@ -39,7 +41,10 @@ public class Transformer {
 	private List<Pair<String,String>> readRules(String file) throws Exception {
 		List<Pair<String,String>> rules = new ArrayList<Pair<String,String>>();
 		
+		Map<String,String> macros = new HashMap<String,String>();
+		
 		BufferedReader input = new BufferedReader(new FileReader(file));
+		
 		String line = null;
 		String pattern = null;
 		StringBuilder ops = new StringBuilder();
@@ -59,7 +64,10 @@ public class Transformer {
 				continue;
 			}
 			
-			if (line.startsWith("[") && line.endsWith("]")) {
+			if (line.startsWith("@")) {
+				String[] m = line.split("=");
+				macros.put(m[0], m[1]);
+			} else if (line.startsWith("[") && line.endsWith("]")) {
 				ops.append(line);
 			} else {
 				if (ops.length() > 0) {
@@ -68,6 +76,11 @@ public class Transformer {
 				}
 				
 				pattern = line;
+				
+				for (String from : macros.keySet()) {
+					String to = macros.get(from);
+					pattern = pattern.replace(from, to);
+				}
 			}
 		}
 		
@@ -96,19 +109,6 @@ public class Transformer {
 		}
 		
 		return c_rules;
-	}
-
-	/**
-	 * TODO: use Tsurgeon.relabel and remove this method
-	 * @param tree - AST
-	 * @return AST'
-	 */
-	private String postprocessAST(String tree) {
-		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkNP", "(mkVP $1_$2_V2 (mkNP");
-		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkVP", "(mkVP $1_$2_VV (mkVP");
-		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+)\\)", "(mkVP $1_$2_V)");
-		
-		return tree;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class Transformer {
 
 			while (input != null) {
 				Tree output = Tsurgeon.processPatternsOnTree(tregex, input);
-				ast.add(postprocessAST(output.toString()));
+				ast.add(output.toString());
 
 				// Next input tree
 				input = penn.readTree();

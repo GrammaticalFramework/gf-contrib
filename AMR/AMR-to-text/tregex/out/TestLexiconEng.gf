@@ -18,16 +18,26 @@ open ParadigmsEng, MorphoEng in {
 
 		assail_01_V2 = assail_V2 ;
 		attack_01_V2 = attack_V2 ;
+		blow_06_V2 = blow_V2 ;
+		blow_up_06_V2 = blow_up_V2 ;
 		commit_02_V2 = commit_V2 ;
+		convict_01_V2 = convict_V2 ;
 		deserve_01_V2 = deserve_V2 ;
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
+		look_01_V2 = look_V2 ;
+		obligate_01_V2 = obligate_V2 ;
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
 		see_01_V2 = see_V2 ;
+		slaughter_01_V2 = slaughter_V2 ;
 		speak_01_V2 = speak_V2 ;
+		use_01_V2 = use_V2 ;
+		wield_01_V2 = wield_V2 ;
 
 		urge_01_VV = mkVV (mkV "urge") ;
+
+		obligate_01_V2V = obligate_V2V ;
 
 		game_N = game_1_N ;
 		president_N = presidentMasc_N ;
