@@ -326,16 +326,6 @@
 
 ### Post-editing
 
-# (passiveVP frame) => (passiveVP frame_V2)
-/^passiveVP$/ < /@FRAME/=frame
-[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
-
-# mkVP : V2V -> NP -> VP -> VP
-# (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
-/^mkVP$/=vp <1 /@FRAME/=frame <2 /^mkVP$/ <3 /^S.[a-z]+_NP$/=np
-[relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
-[move np >2 vp]
-
 # (mkCl mkCN) => (mkCl (mkNP mkCN))
 /^mkCl$/ < /^mkCN$/=cn
 [adjoinF (mkNP @) cn]
@@ -347,6 +337,28 @@
 # (mkVP (mkVP)) => (mkVP)
 /^mkVP$/=vp_o <: /^mkVP$/
 [excise vp_o vp_o]
+
+# (passiveVP frame) => (passiveVP frame_V2)
+/^passiveVP$/ <: /@FRAME/=frame
+[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
+
+# (mkVP frame mkNP) => (mkVP frame_V2 mkNP)
+/^mkVP$/ <1 /@FRAME/=frame <2 /^mkNP$/
+[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
+
+# (mkVP frame mkVP) => (mkVP frame_VV mkVP)
+/^mkVP$/ <1 /@FRAME/=frame <2 /^mkVP$/
+[relabel frame /^(.+)-(.+)$/$1_$2_VV/]
+
+# mkVP : V2V -> NP -> VP -> VP
+# (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
+/^mkVP$/=vp <1 /@FRAME/=frame <2 /^mkVP$/ <3 /^S.[a-z]+_NP$/=np
+[relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
+[move np >2 vp]
+
+# (mkVP frame) => (mkVP frame_V)
+/^mkVP$/ <: /@FRAME/=frame
+[relabel frame /^(.+)-(.+)$/$1_$2_V/]
 
 ### Remove any unresolved variables and relations
 

@@ -112,19 +112,6 @@ public class Transformer {
 	}
 
 	/**
-	 * TODO: use Tsurgeon.relabel and remove this method
-	 * @param tree - AST
-	 * @return AST'
-	 */
-	private String postprocessAST(String tree) {
-		tree = tree.replaceAll("\\(mkVP ([a-z_]+)-(\\d+) \\(mkNP", "(mkVP $1_$2_V2 (mkNP");
-		tree = tree.replaceAll("\\(mkVP ([a-z_]+)-(\\d+) \\(mkVP", "(mkVP $1_$2_VV (mkVP");
-		tree = tree.replaceAll("\\(mkVP ([a-z_]+)-(\\d+)\\)", "(mkVP $1_$2_V)");
-		
-		return tree;
-	}
-
-	/**
 	 * Constructor.
 	 * @param file - a plain-text file containing Tregex/Tsurgeon rules.
 	 */
@@ -171,7 +158,7 @@ public class Transformer {
 
 			while (input != null) {
 				Tree output = Tsurgeon.processPatternsOnTree(tregex, input);
-				ast.add(postprocessAST(output.toString()));
+				ast.add(output.toString());
 
 				// Next input tree
 				input = penn.readTree();
