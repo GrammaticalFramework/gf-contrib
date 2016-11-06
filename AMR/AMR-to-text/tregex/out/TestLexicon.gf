@@ -9,6 +9,8 @@ abstract TestLexicon = Cat, Dictionary ** {
 		play_02_V : V ;			-- note: play_1_V (etc.) in Dictionary (no default play_V)
 		speak_01_V : V ;
 
+		assail_01_V2 : V2 ;
+		commit_02_V2 : V2 ;
 		deserve_01_V2 : V2 ;
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
@@ -21,6 +23,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
+		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)
 
 		ball_A : A ;			-- FIXME: how to represent e.g. "ball game"?
 
