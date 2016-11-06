@@ -154,7 +154,7 @@ TestTreesLav: uzdod mums skatīties viņu iemeslu
 TestTreesRus: обяжет смотреть их причину нас
 
 TestTrees: t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs
-TestTreesEng: Xu Yuyuan wields a knife that is used to slaughter a pig
+TestTreesEng: Xu Yuyuan wields a knife that is usually used to slaughter a pig
 TestTreesLav: 
 TestTreesRus: 
 

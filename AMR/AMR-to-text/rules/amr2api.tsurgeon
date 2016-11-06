@@ -279,6 +279,17 @@
 [adjoinF (E.PurposeVP=adv @) vp_i]
 [move adv >2 vp_o]
 
+# mkVP : AdV -> VP -> VP
+# mkAdV : Str -> AdV
+# (VP (frame (:mod (var AdV)))) => (mkVP AdV (VP frame))
+/^(mk|passive)VP$/=vp_i < (/^[a-z]+_[0-9]+_V.*$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adv1)))
+[relabel adv1 /^usual$/usually/] # An annotation mistake?
+[relabel adv1 /^(.+)$/"$1"/]
+[adjoinF (mkAdV=adv2 @) adv1]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv2 >1 vp_o]
+[delete mod]
+
 # Post-editing
 
 # mkVP : V2V -> NP -> VP -> VP

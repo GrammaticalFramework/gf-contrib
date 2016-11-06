@@ -69,6 +69,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t32_We_must_look_at_their_reasons = (mkS (mkCl (mkVP obligate_01_V2V S.we_NP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N)))))) ;
 
-	lin t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP use_01_V2) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
+	lin t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV "usually") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
 
 }
