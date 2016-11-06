@@ -31,5 +31,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t28_China_president_urges_child_safety : S ;
 	fun t29_French_far_left_killer_leaves_jail : S ;
 	fun t30_Two_other_school_assailants_have_committed_suicide : S ;
+	fun t31_Gadhafi_attacks_US_in_speech_in_Italy : S ;
 
 }

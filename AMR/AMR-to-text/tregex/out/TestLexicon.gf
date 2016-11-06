@@ -10,6 +10,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		speak_01_V : V ;
 
 		assail_01_V2 : V2 ;
+		attack_01_V2 : V2 ;
 		commit_02_V2 : V2 ;
 		deserve_01_V2 : V2 ;
 		leave_11_V2 : V2 ;

@@ -546,4 +546,18 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 
+	// ::snt Gadhafi attacks US in speech in Italy.
+	@Test
+	public void t31_Gadhafi_attacks_US_in_speech_in_Italy() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(a / attack-01 :ARG0 (p / person :wiki \"Muammar_Gaddafi\" :name (n / name :op1 \"Gadhafi\")) :ARG1 (c / country :wiki \"United_States\" :name (n2 / name :op1 \"US\")) :subevent-of (s / speak-01 :ARG0 p :location (c2 / country :wiki \"Italy\" :name (n3 / name :op1 \"Italy\"))))");
+		assertEquals(amr, "(a (attack-01 (:ARG0 (p (person (:wiki \"Muammar_Gaddafi\") (:name (n (name (:op1 \"Gadhafi\"))))))) (:ARG1 (c (country (:wiki \"United_States\") (:name (n2 (name (:op1 \"US\"))))))) (:subevent-of (s (speak-01 (:ARG0 p) (:location (c2 (country (:wiki \"Italy\") (:name (n3 (name (:op1 \"Italy\"))))))))))))");
+								
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Gadhafi\")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN \"US\"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Italy\"))))))))))");
+						
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+
 }

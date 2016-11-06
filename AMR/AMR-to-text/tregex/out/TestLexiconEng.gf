@@ -17,6 +17,7 @@ open ParadigmsEng, MorphoEng in {
 		speak_01_V = speak_V ;
 
 		assail_01_V2 = assail_V2 ;
+		attack_01_V2 = attack_V2 ;
 		commit_02_V2 = commit_V2 ;
 		deserve_01_V2 = deserve_V2 ;
 		leave_11_V2 = leave_V2 ;

@@ -65,6 +65,14 @@
 /^mkVP$/=vp_o < (/^[a-z]+-[0-9]+$/ < /^mkVP$/=vp_i)
 [move vp_i >2 vp_o]
 
+# mkAdv : Subj -> S -> Adv
+# (mkVP (frame (:subevent-of mkS))) => (mkVP (mkVP frame) (mkAdv when_Subj mkS))
+/^mkVP$/=vp_i < (/^[a-z]+-[0-9]+$/ < (/^:subevent-of$/=temp < /^mkS$/=sub))
+[adjoinF (S.mkAdv=adv S.when_Subj @) sub]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
+[delete temp]
+
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
 /^name$/ < ((/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=x) $+ (/^:op[0-9]+$/=op2 < /^"[A-Za-z-]+"$/=y))
