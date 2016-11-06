@@ -148,23 +148,6 @@
 # mkRCl : RP -> NP -> RCl
 # TODO
 
-# mkCN : A -> N -> CN
-# (mkCN (var (entity (:mod (var adj))))) => (mkCN adj noun)
-/^mkCN$/=cn < (/^[a-z][0-9]*$/=var < (/^[a-z]+$/=noun < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj !< (/^country$/ < /^:name$/)))))
-[relabel noun /^(.+)$/$1_N/]
-[relabel adj /^(.+)$/$1_A/]
-[move adj >1 cn]
-[delete mod]
-[excise var var]
-
-# mkCN : A -> CN -> CN
-# (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
-/^mkCN$/=cn1 < (/^[a-z]+_A$/ < (/^:degree$/=degree < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj2)))
-[relabel adj2 /^(.+)$/$1_A/]
-[adjoinF (mkCN=cn2 @) cn1]
-[move adj2 >1 cn2]
-[delete degree]
-
 # (mkCN (var entity)) => (mkCN entity)
 /^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/=noun)
 [relabel noun /^(.+)$/$1_N/]
@@ -183,6 +166,21 @@
 [adjoinF (mkCN=cn2 @) cn1]
 [move adv >2 cn2]
 [delete mod]
+
+# mkCN : A -> N -> CN
+# (mkCN (noun (:mod (var adj)))) => (mkCN adj noun)
+/^mkCN$/=cn < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj !< (/^country$/ < /^:name$/))))
+[relabel adj /^(.+)$/$1_A/]
+[move adj >1 cn]
+[delete mod]
+
+# mkCN : A -> CN -> CN
+# (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
+/^mkCN$/=cn1 < (/^[a-z]+_A$/ < (/^:degree$/=degree < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj2)))
+[relabel adj2 /^(.+)$/$1_A/]
+[adjoinF (mkCN=cn2 @) cn1]
+[move adj2 >1 cn2]
+[delete degree]
 
 # mkNum : Digits -> Num
 # mkDigits : Str -> Digits

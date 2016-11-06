@@ -99,14 +99,11 @@ public class Transformer {
 	}
 
 	/**
-	 * TODO: use Tsurgeon.relabel, remove this method; Tsurgeon.relabel is limited, though
+	 * TODO: use Tsurgeon.relabel and remove this method
 	 * @param tree - AST
 	 * @return AST'
 	 */
 	private String postprocessAST(String tree) {
-		tree = tree.replaceAll("\\(mkCN ([a-z]+) ([a-z]+)\\)", "(mkCN $1_A $2_N)");
-		tree = tree.replaceAll("\\(mkCN ([a-z]+)\\)", "(mkCN $1_N)");
-		
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkNP", "(mkVP $1_$2_V2 (mkNP");
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkVP", "(mkVP $1_$2_VV (mkVP");
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+)\\)", "(mkVP $1_$2_V)");

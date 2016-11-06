@@ -527,7 +527,7 @@ public class Tester {
 		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN far_A (mkCN (mkCN (mkCN left_A person_N) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl which_RP (mkVP kill_01_V)))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
