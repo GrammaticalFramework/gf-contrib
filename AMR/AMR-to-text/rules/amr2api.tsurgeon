@@ -106,7 +106,13 @@
 [delete var]
 
 # (var (type (:name mkNP))) => (mkNP)
-(/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))) !> /^:mod$/
+/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np) !< /^:mod$/) !> /^:mod$/
+[move np $- var]
+[delete var]
+
+# (var (type (:name mkNP) :mod)) => (mkNP :mod)
+/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np) < /^:mod$/=mod) !> /^:mod$/
+[move mod >1 np]
 [move np $- var]
 [delete var]
 
@@ -118,7 +124,6 @@
 
 # mkNP : Quant -> CN -> NP
 # (var entity) => (mkNP a_Quant (mkCN (var entity))
-# TODO: "!>" seems to be a computationally expensive relation to match...
 /^[a-z][0-9]*$/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/
 [adjoinF (mkNP S.a_Quant (mkCN @)) entity]
 
@@ -185,11 +190,21 @@
 [move rs >2 cn2]
 
 # mkCN : CN -> Adv -> CN
+# mkAdv : Prep -> NP
 # (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
 /^mkCN$/=cn1 < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < (/^country$/ < (/^:name$/ < /^mkNP$/=np)))))
 [adjoinF (S.mkAdv=adv S.from_Prep @) np]
 [adjoinF (mkCN=cn2 @) cn1]
 [move adv >2 cn2]
+[delete mod]
+
+# mkNP : NP -> Adv -> NP
+# mkAdv : Prep -> NP
+# (mkNP (:mod (var ('country' (:name mkNP))))) => (mkNP mkNP (mkAdv from_Prep mkNP))
+/^mkNP$/=np1 < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < (/^country$/ < (/^:name$/ < /^mkNP$/=country))))
+[adjoinF (S.mkAdv=adv S.from_Prep @) country]
+[adjoinF (mkNP=np2 @) np1]
+[move adv >2 np2]
 [delete mod]
 
 # mkCN : A -> N -> CN
