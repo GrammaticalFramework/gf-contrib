@@ -128,3 +128,13 @@ TestTreesEng: they are a thug and it deserves a bullet
 TestTreesLav: viņi ir slepkava , un pelna lodi
 TestTreesRus: они буян и заслужите пулю
 
+TestTrees: t28_China_president_urges_child_safety
+TestTreesEng: president of China urges to protect a child
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t29_French_far_left_killer_leaves_jail
+TestTreesEng: a far left person from France that kills leaves a jail
+TestTreesLav: 
+TestTreesRus: 
+

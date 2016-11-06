@@ -1,3 +1,22 @@
+# (var ('person' (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
+/^[a-z][0-9]*$/=var1 < (/^person$/ < (/^:ARG0-of$/ < (/^[a-z][0-9]*$/=var2 < /^have-org-role-91$/)))
+[excise var1 var2]
+
+# mkN2 : N -> Prep -> N2
+# ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
+/^have-org-role-91$/ < (/^:ARG2$/=title < (/^[a-z][0-9]*$/=var < /^[a-z]+$/=entity))
+[relabel entity /^(.+)$/$1_N/]
+[adjoinF (mkN2=n2 @) entity]
+[insert (of_Prep) >2 n2]
+[excise title var]
+
+# mkCN : N2 -> NP -> CN
+# ('have-org-role-91' :ARG1 mkN2) => (mkCN (mkN2 :ARG1))
+/^have-org-role-91$/=cn < (/^:ARG1$/=org $ /^mkN2$/=title)
+[move title $+ org]
+[adjoin (mkCN TEMP=temp@) cn]
+[excise temp temp]
+
 # mkRCl : RP -> VP -> RCl
 # mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
 # TODO: Tense, Ant, Pol
@@ -13,6 +32,14 @@
 /^:ARG2-of$/=inv < (/^[a-z][0-9]*$/=var < /^[a-z]+-[0-9]+$/)
 [adjoin (mkRS (mkRCl which_RP (mkAP@))) var]
 [excise inv inv]
+
+# mkVP : VV -> VP -> VP
+# (frame (:ARG2 (var (frame :ARG1)))) => (frame (mkVP frame :ARG1))
+/^[a-z]+-[0-9]+$/=frame < (/^:ARG2$/=vp < (/^[a-z][0-9]*$/=var < (/^[a-z]+-[0-9]+$/=vv < /^:ARG1$/=compl)))
+[move vv >1 vp]
+[move compl >2 vp]
+[relabel vp /^.+$/mkVP/]
+[delete var]
 
 # mkCl : VP -> Cl
 # mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
@@ -33,6 +60,11 @@
 [move obj >2 vp]
 [excise obj obj]
 
+# mkVP : VV -> VP -> VP
+# (mkVP (frame mkVP)) => (mkVP frame mkVP)
+/^mkVP$/=vp_o < (/^[a-z]+-[0-9]+$/ < /^mkVP$/=vp_i)
+[move vp_i >2 vp_o]
+
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
 /^name$/ < ((/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=x) $+ (/^:op[0-9]+$/=op2 < /^"[A-Za-z-]+"$/=y))
@@ -49,7 +81,7 @@
 [delete var]
 
 # (var (type (:name mkNP))) => (mkNP)
-/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))
+(/^[a-z][0-9]*$/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np))) !> /^:mod$/
 [move np $- var]
 [delete var]
 
@@ -116,21 +148,39 @@
 # mkRCl : RP -> NP -> RCl
 # TODO
 
+# (mkCN (var entity)) => (mkCN entity)
+/^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/=noun)
+[relabel noun /^(.+)$/$1_N/]
+[excise var var]
+
+# mkCN : CN -> RS -> CN
+# (mkCN (noun mkRS)) => (mkCN (mkCN noun) mkRS)
+/^mkCN$/=cn1 < (/^[a-z]+_N$/ < /^mkRS$/=rs)
+[adjoinF (mkCN=cn2 @) cn1]
+[move rs >2 cn2]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
+/^mkCN$/=cn1 < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < (/^country$/ < (/^:name$/ < /^mkNP$/=np)))))
+[adjoinF (S.mkAdv=adv S.from_Prep @) np]
+[adjoinF (mkCN=cn2 @) cn1]
+[move adv >2 cn2]
+[delete mod]
+
 # mkCN : A -> N -> CN
-# (mkCN (var (entity (:mod (var adj))))) => (mkCN (var adj) (var entity))
-/^mkCN$/=cn < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < (/^:mod$/=mod < /^[a-z][0-9]*$/=adj)))
+# (mkCN (noun (:mod (var adj)))) => (mkCN adj noun)
+/^mkCN$/=cn < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj !< (/^country$/ < /^:name$/))))
+[relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn]
 [delete mod]
 
-# mkCN : CN -> RS -> CN
-# (mkCN (var (entity mkRS))) => (mkCN (mkCN (var entity)) mkRS)
-/^mkCN$/=cn1 < (/^[a-z][0-9]*$/ < (/^[a-z]+$/ < /^mkRS$/=rs))
-[adjoin (mkCN=cn2 mkCN@) cn1]
-[move rs >2 cn2]
-
-# (mkCN (var entity)) => (mkCN entity)
-/^mkCN$/ < (/^[a-z][0-9]*$/=var < /^[a-z]+$/)
-[excise var var]
+# mkCN : A -> CN -> CN
+# (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
+/^mkCN$/=cn1 < (/^[a-z]+_A$/ < (/^:degree$/=degree < (/^[a-z][0-9]*$/ < /^[a-z]+$/=adj2)))
+[relabel adj2 /^(.+)$/$1_A/]
+[adjoinF (mkCN=cn2 @) cn1]
+[move adj2 >1 cn2]
+[delete degree]
 
 # mkNum : Digits -> Num
 # mkDigits : Str -> Digits
@@ -146,8 +196,8 @@
 [move adv >2 vp_o]
 
 # mkNP : NP -> Adv -> NP
-# (mkNP (mkCN (entity (:adv mkNP)))) => (mkNP (mkNP (mkCN entity)) (:adv mkNP))
-/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+$/ < /^:(location|topic)$/=adv))
+# (mkNP (mkCN (noun (:adv mkNP)))) => (mkNP (mkNP (mkCN noun)) (:adv mkNP))
+/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+_N$/ < /^:(location|topic)$/=adv))
 [adjoinF (mkNP=np_o @) np_i]
 [move adv >2 np_o]
 
@@ -197,6 +247,16 @@
 [move s $- conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
 [excise temp temp]
+
+# Post-editing
+
+# (mkCl mkCN) => (mkCl (mkNP mkCN))
+/^mkCl$/ < /^mkCN$/=cn
+[adjoinF (mkNP @) cn]
+
+# (:ARG1 mkNP) => (mkNP)
+/^:ARG[0-9]$/=arg < /^mkNP$/
+[excise arg arg]
 
 # Remove any unresolved variables
 /^[a-z][0-9]*$/=var

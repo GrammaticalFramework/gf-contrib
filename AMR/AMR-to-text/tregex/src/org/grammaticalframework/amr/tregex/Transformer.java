@@ -47,6 +47,10 @@ public class Transformer {
 		while ((line = input.readLine()) != null) {
 			line = line.trim();
 			
+			if (line.startsWith("%")) {
+				break; // Used for development purposes
+			}
+			
 			if (line.contains("#")) {
 				line = line.substring(0, line.indexOf("#")).trim();
 			}
@@ -95,15 +99,13 @@ public class Transformer {
 	}
 
 	/**
-	 * TODO: use Tsurgeon.relabel, remove this method; Tsurgeon.relabel is limited, though
+	 * TODO: use Tsurgeon.relabel and remove this method
 	 * @param tree - AST
 	 * @return AST'
 	 */
 	private String postprocessAST(String tree) {
-		tree = tree.replaceAll("\\(mkCN ([a-z]+) ([a-z]+)\\)", "(mkCN $1_A $2_N)");
-		tree = tree.replaceAll("\\(mkCN ([a-z]+)\\)", "(mkCN $1_N)");
-		
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkNP", "(mkVP $1_$2_V2 (mkNP");
+		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+) \\(mkVP", "(mkVP $1_$2_VV (mkVP");
 		tree = tree.replaceAll("\\(mkVP ([a-z]+)-(\\d+)\\)", "(mkVP $1_$2_V)");
 		
 		return tree;
@@ -177,7 +179,6 @@ public class Transformer {
 		Transformer t = new Transformer("../rules/amr2api.tsurgeon");
 		
 		String amr = t.transformToLISP("");
-		
 		System.out.println("AMR: " + amr);
 		
 		String ast = t.transformToGF(amr).get(0);
