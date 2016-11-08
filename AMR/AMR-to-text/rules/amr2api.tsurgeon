@@ -1,5 +1,62 @@
-@VAR=^[a-z][0-9]*$
-@FRAME=^[a-z]+(_[a-z]+)*-[0-9]+$
+
+# Macros
+
+@/VAR/=/^[a-z][0-9]*$/
+@/REL/=/^:.+$/
+@/FRAME/=/^[a-z]+(_[a-z]+)*-[0-9]+$/
+@/WORD/=/^[a-z]+$/
+@/TOKEN/=/^"[A-Za-z-]+"$/
+@/MWE/=/^"[A-Z a-z -]+"$/
+@/DET/=/^(every|few|many|more|much|some)$/
+@/PREP/=/^(above|across|after|among|before|behind|below|between)$/ # TODO: extend the list
+@/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/
+@/CONJ/=/^(and|or)$/
+@/NUM/=/^[0-9]+$/
+@/NE_TYPE/=/^[a-z]+$/ # TODO: make a complete list
+
+@/:ARGn/=/^:ARG[0-9]$/
+@/:ARG0/=/^:ARG0$/
+@/:ARG0-of/=/^:ARG0-of$/
+@/:ARG1/=/^:ARG1$/
+@/:ARG1-of/=/^:ARG1-of$/
+@/:ARG2/=/^:ARG2$/
+@/:ARG2-of/=/^:ARG2-of$/
+@/:ARG3/=/^:ARG3$/
+@/:domain/=/^:domain$/
+@/:mod/=/^:mod$/
+@/:degree/=/^:degree$/
+@/:quant/=/^:quant$/
+@/:poss/=/^:poss$/
+@/:location/=/^:location$/
+@/:topic/=/^:topic$/
+@/:name/=/^:name$/
+@/:opN/=/^:op[0-9]+$/
+@/:subevent-of/=/^:subevent-of$/
+
+@/ORG-91/=/^have-org-role-91$/
+
+@/name/=/^name$/
+@/person/=/^person$/
+@/country/=/^country$/
+
+@/mkS/=/^mkS$/
+@/mkRS/=/^mkRS$/
+@/mkCl/=/^mkCl$/
+@/mkVP/=/^mkVP$/
+@/passiveVP/=/^passiveVP$/
+@/mkNP/=/^mkNP$/
+@/mkCN/=/^mkCN$/
+@/mkN2/=/^mkN2$/
+@/mkAP/=/^mkAP$/
+@/mkListS/=/^mkListS$/
+@/mkListNP/=/^mkListNP$/
+
+@/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
+@/struct_NP/=/^S.[a-z]+_NP$/
+@/quant_Quant/=/^S[.][a-z]+_Quant$/
+@/a_Quant/=/^S.a_Quant$/
+@/noun_N/=/^[a-z]+_N$/
+@/adj_A/=/^[a-z]+_A$/
 
 ### Pre-editing
 
@@ -10,12 +67,12 @@
 ### Rules
 
 # (var ('person' (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
-/@VAR/=var1 < (/^person$/ < (/^:ARG0-of$/ < (/@VAR/=var2 < /^have-org-role-91$/)))
+/VAR/=var1 < (/person/ < (/:ARG0-of/ < (/VAR/=var2 < /ORG-91/)))
 [excise var1 var2]
 
 # mkN2 : N -> Prep -> N2
 # ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
-/^have-org-role-91$/ < (/^:ARG2$/=title < (/@VAR/=var < /^[a-z]+$/=entity))
+/ORG-91/ < (/:ARG2/=title < (/VAR/=var < /WORD/=entity))
 [relabel entity /^(.+)$/$1_N/]
 [adjoinF (mkN2=n2 @) entity]
 [insert (of_Prep) >2 n2]
@@ -23,7 +80,7 @@
 
 # mkCN : N2 -> NP -> CN
 # ('have-org-role-91' :ARG1 mkN2) => (mkCN (mkN2 :ARG1))
-/^have-org-role-91$/=cn < (/^:ARG1$/=org $ /^mkN2$/=title)
+/ORG-91/=cn < (/:ARG1/=org $ /mkN2/=title)
 [move title $+ org]
 [adjoin (mkCN TEMP=temp@) cn]
 [excise temp temp]
@@ -32,7 +89,7 @@
 # mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
 # TODO: Tense, Ant, Pol
 # (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP (mkVP frame)))
-/^:ARG0-of$/=inv < (/@VAR/=var < /@FRAME/)
+/:ARG0-of/=inv < (/VAR/=var < /FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP (mkVP@))) var]
 [excise inv inv]
 
@@ -41,7 +98,7 @@
 # mkRS : (Tense) -> (Ant) -> (Pol) -> RCl -> RS
 # TODO: Tense, Ant, Pol
 # (:ARG1-of (var frame)) => (mkRS (mkRCl which_RP (passiveVP frame)))
-/^:ARG1-of$/=inv < (/@VAR/=var < /@FRAME/)
+/:ARG1-of/=inv < (/VAR/=var < /FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP (passiveVP@))) var]
 [excise inv inv]
 
@@ -49,13 +106,13 @@
 # mkAP : A -> AP
 # (:ARG2-of (var (frame))) => (mkRS (mkRCl which_RP (mkAP frame)))
 # TODO: This most likely doesn't fit other ARG2-of cases...
-/^:ARG2-of$/=inv < (/@VAR/=var < /@FRAME/)
+/:ARG2-of/=inv < (/VAR/=var < /FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
 [excise inv inv]
 
 # mkVP : VV -> VP -> VP
 # (frame (:ARG2 (var (frame :ARG1)))) => (frame (mkVP frame :ARG1))
-/@FRAME/=frame < (/^:ARG2$/=vp < (/@VAR/=var < (/@FRAME/=vv < /^:ARG1$/=compl)))
+/FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < /:ARG1/=compl)))
 [move vv >1 vp]
 [move compl >2 vp]
 [relabel vp /^.+$/mkVP/]
@@ -65,18 +122,18 @@
 # mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
 # TODO: Tense, Ant, Pol
 # (var frame) => (mkS (mkCl (mkVP frame)))
-/@VAR/=var < /@FRAME/
+/VAR/=var < /FRAME/
 [adjoin (mkS (mkCl (mkVP@))) var]
 
 # mkCl : NP -> VP -> Cl
 # (mkCl (mkVP (frame :ARG0))) => (mkCl :ARG0 (mkVP frame))
-/^mkCl$/=cl < (/^mkVP$/ < (/@FRAME/ < /^:ARG0$/=subj))
+/mkCl/=cl < (/mkVP/ < (/FRAME/ < /:ARG0/=subj))
 [move subj >1 cl]
 [excise subj subj]
 
 # passiveVP : V2 -> VP
 # (mkCl !:ARG0 (mkVP (frame :ARG1 !:ARG0))) => (mkCl :ARG1 (mkVP (passiveVP frame)))
-/^mkCl$/=cl < (/^mkVP$/ < (/@FRAME/=frame < /^:ARG1$/=subj !< /^:ARG0$/)) !<1 /@VAR/
+/mkCl/=cl < (/mkVP/ < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
 [relabel subj /^:ARG1$/:ARG0/]
 [move subj >1 cl]
 [excise subj subj]
@@ -84,18 +141,18 @@
 
 # mkVP : V2 -> NP -> VP
 # (mkVP (frame :ARG1)) => (mkVP frame :ARG1)
-/^mkVP$/=vp < (/@FRAME/ < /^:ARG1$/=obj)
+/mkVP/=vp < (/FRAME/ < /:ARG1/=obj)
 [move obj >2 vp]
 [excise obj obj]
 
 # mkVP : VV -> VP -> VP
 # (mkVP (frame mkVP)) => (mkVP frame mkVP)
-/^mkVP$/=vp_o < (/@FRAME/ < /^mkVP$/=vp_i)
+/mkVP/=vp_o < (/FRAME/ < /mkVP/=vp_i)
 [move vp_i >2 vp_o]
 
 # mkAdv : Subj -> S -> Adv
 # (mkVP (frame (:subevent-of mkS))) => (mkVP (mkVP frame) (mkAdv when_Subj mkS))
-/^mkVP$/=vp_i < (/@FRAME/ < (/^:subevent-of$/=temp < /^mkS$/=sub))
+/mkVP/=vp_i < (/FRAME/ < (/:subevent-of/=temp < /mkS/=sub))
 [adjoinF (S.mkAdv=adv S.when_Subj @) sub]
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
@@ -103,7 +160,7 @@
 
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
-/^name$/ < ((/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=x) $+ (/^:op[0-9]+$/=op2 < /^"[A-Za-z-]+"$/=y))
+/name/ < ((/:opN/ < /MWE/=x) $+ (/:opN/=op2 < /TOKEN/=y))
 [relabel y /^"(.+)"$/$1/]
 [relabel x /^"(.+)"$/"$1 ={y}"/]
 [delete op2]
@@ -111,36 +168,36 @@
 # mkPN : Str -> PN
 # mkNP : PN -> NP
 # (:name (var ('name' (:op "Named Entity")))) => (:name (mkNP (mkPN "Named Entity")))
-/^:name$/=ne < (/@VAR/=var < (/^name$/ < (/^:op[0-9]+$/ < /^"[A-Z a-z -]+"$/=str)))
+/:name/=ne < (/VAR/=var < (/name/ < (/:opN/ < /MWE/=str)))
 [adjoinF (mkNP=np (mkPN @)) str]
 [move np >1 ne]
 [delete var]
 
 # (var (type (:name mkNP))) => (mkNP)
-/@VAR/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np) !< /^:mod$/) !> /^:mod$/
+/VAR/=var < (/NE_TYPE/ < (/:name/ < /mkNP/=np) !< /:mod/) !> /:mod/
 [move np $- var]
 [delete var]
 
 # (var (type (:name mkNP) :mod)) => (mkNP :mod)
-/@VAR/=var < (/^[a-z]+$/ < (/^:name$/ < /^mkNP$/=np) < /^:mod$/=mod) !> /^:mod$/
+/VAR/=var < (/NE_TYPE/ < (/:name/ < /mkNP/=np) < /:mod/=mod) !> /:mod/
 [move mod >1 np]
 [move np $- var]
 [delete var]
 
 # pron_NP
 # (var pron) => (pron_NP)
-/@VAR/=var < /^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/=pron
+/VAR/=var < /PRON/=pron
 [relabel pron /^(.+)$/S.$1_NP/]
 [excise var var]
 
 # mkNP : Quant -> CN -> NP
 # (var entity) => (mkNP a_Quant (mkCN (var entity))
-/@VAR/=entity < (/^[a-z]+$/ !< /^:op[0-9]+$/) !> /^(mkCN|:mod|:quant|:degree)$/
+/VAR/=entity < (/WORD/ !< /:opN/) !> /^(mkCN|:mod|:quant|:degree)$/
 [adjoinF (mkNP S.a_Quant (mkCN @)) entity]
 
 # mkListNP : NP -> NP -> ListNP
 # (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
-/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < /^mkNP$/=np1) $+ (/^:op[0-9]+$/=op2 < /^mkNP$/=np2))
+/CONJ/ < ((/:opN/=op1 < /mkNP/=np1) $+ (/:opN/=op2 < /mkNP/=np2))
 [adjoin (mkListNP=list mkNP@) np1]
 [move np2 >2 list]
 [excise op1 op1]
@@ -148,14 +205,14 @@
 
 # mkListNP : NP -> ListNP -> ListNP
 # (conj mkListNP (:op mkNP)) => (conj (mkListNP mkNP mkListNP))
-/^(and|or)$/ < (/^mkListNP$/=list $+ (/^:op[0-9]+$/=op_n < /^mkNP$/=np_n))
+/CONJ/ < (/mkListNP/=list $+ (/:opN/=op_n < /mkNP/=np_n))
 [adjoin (mkListNP=list_prim mkNP@) np_n]
 [move list >2 list_prim]
 [excise op_n op_n]
 
 # mkNP : Conj -> ListNP -> NP
 # (var (conj mkListNP)) => (mkNP (conj_Conj mkListNP))
-/@VAR/=var < (/^(and|or)$/=conj < /^mkListNP$/=np)
+/VAR/=var < (/CONJ/=conj < /mkListNP/=np)
 [adjoin (mkNP (var=temp@)) var]
 [move np $- conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
@@ -163,12 +220,12 @@
 
 # mkNP : Quant -> Num -> CN -> NP
 # (mkNP ([quant_Quant] (mkCN (var (entity :quant))))) => (mkNP ([quant_Quant] :quant (mkCN (var entity))))
-/^mkNP$/=np < (/^mkCN$/ < (/@VAR/ < (/^[a-z]+$/ < /^:quant$/=num)))
+/mkNP/=np < (/mkCN/ < (/VAR/ < (/WORD/ < /:quant/=num)))
 [move num >2 np]
 
 # mkNP : Det -> CN -> NP
 # (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN])
-/^mkNP$/ < (/^S[.][a-z]+_Quant$/=quant $+ (/^:quant$/=temp < (/@VAR/ < /^(every|few|many|more|much|some)$/=det)))
+/mkNP/ < (/quant_Quant/=quant $+ (/:quant/=temp < (/VAR/ < /DET/=det)))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
 [relabel det /^S.more_Det$/more_Det/]
@@ -179,10 +236,10 @@
 # mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
 # TODO: Tense, Ant, Pol
 # 1. (mkNP (mkCN (var (entity (:domain mkNP))))) => (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP)))))))
-(/^mkNP$/=nom < (/^mkCN$/ < (/@VAR/ < (/^[a-z]+$/ < /^:domain$/)))) !> /^mkCl$/
+(/mkNP/=nom < (/mkCN/ < (/VAR/ < (/WORD/ < /:domain/)))) !> /mkCl/
 [adjoinF (mkS (mkCl @)) nom]
 # 2. (mkS (mkCl (mkNP (mkCN (var (entity (:domain mkNP))))))) => (mkS (mkCl mkNP (mkNP (mkCN (var entity)))))
-/^mkCl$/=cl < (/^mkNP$/ < (/^mkCN$/ < (/@VAR/ < (/^[a-z]+$/ < /^:domain$/=subj))))
+/mkCl/=cl < (/mkNP/ < (/mkCN/ < (/VAR/ < (/WORD/ < /:domain/=subj))))
 [move subj >1 cl]
 [excise subj subj]
 
@@ -190,20 +247,20 @@
 # TODO
 
 # (mkCN (var entity)) => (mkCN entity)
-/^mkCN$/ < (/@VAR/=var < /^[a-z]+$/=noun)
+/mkCN/ < (/VAR/=var < /WORD/=noun)
 [relabel noun /^(.+)$/$1_N/]
 [excise var var]
 
 # mkCN : CN -> RS -> CN
 # (mkCN (noun mkRS)) => (mkCN (mkCN noun) mkRS)
-/^mkCN$/=cn1 < (/^[a-z]+_N$/ < /^mkRS$/=rs)
+/mkCN/=cn1 < (/noun_N/ < /mkRS/=rs)
 [adjoinF (mkCN=cn2 @) cn1]
 [move rs >2 cn2]
 
 # mkCN : CN -> Adv -> CN
 # mkAdv : Prep -> NP
 # (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
-/^mkCN$/=cn1 < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/@VAR/ < (/^country$/ < (/^:name$/ < /^mkNP$/=np)))))
+/mkCN/=cn1 < (/noun_N/ < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < /mkNP/=np)))))
 [adjoinF (S.mkAdv=adv S.from_Prep @) np]
 [adjoinF (mkCN=cn2 @) cn1]
 [move adv >2 cn2]
@@ -212,7 +269,7 @@
 # mkNP : NP -> Adv -> NP
 # mkAdv : Prep -> NP
 # (mkNP (:mod (var ('country' (:name mkNP))))) => (mkNP mkNP (mkAdv from_Prep mkNP))
-/^mkNP$/=np1 < (/^:mod$/=mod < (/@VAR/ < (/^country$/ < (/^:name$/ < /^mkNP$/=country))))
+/mkNP/=np1 < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < /mkNP/=country))))
 [adjoinF (S.mkAdv=adv S.from_Prep @) country]
 [adjoinF (mkNP=np2 @) np1]
 [move adv >2 np2]
@@ -220,14 +277,14 @@
 
 # mkCN : A -> N -> CN
 # (mkCN (noun (:mod (var adj)))) => (mkCN adj noun)
-/^mkCN$/=cn < (/^[a-z]+_N$/ < (/^:mod$/=mod < (/@VAR/ < /^[a-z]+$/=adj !< (/^country$/ < /^:name$/))))
+/mkCN/=cn < (/noun_N/ < (/:mod/=mod < (/VAR/ < /WORD/=adj !< (/country/ < /:name/))))
 [relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn]
 [delete mod]
 
 # mkCN : A -> CN -> CN
 # (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
-/^mkCN$/=cn1 < (/^[a-z]+_A$/ < (/^:degree$/=degree < (/@VAR/ < /^[a-z]+$/=adj2)))
+/mkCN/=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /WORD/=adj2)))
 [relabel adj2 /^(.+)$/$1_A/]
 [adjoinF (mkCN=cn2 @) cn1]
 [move adj2 >1 cn2]
@@ -235,7 +292,7 @@
 
 # mkNP : Pron -> CN -> NP
 # (mkNP a_Quant (mkCN (reason_N (:poss they_NP)))) => (mkNP pron_Pron (mkCN entity_N))
-/^mkNP$/ < (/^S.a_Quant$/=quant $ (/^mkCN$/ < (/^[a-z]+_N$/ < (/^:poss$/=poss < /^S.(i|you|he|she|it|we|they)_NP$/=pron))))
+/mkNP/ < (/a_Quant/=quant $ (/mkCN/ < (/noun_N/ < (/:poss/=poss < /pron_NP/=pron))))
 [relabel pron /^(.+)_NP$/$1_Pron/]
 [replace quant pron]
 [delete poss]
@@ -243,37 +300,37 @@
 # mkNum : Digits -> Num
 # mkDigits : Str -> Digits
 # (:quant digits) => (mkNum (mkDigits "digits"))
-/^:quant$/=quant < /^[0-9]+$/=digits
+/:quant/=quant < /NUM/=digits
 [relabel digits /^(.+)$/"$1"/]
 [adjoin (mkNum (mkDigits@)) quant]
 
 # mkVP : VP -> Adv -> VP
 # (mkVP (frame (:adv mkNP))) => (mkVP (mkVP frame) (:adv mkNP))
-/^mkVP$/=vp_i < (/@FRAME/ < /^:(location|topic)$/=adv)
+/mkVP/=vp_i < (/FRAME/ < /^:(location|topic)$/=adv)
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
 
 # mkNP : NP -> Adv -> NP
 # (mkNP (mkCN (noun (:adv mkNP)))) => (mkNP (mkNP (mkCN noun)) (:adv mkNP))
-/^mkNP$/=np_i < (/^mkCN$/ < (/^[a-z]+_N$/ < /^:(location|topic)$/=adv))
+/mkNP/=np_i < (/mkCN/ < (/noun_N/ < /^:(location|topic)$/=adv))
 [adjoinF (mkNP=np_o @) np_i]
 [move adv >2 np_o]
 
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)
-/^:location$/=rel < /^mkNP$/=np
+/:location/=rel < /mkNP/=np
 [adjoinF (S.mkAdv S.in_Prep @) np]
 [excise rel rel]
 
 # mkAdv : Prep -> NP -> Adv
 # (:topic mkNP) => (mkAdv about_Prep mkNP)
-/^:topic$/=rel < /^mkNP$/=np
+/:topic/=rel < /mkNP/=np
 [adjoinF (S.mkAdv about_Prep @) np]
 [excise rel rel]
 
 # mkAP : AdA -> AP -> AP
 # (mkAP (frame (:degree (var ada))))
-/^mkAP$/=ap_i < (/@FRAME/=frame < (/^:degree$/=deg < (/@VAR/ < /^[a-z]+$/=ada)))
+/mkAP/=ap_i < (/FRAME/=frame < (/:degree/=deg < (/VAR/ < /WORD/=ada)))
 [adjoinF (mkAP=ap_o @) ap_i]
 [move ada >1 ap_o]
 [relabel ada /^(.+)$/S.$1_AdA/]
@@ -283,7 +340,7 @@
 # mkListS : S -> S -> ListS
 # (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
 # Note: this is a copy-paste from mkListNP, except the category
-/^(and|or)$/ < ((/^:op[0-9]+$/=op1 < /^mkS$/=s1) $+ (/^:op[0-9]+$/=op2 < /^mkS$/=s2))
+/CONJ/ < ((/:opN/=op1 < /mkS/=s1) $+ (/:opN/=op2 < /mkS/=s2))
 [adjoin (mkListS=list mkS@) s1]
 [move s2 >2 list]
 [excise op1 op1]
@@ -292,7 +349,7 @@
 # mkListS : S -> ListS -> ListS
 # (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
 # Note: this is a copy-paste from mkListNP, except the category
-/^(and|or)$/ < (/^mkListS$/=list $+ (/^:op[0-9]+$/=op_n < /^mkS$/=s_n))
+/CONJ/ < (/mkListS/=list $+ (/:opN/=op_n < /mkS/=s_n))
 [adjoin (mkListS=list_prim mkS@) s_n]
 [move list >2 list_prim]
 [excise op_n op_n]
@@ -300,7 +357,7 @@
 # mkS : Conj -> ListS -> S
 # (var (conj mkListS)) => (mkS (conj_Conj mkListS))
 # Note: this is a copy-paste from mkListNP, except the category
-/@VAR/=var < (/^(and|or)$/=conj < /^mkListS$/=s)
+/VAR/=var < (/CONJ/=conj < /mkListS/=s)
 [adjoin (mkS (var=temp@)) var]
 [move s $- conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
@@ -308,7 +365,7 @@
 
 # PurposeVP : VP -> Adv
 # (passiveVP (frame mkVP)) => (mkVP (passiveVP frame) (PurposeVP mkVP))
-/^passiveVP$/=pass < (/@FRAME/=frame < /^mkVP$/=vp_i)
+/passiveVP/=pass < (/FRAME/=frame < /mkVP/=vp_i)
 [adjoinF (mkVP=vp_o @) pass]
 [adjoinF (E.PurposeVP=adv @) vp_i]
 [move adv >2 vp_o]
@@ -316,7 +373,7 @@
 # mkVP : AdV -> VP -> VP
 # mkAdV : Str -> AdV
 # (VP (frame (:mod (var AdV)))) => (mkVP AdV (VP frame))
-/^(mk|passive)VP$/=vp_i < (/@FRAME/ < (/^:mod$/=mod < (/@VAR/ < /^[a-z]+$/=adv1)))
+/^(mk|passive)VP$/=vp_i < (/FRAME/ < (/:mod/=mod < (/VAR/ < /WORD/=adv1)))
 [relabel adv1 /^usual$/usually/] # An annotation mistake?
 [relabel adv1 /^(.+)$/"$1"/]
 [adjoinF (mkAdV=adv2 @) adv1]
@@ -327,43 +384,43 @@
 ### Post-editing
 
 # (mkCl mkCN) => (mkCl (mkNP mkCN))
-/^mkCl$/ < /^mkCN$/=cn
+/mkCl/ < /mkCN/=cn
 [adjoinF (mkNP @) cn]
 
 # (:ARG1 mkNP) => (mkNP)
-/^:ARG[0-9]$/=arg < /^mkNP$/
+/:ARGn/=arg < /mkNP/
 [excise arg arg]
 
 # (mkVP (mkVP)) => (mkVP)
-/^mkVP$/=vp_o <: /^mkVP$/
+/mkVP/=vp_o <: /mkVP/
 [excise vp_o vp_o]
 
 # (passiveVP frame) => (passiveVP frame_V2)
-/^passiveVP$/ <: /@FRAME/=frame
+/passiveVP/ <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/$1_$2_V2/]
 
 # (mkVP frame mkNP) => (mkVP frame_V2 mkNP)
-/^mkVP$/ <1 /@FRAME/=frame <2 /^mkNP$/
+/mkVP/ <1 /FRAME/=frame <2 /mkNP/
 [relabel frame /^(.+)-(.+)$/$1_$2_V2/]
 
 # (mkVP frame mkVP) => (mkVP frame_VV mkVP)
-/^mkVP$/ <1 /@FRAME/=frame <2 /^mkVP$/
+/mkVP/ <1 /FRAME/=frame <2 /mkVP/
 [relabel frame /^(.+)-(.+)$/$1_$2_VV/]
 
 # mkVP : V2V -> NP -> VP -> VP
 # (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
-/^mkVP$/=vp <1 /@FRAME/=frame <2 /^mkVP$/ <3 /^S.[a-z]+_NP$/=np
+/mkVP/=vp <1 /FRAME/=frame <2 /mkVP/ <3 /struct_NP/=np
 [relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
 [move np >2 vp]
 
 # (mkVP frame) => (mkVP frame_V)
-/^mkVP$/ <: /@FRAME/=frame
+/mkVP/ <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/$1_$2_V/]
 
 ### Remove any unresolved variables and relations
 
-/@VAR/=var
+/VAR/=var
 [delete var]
 
-/^:.+$/=rel
+/REL/=rel
 [delete rel]
