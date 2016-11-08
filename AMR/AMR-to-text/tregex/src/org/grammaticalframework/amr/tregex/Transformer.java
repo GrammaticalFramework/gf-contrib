@@ -66,7 +66,7 @@ public class Transformer {
 			
 			if (line.startsWith("@")) {
 				String[] m = line.split("=");
-				macros.put(m[0], m[1]);
+				macros.put(m[0].substring(1), m[1]);
 			} else if (line.startsWith("[") && line.endsWith("]")) {
 				ops.append(line);
 			} else {
