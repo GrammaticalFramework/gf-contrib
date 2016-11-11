@@ -23,17 +23,17 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t08_many_persons_live = (mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP live_01_V))) ;
 
-	lin t09_some_persons_live_in_Ventspils = (mkS (mkCl (mkNP S.somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "Ventspils")))))) ;
+	lin t09_some_persons_live_in_Ventspils = (mkS (mkCl (mkNP S.somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN "Ventspils")))))) ;
 
-	lin t10_many_persons_live_in_Riga = (mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "Riga")))))) ;
+	lin t10_many_persons_live_in_Riga = (mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN "Riga")))))) ;
 
-	lin t11_more_persons_live_in_New_York = (mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "New York")))))) ;
+	lin t11_more_persons_live_in_New_York = (mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN "New York")))))) ;
 
-	lin t13_few_persons_live_in_Riga_and_New_York = (mkS (mkCl (mkNP S.few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN "Riga")) (mkNP (mkPN "New York")))))))) ;
+	lin t13_few_persons_live_in_Riga_and_New_York = (mkS (mkCl (mkNP S.few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN "Riga")) (mkNP (mkPN "New York")))))))) ;
 
-	lin t14_boys_and_girls_play_games_in_Riga = (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP (mkPN "Riga")))))) ;
+	lin t14_boys_and_girls_play_games_in_Riga = (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP (mkPN "Riga")))))) ;
 
-	lin t15_boys_and_girls_play_games_in_Riga_and_New_York = (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN "Riga")) (mkNP (mkPN "New York")))))))) ;
+	lin t15_boys_and_girls_play_games_in_Riga_and_New_York = (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN "Riga")) (mkNP (mkPN "New York")))))))) ;
 
 	lin t16_boys_see_Ann = (mkS (mkCl (mkNP S.a_Quant (mkCN boy_N)) (mkVP see_01_V2 (mkNP (mkPN "Ann"))))) ;
 
@@ -61,16 +61,18 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t28_China_president_urges_child_safety = (mkS (mkCl (mkNP (mkCN (mkN2 president_N of_Prep) (mkNP (mkPN "China")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN child_N)))))) ;
 
-	lin t29_French_far_left_killer_leaves_jail = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv S.from_Prep (mkNP (mkPN "France")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N))))) ;
+	lin t29_French_far_left_killer_leaves_jail = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv from_Prep (mkNP (mkPN "France")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N))))) ;
 
-	lin t30_Two_other_school_assailants_have_committed_suicide = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN other_A person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN suicide_N))))) ;
+	lin t30_two_other_school_assailants_have_committed_suicide = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN other_A person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN suicide_N))))) ;
 
-	lin t31_Gadhafi_attacks_US_in_speech_in_Italy = (mkS (mkCl (mkNP (mkPN "Gadhafi")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN "US"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN "Italy")))))))))) ;
+	lin t31_Gadhafi_attacks_US_in_speech_in_Italy = (mkS (mkCl (mkNP (mkPN "Gadhafi")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN "US"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv in_Prep (mkNP (mkPN "Italy")))))))))) ;
 
-	lin t32_We_must_look_at_their_reasons = (mkS (mkCl S.we_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N))))))) ;
+	lin t32_we_must_look_at_their_reasons = (mkS (mkCl S.we_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP look_01_V2 (mkNP S.they_Pron (mkCN reason_N))))))) ;
 
-	lin t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV "usually") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
+	lin t33_the_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs = (mkS (mkCl (mkNP (mkPN "Xu Yuyuan")) (mkVP wield_01_V2 (mkNP S.a_Quant (mkCN (mkCN knife_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (mkAdV "usually") (passiveVP use_01_V2)) (E.PurposeVP (mkVP slaughter_01_V2 (mkNP S.a_Quant (mkCN pig_N)))))))))))) ;
 
-	lin t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane = (mkS (mkCl (mkNP (mkNP (mkPN "Abdel Basset Ali al-Megrahi")) (S.mkAdv S.from_Prep (mkNP (mkPN "Libya")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N))))))) ;
+	lin t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane = (mkS (mkCl (mkNP (mkNP (mkPN "Abdel Basset Ali al-Megrahi")) (S.mkAdv from_Prep (mkNP (mkPN "Libya")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N))))))) ;
+
+	lin t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars = (mkS (mkCl (mkNP (mkNP (mkPN "Jean-Marc Rouillan")) (mkRS (mkRCl S.which_RP (mkNP (mkDet S.the_Quant (S.mkOrd (mkDigits "4"))) (mkCN (mkN2 member_N of_Prep)))))) (mkVP (passiveVP remain_01_V2) (S.mkAdv behind_Prep (mkNP S.a_Quant (mkCN bar_N)))))) ;
 
 }
