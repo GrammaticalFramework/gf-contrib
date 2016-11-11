@@ -234,7 +234,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 some))))) (:location (x5 (country (:name (n (name (:op1 \"Ventspils\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Ventspils\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.somePl_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"Ventspils\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -248,7 +248,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many))))) (:location (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Riga\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.many_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"Riga\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -262,7 +262,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 more))))) (:location (x5 (city (:name (n (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"New York\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP more_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"New York\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -291,7 +291,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 few))))) (:location (x6 (and (:op1 (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x7 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.few_Det (mkCN person_N)) (mkVP (mkVP live_01_V) (S.mkAdv in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -305,7 +305,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP (mkPN \"Riga\"))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP (mkPN \"Riga\"))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -320,7 +320,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x8 (and (:op1 (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x9 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv S.in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN boy_N)) (mkNP S.a_Quant (mkCN girl_N)))) (mkVP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN game_N))) (S.mkAdv in_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkPN \"Riga\")) (mkNP (mkPN \"New York\"))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -528,14 +528,14 @@ public class Tester {
 		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv S.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A person_N)) (S.mkAdv from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN jail_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 	
 	// ::snt Two other school assailants have committed suicide.
 	@Test
-	public void t30_Two_other_school_assailants_have_committed_suicide() {
+	public void t30_two_other_school_assailants_have_committed_suicide() {
 		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(c / commit-02 :ARG0 (p / person :quant 2 :ARG0-of (a / assail-01 :ARG1 (s2 / school)) :mod (o / other)) :ARG1 (s / suicide))");
@@ -557,7 +557,7 @@ public class Tester {
 		assertEquals(amr, "(a (attack-01 (:ARG0 (p (person (:wiki \"Muammar_Gaddafi\") (:name (n (name (:op1 \"Gadhafi\"))))))) (:ARG1 (c (country (:wiki \"United_States\") (:name (n2 (name (:op1 \"US\"))))))) (:subevent-of (s (speak-01 (:ARG0 p) (:location (c2 (country (:wiki \"Italy\") (:name (n3 (name (:op1 \"Italy\"))))))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Gadhafi\")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN \"US\"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv S.in_Prep (mkNP (mkPN \"Italy\"))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Gadhafi\")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN \"US\"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv in_Prep (mkNP (mkPN \"Italy\"))))))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -565,7 +565,7 @@ public class Tester {
 	// ::snt We must look at their reasons.
 	// TODO: look-at
 	@Test
-	public void t32_We_must_look_at_their_reasons() {
+	public void t32_we_must_look_at_their_reasons() {
 		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(o / obligate-01 :ARG1 (w / we) :ARG2 (l / look-01 :ARG1 (r / reason :poss (t / they))))");
@@ -580,7 +580,7 @@ public class Tester {
 	// ::snt The man, Xu Yuyuan, wielded a knife usually used to slaughter pigs.
 	// TODO: "the man [named] Xu Yuyuan"
 	@Test
-	public void t33_The_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs() {
+	public void t33_the_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs() {
 		Transformer t = new Transformer(rules);
 						
 		String amr = t.transformToLISP("(w / wield-01 :ARG0 (m / man :wiki - :name (n / name :op1 \"Xu\" :op2 \"Yuyuan\")) :ARG1 (k / knife :ARG1-of (u / use-01 :ARG2 (s / slaughter-01 :ARG1 (p / pig)) :mod (u2 / usual))))");
@@ -601,7 +601,21 @@ public class Tester {
 		assertEquals(amr, "(c (convict-01 (:ARG1 (p (person (:wiki \"Abdelbaset_al-Megrahi\") (:name (n (name (:op1 \"Abdel\") (:op2 \"Basset\") (:op3 \"Ali\") (:op4 \"al-Megrahi\")))) (:mod (c2 (country (:wiki \"Libya\") (:name (n2 (name (:op1 \"Libya\")))))))))) (:ARG2 (b (blow-up-06 (:ARG0 p) (:ARG1 (p2 plane)))))))");
 
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Abdel Basset Ali al-Megrahi\")) (S.mkAdv S.from_Prep (mkNP (mkPN \"Libya\")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N)))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Abdel Basset Ali al-Megrahi\")) (S.mkAdv from_Prep (mkNP (mkPN \"Libya\")))) (mkVP (passiveVP convict_01_V2) (E.PurposeVP (mkVP blow_up_06_V2 (mkNP S.a_Quant (mkCN plane_N)))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt A fourth member, Jean-Marc Rouillan, remains behind bars.
+	@Test
+	public void t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(r / remain-01 :ARG1 (p / person :wiki - :name (n / name :op1 \"Jean-Marc\" :op2 \"Rouillan\") :mod (p2 / person :ARG0-of (h / have-org-role-91 :ARG2 (m / member)) :ord (o / ordinal-entity :value 4))) :ARG3 (b / behind :op1 (b2 / bar)))");
+		assertEquals(amr, "(r (remain-01 (:ARG1 (p (person (:wiki -) (:name (n (name (:op1 \"Jean-Marc\") (:op2 \"Rouillan\")))) (:mod (p2 (person (:ARG0-of (h (have-org-role-91 (:ARG2 (m member))))) (:ord (o (ordinal-entity (:value 4)))))))))) (:ARG3 (b (behind (:op1 (b2 bar)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Jean-Marc Rouillan\")) (mkRS (mkRCl S.which_RP (mkNP (mkDet S.the_Quant (S.mkOrd (mkDigits \"4\"))) (mkCN (mkN2 member_N of_Prep)))))) (mkVP (passiveVP remain_01_V2) (S.mkAdv behind_Prep (mkNP S.a_Quant (mkCN bar_N))))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

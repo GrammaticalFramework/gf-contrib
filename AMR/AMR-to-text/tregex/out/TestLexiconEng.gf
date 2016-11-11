@@ -29,6 +29,7 @@ open ParadigmsEng, MorphoEng in {
 		obligate_01_V2 = obligate_V2 ;
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
+		remain_01_V2 = remain_V2 ;
 		see_01_V2 = see_V2 ;
 		slaughter_01_V2 = slaughter_V2 ;
 		speak_01_V2 = speak_V2 ;
@@ -39,6 +40,7 @@ open ParadigmsEng, MorphoEng in {
 
 		obligate_01_V2V = obligate_V2V ;
 
+		bar_N = mkN "bar" "bars" ; -- from english/DictEng.gf
 		game_N = game_1_N ;
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;

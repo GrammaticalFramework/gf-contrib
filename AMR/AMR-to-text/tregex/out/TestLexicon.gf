@@ -22,6 +22,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		obligate_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
+		remain_01_V2 : V2 ;
 		see_01_V2 : V2 ;
 		slaughter_01_V2 : V2 ;
 		speak_01_V2 : V2 ;
@@ -32,6 +33,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		obligate_01_V2V : V2V ;
 
+		bar_N : N ;				-- no entry in DictionaryEng, but there is one in DictEng
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
 		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)
