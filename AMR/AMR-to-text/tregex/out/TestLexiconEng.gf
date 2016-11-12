@@ -1,6 +1,6 @@
 --# -path=../../lexicons/translator
 
-concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng **
+concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng - [information_N] **
 open ParadigmsEng, MorphoEng in {
 
 	flags
@@ -45,6 +45,7 @@ open ParadigmsEng, MorphoEng in {
 
 		bar_N = mkN "bar" "bars" ;
 		game_N = game_1_N ;
+		information_N = mkN "information" "information" ; -- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 

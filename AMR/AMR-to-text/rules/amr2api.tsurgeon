@@ -78,8 +78,6 @@
 @/noun_N/=/^[a-z]+_N$/
 @/adj_A/=/^[a-z]+_A$/
 
-@/mass_noun_N/=/^(information)_N$/ # TODO: extend the list
-
 ### Pre-editing
 
 # (verb-particle-id) => (verb_particle-id)
@@ -489,10 +487,6 @@
 
 ### Post-editing
 
-# (mkNP det_Det (mkCN mass_noun_N)) => ???
-#/mkNP/ <1 /det_Det/ <2 (/mkCN/ < /mass_noun_N/)
-# TODO: ...
-
 # (VP (frame Adv)) => (mkVP (VP frame) Adv)
 /VP/=vp_i < (/FRAME/ < /Adv/=adv)
 [adjoinF (mkVP=vp_o @) vp_i]
@@ -536,6 +530,14 @@
 # (mkVP frame) => (mkVP frame_V)
 /mkVP/ <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/$1_$2_V/]
+
+# prep_Prep => L.prep_Prep
+/prep_Prep/=prep
+[relabel prep /^(.+)$/L.$1/]
+
+# noun_N => L.noun_N
+/noun_N/=n
+[relabel n /^(.+)$/L.$1/]
 
 ### Remove any unresolved variables and relations
 
