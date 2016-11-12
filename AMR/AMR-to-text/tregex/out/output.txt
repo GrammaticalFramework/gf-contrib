@@ -168,3 +168,13 @@ TestTreesEng: Jean-Marc Rouillan , that is the 4th member , is remained behind a
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t36_I_d_never_heard_of_this_case_until_now
+TestTreesEng: I don't hear this case until now
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t37_so_I_googled_it_to_get_more_information
+TestTreesEng: I google it to get more informations
+TestTreesLav: 
+TestTreesRus: 
+

@@ -8,7 +8,7 @@
 @/TOKEN/=/^"[A-Za-z-]+"$/
 @/MWE/=/^"[A-Z a-z -]+"$/
 @/DET/=/^(every|few|many|more|much|some)$/
-@/PREP/=/^(above|across|after|among|before|behind|below|between)$/ # TODO: extend the list
+@/PREP/=/^(above|across|after|among|before|behind|below|between|until)$/ # TODO: extend the list
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
@@ -30,12 +30,15 @@
 @/:ord/=/^:ord$/
 @/:value/=/^:value$/
 @/:poss/=/^:poss$/
+@/:time/=/^:time$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
 @/:name/=/^:name$/
 @/:op1/=/^:op1$/
 @/:opN/=/^:op[0-9]+$/
 @/:subevent-of/=/^:subevent-of$/
+@/:purpose/=/^:purpose$/
+@/:polarity/=/^:polarity$/
 
 @/ORG-91/=/^have-org-role-91$/
 
@@ -46,26 +49,36 @@
 @/mkS/=/^mkS$/
 @/mkRS/=/^mkRS$/
 @/mkCl/=/^mkCl$/
+@/mkRCl/=/^mkRCl$/
 @/mkVP/=/^mkVP$/
 @/passiveVP/=/^passiveVP$/
-@/VP/=/^(mk|passive)VP$/
 @/mkNP/=/^mkNP$/
 @/mkCN/=/^mkCN$/
 @/mkN2/=/^mkN2$/
 @/mkPN/=/^mkPN$/
 @/mkAP/=/^mkAP$/
-@/mkAdv/=/^S.mkAdv$/
-@/mkOrd/=/^S.mkOrd$/
+@/mkAdv/=/^S[.]mkAdv$/
+@/mkOrd/=/^S[.]mkOrd$/
 @/mkListS/=/^mkListS$/
 @/mkListNP/=/^mkListNP$/
 
+@/S/=/^mk[R]?S$/
+@/Cl/=/^mk[R]?Cl$/
+@/VP/=/^(mk|passive)VP$/
+@/NP/=/^(mk|S[.][a-z]+_)NP$/
+@/Adv/=/^(S[.]mkAdv|E[.]PurposeVP)$/
+
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
+@/det_Det/=/^(S[.](every|few|many|much|someSg|somePl)|more)_Det$/
+@/det_NP/=/^S[.](this|these|that|those)_NP$/
 @/struct_NP/=/^S.[a-z]+_NP$/
 @/prep_Prep/=/^[a-z]+_Prep$/
 @/quant_Quant/=/^S[.][a-z]+_Quant$/
 @/a_Quant/=/^S.a_Quant$/
 @/noun_N/=/^[a-z]+_N$/
 @/adj_A/=/^[a-z]+_A$/
+
+@/mass_noun_N/=/^(information)_N$/ # TODO: extend the list
 
 ### Pre-editing
 
@@ -94,6 +107,12 @@
 [relabel digits /^(.+)$/"$1"/]
 [adjoinF (S.mkOrd (mkDigits @)) digits]
 [excise ord value]
+
+# PurposeVP : VP -> Adv
+# (:purpose (var frame)) => (E.PurposeVP (mkVP frame))
+/:purpose/=adv < (/VAR/=var < /FRAME/)
+[relabel adv /^:purpose$/E.PurposeVP/]
+[relabel var /^.+$/mkVP/]
 
 # mkN2 : N -> Prep -> N2
 # ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
@@ -178,6 +197,18 @@
 /mkVP/=vp_o < (/FRAME/ < /mkVP/=vp_i)
 [move vp_i >2 vp_o]
 
+# mkNP : N -> NP
+# mkAdv: Prep -> NP -> Adv
+# (:time (var (prep (:op1 (var adv))))) => (mkAdv prep_Prep (mkNP adv_N))
+/:time/=time < (/VAR/=var < (/PREP/=prep <: (/:op1/=op < (/VAR/ < /WORD/=n))))
+[relabel prep /^(.+)$/$1_Prep/]
+[relabel n /^(.+)$/$1_N/] # TODO: is this really the way to go?
+[adjoin (S.mkAdv=adv (mkNP=np@)) time]
+[move n >1 np]
+[delete op]
+[move prep >1 adv]
+[delete var]
+
 # mkAdv : Subj -> S -> Adv
 # (mkVP (frame (:subevent-of mkS))) => (mkVP (mkVP frame) (mkAdv when_Subj mkS))
 /mkVP/=vp_i < (/FRAME/ < (/:subevent-of/=temp < /mkS/=sub))
@@ -260,6 +291,13 @@
 [replace quant det]
 [delete temp]
 
+# mkNP : Det -> CN -> NP
+# (mkNP a_Quant (mkCN (var (noun_N (:mod det_NP))))) => (mkNP det_Det (mkCN noun_N))
+/mkNP/ < (/a_Quant/=quant $ (/mkCN/ < (/VAR/ < (/WORD/ < (/:mod/=mod < /det_NP/=det)))))
+[relabel det /^(.+)_NP$/$1_Det/]
+[replace quant det]
+[delete mod]
+
 # mkDet : Quant -> Ord -> Det
 # mkNP : Det -> CN -> NP
 # (mkNP a_Quant (mkCN mkOrd)) => (mkNP (mkDet the_Quant mkOrd) mkCN)
@@ -314,6 +352,15 @@
 [move adv >2 np2]
 [delete mod]
 
+# mkNP : Det -> CN -> NP
+# (mkNP a_Quant (mkCN (noun_N (:mod (var det))))) => (mkNP det_Det (mkCN noun_N))
+/mkNP/ <1 /a_Quant/=quant <2 (/mkCN/ < (/noun_N/ < (/:mod/=mod < (/VAR/ < /DET/=det))))
+[relabel det /^(.+)$/S.$1_Det/]
+[relabel det /^S.some_Det$/S.somePl_Det/]
+[relabel det /^S.more_Det$/more_Det/]
+[replace quant det]
+[delete mod]
+
 # mkCN : A -> N -> CN
 # (mkCN (noun (:mod (var adj)))) => (mkCN adj noun)
 /mkCN/=cn < (/noun_N/ < (/:mod/=mod < (/VAR/ < /WORD/=adj !< (/country/ < /:name/))))
@@ -330,7 +377,7 @@
 [delete degree]
 
 # mkNP : Pron -> CN -> NP
-# (mkNP a_Quant (mkCN (reason_N (:poss they_NP)))) => (mkNP pron_Pron (mkCN entity_N))
+# (mkNP a_Quant (mkCN (noun_N (:poss pron_NP)))) => (mkNP pron_Pron (mkCN noun_N))
 /mkNP/ < (/a_Quant/=quant $ (/mkCN/ < (/noun_N/ < (/:poss/=poss < /pron_NP/=pron))))
 [relabel pron /^(.+)_NP$/$1_Pron/]
 [replace quant pron]
@@ -427,14 +474,29 @@
 # mkAdV : Str -> AdV
 # (VP (frame (:mod (var AdV)))) => (mkVP AdV (VP frame))
 /VP/=vp_i < (/FRAME/ < (/:mod/=mod < (/VAR/ < /WORD/=adv1)))
-[relabel adv1 /^usual$/usually/] # An annotation mistake?
+[relabel adv1 /^usual$/usually/] # TODO: An annotation mistake?
 [relabel adv1 /^(.+)$/"$1"/]
 [adjoinF (mkAdV=adv2 @) adv1]
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv2 >1 vp_o]
 [delete mod]
 
+# mkS : (Tense) -> (Ant) -> (Pol) -> Cl -> S
+# (mkS|mkRS (mkCl|mkRCl (mkVP (frame (:polarity -))))) => (mkS|mkRS negativePol (mkCl|mkRCl (mkVP frame)))
+/S/=snt < (/Cl/ < (/mkVP/ < (/FRAME/ < (/:polarity/=pol < -))))
+[insert (negativePol) >1 snt]
+[delete pol]
+
 ### Post-editing
+
+# (mkNP det_Det (mkCN mass_noun_N)) => ???
+#/mkNP/ <1 /det_Det/ <2 (/mkCN/ < /mass_noun_N/)
+# TODO: ...
+
+# (VP (frame Adv)) => (mkVP (VP frame) Adv)
+/VP/=vp_i < (/FRAME/ < /Adv/=adv)
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
 
 # (mkCl mkCN) => (mkCl (mkNP mkCN))
 /mkCl/ < /mkCN/=cn
@@ -457,8 +519,8 @@
 /passiveVP/ <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/$1_$2_V2/]
 
-# (mkVP frame mkNP) => (mkVP frame_V2 mkNP)
-/mkVP/ <1 /FRAME/=frame <2 /mkNP/
+# (mkVP frame NP) => (mkVP frame_V2 NP)
+/mkVP/ <1 /FRAME/=frame <2 /NP/
 [relabel frame /^(.+)-(.+)$/$1_$2_V2/]
 
 # (mkVP frame mkVP) => (mkVP frame_VV mkVP)

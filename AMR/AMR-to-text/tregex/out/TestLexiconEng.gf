@@ -23,6 +23,9 @@ open ParadigmsEng, MorphoEng in {
 		commit_02_V2 = commit_V2 ;
 		convict_01_V2 = convict_V2 ;
 		deserve_01_V2 = deserve_V2 ;
+		get_01_V2 = get_V2 ;
+		google_01_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
+		hear_01_V2 = hear_V2 ;
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
 		look_01_V2 = look_V2 ;
@@ -40,7 +43,7 @@ open ParadigmsEng, MorphoEng in {
 
 		obligate_01_V2V = obligate_V2V ;
 
-		bar_N = mkN "bar" "bars" ; -- from english/DictEng.gf
+		bar_N = mkN "bar" "bars" ;
 		game_N = game_1_N ;
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
