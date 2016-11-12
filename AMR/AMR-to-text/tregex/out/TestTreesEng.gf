@@ -75,4 +75,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars = (mkS (mkCl (mkNP (mkNP (mkPN "Jean-Marc Rouillan")) (mkRS (mkRCl S.which_RP (mkNP (mkDet S.the_Quant (S.mkOrd (mkDigits "4"))) (mkCN (mkN2 member_N of_Prep)))))) (mkVP (passiveVP remain_01_V2) (S.mkAdv behind_Prep (mkNP S.a_Quant (mkCN bar_N)))))) ;
 
+	lin t36_I_d_never_heard_of_this_case_until_now = (mkS negativePol (mkCl S.i_NP (mkVP (mkVP hear_01_V2 (mkNP S.this_Det (mkCN case_N))) (S.mkAdv until_Prep (mkNP now_N))))) ;
+
 }

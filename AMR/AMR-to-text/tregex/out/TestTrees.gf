@@ -36,5 +36,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t33_the_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs : S ;
 	fun t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane : S ;
 	fun t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars : S ;
+	fun t36_I_d_never_heard_of_this_case_until_now : S ;
 
 }

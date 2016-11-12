@@ -16,6 +16,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		commit_02_V2 : V2 ;
 		convict_01_V2 : V2 ;
 		deserve_01_V2 : V2 ;
+		hear_01_V2 : V2 ;
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
 		look_01_V2 : V2 ;

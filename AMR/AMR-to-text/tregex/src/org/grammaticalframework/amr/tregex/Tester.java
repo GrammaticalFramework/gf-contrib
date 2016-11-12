@@ -563,7 +563,7 @@ public class Tester {
 	}
 	
 	// ::snt We must look at their reasons.
-	// TODO: look-at
+	// TODO: look => look-at by default (?)
 	@Test
 	public void t32_we_must_look_at_their_reasons() {
 		Transformer t = new Transformer(rules);
@@ -616,6 +616,21 @@ public class Tester {
 
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl (mkNP (mkNP (mkPN \"Jean-Marc Rouillan\")) (mkRS (mkRCl S.which_RP (mkNP (mkDet S.the_Quant (S.mkOrd (mkDigits \"4\"))) (mkCN (mkN2 member_N of_Prep)))))) (mkVP (passiveVP remain_01_V2) (S.mkAdv behind_Prep (mkNP S.a_Quant (mkCN bar_N))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt I'd never heard of this case until now.
+	// TODO: hear => hear-of by default (?)
+	@Test
+	public void t36_I_d_never_heard_of_this_case_until_now() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(h / hear-01 :polarity - :ARG0 (i / i) :ARG1 (c / case :mod (t / this)) :time (u / until :op1 (n / now)))");
+		assertEquals(amr, "(h (hear-01 (:polarity -) (:ARG0 (i i)) (:ARG1 (c (case (:mod (t this))))) (:time (u (until (:op1 (n now)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS negativePol (mkCl S.i_NP (mkVP (mkVP hear_01_V2 (mkNP S.this_Det (mkCN case_N))) (S.mkAdv until_Prep (mkNP now_N)))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

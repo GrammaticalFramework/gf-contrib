@@ -23,6 +23,7 @@ open ParadigmsEng, MorphoEng in {
 		commit_02_V2 = commit_V2 ;
 		convict_01_V2 = convict_V2 ;
 		deserve_01_V2 = deserve_V2 ;
+		hear_01_V2 = hear_V2 ;
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
 		look_01_V2 = look_V2 ;
