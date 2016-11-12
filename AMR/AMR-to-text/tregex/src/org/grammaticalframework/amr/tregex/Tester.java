@@ -634,5 +634,20 @@ public class Tester {
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
+	
+	// ::snt So, I googled it to get more information.
+	// FIXME: mass nouns ("more information" instead of "more informations")
+	@Test
+	public void t37_so_I_googled_it_to_get_more_information() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(g / google-01 :ARG0 (i / i) :ARG1 (i2 / it) :purpose (g2 / get-01 :ARG0 i :ARG1 (i3 / information :mod (m / more))))");
+		assertEquals(amr, "(g (google-01 (:ARG0 (i i)) (:ARG1 (i2 it)) (:purpose (g2 (get-01 (:ARG0 i) (:ARG1 (i3 (information (:mod (m more))))))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl S.i_NP (mkVP (mkVP google_01_V2 S.it_NP) (E.PurposeVP (mkVP get_01_V2 (mkNP more_Det (mkCN information_N)))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
 
 }

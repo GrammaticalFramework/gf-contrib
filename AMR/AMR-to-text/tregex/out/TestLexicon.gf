@@ -16,6 +16,8 @@ abstract TestLexicon = Cat, Dictionary ** {
 		commit_02_V2 : V2 ;
 		convict_01_V2 : V2 ;
 		deserve_01_V2 : V2 ;
+		get_01_V2 : V2 ;
+		google_01_V2 : V2 ;		-- no entry in Dictionary or DictEng
 		hear_01_V2 : V2 ;
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
@@ -34,7 +36,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		obligate_01_V2V : V2V ;
 
-		bar_N : N ;				-- no entry in DictionaryEng, but there is one in DictEng
+		bar_N : N ;				-- no entry in Dictionary, but there is one in DictEng
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
 		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)

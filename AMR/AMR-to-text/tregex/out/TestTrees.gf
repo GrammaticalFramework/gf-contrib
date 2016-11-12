@@ -37,5 +37,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane : S ;
 	fun t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars : S ;
 	fun t36_I_d_never_heard_of_this_case_until_now : S ;
+	fun t37_so_I_googled_it_to_get_more_information : S ;
 
 }

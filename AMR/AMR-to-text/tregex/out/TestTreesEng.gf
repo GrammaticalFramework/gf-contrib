@@ -77,4 +77,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), ParadigmsEng in {
 
 	lin t36_I_d_never_heard_of_this_case_until_now = (mkS negativePol (mkCl S.i_NP (mkVP (mkVP hear_01_V2 (mkNP S.this_Det (mkCN case_N))) (S.mkAdv until_Prep (mkNP now_N))))) ;
 
+	lin t37_so_I_googled_it_to_get_more_information = (mkS (mkCl S.i_NP (mkVP (mkVP google_01_V2 S.it_NP) (E.PurposeVP (mkVP get_01_V2 (mkNP more_Det (mkCN information_N))))))) ;
+
 }

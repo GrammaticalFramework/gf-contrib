@@ -173,3 +173,8 @@ TestTreesEng: I don't hear this case until now
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t37_so_I_googled_it_to_get_more_information
+TestTreesEng: I google it to get more informations
+TestTreesLav: 
+TestTreesRus: 
+
