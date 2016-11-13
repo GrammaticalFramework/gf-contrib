@@ -83,4 +83,8 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t39_as_for_the_race_angle_it_is_unnecessary = (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP need_01_V2))) ;
 
+	lin t40_it_s_a_horrible_thing_that_happened = (mkUtt (mkNP S.a_Quant (mkCN L.horrible_A L.thing_N))) ;
+
+	lin t41_you_are_an_idiot = (mkS (mkCl S.you_NP (mkNP S.a_Quant (mkCN L.idiot_N)))) ;
+
 }

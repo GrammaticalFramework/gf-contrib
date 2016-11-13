@@ -188,3 +188,13 @@ TestTreesEng: a race angle isn't needed
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t40_it_s_a_horrible_thing_that_happened
+TestTreesEng: a horrible thing
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t41_you_are_an_idiot
+TestTreesEng: you are an idiot
+TestTreesLav: 
+TestTreesRus: 
+
