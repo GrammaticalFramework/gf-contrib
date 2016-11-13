@@ -164,7 +164,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (see-01 (:ARG0 (x3 (girl (:quant 2) (:mod (x2 pretty))))) (:ARG1 (x6 boy))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A L.girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN L.pretty_A L.girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -178,7 +178,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 boy)) (:ARG1 (x7 (girl (:quant 2) (:mod (x6 pretty)))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN pretty_A L.girl_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN L.pretty_A L.girl_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -268,7 +268,7 @@ public class Tester {
 	}
 	
 	// Much more persons live in New York City.
-	// TODO: How to represent much + more in GF?
+	// TODO: How to represent much + more in GF? much_Predet?!
 	@Test
 	public void t12_much_more_persons_live_in_New_York_City() {
 		Transformer t = new Transformer(rules);
@@ -393,7 +393,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN ball_A L.game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -481,7 +481,7 @@ public class Tester {
 		assertEquals(amr, "(e (example (:ARG2-of (i (interest-01 (:degree (v very))))) (:domain (c (country (:wiki \"Iceland\") (:name (n (name (:op1 \"Iceland\")))))))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP S.a_Quant (mkCN (mkCN L.example_N) (mkRS (mkRCl S.which_RP (mkAP S.very_AdA (mkAP interesting_A))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (mkPN \"Iceland\")) (mkNP S.a_Quant (mkCN (mkCN L.example_N) (mkRS (mkRCl S.which_RP (mkAP L.very_AdA (mkAP interest_01_A))))))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -528,7 +528,7 @@ public class Tester {
 		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A L.person_N)) (S.mkAdv L.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN L.jail_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.far_A (mkCN L.left_A L.person_N)) (S.mkAdv L.from_Prep (mkNP (mkPN \"France\")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN L.jail_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -542,7 +542,7 @@ public class Tester {
 		assertEquals(amr, "(c (commit-02 (:ARG0 (p (person (:quant 2) (:ARG0-of (a (assail-01 (:ARG1 (s2 school))))) (:mod (o other))))) (:ARG1 (s suicide))))");
 								
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkCN other_A L.person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN L.school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN L.suicide_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkCN L.other_A L.person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN L.school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN L.suicide_N)))))");
 						
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -645,6 +645,21 @@ public class Tester {
 
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl S.i_NP (mkVP (mkVP google_01_V2 S.it_NP) (E.PurposeVP (mkVP get_01_V2 (mkNP more_Det (mkCN L.information_N)))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt Even the information that is available is fuzzy.
+	// FIXME: "even" is incorrectly attached in the gold AMR
+	@Test
+	public void t38_even_the_information_that_is_available_is_fuzzy() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(f / fuzzy :domain (i / information :ARG1-of (a / available-02)) :mod (e / even))");
+		assertEquals(amr, "(f (fuzzy (:domain (i (information (:ARG1-of (a available-02))))) (:mod (e even))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP available_02_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

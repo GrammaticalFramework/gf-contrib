@@ -43,9 +43,12 @@ open ParadigmsEng, MorphoEng in {
 
 		obligate_01_V2V = obligate_V2V ;
 
+		available_02_A = available_A ;
+		interest_01_A = interesting_A ;						-- note: the mapping between "interest" and "interesting" is not straightforward
+
 		bar_N = mkN "bar" "bars" ;
 		game_N = game_1_N ;
-		information_N = mkN "information" "information" ; -- mass noun (vs. mkN "information" in DictionaryEng)
+		information_N = mkN "information" "information" ;	-- note: mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 

@@ -141,7 +141,7 @@ TestTreesRus:
 TestTrees: t30_two_other_school_assailants_have_committed_suicide
 TestTreesEng: 2 other persons that assail a school commit a suicide
 TestTreesLav: 2 citas personas , kas uzbrūk skolai , izdara pašnāvību
-TestTreesRus: 
+TestTreesRus: 2 другие лицoа , которого нападет на школу совершите суицид
 
 TestTrees: t31_Gadhafi_attacks_US_in_speech_in_Italy
 TestTreesEng: Gadhafi attacks US when it speaks in Italy
@@ -175,6 +175,11 @@ TestTreesRus:
 
 TestTrees: t37_so_I_googled_it_to_get_more_information
 TestTreesEng: I google it to get more information
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t38_even_the_information_that_is_available_is_fuzzy
+TestTreesEng: an information that is available is even fuzzy
 TestTreesLav: 
 TestTreesRus: 
 

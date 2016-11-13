@@ -13,9 +13,9 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t03_two_girls_see_a_boy = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.boy_N))))) ;
 
-	lin t04_two_pretty_girls_see_a_boy = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN pretty_A L.girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.boy_N))))) ;
+	lin t04_two_pretty_girls_see_a_boy = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.pretty_A L.girl_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.boy_N))))) ;
 
-	lin t05_the_boy_sees_the_two_pretty_girls = (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN pretty_A L.girl_N))))) ;
+	lin t05_the_boy_sees_the_two_pretty_girls = (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP see_01_V2 (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.pretty_A L.girl_N))))) ;
 
 	lin t06_girls_and_boys_play_a_game = (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.girl_N)) (mkNP S.a_Quant (mkCN L.boy_N)))) (mkVP play_02_V2 (mkNP S.a_Quant (mkCN L.game_N))))) ;
 
@@ -43,7 +43,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t19_girls_see_some_boys_who_play_a_game = (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN L.game_N)))))))))) ;
 
-	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN ball_A L.game_N)))))))))) ;
+	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP see_01_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N)))))))))) ;
 
 	lin t21_girls_who_see_the_game_like_the_boys_who_play = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.girl_N) (mkRS (mkRCl S.which_RP (mkVP see_01_V2 (mkNP S.a_Quant (mkCN L.game_N))))))) (mkVP like_01_V2 (mkNP S.a_Quant (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP play_02_V)))))))) ;
 
@@ -55,15 +55,15 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t25_the_boy_is_a_person = (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkNP S.a_Quant (mkCN L.person_N)))) ;
 
-	lin t26_Iceland_is_a_very_interesting_example = (mkS (mkCl (mkNP (mkPN "Iceland")) (mkNP S.a_Quant (mkCN (mkCN L.example_N) (mkRS (mkRCl S.which_RP (mkAP S.very_AdA (mkAP interesting_A)))))))) ;
+	lin t26_Iceland_is_a_very_interesting_example = (mkS (mkCl (mkNP (mkPN "Iceland")) (mkNP S.a_Quant (mkCN (mkCN L.example_N) (mkRS (mkRCl S.which_RP (mkAP L.very_AdA (mkAP interest_01_A)))))))) ;
 
 	lin t27_they_are_thugs_and_deserve_a_bullet = (mkS S.and_Conj (mkListS (mkS (mkCl S.they_NP (mkNP S.a_Quant (mkCN L.thug_N)))) (mkS (mkCl (mkVP deserve_01_V2 (mkNP S.a_Quant (mkCN L.bullet_N))))))) ;
 
 	lin t28_China_president_urges_child_safety = (mkS (mkCl (mkNP (mkCN (mkN2 L.president_N L.of_Prep) (mkNP (mkPN "China")))) (mkVP urge_01_VV (mkVP protect_01_V2 (mkNP S.a_Quant (mkCN L.child_N)))))) ;
 
-	lin t29_French_far_left_killer_leaves_jail = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN far_A (mkCN left_A L.person_N)) (S.mkAdv L.from_Prep (mkNP (mkPN "France")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN L.jail_N))))) ;
+	lin t29_French_far_left_killer_leaves_jail = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.far_A (mkCN L.left_A L.person_N)) (S.mkAdv L.from_Prep (mkNP (mkPN "France")))) (mkRS (mkRCl S.which_RP (mkVP kill_01_V))))) (mkVP leave_11_V2 (mkNP S.a_Quant (mkCN L.jail_N))))) ;
 
-	lin t30_two_other_school_assailants_have_committed_suicide = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN other_A L.person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN L.school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN L.suicide_N))))) ;
+	lin t30_two_other_school_assailants_have_committed_suicide = (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN L.other_A L.person_N) (mkRS (mkRCl S.which_RP (mkVP assail_01_V2 (mkNP S.a_Quant (mkCN L.school_N))))))) (mkVP commit_02_V2 (mkNP S.a_Quant (mkCN L.suicide_N))))) ;
 
 	lin t31_Gadhafi_attacks_US_in_speech_in_Italy = (mkS (mkCl (mkNP (mkPN "Gadhafi")) (mkVP (mkVP attack_01_V2 (mkNP (mkPN "US"))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP speak_01_V) (S.mkAdv L.in_Prep (mkNP (mkPN "Italy")))))))))) ;
 
@@ -78,5 +78,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 	lin t36_I_d_never_heard_of_this_case_until_now = (mkS negativePol (mkCl S.i_NP (mkVP (mkVP hear_01_V2 (mkNP S.this_Det (mkCN L.case_N))) (S.mkAdv L.until_Prep (mkNP L.now_N))))) ;
 
 	lin t37_so_I_googled_it_to_get_more_information = (mkS (mkCl S.i_NP (mkVP (mkVP google_01_V2 S.it_NP) (E.PurposeVP (mkVP get_01_V2 (mkNP more_Det (mkCN L.information_N))))))) ;
+
+	lin t38_even_the_information_that_is_available_is_fuzzy = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP available_02_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A)))) ;
 
 }

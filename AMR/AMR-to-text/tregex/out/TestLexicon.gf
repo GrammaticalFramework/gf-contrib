@@ -36,6 +36,9 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		obligate_01_V2V : V2V ;
 
+		available_02_A : A ;
+		interest_01_A : A ;
+
 		bar_N : N ;				-- no entry in Dictionary, but there is one in DictEng
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
