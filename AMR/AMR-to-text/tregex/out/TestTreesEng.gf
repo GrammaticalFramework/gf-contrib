@@ -85,4 +85,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t40_it_s_a_horrible_thing_that_happened = (mkUtt (mkNP S.a_Quant (mkCN L.horrible_A L.thing_N))) ;
 
+	lin t41_you_are_an_idiot = (mkS (mkCl S.you_NP (mkNP S.a_Quant (mkCN L.idiot_N)))) ;
+
 }

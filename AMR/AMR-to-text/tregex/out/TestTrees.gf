@@ -41,5 +41,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t38_even_the_information_that_is_available_is_fuzzy : S ;
 	fun t39_as_for_the_race_angle_it_is_unnecessary : S ;
 	fun t40_it_s_a_horrible_thing_that_happened : S ;
+	fun t41_you_are_an_idiot : S ;
 
 }

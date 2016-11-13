@@ -694,5 +694,19 @@ public class Tester {
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
+	
+	// ::snt You are an idiot.
+	@Test
+	public void t41_you_are_an_idiot() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(i / idiot :domain (y / you))");
+		assertEquals(amr, "(i (idiot (:domain (y you))))");
 
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl S.you_NP (mkNP S.a_Quant (mkCN L.idiot_N))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
 }
