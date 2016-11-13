@@ -38,5 +38,7 @@ abstract TestTrees = TestLexicon ** {
 	fun t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars : S ;
 	fun t36_I_d_never_heard_of_this_case_until_now : S ;
 	fun t37_so_I_googled_it_to_get_more_information : S ;
+	fun t38_even_the_information_that_is_available_is_fuzzy : S ;
+	fun t39_as_for_the_race_angle_it_is_unnecessary : S ;
 
 }

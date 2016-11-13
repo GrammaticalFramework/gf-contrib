@@ -100,6 +100,8 @@ public class FrameExtractor {
 		
 		PrintWriter frame_entries = new PrintWriter("../lexicons/propbank/frames-entries.txt", "UTF-8");
 		PrintWriter frame_roles = new PrintWriter("../lexicons/propbank/frames-roles.txt", "UTF-8");
+		PrintWriter frame_adj = new PrintWriter("../lexicons/propbank/frames-adjectives.txt", "UTF-8");
+		PrintWriter frame_adj_maybe = new PrintWriter("../lexicons/propbank/frames-adjectives-maybe.txt", "UTF-8");
 		
 		for (String frame : framesets.keySet()) {
 			List<String> entries = framesets.get(frame).get(0);
@@ -107,10 +109,29 @@ public class FrameExtractor {
 			
 			frame_entries.println(frame + "\t" + entries.toString().replaceAll("[\\[ \\]]", ""));
 			frame_roles.println(frame + "\t" + roles.toString().replaceAll("[\\[ \\]]", ""));
+			
+			boolean adjective = false;
+			boolean other = false;
+			
+			for (String e : entries) {
+				if (e.endsWith("_A")) {
+					adjective = true;
+				} else {
+					other = true;
+				}
+			}
+			
+			if (adjective && !other) {
+				frame_adj.println(frame);
+			} else if (adjective) {
+				frame_adj_maybe.println(frame);
+			}
 		}
 		
 		frame_entries.close();
 		frame_roles.close();
+		frame_adj.close();
+		frame_adj_maybe.close();
 	}
 	
 }

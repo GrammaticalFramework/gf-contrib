@@ -22,6 +22,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		leave_11_V2 : V2 ;
 		like_01_V2 : V2 ;
 		look_01_V2 : V2 ;
+		need_01_V2 : V2 ;
 		obligate_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
@@ -36,12 +37,16 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		obligate_01_V2V : V2V ;
 
+		available_02_A : A ;
+		interest_01_A : A ;
+
 		bar_N : N ;				-- no entry in Dictionary, but there is one in DictEng
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
 		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)
 
-		ball_A : A ;			-- FIXME: how to represent e.g. "ball game"?
+		ball_A : A ;			-- FIXME: how to represent e.g. "ball game"? avoiding the of-construction and N2 entries
+		race_A : A ;			-- FIXME: the same issue (no "mkCN : N -> N -> CN")
 
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)
 

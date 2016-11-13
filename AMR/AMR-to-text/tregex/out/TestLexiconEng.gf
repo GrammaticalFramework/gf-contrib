@@ -1,6 +1,6 @@
 --# -path=../../lexicons/translator
 
-concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng **
+concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng - [information_N] **
 open ParadigmsEng, MorphoEng in {
 
 	flags
@@ -29,6 +29,7 @@ open ParadigmsEng, MorphoEng in {
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
 		look_01_V2 = look_V2 ;
+		need_01_V2 = need_V2 ;
 		obligate_01_V2 = obligate_V2 ;
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
@@ -43,12 +44,17 @@ open ParadigmsEng, MorphoEng in {
 
 		obligate_01_V2V = obligate_V2V ;
 
+		available_02_A = available_A ;
+		interest_01_A = interesting_A ;						-- note: the mapping between "interest" and "interesting" is not straightforward
+
 		bar_N = mkN "bar" "bars" ;
 		game_N = game_1_N ;
+		information_N = mkN "information" "information" ;	-- note: mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 
-		ball_A = mkA "ball" "ball" "ball" "ball" ;
+		ball_A = mkA "ball" "ball" "ball" "ball" ;			-- note: a temporary solution
+		race_A = mkA "race" "race" "race" "race" ;			-- note: a temporary solution
 
 		more_Det = mkDeterminer plural "more" ;
 
