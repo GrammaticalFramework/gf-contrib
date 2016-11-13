@@ -678,5 +678,21 @@ public class Tester {
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
+	
+	// ::snt It's a horrible thing that happened.
+	// Note: just a NP utterance
+	// FIXME: an incomplete AMR (?)
+	@Test
+	public void t40_it_s_a_horrible_thing_that_happened() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(t / thing :mod (h / horrible))");
+		assertEquals(amr, "(t (thing (:mod (h horrible))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkUtt (mkNP S.a_Quant (mkCN L.horrible_A L.thing_N)))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
 
 }

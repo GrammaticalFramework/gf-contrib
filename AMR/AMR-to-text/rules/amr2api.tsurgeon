@@ -507,6 +507,11 @@ mkAP=ap_i < (/adj_A/ < (/:mod/=mod < (/VAR/ < /WORD/=ada)))
 [insert (negativePol) >1 snt]
 [delete pol]
 
+# mkUtt : NP -> Utt
+# (ROOT mkNP) => (mkUtt mkNP)
+mkNP=np !> /.*/
+[adjoinF (mkUtt @) np]
+
 ### Post-editing
 
 # (VP (frame Adv)) => (mkVP (VP frame) Adv)
