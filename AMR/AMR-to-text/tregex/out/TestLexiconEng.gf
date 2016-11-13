@@ -29,6 +29,7 @@ open ParadigmsEng, MorphoEng in {
 		leave_11_V2 = leave_V2 ;
 		like_01_V2 = like_V2 ;
 		look_01_V2 = look_V2 ;
+		need_01_V2 = need_V2 ;
 		obligate_01_V2 = obligate_V2 ;
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
@@ -52,7 +53,8 @@ open ParadigmsEng, MorphoEng in {
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 
-		ball_A = mkA "ball" "ball" "ball" "ball" ;
+		ball_A = mkA "ball" "ball" "ball" "ball" ;			-- note: a temporary solution
+		race_A = mkA "race" "race" "race" "race" ;			-- note: a temporary solution
 
 		more_Det = mkDeterminer plural "more" ;
 

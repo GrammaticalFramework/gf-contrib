@@ -81,4 +81,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t38_even_the_information_that_is_available_is_fuzzy = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP available_02_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A)))) ;
 
+	lin t39_as_for_the_race_angle_it_is_unnecessary = (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP need_01_V2))) ;
+
 }

@@ -663,5 +663,20 @@ public class Tester {
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
+	
+	// ::snt As for the race angle, it is unnecessary.
+	// FIXME: "race angle" (race_N + angle_N), like "ball game" in t20
+	@Test
+	public void t39_as_for_the_race_angle_it_is_unnecessary() {
+		Transformer t = new Transformer(rules);
+						
+		String amr = t.transformToLISP("(n / need-01 :polarity - :ARG1 (a / angle :mod (r / race)))");
+		assertEquals(amr, "(n (need-01 (:polarity -) (:ARG1 (a (angle (:mod (r race)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP need_01_V2)))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
 
 }

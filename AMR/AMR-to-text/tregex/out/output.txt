@@ -183,3 +183,8 @@ TestTreesEng: an information that is available is even fuzzy
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t39_as_for_the_race_angle_it_is_unnecessary
+TestTreesEng: a race angle isn't needed
+TestTreesLav: 
+TestTreesRus: 
+

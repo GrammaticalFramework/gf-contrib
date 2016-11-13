@@ -512,8 +512,14 @@
 [delete mod]
 
 # mkS : Pol -> Cl -> S
-# (mkS|mkRS (mkCl|mkRCl (mkVP (frame (:polarity -))))) => (mkS|mkRS negativePol (mkCl|mkRCl (mkVP frame)))
+# (mkS|mkRS (mkCl|mkRCl (mkVP (frame (:polarity -))))) => (mkS|mkRS negativePol (mkCl|mkRCl ..))
 /S/=snt < (/Cl/ < (/mkVP/ < (/FRAME/ < (/:polarity/=pol < -))))
+[insert (negativePol) >1 snt]
+[delete pol]
+
+# mkS : Pol -> Cl -> S
+# (mkS|mkRS (mkCl|mkRCl (mkVP (passiveVP (frame (:polarity -)))))) => (mkS|mkRS negativePol (mkCl|mkRCl ..))
+/S/=snt < (/Cl/ < (/mkVP/ < (/passiveVP/ <(/FRAME/ < (/:polarity/=pol < -)))))
 [insert (negativePol) >1 snt]
 [delete pol]
 
@@ -533,7 +539,7 @@
 [excise arg arg]
 
 # (mkVP (mkVP)) => (mkVP)
-/mkVP/=vp_o <: /mkVP/
+/mkVP/=vp_o <: /VP/
 [excise vp_o vp_o]
 
 # (prep_Prep (:op1 mkNP)) => (prep_Prep mkNP)
@@ -553,7 +559,6 @@
 /mkVP/ <1 /FRAME/=frame <2 /mkVP/
 [relabel frame /^(.+)-(.+)$/$1_$2_VV/]
 
-# mkVP : V2V -> NP -> VP -> VP
 # (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
 /mkVP/=vp <1 /FRAME/=frame <2 /mkVP/ <3 /struct_NP/=np
 [relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
