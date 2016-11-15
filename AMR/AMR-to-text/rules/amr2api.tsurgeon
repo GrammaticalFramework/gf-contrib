@@ -15,14 +15,13 @@
 @/NE_TYPE/=/^[a-z]+$/ # TODO: make a complete list
 
 @/:ARGm/=/^:ARG[0-1]$/
-@/:ARGn/=/^:ARG[2-9]$/
+@/:ARGn/=/^:ARG[2-9](-[A-Z]+)?$/
 @/:ARG0/=/^:ARG0$/
 @/:ARG0-of/=/^:ARG0-of$/
 @/:ARG1/=/^:ARG1$/
 @/:ARG1-of/=/^:ARG1-of$/
-@/:ARG2/=/^:ARG2$/
+@/:ARG2/=/^:ARG2(-[A-Z]+)?$/
 @/:ARG2-of/=/^:ARG2-of$/
-@/:ARG3/=/^:ARG3$/
 @/:domain/=/^:domain$/
 @/:mod/=/^:mod$/
 @/:degree/=/^:degree$/
@@ -56,7 +55,7 @@
 @/det_Det/=/^(S[.](every|few|many|much|someSg|somePl)|more)_Det$/
 @/det_NP/=/^S[.](this|these|that|those)_NP$/
 @/struct_NP/=/^S.[a-z]+_NP$/
-@/prep_Prep/=/^[a-z]+_Prep$/
+@/prep_Prep/=/^[a-zA-Z]+_Prep$/
 @/quant_Quant/=/^S[.][a-z]+_Quant$/
 @/a_Quant/=/^S.a_Quant$/
 @/noun_N/=/^[a-z]+_N$/
@@ -427,6 +426,14 @@ mkNP=np_i < (mkCN < (/noun_N/ < /^:(location|topic)$/=adv))
 [relabel prep /^(.+)$/$1_Prep/]
 [adjoin (mkAdv TEMP=temp@) adv]
 [excise temp temp]
+
+# (mkVP (frame (:ARG2 mkNP))) => (mkVP (mkVP frame) (mkAdv prep_Prep mkNP))
+mkVP=vp_i < (/FRAME/ < (/:ARG2/=prep < mkNP=np))
+[relabel prep /^(.+)-(.+)$/$2_Prep/]
+[adjoinF (mkAdv=adv @) prep]
+[move np >2 adv]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
 
 # mkVP : VP -> Adv -> VP
 # (mkVP|passiveVP (frame (:ARG[2-5] mkAdv))) => (mkVP (mkVP|passiveVP (frame)) mkAdv)

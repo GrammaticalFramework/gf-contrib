@@ -37,6 +37,7 @@ open ParadigmsEng, MorphoEng in {
 		see_01_V2 = see_V2 ;
 		slaughter_01_V2 = slaughter_V2 ;
 		speak_01_V2 = speak_V2 ;
+		throw_01_V2 = throw_V2 ;
 		use_01_V2 = use_V2 ;
 		wield_01_V2 = wield_V2 ;
 
@@ -57,5 +58,7 @@ open ParadigmsEng, MorphoEng in {
 		race_A = mkA "race" "race" "race" "race" ;			-- note: a temporary solution
 
 		more_Det = mkDeterminer plural "more" ;
+
+		GOL_Prep = in_Prep ;
 
 }

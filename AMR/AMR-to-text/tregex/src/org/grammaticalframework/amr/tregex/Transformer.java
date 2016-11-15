@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import org.grammaticalframework.amr.peg.AMRGrammar;
 import org.parboiled.Parboiled;
@@ -32,6 +33,43 @@ public class Transformer {
 	private AMRGrammar peg;
 	
 	private List<Pair<TregexPattern,TsurgeonPattern>> tregex;
+	
+	private Map<String, Map<String,String>> roles;
+	
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 */
+	private Map<String, Map<String,String>> readRoles(String file) throws Exception {
+		Map<String, Map<String,String>> map = new HashMap<String, Map<String,String>>();
+		
+		BufferedReader input = new BufferedReader(new FileReader(file));
+		String line = null;
+		
+		while ((line = input.readLine()) != null) {
+			if (line.trim().isEmpty()) {
+				continue;
+			}
+
+			String[] entry = line.split("\t");
+			if (entry.length != 2) {
+				continue;
+			}
+			
+			Map<String,String> arg_role = new HashMap<String,String>();
+			for (String arg : entry[1].split(",")) {
+				String[] a = arg.split("=");
+				arg_role.put(a[0], a[1]);
+			}
+			
+			map.put(entry[0], arg_role);
+		}
+		
+		input.close();
+		
+		return map;
+	}
 
 	/**
 	 * Reads a list of Tregex pattern-matching and Tsurgeon transformation rules.
@@ -113,13 +151,15 @@ public class Transformer {
 
 	/**
 	 * Constructor.
-	 * @param file - a plain-text file containing Tregex/Tsurgeon rules.
+	 * @param f_rules - a plain-text file containing Tregex/Tsurgeon rules.
+	 * @param f_roles - 
 	 */
-	public Transformer(String file) {
+	public Transformer(String f_rules, String f_roles) {
 		peg = Parboiled.createParser(AMRGrammar.class);
 		
 		try {
-			tregex = compileRules(readRules(file));
+			tregex = compileRules(readRules(f_rules));
+			roles = readRoles(f_roles);
 		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		}
@@ -142,6 +182,35 @@ public class Transformer {
 
 		return null;
 	}
+	
+	/**
+	 * 
+	 * @param amr
+	 */
+	public void enrichAMR(Tree node, Stack<Tree> parents) {
+		String label = node.label().value();
+		
+		if (label.matches(":ARG[2-9]")) {
+			String frame = parents.peek().label().value();
+			
+			if (roles.containsKey(frame)) {
+				Map<String,String> roleset = roles.get(frame);
+			
+				if (roleset.containsKey(label.substring(1))) {
+					String role = roleset.get(label.substring(1));
+					node.label().setValue(label + "-" + role);
+				}
+			}
+		}
+		
+		parents.push(node);
+		
+		for (Tree n : node.children()) {
+			enrichAMR(n, parents);
+		}
+		
+		parents.pop();
+	}
 
 	/**
 	 * Transforms an AMR graph into a GF abstract syntax tree.
@@ -157,6 +226,8 @@ public class Transformer {
 			Tree input = penn.readTree();
 
 			while (input != null) {
+				enrichAMR(input, new Stack<Tree>());
+				
 				Tree output = Tsurgeon.processPatternsOnTree(tregex, input);
 				ast.add(output.toString());
 
@@ -176,7 +247,7 @@ public class Transformer {
 	 * Used for development purposes only.
 	 */
 	public static void main(String[] args) {
-		Transformer t = new Transformer("../rules/amr2api.tsurgeon");
+		Transformer t = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
 		
 		String amr = t.transformToLISP("");
 		System.out.println("AMR: " + amr);
