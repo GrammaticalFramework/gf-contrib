@@ -23,6 +23,7 @@ public class Tester {
 	public static final String name = "TestTrees";
 	public static final String path = "out" + File.separator + name;
 	public static final String rules = "../rules/amr2api.tsurgeon";
+	public static final String roles = "../lexicons/propbank/frames-roles.txt";
 	
 	@BeforeClass
 	public static void generateHeader() {
@@ -116,7 +117,7 @@ public class Tester {
 	// Girls see a boy.
 	@Test
 	public void t01_girls_see_a_boy() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x4 / boy))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 boy))))");
@@ -130,7 +131,7 @@ public class Tester {
 	// The boy is seen by the girls.
 	@Test
 	public void t02_the_boy_is_seen_by_the_girls() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 			
 		String amr = t.transformToLISP("(x4 / see-01\n\t:ARG1 (x2 / boy)\n\t:ARG0 (x7 / girl))");
 		assertEquals(amr, "(x4 (see-01 (:ARG1 (x2 boy)) (:ARG0 (x7 girl))))");
@@ -144,7 +145,7 @@ public class Tester {
 	// Two girls see a boy.
 	@Test
 	public void t03_two_girls_see_a_boy() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / see-01\n\t:ARG0 (x2 / girl\n\t\t:quant 2)\n\t:ARG1 (x5 / boy))");
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 (girl (:quant 2)))) (:ARG1 (x5 boy))))");
@@ -158,7 +159,7 @@ public class Tester {
 	// Two pretty girls see a boy.
 	@Test
 	public void t04_two_pretty_girls_see_a_boy() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x4 / see-01\n\t:ARG0 (x3 / girl\n\t\t:quant 2\n\t\t:mod (x2 / pretty))\n\t:ARG1 (x6 / boy))");
 		assertEquals(amr, "(x4 (see-01 (:ARG0 (x3 (girl (:quant 2) (:mod (x2 pretty))))) (:ARG1 (x6 boy))))");
@@ -172,7 +173,7 @@ public class Tester {
 	// The boy sees the two pretty girls.
 	@Test
 	public void t05_the_boy_sees_the_two_pretty_girls() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / see-01\n\t:ARG0 (x2 / boy)\n\t:ARG1 (x7 / girl\n\t\t:quant 2\n\t\t:mod (x6 / pretty)))");
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 boy)) (:ARG1 (x7 (girl (:quant 2) (:mod (x6 pretty)))))))");
@@ -186,7 +187,7 @@ public class Tester {
 	// Girls and boys play a game.
 	@Test
 	public void t06_girls_and_boys_play_a_game() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x4 / play-02\n\t:ARG0 (x2 / and\n\t\t:op1 (x1 / girl)\n\t\t:op2 (x3 / boy))\n\t:ARG1 (x6 / game))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 girl)) (:op2 (x3 boy))))) (:ARG1 (x6 game))))");
@@ -200,7 +201,7 @@ public class Tester {
 	// Boys, girls and a dog play a game.
 	@Test
 	public void t07_boys_girls_and_a_dog_play_a_game() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x7 / play-02\n\t:ARG0 (x4 / and\n\t\t:op1 (x1 / boy)\n\t\t:op2 (x3 / girl)\n\t\t:op2 (x6 / dog))\n\t:ARG1 (x9 / game))");
 		assertEquals(amr, "(x7 (play-02 (:ARG0 (x4 (and (:op1 (x1 boy)) (:op2 (x3 girl)) (:op2 (x6 dog))))) (:ARG1 (x9 game))))");
@@ -214,7 +215,7 @@ public class Tester {
 	// Many persons live.
 	@Test
 	public void t08_many_persons_live() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / many)))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many)))))))");
@@ -228,7 +229,7 @@ public class Tester {
 	// Some persons live in Ventspils.
 	@Test
 	public void t09_some_persons_live_in_Ventspils() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / some))\n\t:location (x5 / country\n\t\t:name (n / name\n\t\t\t:op1 \"Ventspils\")))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 some))))) (:location (x5 (country (:name (n (name (:op1 \"Ventspils\")))))))))");
@@ -242,7 +243,7 @@ public class Tester {
 	// Many persons live in Riga.
 	@Test
 	public void t10_many_persons_live_in_Riga() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / many))\n\t:location (x5 / city\n\t\t:name (n / name\n\t\t\t:op1 \"Riga\")\n\t\t:wiki \"Riga\"))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 many))))) (:location (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
@@ -256,7 +257,7 @@ public class Tester {
 	// More persons live in New York.
 	@Test
 	public void t11_more_persons_live_in_New_York() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / more))\n\t:location (x5 / city\n\t\t:name (n / name\n\t\t\t:op1 \"New\"\n\t\t\t:op2 \"York\")\n\t\t:wiki \"New_York_City\"))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 more))))) (:location (x5 (city (:name (n (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\"))))))");
@@ -271,7 +272,7 @@ public class Tester {
 	// TODO: How to represent much + more in GF? much_Predet?!
 	@Test
 	public void t12_much_more_persons_live_in_New_York_City() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x4 / live-01\n\t:ARG0 (x3 / person\n\t\t:quant (x2 / more\n\t\t\t:degree (x1 / much)))\n\t:location (x6 / city\n\t\t:name (n / name\n\t\t\t:op1 \"New\"\n\t\t\t:op2 \"York\"\n\t\t\t:op3 \"City\")))");
 		assertEquals(amr, "(x4 (live-01 (:ARG0 (x3 (person (:quant (x2 (more (:degree (x1 much)))))))) (:location (x6 (city (:name (n (name (:op1 \"New\") (:op2 \"York\") (:op3 \"City\")))))))))");
@@ -285,7 +286,7 @@ public class Tester {
 	// Few persons live in Riga and New York. 
 	@Test
 	public void t13_few_persons_live_in_Riga_and_New_York() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x3 / live-01\n\t:ARG0 (x2 / person\n\t\t:quant (x1 / few))\n\t:location (x6 / and\n\t\t:op1 (x5 / city\n\t\t\t:name (n / name\n\t\t\t\t:op1 \"Riga\")\n\t\t\t:wiki \"Riga\")\n\t\t:op2 (x7 / city\n\t\t\t:name (n1 / name\n\t\t\t\t:op1 \"New\"\n\t\t\t\t:op2 \"York\")\n\t\t\t:wiki \"New_York_City\")))");
 		assertEquals(amr, "(x3 (live-01 (:ARG0 (x2 (person (:quant (x1 few))))) (:location (x6 (and (:op1 (x5 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x7 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
@@ -299,7 +300,7 @@ public class Tester {
 	// Boys and girls play games in Riga.
 	@Test
 	public void t14_boys_and_girls_play_games_in_Riga() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x4 / play-02\n\t:ARG0 (x2 / and\n\t\t:op1 (x1 / boy)\n\t\t:op2 (x3 / girl))\n\t:ARG1 (x5 / game)\n\t:location (x7 / city\n\t\t:name (n / name\n\t\t\t:op1 \"Riga\")\n\t\t:wiki \"Riga\"))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\"))))))");
@@ -314,7 +315,7 @@ public class Tester {
 	// FIXME: CAMR
 	@Test
 	public void t15_boys_and_girls_play_games_in_Riga_and_New_York() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 		
 		String amr = t.transformToLISP("(x4 / play-02 :ARG0 (x2 / and :op1 (x1 / boy) :op2 (x3 / girl)) :ARG1 (x5 / game) :location (x8 / and :op1 (x7 / city :name (n / name :op1 \"Riga\") :wiki \"Riga\") :op2 (x9 / city :name (n1 / name :op1 \"New\" :op2 \"York\") :wiki \"New_York_City\")))");
 		assertEquals(amr, "(x4 (play-02 (:ARG0 (x2 (and (:op1 (x1 boy)) (:op2 (x3 girl))))) (:ARG1 (x5 game)) (:location (x8 (and (:op1 (x7 (city (:name (n (name (:op1 \"Riga\")))) (:wiki \"Riga\")))) (:op2 (x9 (city (:name (n1 (name (:op1 \"New\") (:op2 \"York\")))) (:wiki \"New_York_City\")))))))))");
@@ -328,7 +329,7 @@ public class Tester {
 	// Boys see Ann.
 	@Test
 	public void t16_boys_see_Ann() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / boy)\n\t:ARG1 (x3 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Ann\")))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 boy)) (:ARG1 (x3 (person (:name (n (name (:op1 \"Ann\")))))))))");
@@ -343,7 +344,7 @@ public class Tester {
 	// FIXME: wiki
 	@Test
 	public void t17_John_plays_a_game() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 			
 		String amr = t.transformToLISP("(x2 / play-02\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"John\")\n\t\t:wiki \"-\")\n\t:ARG1 (x4 / game))");
 		assertEquals(amr, "(x2 (play-02 (:ARG0 (x1 (person (:name (n (name (:op1 \"John\")))) (:wiki \"-\")))) (:ARG1 (x4 game))))");
@@ -358,7 +359,7 @@ public class Tester {
 	// FIXME: wiki
 	@Test
 	public void t18_John_sees_Ann() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"John\")\n\t\t:wiki \"-\")\n\t:ARG1 (x3 / person\n\t\t:name (n1 / name\n\t\t\t:op1 \"Ann\")))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"John\")))) (:wiki \"-\")))) (:ARG1 (x3 (person (:name (n1 (name (:op1 \"Ann\")))))))))");
@@ -372,7 +373,7 @@ public class Tester {
 	// Girls see some boys who play a game.
 	@Test
 	public void t19_girls_see_some_boys_who_play_a_game() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 			
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x4 / boy\n\t\t:quant (x3 / some)\n\t\t:ARG0-of (x6 / play-02\n\t\t\t:ARG1 (x8 / game))))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x4 (boy (:quant (x3 some)) (:ARG0-of (x6 (play-02 (:ARG1 (x8 game))))))))))");
@@ -387,7 +388,7 @@ public class Tester {
 	// FIXME: ':mod A' ("pretty boys") vs. ':mod N' ("ball game")
 	@Test
 	public void t20_girls_see_some_pretty_boys_who_play_a_ball_game() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 				
 		String amr = t.transformToLISP("(x2 / see-01\n\t:ARG0 (x1 / girl)\n\t:ARG1 (x5 / boy\n\t\t:quant (x3 / some)\n\t\t:mod (x4 / pretty)\n\t\t:ARG0-of (x7 / play-02\n\t\t\t:ARG1 (x10 / game\n\t\t\t\t:mod (x9 / ball)))))");
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
@@ -402,7 +403,7 @@ public class Tester {
 	// FIXME: "A girl who sees the game likes the boys who play." (CAMR)
 	@Test
 	public void t21_girls_who_see_the_game_like_the_boys_who_play() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 				
 		String amr = t.transformToLISP("(x6 / like-01\n\t:ARG0 (x1 / girl\n\t\t:ARG0-of (x3 / see-01\n\t\t\t:ARG1 (x5 / game)))\n\t:ARG1 (x8 / boy\n\t\t:ARG0-of (x10 / play-02)))");
 		assertEquals(amr, "(x6 (like-01 (:ARG0 (x1 (girl (:ARG0-of (x3 (see-01 (:ARG1 (x5 game)))))))) (:ARG1 (x8 (boy (:ARG0-of (x10 play-02)))))))");
@@ -418,7 +419,7 @@ public class Tester {
 	// TODO: Asma_al-Assad vs. Bashar_al-Assad (wiki)
 	@Test
 	public void t22_Assad_spoke_about_the_city() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 				
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:topic (x4 / city))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 city))))");
@@ -433,7 +434,7 @@ public class Tester {
 	// FIXME: CAMR
 	@Test
 	public void t23_Assad_spoke_about_the_two_cities() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 					
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:topic (x4 / city :quant 2))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:topic (x4 (city (:quant 2))))))");
@@ -447,7 +448,7 @@ public class Tester {
 	// Assad spoke a word about the city.
 	@Test
 	public void t24_Assad_spoke_a_word_about_the_city() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 					
 		String amr = t.transformToLISP("(x2 / speak-01\n\t:ARG0 (x1 / person\n\t\t:name (n / name\n\t\t\t:op1 \"Assad\")\n\t\t:wiki \"Asma_al-Assad\")\n\t:ARG1 (x4 / word\n\t\t:topic (x7 / city)))");
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:ARG1 (x4 (word (:topic (x7 city)))))))");
@@ -461,7 +462,7 @@ public class Tester {
 	// The boy is a person.
 	@Test
 	public void t25_the_boy_is_a_person() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(x5 / person\n\t:domain (x2 / boy))");
 		assertEquals(amr, "(x5 (person (:domain (x2 boy))))");
@@ -475,7 +476,7 @@ public class Tester {
 	// ::snt Iceland is a very interesting example.
 	@Test
 	public void t26_Iceland_is_a_very_interesting_example() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(e / example :ARG2-of (i / interest-01 :degree (v / very)) :domain (c / country :wiki \"Iceland\" :name (n / name :op1 \"Iceland\")))");
 		assertEquals(amr, "(e (example (:ARG2-of (i (interest-01 (:degree (v very))))) (:domain (c (country (:wiki \"Iceland\") (:name (n (name (:op1 \"Iceland\")))))))))");
@@ -491,7 +492,7 @@ public class Tester {
 	// FIXME: in the gold AMR, shouldn't it be ":ARG0 t2"?
 	@Test
 	public void t27_they_are_thugs_and_deserve_a_bullet() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(a / and :op1 (t / thug :domain (t2 / they)) :op2 (d / deserve-01 :ARG0 t :ARG1 (b / bullet)))");
 		assertEquals(amr, "(a (and (:op1 (t (thug (:domain (t2 they))))) (:op2 (d (deserve-01 (:ARG0 t) (:ARG1 (b bullet)))))))");
@@ -507,7 +508,7 @@ public class Tester {
 	// TODO: "after school killings"
 	@Test
 	public void t28_China_president_urges_child_safety() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(u / urge-01 :ARG0 (p / person :ARG0-of (h / have-org-role-91 :ARG1 (c / country :wiki \"China\" :name (n / name :op1 \"China\")) :ARG2 (p2 / president))) :ARG2 (s / protect-01 :ARG1 (c2 / child)))");
 		assertEquals(amr, "(u (urge-01 (:ARG0 (p (person (:ARG0-of (h (have-org-role-91 (:ARG1 (c (country (:wiki \"China\") (:name (n (name (:op1 \"China\"))))))) (:ARG2 (p2 president)))))))) (:ARG2 (s (protect-01 (:ARG1 (c2 child)))))))");
@@ -522,7 +523,7 @@ public class Tester {
 	// TODO: person that kills => killer (etc.)
 	@Test
 	public void t29_French_far_left_killer_leaves_jail() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(l2 / leave-11 :ARG0 (p2 / person :ARG0-of (k2 / kill-01) :mod (c / country :wiki \"France\" :name (n2 / name :op1 \"France\")) :mod (l / left :degree (f / far))) :ARG1 (j / jail))");
 		assertEquals(amr, "(l2 (leave-11 (:ARG0 (p2 (person (:ARG0-of (k2 kill-01)) (:mod (c (country (:wiki \"France\") (:name (n2 (name (:op1 \"France\"))))))) (:mod (l (left (:degree (f far)))))))) (:ARG1 (j jail))))");
@@ -536,7 +537,7 @@ public class Tester {
 	// ::snt Two other school assailants have committed suicide.
 	@Test
 	public void t30_two_other_school_assailants_have_committed_suicide() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(c / commit-02 :ARG0 (p / person :quant 2 :ARG0-of (a / assail-01 :ARG1 (s2 / school)) :mod (o / other)) :ARG1 (s / suicide))");
 		assertEquals(amr, "(c (commit-02 (:ARG0 (p (person (:quant 2) (:ARG0-of (a (assail-01 (:ARG1 (s2 school))))) (:mod (o other))))) (:ARG1 (s suicide))))");
@@ -551,7 +552,7 @@ public class Tester {
 	// TODO: when_Subj [it_NP] => when_Subj he_NP (:wiki "Muammar_Gaddafi")
 	@Test
 	public void t31_Gadhafi_attacks_US_in_speech_in_Italy() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(a / attack-01 :ARG0 (p / person :wiki \"Muammar_Gaddafi\" :name (n / name :op1 \"Gadhafi\")) :ARG1 (c / country :wiki \"United_States\" :name (n2 / name :op1 \"US\")) :subevent-of (s / speak-01 :ARG0 p :location (c2 / country :wiki \"Italy\" :name (n3 / name :op1 \"Italy\"))))");
 		assertEquals(amr, "(a (attack-01 (:ARG0 (p (person (:wiki \"Muammar_Gaddafi\") (:name (n (name (:op1 \"Gadhafi\"))))))) (:ARG1 (c (country (:wiki \"United_States\") (:name (n2 (name (:op1 \"US\"))))))) (:subevent-of (s (speak-01 (:ARG0 p) (:location (c2 (country (:wiki \"Italy\") (:name (n3 (name (:op1 \"Italy\"))))))))))))");
@@ -566,7 +567,7 @@ public class Tester {
 	// TODO: look => look-at by default (?)
 	@Test
 	public void t32_we_must_look_at_their_reasons() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(o / obligate-01 :ARG1 (w / we) :ARG2 (l / look-01 :ARG1 (r / reason :poss (t / they))))");
 		assertEquals(amr, "(o (obligate-01 (:ARG1 (w we)) (:ARG2 (l (look-01 (:ARG1 (r (reason (:poss (t they))))))))))");
@@ -581,7 +582,7 @@ public class Tester {
 	// TODO: "the man [named] Xu Yuyuan"
 	@Test
 	public void t33_the_man_Xu_Yuyuan_wielded_a_knife_usually_used_to_slaughter_pigs() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(w / wield-01 :ARG0 (m / man :wiki - :name (n / name :op1 \"Xu\" :op2 \"Yuyuan\")) :ARG1 (k / knife :ARG1-of (u / use-01 :ARG2 (s / slaughter-01 :ARG1 (p / pig)) :mod (u2 / usual))))");
 		assertEquals(amr, "(w (wield-01 (:ARG0 (m (man (:wiki -) (:name (n (name (:op1 \"Xu\") (:op2 \"Yuyuan\"))))))) (:ARG1 (k (knife (:ARG1-of (u (use-01 (:ARG2 (s (slaughter-01 (:ARG1 (p pig))))) (:mod (u2 usual))))))))))");
@@ -595,7 +596,7 @@ public class Tester {
 	// ::snt Libyan Abdel Basset Ali al-Megrahi was convicted of blowing up the plane.
 	@Test
 	public void t34_Libyan_Abdel_Basset_Ali_al_Megrahi_was_convicted_of_blowing_up_the_plane() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(c / convict-01 :ARG1 (p / person :wiki \"Abdelbaset_al-Megrahi\" :name (n / name :op1 \"Abdel\" :op2 \"Basset\" :op3 \"Ali\" :op4 \"al-Megrahi\") :mod (c2 / country :wiki \"Libya\" :name (n2 / name :op1 \"Libya\"))) :ARG2 (b / blow-up-06 :ARG0 p :ARG1 (p2 / plane)))");
 		assertEquals(amr, "(c (convict-01 (:ARG1 (p (person (:wiki \"Abdelbaset_al-Megrahi\") (:name (n (name (:op1 \"Abdel\") (:op2 \"Basset\") (:op3 \"Ali\") (:op4 \"al-Megrahi\")))) (:mod (c2 (country (:wiki \"Libya\") (:name (n2 (name (:op1 \"Libya\")))))))))) (:ARG2 (b (blow-up-06 (:ARG0 p) (:ARG1 (p2 plane)))))))");
@@ -609,7 +610,7 @@ public class Tester {
 	// ::snt A fourth member, Jean-Marc Rouillan, remains behind bars.
 	@Test
 	public void t35_a_fourth_member_Jean_Marc_Rouillan_remains_behind_bars() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(r / remain-01 :ARG1 (p / person :wiki - :name (n / name :op1 \"Jean-Marc\" :op2 \"Rouillan\") :mod (p2 / person :ARG0-of (h / have-org-role-91 :ARG2 (m / member)) :ord (o / ordinal-entity :value 4))) :ARG3 (b / behind :op1 (b2 / bar)))");
 		assertEquals(amr, "(r (remain-01 (:ARG1 (p (person (:wiki -) (:name (n (name (:op1 \"Jean-Marc\") (:op2 \"Rouillan\")))) (:mod (p2 (person (:ARG0-of (h (have-org-role-91 (:ARG2 (m member))))) (:ord (o (ordinal-entity (:value 4)))))))))) (:ARG3 (b (behind (:op1 (b2 bar)))))))");
@@ -624,7 +625,7 @@ public class Tester {
 	// TODO: hear => hear-of by default (?)
 	@Test
 	public void t36_I_d_never_heard_of_this_case_until_now() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(h / hear-01 :polarity - :ARG0 (i / i) :ARG1 (c / case :mod (t / this)) :time (u / until :op1 (n / now)))");
 		assertEquals(amr, "(h (hear-01 (:polarity -) (:ARG0 (i i)) (:ARG1 (c (case (:mod (t this))))) (:time (u (until (:op1 (n now)))))))");
@@ -638,7 +639,7 @@ public class Tester {
 	// ::snt So, I googled it to get more information.
 	@Test
 	public void t37_so_I_googled_it_to_get_more_information() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(g / google-01 :ARG0 (i / i) :ARG1 (i2 / it) :purpose (g2 / get-01 :ARG0 i :ARG1 (i3 / information :mod (m / more))))");
 		assertEquals(amr, "(g (google-01 (:ARG0 (i i)) (:ARG1 (i2 it)) (:purpose (g2 (get-01 (:ARG0 i) (:ARG1 (i3 (information (:mod (m more))))))))))");
@@ -653,7 +654,7 @@ public class Tester {
 	// FIXME: "even" is incorrectly attached in the gold AMR
 	@Test
 	public void t38_even_the_information_that_is_available_is_fuzzy() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(f / fuzzy :domain (i / information :ARG1-of (a / available-02)) :mod (e / even))");
 		assertEquals(amr, "(f (fuzzy (:domain (i (information (:ARG1-of (a available-02))))) (:mod (e even))))");
@@ -668,7 +669,7 @@ public class Tester {
 	// FIXME: "race angle" (race_N + angle_N), like "ball game" in t20
 	@Test
 	public void t39_as_for_the_race_angle_it_is_unnecessary() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(n / need-01 :polarity - :ARG1 (a / angle :mod (r / race)))");
 		assertEquals(amr, "(n (need-01 (:polarity -) (:ARG1 (a (angle (:mod (r race)))))))");
@@ -684,7 +685,7 @@ public class Tester {
 	// FIXME: an incomplete AMR (?)
 	@Test
 	public void t40_it_s_a_horrible_thing_that_happened() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(t / thing :mod (h / horrible))");
 		assertEquals(amr, "(t (thing (:mod (h horrible))))");
@@ -698,13 +699,29 @@ public class Tester {
 	// ::snt You are an idiot.
 	@Test
 	public void t41_you_are_an_idiot() {
-		Transformer t = new Transformer(rules);
+		Transformer t = new Transformer(rules, roles);
 						
 		String amr = t.transformToLISP("(i / idiot :domain (y / you))");
 		assertEquals(amr, "(i (idiot (:domain (y you))))");
 
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl S.you_NP (mkNP S.a_Quant (mkCN L.idiot_N))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+	
+	// ::snt They need to throw these punks in jail!
+	// TODO: reconstruct missing prepositions... (FRAME + GOL_Prep + NP-head)
+	// TODO: look up in FrameNet and other corpora...
+	@Test
+	public void t42_they_need_to_throw_these_punks_in_jail() {
+		Transformer t = new Transformer(rules, roles);
+						
+		String amr = t.transformToLISP("(o / obligate-01 :ARG1 (t / they) :ARG2 (t2 / throw-01 :ARG0 t :ARG1 (p / punk :mod (t3 / this)) :ARG2 (j / jail)))");
+		assertEquals(amr, "(o (obligate-01 (:ARG1 (t they)) (:ARG2 (t2 (throw-01 (:ARG0 t) (:ARG1 (p (punk (:mod (t3 this))))) (:ARG2 (j jail)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl S.they_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP (mkVP throw_01_V2 (mkNP S.this_Det (mkCN L.punk_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.jail_N))))))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

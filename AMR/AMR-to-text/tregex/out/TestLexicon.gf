@@ -30,6 +30,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		see_01_V2 : V2 ;
 		slaughter_01_V2 : V2 ;
 		speak_01_V2 : V2 ;
+		throw_01_V2 : V2 ;
 		use_01_V2 : V2 ;
 		wield_01_V2 : V2 ;
 
@@ -49,5 +50,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		race_A : A ;			-- FIXME: the same issue (no "mkCN : N -> N -> CN")
 
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)
+
+		GOL_Prep : Prep ;		-- a temporary experiment
 
 }

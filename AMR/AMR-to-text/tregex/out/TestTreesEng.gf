@@ -87,4 +87,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t41_you_are_an_idiot = (mkS (mkCl S.you_NP (mkNP S.a_Quant (mkCN L.idiot_N)))) ;
 
+	lin t42_they_need_to_throw_these_punks_in_jail = (mkS (mkCl S.they_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP (mkVP throw_01_V2 (mkNP S.this_Det (mkCN L.punk_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.jail_N)))))))) ;
+
 }
