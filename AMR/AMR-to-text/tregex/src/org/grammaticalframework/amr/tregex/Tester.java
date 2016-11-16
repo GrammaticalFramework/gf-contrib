@@ -711,8 +711,8 @@ public class Tester {
 	}
 	
 	// ::snt They need to throw these punks in jail!
-	// TODO: reconstruct missing prepositions... (FRAME + GOL_Prep + NP-head)
-	// TODO: look up in FrameNet and other corpora...
+	// TODO: reconstruct missing prepositions, depending on frame/verb, argument role (e.g. GOL_Prep) and/or the head of the NP.
+	// TODO: consider statistics from PropBank and FrameNet corpora (clearly dominant verb/frame-specific prepositions vs. NP-specific cases).
 	@Test
 	public void t42_they_need_to_throw_these_punks_in_jail() {
 		Transformer t = new Transformer(rules, roles);
