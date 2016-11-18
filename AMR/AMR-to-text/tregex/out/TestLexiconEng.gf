@@ -23,6 +23,7 @@ open ParadigmsEng, MorphoEng in {
 		commit_02_V2 = commit_V2 ;
 		convict_01_V2 = convict_V2 ;
 		deserve_01_V2 = deserve_V2 ;
+		expel_01_V2 = expel_V2 ;
 		get_01_V2 = get_V2 ;
 		google_01_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		hear_01_V2 = hear_V2 ;
@@ -33,6 +34,7 @@ open ParadigmsEng, MorphoEng in {
 		obligate_01_V2 = obligate_V2 ;
 		play_02_V2 = play_1_V2 ;
 		protect_01_V2 = protect_V2 ;
+		recommend_01_V2 = recommend_V2 ;
 		remain_01_V2 = remain_V2 ;
 		see_01_V2 = see_V2 ;
 		slaughter_01_V2 = slaughter_V2 ;
@@ -59,6 +61,7 @@ open ParadigmsEng, MorphoEng in {
 
 		more_Det = mkDeterminer plural "more" ;
 
+		DIR_Prep = from_Prep ;
 		GOL_Prep = in_Prep ;
 
 }

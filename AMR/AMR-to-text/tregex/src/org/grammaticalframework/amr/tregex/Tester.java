@@ -726,4 +726,19 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 		
+	// ::snt They should have been expelled from school at a minimum.
+	// TODO: DIR_Prep (see also t42)
+	@Test
+	public void t43_they_should_have_been_expelled_from_school_at_a_minimum() {
+		Transformer t = new Transformer(rules, roles);
+						
+		String amr = t.transformToLISP("(r / recommend-01 :ARG1 (e / expel-01 :ARG1 (t / they) :ARG2 (s / school) :degree (a / at-a-minimum)))");
+		assertEquals(amr, "(r (recommend-01 (:ARG1 (e (expel-01 (:ARG1 (t they)) (:ARG2 (s school)) (:degree (a at-a-minimum)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkVP (passiveVP recommend_01_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.they_NP (mkVP (mkVP (passiveVP expel_01_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.school_N)))) (S.mkAdv L.at_Prep (mkNP S.a_Det (mkCN L.minimum_N))))))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
 }
