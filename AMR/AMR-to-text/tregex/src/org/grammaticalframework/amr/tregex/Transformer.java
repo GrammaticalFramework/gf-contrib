@@ -216,13 +216,13 @@ public class Transformer {
 	}
 	
 	/**
-	 * Fix things that were impossible to handle by Tsurgeon. 
+	 * Fixes things that were impossible to handle by Tsurgeon. 
 	 * @param ast
 	 * @return
 	 */
+	@Deprecated
 	public String postprocessAST(String ast) {
-		ast = ast.replaceAll("\\(S[.]mkAdv ([a-z]+)-([a-z]+)-([a-z]+)\\)", "(S.mkAdv L.$1_Prep (mkNP S.$2_Det (mkCN L.$3_N)))");
-		
+		// Hopefully we wont need this function
 		return ast;
 	}
 

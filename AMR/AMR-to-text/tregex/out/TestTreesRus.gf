@@ -1,7 +1,7 @@
 --# -path=.:alltenses:../../lexicons/translator
 
 concrete TestTreesRus of TestTrees = TestLexiconRus **
-open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), ParadigmsRus in {
+open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {
 
 	flags
 		coding = utf8 ;
