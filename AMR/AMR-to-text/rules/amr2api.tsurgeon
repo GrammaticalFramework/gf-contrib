@@ -442,9 +442,11 @@ mkNP=np_i < (mkCN < (/noun_N/ < /^:(location|topic)$/=adv))
 [excise temp temp]
 
 # mkVP : VP -> Adv -> VP
-# (VP (frame (:degree (var prep-det-noun)))) => (mkVP (VP frame) (mkAdv prep_Prep (mkNP det_Det (mkCN noun_N))))
-/VP/=vp_i < (/FRAME/ < (/:degree/=degree < (/VAR/ < /^~/PREP/[-]~/DET/[-]~/WORD/$/=pp)))
-[adjoinF (mkAdv=adv @) pp]
+# (VP (frame (:degree (var multi-word-expression)))) => (mkVP (VP frame) (mkAdv "multi word expression"))
+/VP/=vp_i < (/FRAME/ < (/:degree/=degree < (/VAR/ < /^~/WORD/([-]~/WORD/)*$/=mwe)))
+[relabel mwe /^(.+)$/"$1"/]
+[relabel mwe /(-)/ /]
+[adjoinF (mkAdv=adv @) mwe]
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
 [delete degree]
@@ -590,6 +592,22 @@ mkVP <: /FRAME/=frame
 # (mkAP frame) => (mkAP frame_A)
 mkAP < /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/$1_$2_A/]
+
+# mkN2 => P.mkN2
+mkN2=n2
+[relabel n2 /^(.+)$/P.$1/]
+
+# mkPN => P.mkPN
+mkPN=pn
+[relabel pn /^(.+)$/P.$1/]
+
+# mkAdv => P.mkAdv
+mkAdv=adv < /MWE/
+[relabel adv /^(.+)$/P.$1/]
+
+# mkAdV => P.mkAdV
+mkAdV=adv
+[relabel adv /^(.+)$/P.$1/]
 
 # mkAdv => S.mkAdv
 mkAdv=adv
