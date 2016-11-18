@@ -16,6 +16,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		commit_02_V2 : V2 ;
 		convict_01_V2 : V2 ;
 		deserve_01_V2 : V2 ;
+		expel_01_V2 : V2 ;
 		get_01_V2 : V2 ;
 		google_01_V2 : V2 ;		-- no entry in Dictionary or DictEng
 		hear_01_V2 : V2 ;
@@ -26,6 +27,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		obligate_01_V2 : V2 ;
 		play_02_V2 : V2 ;		-- note: play_1_V2 (etc.) in Dictionary (no default play_V2)
 		protect_01_V2 : V2 ;
+		recommend_01_V2 : V2 ;
 		remain_01_V2 : V2 ;
 		see_01_V2 : V2 ;
 		slaughter_01_V2 : V2 ;
@@ -51,6 +53,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)
 
+		DIR_Prep : Prep ;		-- a temporary experiment
 		GOL_Prep : Prep ;		-- a temporary experiment
 
 }

@@ -119,6 +119,9 @@ public class Transformer {
 					String to = macros.get(from);
 					pattern = pattern.replace(from, to);
 				}
+				
+				// Convert a whole-label pattern into a sub-pattern if marked by ~
+				pattern = pattern.replaceAll("~/\\^(.+?)\\$/", "$1");
 			}
 		}
 		
@@ -211,6 +214,17 @@ public class Transformer {
 		
 		parents.pop();
 	}
+	
+	/**
+	 * Fix things that were impossible to handle by Tsurgeon. 
+	 * @param ast
+	 * @return
+	 */
+	public String postprocessAST(String ast) {
+		ast = ast.replaceAll("\\(S[.]mkAdv ([a-z]+)-([a-z]+)-([a-z]+)\\)", "(S.mkAdv L.$1_Prep (mkNP S.$2_Det (mkCN L.$3_N)))");
+		
+		return ast;
+	}
 
 	/**
 	 * Transforms an AMR graph into a GF abstract syntax tree.
@@ -229,7 +243,7 @@ public class Transformer {
 				enrichAMR(input, new Stack<Tree>());
 				
 				Tree output = Tsurgeon.processPatternsOnTree(tregex, input);
-				ast.add(output.toString());
+				ast.add(postprocessAST(output.toString()));
 
 				// Next input tree
 				input = penn.readTree();

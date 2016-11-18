@@ -89,4 +89,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), ParadigmsEng in
 
 	lin t42_they_need_to_throw_these_punks_in_jail = (mkS (mkCl S.they_NP (mkVP (passiveVP obligate_01_V2) (E.PurposeVP (mkVP (mkVP throw_01_V2 (mkNP S.this_Det (mkCN L.punk_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.jail_N)))))))) ;
 
+	lin t43_they_should_have_been_expelled_from_school_at_a_minimum = (mkS (mkCl (mkVP (passiveVP recommend_01_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.they_NP (mkVP (mkVP (passiveVP expel_01_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.school_N)))) (S.mkAdv L.at_Prep (mkNP S.a_Det (mkCN L.minimum_N)))))))))) ;
+
 }

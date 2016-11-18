@@ -43,5 +43,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t40_it_s_a_horrible_thing_that_happened : S ;
 	fun t41_you_are_an_idiot : S ;
 	fun t42_they_need_to_throw_these_punks_in_jail : S ;
+	fun t43_they_should_have_been_expelled_from_school_at_a_minimum : S ;
 
 }

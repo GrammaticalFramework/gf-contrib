@@ -7,8 +7,8 @@
 @/WORD/=/^[a-z]+$/
 @/TOKEN/=/^"[A-Za-z-]+"$/
 @/MWE/=/^"[A-Z a-z -]+"$/
-@/DET/=/^(every|few|many|more|much|some)$/ # TODO: extend the list
-@/PREP/=/^(above|across|after|among|before|behind|below|between|until)$/ # TODO: extend the list
+@/DET/=/^(a|the|every|few|many|more|much|some)$/ # TODO: extend the list
+@/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
@@ -151,6 +151,13 @@
 [adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
 [excise inv inv]
 
+# (mkCl !:ARG0 (mkVP (frame :ARG1 !:ARG0))) => (mkCl :ARG1 (mkVP (passiveVP frame)))
+mkCl=cl < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
+[relabel subj /^:ARG1$/:ARG0/]
+[move subj >1 cl]
+[excise subj subj]
+[adjoinF (passiveVP @) frame]
+
 # mkVP : VV -> VP -> VP
 # (frame (:ARG2 (var (frame :ARG1)))) => (frame (mkVP frame :ARG1))
 /FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < /:ARG1/=compl)))
@@ -179,6 +186,21 @@ mkCl=cl < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
 [excise subj subj]
 [adjoinF (passiveVP @) frame]
 
+# mkAdv : Subj -> S -> Adv
+# (mkS (mkCl mkVP mkS)) => (mkS (mkCl (mkVP mkVP (mkAdv that_Subj mkS))))
+mkS < (mkCl < mkVP=vp_i < mkS=s)
+[adjoinF (mkAdv=adv S.that_Subj @) s]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
+
+# mkAdv : Subj -> S -> Adv
+# (mkVP (frame (:subevent-of mkS))) => (mkVP (mkVP frame) (mkAdv when_Subj mkS))
+mkVP=vp_i < (/FRAME/ < (/:subevent-of/=temp < mkS=sub))
+[adjoinF (mkAdv=adv S.when_Subj @) sub]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
+[delete temp]
+
 # mkVP : V2 -> NP -> VP
 # (mkVP (frame :ARG1)) => (mkVP frame :ARG1)
 mkVP=vp < (/FRAME/ < /:ARG1/=obj)
@@ -201,14 +223,6 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [delete op]
 [move prep >1 adv]
 [delete var]
-
-# mkAdv : Subj -> S -> Adv
-# (mkVP (frame (:subevent-of mkS))) => (mkVP (mkVP frame) (mkAdv when_Subj mkS))
-mkVP=vp_i < (/FRAME/ < (/:subevent-of/=temp < mkS=sub))
-[adjoinF (mkAdv=adv S.when_Subj @) sub]
-[adjoinF (mkVP=vp_o @) vp_i]
-[move adv >2 vp_o]
-[delete temp]
 
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))
@@ -427,8 +441,17 @@ mkNP=np_i < (mkCN < (/noun_N/ < /^:(location|topic)$/=adv))
 [adjoin (mkAdv TEMP=temp@) adv]
 [excise temp temp]
 
-# (mkVP (frame (:ARG2 mkNP))) => (mkVP (mkVP frame) (mkAdv prep_Prep mkNP))
-mkVP=vp_i < (/FRAME/ < (/:ARG2/=prep < mkNP=np))
+# mkVP : VP -> Adv -> VP
+# (VP (frame (:degree (var prep-det-noun)))) => (mkVP (VP frame) (mkAdv prep_Prep (mkNP det_Det (mkCN noun_N))))
+/VP/=vp_i < (/FRAME/ < (/:degree/=degree < (/VAR/ < /^~/PREP/[-]~/DET/[-]~/WORD/$/=pp)))
+[adjoinF (mkAdv=adv @) pp]
+[adjoinF (mkVP=vp_o @) vp_i]
+[move adv >2 vp_o]
+[delete degree]
+
+# mkVP : VP -> Adv -> VP
+# (VP (frame (:ARG2 mkNP))) => (mkVP (mkVP frame) (mkAdv prep_Prep mkNP))
+/VP/=vp_i < (/FRAME/ < (/:ARG2/=prep < mkNP=np))
 [relabel prep /^(.+)-(.+)$/$2_Prep/]
 [adjoinF (mkAdv=adv @) prep]
 [move np >2 adv]
