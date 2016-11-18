@@ -52,7 +52,7 @@
 @/Adv/=/^(mkAdv|E[.]PurposeVP)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
-@/det_Det/=/^(S[.](every|few|many|much|someSg|somePl)|more)_Det$/
+@/det_Det/=/^(S[.](every|few|many|much|someSg|somePl)|L[.]more)_Det$/
 @/det_NP/=/^S[.](this|these|that|those)_NP$/
 @/struct_NP/=/^S.[a-z]+_NP$/
 @/prep_Prep/=/^[a-zA-Z]+_Prep$/
@@ -301,7 +301,7 @@ mkNP=np < (mkCN < (/VAR/ < (/WORD/ < /:quant/=num)))
 mkNP < (/quant_Quant/=quant $+ (/:quant/=temp < (/VAR/ < /DET/=det)))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
-[relabel det /^S.more_Det$/more_Det/]
+[relabel det /^S.more_Det$/L.more_Det/]
 [replace quant det]
 [delete temp]
 
@@ -377,7 +377,7 @@ mkNP=np1 < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < mkNP=country))))
 mkNP <1 /a_Quant/=quant <2 (mkCN < (/noun_N/ < (/:mod/=mod < (/VAR/ < /DET/=det))))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
-[relabel det /^S.more_Det$/more_Det/]
+[relabel det /^S.more_Det$/L.more_Det/]
 [replace quant det]
 [delete mod]
 
@@ -570,28 +570,28 @@ mkVP=vp_o <: /VP/
 
 # (passiveVP frame) => (passiveVP frame_V2)
 /passiveVP/ <: /FRAME/=frame
-[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
+[relabel frame /^(.+)-(.+)$/L.$1_V2/]
 
 # (mkVP frame NP) => (mkVP frame_V2 NP)
 mkVP <1 /FRAME/=frame <2 /NP/
-[relabel frame /^(.+)-(.+)$/$1_$2_V2/]
+[relabel frame /^(.+)-(.+)$/L.$1_V2/]
 
 # (mkVP frame mkVP) => (mkVP frame_VV mkVP)
 mkVP <1 /FRAME/=frame <2 mkVP
-[relabel frame /^(.+)-(.+)$/$1_$2_VV/]
+[relabel frame /^(.+)-(.+)$/L.$1_VV/]
 
 # (mkVP frame mkVP entity_NP) => (mkVP frame entity_NP mkVP)
 mkVP=vp <1 /FRAME/=frame <2 mkVP <3 /struct_NP/=np
-[relabel frame /^(.+)-(.+)$/$1_$2_V2V/]
+[relabel frame /^(.+)-(.+)$/L.$1_V2V/]
 [move np >2 vp]
 
 # (mkVP frame) => (mkVP frame_V)
 mkVP <: /FRAME/=frame
-[relabel frame /^(.+)-(.+)$/$1_$2_V/]
+[relabel frame /^(.+)-(.+)$/L.$1_V/]
 
 # (mkAP frame) => (mkAP frame_A)
 mkAP < /FRAME/=frame
-[relabel frame /^(.+)-(.+)$/$1_$2_A/]
+[relabel frame /^(.+)-(.+)$/L.$1_A/]
 
 # mkN2 => P.mkN2
 mkN2=n2
