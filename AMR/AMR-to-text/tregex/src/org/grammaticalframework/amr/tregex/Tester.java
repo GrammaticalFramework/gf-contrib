@@ -741,4 +741,19 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 		
+	// ::snt My opinion is based on the information provided.
+	// FIXME: DIR_Prep
+	@Test
+	public void t44_my_opinion_is_based_on_the_information_provided() {
+		Transformer t = new Transformer(rules, roles);
+			
+		String amr = t.transformToLISP("(b / base-02 :ARG1 (t / thing :ARG1-of (o / opine-01 :ARG0 (i / i))) :ARG2 (i2 / information :ARG1-of (p / provide-01)))");
+		assertEquals(amr, "(b (base-02 (:ARG1 (t (thing (:ARG1-of (o (opine-01 (:ARG0 (i i)))))))) (:ARG2 (i2 (information (:ARG1-of (p provide-01)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
 }
