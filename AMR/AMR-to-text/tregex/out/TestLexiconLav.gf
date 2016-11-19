@@ -10,20 +10,20 @@ concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in 
 
 	lin
 
-		live_01_V = mkV "dzīvot" second_conjugation ;
-		play_02_V = mkV "spēlēt" second_conjugation ;
-		speak_01_V = mkV "runāt" second_conjugation ;
+		live_V = mkV "dzīvot" second_conjugation ;
+		play_V = mkV "spēlēt" second_conjugation ;
+		speak_V = mkV "runāt" second_conjugation ;
 
-		assail_01_V2 = mkV2 (mkV "uzbrukt" "uzbrūku" "uzbruku") dat_Prep ;
-		commit_02_V2 = mkV2 (mkV "izdarīt" third_conjugation) acc_Prep ;
-		deserve_01_V2 = mkV2 (mkV "pelnīt" third_conjugation) acc_Prep ;
-		like_01_V2 = mkV2 (mkV "patikt" "patīku" "patiku" Dat) nom_Prep ;
-		look_01_V2 = mkV2 (mkV "skatīties" third_conjugation) acc_Prep ;
-		play_02_V2 = mkV2 (mkV "spēlēt" second_conjugation) acc_Prep ;
-		see_01_V2 = mkV2 (mkV "redzēt" third_conjugation) acc_Prep ;
-		speak_01_V2 = mkV2 (mkV "runāt" second_conjugation) acc_Prep ;
+		assail_V2 = mkV2 (mkV "uzbrukt" "uzbrūku" "uzbruku") dat_Prep ;
+		commit_V2 = mkV2 (mkV "izdarīt" third_conjugation) acc_Prep ;
+		deserve_V2 = mkV2 (mkV "pelnīt" third_conjugation) acc_Prep ;
+		like_V2 = mkV2 (mkV "patikt" "patīku" "patiku" Dat) nom_Prep ;
+		look_V2 = mkV2 (mkV "skatīties" third_conjugation) acc_Prep ;
+		play_V2 = mkV2 (mkV "spēlēt" second_conjugation) acc_Prep ;
+		see_V2 = mkV2 (mkV "redzēt" third_conjugation) acc_Prep ;
+		speak_V2 = mkV2 (mkV "runāt" second_conjugation) acc_Prep ;
 
-		obligate_01_V2V = mkV2V (mkV "uzdot" "uzdodu" "uzdevu") dat_Prep ;
+		obligate_V2V = mkV2V (mkV "uzdot" "uzdodu" "uzdevu") dat_Prep ;
 
 		boy_N = mkN "zēns" ;
 		bullet_N = mkN "lode" ;
