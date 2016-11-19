@@ -15,6 +15,7 @@ abstract TestLexicon = Cat, Dictionary ** {
 		bar_N : N ;				-- no entry in Dictionary, but there is one in DictEng
 		court_N : N ;			-- because of court_1_N (etc.) in Dictionary (no default court_N)
 		game_N : N ;			-- because of game_1_N (etc.) in Dictionary (no default game_N)
+		issue_N : N ;			-- because of issue_1_N (etc.) in Dictionary (no default issue_N)
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
 		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)
 

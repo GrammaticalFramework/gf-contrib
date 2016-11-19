@@ -95,4 +95,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone = (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Texas")))) (mkRS (mkRCl S.which_RP (mkAP L.criminal_A))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP))) ;
 
+	lin t46_I_don_t_think_it_is_a_race_issue_either = (mkS (mkCl S.i_NP (mkVP (P.mkAdV "either") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (mkCN L.race_A L.issue_N)))))))) ;
+
 }

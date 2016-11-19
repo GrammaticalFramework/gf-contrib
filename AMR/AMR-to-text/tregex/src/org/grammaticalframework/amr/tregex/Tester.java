@@ -773,4 +773,19 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
 		
+	// ::snt I don't think it is a race issue either.
+	// FIXME: attachment of 'either' (annotation vs. transformation issue)
+	@Test
+	public void t46_I_don_t_think_it_is_a_race_issue_either() {
+		Transformer t = new Transformer(rules, roles);
+			
+		String amr = t.transformToLISP("(t / think-01 :ARG0 (i / i) :ARG1 (i2 / issue-02 :polarity - :ARG0 (i3 / it) :mod (r / race)) :mod (e / either))");
+		assertEquals(amr, "(t (think-01 (:ARG0 (i i)) (:ARG1 (i2 (issue-02 (:polarity -) (:ARG0 (i3 it)) (:mod (r race))))) (:mod (e either))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS (mkCl S.i_NP (mkVP (P.mkAdV \"either\") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (mkCN L.race_A L.issue_N))))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
 }

@@ -23,6 +23,7 @@ open ParadigmsEng, MorphoEng in {
 		court_N = court_1_N ;
 		game_N = game_1_N ;
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
+		issue_N = issue_1_N ;
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 
