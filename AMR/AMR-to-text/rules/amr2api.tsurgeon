@@ -9,12 +9,13 @@
 @/MWE/=/^"[A-Z a-z -]+"$/
 @/DET/=/^(a|the|every|few|many|more|much|some)$/ # TODO: extend the list
 @/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
-@/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody)$/
+@/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
 @/NE_TYPE/=/^[a-z]+$/ # TODO: make a complete list
 
-@/:ARGm/=/^:ARG[0-1]$/
+@/:ARGm/=/^:ARG[01]$/
+@/:ARGm-of/=/^:ARG[01]-of$/
 @/:ARGn/=/^:ARG[2-9](-[A-Z]+)?$/
 @/:ARG0/=/^:ARG0$/
 @/:ARG0-of/=/^:ARG0-of$/
@@ -39,6 +40,8 @@
 @/:purpose/=/^:purpose$/
 @/:polarity/=/^:polarity$/
 
+@/ADV_REL/=/^:(location|topic|time)$/
+
 @/have-org-role-91/=/^have-org-role-91$/
 
 @/name/=/^name$/
@@ -48,11 +51,11 @@
 @/S/=/^mk[R]?S$/
 @/Cl/=/^mk[R]?Cl$/
 @/VP/=/^(mk|passive)VP$/
-@/NP/=/^(mk|S[.][a-z]+_)NP$/
+@/NP/=/^(mk|[SL][.][a-z]+_)NP$/
 @/Adv/=/^(mkAdv|E[.]PurposeVP)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
-@/det_Det/=/^(S[.](every|few|many|much|someSg|somePl)|L[.]more)_Det$/
+@/det_Det/=/^[SL][.](every|few|many|much|someSg|somePl|more)_Det$/
 @/det_NP/=/^S[.](this|these|that|those)_NP$/
 @/struct_NP/=/^S.[a-z]+_NP$/
 @/prep_Prep/=/^[a-zA-Z]+_Prep$/
@@ -124,17 +127,17 @@
 /:mod/=mod < /have-org-role-91/=org
 [adjoin (mkRS (mkRCl S.which_RP (mkNP S.a_Quant mkCN@))) org]
 
+# mkRCl : RP -> AP -> RCl
+# (:ARG[01]-of (var (frame_A))) => (mkRS (mkRCl which_RP (mkAP frame_A)))
+/:ARGm-of/=inv < (/VAR/=var < /ADJ_FRAME/)
+[adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
+[excise inv inv]
+
 # mkRCl : RP -> VP -> RCl
 # mkRS : RCl -> RS
 # (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP (mkVP frame)))
 /:ARG0-of/=inv < (/VAR/=var < /FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP mkVP@)) var]
-[excise inv inv]
-
-# mkRCl : RP -> AP -> RCl
-# (:ARG1-of (var (frame_A))) => (mkRS (mkRCl which_RP (mkAP frame_A)))
-/:ARG1-of/=inv < (/VAR/=var < /ADJ_FRAME/)
-[adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
 [excise inv inv]
 
 # mkRCl : RP -> NP -> V2 -> RCl
@@ -263,6 +266,7 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 # (var pron) => (pron_NP)
 /VAR/=var < /PRON/=pron
 [relabel pron /^(.+)$/S.$1_NP/]
+[relabel pron /^S.anyone_NP$/L.anyone_NP/]
 [excise var var]
 
 # mkAP : A -> AP
@@ -421,15 +425,15 @@ mkNP < (/a_Quant/=quant $ (mkCN < (/noun_N/ < (/:poss/=poss < /pron_NP/=pron))))
 
 # mkVP : VP -> Adv -> VP
 # (mkVP (frame (:adv mkNP))) => (mkVP (mkVP frame) (:adv mkNP))
-mkVP=vp_i < (/FRAME/ < /^:(location|topic)$/=adv)
+mkVP=vp_i < (/FRAME/ < (/ADV_REL/=adv < mkNP))
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
 
-# mkNP : NP -> Adv -> NP
-# (mkNP (mkCN (noun (:adv mkNP)))) => (mkNP (mkNP (mkCN noun)) (:adv mkNP))
-mkNP=np_i < (mkCN < (/noun_N/ < /^:(location|topic)$/=adv))
-[adjoinF (mkNP=np_o @) np_i]
-[move adv >2 np_o]
+# mkCN : CN -> Adv -> CN
+# (mkCN (noun (:adv mkNP))) => (mkCN (mkCN noun) (:adv mkNP))
+mkCN=cn_i < (/noun_N/ < (/ADV_REL/=adv < mkNP))
+[adjoinF (mkCN=cn_o @) cn_i]
+[move adv >2 cn_o]
 
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)
@@ -642,10 +646,13 @@ mkOrd=ord
 /adj_A/=a
 [relabel a /^(.+)$/L.$1/]
 
-### Remove any unresolved variables and relations
+### Remove any unresolved coreferences
 
-/VAR/=var
+/Cl/ <1 /VAR/=var
 [delete var]
 
-/REL/=rel
-[delete rel]
+/:ARG0/=arg <: /VAR/
+[delete arg]
+
+/:location/=loc <: /VAR/
+[delete loc]

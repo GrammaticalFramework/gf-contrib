@@ -454,7 +454,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (speak-01 (:ARG0 (x1 (person (:name (n (name (:op1 \"Assad\")))) (:wiki \"Asma_al-Assad\")))) (:ARG1 (x4 (word (:topic (x7 city)))))))");
 							
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP (P.mkPN \"Assad\")) (mkVP L.speak_V2 (mkNP (mkNP S.a_Quant (mkCN L.word_N)) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.city_N)))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP (P.mkPN \"Assad\")) (mkVP L.speak_V2 (mkNP S.a_Quant (mkCN (mkCN L.word_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.city_N))))))))");
 					
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}
@@ -752,6 +752,23 @@ public class Tester {
 
 		String ast = t.transformToGF(amr).get(0);
 		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
+	// ::snt Texas criminal courts and prosecutors do not coddle to anyone.
+	// TODO: 'person that prosecutes' => prosecutor (t29: 'person that kills' => killer)
+	// TODO: [[criminal courts] and [prosecutors] in Texas] - :location - coreference and attachment
+	// FIXME: 'court that is criminal' - an "overannotated" AMR? (criminal-03 vs. :mod)
+	@Test
+	public void t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone() {
+		Transformer t = new Transformer(rules, roles);
+			
+		String amr = t.transformToLISP("(c / coddle-01 :polarity - :ARG0 (a / and :op1 (c2 / court :ARG0-of (c4 / criminal-03) :location (s / state :wiki \"Texas\" :name (n / name :op1 \"Texas\"))) :op2 (p / person :ARG0-of (p2 / prosecute-01) :location s)) :ARG1 (a2 / anyone))");
+		assertEquals(amr, "(c (coddle-01 (:polarity -) (:ARG0 (a (and (:op1 (c2 (court (:ARG0-of (c4 criminal-03)) (:location (s (state (:wiki \"Texas\") (:name (n (name (:op1 \"Texas\")))))))))) (:op2 (p (person (:ARG0-of (p2 prosecute-01)) (:location s))))))) (:ARG1 (a2 anyone))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN \"Texas\")))) (mkRS (mkRCl S.which_RP (mkAP L.criminal_A))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP)))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

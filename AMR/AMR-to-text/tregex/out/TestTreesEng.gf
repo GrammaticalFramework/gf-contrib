@@ -51,7 +51,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t23_Assad_spoke_about_the_two_cities = (mkS (mkCl (mkNP (P.mkPN "Assad")) (mkVP (mkVP L.speak_V) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.city_N)))))) ;
 
-	lin t24_Assad_spoke_a_word_about_the_city = (mkS (mkCl (mkNP (P.mkPN "Assad")) (mkVP L.speak_V2 (mkNP (mkNP S.a_Quant (mkCN L.word_N)) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.city_N))))))) ;
+	lin t24_Assad_spoke_a_word_about_the_city = (mkS (mkCl (mkNP (P.mkPN "Assad")) (mkVP L.speak_V2 (mkNP S.a_Quant (mkCN (mkCN L.word_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.city_N)))))))) ;
 
 	lin t25_the_boy_is_a_person = (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkNP S.a_Quant (mkCN L.person_N)))) ;
 
@@ -92,5 +92,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 	lin t43_they_should_have_been_expelled_from_school_at_a_minimum = (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.they_NP (mkVP (mkVP (passiveVP L.expel_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.school_N)))) (P.mkAdv "at a minimum")))))))) ;
 
 	lin t44_my_opinion_is_based_on_the_information_provided = (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2))))))))) ;
+
+	lin t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone = (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Texas")))) (mkRS (mkRCl S.which_RP (mkAP L.criminal_A))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP))) ;
 
 }

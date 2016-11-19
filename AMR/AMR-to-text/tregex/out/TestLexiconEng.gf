@@ -12,6 +12,7 @@ open ParadigmsEng, MorphoEng in {
 	lin
 
 		play_V = play_1_V ;
+		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
 
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		play_V2 = play_1_V2 ;
@@ -19,6 +20,7 @@ open ParadigmsEng, MorphoEng in {
 		urge_VV = mkVV (mkV "urge") ;
 
 		bar_N = mkN "bar" "bars" ;
+		court_N = court_1_N ;
 		game_N = game_1_N ;
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
