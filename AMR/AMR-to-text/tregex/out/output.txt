@@ -218,3 +218,18 @@ TestTreesEng: a court in Texas that is criminal and a person that prosecutes don
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t46_I_don_t_think_it_is_a_race_issue_either
+TestTreesEng: I either think that it isn't a race issue
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t47_the_girl_is_very_nice_and_the_boy_is_very_good
+TestTreesEng: a girl is very nice and a boy is very good
+TestTreesLav: meitene ir ļoti jauka , un zēns ir ļoti labs
+TestTreesRus: 
+
+TestTrees: t48_women_are_horny_as_hell
+TestTreesEng: a woman is as hell horny !
+TestTreesLav: 
+TestTreesRus: 
+

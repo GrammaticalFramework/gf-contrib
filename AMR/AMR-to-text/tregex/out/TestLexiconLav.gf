@@ -39,8 +39,12 @@ concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in 
 		word_N = mkN "vārds" ;
 
 		ball_A = mkA "bumbas" AIndecl ;
+		good_A = mkA "labs" ;
+		nice_A = mkA "jauks" ;
 		other_A = mkA "cits" ;
 		pretty_A = mkA "jauks" ;
+
+		very_AdA = mkAdA "ļoti" ;
 
 		about_Prep = mkPrep "par" Acc Dat ;
 
