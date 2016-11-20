@@ -99,4 +99,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t47_the_girl_is_very_nice_and_the_boy_is_very_good = (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkAP L.very_AdA (mkAP L.nice_A)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkAP L.very_AdA (mkAP L.good_A)))))) ;
 
+	lin t48_women_are_horny_as_hell = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkAP (P.mkAdA "as hell") (mkAP L.horny_A))))) exclMarkPunct) ;
+
 }

@@ -228,3 +228,8 @@ TestTreesEng: a girl is very nice and a boy is very good
 TestTreesLav: meitene ir ļoti jauka , un zēns ir ļoti labs
 TestTreesRus: 
 
+TestTrees: t48_women_are_horny_as_hell
+TestTreesEng: a woman is as hell horny !
+TestTreesLav: 
+TestTreesRus: 
+

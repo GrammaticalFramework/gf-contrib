@@ -802,4 +802,19 @@ public class Tester {
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 		
+	// ::snt Women are horny as hell!
+	// FIXME: word order (position of AdA), based on some heuristics...
+	@Test
+	public void t48_women_are_horny_as_hell() {
+		Transformer t = new Transformer(rules, roles);
+			
+		String amr = t.transformToLISP("(h / horny :mode expressive :domain (w / woman) :degree (a / as-hell))");
+		assertEquals(amr, "(h (horny (:mode expressive) (:domain (w woman)) (:degree (a as-hell))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkAP (P.mkAdA \"as hell\") (mkAP L.horny_A))))) exclMarkPunct)");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
 }
