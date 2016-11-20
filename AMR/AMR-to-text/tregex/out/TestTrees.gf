@@ -47,5 +47,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t44_my_opinion_is_based_on_the_information_provided : S ;
 	fun t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone : S ;
 	fun t46_I_don_t_think_it_is_a_race_issue_either : S ;
+	fun t47_the_girl_is_very_nice_and_the_boy_is_very_good : S ;
 
 }

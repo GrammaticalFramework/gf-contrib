@@ -165,7 +165,7 @@ public class Tester {
 		assertEquals(amr, "(x4 (see-01 (:ARG0 (x3 (girl (:quant 2) (:mod (x2 pretty))))) (:ARG1 (x6 boy))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN L.pretty_A L.girl_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkAP L.pretty_A) L.girl_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -179,7 +179,7 @@ public class Tester {
 		assertEquals(amr, "(x3 (see-01 (:ARG0 (x2 boy)) (:ARG1 (x7 (girl (:quant 2) (:mod (x6 pretty)))))))");
 		
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN L.pretty_A L.girl_N)))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkNum (mkDigits \"2\")) (mkCN (mkAP L.pretty_A) L.girl_N)))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -394,7 +394,7 @@ public class Tester {
 		assertEquals(amr, "(x2 (see-01 (:ARG0 (x1 girl)) (:ARG1 (x5 (boy (:quant (x3 some)) (:mod (x4 pretty)) (:ARG0-of (x7 (play-02 (:ARG1 (x10 (game (:mod (x9 ball)))))))))))))");
 				
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))");
+		assertEquals(ast, "(mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN (mkAP L.pretty_A) L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))");
 		
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
@@ -786,6 +786,20 @@ public class Tester {
 		assertEquals(ast, "(mkS (mkCl S.i_NP (mkVP (P.mkAdV \"either\") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (mkCN L.race_A L.issue_N))))))))");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+	}
+		
+	// The girl is very nice and the boy is very good.
+	@Test
+	public void t47_the_girl_is_very_nice_and_the_boy_is_very_good() {
+		Transformer t = new Transformer(rules, roles);
+			
+		String amr = t.transformToLISP("(x6 / and\n\t:op1 (x5 / nice-01\n\t\t:ARG0 (x2 / girl)\n\t\t:degree (x4 / very))\n\t:op2 (x11 / good\n\t\t:domain (x8 / boy)\n\t\t:degree (x10 / very)))");
+		assertEquals(amr, "(x6 (and (:op1 (x5 (nice-01 (:ARG0 (x2 girl)) (:degree (x4 very))))) (:op2 (x11 (good (:domain (x8 boy)) (:degree (x10 very)))))))");
+
+		String ast = t.transformToGF(amr).get(0);
+		assertEquals(ast, "(mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkAP L.very_AdA (mkAP L.nice_A)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkAP L.very_AdA (mkAP L.good_A))))))");
+
+		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
 	}
 		
 }
