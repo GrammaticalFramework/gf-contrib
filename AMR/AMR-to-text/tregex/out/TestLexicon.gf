@@ -25,6 +25,8 @@ abstract TestLexicon = Cat, Dictionary ** {
 
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)
 
+		part_Prep : Prep ;		-- see Structural (RGL)
+
 		DIR_Prep : Prep ;		-- a temporary experiment
 		GOL_Prep : Prep ;		-- a temporary experiment
 

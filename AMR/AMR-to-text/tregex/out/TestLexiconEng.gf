@@ -1,7 +1,7 @@
 --# -path=../../lexicons/translator
 
 concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng - [information_N] **
-open ParadigmsEng, MorphoEng in {
+open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 	flags
 
@@ -32,6 +32,8 @@ open ParadigmsEng, MorphoEng in {
 		race_A = mkA "race" "race" "race" "race" ;			-- a temporary solution
 
 		more_Det = mkDeterminer plural "more" ;
+
+		part_Prep = S.part_Prep ;
 
 		DIR_Prep = from_Prep ;
 		GOL_Prep = in_Prep ;

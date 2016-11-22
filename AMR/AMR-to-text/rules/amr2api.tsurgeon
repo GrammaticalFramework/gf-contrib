@@ -30,6 +30,7 @@
 @/:ord/=/^:ord$/
 @/:value/=/^:value$/
 @/:poss/=/^:poss$/
+@/:part-of/=/^:part-of$/
 @/:time/=/^:time$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
@@ -359,7 +360,16 @@ mkNP < (/quant_Quant/=quant $+ (/:quant/=temp < (/VAR/ < /DET/=det)))
 [delete temp]
 
 # mkNP : Det -> CN -> NP
-# (mkNP a_Quant (mkCN (var (noun_N (:mod det_NP))))) => (mkNP det_Det (mkCN noun_N))
+# (mkNP a_Quant (mkCN (var (noun (:mod (var det)))))) => (mkNP det_Det mkCN)
+mkNP < (/a_Quant/=quant $ (mkCN < (/VAR/ < (/WORD/ < (/:mod/=mod < (/VAR/ < /DET/=det))))))
+[relabel det /^(.+)$/S.$1_Det/]
+[relabel det /^S.some_Det$/S.somePl_Det/]
+[relabel det /^S.(another|more)_Det$/L.$1_Det/]
+[replace quant det]
+[delete mod]
+
+# mkNP : Det -> CN -> NP
+# (mkNP a_Quant (mkCN (var (noun (:mod det_NP))))) => (mkNP det_Det mkCN)
 mkNP < (/a_Quant/=quant $ (mkCN < (/VAR/ < (/WORD/ < (/:mod/=mod < /det_NP/=det)))))
 [relabel det /^(.+)_NP$/$1_Det/]
 [replace quant det]
@@ -407,32 +417,29 @@ mkCN=cn1 < (/noun_N/ < mkRS=rs)
 [adjoinF (mkCN=cn2 @) cn1]
 [move rs >2 cn2]
 
-# mkCN : CN -> Adv -> CN
 # mkAdv : Prep -> NP
-# (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
-mkCN=cn1 < (/noun_N/ < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < mkNP=np)))))
-[adjoinF (mkAdv=adv from_Prep @) np]
-[adjoinF (mkCN=cn2 @) cn1]
-[move adv >2 cn2]
-[delete mod]
+# (:mod (var ('country' (:name mkNP)))) => (mkAdv from_Prep mkNP)
+/:mod/=mod < (/VAR/ < (/country/ < (/:name/=name < mkNP=np)))
+[adjoinF (mkAdv from_Prep @) np]
+[excise mod name]
+
+# mkAdv : Prep -> NP
+# (:part-of NP) => (mkAdv part_Prep mkNP)
+/:part-of/=adv < /NP/
+[relabel adv /^.+$/mkAdv/]
+[insert (part_Prep) >1 adv]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN (noun_N mkAdv)) => (mkCN (mkCN noun_N) mkAdv)
+mkCN=cn_i < (/noun_N/ < mkAdv=adv)
+[adjoinF (mkCN=cn_o @) cn_i]
+[move adv >2 cn_o]
 
 # mkNP : NP -> Adv -> NP
-# mkAdv : Prep -> NP
-# (mkNP (:mod (var ('country' (:name mkNP))))) => (mkNP mkNP (mkAdv from_Prep mkNP))
-mkNP=np1 < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < mkNP=country))))
-[adjoinF (mkAdv=adv from_Prep @) country]
-[adjoinF (mkNP=np2 @) np1]
-[move adv >2 np2]
-[delete mod]
-
-# mkNP : Det -> CN -> NP
-# (mkNP a_Quant (mkCN (noun_N (:mod (var det))))) => (mkNP det_Det (mkCN noun_N))
-mkNP <1 /a_Quant/=quant <2 (mkCN < (/noun_N/ < (/:mod/=mod < (/VAR/ < /DET/=det))))
-[relabel det /^(.+)$/S.$1_Det/]
-[relabel det /^S.some_Det$/S.somePl_Det/]
-[relabel det /^S.(another|more)_Det$/L.$1_Det/]
-[replace quant det]
-[delete mod]
+# (mkNP mkAdv) => (mkNP mkNP mkAdv)
+mkNP=np_i < mkAdv=adv !< /NP/
+[adjoinF (mkNP=np_o @) np_i]
+[move adv >2 np_o]
 
 # mkCN : AP -> N -> CN
 # (mkCN (noun_N (:mod mkAP))) => (mkCN mkAP noun_N)

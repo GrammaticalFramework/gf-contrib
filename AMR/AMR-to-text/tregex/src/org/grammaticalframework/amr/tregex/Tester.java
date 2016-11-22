@@ -824,11 +824,11 @@ public class Tester {
 	public void t49_is_it_a_possibility_there_is_another_side_to_this() {
 		Transformer t = new Transformer(rules, roles);
 			
-		String amr = t.transformToLISP("(p / possible-01 :mode interrogative :ARG1 (s / side :mod (a / another)))");
-		assertEquals(amr, "(p (possible-01 (:mode interrogative) (:ARG1 (s (side (:mod (a another)))))))");
+		String amr = t.transformToLISP("(p / possible-01 :mode interrogative :ARG1 (s / side :mod (a / another) :part-of (t / this)))");
+		assertEquals(amr, "(p (possible-01 (:mode interrogative) (:ARG1 (s (side (:mod (a another)) (:part-of (t this)))))))");
 
 		String ast = t.transformToGF(amr).get(0);
-		assertEquals(ast, "(mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN L.side_N)))))))) questMarkPunct)");
+		assertEquals(ast, "(mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP))))))))) questMarkPunct)");
 
 		generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
 	}

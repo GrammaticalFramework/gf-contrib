@@ -101,6 +101,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t48_women_are_horny_as_hell = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkAP (P.mkAdA "as hell") (mkAP L.horny_A))))) exclMarkPunct) ;
 
-	lin t49_is_it_a_possibility_there_is_another_side_to_this = (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN L.side_N)))))))) questMarkPunct) ;
+	lin t49_is_it_a_possibility_there_is_another_side_to_this = (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP))))))))) questMarkPunct) ;
 
 }
