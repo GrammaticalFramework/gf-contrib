@@ -7,7 +7,7 @@
 @/WORD/=/^[a-z]+$/
 @/TOKEN/=/^"[A-Za-z-]+"$/
 @/MWE/=/^"[A-Z a-z -]+"$/
-@/DET/=/^(a|the|every|few|many|more|much|some)$/ # TODO: extend the list
+@/DET/=/^(a|the|every|few|many|more|much|some|another)$/ # TODO: extend the list
 @/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
@@ -30,6 +30,7 @@
 @/:ord/=/^:ord$/
 @/:value/=/^:value$/
 @/:poss/=/^:poss$/
+@/:part-of/=/^:part-of$/
 @/:time/=/^:time$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
@@ -56,7 +57,7 @@
 @/Adv/=/^(mkAdv|E[.]PurposeVP)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
-@/det_Det/=/^[SL][.](every|few|many|much|someSg|somePl|more)_Det$/
+@/det_Det/=/^[SL][.](a|the|every|few|many|more|much|some|another)_Det$/
 @/det_NP/=/^S[.](this|these|that|those)_NP$/
 @/struct_NP/=/^S.[a-z]+_NP$/
 @/prep_Prep/=/^[a-zA-Z]+_Prep$/
@@ -354,12 +355,21 @@ mkNP=np < (mkCN < (/VAR/ < (/WORD/ < /:quant/=num)))
 mkNP < (/quant_Quant/=quant $+ (/:quant/=temp < (/VAR/ < /DET/=det)))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
-[relabel det /^S.more_Det$/L.more_Det/]
+[relabel det /^S.(another|more)_Det$/L.$1_Det/]
 [replace quant det]
 [delete temp]
 
 # mkNP : Det -> CN -> NP
-# (mkNP a_Quant (mkCN (var (noun_N (:mod det_NP))))) => (mkNP det_Det (mkCN noun_N))
+# (mkNP a_Quant (mkCN (var (noun (:mod (var det)))))) => (mkNP det_Det mkCN)
+mkNP < (/a_Quant/=quant $ (mkCN < (/VAR/ < (/WORD/ < (/:mod/=mod < (/VAR/ < /DET/=det))))))
+[relabel det /^(.+)$/S.$1_Det/]
+[relabel det /^S.some_Det$/S.somePl_Det/]
+[relabel det /^S.(another|more)_Det$/L.$1_Det/]
+[replace quant det]
+[delete mod]
+
+# mkNP : Det -> CN -> NP
+# (mkNP a_Quant (mkCN (var (noun (:mod det_NP))))) => (mkNP det_Det mkCN)
 mkNP < (/a_Quant/=quant $ (mkCN < (/VAR/ < (/WORD/ < (/:mod/=mod < /det_NP/=det)))))
 [relabel det /^(.+)_NP$/$1_Det/]
 [replace quant det]
@@ -407,32 +417,29 @@ mkCN=cn1 < (/noun_N/ < mkRS=rs)
 [adjoinF (mkCN=cn2 @) cn1]
 [move rs >2 cn2]
 
-# mkCN : CN -> Adv -> CN
 # mkAdv : Prep -> NP
-# (mkCN (noun (:mod (var ('country' (:name mkNP)))))) => (mkCN (mkCN noun) (mkAdv from_Prep mkNP))
-mkCN=cn1 < (/noun_N/ < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < mkNP=np)))))
-[adjoinF (mkAdv=adv from_Prep @) np]
-[adjoinF (mkCN=cn2 @) cn1]
-[move adv >2 cn2]
-[delete mod]
+# (:mod (var ('country' (:name mkNP)))) => (mkAdv from_Prep mkNP)
+/:mod/=mod < (/VAR/ < (/country/ < (/:name/=name < mkNP=np)))
+[adjoinF (mkAdv from_Prep @) np]
+[excise mod name]
+
+# mkAdv : Prep -> NP
+# (:part-of NP) => (mkAdv part_Prep mkNP)
+/:part-of/=adv < /NP/
+[relabel adv /^.+$/mkAdv/]
+[insert (part_Prep) >1 adv]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN (noun_N mkAdv)) => (mkCN (mkCN noun_N) mkAdv)
+mkCN=cn_i < (/noun_N/ < mkAdv=adv)
+[adjoinF (mkCN=cn_o @) cn_i]
+[move adv >2 cn_o]
 
 # mkNP : NP -> Adv -> NP
-# mkAdv : Prep -> NP
-# (mkNP (:mod (var ('country' (:name mkNP))))) => (mkNP mkNP (mkAdv from_Prep mkNP))
-mkNP=np1 < (/:mod/=mod < (/VAR/ < (/country/ < (/:name/ < mkNP=country))))
-[adjoinF (mkAdv=adv from_Prep @) country]
-[adjoinF (mkNP=np2 @) np1]
-[move adv >2 np2]
-[delete mod]
-
-# mkNP : Det -> CN -> NP
-# (mkNP a_Quant (mkCN (noun_N (:mod (var det))))) => (mkNP det_Det (mkCN noun_N))
-mkNP <1 /a_Quant/=quant <2 (mkCN < (/noun_N/ < (/:mod/=mod < (/VAR/ < /DET/=det))))
-[relabel det /^(.+)$/S.$1_Det/]
-[relabel det /^S.some_Det$/S.somePl_Det/]
-[relabel det /^S.more_Det$/L.more_Det/]
-[replace quant det]
-[delete mod]
+# (mkNP mkAdv) => (mkNP mkNP mkAdv)
+mkNP=np_i < mkAdv=adv !< /NP/
+[adjoinF (mkNP=np_o @) np_i]
+[move adv >2 np_o]
 
 # mkCN : AP -> N -> CN
 # (mkCN (noun_N (:mod mkAP))) => (mkCN mkAP noun_N)
@@ -588,6 +595,15 @@ mkAP=ap_i < (/^(~/adj_A/)|(~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/W
 [move adv2 >1 vp_o]
 [delete mod]
 
+# mkCl : NP -> Cl
+# mkS : Cl -> S
+# mkAP : AP -> S -> AP
+# (mkAP (adj_A|frame (:ARG1 mkNP))) => (mkAP (mkAP adj_A|frame) (mkS (mkCl mkNP)))
+mkAP=ap_i < (/^(~/adj_A/)|(~/FRAME/)$/ < (/:ARG1/=arg < mkNP))
+[adjoin (mkS=obj (mkCl@)) arg]
+[adjoinF (mkAP=ap_o @) ap_i]
+[move obj >2 ap_o]
+
 # mkS : Pol -> Cl -> S
 # (S (Cl (mkVP (frame (:polarity -))))) => (S negativePol (Cl ..))
 /S/=snt < (/Cl/ < (mkVP < (/FRAME/ < (/:polarity/=pol < -))))
@@ -612,19 +628,39 @@ mkAP=ap_i < (/^(~/adj_A/)|(~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/W
 [insert (negativePol) >1 snt]
 [delete pol]
 
-# mkUtt : NP -> Utt
-# (ROOT mkNP) => (mkUtt mkNP)
-mkNP=np !> /.*/
-[adjoinF (mkUtt @) np]
+# mkText : Utt -> Punct -> Text
+# mkUtt : QS -> Utt
+# mkQS : Cl -> QS
+# (ROOT (mkS (.. (:mode interrogative)))) => (mkText (mkUtt mkQS) questMarkPunct)
+mkS=s << (/:mode/=mode < interrogative) !> /.*/
+[relabel s /^.+$/mkQS/]
+[adjoinF (mkText (mkUtt @) questMarkPunct) s]
+[delete mode]
 
 # mkText : Utt -> Punct -> Text
 # mkUtt : S -> Utt
-# (ROOT mkS (.. (:mode expressive))) => (mkText (mkUtt mkNP) exclMarkPunct)
+# (ROOT (mkS (.. (:mode expressive)))) => (mkText (mkUtt mkS) exclMarkPunct)
 mkS=s << (/:mode/=mode < expressive) !> /.*/
 [adjoinF (mkText (mkUtt @) exclMarkPunct) s]
 [delete mode]
 
+# mkText : Utt -> Punct -> Text
+# mkUtt : S -> Utt
+# (ROOT mkS) => (mkText (mkUtt mkS) fullStopPunct)
+mkS=s !> /.*/
+[adjoinF (mkText (mkUtt @) fullStopPunct) s]
+
+# mkText : Utt -> Text
+# mkUtt : NP -> Utt
+# (ROOT mkNP) => (mkText (mkUtt mkNP))
+mkNP=np !> /.*/
+[adjoinF (mkText (mkUtt @)) np]
+
 ### Post-editing
+
+# (mkCl mkAP) => (mkCl S.it_NP mkAP)
+mkCl=cl <: mkAP
+[insert (S.it_NP) >1 cl]
 
 # (VP (frame Adv)) => (mkVP (VP frame) Adv)
 /VP/=vp_i < (/FRAME/ < /Adv/=adv)
