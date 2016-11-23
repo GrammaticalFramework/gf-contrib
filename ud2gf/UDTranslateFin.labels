@@ -1,0 +1,14 @@
+-- Finnish annotations on top of UDTranslate.labels
+
+-- these functions have morphological conditions
+BareCN_   : CN -> NP ;        Number=Sing
+BareCN_ cn = MassNP cn
+BarePlCN_ : CN -> NP ;        Number=Plur
+BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
+
+Predet DET lemma=kaikki
+
+Cop_      VERB  lemma=olla
+Neg_      VERB  lemma=ei
+ThatMark_ SCONJ lemma=että
+Perf_     AUX   lemma=olla

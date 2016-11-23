@@ -1,0 +1,13 @@
+ud2gf mapping
+
+(c) Aarne Ranta 2016 under BSD license
+
+Makefile assumes symbolic links
+
+treebanks -> <your path to>ud-treebanks-v1.3
+gflibsrc -> <your path to>GF/lib/src/
+
+Documentation:
+
+http://www.grammaticalframework.org/~aarne/ud2gf.pdf
+

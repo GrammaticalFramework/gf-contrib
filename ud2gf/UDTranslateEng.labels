@@ -1,0 +1,25 @@
+-- English annotations on top of UDTranslate.labels
+
+-- these functions have morphological conditions
+BareCN_   : CN -> NP ;        Number=Sing
+BareCN_ cn = MassNP cn
+BarePlCN_ : CN -> NP ;        Number=Plur
+BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
+
+-- words whose linearization from Dictionary is not their lemma in UD
+must_VV  : VV ; lemma=must
+can_1_VV : VV ; lemma=can
+i_Pron : Pron ; lemma=my  -- ---- as used in nmod:poss, must be a mistake
+
+-- syncategorematic words
+
+Cop_      VERB  lemma=be
+AuxPass_  AUX   lemma=be
+InfMark_  PART  lemma=to
+Expl_     PRON  lemma=there
+Neg_      PART  lemma=not
+ThatMark_ SCONJ lemma=that
+Fut_      AUX   lemma=will
+Cond_     AUX   lemma=would
+Perf_     AUX   lemma=have
+

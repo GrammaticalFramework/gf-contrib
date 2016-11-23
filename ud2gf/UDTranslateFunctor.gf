@@ -1,0 +1,87 @@
+incomplete concrete UDTranslateFunctor of UDTranslate =
+  Translate, Extensions [GenNP]
+     ** open Syntax, Symbolic, Prelude in {
+
+lincat
+  Top = {s : Str} ;
+  Punct = {s : Str} ;
+
+lin
+  TopUtt utt = utt ;
+  TopUttPunct utt punct = {s = utt.s ++ punct.s} ;
+
+  StringPunct s = {s = s.s} ;
+  StringCard s = {s = \\_ => s.s ; n = plural} ;
+
+-- backup functions for unknown dependents
+
+lincat
+  Backups = {s1,s2 : Str} ;
+  Backup = {s : Str} ;
+  [Backup] = {s : Str} ;
+
+oper
+  backupsAdv : Backups -> Adv = \b -> lin Adv {s = bracket b.s2} ;
+  bracket : Str -> Str = \s -> "[" ++ s ++ "]" ;
+
+lin
+  MkBackups b1 b2 = {s1 = b1.s ; s2 = b2.s} ;
+  BaseBackup = {s = []} ;
+  ConsBackup b bs = {s = b.s ++ bs.s} ;
+
+
+lin
+  BackupAdV adv b = lin AdV {s = bracket b.s1 ++ adv.s ++ bracket b.s2} ;
+  BackupAdv adv b = lin Adv {s = bracket b.s1 ++ adv.s ++ bracket b.s2} ;
+  BackupAP  xp b = mkAP (lin AdA {s = bracket b.s1}) (mkAP xp (backupsAdv b)) ;
+  BackupNP  np b = np ** {s = \\c => bracket b.s1 ++ np.s ! c ++ bracket b.s2} ;
+  BackupVPS vps b = vps ** {s = \\c => bracket b.s1 ++ vps.s ! c ++ bracket b.s2} ;
+  BackupV2V v b = v ** {s = \\c => bracket b.s1 ++ v.s ! c ++ bracket b.s2} ;
+  BackupVP  xp b = mkVP (lin AdV {s = bracket b.s1}) (mkVP xp (backupsAdv b)) ; ---- AdV not always the right place
+  BackupVPSlash xp b = xp ** mkVP (lin AdV {s = bracket b.s1}) (mkVP <xp : VP> (backupsAdv b)) ; ---- AdV not always the right place
+  BackupCl cl b = {s = \\t,a,p,o => bracket b.s1 ++ cl.s ! t ! a ! p ! o ++ bracket b.s2} ;
+  BackupClSlash cl b = cl ** {s = \\t,a,p,o => bracket b.s1 ++ cl.s ! t ! a ! p ! o ++ bracket b.s2} ;
+  BackupS s b = {s = bracket b.s1 ++ s.s ++ bracket b.s2} ;
+  BackupQS s b = {s = \\o => bracket b.s1 ++ s.s ! o ++ bracket b.s2} ;
+  BackupSC sc b = lin Utt {s = bracket b.s1 ++ sc.s ++ bracket b.s2} ;
+  BackupSubj adv b = lin Subj {s = bracket b.s1 ++ adv.s ++ bracket b.s2} ;
+  BackupUtt utt b = lin Utt {s = bracket b.s1 ++ utt.s ++ bracket b.s2} ;
+  BackupTop top b = lin Top {s = bracket b.s1 ++ top.s ++ bracket b.s2} ;
+
+  APBackup ap = mkUtt ap ;
+  AdvBackup adv = mkUtt adv ;
+  DetBackup det = mkUtt (mkNP det) ;
+  InterjBackup i = mkUtt i ;
+  NPBackup np = mkUtt np ;
+  OrdBackup ord = mkUtt (mkAP ord) ;
+  PNBackup pn = mkUtt (mkNP pn) ;
+  PunctBackup p = p ;
+  SBackup s = mkUtt s ;
+  ConjBackup conj = mkUtt (mkNP conj (symb []) (symb [])) ; --- to get both discontinuous parts
+  SubjBackup subj = subj ;
+  SymbBackup sy = sy ;
+  UttBackup utt = utt ;
+
+  these_Det = mkDet this_Quant pluralNum ;
+  this_Det = mkDet this_Quant singularNum ;
+  that_Det = mkDet that_Quant singularNum ;
+  those_Det = mkDet that_Quant pluralNum ;
+  these_NP = mkNP (mkDet this_Quant pluralNum) ;
+  this_NP = mkNP (mkDet this_Quant singularNum) ;
+  that_NP = mkNP (mkDet that_Quant singularNum) ;
+  those_NP = mkNP (mkDet that_Quant pluralNum) ;
+  which_Det = mkIDet which_IQuant ;
+  no_Det = mkDet no_Quant ;
+  all_Det = every_Det ; ---- used in translations, excluded in Eng
+
+---- TODO: treat numbers with the Numeral grammar
+lin
+  one_Card = mkCard "1" ;
+  two_Card = mkCard "2" ;
+  three_Card = mkCard "3" ;
+  four_Card = mkCard "4" ;
+  five_Card = mkCard "5" ;
+  ten_Card = mkCard "10" ;
+
+
+}

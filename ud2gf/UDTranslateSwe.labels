@@ -1,0 +1,22 @@
+-- Swedish annotations on top of UDTranslate.labels
+
+BareCN_   : CN -> NP ;        Number=Sing Definite=Ind
+BareCN_ cn = MassNP cn
+BarePlCN_ : CN -> NP ;        Number=Plur Definite=Ind
+BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
+DefCN_   : CN -> NP ;        Number=Sing Definite=Def
+DefCN_ cn = DetCN (DetQuant DefArt NumSg) cn
+DefPlCN_ : CN -> NP ;        Number=Plur Definite=Def
+DefPlCN_ cn = DetCN (DetQuant DefArt NumPl) cn
+
+Predet DET lemma=all
+
+Cop_      VERB  lemma=vara
+InfMark_  PART  lemma=att
+Expl_     PRON  lemma=den -- used as another expletive 
+Neg_      PART  lemma=inte
+ThatMark_ SCONJ lemma=att
+AuxPass_  AUX   lemma=vara -- ?
+Fut_      AUX   lemma=ska
+Cond_     AUX   lemma=skulle
+Perf_     AUX   lemma=ha
