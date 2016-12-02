@@ -122,8 +122,7 @@ public class Transformer {
                     pattern = pattern.replace(from, to);
                 }
 
-                // Convert a whole-label pattern into a sub-pattern if marked by
-                // ~
+                // Convert a whole-label pattern into a sub-pattern if marked by ~
                 pattern = pattern.replaceAll("~/\\^(.+?)\\$/", "$1");
             }
         }
@@ -149,7 +148,9 @@ public class Transformer {
         List<Pair<TregexPattern, TsurgeonPattern>> c_rules = new ArrayList<Pair<TregexPattern, TsurgeonPattern>>();
 
         for (Pair<String, String> r : rules) {
-            c_rules.add(new Pair<TregexPattern, TsurgeonPattern>(TregexPattern.compile(r.first), Tsurgeon.parseOperation(r.second)));
+            c_rules.add(new Pair<TregexPattern, TsurgeonPattern>(
+                    TregexPattern.compile(r.first),
+                    Tsurgeon.parseOperation(r.second)));
         }
 
         return c_rules;
@@ -271,7 +272,9 @@ public class Transformer {
      * Used for development purposes only.
      */
     public static void main(String[] args) {
-        Transformer amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
+        Transformer amr2gf = new Transformer(
+                "../rules/amr2api.tsurgeon",
+                "../lexicons/propbank/frames-roles.txt");
 
         String amr = amr2gf.transformToLISP("");
         System.out.println("AMR: " + amr);

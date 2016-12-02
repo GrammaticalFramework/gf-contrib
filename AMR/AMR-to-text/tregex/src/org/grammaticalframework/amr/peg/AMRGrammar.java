@@ -22,7 +22,22 @@ public class AMRGrammar extends BaseParser<AMRNode> {
 
     // Instance = '(' Var '/' Concept (Relation X)* ')'
     public Rule Instance() {
-        return Sequence('(', ZeroOrMore(Space()), Var(), push(new AMRNode(match())), (peek(1)).addChild(peek()), OneOrMore(Space()), '/', OneOrMore(Space()), Concept(), push(new AMRNode(match())), (peek(1)).addChild(peek()), ZeroOrMore(Sequence(OneOrMore(Space()), Relation(), push(new AMRNode(match())), (peek(1)).addChild(peek()), OneOrMore(Space()), X(), drop())), drop(), drop(), ZeroOrMore(Space()), ')');
+        return Sequence(
+                '(',
+                ZeroOrMore(Space()),
+                Var(), push(new AMRNode(match())), (peek(1)).addChild(peek()),
+                OneOrMore(Space()),
+                '/',
+                OneOrMore(Space()),
+                Concept(), push(new AMRNode(match())), (peek(1)).addChild(peek()),
+                ZeroOrMore(Sequence(
+                        OneOrMore(Space()),
+                        Relation(), push(new AMRNode(match())), (peek(1)).addChild(peek()),
+                        OneOrMore(Space()),
+                        X(), drop())),
+                drop(), drop(),
+                ZeroOrMore(Space()),
+                ')');
     }
 
     // Var = [a-z][0-9]*
@@ -34,19 +49,30 @@ public class AMRGrammar extends BaseParser<AMRNode> {
     // Concept = [A-Za-z][A-Za-z0-9-]*
     @SuppressSubnodes
     public Rule Concept() {
-        return Sequence(FirstOf(UpperLetter(), LowerLetter()), ZeroOrMore(FirstOf(UpperLetter(), LowerLetter(), Digit(), '-')));
+        return Sequence(
+                FirstOf(UpperLetter(), LowerLetter()),
+                ZeroOrMore(FirstOf(UpperLetter(), LowerLetter(), Digit(), '-')));
     }
 
     // Relation = ':'[A-Za-z][A-Za-z0-9-]*
     @SuppressSubnodes
     public Rule Relation() {
-        return Sequence(':', FirstOf(UpperLetter(), LowerLetter()), ZeroOrMore(FirstOf(UpperLetter(), LowerLetter(), Digit(), '-')));
+        return Sequence(
+                ':',
+                FirstOf(UpperLetter(), LowerLetter()),
+                ZeroOrMore(FirstOf(UpperLetter(), LowerLetter(), Digit(), '-')));
     }
 
     // X = Instance | Mode | Var | Str | Num | Bool
     @SkipNode
     public Rule X() {
-        return FirstOf(Instance(), Sequence(Mode(), (peek()).addChild(new AMRNode(match()))), Sequence(Var(), (peek()).addChild(new AMRNode(match()))), Sequence(Str(), (peek()).addChild(new AMRNode(match()))), Sequence(Num(), (peek()).addChild(new AMRNode(match()))), Sequence(Bool(), (peek()).addChild(new AMRNode(match()))));
+        return FirstOf(
+                Instance(),
+                Sequence(Mode(), (peek()).addChild(new AMRNode(match()))),
+                Sequence(Var(), (peek()).addChild(new AMRNode(match()))),
+                Sequence(Str(), (peek()).addChild(new AMRNode(match()))),
+                Sequence(Num(), (peek()).addChild(new AMRNode(match()))),
+                Sequence(Bool(), (peek()).addChild(new AMRNode(match()))));
     }
 
     // Str = '"' [^\"\s]+ '"'
@@ -58,7 +84,10 @@ public class AMRGrammar extends BaseParser<AMRNode> {
     // Num = [+-]?\d+(\.\d+)?
     @SuppressSubnodes
     public Rule Num() {
-        return Sequence(Optional(FirstOf('+', '-')), OneOrMore(Digit()), Optional(Sequence('.', OneOrMore(Digit()))));
+        return Sequence(
+                Optional(FirstOf('+', '-')),
+                OneOrMore(Digit()),
+                Optional(Sequence('.', OneOrMore(Digit()))));
     }
 
     // Mode = interrogative | expressive | imperative

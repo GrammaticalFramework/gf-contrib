@@ -29,6 +29,7 @@ public class AMRNode {
             return label;
         } else {
             String subtree = "";
+
             for (AMRNode child : children) {
                 subtree += child;
             }

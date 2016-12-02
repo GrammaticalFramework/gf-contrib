@@ -82,12 +82,12 @@ public class FrameExtractor {
         }
     }
 
-    public static Map<String, List<List<String>>> extract(String path) throws Exception {
+    public static Map<String, List<List<String>>> extract(File path) throws Exception {
         Map<String, List<List<String>>> framesets = new TreeMap<String, List<List<String>>>();
 
-        File dir = new File(path);
-        if (dir.isDirectory()) {
-            File[] files = dir.listFiles();
+        if (path.isDirectory()) {
+            File[] files = path.listFiles();
+
             for (int i = 0; i < files.length; i++) {
                 processFrameSet(files[i], framesets);
             }
@@ -97,7 +97,7 @@ public class FrameExtractor {
     }
 
     public static void main(String[] args) throws Exception {
-        Map<String, List<List<String>>> framesets = extract("../lexicons/propbank/frames");
+        Map<String, List<List<String>>> framesets = extract(new File("../lexicons/propbank/frames"));
 
         PrintWriter frame_entries = new PrintWriter("../lexicons/propbank/frames-entries.txt", "UTF-8");
         PrintWriter frame_roles = new PrintWriter("../lexicons/propbank/frames-roles.txt", "UTF-8");
