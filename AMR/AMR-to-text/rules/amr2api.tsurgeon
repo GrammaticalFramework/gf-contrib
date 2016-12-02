@@ -293,9 +293,8 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [delete var]
 
 # (var (type (:name mkNP))) => (mkNP)
-/VAR/=var < (/NE_TYPE/ < (/:name/ < mkNP=np) !< /:mod/) !> /:mod/
-[move np $- var]
-[delete var]
+/VAR/=var < (/NE_TYPE/ < (/:name/=name < mkNP) !< /:mod/) !> /:mod/
+[excise var name]
 
 # (var (type (:name mkNP) :mod)) => (mkNP :mod)
 /VAR/=var < (/NE_TYPE/ < (/:name/ < mkNP=np) < /:mod/=mod) !> /:mod/

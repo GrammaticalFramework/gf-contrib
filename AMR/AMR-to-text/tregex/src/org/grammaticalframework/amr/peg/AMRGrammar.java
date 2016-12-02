@@ -43,10 +43,10 @@ public class AMRGrammar extends BaseParser<AMRNode> {
         return Sequence(':', FirstOf(UpperLetter(), LowerLetter()), ZeroOrMore(FirstOf(UpperLetter(), LowerLetter(), Digit(), '-')));
     }
 
-    // X = Instance | Mode | Var | Str | Num | Null
+    // X = Instance | Mode | Var | Str | Num | Bool
     @SkipNode
     public Rule X() {
-        return FirstOf(Instance(), Sequence(Mode(), (peek()).addChild(new AMRNode(match()))), Sequence(Var(), (peek()).addChild(new AMRNode(match()))), Sequence(Str(), (peek()).addChild(new AMRNode(match()))), Sequence(Num(), (peek()).addChild(new AMRNode(match()))), Sequence(Null(), (peek()).addChild(new AMRNode(match()))));
+        return FirstOf(Instance(), Sequence(Mode(), (peek()).addChild(new AMRNode(match()))), Sequence(Var(), (peek()).addChild(new AMRNode(match()))), Sequence(Str(), (peek()).addChild(new AMRNode(match()))), Sequence(Num(), (peek()).addChild(new AMRNode(match()))), Sequence(Bool(), (peek()).addChild(new AMRNode(match()))));
     }
 
     // Str = '"' [^\"\s]+ '"'
@@ -67,10 +67,10 @@ public class AMRGrammar extends BaseParser<AMRNode> {
         return FirstOf(String("interrogative"), String("expressive"), String("imperative"));
     }
 
-    // Null
+    // Bool
     @SuppressSubnodes
-    public Rule Null() {
-        return String("-");
+    public Rule Bool() {
+        return FirstOf('-', '+');
     }
 
     @SuppressNode
