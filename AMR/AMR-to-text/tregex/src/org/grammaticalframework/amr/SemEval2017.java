@@ -3,6 +3,7 @@ package org.grammaticalframework.amr;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,9 +70,64 @@ public class SemEval2017 {
             System.out.println(f.getName() + ": " + count);
         }
 
-        System.out.println("Total: " + amrs.size() + "\n");
+        System.out.println("Total: " + amrs.size());
 
         return amrs;
+    }
+
+    /**
+     *
+     * @param term
+     * @param grammar
+     * @return
+     */
+    public static String computeConcrete(String term, String grammar) {
+        String gf = "/Users/normundsg/Library/Haskell/bin/gf";
+
+        String[] cmd = {
+                "/bin/sh",
+                "-c",
+                "echo \"cc -one " + term + "\" | " + gf + " +RTS -K1024M -RTS --no-recomp --run -retain " + grammar
+        };
+
+        String text = null;
+
+        try {
+            Process proc = Runtime.getRuntime().exec(cmd);
+
+            BufferedReader stdout = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            BufferedReader stderr = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+
+            String line = null;
+
+            // Reads the standard output stream of the executed command
+            while ((line = stdout.readLine()) != null) {
+                if (text == null) {
+                    text = line; // Takes only the first line
+                }
+            }
+
+            // Reads the standard error stream of the executed command
+            while ((line = stderr.readLine()) != null) {
+                System.err.println("### STDERR");
+                System.err.println("|-- " + term);
+                System.err.println("|-- " + line);
+            }
+
+            // Waits while the process exits, returning a status code
+            int status = proc.waitFor();
+            if (status != 0) {
+                System.err.println("### STATUS");
+                System.err.println("|-- " + term);
+                System.err.println("|-- " + status);
+            }
+        } catch (Exception e) {
+            System.err.println("### EXCEPTION");
+            System.err.println("|-- " + term);
+            e.printStackTrace(System.err);
+        }
+
+        return text;
     }
 
     /**
@@ -86,17 +142,25 @@ public class SemEval2017 {
         PrintWriter answer_ext = new PrintWriter("out/answer-extended.txt", "UTF-8");
         PrintWriter answer = new PrintWriter("out/answer.txt", "UTF-8");
 
+        System.out.println("Available processors: " + Runtime.getRuntime().availableProcessors());
+        long startTime = System.currentTimeMillis();
+
         for (Pair<String, String> amr : amrs) {
             answer_ext.println("SNT: " + amr.first);
             answer_ext.println("AMR: " + amr.second);
 
             String ast = amr2gf.transformToGF(amr2gf.transformToLISP(amr.second)).get(0);
 
-            answer_ext.println("AST: " + ast);
-            answer_ext.println("TXT: " + "\n"); // TODO
+            String txt = computeConcrete(ast, "out/TestTreesEng.gf");
 
-            answer.println("TXT: "); // TODO
+            answer_ext.println("AST: " + ast);
+            answer_ext.println("TXT: " + txt + "\n");
+
+            answer.println(txt);
         }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println("Transformed and linearized in " + (endTime - startTime) + " msec.");
 
         answer_ext.close();
         answer.close();
