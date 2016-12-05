@@ -3,12 +3,15 @@ package org.grammaticalframework.amr;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.grammaticalframework.amr.tregex.Transformer;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import edu.stanford.nlp.util.Pair;
 
@@ -70,64 +73,77 @@ public class SemEval2017 {
             System.out.println(f.getName() + ": " + count);
         }
 
-        System.out.println("Total: " + amrs.size());
+        System.out.println("Total AMRs: " + amrs.size());
 
         return amrs;
     }
 
     /**
      *
-     * @param term
-     * @param grammar
+     * @param amrs
      * @return
      */
-    public static String computeConcrete(String term, String grammar) {
-        String gf = "/Users/normundsg/Library/Haskell/bin/gf";
+    public static List<Callable<List<Map<String, String>>>> splitTasks(List<Pair<String, String>> amrs) {
+        List<Callable<List<Map<String, String>>>> tasks = new ArrayList<Callable<List<Map<String, String>>>>();
 
-        String[] cmd = {
-                "/bin/sh",
-                "-c",
-                "echo \"cc -one " + term + "\" | " + gf + " +RTS -K1024M -RTS --no-recomp --run -retain " + grammar
-        };
+        List<Pair<String, String>> batch = new ArrayList<Pair<String, String>>();
 
-        String text = null;
+        int cores = Runtime.getRuntime().availableProcessors();
+        int limit = (amrs.size() / cores) + 1;
 
-        try {
-            Process proc = Runtime.getRuntime().exec(cmd);
+        System.out.println("Available processors: " + cores);
+        System.out.println("AMRs per processor: " + limit);
 
-            BufferedReader stdout = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            BufferedReader stderr = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+        int checksum = 0;
+        int counter = 0;
 
-            String line = null;
-
-            // Reads the standard output stream of the executed command
-            while ((line = stdout.readLine()) != null) {
-                if (text == null) {
-                    text = line; // Takes only the first line
-                }
+        for (Pair<String, String> amr : amrs) {
+            if (counter == limit) {
+                tasks.add(new Processor(batch));
+                checksum += batch.size();
+                batch = new ArrayList<Pair<String, String>>();
+                counter = 0;
             }
 
-            // Reads the standard error stream of the executed command
-            while ((line = stderr.readLine()) != null) {
-                System.err.println("### STDERR");
-                System.err.println("|-- " + term);
-                System.err.println("|-- " + line);
-            }
-
-            // Waits while the process exits, returning a status code
-            int status = proc.waitFor();
-            if (status != 0) {
-                System.err.println("### STATUS");
-                System.err.println("|-- " + term);
-                System.err.println("|-- " + status);
-            }
-        } catch (Exception e) {
-            System.err.println("### EXCEPTION");
-            System.err.println("|-- " + term);
-            e.printStackTrace(System.err);
+            batch.add(amr);
+            counter++;
         }
 
-        return text;
+        // Add remaining AMRs, if any, as the last batch/task
+        if (counter > 0) {
+            tasks.add(new Processor(batch));
+            checksum += batch.size();
+        }
+
+        System.out.println("Checksum: " + checksum + " / " + tasks.size());
+
+        return tasks;
+    }
+
+    /**
+     *
+     * @param batch
+     * @param ans
+     * @param ext
+     * @return
+     */
+    public static int writeResults(List<Map<String, String>> batch, PrintWriter ans, PrintWriter ext) {
+        for (Map<String, String> record : batch) {
+            String txt = record.get("TXT");
+
+            ext.println("SNT: " + record.get("SNT"));
+            ext.println("AMR: " + record.get("AMR"));
+            ext.println("AST: " + record.get("AST"));
+            ext.println("TXT: " + txt + "\n");
+
+            if (txt != null && !txt.toLowerCase().matches(Processor.FAILURE)) {
+                ans.println(txt);
+            } else {
+                ans.println();
+            }
+        }
+
+        return batch.size();
     }
 
     /**
@@ -135,35 +151,36 @@ public class SemEval2017 {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        Transformer amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
+        List<Callable<List<Map<String, String>>>> tasks = splitTasks(readAMRs(new File("../amrs/")));
 
-        List<Pair<String, String>> amrs = readAMRs(new File("../amrs/"));
+        ExecutorService exec = Executors.newFixedThreadPool(tasks.size());
 
-        PrintWriter answer_ext = new PrintWriter("out/answer-extended.txt", "UTF-8");
-        PrintWriter answer = new PrintWriter("out/answer.txt", "UTF-8");
-
-        System.out.println("Available processors: " + Runtime.getRuntime().availableProcessors());
         long startTime = System.currentTimeMillis();
 
-        for (Pair<String, String> amr : amrs) {
-            answer_ext.println("SNT: " + amr.first);
-            answer_ext.println("AMR: " + amr.second);
-
-            String ast = amr2gf.transformToGF(amr2gf.transformToLISP(amr.second)).get(0);
-
-            String txt = computeConcrete(ast, "out/TestTreesEng.gf");
-
-            answer_ext.println("AST: " + ast);
-            answer_ext.println("TXT: " + txt + "\n");
-
-            answer.println(txt);
-        }
+        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 90, TimeUnit.MINUTES);
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Transformed and linearized in " + (endTime - startTime) + " msec.");
+        long runTime = endTime - startTime;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(runTime);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(runTime) - TimeUnit.MINUTES.toSeconds(minutes);
 
-        answer_ext.close();
-        answer.close();
+        System.out.println("Runtime: " + String.format("%d min, %d sec", minutes, seconds));
+
+        PrintWriter ans = new PrintWriter("out/answer.txt", "UTF-8");
+        PrintWriter ext = new PrintWriter("out/answer-extended.txt", "UTF-8");
+
+        int checksum = 0;
+
+        for (Future<List<Map<String, String>>> batch : results) {
+            checksum += writeResults(batch.get(), ans, ext);
+        }
+
+        System.out.println("Resultset: " + checksum);
+
+        ans.close();
+        ext.close();
+
+        exec.shutdownNow();
     }
 
 }
