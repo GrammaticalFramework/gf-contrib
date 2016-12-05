@@ -272,9 +272,7 @@ public class Transformer {
      * Used for development purposes only.
      */
     public static void main(String[] args) {
-        Transformer amr2gf = new Transformer(
-                "../rules/amr2api.tsurgeon",
-                "../lexicons/propbank/frames-roles.txt");
+        Transformer amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
 
         String amr = amr2gf.transformToLISP("");
         System.out.println("AMR: " + amr);

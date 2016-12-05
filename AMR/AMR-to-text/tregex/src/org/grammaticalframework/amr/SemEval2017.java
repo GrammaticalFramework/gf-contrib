@@ -6,8 +6,12 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.grammaticalframework.amr.tregex.Transformer;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import edu.stanford.nlp.util.Pair;
 
@@ -69,9 +73,77 @@ public class SemEval2017 {
             System.out.println(f.getName() + ": " + count);
         }
 
-        System.out.println("Total: " + amrs.size() + "\n");
+        System.out.println("Total AMRs: " + amrs.size());
 
         return amrs;
+    }
+
+    /**
+     *
+     * @param amrs
+     * @return
+     */
+    public static List<Callable<List<Map<String, String>>>> splitTasks(List<Pair<String, String>> amrs) {
+        List<Callable<List<Map<String, String>>>> tasks = new ArrayList<Callable<List<Map<String, String>>>>();
+
+        List<Pair<String, String>> batch = new ArrayList<Pair<String, String>>();
+
+        int cores = Runtime.getRuntime().availableProcessors();
+        int limit = (amrs.size() / cores) + 1;
+
+        System.out.println("Available processors: " + cores);
+        System.out.println("AMRs per processor: " + limit);
+
+        int checksum = 0;
+        int counter = 0;
+
+        for (Pair<String, String> amr : amrs) {
+            if (counter == limit) {
+                tasks.add(new Processor(batch));
+                checksum += batch.size();
+                batch = new ArrayList<Pair<String, String>>();
+                counter = 0;
+            }
+
+            batch.add(amr);
+            counter++;
+        }
+
+        // Add remaining AMRs, if any, as the last batch/task
+        if (counter > 0) {
+            tasks.add(new Processor(batch));
+            checksum += batch.size();
+        }
+
+        System.out.println("Checksum: " + checksum + " / " + tasks.size());
+
+        return tasks;
+    }
+
+    /**
+     *
+     * @param batch
+     * @param ans
+     * @param ext
+     * @return
+     */
+    public static int writeResults(List<Map<String, String>> batch, PrintWriter ans, PrintWriter ext) {
+        for (Map<String, String> record : batch) {
+            String txt = record.get("TXT");
+
+            ext.println("SNT: " + record.get("SNT"));
+            ext.println("AMR: " + record.get("AMR"));
+            ext.println("AST: " + record.get("AST"));
+            ext.println("TXT: " + txt + "\n");
+
+            if (txt != null && !txt.toLowerCase().matches(Processor.FAILURE)) {
+                ans.println(txt);
+            } else {
+                ans.println();
+            }
+        }
+
+        return batch.size();
     }
 
     /**
@@ -79,27 +151,36 @@ public class SemEval2017 {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        Transformer amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
+        List<Callable<List<Map<String, String>>>> tasks = splitTasks(readAMRs(new File("../amrs/")));
 
-        List<Pair<String, String>> amrs = readAMRs(new File("../amrs/"));
+        ExecutorService exec = Executors.newFixedThreadPool(tasks.size());
 
-        PrintWriter answer_ext = new PrintWriter("out/answer-extended.txt", "UTF-8");
-        PrintWriter answer = new PrintWriter("out/answer.txt", "UTF-8");
+        long startTime = System.currentTimeMillis();
 
-        for (Pair<String, String> amr : amrs) {
-            answer_ext.println("SNT: " + amr.first);
-            answer_ext.println("AMR: " + amr.second);
+        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 90, TimeUnit.MINUTES);
 
-            String ast = amr2gf.transformToGF(amr2gf.transformToLISP(amr.second)).get(0);
+        long endTime = System.currentTimeMillis();
+        long runTime = endTime - startTime;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(runTime);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(runTime) - TimeUnit.MINUTES.toSeconds(minutes);
 
-            answer_ext.println("AST: " + ast);
-            answer_ext.println("TXT: " + "\n"); // TODO
+        System.out.println("Runtime: " + String.format("%d min, %d sec", minutes, seconds));
 
-            answer.println("TXT: "); // TODO
+        PrintWriter ans = new PrintWriter("out/answer.txt", "UTF-8");
+        PrintWriter ext = new PrintWriter("out/answer-extended.txt", "UTF-8");
+
+        int checksum = 0;
+
+        for (Future<List<Map<String, String>>> batch : results) {
+            checksum += writeResults(batch.get(), ans, ext);
         }
 
-        answer_ext.close();
-        answer.close();
+        System.out.println("Resultset: " + checksum);
+
+        ans.close();
+        ext.close();
+
+        exec.shutdownNow();
     }
 
 }
