@@ -18,8 +18,19 @@ public class Processor implements Callable<List<Map<String, String>>> {
 
     private List<Pair<String, String>> amrs;
 
-    public static final String FAILURE =
-            "^(command not parsed|constant not found|unknown qualified constant|a function type is expected|record type expected|no overload instance|Warning:|\\{s =).+";
+    public static final String FAILURE = "^("
+            + "command not parsed"
+            + "|constant not found"
+            + "|unknown qualified constant"
+            + "|a function type is expected"
+            + "|record type expected"
+            + "|no overload instance"
+            + "|warning:"
+            + "|null"
+            + "|\\{s ="
+            + ").*";
+
+    public static final String SEPARATOR = "&&&";
 
     /**
      *
@@ -28,6 +39,38 @@ public class Processor implements Callable<List<Map<String, String>>> {
     public Processor(List<Pair<String, String>> amrs) {
         amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
         this.amrs = amrs;
+    }
+
+    /**
+     * Splits a multi-sentence paragraph into an array of separate sentences.
+     *
+     * @param ast
+     * @return
+     */
+    private static String[] splitSentences(String ast) {
+        ast = ast.replaceAll("^\\(multi-sentence (.+?)\\)$", "$1");
+        ast = ast.replace(") (mkText", ")" + SEPARATOR + "(mkText");
+
+        return ast.split(SEPARATOR);
+    }
+
+    /**
+     *
+     * @param snt
+     * @return
+     */
+    private static String mergeSentences(String[] snt) {
+        String txt = "";
+
+        for (String s : snt) {
+            if (!txt.isEmpty()) {
+                txt = txt + SEPARATOR;
+            }
+
+            txt = txt + s;
+        }
+
+        return txt;
     }
 
     /**
@@ -103,14 +146,14 @@ public class Processor implements Callable<List<Map<String, String>>> {
 
             String ast = amr2gf.transformToGF(amr2gf.transformToLISP(amr.second)).get(0);
 
-            String txt = computeConcrete(ast, "out/TestTreesEng.gf", amr.first);
+            String[] snt = splitSentences(ast); // Because of multi-sentence AMRs
+
+            for (int i = 0; i < snt.length; i++) {
+                snt[i] = computeConcrete(snt[i], "out/TestTreesEng.gf", amr.first);
+            }
 
             record.put("AST", ast);
-            record.put("TXT", txt);
-
-            if (txt != null && !txt.toLowerCase().matches(FAILURE)) {
-                System.out.println("TXT: " + record.get("SNT") + " => " + record.get("TXT"));
-            }
+            record.put("TXT", mergeSentences(snt));
 
             results.add(record);
         }

@@ -42,6 +42,7 @@
 @/:purpose/=/^:purpose$/
 @/:polarity/=/^:polarity$/
 @/:mode/=/^:mode$/
+@/:sntN/=/^:snt[0-9]+$/
 
 @/ADV_REL/=/^:(location|topic|time)$/
 
@@ -50,6 +51,8 @@
 @/name/=/^name$/
 @/person/=/^person$/
 @/country/=/^country$/
+
+@/multi-sentence/=/^multi-sentence$/
 
 @/S/=/^mk[R]?S$/
 @/Cl/=/^mk[R]?Cl$/
@@ -560,7 +563,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkListS : S -> S -> ListS
 # (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
-# Note: this is a copy-paste from mkListNP, except the category
+# NB: This is a copy-paste from mkListNP, except the category.
 /CONJ/ < ((/:opN/=op1 < mkS=s1) $+ (/:opN/=op2 < mkS=s2))
 [adjoin (mkListS=list mkS@) s1]
 [move s2 >2 list]
@@ -569,7 +572,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkListS : S -> ListS -> ListS
 # (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
-# Note: this is a copy-paste from mkListNP, except the category
+# NB: This is a copy-paste from mkListNP, except the category.
 /CONJ/ < (mkListS=list $+ (/:opN/=op_n < mkS=s_n))
 [adjoin (mkListS=list_prim mkS@) s_n]
 [move list >2 list_prim]
@@ -577,7 +580,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkS : Conj -> ListS -> S
 # (var (conj mkListS)) => (mkS (conj_Conj mkListS))
-# Note: this is a copy-paste from mkListNP, except the category
+# NB: This is a copy-paste from mkListNP, except the category.
 /VAR/=var < (/CONJ/=conj < mkListS=s)
 [adjoin (mkS TEMP=temp@) var]
 [move s $- conj]
@@ -639,7 +642,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < mkNP))
 # mkUtt : QS -> Utt
 # mkQS : Cl -> QS
 # (ROOT (mkS (.. (:mode interrogative)))) => (mkText (mkUtt mkQS) questMarkPunct)
-mkS=s << (/:mode/=mode < interrogative) !> /.*/
+mkS=s << (/:mode/=mode < interrogative) [> /:sntN/ | !> /.*/]
 [relabel s /^.+$/mkQS/]
 [adjoinF (mkText (mkUtt @) questMarkPunct) s]
 [delete mode]
@@ -647,23 +650,38 @@ mkS=s << (/:mode/=mode < interrogative) !> /.*/
 # mkText : Utt -> Punct -> Text
 # mkUtt : S -> Utt
 # (ROOT (mkS (.. (:mode expressive)))) => (mkText (mkUtt mkS) exclMarkPunct)
-mkS=s << (/:mode/=mode < expressive) !> /.*/
+mkS=s << (/:mode/=mode < expressive) [> /:sntN/ | !> /.*/]
 [adjoinF (mkText (mkUtt @) exclMarkPunct) s]
 [delete mode]
 
 # mkText : Utt -> Punct -> Text
 # mkUtt : S -> Utt
 # (ROOT mkS) => (mkText (mkUtt mkS) fullStopPunct)
-mkS=s !> /.*/
+mkS=s [> /:sntN/ | !> /.*/]
 [adjoinF (mkText (mkUtt @) fullStopPunct) s]
 
 # mkText : Utt -> Text
 # mkUtt : NP -> Utt
 # (ROOT mkNP) => (mkText (mkUtt mkNP))
-mkNP=np !> /.*/
+mkNP=np [> /:sntN/ | !> /.*/]
 [adjoinF (mkText (mkUtt @)) np]
 
+# mkText : Text -> Text -> Text
+# NB: To avoid cases where linearization of a whole paragraph fails because of a single failing sentence,
+# the recursive mkText is actually not used (SemEval2017).
+# ((:sntN mkText) (:sntN mkText) [..]) => (:sntN mkText mkText [..])
+(/:sntN/=snt1 < mkText=txt1) $+ (/:sntN/=snt2 < mkText=txt2)
+[move txt2 >-1 snt1]
+[delete snt2]
+
 ### Post-editing
+
+# NB: To preserve a single-rooted tree, the multi-sentence construction is simplified but not fully excised.
+# To be excised in an external post-processing step.
+# (m (multi-sentence (:sntN mkText mkText [..]))) => (multi-sentence mkText mkText [..])
+/VAR/=var < (/multi-sentence/ < (/:sntN/=snt < mkText))
+[excise snt snt]
+[excise var var]
 
 # (mkCl mkAP) => (mkCl S.it_NP mkAP)
 mkCl=cl <: mkAP
@@ -764,7 +782,7 @@ mkOrd=ord
 /adj_A/=a
 [relabel a /^(.+)$/L.$1/]
 
-### Remove any unresolved coreferences
+### Remove unresolved coreferences
 
 /Cl/ <1 /VAR/=var
 [delete var]
@@ -775,12 +793,9 @@ mkOrd=ord
 /:location/=loc <: /VAR/
 [delete loc]
 
-### Remove anything unresolved (SemEval)
+### Remove unresolved relations (SemEval2017)
 
 %
 
 /REL/=unk
 [delete unk]
-
-#/VAR/=unk
-#[delete unk]
