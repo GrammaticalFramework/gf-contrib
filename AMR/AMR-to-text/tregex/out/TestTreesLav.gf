@@ -13,9 +13,9 @@ open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav
 
 	lin t03_two_girls_see_a_boy = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))) fullStopPunct) ;
 
-	lin t04_two_pretty_girls_see_a_boy = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkAP L.pretty_A) L.girl_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))) fullStopPunct) ;
+	lin t04_two_pretty_girls_see_a_boy = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.pretty_A L.girl_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.boy_N)))))) fullStopPunct) ;
 
-	lin t05_the_boy_sees_the_two_pretty_girls = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkAP L.pretty_A) L.girl_N)))))) fullStopPunct) ;
+	lin t05_the_boy_sees_the_two_pretty_girls = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.see_V2 (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.pretty_A L.girl_N)))))) fullStopPunct) ;
 
 	lin t06_girls_and_boys_play_a_game = (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.girl_N)) (mkNP S.a_Quant (mkCN L.boy_N)))) (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.game_N)))))) fullStopPunct) ;
 
@@ -25,7 +25,7 @@ open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav
 
 	lin t19_girls_see_some_boys_who_play_a_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.game_N))))))))))) fullStopPunct) ;
 
-	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN (mkAP L.pretty_A) L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))) fullStopPunct) ;
+	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))) fullStopPunct) ;
 
 	lin t21_girls_who_see_the_game_like_the_boys_who_play = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.girl_N) (mkRS (mkRCl S.which_RP (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.game_N))))))) (mkVP L.like_V2 (mkNP S.a_Quant (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V))))))))) fullStopPunct) ;
 

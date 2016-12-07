@@ -129,18 +129,23 @@ public class SemEval2017 {
      */
     public static int writeResults(List<Map<String, String>> batch, PrintWriter ans, PrintWriter ext) {
         for (Map<String, String> record : batch) {
-            String txt = record.get("TXT");
-
             ext.println("SNT: " + record.get("SNT"));
             ext.println("AMR: " + record.get("AMR"));
             ext.println("AST: " + record.get("AST"));
-            ext.println("TXT: " + txt + "\n");
+            ext.println("TXT: " + record.get("TXT").replace(Processor.SEPARATOR, " ") + "\n");
 
-            if (txt != null && !txt.toLowerCase().matches(Processor.FAILURE)) {
-                ans.println(txt);
-            } else {
-                ans.println();
+            String[] snt = record.get("TXT").split(Processor.SEPARATOR);
+            String txt = "";
+
+            for (String s : snt) {
+                if (!s.toLowerCase().matches(Processor.FAILURE)) {
+                    s = s.substring(0, 1).toUpperCase() + s.substring(1); // Capitalize first letter
+                    s = s.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
+                    txt = txt + " " + s;
+                }
             }
+
+            ans.println(txt.trim());
         }
 
         return batch.size();
@@ -157,7 +162,7 @@ public class SemEval2017 {
 
         long startTime = System.currentTimeMillis();
 
-        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 90, TimeUnit.MINUTES);
+        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 30, TimeUnit.MINUTES);
 
         long endTime = System.currentTimeMillis();
         long runTime = endTime - startTime;
@@ -172,7 +177,7 @@ public class SemEval2017 {
         int checksum = 0;
 
         for (Future<List<Map<String, String>>> batch : results) {
-            checksum += writeResults(batch.get(), ans, ext);
+            checksum += writeResults(batch.get(0, TimeUnit.SECONDS), ans, ext);
         }
 
         System.out.println("Resultset: " + checksum);

@@ -31,6 +31,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 		interest_A = interesting_A ;
 		race_A = mkA "race" "race" "race" "race" ;			-- a temporary solution
 
+		all_Det = mkDeterminer plural "all" ;
 		more_Det = mkDeterminer plural "more" ;
 
 		part_Prep = S.part_Prep ;
