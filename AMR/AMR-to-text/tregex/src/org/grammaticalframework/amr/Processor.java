@@ -19,7 +19,7 @@ public class Processor implements Callable<List<Map<String, String>>> {
     private List<Pair<String, String>> amrs;
 
     public static final String FAILURE =
-            "^(command not parsed|constant not found|unknown qualified constant|a function type is expected|record type expected).+";
+            "^(command not parsed|constant not found|unknown qualified constant|a function type is expected|record type expected|no overload instance|Warning:|\\{s =).+";
 
     /**
      *

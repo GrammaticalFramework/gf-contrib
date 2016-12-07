@@ -157,7 +157,7 @@ public class SemEval2017 {
 
         long startTime = System.currentTimeMillis();
 
-        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 90, TimeUnit.MINUTES);
+        List<Future<List<Map<String, String>>>> results = exec.invokeAll(tasks, 30, TimeUnit.MINUTES);
 
         long endTime = System.currentTimeMillis();
         long runTime = endTime - startTime;
@@ -172,7 +172,7 @@ public class SemEval2017 {
         int checksum = 0;
 
         for (Future<List<Map<String, String>>> batch : results) {
-            checksum += writeResults(batch.get(), ans, ext);
+            checksum += writeResults(batch.get(1, TimeUnit.SECONDS), ans, ext);
         }
 
         System.out.println("Resultset: " + checksum);

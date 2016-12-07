@@ -72,6 +72,29 @@ public class Transformer {
     }
 
     /**
+     *
+     * @param line
+     * @param macros
+     * @return
+     */
+    private String expandMacros(String line, Map<String, String> macros) {
+        for (String from : macros.keySet()) {
+            String to = macros.get(from);
+            if (line.startsWith("[") && line.endsWith("]")) {
+                // In case of operations, expand only sub-patterns marked by ~
+                line = line.replace("~" + from, "~" + to);
+            } else {
+                line = line.replace(from, to);
+            }
+        }
+
+        // Convert a whole-string pattern into a sub-pattern if marked by ~
+        line = line.replaceAll("~/\\^(.+?)\\$/", "$1");
+
+        return line;
+    }
+
+    /**
      * Reads a list of Tregex pattern-matching and Tsurgeon transformation rules.
      *
      * @param file
@@ -108,22 +131,14 @@ public class Transformer {
                 String[] m = line.split("=");
                 macros.put(m[0].substring(1), m[1]);
             } else if (line.startsWith("[") && line.endsWith("]")) {
-                ops.append(line);
+                ops.append(expandMacros(line, macros));
             } else {
                 if (ops.length() > 0) {
                     rules.add(new Pair<String, String>(pattern, ops.toString()));
                     ops.setLength(0);
                 }
 
-                pattern = line;
-
-                for (String from : macros.keySet()) {
-                    String to = macros.get(from);
-                    pattern = pattern.replace(from, to);
-                }
-
-                // Convert a whole-label pattern into a sub-pattern if marked by ~
-                pattern = pattern.replaceAll("~/\\^(.+?)\\$/", "$1");
+                pattern = expandMacros(line, macros);
             }
         }
 
