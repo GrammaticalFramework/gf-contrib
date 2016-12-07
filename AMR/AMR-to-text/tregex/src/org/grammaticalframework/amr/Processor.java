@@ -76,6 +76,18 @@ public class Processor implements Callable<List<Map<String, String>>> {
     /**
      *
      * @param term
+     * @return
+     */
+    private static String escapeQuotes(String term) {
+        term = term.replace("\"", "\\\"");
+        term = term.replace("'", "\\'");
+
+        return term;
+    }
+
+    /**
+     *
+     * @param term
      * @param grammar
      * @param snt
      * @return
@@ -86,7 +98,8 @@ public class Processor implements Callable<List<Map<String, String>>> {
         String[] cmd = {
                 "/bin/sh",
                 "-c",
-                "echo \"cc -one " + term + "\" | " + gf + " +RTS -K1024M -RTS --no-recomp --run -retain " + grammar
+                "echo \"cc -one " + escapeQuotes(term) + "\""
+                        + " | " + gf + " +RTS -K1024M -RTS --no-recomp --run -retain " + grammar
         };
 
         String text = null;

@@ -50,7 +50,7 @@
 
 
 
-
+Qin Shi Huang unifies China.
 
 
 
@@ -69,6 +69,7 @@ A flag is looked over.
 
 
 
+They even ride a head of us.
 
 
 
@@ -78,8 +79,7 @@ A flag is looked over.
 
 
 
-
-
+I just pass by.
 
 
 
@@ -119,7 +119,7 @@ A person that is cheap that performs.
 
 
 
-
+A female that is smart that is starred is 2 kinds.
 
 
 
@@ -174,6 +174,7 @@ Another thing that is predicted.
 
 
 
+Anonymous.
 
 
 
@@ -194,8 +195,7 @@ Another thing that is predicted.
 
 
 
-
-
+EMR.
 
 
 
@@ -418,6 +418,7 @@ I am addicted.
 
 It causes this.
 
+OCD.
 
 
 
@@ -460,8 +461,7 @@ It causes this.
 
 
 
-
-
+Islamic Republic of Iran.
 
 
 
@@ -488,6 +488,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Israel.
 
 
 
@@ -520,6 +521,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Iran.
 
 
 
@@ -583,6 +585,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Russian Federation.
 
 
 
@@ -623,6 +626,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Brazil.
 
 
 
@@ -656,6 +660,7 @@ It is said that it is remained that there is an accord.
 
 
 
+A system uses a technology from United States.
 
 
 
@@ -666,6 +671,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Venezuela.
 
 
 
@@ -730,6 +736,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Democratic.
 
 
 
@@ -749,6 +756,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Islamic Republic of Iran.
 
 
 
@@ -780,9 +788,12 @@ It is said that it is remained that there is an accord.
 
 
 
+It is located in London.
 
 
+International Atomic Energy Agency is based in Vienna.
 
+Islamic Republic of Iran.
 
 
 
@@ -802,6 +813,7 @@ It is said that it is remained that there is an accord.
 
 
 
+Georgia and Russian Federation.
 
 
 
@@ -813,10 +825,12 @@ It is said that it is remained that there is an accord.
 
 
 
+A soldier from Russia is remained in Georgia.
 
 
 
 
+Georgia mobilizes a military reserve.
 
 
 
@@ -832,23 +846,9 @@ It is said that it is remained that there is an accord.
 
 
 
+Georgia is a province that rebels.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Iraq.
 
 
 
@@ -872,7 +872,7 @@ A thing that is stated says.
 
 
 
-
+Kenya, Somalia and Ukraine.
 
 
 
@@ -907,7 +907,7 @@ All paperworks that are appropriate are validated.
 
 
 
-
+Afghanistan.
 A narcotic.
 
 
@@ -922,24 +922,30 @@ A narcotic.
 
 
 
+An amount that is increased is also processed in Afghanistan.
 
 
 
 
 
 
+Diplomat of Italy
 
+South Africa.
 
 
 
 
 
 
+Muslims Against Illegitimate Leaders is a group that is based in Cape Town.
+Muslim Judicial Council refutes a report.
 
 
 
 
 
+Peru.
 
 
 
@@ -956,6 +962,7 @@ A narcotic.
 
 
 
+Hong Kong.
 
 
 
@@ -978,14 +985,7 @@ A narcotic.
 
 
 
-
-
-
-
-
-
-
-
+Peru.
 
 
 
@@ -999,7 +999,7 @@ It is located.
 
 
 
-
+Nepal.
 A military, a terrorism and a dissent.
 
 
@@ -1011,6 +1011,7 @@ A military, a terrorism and a dissent.
 
 
 
+Nepal.
 
 
 
@@ -1032,6 +1033,7 @@ A military, a terrorism and a dissent.
 
 
 
+Nepal.
 
 
 
@@ -1039,9 +1041,7 @@ A military, a terrorism and a dissent.
 
 
 
-
-
-
+Personnel of a police is still missed.
 
 
 
@@ -1070,6 +1070,7 @@ A politics, an international and a terrorism.
 
 
 
+Iraq.
 
 
 
@@ -1083,6 +1084,7 @@ A politics, an international and a terrorism.
 
 
 
+France and India.
 
 
 
@@ -1094,16 +1096,14 @@ A politics, an international and a terrorism.
 
 
 
-
-
-
+France agrees.
 
 A terrorism that crosses a border is checked.
 
 
 
 
-
+France.
 
 
 
@@ -1124,6 +1124,7 @@ It denies this thing that is claimed.
 
 
 
+Australia.
 
 
 
@@ -1135,8 +1136,7 @@ It denies this thing that is claimed.
 
 
 
-
-
+India, South Africa and Brazil.
 An international and a politics.
 
 
@@ -1150,6 +1150,11 @@ An international and a politics.
 
 
 
+It states Brazil.
+
+
+
+Russia.
 
 
 
@@ -1159,22 +1164,18 @@ An international and a politics.
 
 
 
+France is a country that leads European Space Agency.
 
 
 
 
 
 
-
-
-
-
-
-
-
+Philippines.
 A media, an international and a terrorism.
 
 
+ABS-CBN News states that Isamudin Raduan Hambali is identified.
 
 
 
@@ -1188,6 +1189,7 @@ A media, an international and a terrorism.
 
 
 
+China and Germany.
 
 
 
@@ -1195,6 +1197,7 @@ A media, an international and a terrorism.
 
 
 
+Wen states Germany.
 
 
 
@@ -1229,6 +1232,7 @@ A media, an international and a terrorism.
 
 
 
+China and Kyrgyzstan.
 
 
 
@@ -1244,6 +1248,7 @@ A media, an international and a terrorism.
 
 
 
+Vietnam and Germany.
 
 
 
@@ -1259,12 +1264,7 @@ A media, an international and a terrorism.
 
 
 
-
-
-
-
-
-
+Hong Kong and China.
 A technology and an international.
 
 
