@@ -116,6 +116,8 @@ public class Processor implements Callable<List<Map<String, String>>> {
             while ((line = stdout.readLine()) != null) {
                 if (text == null) {
                     text = line; // Take only the first line
+                    text = text.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
+                    // TODO: Replace [0..10] with words
                 }
             }
 
