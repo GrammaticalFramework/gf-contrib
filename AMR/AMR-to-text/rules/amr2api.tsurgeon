@@ -795,7 +795,5 @@ mkOrd=ord
 
 ### Remove unresolved relations (SemEval2017)
 
-%
-
 /REL/=unk
 [delete unk]
