@@ -1,4 +1,4 @@
---# -path=../../lexicons/translator
+--# -path=../../../lexicons/translator
 
 concrete TestLexiconEng of TestLexicon = CatEng, DictionaryEng - [information_N] **
 open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {

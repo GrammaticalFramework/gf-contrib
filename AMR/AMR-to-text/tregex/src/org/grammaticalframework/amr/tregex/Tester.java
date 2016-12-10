@@ -2,7 +2,6 @@ package org.grammaticalframework.amr.tregex;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,7 +22,7 @@ import org.junit.runners.MethodSorters;
 public class Tester {
 
     public static final String name = "TestTrees";
-    public static final String path = "out" + File.separator + name;
+    public static final String path = "out/test/" + name;
     public static final String rules = "../rules/amr2api.tsurgeon";
     public static final String roles = "../lexicons/propbank/frames-roles.txt";
 
@@ -39,17 +38,17 @@ public class Tester {
             abs.println("abstract " + name + " = TestLexicon ** {");
             abs.println("\n\tflags startcat = Text ;\n");
 
-            eng.println("--# -path=.:alltenses:../../lexicons/translator\n");
+            eng.println("--# -path=.:alltenses:../../../lexicons/translator\n");
             eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
             eng.println("open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {");
             eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 
-            lav.println("--# -path=.:alltenses:../../lexicons/translator\n");
+            lav.println("--# -path=.:alltenses:../../../lexicons/translator\n");
             lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
             lav.println("open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {");
             lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 
-            rus.println("--# -path=.:alltenses:../../lexicons/translator\n");
+            rus.println("--# -path=.:alltenses:../../../lexicons/translator\n");
             rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
             rus.println("open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {");
             rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");

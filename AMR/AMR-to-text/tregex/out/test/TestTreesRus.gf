@@ -1,4 +1,4 @@
---# -path=.:alltenses:../../lexicons/translator
+--# -path=.:alltenses:../../../lexicons/translator
 
 concrete TestTreesRus of TestTrees = TestLexiconRus **
 open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {

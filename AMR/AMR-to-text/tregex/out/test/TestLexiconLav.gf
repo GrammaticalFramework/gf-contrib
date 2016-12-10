@@ -1,4 +1,4 @@
---# -path=../../lexicons/translator
+--# -path=../../../lexicons/translator
 
 concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in {
 

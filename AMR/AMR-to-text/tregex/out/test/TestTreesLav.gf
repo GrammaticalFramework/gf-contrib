@@ -1,4 +1,4 @@
---# -path=.:alltenses:../../lexicons/translator
+--# -path=.:alltenses:../../../lexicons/translator
 
 concrete TestTreesLav of TestTrees = TestLexiconLav **
 open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {
