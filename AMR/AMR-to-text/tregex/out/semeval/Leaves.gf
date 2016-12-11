@@ -23,7 +23,7 @@ abstract Leaves = Cat, Dictionary ** {
 		interest_A : A ;		-- the mapping between "interest" and "interesting" is not straightforward
 		race_A : A ;			-- FIXME: the same issue (no "mkCN : N -> N -> CN")
 
-		all_Det : Det ;			-- vs. more_Quant (because of automatic agreement in number)
+		all_Det : Det ;			-- vs. all_Quant (because of automatic agreement in number)
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)
 
 		part_Prep : Prep ;		-- see Structural (RGL)

@@ -179,7 +179,7 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t38_even_the_information_that_is_available_is_fuzzy
-TestTreesEng: an information that is available is even fuzzy .
+TestTreesEng: available information is even fuzzy .
 TestTreesLav: 
 TestTreesRus: 
 
@@ -209,12 +209,12 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t44_my_opinion_is_based_on_the_information_provided
-TestTreesEng: a thing that I opine is based from an information that is provided .
+TestTreesEng: a thing that I opine is based from information that is provided .
 TestTreesLav: 
 TestTreesRus: 
 
 TestTrees: t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone
-TestTreesEng: a court in Texas that is criminal and a person that prosecutes don't coddle anyone .
+TestTreesEng: a criminal court in Texas and a person that prosecutes don't coddle anyone .
 TestTreesLav: 
 TestTreesRus: 
 
