@@ -19,9 +19,7 @@ abstract Leaves = Cat, Dictionary ** {
 		president_N : N ;		-- because of presidentFem_N (etc.) in Dictionary (no default president_N)
 		school_N : N ;			-- because of school_1_N (etc.) in Dictionary (no default school_N)
 
-		ball_A : A ;			-- FIXME: how to represent e.g. "ball game"? avoiding the of-construction and N2 entries
 		interest_A : A ;		-- the mapping between "interest" and "interesting" is not straightforward
-		race_A : A ;			-- FIXME: the same issue (no "mkCN : N -> N -> CN")
 
 		all_Det : Det ;			-- vs. all_Quant (because of automatic agreement in number)
 		more_Det : Det ;		-- vs. more_Quant (because of automatic agreement in number)

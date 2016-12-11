@@ -27,9 +27,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 		president_N = presidentMasc_N ;
 		school_N = school_1_N ;
 
-		ball_A = mkA "ball" "ball" "ball" "ball" ;			-- a temporary solution
 		interest_A = interesting_A ;
-		race_A = mkA "race" "race" "race" "race" ;			-- a temporary solution
 
 		all_Det = mkDeterminer plural "all" ;
 		more_Det = mkDeterminer plural "more" ;

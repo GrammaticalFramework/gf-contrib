@@ -23,6 +23,11 @@ import org.w3c.dom.NodeList;
  */
 public class FrameExtractor {
 
+    /**
+     *
+     * @param pos
+     * @return
+     */
     private static String convertType(String pos) {
         if (pos.equals("l")) {
             return null;
@@ -33,6 +38,11 @@ public class FrameExtractor {
         }
     }
 
+    /**
+     *
+     * @param roleset
+     * @return
+     */
     private static List<List<String>> processRoleSet(Element roleset) throws Exception {
         List<List<String>> types = new ArrayList<List<String>>();
         types.add(new ArrayList<String>()); // Entries
@@ -61,6 +71,11 @@ public class FrameExtractor {
         return types;
     }
 
+    /**
+     *
+     * @param file
+     * @param framesets
+     */
     private static void processFrameSet(File file, Map<String, List<List<String>>> framesets) throws Exception {
         if (!file.getName().toLowerCase().endsWith("xml")) {
             return;
@@ -82,6 +97,11 @@ public class FrameExtractor {
         }
     }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public static Map<String, List<List<String>>> extract(File path) throws Exception {
         Map<String, List<List<String>>> framesets = new TreeMap<String, List<List<String>>>();
 
@@ -96,6 +116,10 @@ public class FrameExtractor {
         return framesets;
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) throws Exception {
         Map<String, List<List<String>>> framesets = extract(new File("../lexicons/propbank/frames"));
 
