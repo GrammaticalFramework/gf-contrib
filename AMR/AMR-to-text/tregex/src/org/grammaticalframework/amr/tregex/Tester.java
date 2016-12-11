@@ -455,9 +455,9 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (E.CompoundCN L.ball_N L.game_N))))))))))) fullStopPunct)");
 
-        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, true);
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
     // Girls who see the game like the boys who play.
@@ -794,7 +794,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP L.need_V2)))) fullStopPunct)");
+                "(mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (E.CompoundCN L.race_N L.angle_N)) (passiveVP L.need_V2)))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -926,7 +926,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV \"either\") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (mkCN L.race_A L.issue_N))))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV \"either\") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (E.CompoundCN L.race_N L.issue_N))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

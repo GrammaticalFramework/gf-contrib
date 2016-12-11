@@ -60,6 +60,7 @@
 @/Cl/=/^mk[R]?Cl$/
 @/VP/=/^(mk|passive)VP$/
 @/NP/=/^(mk|[SL][.][a-z]+_)NP$/
+@/CN/=/^(mk|E[.]Compound)CN$/
 @/Adv/=/^(mkAdv|E[.]PurposeVP)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
@@ -464,18 +465,26 @@ mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < mkAP=ap))
 
 # mkCN : A -> N -> CN
 # (mkCN (noun_N (:mod (var adj)))) => (mkCN adj_A noun_N)
-mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /WORD/=adj !< (/country/ < /:name/))))
+mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/country/ < /:name/))))
 [relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn]
 [delete mod]
 
 # mkCN : A -> CN -> CN
 # (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
-mkCN=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /WORD/=adj2)))
+mkCN=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /ADJ/=adj2)))
 [relabel adj2 /^(.+)$/$1_A/]
 [adjoinF (mkCN=cn2 @) cn1]
 [move adj2 >1 cn2]
 [delete degree]
+
+# CompoundCN : N -> N -> CN
+# (mkCN (noun_N (:mod (var noun)))) => (CompoundCN noun_N noun_N)
+mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /WORD/=noun !< (/country/ < /:name/))))
+[relabel noun /^(.+)$/$1_N/]
+[move noun >1 cn]
+[delete mod]
+[relabel cn /mkCN/E.CompoundCN/]
 
 # mkNP : Pron -> CN -> NP
 # (mkNP a_Quant (mkCN (noun_N (:poss pron_NP)))) => (mkNP pron_Pron (mkCN noun_N))
@@ -632,8 +641,8 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < mkNP))
 [delete pol]
 
 # mkS : Pol -> Cl -> S
-# (S (Cl (mkNP (mkCN (frame (:polarity -)))))) => (S negativePol (Cl ..))
-/S/=snt < (/Cl/ < (mkNP < (mkCN < (/FRAME/ < (/:polarity/=pol < -)))))
+# (S (Cl (mkNP (CN (frame (:polarity -)))))) => (S negativePol (Cl ..))
+/S/=snt < (/Cl/ < (mkNP < (/CN/ < (/FRAME/ < (/:polarity/=pol < -)))))
 [insert (negativePol) >1 snt]
 [delete pol]
 
@@ -760,8 +769,8 @@ mkVP <1 /FRAME/=frame <2 mkS
 mkVP <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/L.$1_V/]
 
-# (mkCN frame) => (mkCN frame_N)
-mkCN < /FRAME/=frame
+# (CN frame) => (mkCN frame_N)
+/CN/ < /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/L.$1_N/]
 
 # mkN2 => P.mkN2

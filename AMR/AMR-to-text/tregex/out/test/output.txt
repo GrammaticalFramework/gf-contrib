@@ -90,8 +90,8 @@ TestTreesRus: девочка видит некоторого мальчиков 
 
 TestTrees: t20_girls_see_some_pretty_boys_who_play_a_ball_game
 TestTreesEng: a girl sees some pretty boys that play a ball game .
-TestTreesLav: meitene redz kādus jaukus zēnus , kas spēlē bumbas spēli .
-TestTreesRus: девочка видит некоторого хорошеньких мальчиков , которых играют игру .
+TestTreesLav: 
+TestTreesRus: 
 
 TestTrees: t21_girls_who_see_the_game_like_the_boys_who_play
 TestTreesEng: a girl that sees a game likes a boy that plays .
