@@ -564,7 +564,7 @@ TXT: [it is surged .]
 
 SNT: 17 accidents have been reported near the intersection of Winterfield Road so far this year , up from 12 for all of 2004 .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "17")) (mkCN (mkCN L.accident_N) (mkRS (mkRCl S.which_RP (mkAP L.near_A))))) (passiveVP L.report_V2)))) fullStopPunct)
-TXT: [17 accidents that are near are reported .]
+TXT: [1 Predef.BIND 7 accidents that are near are reported .]
 
 SNT: Dale Totten , resident engineer for the Virginia Department of Transportation , noted that VDOT would four - lane the road for about $ 13 million if it had more money .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 (L.person_N (mkRS (mkRCl S.which_RP (mkVP L.engineer_V)))) L.of_Prep))) (mkVP (passiveVP L.note_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (L.lane_V2 (mkNum (mkDigits "4")) (mkRS (mkRCl S.which_RP (passiveVP L.cost_V2)))) (mkNP S.a_Quant (mkCN L.road_N)))))))))) fullStopPunct)
@@ -2216,7 +2216,7 @@ TXT: [it is possible .]
 
 SNT: 20080500 the International Atomic Energy Agency stated that Iran possessed 3500 centrifuges in operations.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "International Atomic Energy Agency")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.possess_V2 (mkNP S.a_Quant (mkNum (mkDigits "3500")) (mkCN (mkCN L.centrifuge_N) (mkRS (mkRCl S.which_RP (passiveVP L.operate_V2)))))))))))) fullStopPunct)
-TXT: [International Atomic Energy Agency states that Iran possesses 3,500 centrifuges that are operated .]
+TXT: [International Atomic Energy Agency states that Iran possesses 3 Predef.BIND , Predef.BIND 5 Predef.BIND 0 Predef.BIND 0 centrifuges that are operated .]
 
 SNT: 2008-11-14
 AST: (d date-entity)
@@ -4152,7 +4152,7 @@ TXT: [constant not found: break_down]
 
 SNT: State-run Radio Nepal reported on 20 October 2002 that at least 3 policemen were killed and 19 others wounded the evening of 19 October 2002 when their vehicle was ambushed by anti-government guerrillas in western Nepal.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Radio Nepal")) (mkVP L.report_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.policeman_N)) (passiveVP L.kill_V2))) (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "19")) (mkCN L.other_A L.policeman_N)) (passiveVP L.wound_V2))))))))) fullStopPunct)
-TXT: [Radio Nepal reports that a policeman is killed and 19 other policemen are wounded .]
+TXT: [Radio Nepal reports that a policeman is killed and 1 Predef.BIND 9 other policemen are wounded .]
 
 SNT: Radio Nepal quoted a security official as stating --
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Radio Nepal")) (mkVP L.quote_VS (mkS (mkCl (mkVP L.state_V))))))) fullStopPunct)

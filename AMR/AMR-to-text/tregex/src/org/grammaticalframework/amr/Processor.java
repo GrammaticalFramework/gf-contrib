@@ -151,9 +151,7 @@ public class Processor {
 
             for (String s : snt) {
                 if (!s.toLowerCase().matches(FAILURE)) {
-                    s = s.substring(0, 1).toUpperCase() + s.substring(1); // Capitalize first letter
-                    s = s.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
-                    txt = txt + " " + s;
+                    txt = txt + " " + posteditSentence(s);
                 }
             }
 
@@ -199,14 +197,29 @@ public class Processor {
 
     /**
      *
-     * @param term
+     * @param snt
      * @return
      */
-    public static String escapeQuotes(String term) {
-        term = term.replace("\"", "\\\"");
-        term = term.replace("'", "\\'");
+    public static String posteditSentence(String snt) {
+        snt = snt.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
 
-        return term;
+        // Replace [0..10] with words
+        snt = snt.replaceAll("\\b(?<!\\d[,.])0(?![,.]\\d)\\b", "zero");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])1(?![,.]\\d)\\b", "one");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])2(?![,.]\\d)\\b", "two");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])3(?![,.]\\d)\\b", "three");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])4(?![,.]\\d)\\b", "four");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])5(?![,.]\\d)\\b", "five");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])6(?![,.]\\d)\\b", "six");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])7(?![,.]\\d)\\b", "seven");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])8(?![,.]\\d)\\b", "eight");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])9(?![,.]\\d)\\b", "nine");
+        snt = snt.replaceAll("\\b(?<!\\d[,.])10(?![,.]\\d)\\b", "ten");
+
+        snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
+        snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
+
+        return snt;
     }
 
     /**
@@ -252,8 +265,6 @@ public class Processor {
 
                     if (text == null) {
                         text = line; // Take only the first line
-                        text = text.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
-                        // TODO: Replace [0..10] with words
                     }
 
                     Thread.sleep(10);
