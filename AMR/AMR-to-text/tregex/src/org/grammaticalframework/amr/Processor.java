@@ -1,22 +1,32 @@
 package org.grammaticalframework.amr;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 import org.grammaticalframework.amr.tregex.Transformer;
 
 import edu.stanford.nlp.util.Pair;
 
-public class Processor implements Callable<List<Map<String, String>>> {
+public class Processor {
 
-    private Transformer amr2gf;
+    private String path_in;
+    private String path_out;
 
-    private List<Pair<String, String>> amrs;
+    private String file_rules;
+    private String file_roles;
+
+    private boolean unk;
 
     public static final String FAILURE = "^("
             + "command not parsed"
@@ -33,12 +43,126 @@ public class Processor implements Callable<List<Map<String, String>>> {
     public static final String SEPARATOR = "&&&";
 
     /**
+     * Constructor.
      *
-     * @param amrs
+     * @param path_in
+     * @param path_out
+     * @param file_rules
+     * @param file_roles
      */
-    public Processor(List<Pair<String, String>> amrs) {
-        amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
-        this.amrs = amrs;
+    public Processor(String path_in, String path_out, String file_rules, String file_roles) {
+        this.path_in = path_in;
+        this.path_out = path_out;
+
+        this.file_rules = file_rules;
+        this.file_roles = file_roles;
+
+        unk = false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<Pair<String, String>> readAMRs() throws Exception {
+        File path_amr = new File(path_in);
+
+        if (!path_amr.isDirectory()) {
+            return null;
+        }
+
+        List<Pair<String, String>> amrs = new ArrayList<Pair<String, String>>();
+        StringBuilder amr = new StringBuilder();
+
+        File[] files = path_amr.listFiles();
+
+        for (File f : files) {
+            if (!f.getName().endsWith(".txt")) {
+                continue;
+            }
+
+            BufferedReader input = new BufferedReader(new FileReader(f));
+            String line = null;
+            String snt = null;
+            int count = 0;
+
+            while ((line = input.readLine()) != null) {
+                line = line.trim();
+
+                if (line.startsWith("# ::snt")) {
+                    // Add previous AMR (if any) to the list
+                    if (amr.length() > 0) {
+                        amrs.add(new Pair<String, String>(snt, amr.toString().trim()));
+                        amr.setLength(0);
+                        count++;
+                    }
+
+                    snt = line.substring("# ::snt".length()).trim();
+                } else if (line.startsWith("#")) {
+                    continue;
+                } else if (!line.isEmpty()) {
+                    amr.append(" " + line);
+                }
+            }
+
+            // Add last AMR to the list
+            if (amr.length() > 0) {
+                amrs.add(new Pair<String, String>(snt, amr.toString().trim()));
+                amr.setLength(0);
+                count++;
+            }
+
+            input.close();
+
+            System.out.println(f.getName() + ": " + count);
+        }
+
+        System.out.println("Total AMRs: " + amrs.size());
+
+        return amrs;
+    }
+
+    /**
+     *
+     * @param results
+     */
+    public void writeResults(List<Map<String, String>> results) throws Exception {
+        String filename = (!unk) ? "answer" : "answer-partial";
+
+        PrintWriter ans = new PrintWriter(path_out + filename + ".txt", "UTF-8");
+        PrintWriter ext = new PrintWriter(path_out + filename + "-extended.txt", "UTF-8");
+        PrintWriter xxx = new PrintWriter(path_out + filename + "-extended-amrs.txt", "UTF-8");
+
+        for (Map<String, String> record : results) {
+            String txt = "[" + record.get("TXT").replace(SEPARATOR, "] [") + "]";
+
+            xxx.println("SNT: " + record.get("SNT"));
+            xxx.println("AMR: " + record.get("AMR"));
+            xxx.println("AST: " + record.get("AST"));
+            xxx.println("TXT: " + txt + "\n");
+
+            ext.println("SNT: " + record.get("SNT"));
+            ext.println("AST: " + record.get("AST"));
+            ext.println("TXT: " + txt + "\n");
+
+            String[] snt = record.get("TXT").split(SEPARATOR);
+
+            txt = "";
+
+            for (String s : snt) {
+                if (!s.toLowerCase().matches(FAILURE)) {
+                    s = s.substring(0, 1).toUpperCase() + s.substring(1); // Capitalize first letter
+                    s = s.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
+                    txt = txt + " " + s;
+                }
+            }
+
+            ans.println(txt.trim());
+        }
+
+        ans.close();
+        ext.close();
+        xxx.close();
     }
 
     /**
@@ -47,7 +171,7 @@ public class Processor implements Callable<List<Map<String, String>>> {
      * @param ast
      * @return
      */
-    private static String[] splitSentences(String ast) {
+    public static String[] splitSentences(String ast) {
         ast = ast.replaceAll("^\\(multi-sentence (.+?)\\)$", "$1");
         ast = ast.replace(") (mkText", ")" + SEPARATOR + "(mkText");
 
@@ -59,7 +183,7 @@ public class Processor implements Callable<List<Map<String, String>>> {
      * @param snt
      * @return
      */
-    private static String mergeSentences(String[] snt) {
+    public static String mergeSentences(String[] snt) {
         String txt = "";
 
         for (String s : snt) {
@@ -78,7 +202,7 @@ public class Processor implements Callable<List<Map<String, String>>> {
      * @param term
      * @return
      */
-    private static String escapeQuotes(String term) {
+    public static String escapeQuotes(String term) {
         term = term.replace("\"", "\\\"");
         term = term.replace("'", "\\'");
 
@@ -87,71 +211,13 @@ public class Processor implements Callable<List<Map<String, String>>> {
 
     /**
      *
-     * @param term
-     * @param grammar
-     * @param snt
+     * @param amrs
      * @return
      */
-    private static String computeConcrete(String term, String grammar, String snt) {
-        String gf = "/Users/normundsg/Library/Haskell/bin/gf";
-
-        String[] cmd = {
-                "/bin/sh",
-                "-c",
-                "echo \"cc -one " + escapeQuotes(term) + "\""
-                        + " | " + gf + " +RTS -K1024M -RTS --no-recomp --run -retain " + grammar
-        };
-
-        String text = null;
-
-        try {
-            Process proc = Runtime.getRuntime().exec(cmd);
-
-            BufferedReader stdout = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-            BufferedReader stderr = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-            String line = null;
-
-            // Read the standard output stream of the executed command
-            while ((line = stdout.readLine()) != null) {
-                if (text == null) {
-                    text = line; // Take only the first line
-                    text = text.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
-                    // TODO: Replace [0..10] with words
-                }
-            }
-
-            // Read the standard error stream of the executed command
-            while ((line = stderr.readLine()) != null) {
-                System.err.println("### STDERR - " + Thread.currentThread().getName());
-                System.err.println("|-- " + snt);
-                System.err.println("|-- " + term);
-                System.err.println("|-- " + line);
-            }
-
-            // Wait while the process exits, returning a status code
-            int status = proc.waitFor();
-            if (status != 0) {
-                System.err.println("### STATUS - " + Thread.currentThread().getName());
-                System.err.println("|-- " + snt);
-                System.err.println("|-- " + term);
-                System.err.println("|-- " + status);
-            }
-        } catch (Exception e) {
-            System.err.println("### EXCEPTION - " + Thread.currentThread().getName());
-            System.err.println("|-- " + snt);
-            System.err.println("|-- " + term);
-            e.printStackTrace(System.err);
-        }
-
-        return text;
-    }
-
-    @Override
-    public List<Map<String, String>> call() {
+    public List<Map<String, String>> processAMRs(List<Pair<String, String>> amrs) throws Exception {
         List<Map<String, String>> results = new ArrayList<Map<String, String>>();
 
-        System.out.println("Start: " + Thread.currentThread().getName() + " (" + amrs.size() + ")");
+        Transformer amr2gf = new Transformer(file_rules, file_roles, unk);
 
         for (Pair<String, String> amr : amrs) {
             Map<String, String> record = new HashMap<String, String>();
@@ -164,7 +230,39 @@ public class Processor implements Callable<List<Map<String, String>>> {
             String[] snt = splitSentences(ast); // Because of multi-sentence AMRs
 
             for (int i = 0; i < snt.length; i++) {
-                snt[i] = computeConcrete(snt[i], "out/TestTreesEng.gf", amr.first);
+                FileOutputStream output = new FileOutputStream(path_out + "fifo.in");
+                PrintWriter pipe_ast = new PrintWriter(new OutputStreamWriter(output));
+
+                FileInputStream input = new FileInputStream(path_out + "fifo.out");
+                BufferedReader pipe_txt = new BufferedReader(new InputStreamReader(input));
+
+                pipe_ast.println("cc -one " + snt[i]);
+                pipe_ast.flush();
+
+                while (input.available() == 0) {
+                    Thread.sleep(10);
+                }
+
+                String text = null;
+                String line = null;
+
+                // Read the piped output stream of the executed command
+                while (input.available() > 0) {
+                    line = pipe_txt.readLine();
+
+                    if (text == null) {
+                        text = line; // Take only the first line
+                        text = text.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
+                        // TODO: Replace [0..10] with words
+                    }
+
+                    Thread.sleep(10);
+                }
+
+                snt[i] = text;
+
+                pipe_txt.close();
+                pipe_ast.close();
             }
 
             record.put("AST", ast);
@@ -173,9 +271,46 @@ public class Processor implements Callable<List<Map<String, String>>> {
             results.add(record);
         }
 
-        System.out.println("Finish: " + Thread.currentThread().getName() + " (" + results.size() + ")");
-
         return results;
+    }
+
+    /**
+     *
+     * @param unk
+     */
+    public void run(boolean unk) throws Exception {
+        this.unk = unk;
+
+        long startTime = System.currentTimeMillis();
+
+        writeResults(processAMRs(readAMRs()));
+
+        long endTime = System.currentTimeMillis();
+        long runTime = endTime - startTime;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(runTime);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(runTime) - TimeUnit.MINUTES.toSeconds(minutes);
+
+        System.out.println("Runtime: " + String.format("%d min, %d sec", minutes, seconds));
+    }
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) throws Exception {
+        Processor amr2txt = new Processor(
+                "../amrs/",
+                "out/semeval/",
+                "../rules/amr2api.tsurgeon",
+                "../lexicons/propbank/frames-roles.txt");
+
+        System.out.println("# Run: full sentences only");
+        amr2txt.run(false);
+
+        System.out.println();
+
+        System.out.println("# Run: including partial sentences");
+        amr2txt.run(true);
     }
 
 }

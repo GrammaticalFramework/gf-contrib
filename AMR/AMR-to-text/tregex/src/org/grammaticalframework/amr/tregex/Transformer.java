@@ -99,9 +99,11 @@ public class Transformer {
      *
      * @param file
      *        A plain-text file containing the list of rules.
+     * @param unk
+     *        If true, reads extra rules that cut off unresolved subgraphs.
      * @return An ordered list of AMR graph patterns and transformation operations.
      */
-    private List<Pair<String, String>> readRules(String file) throws Exception {
+    private List<Pair<String, String>> readRules(String file, boolean unk) throws Exception {
         List<Pair<String, String>> rules = new ArrayList<Pair<String, String>>();
 
         Map<String, String> macros = new HashMap<String, String>();
@@ -117,6 +119,10 @@ public class Transformer {
 
             if (line.startsWith("%")) {
                 break; // Used for development purposes
+            }
+
+            if (line.startsWith("---") && !unk) {
+                break; // Ignore extra rules that cut off unresolved subgraphs
             }
 
             if (line.contains("#")) {
@@ -177,12 +183,13 @@ public class Transformer {
      * @param f_rules
      *        A plain-text file containing Tregex/Tsurgeon rules.
      * @param f_roles
+     * @param unk
      */
-    public Transformer(String f_rules, String f_roles) {
+    public Transformer(String f_rules, String f_roles, boolean unk) {
         peg = Parboiled.createParser(AMRGrammar.class);
 
         try {
-            tregex = compileRules(readRules(f_rules));
+            tregex = compileRules(readRules(f_rules, unk));
             roles = readRoles(f_roles);
         } catch (Exception e) {
             e.printStackTrace(System.err);
@@ -287,7 +294,8 @@ public class Transformer {
      * Used for development purposes only.
      */
     public static void main(String[] args) {
-        Transformer amr2gf = new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt");
+        Transformer amr2gf =
+                new Transformer("../rules/amr2api.tsurgeon", "../lexicons/propbank/frames-roles.txt", false);
 
         String amr = amr2gf.transformToLISP("");
         System.out.println("AMR: " + amr);
