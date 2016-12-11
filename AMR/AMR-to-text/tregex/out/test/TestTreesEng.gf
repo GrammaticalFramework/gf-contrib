@@ -79,7 +79,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t37_so_I_googled_it_to_get_more_information = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.google_V2 S.it_NP) (E.PurposeVP (mkVP L.get_V2 (mkNP L.more_Det (mkCN L.information_N)))))))) fullStopPunct) ;
 
-	lin t38_even_the_information_that_is_available_is_fuzzy = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP L.available_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct) ;
+	lin t38_even_the_information_that_is_available_is_fuzzy = (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP L.available_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct) ;
 
 	lin t39_as_for_the_race_angle_it_is_unnecessary = (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP L.need_V2)))) fullStopPunct) ;
 
@@ -91,7 +91,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t43_they_should_have_been_expelled_from_school_at_a_minimum = (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.they_NP (mkVP (mkVP (passiveVP L.expel_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.school_N)))) (P.mkAdv "at a minimum"))))))))) fullStopPunct) ;
 
-	lin t44_my_opinion_is_based_on_the_information_provided = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))) fullStopPunct) ;
+	lin t44_my_opinion_is_based_on_the_information_provided = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))) fullStopPunct) ;
 
 	lin t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone = (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Texas")))) (mkRS (mkRCl S.which_RP (mkAP L.criminal_A))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP)))) fullStopPunct) ;
 

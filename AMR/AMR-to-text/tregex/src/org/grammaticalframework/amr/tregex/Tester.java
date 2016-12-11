@@ -776,7 +776,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP L.available_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP L.available_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -887,7 +887,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.opine_V2)))) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.provide_V2)))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

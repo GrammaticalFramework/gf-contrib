@@ -691,6 +691,10 @@ mkNP=np [> /:sntN/ | !> /.*/]
 mkNP < /a_Quant/=quant <+(mkCN) /uncountable_N/
 [delete quant]
 
+# (mkNP a_Quant (mkCN other_A noun_N)) => (mkNP aPl_Det (mkCN other_A noun_N))
+mkNP < /a_Quant/=quant !< mkNum <+(mkCN) (other_A $+ /noun_N/)
+[relabel quant /a_Quant/aPl_Det/]
+
 # (mkCl mkAP) => (mkCl S.it_NP mkAP)
 mkCl=cl <: mkAP
 [insert (S.it_NP) >1 cl]
