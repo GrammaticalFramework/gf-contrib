@@ -776,7 +776,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (mkAP L.available_A))))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkNP (mkCN L.available_A (mkCN L.information_N))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -908,7 +908,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN \"Texas\")))) (mkRS (mkRCl S.which_RP (mkAP L.criminal_A))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP)))) fullStopPunct)");
+                "(mkText (mkUtt (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.criminal_A (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN \"Texas\")))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP)))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

@@ -695,9 +695,18 @@ mkNP < /a_Quant/=quant <+(mkCN) /uncountable_N/
 mkNP < /a_Quant/=quant !< mkNum <+(mkCN) (other_A $+ /noun_N/)
 [relabel quant /a_Quant/aPl_Det/]
 
+# (mkAP frame) => (mkAP frame_A)
+mkAP < /FRAME/=frame
+[relabel frame /^(.+)-(.+)$/$1_A/]
+
 # (mkCl mkAP) => (mkCl S.it_NP mkAP)
 mkCl=cl <: mkAP
 [insert (S.it_NP) >1 cl]
+
+# (mkCN mkCN (mkRS (mkRCl which_RP (mkAP adj_A)))) => (mkCN adj_A (mkCN noun_N))
+mkCN=cn < mkCN < (mkRS=rs < (mkRCl < /which_RP/ < (mkAP <: /adj_A/=adj)))
+[move adj >1 cn]
+[delete rs]
 
 # (VP (frame Adv)) => (mkVP (VP frame) Adv)
 /VP/=vp_i < (/FRAME/ < /Adv/=adv)
@@ -749,10 +758,6 @@ mkVP <1 /FRAME/=frame <2 mkS
 # (mkVP frame) => (mkVP frame_V)
 mkVP <: /FRAME/=frame
 [relabel frame /^(.+)-(.+)$/L.$1_V/]
-
-# (mkAP frame) => (mkAP frame_A)
-mkAP < /FRAME/=frame
-[relabel frame /^(.+)-(.+)$/L.$1_A/]
 
 # (mkCN frame) => (mkCN frame_N)
 mkCN < /FRAME/=frame
