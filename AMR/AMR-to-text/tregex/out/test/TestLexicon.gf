@@ -1,4 +1,4 @@
---# -path=../../lexicons/translator
+--# -path=../../../lexicons/translator
 
 abstract TestLexicon = Cat, Dictionary ** {
 

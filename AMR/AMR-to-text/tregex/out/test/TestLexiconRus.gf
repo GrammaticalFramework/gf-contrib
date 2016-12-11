@@ -1,4 +1,4 @@
---# -path=../../lexicons/translator
+--# -path=../../../lexicons/translator
 
 concrete TestLexiconRus of TestLexicon = CatRus, DictionaryRus
 - [assail_V2, commit_V2, deserve_V2, like_V2, other_A] **

@@ -1,4 +1,4 @@
---# -path=.:alltenses:../../lexicons/translator
+--# -path=.:alltenses:../../../lexicons/translator
 
 concrete TestTreesEng of TestTrees = TestLexiconEng **
 open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {
