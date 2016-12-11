@@ -321,7 +321,7 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 
 # mkAP : A -> AP
 # (var adjective) => (mkAP adjective_A)
-/VAR/=var < (/ADJ/=adj < /:domain/ !< /:opN/) !> mkAP
+/VAR/=var < (/ADJ/=adj < /:domain/ !< /:quant/ !< /:opN/) !> mkAP
 [relabel adj /^(.+)$/$1_A/]
 [adjoinF (mkAP @) var]
 [excise var var]
@@ -796,6 +796,10 @@ mkAdv=adv
 # mkOrd => S.mkOrd
 mkOrd=ord
 [relabel ord /^(.+)$/S.$1/]
+
+# prep_Prep => S.prep_Prep
+possess_Prep=prep
+[relabel prep /^(.+)$/S.$1/]
 
 # prep_Prep => L.prep_Prep
 /prep_Prep/=prep
