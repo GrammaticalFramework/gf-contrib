@@ -927,7 +927,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP L.possible_A)))) fullStopPunct)
 TXT: [it is possible .]
 
 SNT: Ray Hyde - My comments were directed at investors who lobby to place roads near where they own property and the incompetent system that funds these requests without regard to their link or lack thereof to a master transportation plan .
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.say_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.comment_V2)))) (mkVP (passiveVP L.direct_V2) (S.mkAdv L.DIR_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.lobby_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.road_N)) (mkVP (passiveVP L.place_V2) (E.PurposeVP (mkVP L.near_VV (mkVP L.own_V2 (mkNP S.a_Quant (mkCN L.property_N)))))))))))) (mkRS (mkRCl S.which_RP (mkVP L.invest_V))))) (mkNP S.a_Quant (mkCN L.competent_A (mkCN (mkCN L.system_N) (mkRS (mkRCl S.which_RP (mkVP (L.fund_V2 (mkRS (mkRCl S.which_RP (passiveVP L.regardless_V2)))) (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.request_V2)))))))))))))))))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Ray Hyde"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.say_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.comment_V2)))) (mkVP (passiveVP L.direct_V2) (S.mkAdv L.DIR_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.lobby_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.road_N)) (mkVP (passiveVP L.place_V2) (E.PurposeVP (mkVP L.near_VV (mkVP L.own_V2 (mkNP S.a_Quant (mkCN L.property_N)))))))))))) (mkRS (mkRCl S.which_RP (mkVP L.invest_V))))) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.system_N) (mkRS (mkRCl S.which_RP (mkVP (L.fund_V2 (mkRS (mkRCl S.which_RP (passiveVP L.regardless_V2)))) (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.request_V2))))))))) (mkRS negativePol (mkRCl S.which_RP (mkAP L.competent_A)))))))))))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Ray Hyde"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.lobby_VS]
 
 SNT: I am 24 and a mother of a 2 and a half year old.
@@ -2371,8 +2371,8 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (m
 TXT: [unknown qualified constant L.laboratory_A]
 
 SNT: An incorrect headline in the newspaper Izvestia stated that deadly viruses from a Moscow regional depository threaten Moscow.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.correct_A (mkCN L.headline_N))) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.virus_N) (mkRS (mkRCl S.which_RP (mkVP L.kill_V))))) (mkVP L.threaten_V))))))) fullStopPunct)
-TXT: [a correct headline states that a virus that kills threatens .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.headline_N) (mkRS negativePol (mkRCl S.which_RP (mkAP L.correct_A))))) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.virus_N) (mkRS (mkRCl S.which_RP (mkVP L.kill_V))))) (mkVP L.threaten_V))))))) fullStopPunct)
+TXT: [a headline that isn't correct states that a virus that kills threatens .]
 
 SNT: There are no viruses at the State Scientific Center of applied Microbiology in obolensk.
 AST: (b (be-located-at-91 (mkNP S.a_Quant (mkCN L.virus_N))))
@@ -2527,7 +2527,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.liability_N)) (mkVP L.con
 TXT: [a liability concerns US .]
 
 SNT: Brazil announced that the air force will begin shooting down aircraft used in trafficking illegal drugs in Brazilian airspace.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Brazil")) (mkVP L.announce_VS (mkS (mkCl (mkNP (P.mkPN "Air Force")) (mkVP L.begin_VS (mkS (mkCl (mkVP L.shoot_down_V2 (mkNP S.a_Quant (mkCN (mkCN L.aircraft_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.use_V2) (E.PurposeVP (mkVP (mkVP L.traffic_V2 (mkNP S.a_Quant (mkCN L.legal_A (mkCN L.drug_N)))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.airspace_N)))))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Brazil")) (mkVP L.announce_VS (mkS (mkCl (mkNP (P.mkPN "Air Force")) (mkVP L.begin_VS (mkS (mkCl (mkVP L.shoot_down_V2 (mkNP S.a_Quant (mkCN (mkCN L.aircraft_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.use_V2) (E.PurposeVP (mkVP (mkVP L.traffic_V2 (mkNP S.a_Quant (mkCN (mkCN L.drug_N) (mkRS negativePol (mkRCl S.which_RP (mkAP L.legal_A)))))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.airspace_N)))))))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.begin_VS]
 
 SNT: The plan requires 8 precautionary steps before the order to shoot down a plane may be issued.

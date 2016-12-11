@@ -704,7 +704,7 @@ mkCl=cl <: mkAP
 [insert (S.it_NP) >1 cl]
 
 # (mkCN mkCN (mkRS (mkRCl which_RP (mkAP adj_A)))) => (mkCN adj_A (mkCN noun_N))
-mkCN=cn < mkCN < (mkRS=rs < (mkRCl < /which_RP/ < (mkAP <: /adj_A/=adj)))
+mkCN=cn < mkCN < (mkRS=rs !< negativePol < (mkRCl < /which_RP/ < (mkAP <: /adj_A/=adj)))
 [move adj >1 cn]
 [delete rs]
 
