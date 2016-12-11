@@ -43,7 +43,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t19_girls_see_some_boys_who_play_a_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.game_N))))))))))) fullStopPunct) ;
 
-	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.ball_A L.game_N))))))))))) fullStopPunct) ;
+	lin t20_girls_see_some_pretty_boys_who_play_a_ball_game = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.see_V2 (mkNP S.somePl_Det (mkCN (mkCN L.pretty_A L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V2 (mkNP S.a_Quant (E.CompoundCN L.ball_N L.game_N))))))))))) fullStopPunct) ;
 
 	lin t21_girls_who_see_the_game_like_the_boys_who_play = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.girl_N) (mkRS (mkRCl S.which_RP (mkVP L.see_V2 (mkNP S.a_Quant (mkCN L.game_N))))))) (mkVP L.like_V2 (mkNP S.a_Quant (mkCN (mkCN L.boy_N) (mkRS (mkRCl S.which_RP (mkVP L.play_V))))))))) fullStopPunct) ;
 
@@ -81,7 +81,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t38_even_the_information_that_is_available_is_fuzzy = (mkText (mkUtt (mkS (mkCl (mkNP (mkCN L.available_A (mkCN L.information_N))) (mkAP L.even_AdA (mkAP L.fuzzy_A))))) fullStopPunct) ;
 
-	lin t39_as_for_the_race_angle_it_is_unnecessary = (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.race_A L.angle_N)) (passiveVP L.need_V2)))) fullStopPunct) ;
+	lin t39_as_for_the_race_angle_it_is_unnecessary = (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (E.CompoundCN L.race_N L.angle_N)) (passiveVP L.need_V2)))) fullStopPunct) ;
 
 	lin t40_it_s_a_horrible_thing_that_happened = (mkText (mkUtt (mkNP S.a_Quant (mkCN L.horrible_A L.thing_N)))) ;
 
@@ -95,7 +95,7 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t45_Texas_criminal_courts_and_prosecutors_do_not_coddle_to_anyone = (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.criminal_A (mkCN (mkCN L.court_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Texas")))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.prosecute_V))))))) (mkVP L.coddle_V2 L.anyone_NP)))) fullStopPunct) ;
 
-	lin t46_I_don_t_think_it_is_a_race_issue_either = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "either") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (mkCN L.race_A L.issue_N))))))))) fullStopPunct) ;
+	lin t46_I_don_t_think_it_is_a_race_issue_either = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "either") (mkVP L.think_VS (mkS negativePol (mkCl S.it_NP (mkNP S.a_Quant (E.CompoundCN L.race_N L.issue_N))))))))) fullStopPunct) ;
 
 	lin t47_the_girl_is_very_nice_and_the_boy_is_very_good = (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkAP L.very_AdA (mkAP L.nice_A)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkAP L.very_AdA (mkAP L.good_A))))))) fullStopPunct) ;
 
