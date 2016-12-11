@@ -40,11 +40,15 @@ public class WordExtractor {
             String word = entry.substring(0, entry.lastIndexOf("_"));
 
             if (all.contains(word + "_N") && !all.contains(word + "_A")) {
-                noun_only.add(word);
+                if (!word.contains("_")) {
+                    noun_only.add(word); // Ignore compounds (for now)
+                }
             }
 
             if (all.contains(word + "_A") && !all.contains(word + "_N")) {
-                adj_only.add(word);
+                if (!word.contains("_")) {
+                    adj_only.add(word); // Ignore compounds (for now)
+                }
             }
         }
 
