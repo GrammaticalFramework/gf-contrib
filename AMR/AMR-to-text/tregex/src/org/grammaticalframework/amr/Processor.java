@@ -35,6 +35,7 @@ public class Processor {
             + "|a function type is expected"
             + "|record type expected"
             + "|no overload instance"
+            + "|missing record fields"
             + "|warning:"
             + "|null"
             + "|\\{s ="
