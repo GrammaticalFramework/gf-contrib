@@ -14,6 +14,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 		-- Manually added:
 
 		defend_V = mkV "defend" ;
+		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
 
 		belong_V2 = belong_to_V2 ;
@@ -38,6 +39,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		interest_A = interesting_A ;
 
+		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;
 		most_AdA = mkAdA "most" ;
 
@@ -46,9 +48,10 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		part_Prep = S.part_Prep ;
 
+		CAU_Prep = for_Prep ;
 		COM_Prep = of_Prep ;
 		DIR_Prep = from_Prep ;
-		GOL_Prep = in_Prep ;
+		GOL_Prep = to_Prep ;
 		LOC_Prep = mkPrep "" ;	-- FIXME
 		MNR_Prep = mkPrep "" ;	-- no Prep
 		PPT_Prep = mkPrep "" ;	-- no Prep
