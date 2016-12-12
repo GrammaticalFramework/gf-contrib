@@ -238,3 +238,13 @@ TestTreesEng: is it possible that there is another side of this ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t50_the_girl_left_because_the_boy_arrived
+TestTreesEng: a girl leaves because a boy arrives .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial
+TestTreesEng: because there is a history reason a thing that originally belongs to us is become a controversy .
+TestTreesLav: 
+TestTreesRus: 
+

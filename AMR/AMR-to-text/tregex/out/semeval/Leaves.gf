@@ -6,23 +6,46 @@ abstract Leaves = Cat, Dictionary ** {
 
 		-- Manually added:
 
+		defend_V : V ;			-- subcat in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 
-		google_V2 : V2 ;		-- no entry in Dictionary or DictEng
+		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
+		explode_V2 : V2 ;		-- subcat in Dictionary
+		google_V2 : V2 ;		-- missing in Dictionary
+		pass_V2 : V2 ;			-- subcat in Dictionary
 
-		urge_VV : VV ;			-- no urge_VV in Dictionary
+		urge_VV : VV ;			-- missing in Dictionary
 
+		allow_VS : VS ;			-- subcat in Dictionary
+		need_VS : VS ;			-- subcat in Dictionary
+		offer_VS : VS ;			-- subcat in Dictionary
+		quote_VS : VS ;			-- missing in Dictionary
+		recommend_VS : VS ;		-- only recommend_V2 in Dictionary
+		want_VS : VS ;			-- subcat in Dictionary
+
+		center_N : N ;			-- missing in Dictionary
+		citizen_N : N ;			-- citizenFem_N in Dictionary
 		president_N : N ;		-- presidentMasc_N in Dictionary
+		official_N : N ;		-- missing in Dictionary
 
 		interest_A : A ;		-- the mapping between "interest" and "interesting" is not straightforward
+
+		more_AdA : AdA ;		-- missing in Dictionary
+		most_AdA : AdA ;		-- missing in Dictionary
 
 		all_Det : Det ;			-- vs. all_Quant
 		more_Det : Det ;		-- vs. more_Quant
 
 		part_Prep : Prep ;		-- see Structural
 
+		COM_Prep : Prep ;		-- temporary
 		DIR_Prep : Prep ;		-- temporary
 		GOL_Prep : Prep ;		-- temporary
+		LOC_Prep : Prep ;		-- temporary
+		MNR_Prep : Prep ;		-- temporary
+		PPT_Prep : Prep ;		-- temporary
+		PRD_Prep : Prep ;		-- temporary
+		VSP_Prep : Prep ;		-- temporary
 
 		-- Extracted from DictionaryEng:
 

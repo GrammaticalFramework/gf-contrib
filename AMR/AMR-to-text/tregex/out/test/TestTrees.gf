@@ -50,5 +50,7 @@ abstract TestTrees = TestLexicon ** {
 	fun t47_the_girl_is_very_nice_and_the_boy_is_very_good : Text ;
 	fun t48_women_are_horny_as_hell : Text ;
 	fun t49_is_it_a_possibility_there_is_another_side_to_this : Text ;
+	fun t50_the_girl_left_because_the_boy_arrived : Text ;
+	fun t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial : Text ;
 
 }

@@ -1,4 +1,4 @@
---# -path=.:alltenses:../../../lexicons/translator
+--# -path=.:alltenses:../../../lexicons/translator:../semeval
 
 concrete TestTreesEng of TestTrees = TestLexiconEng **
 open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {
@@ -102,5 +102,9 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 	lin t48_women_are_horny_as_hell = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkAP (P.mkAdA "as hell") (mkAP L.horny_A))))) exclMarkPunct) ;
 
 	lin t49_is_it_a_possibility_there_is_another_side_to_this = (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP))))))))) questMarkPunct) ;
+
+	lin t50_the_girl_left_because_the_boy_arrived = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP (mkVP L.leave_V) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.arrive_V)))))))) fullStopPunct) ;
+
+	lin t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial = (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.history_N L.reason_N))))) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "originally") (mkVP L.belong_V2 S.we_NP)))))) (mkVP (passiveVP L.become_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.controversy_N)))))))) fullStopPunct) ;
 
 }
