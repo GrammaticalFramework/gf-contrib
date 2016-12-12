@@ -1,7 +1,7 @@
---# -path=../../../lexicons/translator
+--# -path=../../../lexicons/translator:../semeval
 
 concrete TestLexiconRus of TestLexicon = CatRus, DictionaryRus
-- [assail_V2, commit_V2, deserve_V2, like_V2, other_A] **
+- [assail_V2, commit_V2, deserve_V2, like_V2, ball_N, other_A] **
 open ParadigmsRus, MorphoRus in {
 
 	flags
@@ -28,10 +28,10 @@ open ParadigmsRus, MorphoRus in {
 
 		play_V2 = play_1_V2 ;
 
+		ball_N = mkN "мяч" "мяча" "мячу" "мяч" "мячом" "мяче" "мячами" "мячи" "мячей" "мячам" "мячи" "мячами" "мячах" Masc Inanimate ;
 		game_N = game_2_N ;			-- DictionaryRus.game_1_N = variants{}
 		school_N = school_1_N ;
 
-		ball_A = mkA "" ;			-- FIXME
 		other_A = mkA "другой" ;	-- DictionaryRus.other_A = variants{}
 
 }

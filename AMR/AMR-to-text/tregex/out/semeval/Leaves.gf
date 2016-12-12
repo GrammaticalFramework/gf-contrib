@@ -8,6 +8,7 @@ abstract Leaves = Cat, Dictionary ** {
 
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 
+		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
 		google_V2 : V2 ;		-- no entry in Dictionary or DictEng
 
 		urge_VV : VV ;			-- no urge_VV in Dictionary
@@ -23,6 +24,7 @@ abstract Leaves = Cat, Dictionary ** {
 
 		DIR_Prep : Prep ;		-- temporary
 		GOL_Prep : Prep ;		-- temporary
+		PRD_Prep : Prep ;		-- temporary
 
 		-- Extracted from DictionaryEng:
 

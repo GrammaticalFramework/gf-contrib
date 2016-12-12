@@ -38,17 +38,17 @@ public class Tester {
             abs.println("abstract " + name + " = TestLexicon ** {");
             abs.println("\n\tflags startcat = Text ;\n");
 
-            eng.println("--# -path=.:alltenses:../../../lexicons/translator\n");
+            eng.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
             eng.println("open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {");
             eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 
-            lav.println("--# -path=.:alltenses:../../../lexicons/translator\n");
+            lav.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
             lav.println("open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {");
             lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 
-            rus.println("--# -path=.:alltenses:../../../lexicons/translator\n");
+            rus.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
             rus.println("open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {");
             rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");
@@ -997,6 +997,25 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP (mkVP L.leave_V) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.arrive_V)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Due to historical reasons, what originally belongs us has become controversial.
+    // FIXME: [it] 'is become' [something] => [it] 'has become' [something]
+    // TODO: comma after Adv
+    @Test
+    public void t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(c4 / cause-01 :ARG0 (r / reason :mod (h / history)) :ARG1 (b2 / become-01 :ARG1 (t / thing :ARG0-of (b3 / belong-01 :ARG1 (w2 / we) :mod (o / original))) :ARG2 (c3 / controversy)))");
+        assertEquals(amr,
+                "(c4 (cause-01 (:ARG0 (r (reason (:mod (h history))))) (:ARG1 (b2 (become-01 (:ARG1 (t (thing (:ARG0-of (b3 (belong-01 (:ARG1 (w2 we)) (:mod (o original)))))))) (:ARG2 (c3 controversy)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.history_N L.reason_N))))) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV \"originally\") (mkVP L.belong_V2 S.we_NP)))))) (mkVP (passiveVP L.become_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.controversy_N)))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

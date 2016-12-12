@@ -15,6 +15,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
 
+		belong_V2 = belong_to_V2 ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 
 		urge_VV = mkVV (mkV "urge") ;
@@ -31,6 +32,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		DIR_Prep = from_Prep ;
 		GOL_Prep = in_Prep ;
+		PRD_Prep = mkPrep "" ;	-- no Prep
 
 		-- Extracted from DictionaryEng:
 

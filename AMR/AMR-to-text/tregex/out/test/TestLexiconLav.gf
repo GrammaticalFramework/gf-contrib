@@ -1,4 +1,4 @@
---# -path=../../../lexicons/translator
+--# -path=../../../lexicons/translator:../semeval
 
 concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in {
 
@@ -25,6 +25,7 @@ concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in 
 
 		obligate_V2V = mkV2V (mkV "uzdot" "uzdodu" "uzdevu") dat_Prep ;
 
+		ball_N = mkN "bumba" ;
 		boy_N = mkN "zēns" ;
 		bullet_N = mkN "lode" ;
 		city_N = mkN "pilsēta" ;
@@ -38,7 +39,6 @@ concrete TestLexiconLav of TestLexicon = CatLav ** open ParadigmsLav, ResLav in 
 		thug_N = mkN "slepkava" ;
 		word_N = mkN "vārds" ;
 
-		ball_A = mkA "bumbas" AIndecl ;
 		good_A = mkA "labs" ;
 		nice_A = mkA "jauks" ;
 		other_A = mkA "cits" ;
