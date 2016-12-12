@@ -13,16 +13,24 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		-- Manually added:
 
+		defend_V = mkV "defend" ;
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
 
 		belong_V2 = belong_to_V2 ;
+		explode_V2 = mkV2 explode_V ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		pass_V2 = mkV2 pass_V ;
 
 		urge_VV = mkVV (mkV "urge") ;
 
+		allow_VS = mkVS (mkV "allow" "allows" "allowed" "allowed" "allowing") ;
+		need_VS = mkVS need_V ;
+		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
+		quote_VS = mkVS quote_V ;
+		recommend_VS = mkVS (mkV "recommend") ;
 		want_VS = mkVS want_V ;
 
+		center_N = mkN "center" ;
 		citizen_N = citizenFem_N ;
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
@@ -38,10 +46,14 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		part_Prep = S.part_Prep ;
 
+		COM_Prep = of_Prep ;
 		DIR_Prep = from_Prep ;
 		GOL_Prep = in_Prep ;
+		LOC_Prep = mkPrep "" ;	-- FIXME
+		MNR_Prep = mkPrep "" ;	-- no Prep
 		PPT_Prep = mkPrep "" ;	-- no Prep
 		PRD_Prep = mkPrep "" ;	-- no Prep
+		VSP_Prep = of_Prep ;
 
 		-- Extracted from DictionaryEng:
 
