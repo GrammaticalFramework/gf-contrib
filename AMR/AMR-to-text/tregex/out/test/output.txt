@@ -238,3 +238,8 @@ TestTreesEng: is it possible that there is another side of this ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t50_the_girl_left_because_the_boy_arrived
+TestTreesEng: a girl leaves because a boy arrives .
+TestTreesLav: 
+TestTreesRus: 
+

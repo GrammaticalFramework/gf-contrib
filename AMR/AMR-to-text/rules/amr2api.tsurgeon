@@ -46,6 +46,8 @@
 
 @/ADV_REL/=/^:(location|topic|time)$/
 
+@/cause-01/=/^cause-01$/
+
 @/REIF/=/^[a-z]+(-[a-z]+)*-91$/
 
 @/have-org-role-91/=/^have-org-role-91$/
@@ -158,6 +160,13 @@
 /:ARG0-of/=inv < (/VAR/=var < /FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP mkVP@)) var]
 [excise inv inv]
+
+# mkAdv : Subj -> S -> Adv
+# (:ARG1-of (var (cause-01 :ARG0))) => (mkAdv because_Subj mkS)
+/:ARG1-of/=arg < (/VAR/ < (/cause-01/=cause < /:ARG0/=sub))
+[adjoin (mkAdv S.because_Subj TEMP=temp@) sub]
+[excise arg cause]
+[excise temp temp]
 
 # mkRCl : RP -> NP -> V2 -> RCl
 # mkRS : RCl -> RS

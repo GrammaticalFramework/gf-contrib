@@ -984,4 +984,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // The girl left because the boy arrived.
+    @Test
+    public void t50_the_girl_left_because_the_boy_arrived() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(l / leave-01 :ARG0 (g / girl) :ARG1-of (c / cause-01 :ARG0 (a / arrive-01 :ARG0 (b / boy))))");
+        assertEquals(amr,
+                "(l (leave-01 (:ARG0 (g girl)) (:ARG1-of (c (cause-01 (:ARG0 (a (arrive-01 (:ARG0 (b boy))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP (mkVP L.leave_V) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.boy_N)) (mkVP L.arrive_V)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
