@@ -32,6 +32,7 @@ abstract Leaves = Cat, Dictionary ** {
 
 		DIR_Prep : Prep ;		-- temporary
 		GOL_Prep : Prep ;		-- temporary
+		PPT_Prep : Prep ;		-- temporary
 		PRD_Prep : Prep ;		-- temporary
 
 		-- Extracted from DictionaryEng:

@@ -840,7 +840,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (mkVP 
 
 SNT: Reality check here -
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkVP L.check_V) (S.mkAdv L.PPT_Prep (mkNP (mkCN L.reality_N)))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.here_N))))))) fullStopPunct)
-TXT: [unknown qualified constant L.PPT_Prep]
+TXT: [unknown qualified constant L.here_N]
 
 SNT: I drive past Watkins Landing every morning and evening .
 AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (L.drive_V (:path (p (past (:op1 (mkNP (P.mkPN "Watkins Landing")))))) (:frequency (mkS (mkCl (mkVP (L.rate_entity_V (:ARG4 (a (and (:op1 (d2 (date-entity (:dayperiod (mkNP S.a_Quant (mkCN L.morning_N)))))) (:op2 (d3 (date-entity (:dayperiod (mkNP S.a_Quant (mkCN L.evening_N))))))))))))))))))) fullStopPunct)
@@ -2708,7 +2708,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkS S.and_Conj (mkL
 
 SNT: Chavez insists that the moves are purely defensive and born of an overdue need to update obsolete military hardware and protect Venezuela from nations that might want to take control of Venezuela.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Chavez")) (mkVP L.insist_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkS (mkCl (mkVP L.move_V))) (mkAP (L.defensive_A (mkRS (mkRCl S.which_RP (mkAP L.pure_A))))))) (mkS (mkCl (mkVP (passiveVP L.bear_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (mkCN L.obsolete_A L.military_A L.hardware_N)) (passiveVP L.update_V2))) (mkS (mkCl (mkNP (P.mkPN "Venezuela")) (mkVP (passiveVP L.protect_V2) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN (mkCN L.nation_N) (mkRS (mkRCl S.which_RP (mkVP (L.want_VS (mkRS (mkRCl S.which_RP (mkAP L.possible_A)))) (mkS (mkCl (mkVP control-01 c)))))))))))))) (mkVP (P.mkAdV "overdue") (passiveVP L.need_V2)))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.PPT_Prep]
+TXT: [constant not found: control]
 
 SNT: Venezuela is South America's largest petroleum-producing state.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Venezuela")) (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP (L.produce_V2 (:compared-to (mkNP (P.mkPN "South America")))) (mkNP (mkCN L.petroleum_N))) (P.mkAdv "most"))))))))) fullStopPunct)
@@ -2968,7 +2968,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P
 
 SNT: Hill is the head American negotiator on North Korea's nuclear weapons program.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.head_A L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.negotiate_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN (mkCN (mkCN L.program_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.weapon_N)))) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "North Korea")))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.PPT_Prep]
+TXT: [Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea .]
 
 SNT: Hill stated stalled efforts to dismantle North Korea's nuclear weapons program could move ahead after the weekend of 16 June 2007 and 17 June 2007 when Pyongyang officials invited inspectors from the International Atomic Energy Agency to visit for talks on verifying and monitoring a shutdown.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkCl S.it_NP (mkAP (L.possible_A (:ARG1 (mkS (mkCl (mkVP (mkVP (mkVP (passiveVP L.move_V2) (S.mkAdv L.after_Prep (mkNP (L.weekend_N (:mod (d4 (date-interval (:op1 (d (date-entity (:day 16) (:month 6) (:year 2007)))) (:op2 (d2 (date-entity (:day 17) (:month 6) (:year 2007))))))) (:time-of (mkS (mkCl (have-org-role-91 (mkNP (P.mkPN "International Atomic Energy Agency")) (:ARG3 (mkS (mkCl (mkVP L.inspect_V))))) (mkVP (mkVP (L.visit_V (mkRS (mkRCl S.which_RP (mkAP (L.invite_A (:ARG0 (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Pyongyang")))) (:ARG1 p4))))))) (E.PurposeVP (mkVP L.talk_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.verify_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.shut_down_V))))))) (mkS (mkCl (passiveVP L.monitor_V2))))))))))))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.ahead_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (L.effort_N (:ARG1 (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.program_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.weapon_N)))) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "North Korea"))))) (passiveVP L.dismantle_V2)))) (mkRS (mkRCl S.which_RP (passiveVP L.stall_V2))))))))))))))))))))) fullStopPunct)

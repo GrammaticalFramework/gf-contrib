@@ -40,6 +40,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		DIR_Prep = from_Prep ;
 		GOL_Prep = in_Prep ;
+		PPT_Prep = mkPrep "" ;	-- no Prep
 		PRD_Prep = mkPrep "" ;	-- no Prep
 
 		-- Extracted from DictionaryEng:
