@@ -677,6 +677,13 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 [move adv2 >1 vp_o]
 [delete mod]
 
+# mkAP : AP -> S -> AP
+# (mkAP (adj_A|frame (:ARG1 mkS))) => (mkAP (mkAP adj_A|frame) mkS)
+mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < mkS))
+[adjoinF (mkAP=ap_o @) ap_i]
+[move arg >2 ap_o]
+[excise arg arg]
+
 # mkCl : NP -> Cl
 # mkS : Cl -> S
 # mkAP : AP -> S -> AP
