@@ -17,13 +17,21 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		belong_V2 = belong_to_V2 ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
+		pass_V2 = mkV2 pass_V ;
 
 		urge_VV = mkVV (mkV "urge") ;
 
+		want_VS = mkVS want_V ;
+
+		citizen_N = citizenFem_N ;
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
+		official_N = mkN "official" ;
 
 		interest_A = interesting_A ;
+
+		more_AdA = mkAdA "more" ;
+		most_AdA = mkAdA "most" ;
 
 		all_Det = mkDeterminer plural "all" ;
 		more_Det = mkDeterminer plural "more" ;

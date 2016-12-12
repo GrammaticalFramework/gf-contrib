@@ -1456,7 +1456,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkAP (P.mkAdA "pret
 
 SNT: It's more comfortable to me.
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP L.more_AdA (mkAP (L.comfortable_A S.i_NP)))))) fullStopPunct)
-TXT: [unknown qualified constant L.more_AdA]
+TXT: [A function type is expected for comfortable_A instead of type A]
 
 SNT: What made them decide toe-walking is a sign of autism since it seems so random and isn't always indicative?
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.make_VS (mkS (mkCl S.they_NP (mkVP L.decide_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.autism_N)) (mkVP (passiveVP L.signal_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (L.walk_V (:manner (mkNP S.a_Quant (mkCN L.toe_N))))))))))))))) (S.mkAdv S.because_Subj (mkS S.and_Conj (mkListS (mkS (mkCl (mkAP L.so_AdA (mkAP (L.random_A (:domain w)))) (passiveVP L.seem_V2))) (mkS (mkCl (mkVP (mkVP (L.indicate_V (:polarity -))) (:time (mkNP S.a_Quant (mkCN L.always_N))))))))))))) fullStopPunct)
@@ -1580,7 +1580,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (
 
 SNT: i dont what to stop,
 AST: (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.want_VS (mkS (mkCl (mkVP L.stop_V))))))) fullStopPunct)
-TXT: [unknown qualified constant L.want_VS]
+TXT: [I don't want that it stops .]
 
 SNT: i dont care what i do to myself,i want to do it again and again to tourture myslef,i hate me.
 AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.care_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP (L.do_V2 (:prep-to i))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP L.want_VS (mkS (mkCl (mkVP (passiveVP (L.do_V2 (:frequency (t3 time-and-again)))) (E.PurposeVP (mkVP torture-01 i))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP hate-01 i)))) fullStopPunct))
@@ -1596,7 +1596,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (
 
 SNT: i dont want to hurt him,i dont want him to hurt himself
 AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.want_VS (mkS (mkCl (mkVP L.hurt_V2 S.he_NP))))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.want_VS (mkS (mkCl S.he_NP (mkVP hurt-01 h4))))))) fullStopPunct))
-TXT: [unknown qualified constant L.want_VS] [unknown qualified constant L.want_VS]
+TXT: [I don't want that it hurts him .] [constant not found: hurt]
 
 SNT: what do i do
 AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP do-02 (a amr-unknown))))) fullStopPunct)
@@ -3056,7 +3056,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.m
 
 SNT: Agency officials stated that the plan is a breakthrough.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP S.a_Quant (mkCN L.agency_N)))) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.plan_N)) (mkVP L.break_through_V)))))))) fullStopPunct)
-TXT: [unknown qualified constant L.official_N]
+TXT: [unknown qualified constant L.break_through_V]
 
 SNT: On 28 August 2007 at a news conference in Tehran Iranian President Mahmoud ahmadinejad stated that --
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.president_N L.of_Prep) (mkNP (P.mkPN "Iran")))) (mkVP (mkVP (L.state_V (:time (d (date-entity (:day 28) (:month 8) (:year 2007)))))) (:time (mkNP S.a_Quant (E.CompoundCN L.news_N (L.conference_N (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tehran"))))))))))) fullStopPunct)
