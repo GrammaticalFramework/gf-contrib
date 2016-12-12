@@ -507,7 +507,7 @@ mkCN=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /ADJ/=adj2)))
 
 # CompoundCN : N -> N -> CN
 # (mkCN (noun_N (:mod (var noun)))) => (CompoundCN noun_N noun_N)
-mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /WORD/=noun !< (/country/ < /:name/))))
+mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < (/WORD/=noun !< mkRS) !< (/country/ < /:name/))))
 [relabel noun /^(.+)$/$1_N/]
 [move noun >1 cn]
 [delete mod]
@@ -865,6 +865,9 @@ possess_Prep=prep
 
 /:location/=loc <: /VAR/
 [delete loc]
+
+/:poss/=poss <: /VAR/
+[delete poss]
 
 --- Remove unresolved relations, reifications, etc. (SemEval2017)
 

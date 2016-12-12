@@ -47,6 +47,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		part_Prep = S.part_Prep ;
 
+		CAU_Prep = for_Prep ;
 		COM_Prep = of_Prep ;
 		DIR_Prep = from_Prep ;
 		GOL_Prep = to_Prep ;
