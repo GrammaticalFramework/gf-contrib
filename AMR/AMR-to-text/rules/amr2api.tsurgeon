@@ -13,7 +13,7 @@
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
-@/NE_TYPE/=/^[a-z]+$/ # TODO: enumerate
+@/NE_TYPE/=/^[a-z-]+$/ # TODO: enumerate
 
 @/:ARGm/=/^:ARG[01]$/
 @/:ARGm-of/=/^:ARG[01]-of$/
@@ -204,7 +204,7 @@
 
 # mkRCl : RP -> NP -> RCl
 # mkCN : N -> CN
-# mkNP : CN -> NP
+# mkNP : Quant -> CN -> NP
 # (:ARG2-of (var (frame_N))) => (mkRS (mkRCl which_RP mkNP))
 /:ARG2-of/=inv < (/VAR/=var < /NOUN_FRAME/)
 [adjoin (mkRS (mkRCl S.which_RP (mkNP S.a_Quant mkCN@))) var]
@@ -375,13 +375,13 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [excise temp temp]
 
 # mkNP : Quant -> Num -> CN -> NP
-# (mkNP ([quant_Quant] (mkCN (var (entity :quant))))) => (mkNP ([quant_Quant] :quant (mkCN (var entity))))
-mkNP=np < (mkCN < (/VAR/ < (/WORD/ < /:quant/=num)))
+# (mkNP (quant_Quant (mkCN (var (entity :quant))))) => (mkNP (quant_Quant :quant (mkCN (var entity))))
+mkNP=np <1 /quant_Quant/ <2 (mkCN < (/VAR/ < (/WORD/ < /:quant/=num)))
 [move num >2 np]
 
 # mkNP : Det -> CN -> NP
 # (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN])
-mkNP < (/quant_Quant/=quant $+ (/:quant/=temp < (/VAR/ < /^(~/DET/|~/DET_EXTRA/)$/=det)))
+mkNP <1 /quant_Quant/=quant <2 (/:quant/=temp < (/VAR/ < /^(~/DET/|~/DET_EXTRA/)$/=det))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
 [relabel det /^S.~/DET_EXTRA/_Det$/L.$1_Det/]
@@ -442,10 +442,20 @@ mkCN < (/VAR/=var < /WORD/=noun)
 [excise var var]
 
 # mkCN : CN -> RS -> CN
-# (mkCN (noun mkRS)) => (mkCN (mkCN noun) mkRS)
+# (mkCN (noun_N mkRS)) => (mkCN (mkCN noun_N) mkRS)
 mkCN=cn1 < (/noun_N/ < mkRS=rs)
 [adjoinF (mkCN=cn2 @) cn1]
 [move rs >2 cn2]
+
+# mkCN : N -> CN
+# mkCN : CN -> RS -> CN
+# mkNP : Quant -> CN -> NP
+# (var (noun mkRS)) => (mkNP a_Quant (mkCN (mkCN noun_N) mkRS))
+/VAR/=var < (/WORD/=noun < mkRS=rs)
+[relabel noun /^(.+)$/$1_N/]
+[adjoinF (mkNP S.a_Quant (mkCN=cn (mkCN @))) var]
+[excise var var]
+[move rs >2 cn]
 
 # mkAdv : Prep -> NP
 # (:mod (var ('country' (:name mkNP)))) => (mkAdv from_Prep mkNP)
@@ -527,6 +537,11 @@ mkNP < (/a_Quant/=quant $ (mkCN < (/noun_N/ < (/:poss/=poss < /pron_NP/=pron))))
 [relabel digits /^(.+)$/"$1"/]
 [adjoin (mkNum (mkDigits@)) quant]
 
+# mkNP : Quant -> Num -> CN -> NP
+# (mkNP quant_Quant (mkCN (mkCN (noun_N mkNum)))) => (mkNP quant_Quant mkNum (mkCN (mkCN noun_N)))
+mkNP=np <1 /quant_Quant/ <+(mkCN) (/noun_N/ < mkNum=num)
+[move num >2 np]
+
 # mkVP : VP -> Adv -> VP
 # (mkVP (frame (:adv mkNP))) => (mkVP (mkVP frame) (:adv mkNP))
 mkVP=vp_i < (/FRAME/ < (/ADV_REL/=adv < mkNP))
@@ -538,6 +553,15 @@ mkVP=vp_i < (/FRAME/ < (/ADV_REL/=adv < mkNP))
 mkCN=cn_i < (/noun_N/ < (/ADV_REL/=adv < mkNP))
 [adjoinF (mkCN=cn_o @) cn_i]
 [move adv >2 cn_o]
+
+# mkCN : CN -> Adv -> CN
+# mkAdv : Prep -> NP -> Adv
+# (mkCN (noun_N (:mod NP))) => (mkCN (mkCN noun_N) (mkAdv of_Prep NP))
+mkCN=cn < (/noun_N/=noun < (/:mod/=mod < /NP/=np))
+[adjoinF (mkAdv=adv of_Prep @) np]
+[adjoinF (mkCN @) noun]
+[move mod >2 cn]
+[excise mod mod]
 
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)

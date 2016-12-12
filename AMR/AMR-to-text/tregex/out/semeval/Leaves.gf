@@ -7,6 +7,7 @@ abstract Leaves = Cat, Dictionary ** {
 		-- Manually added:
 
 		defend_V : V ;			-- subcat in Dictionary
+		enrich_V : V ;			-- only enrich_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward

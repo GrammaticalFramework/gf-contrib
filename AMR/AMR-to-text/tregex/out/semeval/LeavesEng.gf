@@ -14,6 +14,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 		-- Manually added:
 
 		defend_V = mkV "defend" ;
+		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
 
 		belong_V2 = belong_to_V2 ;
