@@ -38,6 +38,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		interest_A = interesting_A ;
 
+		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;
 		most_AdA = mkAdA "most" ;
 
@@ -48,7 +49,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		COM_Prep = of_Prep ;
 		DIR_Prep = from_Prep ;
-		GOL_Prep = in_Prep ;
+		GOL_Prep = to_Prep ;
 		LOC_Prep = mkPrep "" ;	-- FIXME
 		MNR_Prep = mkPrep "" ;	-- no Prep
 		PPT_Prep = mkPrep "" ;	-- no Prep

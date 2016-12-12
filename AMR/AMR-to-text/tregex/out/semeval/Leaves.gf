@@ -30,6 +30,7 @@ abstract Leaves = Cat, Dictionary ** {
 
 		interest_A : A ;		-- the mapping between "interest" and "interesting" is not straightforward
 
+		just_AdA : AdA ;		-- missing in Dictionary
 		more_AdA : AdA ;		-- missing in Dictionary
 		most_AdA : AdA ;		-- missing in Dictionary
 

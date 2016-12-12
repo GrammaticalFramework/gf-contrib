@@ -35,6 +35,7 @@
 @/:time/=/^:time$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
+@/:prep-prep/=/^:prep-[a-z]+$/
 @/:name/=/^:name$/
 @/:op1/=/^:op1$/
 @/:opN/=/^:op[0-9]+$/
@@ -351,16 +352,16 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [adjoinF (mkNP S.a_Quant (mkCN @)) entity]
 
 # mkListNP : NP -> NP -> ListNP
-# (conj (:op mkNP) (:op mkNP)) => (conj (mkListNP mkNP mkNP))
-/CONJ/ < ((/:opN/=op1 < mkNP=np1) $+ (/:opN/=op2 < mkNP=np2))
+# (conj (:op NP) (:op NP)) => (conj (mkListNP NP NP))
+/CONJ/ < ((/:opN/=op1 < /NP/=np1) $+ (/:opN/=op2 < /NP/=np2))
 [adjoin (mkListNP=list mkNP@) np1]
 [move np2 >2 list]
 [excise op1 op1]
 [delete op2]
 
 # mkListNP : NP -> ListNP -> ListNP
-# (conj mkListNP (:op mkNP)) => (conj (mkListNP mkNP mkListNP))
-/CONJ/ < (mkListNP=list $+ (/:opN/=op_n < mkNP=np_n))
+# (conj mkListNP (:op NP)) => (conj (mkListNP NP mkListNP))
+/CONJ/ < (mkListNP=list $+ (/:opN/=op_n < /NP/=np_n))
 [adjoin (mkListNP=list_prim mkNP@) np_n]
 [move list >2 list_prim]
 [excise op_n op_n]
@@ -420,7 +421,7 @@ mkNP=np_o < (/:mod/=mod < mkRS) < mkPN=pn
 
 # mkCl : NP -> AP -> Cl
 # mkS : Cl -> S
-# (mkAP (adj_A (:domain mkNP))) => (mkS (mkCl mkNP (mkAP adj_A)))
+# (mkAP (adj_A (:domain NP))) => (mkS (mkCl NP (mkAP adj_A)))
 (mkAP=ap < (/adj_A/ < /:domain/=subj)) !> mkCl
 [adjoinF (mkS (mkCl=cl @)) ap]
 [move subj >1 cl]
@@ -428,7 +429,7 @@ mkNP=np_o < (/:mod/=mod < mkRS) < mkPN=pn
 
 # mkCl : NP -> NP -> Cl
 # mkS : Cl -> S
-# (mkNP (mkCN (var (entity (:domain mkNP))))) => (mkS (mkCl mkNP (mkNP (mkCN (var entity)))))
+# (mkNP (mkCN (var (entity (:domain NP))))) => (mkS (mkCl NP (mkNP (mkCN (var entity)))))
 (mkNP=np < (mkCN < (/VAR/ < (/WORD/ < /:domain/=subj)))) !> mkCl
 [adjoinF (mkS (mkCl=cl @)) np]
 [move subj >1 cl]
@@ -451,6 +452,13 @@ mkCN=cn1 < (/noun_N/ < mkRS=rs)
 /:mod/=mod < (/VAR/ < (/country/ < (/:name/=name < mkNP=np)))
 [adjoinF (mkAdv from_Prep @) np]
 [excise mod name]
+
+# mkNP : Pron -> CN -> NP
+# (mkNP a_Quant (mkCN (noun_N (:part-of pron)))) => (mkNP pron_Pron (mkCN noun_N))
+mkNP <1 /a_Quant/=quant <2 (mkCN < (/noun_N/ < (/:part-of/=poss < /PRON/=pron)))
+[relabel pron /^(.+)$/S.$1_Pron/]
+[replace quant pron]
+[delete poss]
 
 # mkAdv : Prep -> NP
 # (:part-of NP) => (mkAdv part_Prep NP)
@@ -538,10 +546,17 @@ mkCN=cn_i < (/noun_N/ < (/ADV_REL/=adv < mkNP))
 [excise rel rel]
 
 # mkAdv : Prep -> NP -> Adv
-# (:topic mkNP) => (mkAdv about_Prep mkNP)
-/:topic/=rel < mkNP=np
+# (:topic NP) => (mkAdv about_Prep NP)
+/:topic/=rel < /NP/=np
 [adjoinF (mkAdv about_Prep @) np]
 [excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:prep-prep NP) => (mkAdv prep_Prep NP)
+/:prep-prep/=prep < /NP/=np
+[adjoinF (mkAdv=adv @) prep]
+[relabel prep /^:prep-(.+)$/$1_Prep/]
+[move np >2 adv]
 
 # mkAdv : Prep -> NP -> Adv
 # (var (prep :opN)) => (mkAdv prep_Prep :opN)
@@ -561,8 +576,8 @@ mkCN=cn_i < (/noun_N/ < (/ADV_REL/=adv < mkNP))
 [delete degree]
 
 # mkVP : VP -> Adv -> VP
-# (VP (frame (:ARG2 mkNP))) => (mkVP (mkVP frame) (mkAdv prep_Prep mkNP))
-/VP/=vp_i < (/FRAME/ < (/:ARG2/=prep < mkNP=np))
+# (VP (frame (:ARG2 NP))) => (mkVP (VP frame) (mkAdv prep_Prep NP))
+/VP/=vp_i < (/FRAME/ < (/:ARG2/=prep < /NP/=np))
 [relabel prep /^(.+)-(.+)$/$2_Prep/]
 [adjoinF (mkAdv=adv @) prep]
 [move np >2 adv]
@@ -641,8 +656,8 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 # mkCl : NP -> Cl
 # mkS : Cl -> S
 # mkAP : AP -> S -> AP
-# (mkAP (adj_A|frame (:ARG1 mkNP))) => (mkAP (mkAP adj_A|frame) (mkS (mkCl mkNP)))
-mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < mkNP))
+# (mkAP (adj_A|frame (:ARG1 NP))) => (mkAP (mkAP adj_A|frame) (mkS (mkCl NP)))
+mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < /NP/))
 [adjoin (mkS=obj (mkCl@)) arg]
 [adjoinF (mkAP=ap_o @) ap_i]
 [move obj >2 ap_o]
@@ -660,8 +675,8 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < mkNP))
 [delete pol]
 
 # mkS : Pol -> Cl -> S
-# (S (Cl (mkNP (CN (frame (:polarity -)))))) => (S negativePol (Cl ..))
-/S/=snt < (/Cl/ < (mkNP < (/CN/ < (/FRAME/ < (/:polarity/=pol < -)))))
+# (S (Cl (NP (CN (frame (:polarity -)))))) => (S negativePol (Cl ..))
+/S/=snt < (/Cl/ < (/NP/ < (/CN/ < (/FRAME/ < (/:polarity/=pol < -)))))
 [insert (negativePol) >1 snt]
 [delete pol]
 
@@ -695,8 +710,8 @@ mkS=s [> /:sntN/ | !> /.*/]
 
 # mkText : Utt -> Text
 # mkUtt : NP -> Utt
-# (ROOT mkNP) => (mkText (mkUtt mkNP))
-mkNP=np [> /:sntN/ | !> /.*/]
+# (ROOT NP) => (mkText (mkUtt NP))
+/NP/=np [> /:sntN/ | !> /.*/]
 [adjoinF (mkText (mkUtt @)) np]
 
 # mkText : Text -> Text -> Text
@@ -737,7 +752,11 @@ mkCN=cn < mkCN < (mkRS=rs !< negativePol < (mkRCl < /which_RP/ < (mkAP <: /adj_A
 [move adj >1 cn]
 [delete rs]
 
-# (mkAdv S.because_Subj (:ARG0 mkNP)) => (mkAdv S.because_Subj (mkS (mkCl mkNP)))
+# (mkAdv because_Subj (:ARG0 mkS)) => (mkAdv because_Subj mkS)
+mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkS)
+[excise arg arg]
+
+# (mkAdv because_Subj (:ARG0 mkNP)) => (mkAdv because_Subj (mkS (mkCl mkNP)))
 mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 [adjoin (mkS (mkCl@)) arg]
 
