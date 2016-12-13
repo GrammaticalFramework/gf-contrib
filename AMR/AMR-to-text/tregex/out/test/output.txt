@@ -248,3 +248,8 @@ TestTreesEng: because there is a history reason a thing that originally belongs 
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t52_the_people_are_already_incredibly_fully_equipped
+TestTreesEng: a person is already incredibly fully equipped .
+TestTreesLav: 
+TestTreesRus: 
+

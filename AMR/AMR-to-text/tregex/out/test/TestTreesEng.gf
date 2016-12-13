@@ -107,4 +107,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial = (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.history_N L.reason_N))))) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "originally") (mkVP L.belong_V2 S.we_NP)))))) (mkVP (passiveVP L.become_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.controversy_N)))))))) fullStopPunct) ;
 
+	lin t52_the_people_are_already_incredibly_fully_equipped = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (P.mkAdV "fully") (mkVP (P.mkAdV "incredibly") (mkVP (P.mkAdV "already") (passiveVP L.equip_V2))))))) fullStopPunct) ;
+
 }
