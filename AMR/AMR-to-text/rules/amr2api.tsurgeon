@@ -696,7 +696,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 # mkVP : AdV -> VP -> VP
 # mkAdV : Str -> AdV
 # (VP (frame (:mod|:manner (var AdV)))) => (mkVP AdV (VP frame))
-/VP/=vp_i < (/FRAME/ < (/^(:mod|:manner)$/=mod < (/VAR/ < /WORD/=adv1)))
+/VP/=vp_i < (/FRAME/ < (/^(:mod|:manner)$/=mod <: (/VAR/ <: (/WORD/=adv1 !< /.*/))))
 [relabel adv1 /^~/ADJ_ADV/$/$1ly/]
 [relabel adv1 /^(.+)llly$/$1lly/]
 [relabel adv1 /^(.+)lely$/$1ly/]
@@ -710,7 +710,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 # mkVP : AdV -> VP -> VP
 # mkAdV : Str -> AdV
 # (VP (frame (:time (var AdV)))) => (mkVP AdV (VP frame))
-/VP/=vp_i < (/FRAME/ < (/:time/=time < (/VAR/ < /WORD/=adv1)))
+/VP/=vp_i < (/FRAME/ < (/:time/=time <: (/VAR/ <: (/WORD/=adv1 !< /.*/))))
 [relabel adv1 /^~/ADJ_ADV/$/$1ly/]
 [relabel adv1 /^(.+)$/"$1"/]
 [adjoinF (mkAdV=adv2 @) adv1]
