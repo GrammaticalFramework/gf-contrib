@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.grammaticalframework.amr.tregex.Transformer;
 
@@ -28,20 +31,86 @@ public class Processor {
 
     private boolean unk;
 
+    private Map<String, Integer> unk_rels;
+    private Map<String, Integer> unk_nodes;
+    private Map<String, Integer> unk_entries;
+    private Map<String, Integer> unk_funs;
+    private Map<String, Integer> unk_types;
+
     public static final String FAILURE = "^("
-            + "command not parsed"
-            + "|constant not found"
+            + "command not parsed:"
+            + "|constant not found:"
             + "|unknown qualified constant"
-            + "|a function type is expected"
-            + "|record type expected"
-            + "|no overload instance"
-            + "|missing record fields"
+            + "|a function type is expected for"
+            + "|record type expected for:"
+            + "|no overload instance of"
+            + "|missing record fields:"
             + "|warning:"
             + "|null"
             + "|\\{s ="
             + ").*";
 
     public static final String SEPARATOR = "&&&";
+
+    /**
+     *
+     * @param log
+     * @param item
+     */
+    private static void updateLog(Map<String, Integer> log, String item) {
+        Integer freq = log.get(item);
+
+        if (freq == null) {
+            freq = 0;
+        }
+
+        log.put(item, ++freq);
+    }
+
+    /**
+     *
+     * @param out
+     */
+    private void logFailures(String out) {
+        if (out.toLowerCase().startsWith("command not parsed:")) {
+            // e.g. "command not parsed: cc -one (..)"
+            Matcher rel = Pattern.compile("(:[A-Za-z0-9-]+)").matcher(out);
+            while (rel.find()) {
+                updateLog(unk_rels, rel.group(1));
+            }
+        }
+
+        if (out.toLowerCase().startsWith("constant not found:")) {
+            // e.g. "constant not found: take_on"
+            updateLog(unk_nodes, out.substring(out.lastIndexOf(" ")));
+        }
+
+        if (out.toLowerCase().startsWith("unknown qualified constant")) {
+            // e.g. "unknown qualified constant L.attack_V"
+            updateLog(unk_entries, out.substring(out.lastIndexOf(" ")));
+        }
+
+        if (out.toLowerCase().startsWith("a function type is expected for")) {
+            // e.g. "A function type is expected for run_V2 instead of type V2"
+            updateLog(unk_funs, out.substring(out.lastIndexOf(" ")));
+        }
+
+        if (out.toLowerCase().startsWith("no overload instance of")) {
+            // e.g. "no overload instance of mkAdv"
+            updateLog(unk_types, out.substring(out.lastIndexOf(" ")));
+        }
+    }
+
+    /**
+     *
+     * @param log
+     * @param out
+     */
+    private void writeLog(Map<String, Integer> log, PrintWriter out) {
+        for (String key : log.keySet()) {
+            out.println(log.get(key) + "\t" + key);
+        }
+    }
 
     /**
      * Constructor.
@@ -54,11 +123,8 @@ public class Processor {
     public Processor(String path_in, String path_out, String file_rules, String file_roles) {
         this.path_in = path_in;
         this.path_out = path_out;
-
         this.file_rules = file_rules;
         this.file_roles = file_roles;
-
-        unk = false;
     }
 
     /**
@@ -130,9 +196,9 @@ public class Processor {
     public void writeResults(List<Map<String, String>> results) throws Exception {
         String filename = (!unk) ? "answer" : "answer-partial";
 
-        PrintWriter ans = new PrintWriter(path_out + filename + ".txt", "UTF-8");
-        PrintWriter ext = new PrintWriter(path_out + filename + "-extended.txt", "UTF-8");
-        PrintWriter xxx = new PrintWriter(path_out + filename + "-extended-amrs.txt", "UTF-8");
+        PrintWriter ans = new PrintWriter(path_out + "out/" + filename + ".txt", "UTF-8");
+        PrintWriter ext = new PrintWriter(path_out + "out/" + filename + "-extended.txt", "UTF-8");
+        PrintWriter xxx = new PrintWriter(path_out + "out/" + filename + "-extended-amrs.txt", "UTF-8");
 
         for (Map<String, String> record : results) {
             String txt = "[" + record.get("TXT").replace(SEPARATOR, "] [") + "]";
@@ -153,6 +219,8 @@ public class Processor {
             for (String s : snt) {
                 if (!s.toLowerCase().matches(FAILURE)) {
                     txt = txt + " " + posteditSentence(s);
+                } else {
+                    logFailures(s);
                 }
             }
 
@@ -162,6 +230,24 @@ public class Processor {
         ans.close();
         ext.close();
         xxx.close();
+
+        PrintWriter log_rels = new PrintWriter(path_out + "log/" + filename + "-unk-relations.log", "UTF-8");
+        PrintWriter log_nodes = new PrintWriter(path_out + "log/" + filename + "-unk-nodes.log", "UTF-8");
+        PrintWriter log_entries = new PrintWriter(path_out + "log/" + filename + "-unk-entries.log", "UTF-8");
+        PrintWriter log_funs = new PrintWriter(path_out + "log/" + filename + "-unk-functions.log", "UTF-8");
+        PrintWriter log_types = new PrintWriter(path_out + "log/" + filename + "-unk-types.log", "UTF-8");
+
+        writeLog(unk_rels, log_rels);
+        writeLog(unk_nodes, log_nodes);
+        writeLog(unk_entries, log_entries);
+        writeLog(unk_funs, log_funs);
+        writeLog(unk_types, log_types);
+
+        log_rels.close();
+        log_nodes.close();
+        log_entries.close();
+        log_funs.close();
+        log_types.close();
     }
 
     /**
@@ -292,6 +378,12 @@ public class Processor {
      */
     public void run(boolean unk) throws Exception {
         this.unk = unk;
+
+        unk_rels = new TreeMap<String, Integer>();
+        unk_nodes = new TreeMap<String, Integer>();
+        unk_entries = new TreeMap<String, Integer>();
+        unk_funs = new TreeMap<String, Integer>();
+        unk_types = new TreeMap<String, Integer>();
 
         long startTime = System.currentTimeMillis();
 
