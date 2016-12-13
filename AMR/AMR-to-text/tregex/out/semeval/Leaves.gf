@@ -6,8 +6,11 @@ abstract Leaves = Cat, Dictionary ** {
 
 		-- Manually added:
 
+		analyze_V : V ;			-- only analyze_V2 in Dictionary
+		attack_V : V ;			-- only attack_V2 in Dictionary
 		defend_V : V ;			-- subcat in Dictionary
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
+		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
 
@@ -16,7 +19,9 @@ abstract Leaves = Cat, Dictionary ** {
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
+		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
 
+		obligate_VV : VV ;		-- only obligate_V2 in Dictionary
 		urge_VV : VV ;			-- missing in Dictionary
 
 		allow_VS : VS ;			-- subcat in Dictionary
