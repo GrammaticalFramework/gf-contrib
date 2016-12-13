@@ -1,6 +1,6 @@
 --# -path=../../../lexicons/translator
 
-concrete LeavesEng of Leaves = CatEng, DictionaryEng - [information_N] **
+concrete LeavesEng of Leaves = CatEng, DictionaryEng - [information_N, traffic_V] **
 open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 	flags
@@ -13,17 +13,23 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 		-- Manually added:
 
+		analyze_V = mkV "analyze" "analyzes" "analyzed" "analyzed" "analyzing" ;
+		attack_V = mkV "attack" "attacks" "attacked" "attacked" "attacking" ;
 		defend_V = mkV "defend" ;
 		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
+		inspect_V = mkV "inspect" "inspects" "inspected" "inspected" "inspecting" ;
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting" ;
 		state_V = mkV "state" "states" "stated" "stated" "stating" ;
+		traffic_V = mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking" ;
 
 		belong_V2 = belong_to_V2 ;
 		explode_V2 = mkV2 explode_V ;
 		go_V2 = mkV2 (IrregEng.go_V) ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		pass_V2 = mkV2 pass_V ;
+		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
 
+		obligate_VV = mkVV (mkV "obligate" "obligates" "obligated" "obligated" "obligating") ;
 		urge_VV = mkVV (mkV "urge") ;
 
 		allow_VS = mkVS (mkV "allow" "allows" "allowed" "allowed" "allowing") ;
