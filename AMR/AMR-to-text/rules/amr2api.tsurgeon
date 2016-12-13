@@ -5,8 +5,8 @@
 @/REL/=/^:.+$/
 @/FRAME/=/^[a-z]+(_[a-z]+)*-[0-9]+$/
 @/WORD/=/^[a-z]+$/
-@/TOKEN/=/^"[A-Za-z-]+"$/
-@/MWE/=/^"[A-Z a-z -]+"$/
+@/TOKEN/=/^"[A-Za-z.-]+"$/
+@/MWE/=/^"[A-Z a-z .-]+"$/
 @/DET/=/^(a|the|every|few|many|much|some)$/ # TODO: extend the list
 @/DET_EXTRA/=/^(all|another|more)$/ # TODO: extend the list
 @/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
@@ -98,6 +98,14 @@
 # ((:ARG0-of (var 'have-org-role-91')) :ord) => (:ARG0-of (var ('have-org-role-91' :ord)))
 /:ARG0-of/ < (/VAR/ < /have-org-role-91/=org) $ /:ord/=ord
 [move ord >-1 org]
+
+# (var ('person' :relation (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
+/VAR/ < (/person/ < /^:(name|location)$/=rel < (/:ARG0-of/ < (/VAR/ < /have-org-role-91/=role)))
+[move rel >-1 role]
+
+# (var ('person' :ARG0-of (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
+/VAR/ < (/person/ < (/:ARG0-of/=arg !<< /have-org-role-91/) < (/:ARG0-of/ < (/VAR/ < /have-org-role-91/=role)))
+[move arg >-1 role]
 
 # (var ('person' (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
 /VAR/=var1 < (/person/ < (/:ARG0-of/ < (/VAR/=var2 < /have-org-role-91/)))
@@ -457,6 +465,12 @@ mkCN=cn1 < (/noun_N/ < mkRS=rs)
 [excise var var]
 [move rs >2 cn]
 
+# mkCN : CN -> RS -> CN
+# (mkCN mkN2 :ARG1 mkRS) => (mkCN (mkCN mkN2 :ARG1) mkRS)
+mkCN=cn_i < mkN2 < /:ARG1/ < mkRS=rs
+[adjoinF (mkCN=cn_o @) cn_i]
+[move rs >2 cn_o]
+
 # mkAdv : Prep -> NP
 # (:mod (var ('country' (:name mkNP)))) => (mkAdv from_Prep mkNP)
 /:mod/=mod < (/VAR/ < (/country/ < (/:name/=name < mkNP=np)))
@@ -562,6 +576,19 @@ mkCN=cn < (/noun_N/=noun < (/:mod/=mod < /NP/=np))
 [adjoinF (mkCN @) noun]
 [move mod >2 cn]
 [excise mod mod]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN mkN2 :ARG1 (:name mkNP)) => (mkCN (mkCN mkN2 :ARG1) mkNP)
+mkCN=cn_i < mkN2 < /:ARG1/ < (/:name/=name < mkNP=np)
+[adjoinF (mkCN=cn_o @) cn_i]
+[move np >2 cn_o]
+[delete name]
+
+# mkCN : CN -> Adv -> CN
+# (mkCN mkN2 :ARG1 :location) => (mkCN (mkCN mkN2 :ARG1) :location)
+mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
+[adjoinF (mkCN=cn_o @) cn_i]
+[move loc >2 cn_o]
 
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)
