@@ -10,7 +10,7 @@
 @/DET/=/^(a|the|every|few|many|much|some)$/ # TODO: extend the list
 @/DET_EXTRA/=/^(all|another|more)$/ # TODO: extend the list
 @/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
-@/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|nothing|nobody|anyone)$/ # TODO: extend the list
+@/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|someone|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
 @/NE_TYPE/=/^[a-z-]+$/ # TODO: enumerate
@@ -336,7 +336,7 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 # (var pron) => (pron_NP)
 /VAR/=var < /PRON/=pron
 [relabel pron /^(.+)$/S.$1_NP/]
-[relabel pron /^S.anyone_NP$/L.anyone_NP/]
+[relabel pron /^S.(anyone|someone)_NP$/L.$1_NP/]
 [excise var var]
 
 # mkAP : A -> AP

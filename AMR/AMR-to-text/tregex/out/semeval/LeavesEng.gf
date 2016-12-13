@@ -1,7 +1,7 @@
 --# -path=../../../lexicons/translator
 
 concrete LeavesEng of Leaves = CatEng, DictionaryEng - [information_N] **
-open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
+open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 	flags
 
@@ -15,20 +15,25 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		defend_V = mkV "defend" ;
 		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
-		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting";
+		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting" ;
+		state_V = mkV "state" "states" "stated" "stated" "stating" ;
 
 		belong_V2 = belong_to_V2 ;
 		explode_V2 = mkV2 explode_V ;
+		go_V2 = mkV2 (IrregEng.go_V) ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		pass_V2 = mkV2 pass_V ;
 
 		urge_VV = mkVV (mkV "urge") ;
 
 		allow_VS = mkVS (mkV "allow" "allows" "allowed" "allowed" "allowing") ;
+		cause_VS = mkVS (mkV "cause") ;
+		make_VS = mkVS (IrregEng.make_V) ;
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
 		quote_VS = mkVS quote_V ;
 		recommend_VS = mkVS (mkV "recommend") ;
+		refuse_VS = mkVS refuse_V ;
 		want_VS = mkVS want_V ;
 
 		center_N = mkN "center" ;
@@ -48,7 +53,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 
 		part_Prep = S.part_Prep ;
 
-		CAU_Prep = for_Prep ;
+		CAU_Prep = for_Prep ;	-- vs. because_of_Prep
 		COM_Prep = of_Prep ;
 		DIR_Prep = from_Prep ;
 		GOL_Prep = to_Prep ;
@@ -56,6 +61,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng) in {
 		MNR_Prep = mkPrep "" ;	-- no Prep
 		PPT_Prep = mkPrep "" ;	-- no Prep
 		PRD_Prep = mkPrep "" ;	-- no Prep
+		PRP_Prep = for_Prep ;
 		VSP_Prep = of_Prep ;
 
 		-- Extracted from DictionaryEng:

@@ -9,19 +9,24 @@ abstract Leaves = Cat, Dictionary ** {
 		defend_V : V ;			-- subcat in Dictionary
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
+		state_V : V ;			-- only state_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
 		explode_V2 : V2 ;		-- subcat in Dictionary
+		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
 
 		urge_VV : VV ;			-- missing in Dictionary
 
 		allow_VS : VS ;			-- subcat in Dictionary
+		cause_VS : VS ;			-- subcat in Dictionary
+		make_VS : VS ;			-- subcat in Dictionary
 		need_VS : VS ;			-- subcat in Dictionary
 		offer_VS : VS ;			-- subcat in Dictionary
 		quote_VS : VS ;			-- missing in Dictionary
 		recommend_VS : VS ;		-- only recommend_V2 in Dictionary
+		refuse_VS : VS ;		-- missing in Dictionary
 		want_VS : VS ;			-- subcat in Dictionary
 
 		center_N : N ;			-- missing in Dictionary
@@ -48,6 +53,7 @@ abstract Leaves = Cat, Dictionary ** {
 		MNR_Prep : Prep ;		-- temporary
 		PPT_Prep : Prep ;		-- temporary
 		PRD_Prep : Prep ;		-- temporary
+		PRP_Prep : Prep ;		-- temporary
 		VSP_Prep : Prep ;		-- temporary
 
 		-- Extracted from DictionaryEng:
