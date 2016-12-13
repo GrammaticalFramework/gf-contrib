@@ -1020,4 +1020,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // The people are already incredibly fully equipped.
+    @Test
+    public void t52_the_people_are_already_incredibly_fully_equipped() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(e / equip-01 :ARG1 (p / person) :time (a3 / already) :manner (f / full) :manner (i / incredible))");
+        assertEquals(amr,
+                "(e (equip-01 (:ARG1 (p person)) (:time (a3 already)) (:manner (f full)) (:manner (i incredible))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (P.mkAdV \"fully\") (mkVP (P.mkAdV \"incredibly\") (mkVP (P.mkAdV \"already\") (passiveVP L.equip_V2))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
