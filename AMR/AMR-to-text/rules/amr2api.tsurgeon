@@ -154,20 +154,20 @@
 
 # mkRCl : RP -> NP -> RCl
 # (:ARG[01]-of (var (frame_N))) => (mkRS (mkRCl which_RP mkNP))
-/:ARGm-of/=inv < (/VAR/=var < /NOUN_FRAME/)
+/:ARGm-of/=inv < (/VAR/=var < /NOUN_FRAME/) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP (mkNP S.a_Quant mkCN@))) var]
 [excise inv inv]
 
 # mkRCl : RP -> AP -> RCl
 # (:ARG[01]-of (var (frame_A))) => (mkRS (mkRCl which_RP mkAP))
-/:ARGm-of/=inv < (/VAR/=var < /ADJ_FRAME/)
+/:ARGm-of/=inv < (/VAR/=var < /ADJ_FRAME/) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP mkAP@)) var]
 [excise inv inv]
 
 # mkRCl : RP -> VP -> RCl
 # mkRS : RCl -> RS
 # (:ARG0-of (var frame)) => (mkRS (mkRCl which_RP mkVP))
-/:ARG0-of/=inv < (/VAR/=var < /FRAME/)
+/:ARG0-of/=inv < (/VAR/=var < /FRAME/) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP mkVP@)) var]
 [excise inv inv]
 
@@ -206,7 +206,7 @@
 # mkRCl : RP -> AP -> RCl
 # mkAP : A -> AP
 # (:ARG2-of (var (frame_A))) => (mkRS (mkRCl which_RP (mkAP frame_A)))
-/:ARG2-of/=inv < (/VAR/=var [< /ADJ_FRAME/ | < /MAYBE_ADJ_FRAME/])
+/:ARG2-of/=inv < (/VAR/=var [< /ADJ_FRAME/ | < /MAYBE_ADJ_FRAME/]) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP (mkAP@))) var]
 [excise inv inv]
 
@@ -214,7 +214,7 @@
 # mkCN : N -> CN
 # mkNP : Quant -> CN -> NP
 # (:ARG2-of (var (frame_N))) => (mkRS (mkRCl which_RP mkNP))
-/:ARG2-of/=inv < (/VAR/=var < /NOUN_FRAME/)
+/:ARG2-of/=inv < (/VAR/=var < /NOUN_FRAME/) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP (mkNP S.a_Quant mkCN@))) var]
 [excise inv inv]
 
