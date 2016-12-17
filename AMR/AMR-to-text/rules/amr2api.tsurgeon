@@ -190,7 +190,7 @@
 # mkRCl : RP -> NP -> V2 -> RCl
 # mkRS : RCl -> RS
 # (:ARG1-of (var (frame :ARG0))) => (mkRS (mkRCl which_RP :ARG0 frame))
-/:ARG1-of/=inv < (/VAR/=var < (/FRAME/=frame < /:ARG0/=subj))
+/:ARG1-of/=inv < (/VAR/=var < (/FRAME/=frame < /:ARG0/=subj)) !> /FRAME/
 [adjoinF (mkRS (mkRCl=cl S.which_RP @)) frame]
 [move subj >2 cl]
 [excise inv var]
@@ -199,7 +199,7 @@
 # mkRCl : RP -> VP -> RCl
 # mkRS : RCl -> RS
 # (:ARG1-of (var frame)) => (mkRS (mkRCl which_RP (passiveVP frame)))
-/:ARG1-of/=inv < (/VAR/=var < /FRAME/)
+/:ARG1-of/=inv < (/VAR/=var < /FRAME/) !> /FRAME/
 [adjoin (mkRS (mkRCl S.which_RP (passiveVP@))) var]
 [excise inv inv]
 
