@@ -1037,4 +1037,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // Never go back to that time when signing the treaties!
+    @Test
+    public void t53_never_go_back_to_that_time_when_signing_the_treaties() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(g / go-back-19 :mode imperative :polarity - :ARG0 (y / you) :ARG2 (t2 / time :mod (t3 / that) :time (s / sign-02 :ARG0 (w / we) :ARG1 (t / treaty))) :time (e / ever))");
+        assertEquals(amr,
+                "(g (go-back-19 (:mode imperative) (:polarity -) (:ARG0 (y you)) (:ARG2 (t2 (time (:mod (t3 that)) (:time (s (sign-02 (:ARG0 (w we)) (:ARG1 (t treaty)))))))) (:time (e ever))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP (mkVP (P.mkAdV \"ever\") (mkVP L.go_back_V)) (S.mkAdv L.DIR_Prep (mkNP S.that_Det (mkCN (mkCN L.time_N) (S.mkAdv S.when_Subj (mkS (mkCl S.we_NP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.treaty_N))))))))))))) exclMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

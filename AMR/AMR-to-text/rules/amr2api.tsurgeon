@@ -590,6 +590,12 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [adjoinF (mkCN=cn_o @) cn_i]
 [move loc >2 cn_o]
 
+# mkAdv : Subj -> S -> Adv
+# (:time mkS) => (mkAdv when_Subj mkS)
+/:time/=time < mkS=sub
+[adjoinF (mkAdv S.when_Subj @) sub]
+[excise time time]
+
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)
 /:location/=rel < mkNP=np
@@ -763,8 +769,8 @@ mkS=s << (/:mode/=mode < interrogative) [> /:sntN/ | !> /.*/]
 
 # mkText : Utt -> Punct -> Text
 # mkUtt : S -> Utt
-# (ROOT (mkS (.. (:mode expressive)))) => (mkText (mkUtt mkS) exclMarkPunct)
-mkS=s << (/:mode/=mode < expressive) [> /:sntN/ | !> /.*/]
+# (ROOT (mkS (.. (:mode expressive|imperative)))) => (mkText (mkUtt mkS) exclMarkPunct)
+mkS=s << (/:mode/=mode < /expressive|imperative/) [> /:sntN/ | !> /.*/]
 [adjoinF (mkText (mkUtt @) exclMarkPunct) s]
 [delete mode]
 
@@ -830,6 +836,11 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 /VP/=vp_i < (/FRAME/ < /Adv/=adv)
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
+
+# (CN (noun_N Adv)) => (mkCN (CN noun_N) Adv)
+/CN/=cn_i < (/noun_N/ < /Adv/=adv)
+[adjoinF (mkCN=cn_o @) cn_i]
+[move adv >2 cn_o]
 
 # (mkCl mkCN) => (mkCl (mkNP mkCN))
 mkCl < mkCN=cn

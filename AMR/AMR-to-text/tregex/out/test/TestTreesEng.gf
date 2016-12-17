@@ -109,4 +109,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t52_the_people_are_already_incredibly_fully_equipped = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (P.mkAdV "fully") (mkVP (P.mkAdV "incredibly") (mkVP (P.mkAdV "already") (passiveVP L.equip_V2))))))) fullStopPunct) ;
 
+	lin t53_never_go_back_to_that_time_when_signing_the_treaties = (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP (mkVP (P.mkAdV "ever") (mkVP L.go_back_V)) (S.mkAdv L.DIR_Prep (mkNP S.that_Det (mkCN (mkCN L.time_N) (S.mkAdv S.when_Subj (mkS (mkCl S.we_NP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.treaty_N))))))))))))) exclMarkPunct) ;
+
 }

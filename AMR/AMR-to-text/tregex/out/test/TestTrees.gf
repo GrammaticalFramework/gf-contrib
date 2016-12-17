@@ -53,5 +53,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t50_the_girl_left_because_the_boy_arrived : Text ;
 	fun t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial : Text ;
 	fun t52_the_people_are_already_incredibly_fully_equipped : Text ;
+	fun t53_never_go_back_to_that_time_when_signing_the_treaties : Text ;
 
 }

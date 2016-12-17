@@ -226,6 +226,8 @@ public class Transformer {
         if (label.matches(":ARG[2-9]")) {
             String frame = parents.peek().label().value();
 
+            frame = frame.replaceAll("([a-z])-([a-z])", "$1_$2"); // e.g. go-back-19 => go_back-19
+
             if (roles.containsKey(frame)) {
                 Map<String, String> roleset = roles.get(frame);
 
