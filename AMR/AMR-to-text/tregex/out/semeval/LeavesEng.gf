@@ -1,6 +1,7 @@
 --# -path=../../../lexicons/translator
 
-concrete LeavesEng of Leaves = CatEng, DictionaryEng - [information_N, traffic_V] **
+concrete LeavesEng of Leaves = CatEng, DictionaryEng -
+[information_N, okay_A, organization_N, recognize_1_V2, recognize_VS, traffic_V] **
 open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 	flags
@@ -29,6 +30,8 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		pass_V2 = mkV2 pass_V ;
 		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
 
+		recognize_1_V2 = mkV2 (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;	-- TODO: remove variants in DictionaryEng
+
 		obligate_VV = mkVV (mkV "obligate" "obligates" "obligated" "obligated" "obligating") ;
 		urge_VV = mkVV (mkV "urge") ;
 
@@ -38,6 +41,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
 		quote_VS = mkVS quote_V ;
+		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
 		want_VS = mkVS want_V ;
@@ -47,8 +51,10 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		official_N = mkN "official" ;
+		organization_N = mkN "organization" ;	-- TODO: remove variants in DictionaryEng
 
 		interest_A = interesting_A ;
+		okay_A = compoundA (mkA "okay") ;	-- TODO: remove variants in DictionaryEng
 
 		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;

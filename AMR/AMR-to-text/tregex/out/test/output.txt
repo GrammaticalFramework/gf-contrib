@@ -258,3 +258,8 @@ TestTreesEng: you don't ever go back to that time when we sign a treaty !
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal
+TestTreesEng: Radio Nepal reports that 3 policemen are killed and 1 &+ 9 other policemen are wounded when a guerrilla ambushes a vehicle in the West of Nepal .
+TestTreesLav: 
+TestTreesRus: 
+

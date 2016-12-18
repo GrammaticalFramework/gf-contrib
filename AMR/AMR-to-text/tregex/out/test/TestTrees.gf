@@ -54,5 +54,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t51_due_to_historical_reasons_what_originally_belongs_us_has_become_controversial : Text ;
 	fun t52_the_people_are_already_incredibly_fully_equipped : Text ;
 	fun t53_never_go_back_to_that_time_when_signing_the_treaties : Text ;
+	fun t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal : Text ;
 
 }

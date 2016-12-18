@@ -305,6 +305,7 @@ public class Processor {
 
         snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
         snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
+        snt = snt.replaceAll("[.][.]$", "."); // Remove a redundant full-stop
 
         return snt;
     }

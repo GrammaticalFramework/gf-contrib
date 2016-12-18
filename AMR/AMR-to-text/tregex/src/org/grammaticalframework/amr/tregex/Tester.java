@@ -1054,4 +1054,23 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // Radio Nepal reported that 3 policemen were killed and 19 others wounded when their vehicle
+    // was ambushed by guerrillas in western Nepal.
+    @Test
+    public void
+            t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(r / report-01 :ARG0 (p3 / publication :name (n / name :op1 \"Radio\" :op2 \"Nepal\")) :ARG1 (a / and :op1 (k / kill-01 :ARG1 (p / policeman :quant 3)) :op2 (w / wound-01 :ARG1 (p2 / policeman :quant 19 :mod (o2 / other))) :time (a3 / ambush-01 :ARG0 (g / guerrilla) :ARG1 (v / vehicle) :location (w3 / west :part-of (c / country :name (n2 / name :op1 \"Nepal\"))))))");
+        assertEquals(amr,
+                "(r (report-01 (:ARG0 (p3 (publication (:name (n (name (:op1 \"Radio\") (:op2 \"Nepal\"))))))) (:ARG1 (a (and (:op1 (k (kill-01 (:ARG1 (p (policeman (:quant 3))))))) (:op2 (w (wound-01 (:ARG1 (p2 (policeman (:quant 19) (:mod (o2 other)))))))) (:time (a3 (ambush-01 (:ARG0 (g guerrilla)) (:ARG1 (v vehicle)) (:location (w3 (west (:part-of (c (country (:name (n2 (name (:op1 \"Nepal\"))))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN \"Radio Nepal\")) (mkVP L.report_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"3\")) (mkCN L.policeman_N)) (passiveVP L.kill_V2))) (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"19\")) (mkCN L.other_A L.policeman_N)) (mkVP (passiveVP L.wound_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.guerrilla_N)) (mkVP (mkVP L.ambush_V2 (mkNP S.a_Quant (mkCN L.vehicle_N))) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN (mkCN L.west_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN \"Nepal\"))))))))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
