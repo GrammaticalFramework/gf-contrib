@@ -414,26 +414,26 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 
 # mkListNP : NP -> NP -> ListNP
 # (conj (:op NP) (:op NP)) => (conj (mkListNP NP NP))
-/CONJ/ < ((/:opN/=op1 < /NP/=np1) $+ (/:opN/=op2 < /NP/=np2))
-[adjoin (mkListNP=list mkNP@) np1]
+/CONJ/ <1 (/:opN/=op1 < /NP/=np1) <2 (/:opN/=op2 < /NP/=np2)
+[adjoinF (mkListNP=list @) np1]
 [move np2 >2 list]
 [excise op1 op1]
 [delete op2]
 
 # mkListNP : NP -> ListNP -> ListNP
 # (conj mkListNP (:op NP)) => (conj (mkListNP NP mkListNP))
-/CONJ/ < (mkListNP=list $+ (/:opN/=op_n < /NP/=np_n))
-[adjoin (mkListNP=list_prim mkNP@) np_n]
-[move list >2 list_prim]
-[excise op_n op_n]
+/CONJ/ <1 mkListNP=list_i <2 (/:opN/=op < /NP/=np)
+[adjoinF (mkListNP=list_o @) np]
+[move list_i >2 list_o]
+[excise op op]
 
 # mkNP : Conj -> ListNP -> NP
 # (var (conj mkListNP)) => (mkNP (conj_Conj mkListNP))
-/VAR/=var < (/CONJ/=conj < mkListNP=np)
-[adjoin (mkNP TEMP=temp@) var]
-[move np $- conj]
+/VAR/=var < (/CONJ/=conj < mkListNP=list)
+[adjoinF (mkNP=np @) conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
-[excise temp temp]
+[move list >2 np]
+[excise var var]
 
 # mkNP : Quant -> Num -> CN -> NP
 # (mkNP (quant_Quant (mkCN (var (entity :quant))))) => (mkNP (quant_Quant :quant (mkCN (var entity))))
@@ -721,29 +721,26 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkListS : S -> S -> ListS
 # (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
-# NB: This is a copy-paste from mkListNP, except the category.
-/CONJ/ < ((/:opN/=op1 < mkS=s1) $+ (/:opN/=op2 < mkS=s2))
-[adjoin (mkListS=list mkS@) s1]
+/CONJ/ <1 (/:opN/=op1 < mkS=s1) <2 (/:opN/=op2 < mkS=s2)
+[adjoinF (mkListS=list @) s1]
 [move s2 >2 list]
 [excise op1 op1]
 [delete op2]
 
 # mkListS : S -> ListS -> ListS
 # (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
-# NB: This is a copy-paste from mkListNP, except the category.
-/CONJ/ < (mkListS=list $+ (/:opN/=op_n < mkS=s_n))
-[adjoin (mkListS=list_prim mkS@) s_n]
-[move list >2 list_prim]
-[excise op_n op_n]
+/CONJ/ <1 mkListS=list_i <2 (/:opN/=op < mkS=s)
+[adjoinF (mkListS=list_o @) s]
+[move list_i >2 list_o]
+[excise op op]
 
 # mkS : Conj -> ListS -> S
 # (var (conj mkListS)) => (mkS (conj_Conj mkListS))
-# NB: This is a copy-paste from mkListNP, except the category.
-/VAR/=var < (/CONJ/=conj < mkListS=s)
-[adjoin (mkS TEMP=temp@) var]
-[move s $- conj]
+/VAR/=var < (/CONJ/=conj < mkListS=list)
+[adjoinF (mkS=s @) conj]
 [relabel conj /^(.+)$/S.$1_Conj/]
-[excise temp temp]
+[move list >2 s]
+[excise var var]
 
 # PurposeVP : VP -> Adv
 # (passiveVP (frame mkVP)) => (mkVP (passiveVP frame) (PurposeVP mkVP))
