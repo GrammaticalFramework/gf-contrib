@@ -721,7 +721,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkListS : S -> S -> ListS
 # (conj (:op mkS) (:op mkS)) => (conj (mkListS mkS mkS))
-/CONJ/ <1 (/:opN/=op1 < mkS=s1) <2 (/:opN/=op2 < mkS=s2)
+/CONJ/ [[<1 (/:opN/=op1 < mkS=s1) <2 (/:opN/=op2 < mkS=s2)] | [<2 (/:opN/=op1 < mkS=s1) <3 (/:opN/=op2 < mkS=s2)]]
 [adjoinF (mkListS=list @) s1]
 [move s2 >2 list]
 [excise op1 op1]
@@ -729,7 +729,7 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/^:(degree|mod)$/=mod < (/VAR/ < /^~/WOR
 
 # mkListS : S -> ListS -> ListS
 # (conj mkListS (:op mkS)) => (conj (mkListS mkS mkListS))
-/CONJ/ <1 mkListS=list_i <2 (/:opN/=op < mkS=s)
+/CONJ/ [[<1 mkListS=list_i <2 (/:opN/=op < mkS=s)] | [<2 mkListS=list_i <3 (/:opN/=op < mkS=s)]]
 [adjoinF (mkListS=list_o @) s]
 [move list_i >2 list_o]
 [excise op op]
@@ -798,13 +798,13 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < /NP/))
 
 # mkS : Pol -> Cl -> S
 # (S (Cl (NP (CN (frame (:polarity -)))))) => (S negativePol (Cl ..))
-/S/=snt < (/Cl/ < (/NP/ < (/CN/ < (/FRAME/ < (/:polarity/=pol < -)))))
+/S/=snt < (/Cl/ <+(/NP/) (/CN/ < (/FRAME/ < (/:polarity/=pol < -))))
 [insert (negativePol) >1 snt]
 [delete pol]
 
 # mkS : Pol -> Cl -> S
 # (S (Cl (mkAP (frame (:polarity -))))) => (S negativePol (Cl ..))
-/S/=snt < (/Cl/ < (mkAP < (/FRAME/ < (/:polarity/=pol < -))))
+/S/=snt < (/Cl/ <+(mkAP) (/FRAME/ < (/:polarity/=pol < -)))
 [insert (negativePol) >1 snt]
 [delete pol]
 
