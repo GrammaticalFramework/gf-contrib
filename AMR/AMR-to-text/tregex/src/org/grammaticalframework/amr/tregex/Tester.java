@@ -979,7 +979,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP))))))))) questMarkPunct)");
+                "(mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP)))))))))) questMarkPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -1069,6 +1069,24 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN \"Radio Nepal\")) (mkVP L.report_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"3\")) (mkCN L.policeman_N)) (passiveVP L.kill_V2))) (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"19\")) (mkCN L.other_A L.policeman_N)) (mkVP (passiveVP L.wound_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.guerrilla_N)) (mkVP (mkVP L.ambush_V2 (mkNP S.a_Quant (mkCN L.vehicle_N))) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN (mkCN L.west_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN \"Nepal\"))))))))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I don't know if anyone will read this.
+    @Test
+    public void
+            t55_I_don_t_know_if_anyone_will_read_this() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(k / know-01 :polarity - :ARG0 (i / i) :ARG1 (r / read-01 :mode interrogative :ARG0 (a / anyone) :ARG1 (t / this)))");
+        assertEquals(amr,
+                "(k (know-01 (:polarity -) (:ARG0 (i i)) (:ARG1 (r (read-01 (:mode interrogative) (:ARG0 (a anyone)) (:ARG1 (t this)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP (mkVP L.know_V) (S.mkAdv S.if_Subj (mkS (mkCl L.anyone_NP (mkVP L.read_V2 S.this_NP)))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

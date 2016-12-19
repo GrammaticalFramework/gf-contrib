@@ -47,7 +47,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Diaoyu Islands")) 
 TXT: [Diaoyu Islands always belongs to China .] [because there is a history reason a thing that originally belongs to us is become a controversy .]
 
 SNT: My fellow citizens, ours is ours, what need is there to negotiate! Japan thus goes even further - wants to create a fact of occupation. Can we allow this? No - absolutely not!
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkNP S.we_Pron (mkCN L.thing_N)))) (mkS (S.mkAdv S.because_Subj) (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.negotiate_V))))))))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.fellow_A L.citizen_N))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.cause_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP (passiveVP L.go_V2) (S.mkAdv L.EXT_Prep (mkNP S.a_Quant (mkCN L.further_N))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.allow_V2 S.this_NP))))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.have_polarity_V) (P.mkAdv "absolute"))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkNP S.we_Pron (mkCN L.thing_N)))) (mkS (S.mkAdv S.because_Subj) (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.negotiate_V))))))))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.fellow_A L.citizen_N))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.cause_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP (passiveVP L.go_V2) (S.mkAdv L.EXT_Prep (mkNP S.a_Quant (mkCN L.further_N))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.allow_V2 S.this_NP)))))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.have_polarity_V) (P.mkAdv "absolute"))))) fullStopPunct))
 TXT: [no overload instance of mkS] [unknown qualified constant L.EXT_Prep] [is it possible that we allow this ?] [unknown qualified constant L.have_polarity_V]
 
 SNT: My fellow citizens, Japan's militarism has brought the people of Asia grave disasters.
@@ -271,7 +271,7 @@ AST: (d date-entity)
 TXT: [command not parsed: cc -one (d date-entity)]
 
 SNT: Other articles: "A book for Taiwan compatriots-I have a dream", "The necessity for building memorials museums or temples for Chinese national heroes", "How long will we tolerate it", "China is expecting the Olympics, but would never beg for the Olympics", "If we forget the hardship of history, there will be more history of hardship", "I am Chinese", "There is only one Chinese nation, there is only one Chinese culture", "With the over-development of sports, the state may decline", "'Wealthy country, strong people' or 'wealthy officials, poor people"?", "Disgusting Ren Zhiqiang, shut your filthy mouth", "Hateful housing prices! Pitiable people!", "Google, you have no right to make irresponsible remarks to China", "How long will we tolerate the US", "Japan deserved the bombing-strongly oppose Ban Ki-moon presenting a bouquet in Hiroshima", "Be strong, my brothers and sisters", "Do we need low-level entertainment stars, or talents in technological innovation?", "Contemporary garbage writer, shameless Li Yinhe, please let the children off the hook"
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP S.aPl_Det (mkCN L.other_A L.article_N)) (passiveVP L.title_V2)))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP S.aPl_Det (mkCN L.other_A L.article_N)) (passiveVP L.title_V2))))) questMarkPunct)
 TXT: [unknown qualified constant L.title_V2]
 
 SNT: Why don't we fight with little Japan?
@@ -287,7 +287,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.they_NP (mkVP (P.mkAdV "even") (mkVP L.ride_V2 
 TXT: [they even ride a head of us .]
 
 SNT: Is this still what Chinese with guts do?
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkVP (P.mkAdV "still") (mkVP L.do_V2 S.this_NP))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkVP (P.mkAdV "still") (mkVP L.do_V2 S.this_NP)))))) questMarkPunct)
 TXT: [does a person from China still do this ?]
 
 SNT: We should tell the whole world, that Chinese can't be bullied at will by others ...
@@ -439,7 +439,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.you_NP (mkVP L.stop_VS (mkS (mk
 TXT: [unknown qualified constant L.stop_VS] [you just behave !]
 
 SNT: What should we do in the future! Ability alone isn't enough to become successful! Are we goin' to face such hard choices too?
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.recommend_V2) (S.mkAdv L.GOL_Prep S.we_NP)) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "future") (passiveVP L.do_V2))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkS (mkCl (mkVP (P.mkAdV "alone") (mkVP L.capable_V)))) (mkAP (L.enough_A (E.PurposeVP (mkVP L.succeed_V))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkCl S.we_NP (mkVP (P.mkAdV "too") (mkVP L.face_V2 (mkNP S.a_Quant (mkCN (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkAP L.such_AdA (mkAP L.hard_A))))) (mkRS (mkRCl S.which_RP (passiveVP L.choose_V2)))))))))) questMarkPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.recommend_V2) (S.mkAdv L.GOL_Prep S.we_NP)) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "future") (passiveVP L.do_V2))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkS (mkCl (mkVP (P.mkAdV "alone") (mkVP L.capable_V)))) (mkAP (L.enough_A (E.PurposeVP (mkVP L.succeed_V))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl S.we_NP (mkVP (P.mkAdV "too") (mkVP L.face_V2 (mkNP S.a_Quant (mkCN (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkAP L.such_AdA (mkAP L.hard_A))))) (mkRS (mkRCl S.which_RP (passiveVP L.choose_V2))))))))))) questMarkPunct))
 TXT: [it is recommended to us that it is future done .] [unknown qualified constant L.capable_V] [unknown qualified constant L.such_AdA]
 
 SNT: More suffering is under the disguise of glorious looks, 'tis the undisputable fact.
@@ -643,7 +643,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkAP L.alternative_A)))) fullStopPunct)
 TXT: [no overload instance of mkCl]
 
 SNT: Additional traffic congestion in old places ?
-AST: (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP (mkVP (P.mkAdV "additional") (mkVP L.congest_V)) (S.mkAdv L.PPT_Prep (mkNP (mkCN L.traffic_N)))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.old_A L.place_N))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (mkVP (mkVP (P.mkAdV "additional") (mkVP L.congest_V)) (S.mkAdv L.PPT_Prep (mkNP (mkCN L.traffic_N)))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.old_A L.place_N)))))))) questMarkPunct)
 TXT: [unknown qualified constant L.congest_V]
 
 SNT: Now you understand how people like TMT in Fairfax feel .
@@ -995,7 +995,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_S
 TXT: [constant not found: see]
 
 SNT: Others say things like, "I'm going to kill myself if you leave me"... get it?
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.aPl_Det (mkCN L.other_A L.person_N)) (mkVP L.say_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (E.PurposeVP (mkVP (kill-01 S.i_NP)))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkCl S.it_NP (mkVP L.get_through_V2 S.you_NP)))) questMarkPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.aPl_Det (mkCN L.other_A L.person_N)) (mkVP L.say_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (E.PurposeVP (mkVP (kill-01 S.i_NP)))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkVP L.get_through_V2 S.you_NP))))) questMarkPunct))
 TXT: [constant not found: kill] [does it get through you ?]
 
 SNT: Date.
@@ -1027,7 +1027,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_S
 TXT: [unknown qualified constant L.cause_V]
 
 SNT: Can you document his threats?
-AST: (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.document_VS (mkS (mkCl S.he_NP (mkVP L.threaten_V)))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.document_VS (mkS (mkCl S.he_NP (mkVP L.threaten_V))))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.document_VS]
 
 SNT: You really need to.
@@ -1063,11 +1063,11 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN 
 TXT: [record type expected for: S]
 
 SNT: Do they not realise that you don't get piles of change from the bank,
-AST: (mkText (mkUtt (mkQS negativePol (mkCl S.they_NP (mkVP L.realize_VS (mkS negativePol (mkCl S.you_NP (mkVP (mkVP L.get_V2 (mkNP S.a_Quant (E.CompoundCN L.change_N L.pile_N))) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.bank_N)))))))))) questMarkPunct)
-TXT: [no overload instance of mkQS]
+AST: (mkText (mkUtt (mkQS negativePol (mkQCl (mkCl S.they_NP (mkVP L.realize_VS (mkS negativePol (mkCl S.you_NP (mkVP (mkVP L.get_V2 (mkNP S.a_Quant (E.CompoundCN L.change_N L.pile_N))) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.bank_N))))))))))) questMarkPunct)
+TXT: [{s = "don't"]
 
 SNT: someone somewhere is going to have to take the notes?
-AST: (mkText (mkUtt (mkQS (mkCl (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP (mkVP (L.take_V2 L.someone_NP) (mkNP S.a_Quant (mkCN L.note_N))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.somewhere_N))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP (mkVP (L.take_V2 L.someone_NP) (mkNP S.a_Quant (mkCN L.note_N))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.somewhere_N)))))))))) questMarkPunct)
 TXT: [A function type is expected for take_V2 instead of type V2]
 
 SNT: People are getting lazy.
@@ -1151,7 +1151,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.want_VS (mkS 
 TXT: [it doesn't want that it is gone and it fails .] [unknown qualified constant L.possible_VS]
 
 SNT: Can someone please give me some advice please?
-AST: (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl L.someone_NP (mkVP (mkVP (P.mkAdV "some") (mkVP L.advise_V)) (S.mkAdv L.PPT_Prep S.i_NP)))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl L.someone_NP (mkVP (mkVP (P.mkAdV "some") (mkVP L.advise_V)) (S.mkAdv L.PPT_Prep S.i_NP))))))))) questMarkPunct)
 TXT: [is it possible that someone some advises me ?]
 
 SNT: Perhaps go and see your doctor, and see if there's any way you can get your deadlines extended to try and ease the pressure a bit?
@@ -1267,7 +1267,7 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mk
 TXT: [unknown qualified constant L.get_VS]
 
 SNT: Does she even have a history of mental illness or a diagnosis?
-AST: (mkText (mkUtt (mkQS (mkCl S.she_NP (mkVP (P.mkAdV "even") (mkVP have-03 (o or)))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.she_NP (mkVP (P.mkAdV "even") (mkVP have-03 (o or))))))) questMarkPunct)
 TXT: [constant not found: have]
 
 SNT: You don't know for sure that you won't get good grades so accept places if you can.
@@ -1295,7 +1295,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sound_VV (mkVP (need-01 S.you_NP)))))) fu
 TXT: [unknown qualified constant L.sound_VV]
 
 SNT: You could call Childline or something similar?
-AST: (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.call_V2 (mkNP S.or_Conj (mkListNP (mkNP (P.mkPN "Childline")) (S.something_NP (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2))))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.call_V2 (mkNP S.or_Conj (mkListNP (mkNP (P.mkPN "Childline")) (S.something_NP (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))))))))))))) questMarkPunct)
 TXT: [A function type is expected for something_NP instead of type NP]
 
 SNT: You could go to the library on saturdays and do a good 8 hours of studying there.
@@ -1303,11 +1303,11 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkAP (mkAP L.po
 TXT: [it is possible that you go and it studies .]
 
 SNT: Is there a friend's house you could go to- form a study group?
-AST: (mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.form_V2 (mkNP S.a_Quant (mkCN (mkCN L.group_N) (mkRS (mkRCl S.which_RP (mkVP L.study_V)))))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.form_V2 (mkNP S.a_Quant (mkCN (mkCN L.group_N) (mkRS (mkRCl S.which_RP (mkVP L.study_V))))))))))))))) questMarkPunct)
 TXT: [is it possible that you go to form a group that studies ?]
 
 SNT: So you want her sectioned cos she is a bit of a pain in the arse and you've blamed all your problems on her?
-AST: (mkText (mkUtt (mkQS (S.mkAdv S.because_Subj (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.pain_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.arse_N))))))) (mkS (mkCl (mkVP (mkVP blame-01 s) (S.mkAdv L.PRD_Prep (mkNP L.all_Det (mkCN L.problem_N))))))))) (mkS (mkCl S.you_NP (mkVP L.want_VS (mkS (mkCl S.she_NP (passiveVP L.section_V2)))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.pain_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.arse_N))))))) (mkS (mkCl (mkVP (mkVP blame-01 s) (S.mkAdv L.PRD_Prep (mkNP L.all_Det (mkCN L.problem_N))))))))) (mkS (mkCl S.you_NP (mkVP L.want_VS (mkS (mkCl S.she_NP (passiveVP L.section_V2)))))))) fullStopPunct)
 TXT: [constant not found: blame]
 
 SNT: I know what you're feeling.
@@ -1347,7 +1347,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (S.mkAdv S.because_Subj S.it_N
 TXT: [constant not found: a2]
 
 SNT: has anyone got any experience in handling this sort of thing or how to go about gaining some respect again?
-AST: (mkText (mkUtt (mkQS (mkCl L.anyone_NP (mkVP L.get_VS (mkS (mkCl (mkVP (P.mkAdV "any") (mkVP experience-01 (o or))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl L.anyone_NP (mkVP L.get_VS (mkS (mkCl (mkVP (P.mkAdV "any") (mkVP experience-01 (o or)))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.get_VS]
 
 SNT: Just say no.
@@ -1379,8 +1379,8 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.this_NP (mkNP S.a_Quant (mkCN (
 TXT: [unknown qualified constant L.such_AdA] [it is of course possible that you are respected .] [it is contrasted that it isn't nice that there is that .]
 
 SNT: I don't know if anyone will read this, but I just feel desperate and feel the need to tell someone.
-AST: (mkText (mkUtt (mkQS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_Subj (mkS negativePol (mkCl S.i_NP (mkVP L.know_VS (mkS (mkCl L.anyone_NP (mkVP L.read_V2 S.this_NP))))))))))) questMarkPunct)
-TXT: [is it contrasted that I don't know that anyone reads this ?]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_Subj (mkS negativePol (mkCl S.i_NP (mkVP (mkVP L.know_V) (S.mkAdv S.if_Subj (mkS (mkCl L.anyone_NP (mkVP L.read_V2 S.this_NP)))))))))))) fullStopPunct)
+TXT: [it is contrasted that I don't know if anyone reads this .]
 
 SNT: This September I left home, and started at University. I was incredibly anxious about doing this, but rather delayed thinking about it until I got here! Now I'm here, and have been for over two weeks, I feel terribly overwhelmed by it all and feel unintelligent and socially awkward.
 AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP L.leave_V2 (mkNP S.a_Quant (mkCN L.home_N))))) (mkS (mkCl (mkVP (mkVP L.start_V) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.university_N))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkAP L.incredible_AdA (mkAP L.anxious_A)) (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (mkVP delay-01) (S.mkAdv L.until_Prep))))))) fullStopPunct))
@@ -1399,7 +1399,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (
 TXT: [constant not found: counsel]
 
 SNT: I have tried to solve my problems before, and have found exercise and meditation particularly useful, and have also tried things like self-help books and tapes. But my general feeling, is, 'Is this what my life will be? My one chance at existance, my one chance of being a young man, I am wasting it!' And these feelings are beating away at me.
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkAdV "also") (mkVP L.try_V2 (mkNP S.a_Quant (mkCN L.thing_N)))))) (mkListS (mkS (mkCl S.i_NP (mkVP (P.mkAdV "before") (mkVP L.try_VS (mkS (mkCl (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl S.it_NP (mkAP L.particular_AdA (mkAP (mkAP L.useful_A) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.exercise_N)) (mkNP S.a_Quant (mkCN L.meditation_N))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkCl (mkVP L.contrast_VV (mkVP (feel-01 S.i_NP)))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.waste_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.one_N L.chance_N)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.chance_N)))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.feel_V2)))) (mkVP (passiveVP L.beat_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.away_N))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkAdV "also") (mkVP L.try_V2 (mkNP S.a_Quant (mkCN L.thing_N)))))) (mkListS (mkS (mkCl S.i_NP (mkVP (P.mkAdV "before") (mkVP L.try_VS (mkS (mkCl (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl S.it_NP (mkAP L.particular_AdA (mkAP (mkAP L.useful_A) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.exercise_N)) (mkNP S.a_Quant (mkCN L.meditation_N))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP L.contrast_VV (mkVP (feel-01 S.i_NP))))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.waste_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.one_N L.chance_N)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.chance_N)))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.feel_V2)))) (mkVP (passiveVP L.beat_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.away_N))))))) fullStopPunct))
 TXT: [unknown qualified constant L.try_VS] [unknown qualified constant L.contrast_VV] [unknown qualified constant L.waste_VS] [unknown qualified constant L.away_N]
 
 SNT: I simply don't know what to do, and when I think of things to do, I never follow through with it. Friends often say I'm lazy, and I can't disagree a lot of the time. I feel like everything anyone could do to help, people have tried, and time and time again I fail.
@@ -1435,7 +1435,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.focus_V) (S.
 TXT: [I focus to an idol .] [unknown qualified constant L.aspire_V2] [constant not found: admire]
 
 SNT: Focus on what you want to achieve in life, you havent stated what your studying, or indeed why....is it because you wanted the experience? Because your mum wanted yo to go? Because u need a degree for the career you want to do?
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.you_NP (mkVP (mkVP L.focus_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (achieve-01 (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.life_N))))))))))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP L.state_V2 (mkNP S.or_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP study-01)))) (mkNP S.a_Quant (mkCN (E.CompoundCN L.indeed_N L.thing_N) (mkRS (mkRCl S.which_RP (mkVP cause-01 s2))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl S.you_NP (mkVP L.want_VS (mkS (mkCl (mkVP L.experience_V))))))))))) questMarkPunct) (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.want_VS (mkS (mkCl S.you_NP (passiveVP L.go_V2))))))))))) questMarkPunct) (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl S.you_NP (mkVP (mkVP L.need_V2 (mkNP S.a_Quant (mkCN L.degree_N))) (S.mkAdv L.for_Prep (mkNP S.a_Quant (mkCN (mkCN L.career_N) (mkRS (mkRCl S.which_RP want-01))))))))))))) questMarkPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.you_NP (mkVP (mkVP L.focus_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (achieve-01 (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.life_N))))))))))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP L.state_V2 (mkNP S.or_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP study-01)))) (mkNP S.a_Quant (mkCN (E.CompoundCN L.indeed_N L.thing_N) (mkRS (mkRCl S.which_RP (mkVP cause-01 s2))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl S.you_NP (mkVP L.want_VS (mkS (mkCl (mkVP L.experience_V)))))))))))) questMarkPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.want_VS (mkS (mkCl S.you_NP (passiveVP L.go_V2)))))))))))) questMarkPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (mkVP L.cause_V) (S.mkAdv S.that_Subj (mkS (mkCl S.you_NP (mkVP (mkVP L.need_V2 (mkNP S.a_Quant (mkCN L.degree_N))) (S.mkAdv L.for_Prep (mkNP S.a_Quant (mkCN (mkCN L.career_N) (mkRS (mkRCl S.which_RP want-01)))))))))))))) questMarkPunct))
 TXT: [constant not found: achieve] [constant not found: study] [unknown qualified constant L.cause_V] [unknown qualified constant L.cause_V] [unknown qualified constant L.cause_V]
 
 SNT: Either way, sum up why youre there and work your bottom off to get the best grades you can, cos once you get ur degree, you wil have something you can say "hey i didnt fail, it was hard work and i passed"
@@ -1707,7 +1707,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl S.they_NP (m
 TXT: [constant not found: do]
 
 SNT: Do any of you have a similar 'ritual'?
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.any_N L.person_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.include_V2) (S.mkAdv S.you_NP)))))) (mkVP L.have_V2 (mkNP S.a_Quant (mkCN (mkCN L.ritual_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.any_N L.person_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.include_V2) (S.mkAdv S.you_NP)))))) (mkVP L.have_V2 (mkNP S.a_Quant (mkCN (mkCN L.ritual_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.any_N]
 
 SNT: People would think I'm crazy, but it's very strangely difficult to get yourself out of this.
@@ -1787,7 +1787,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.begin_VS (mkS (mkCl (mkVP L.feel_V
 TXT: [unknown qualified constant L.begin_VS]
 
 SNT: I'm not sure if it's the change in lifestyle (going from care-free student to unemployed graduate) that is causing this or if it's a sign of other issues, but it's beginning to bug me as it's affecting my confidence and happiness.
-AST: (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP begin-01))) (S.mkAdv S.that_Subj (mkS negativePol (mkCl S.i_NP (mkAP (mkAP L.sure_A) (mkS S.or_Conj (mkListS (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.lifestyle_N)) (passiveVP L.change_V2)))) S.this_NP) (mkS (mkCl (mkVP L.signal_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.other_A L.issue_N))))))))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP begin-01))) (S.mkAdv S.that_Subj (mkS negativePol (mkCl S.i_NP (mkVP (mkVP (mkAP L.sure_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.lifestyle_N)) (passiveVP L.change_V2)))) S.this_NP) (mkS (mkCl (mkVP L.signal_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.other_A L.issue_N)))))))))))))))))) fullStopPunct)
 TXT: [constant not found: begin]
 
 SNT: I've spoken to a few people about it including my parents but they all think the same: that I'm going through a random phase and that I should hold off taking action until it is clear that it is a serious problem
@@ -1799,11 +1799,11 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.thing_N) (mkR
 TXT: [unknown qualified constant L.wonder_V2]
 
 SNT: Speak to a doctor about it and see if anti-anxiety pills could take the edge off of things?
-AST: (mkText (mkUtt (mkQS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkVP (mkVP L.speak_V2 S.it_NP) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.doctor_N)))))) (mkS (mkCl (mkVP L.see_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.pill_N) (mkRS (mkRCl S.which_RP (mkVP L.counter_V2 (mkNP (mkCN L.anxiety_N))))))) (mkVP L.take_off_V2 (mkNP S.a_Quant (mkCN L.edge_N))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkVP (mkVP L.speak_V2 S.it_NP) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.doctor_N)))))) (mkS (mkCl (mkVP L.see_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.pill_N) (mkRS (mkRCl S.which_RP (mkVP L.counter_V2 (mkNP (mkCN L.anxiety_N))))))) (mkVP L.take_off_V2 (mkNP S.a_Quant (mkCN L.edge_N))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.counter_V2]
 
 SNT: See if I can speak to a counsellor?
-AST: (mkText (mkUtt (mkQS (mkCl S.i_NP (mkVP L.see_VS (mkS (mkCl S.i_NP (mkVP (mkVP L.speak_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.counsel_V))))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.i_NP (mkVP L.see_VS (mkS (mkCl S.i_NP (mkVP (mkVP L.speak_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.counsel_V)))))))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.counsel_V]
 
 SNT: Or should I take the advice given by the close people around me and just keep an eye on the anxiety until it becomes a problem?
@@ -2139,8 +2139,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.expert_A (mkCN L.person_N
 TXT: [an expert person discounts a significance of a thing that Ahmadinejad claims because information about a functionality of a centrifuge is absented .]
 
 SNT: A Western diplomat in Tehran speaking under condition of anonymity stated that the quantity of centrifuges is less important than whether the machines are operational and efficient but that ahmadinejad's assertion will hinder a resolution of the diplomatic standoff between Iran and the West.
-AST: (mkText (mkUtt (mkQS (mkCl (mkAP L.less_AdA (mkAP L.important_A)) (have-org-role-91 (P.mkN2 L.diplomat_N L.of_Prep) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tehran"))) (mkRS (mkRCl S.which_RP (mkVP L.speak_V)))) (passiveVP L.state_V2)))) questMarkPunct)
-TXT: [command not parsed: cc -one (mkText (mkUtt (mkQS (mkCl (mkAP L.less_AdA (mkAP L.important_A)) (have-org-role-91 (P.mkN2 L.diplomat_N L.of_Prep) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tehran"))) (mkRS (mkRCl S.which_RP (mkVP L.speak_V)))) (passiveVP L.state_V2)))) questMarkPunct)]
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkAP L.less_AdA (mkAP L.important_A)) (have-org-role-91 (P.mkN2 L.diplomat_N L.of_Prep) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tehran"))) (mkRS (mkRCl S.which_RP (mkVP L.speak_V)))) (passiveVP L.state_V2))))) questMarkPunct)
+TXT: [command not parsed: cc -one (mkText (mkUtt (mkQS (mkQCl (mkCl (mkAP L.less_AdA (mkAP L.important_A)) (have-org-role-91 (P.mkN2 L.diplomat_N L.of_Prep) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tehran"))) (mkRS (mkRCl S.which_RP (mkVP L.speak_V)))) (passiveVP L.state_V2))))) questMarkPunct)]
 
 SNT: Arms control expert Jeffrey G. Lewis of the new America Foundation think tank stated that the Foundation was aware of Iran's goal of assembling 6000 centrifuges but the operational status of the machines is unknown.
 AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP (P.mkPN "New America Foundation"))) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.realize_V2 (mkNP S.a_Quant (mkCN L.goal_N)))))))))) fullStopPunct)
@@ -2467,7 +2467,7 @@ AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP (P.mkPN "Monterey Institu
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP (P.mkPN "Monterey Institute of International Studies"))) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (P.mkAdV "main") (mkVP (mkVP L.threaten_V) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP (mkCN L.power_N)) (passiveVP L.cut_V2)))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.organism_N))))))))))) fullStopPunct)]
 
 SNT: Raymond zilinskas stated that in the worst case the bacteria would be defrosted from minus 70 degrees and it would be a real mess to clean up afterward because it would not be known for certain whether all the bacteria was dead.
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP (P.mkPN "Raymond Zilinskas")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.bacterium_N)) (passiveVP L.defrost_V2))) (mkS (mkCl (mkS (mkCl (mkVP (P.mkAdV "afterward") (mkVP L.clean_up_V)))) (mkNP S.a_Quant (mkCN L.real_A (mkCN (mkCN L.mess_N) (S.mkAdv S.because_Subj (mkS negativePol (mkCl (mkVP (mkVP (P.mkAdV "certain") (passiveVP L.know_V2)) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP L.all_Det (mkCN L.bacterium_N)) (passiveVP L.die_V2))))))))))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP (P.mkPN "Raymond Zilinskas")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.bacterium_N)) (passiveVP L.defrost_V2))) (mkS (mkCl (mkS (mkCl (mkVP (P.mkAdV "afterward") (mkVP L.clean_up_V)))) (mkNP S.a_Quant (mkCN L.real_A (mkCN (mkCN L.mess_N) (S.mkAdv S.because_Subj (mkS negativePol (mkCl (mkVP (mkVP (P.mkAdV "certain") (passiveVP L.know_V2)) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP L.all_Det (mkCN L.bacterium_N)) (passiveVP L.die_V2)))))))))))))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.die_V2]
 
 SNT: The confrontation between the mosenergo electric utility and the State Scientific Center of applied Microbiology in obolensk is another example of how the basic capitalist imperative for enterprises to be self-sustaining can clash in a dangerous way with the old remnants of Soviet weapons science.
@@ -2835,7 +2835,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Ochoa")) 
 TXT: [unknown qualified constant L.menace_V]
 
 SNT: The US Pentagon has openly questioned what Chavez will do with the old FAL rifles and whether Chavez might share weapons or ammunition with guerrilla forces in Latin America.
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP (mkNP (P.mkPN "Pentagon")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US")))) (mkVP question-01 (a and))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP (mkNP (P.mkPN "Pentagon")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US")))) (mkVP question-01 (a and)))))) questMarkPunct)
 TXT: [constant not found: question]
 
 SNT: The US government has provided no evidence of Chavez arming or funding leftist insurgencies.
@@ -3375,12 +3375,12 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Georgia")) (mkVP L.label_VS (mkS (
 TXT: [unknown qualified constant L.label_VS]
 
 SNT: Throughout 8 August 2008 reports conflicted about whether Georgian or Russian forces had won control of Tskhinvali.
-AST: (mkText (mkUtt (mkQS (mkCl (mkVP (mkVP (passiveVP L.conflict_V2) (E.PurposeVP (mkVP (win-01 (mkNP S.or_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.force_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Georgia"))))) (mkNP S.a_Quant (mkCN (mkCN L.force_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia"))))))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.report_V)))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP (mkVP (passiveVP L.conflict_V2) (E.PurposeVP (mkVP (win-01 (mkNP S.or_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.force_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Georgia"))))) (mkNP S.a_Quant (mkCN (mkCN L.force_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia"))))))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.report_V))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.conflict_V2]
 
 SNT: Late on 8 August 2008 it was unclear whether ground combat had taken place between Russian and Georgian soldiers or had been limited to fighting between separatists and Georgian forces.
-AST: (mkText (mkUtt (mkQS negativePol (mkCl S.it_NP (mkAP (mkAP L.clear_A) (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Georgia"))))))) (mkVP (mkVP L.combat_V) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.ground_N)))))) (mkS (mkCl (passiveVP L.limit_V2))))))))) questMarkPunct)
-TXT: [no overload instance of mkQS]
+AST: (mkText (mkUtt (mkS negativePol (mkCl (mkVP (mkVP (mkAP L.clear_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Georgia"))))))) (mkVP (mkVP L.combat_V) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.ground_N)))))) (mkS (mkCl (passiveVP L.limit_V2)))))))))) fullStopPunct)
+TXT: [it isn't clear if a soldier from Russia and a soldier from Georgia combat in a ground or it is limited .]
 
 SNT: Tskhinvali is the capital of Georgia.
 AST: (h (mkCN (mkNP (P.mkPN "Tskhinvali")) (P.mkN2 L.capital_N L.of_Prep) (mkNP (P.mkPN "Georgia"))))
@@ -3423,8 +3423,8 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (m
 TXT: [an official website of Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked .]
 
 SNT: It was not clear whether the attack began on 18 September 2008 or the morning of 19 September 2008.
-AST: (mkText (mkUtt (mkQS negativePol (mkCl S.it_NP (mkAP (mkAP L.clear_A) (mkS (mkCl (mkVP (passiveVP L.begin_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.attack_V))))))))))) questMarkPunct)
-TXT: [no overload instance of mkQS]
+AST: (mkText (mkUtt (mkQS negativePol (mkQCl (mkCl S.it_NP (mkAP (mkAP L.clear_A) (mkS (mkCl (mkVP (passiveVP L.begin_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.attack_V)))))))))))) questMarkPunct)
+TXT: [isn't it clear that it is begun that it attacks ?]
 
 SNT: By the evening of 19 September 2008 Al-Sistani's website was offline.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.website_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Al-Sistani"))))) (mkAP L.offline_A)))) fullStopPunct)
@@ -3479,7 +3479,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.any_N L.web
 TXT: [unknown qualified constant L.any_N]
 
 SNT: The statement also consisted of a youtube video clip of American comedian bill Maher ridiculing a fatwa by Al-Sistani on whether certain positions of sexual intercourse were permitted for married couples.
-AST: (mkText (mkUtt (mkQS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.state_V2))))) (mkVP (mkVP (P.mkAdV "also") (passiveVP L.consist_V2)) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.video_N L.clip_N) (S.mkAdv S.possess_Prep (mkNP (mkNP (P.mkPN "Bill Maher")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))))) (mkRS (mkRCl S.which_RP (mkVP L.ridicule_V2 (mkNP S.a_Quant (mkCN L.fatwa_N)))))))))))) questMarkPunct)
+AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.state_V2))))) (mkVP (mkVP (P.mkAdV "also") (passiveVP L.consist_V2)) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.video_N L.clip_N) (S.mkAdv S.possess_Prep (mkNP (mkNP (P.mkPN "Bill Maher")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))))) (mkRS (mkRCl S.which_RP (mkVP L.ridicule_V2 (mkNP S.a_Quant (mkCN L.fatwa_N))))))))))))) questMarkPunct)
 TXT: [unknown qualified constant L.consist_V2]
 
 SNT: The ayatollah's office in Najaf declined to comment on the cyber attack.

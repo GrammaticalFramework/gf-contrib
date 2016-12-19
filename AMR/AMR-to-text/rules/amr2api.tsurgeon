@@ -808,12 +808,29 @@ mkAP=ap_i < (/^(~/adj_A/|~/FRAME/)$/ < (/:ARG1/=arg < /NP/))
 [insert (negativePol) >1 snt]
 [delete pol]
 
+# (mkVP (mkS (mkCl (mkVP (frame (:mode interrogative)))))) => (mkVP mkVP (mkAdv if_Subj mkS))
+mkVP=vp_i < (mkS=s < (mkCl < (mkVP < (/FRAME/ < (/:mode/=mode < interrogative)))))
+[delete mode]
+[adjoinF (mkVP=vp_o @) vp_i]
+[adjoinF (mkAdv=adv S.if_Subj @) s]
+[move adv >2 vp_o]
+
+# (mkAP mkAP (mkS (conj_Conj (:mode interrogative)))) => (mkVP (mkVP mkAP) (mkAdv if_Subj mkS))
+mkAP=ap < mkAP < (mkS=s [[< (/conj_Conj/ < (/:mode/=mode < interrogative))] | [< (/:mode/=mode < interrogative)]])
+[delete mode]
+[relabel ap /^.+$/mkVP/]
+[adjoinF (mkVP=vp @) ap]
+[adjoinF (mkAdv=adv S.if_Subj @) s]
+[move adv >2 vp]
+
 # mkText : Utt -> Punct -> Text
 # mkUtt : QS -> Utt
-# mkQS : Cl -> QS
+# mkQS : QCl -> QS
+# mkQCl : Cl -> QCl
 # (ROOT (mkS (.. (:mode interrogative)))) => (mkText (mkUtt mkQS) questMarkPunct)
-mkS=s << (/:mode/=mode < interrogative) [> /:sntN/ | !> /.*/]
+mkS=s < mkCl=cl << (/:mode/=mode < interrogative) [> /:sntN/ | !> /.*/]
 [relabel s /^.+$/mkQS/]
+[adjoinF (mkQCl @) cl]
 [adjoinF (mkText (mkUtt @) questMarkPunct) s]
 [delete mode]
 
