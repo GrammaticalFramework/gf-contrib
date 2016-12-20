@@ -268,3 +268,8 @@ TestTreesEng: I don't know if anyone reads this .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces
+TestTreesEng: it isn't clear if a soldier from Russia and a soldier from Georgia combat or it is limited to fight between a separatist and a force .
+TestTreesLav: 
+TestTreesRus: 
+

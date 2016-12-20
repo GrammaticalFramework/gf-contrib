@@ -18,6 +18,7 @@
 @/:ARGm/=/^:ARG[01]$/
 @/:ARGm-of/=/^:ARG[01]-of$/
 @/:ARGn/=/^:ARG[2-9](-[A-Z]+)?$/
+@/:ARGx/=/^:ARG[0-9](-[A-Z]+)?$/
 @/:ARG0/=/^:ARG0$/
 @/:ARG0-of/=/^:ARG0-of$/
 @/:ARG1/=/^:ARG1$/
@@ -256,6 +257,29 @@
 [adjoin (mkRS (mkRCl S.which_RP (passiveVP@))) var]
 [excise inv inv]
 
+# mkListRS : RS -> RS -> ListRS
+# (conj (:op mkRS) (:op mkRS)) => (conj (mkListRS mkRS mkRS))
+/CONJ/ <1 (/:opN/=op1 < mkRS=rs1) <2 (/:opN/=op2 < mkRS=rs2)
+[adjoinF (mkListRS=list @) rs1]
+[move rs2 >2 list]
+[excise op1 op1]
+[delete op2]
+
+# mkListRS : RS -> ListRS -> ListRS
+# (conj mkListRS (:op mkRS)) => (conj (mkListRS mkRS mkListRS))
+/CONJ/ <1 mkListRS=list_i <2 (/:opN/=op < mkRS=rs)
+[adjoinF (mkListRS=list_o @) rs]
+[move list_i >2 list_o]
+[excise op op]
+
+# mkRS : Conj -> ListRS -> RS
+# (var (conj mkListRS)) => (mkRS (conj_Conj mkListRS))
+/VAR/=var < (/CONJ/=conj < mkListRS=list)
+[adjoinF (mkRS=rs @) conj]
+[relabel conj /^(.+)$/S.$1_Conj/]
+[move list >2 rs]
+[excise var var]
+
 # mkRCl : RP -> AP -> RCl
 # mkAP : A -> AP
 # (:ARG2-of (var (frame_A))) => (mkRS (mkRCl which_RP (mkAP frame_A)))
@@ -279,8 +303,16 @@ mkCl=cl < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
 [adjoinF (passiveVP @) frame]
 
 # mkVP : VV -> VP -> VP
-# (frame (:ARG2 (var (frame :ARG1)))) => (frame (mkVP frame :ARG1))
+# (frame1 (:ARG2 (var (frame2 :ARG1)))) => (frame1 (mkVP frame2 :ARG1))
 /FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < /:ARG1/=compl)))
+[move vv >1 vp]
+[move compl >2 vp]
+[relabel vp /^.+$/mkVP/]
+[delete var]
+
+# mkVP : VV -> VP -> VP
+# (frame1 (:ARG2 (var (frame2 (:ARG0 (var 'between')))))) => (frame1 (mkVP frame2 :ARG0))
+/FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < (/:ARG0/=compl < (/VAR/ < between)))))
 [move vv >1 vp]
 [move compl >2 vp]
 [relabel vp /^.+$/mkVP/]
@@ -407,6 +439,29 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [adjoinF (mkAP @) var]
 [excise var var]
 
+# mkListAP : AP -> AP -> ListAP
+# (conj (:op mkAP) (:op mkAP)) => (conj (mkListAP mkAP mkAP))
+/CONJ/ <1 (/:opN/=op1 < mkAP=ap1) <2 (/:opN/=op2 < mkAP=ap2)
+[adjoinF (mkListAP=list @) ap1]
+[move ap2 >2 list]
+[excise op1 op1]
+[delete op2]
+
+# mkListAP : AP -> ListAP -> ListAP
+# (conj mkListAP (:op mkAP)) => (conj (mkListAP mkAP mkListAP))
+/CONJ/ <1 mkListAP=list_i <2 (/:opN/=op < mkAP=ap)
+[adjoinF (mkListAP=list_o @) ap]
+[move list_i >2 list_o]
+[excise op op]
+
+# mkAP : Conj -> ListAP -> AP
+# (var (conj mkListAP)) => (mkAP (conj_Conj mkListAP))
+/VAR/=var < (/CONJ/=conj < mkListAP=list)
+[adjoinF (mkAP=ap @) conj]
+[relabel conj /^(.+)$/S.$1_Conj/]
+[move list >2 ap]
+[excise var var]
+
 # mkNP : Quant -> CN -> NP
 # (var entity) => (mkNP a_Quant (mkCN (var entity))
 /VAR/=entity < (/WORD/ !< /:opN/) !> /^(mkCN|:mod|:quant|:degree|:manner|:time)$/ # TODO: extend the list
@@ -414,7 +469,7 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 
 # mkListNP : NP -> NP -> ListNP
 # (conj (:op NP) (:op NP)) => (conj (mkListNP NP NP))
-/CONJ/ <1 (/:opN/=op1 < /NP/=np1) <2 (/:opN/=op2 < /NP/=np2)
+/^(~/CONJ/|between)$/ <1 (/:opN/=op1 < /NP/=np1) <2 (/:opN/=op2 < /NP/=np2)
 [adjoinF (mkListNP=list @) np1]
 [move np2 >2 list]
 [excise op1 op1]
@@ -434,6 +489,11 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [relabel conj /^(.+)$/S.$1_Conj/]
 [move list >2 np]
 [excise var var]
+
+# mkNP : Conj -> ListNP -> NP
+# (var (conj mkListNP)) => (mkNP (conj_Conj mkListNP))
+/VAR/ < (between < mkListNP=list)
+[adjoinF (mkNP S.and_Conj @) list]
 
 # mkNP : Quant -> Num -> CN -> NP
 # (mkNP (quant_Quant (mkCN (var (entity :quant))))) => (mkNP (quant_Quant :quant (mkCN (var entity))))
@@ -669,11 +729,21 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [move np >2 adv]
 
 # mkAdv : Prep -> NP -> Adv
-# (var (prep :opN)) => (mkAdv prep_Prep :opN)
-/VAR/=adv < (/PREP/=prep < /:opN/)
+# (var (prep NP)) => (mkAdv prep_Prep NP)
+/VAR/=var < (/PREP/=prep < /NP/=np)
 [relabel prep /^(.+)$/$1_Prep/]
-[adjoin (mkAdv TEMP=temp@) adv]
+[adjoin (mkAdv=adv TEMP=temp@) var]
+[move np >2 adv]
 [excise temp temp]
+
+# mkAdv : Prep -> NP -> Adv
+# (var (prep (:op1 NP))) => (mkAdv prep_Prep NP)
+/VAR/=var < (/PREP/=prep < (/:opN/=op < /NP/=np))
+[relabel prep /^(.+)$/$1_Prep/]
+[adjoin (mkAdv=adv TEMP=temp@) var]
+[move np >2 adv]
+[excise temp temp]
+[delete op]
 
 # mkVP : VP -> Adv -> VP
 # (VP (frame (:degree (var multi-word-expression)))) => (mkVP (VP frame) (mkAdv "multi word expression"))
@@ -695,8 +765,8 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [move adv >2 vp_o]
 
 # mkVP : VP -> Adv -> VP
-# (mkVP|passiveVP (frame (:ARG[2-5] mkAdv))) => (mkVP (mkVP|passiveVP (frame)) mkAdv)
-/VP/=vp_i < (/FRAME/ < (/:ARGn/=arg < mkAdv=adv))
+# (mkVP|passiveVP (frame (:ARG[0-9] mkAdv))) => (mkVP (mkVP|passiveVP (frame)) mkAdv)
+/VP/=vp_i [[< /FRAME/ < (/:ARGx/=arg < mkAdv=adv)] | [< (/FRAME/ < (/:ARGx/=arg < mkAdv=adv))]]
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
 [delete arg]

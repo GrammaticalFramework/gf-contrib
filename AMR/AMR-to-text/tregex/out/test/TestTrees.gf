@@ -56,5 +56,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t53_never_go_back_to_that_time_when_signing_the_treaties : Text ;
 	fun t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal : Text ;
 	fun t55_I_don_t_know_if_anyone_will_read_this : Text ;
+	fun t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces : Text ;
 
 }

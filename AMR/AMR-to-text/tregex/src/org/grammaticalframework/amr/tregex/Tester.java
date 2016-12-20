@@ -1075,8 +1075,7 @@ public class Tester {
 
     // I don't know if anyone will read this.
     @Test
-    public void
-            t55_I_don_t_know_if_anyone_will_read_this() {
+    public void t55_I_don_t_know_if_anyone_will_read_this() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1087,6 +1086,27 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP (mkVP L.know_V) (S.mkAdv S.if_Subj (mkS (mkCl L.anyone_NP (mkVP L.read_V2 S.this_NP)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // It was unclear whether combat had taken place between Russian and Georgian soldiers or had
+    // been limited to fighting between separatists and Georgian forces.
+    // TODO: 'whether [..] or whether [..]'
+    // TODO: 'Georgian forces' (cannot be resolved by a pronoun)
+    @Test
+    public void
+            t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(c / clear-06 :polarity - :ARG1 (o / or :mode interrogative :op1 (c2 / combat-01 :ARG0 (a3 / and :op1 (s / soldier :mod (c3 / country :name (n / name :op1 \"Russia\"))) :op2 (s3 / soldier :mod (c4 / country :name (n2 / name :op1 \"Georgia\"))))) :op2 (l2 / limit-01 :ARG1 c2 :ARG2 (f / fight-01 :ARG0 (b / between :op1 (s2 / separatist) :op2 (f2 / force))))))");
+        assertEquals(amr,
+                "(c (clear-06 (:polarity -) (:ARG1 (o (or (:mode interrogative) (:op1 (c2 (combat-01 (:ARG0 (a3 (and (:op1 (s (soldier (:mod (c3 (country (:name (n (name (:op1 \"Russia\")))))))))) (:op2 (s3 (soldier (:mod (c4 (country (:name (n2 (name (:op1 \"Georgia\")))))))))))))))) (:op2 (l2 (limit-01 (:ARG1 c2) (:ARG2 (f (fight-01 (:ARG0 (b (between (:op1 (s2 separatist)) (:op2 (f2 force))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl (mkVP (mkVP (mkAP L.clear_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Russia\"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Georgia\"))))))) (mkVP L.combat_V))) (mkS (mkCl (mkVP (passiveVP L.limit_V2) (E.PurposeVP (mkVP (mkVP L.fight_V) (S.mkAdv L.between_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.separatist_N)) (mkNP S.a_Quant (mkCN L.force_N))))))))))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
