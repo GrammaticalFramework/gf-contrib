@@ -1,7 +1,7 @@
 --# -path=.:alltenses:../../../lexicons/translator
 
 concrete TreesEng of Trees = LeavesEng **
-open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=LeavesEng), (P=ParadigmsEng) in {
+open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=LeavesEng), (P=ParadigmsEng), Prelude in {
 
 	flags
 		coding = utf8 ;

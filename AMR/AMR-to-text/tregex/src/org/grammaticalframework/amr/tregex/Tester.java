@@ -40,17 +40,20 @@ public class Tester {
 
             eng.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
-            eng.println("open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {");
+            eng.println(
+                    "open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), Prelude in {");
             eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 
             lav.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
-            lav.println("open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {");
+            lav.println(
+                    "open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav), Prelude in {");
             lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 
             rus.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
-            rus.println("open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {");
+            rus.println(
+                    "open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus), Prelude in {");
             rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");
 
             gfs.println("import " + name + "Eng.gf" + " " + name + "Lav.gf" + " " + name + "Rus.gf\n");
@@ -1107,6 +1110,24 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS negativePol (mkCl (mkVP (mkVP (mkAP L.clear_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Russia\"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Georgia\"))))))) (mkVP L.combat_V))) (mkS (mkCl (mkVP (passiveVP L.limit_V2) (E.PurposeVP (mkVP (mkVP L.fight_V) (S.mkAdv L.between_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.separatist_N)) (mkNP S.a_Quant (mkCN L.force_N))))))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Especially China suffered the ravages of Japan.
+    @Test
+    public void
+            t57_especially_China_suffered_the_ravages_of_Japan() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / suffer-01 :ARG0 (c / country :name (n / name :op1 \"China\") :mod (e / especially)) :ARG1 (r / ravage-01 :ARG0 (c2 / country :name (n2 / name :op1 \"Japan\")) :ARG1 c))");
+        assertEquals(amr,
+                "(s (suffer-01 (:ARG0 (c (country (:name (n (name (:op1 \"China\")))) (:mod (e especially))))) (:ARG1 (r (ravage-01 (:ARG0 (c2 (country (:name (n2 (name (:op1 \"Japan\"))))))) (:ARG1 c))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (ss \"especially\") (mkNP (P.mkPN \"China\"))) (mkVP L.suffer_VS (mkS (mkCl (mkNP (P.mkPN \"Japan\")) (mkVP L.ravage_V))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

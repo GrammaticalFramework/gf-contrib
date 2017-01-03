@@ -273,3 +273,8 @@ TestTreesEng: it isn't clear if a soldier from Russia and a soldier from Georgia
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t57_especially_China_suffered_the_ravages_of_Japan
+TestTreesEng: especially China suffers that Japan ravages .
+TestTreesLav: 
+TestTreesRus: 
+

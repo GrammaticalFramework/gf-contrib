@@ -893,6 +893,14 @@ mkAP=ap < mkAP < (mkS=s [[< (/conj_Conj/ < (/:mode/=mode < interrogative))] | [<
 [adjoinF (mkAdv=adv S.if_Subj @) s]
 [move adv >2 vp]
 
+# mkNP : Predet -> NP -> NP
+# (mkNP (:mod (var word)) mkPN) => (mkNP (ss "word") (mkNP mkPN))
+mkNP=np_i <1 (/:mod/=mod < (/VAR/ <: /WORD/=word)) <2 mkPN
+[adjoinF (mkNP=np_o ss=predet @) np_i]
+[relabel word /^(.+)$/"$1"/]
+[move word >1 predet]
+[delete mod]
+
 # mkText : Utt -> Punct -> Text
 # mkUtt : QS -> Utt
 # mkQS : QCl -> QS
@@ -982,6 +990,10 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 /VP/=vp_i < (/FRAME/ < /Adv/=adv)
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
+
+# (VP frame var) => (VP frame)
+/VP/ <1 /FRAME/ <2 /VAR/=var
+[delete var]
 
 # (CN (noun_N Adv)) => (mkCN (CN noun_N) Adv)
 /CN/=cn_i < (/noun_N/ < /Adv/=adv)
@@ -1083,7 +1095,7 @@ possess_Prep=prep
 /Cl/ <1 /VAR/=var
 [delete var]
 
-/:ARG0/=arg <: /VAR/
+/:ARGm/=arg <: /VAR/
 [delete arg]
 
 /:location/=loc <: /VAR/

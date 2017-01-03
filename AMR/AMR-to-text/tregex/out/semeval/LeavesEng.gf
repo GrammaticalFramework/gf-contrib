@@ -44,6 +44,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
+		suffer_VS = mkVS suffer_V ;
 		want_VS = mkVS want_V ;
 
 		center_N = mkN "center" ;
@@ -209,7 +210,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		property_N = property_1_N ;
 		race_N = race_1_N ;
 		real_N = real_1_N ;
-		recognize_V2 = recognize_1_V2 ;
+		recognize_V2 = LeavesEng.recognize_1_V2 ;
 		record_N = record_1_N ;
 		regime_N = regime_1_N ;
 		right_A = right_1_A ;

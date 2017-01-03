@@ -1,7 +1,7 @@
 --# -path=.:alltenses:../../../lexicons/translator:../semeval
 
 concrete TestTreesLav of TestTrees = TestLexiconLav **
-open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {
+open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav), Prelude in {
 
 	flags
 		coding = utf8 ;
