@@ -1145,7 +1145,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (monthAdv september_Month))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -1164,6 +1164,42 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university on 1 September 1999.
+    @Test
+    public void
+            t60_I_started_university_on_1_September_1999() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :year 1999 :month 9 :day 1))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:year 1999) (:month 9) (:day 1))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (dayMonthYearAdv (intMonthday (ss \"1\")) september_Month (intYear (ss \"1999\"))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university in 1999.
+    @Test
+    public void
+            t61_I_started_university_in_1999() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :year 1999))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:year 1999))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (yearAdv (intYear (ss \"1999\"))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

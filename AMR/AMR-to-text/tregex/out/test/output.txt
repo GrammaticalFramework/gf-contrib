@@ -288,3 +288,13 @@ TestTreesEng: we are broken up since August .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t60_I_started_university_on_1_September_1999
+TestTreesEng: I start a university on 1 September 1999 .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t61_I_started_university_in_1999
+TestTreesEng: I start a university in 1999 .
+TestTreesLav: 
+TestTreesRus: 
+

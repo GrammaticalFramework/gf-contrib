@@ -119,8 +119,12 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t57_especially_China_suffered_the_ravages_of_Japan = (mkText (mkUtt (mkS (mkCl (mkNP (ss "especially") (mkNP (P.mkPN "China"))) (mkVP L.suffer_VS (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP L.ravage_V))))))) fullStopPunct) ;
 
-	lin t58_I_started_university_in_September = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month))))))) fullStopPunct) ;
+	lin t58_I_started_university_in_September = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (monthAdv september_Month))))) fullStopPunct) ;
 
 	lin t59_we_have_been_broken_up_since_August = (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct) ;
+
+	lin t60_I_started_university_on_1_September_1999 = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (dayMonthYearAdv (intMonthday (ss "1")) september_Month (intYear (ss "1999"))))))) fullStopPunct) ;
+
+	lin t61_I_started_university_in_1999 = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (yearAdv (intYear (ss "1999"))))))) fullStopPunct) ;
 
 }

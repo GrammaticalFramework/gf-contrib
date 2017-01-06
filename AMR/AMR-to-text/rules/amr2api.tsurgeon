@@ -9,7 +9,7 @@
 @/MWE/=/^"[A-Z a-z .-]+"$/
 @/DET/=/^(a|the|every|few|many|much|some)$/ # TODO: extend the list
 @/DET_EXTRA/=/^(all|another|more)$/ # TODO: extend the list
-@/PREP/=/^(above|across|after|among|at|before|behind|below|between|by|during|for|from|in|on|since|till|to|until)$/ # TODO: extend the list
+@/PREP/=/^(about|above|across|after|against|along|among|around|at|before|behind|below|between|beyond|but|by|concerning|despite|down|during|except|following|for|from|in|into|like|near|of|off|on|out|over|plus|since|through|throughout|till|to|towards|under|until|up|upon|with|within|without)$/ # TODO: extend the list
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|someone|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
@@ -34,7 +34,9 @@
 @/:poss/=/^:poss$/
 @/:part-of/=/^:part-of$/
 @/:time/=/^:time$/
+@/:year/=/^:year$/
 @/:month/=/^:month$/
+@/:day/=/^:day$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
 @/:prep-prep/=/^:prep-[a-z]+$/
@@ -68,7 +70,7 @@
 @/VP/=/^(mk|passive)VP$/
 @/NP/=/^(mk|[SL][.][a-z]+_)NP$/
 @/CN/=/^(mk|E[.]Compound)CN$/
-@/Adv/=/^(mkAdv|E[.]PurposeVP)$/
+@/Adv/=/^(mkAdv|E[.]PurposeVP|monthAdv|yearAdv|dayMonthAdv|monthYearAdv|dayMonthYearAdv)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
 @/det_Det/=/^[SL][.](a|the|every|few|many|more|much|some|another|all)_Det$/ # TODO: sync
@@ -391,9 +393,36 @@ mkVP=vp < (/FRAME/ < /:ARG1/=obj)
 mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [move vp_i >2 vp_o]
 
-# mkNP : PN -> NP
+# dayMonthYearAdv : Monthday -> Month -> Year -> Adv
+# (:time (var (date-entity (:year year) (:month month) (:day day)))) => (dayMonthYearAdv (intMonthday day) month_Month (intYear day))
+/:time/=time < (/VAR/ < (/date-entity/=entity < (/:year/=year < /NUM/=y) < (/:month/=month < /NUM/=m) < (/:day/=day < /NUM/=d)))
+[relabel m /^(.+)$/$1_Month/]
+[adjoinF (dayMonthYearAdv=date (intMonthday ss=day2) @ (intYear ss=year2)) month]
+[excise month month]
+[relabel y /^(.+)$/"$1"/]
+[move year >1 year2]
+[excise year year]
+[relabel d /^(.+)$/"$1"/]
+[move day >1 day2]
+[excise day day]
+[excise time entity]
+
+# monthAdv : Month -> Adv
+# :time (var (date-entity (:month [1-12])))) => (monthAdv [1-12]_Month)
+/:time/=time < (/VAR/ < (/date-entity/ <: (/:month/=month < /NUM/=m)))
+[relabel m /^(.+)$/$1_Month/]
+[adjoinF (monthAdv @) m]
+[excise time month]
+
+# yearAdv : Year -> Adv
+# :time (var (date-entity (:year num)))) => (yearAdv (intYear num))
+/:time/=time < (/VAR/ < (/date-entity/ <: (/:year/=year < /NUM/=y)))
+[relabel y /^(.+)$/"$1"/]
+[adjoinF (yearAdv (intYear (ss @))) y]
+[excise time year]
+
 # mkAdv: Prep -> NP -> Adv
-# (:time (var (prep (:op1 (var (date-entity (:month [1-12]))))))) => (mkAdv prep_Prep (mkNP (monthPN september_Month)))
+# (:time (var (prep (:op1 (var (date-entity (:month [1-12]))))))) => (mkAdv prep_Prep (mkNP (monthPN [1-12]_Month)))
 /:time/=time < (/VAR/ < (/PREP/=prep <: (/:op1/=op < (/VAR/ < (/date-entity/ <: (/:month/ < /NUM/=month))))))
 [relabel prep /^(.+)$/$1_Prep/]
 [relabel month /^(.+)$/$1_Month/]
@@ -403,25 +432,16 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [move prep >1 adv]
 [delete time]
 
-# mkNP : PN -> NP
-# mkAdv: Prep -> NP -> Adv
-# :time (var (date-entity (:month [1-12])))) => (mkAdv in_Prep (mkNP (monthPN september_Month)))
-/:time/=time < (/VAR/ < (/date-entity/ <: (/:month/=month < /NUM/=num)))
-[relabel num /^(.+)$/$1_Month/]
-[adjoinF (mkAdv in_Prep (mkNP (monthPN @))) num]
-[excise time month]
-
-# mkNP : N -> NP
 # mkAdv: Prep -> NP -> Adv
 # (:time (var (prep (:op1 (var adv))))) => (mkAdv prep_Prep (mkNP adv_N))
-/:time/=time < (/VAR/=var < (/PREP/=prep <: (/:op1/=op < (/VAR/ < /WORD/=n))))
+/:time/=time < (/VAR/ < (/PREP/=prep <: (/:op1/=op < (/VAR/ < /WORD/=n))))
 [relabel prep /^(.+)$/$1_Prep/]
 [relabel n /^(.+)$/$1_N/] # TODO: is this really the way to go?
-[adjoin (mkAdv=adv (mkNP=np@)) time]
+[adjoinF (mkAdv=adv (mkNP=np @)) time]
 [move n >1 np]
 [delete op]
 [move prep >1 adv]
-[delete var]
+[delete time]
 
 # ('name' (:op "X") (:op "Y") (:op "Z")) => ('name' (:op "X Y") (:op "Z"))
 # ('name' (:op "X Y") (:op "Z")) => ('name' (:op "X Y Z"))

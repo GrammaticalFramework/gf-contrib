@@ -58,3 +58,5 @@ lin -treebank t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_
 lin -treebank t57_especially_China_suffered_the_ravages_of_Japan
 lin -treebank t58_I_started_university_in_September
 lin -treebank t59_we_have_been_broken_up_since_August
+lin -treebank t60_I_started_university_on_1_September_1999
+lin -treebank t61_I_started_university_in_1999
