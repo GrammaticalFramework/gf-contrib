@@ -1,7 +1,7 @@
 --# -path=.:alltenses:../../../lexicons/translator:../semeval
 
 concrete TestTreesEng of TestTrees = TestLexiconEng **
-open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), Prelude in {
+open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), ConstructionEng, Prelude in {
 
 	flags
 		coding = utf8 ;
@@ -118,5 +118,9 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 	lin t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces = (mkText (mkUtt (mkS negativePol (mkCl (mkVP (mkVP (mkAP L.clear_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Georgia"))))))) (mkVP L.combat_V))) (mkS (mkCl (mkVP (passiveVP L.limit_V2) (E.PurposeVP (mkVP (mkVP L.fight_V) (S.mkAdv L.between_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.separatist_N)) (mkNP S.a_Quant (mkCN L.force_N))))))))))))))))) fullStopPunct) ;
 
 	lin t57_especially_China_suffered_the_ravages_of_Japan = (mkText (mkUtt (mkS (mkCl (mkNP (ss "especially") (mkNP (P.mkPN "China"))) (mkVP L.suffer_VS (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP L.ravage_V))))))) fullStopPunct) ;
+
+	lin t58_I_started_university_in_September = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month))))))) fullStopPunct) ;
+
+	lin t59_we_have_been_broken_up_since_August = (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct) ;
 
 }

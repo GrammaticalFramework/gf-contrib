@@ -41,7 +41,7 @@ public class Tester {
             eng.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
             eng.println(
-                    "open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), Prelude in {");
+                    "open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), ConstructionEng, Prelude in {");
             eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 
             lav.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
@@ -1128,6 +1128,42 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl (mkNP (ss \"especially\") (mkNP (P.mkPN \"China\"))) (mkVP L.suffer_VS (mkS (mkCl (mkNP (P.mkPN \"Japan\")) (mkVP L.ravage_V))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university in September.
+    @Test
+    public void
+            t58_I_started_university_in_September() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :month 9))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:month 9))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // We have been broken up since August.
+    @Test
+    public void
+            t59_we_have_been_broken_up_since_August() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(b / break-up-08 :ARG1 (w / we) :time (s2 / since :op1 (d / date-entity :month 8)))");
+        assertEquals(amr,
+                "(b (break-up-08 (:ARG1 (w we)) (:time (s2 (since (:op1 (d (date-entity (:month 8)))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

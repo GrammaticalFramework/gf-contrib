@@ -253,9 +253,20 @@ public class Transformer {
      * @param ast
      * @return
      */
-    @Deprecated
     public String postprocessAST(String ast) {
-        // Hopefully we wont need this function
+        ast = ast.replace("1_Month", "january_Month");
+        ast = ast.replace("2_Month", "february_Month");
+        ast = ast.replace("3_Month", "march_Month");
+        ast = ast.replace("4_Month", "april_Month");
+        ast = ast.replace("5_Month", "may_Month");
+        ast = ast.replace("6_Month", "june_Month");
+        ast = ast.replace("7_Month", "july_Month");
+        ast = ast.replace("8_Month", "august_Month");
+        ast = ast.replace("9_Month", "september_Month");
+        ast = ast.replace("10_Month", "october_Month");
+        ast = ast.replace("11_Month", "november_Month");
+        ast = ast.replace("12_Month", "december_Month");
+
         return ast;
     }
 

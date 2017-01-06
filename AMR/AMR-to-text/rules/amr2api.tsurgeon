@@ -9,7 +9,7 @@
 @/MWE/=/^"[A-Z a-z .-]+"$/
 @/DET/=/^(a|the|every|few|many|much|some)$/ # TODO: extend the list
 @/DET_EXTRA/=/^(all|another|more)$/ # TODO: extend the list
-@/PREP/=/^(above|across|after|among|at|before|behind|below|between|from|in|to|until)$/ # TODO: extend the list
+@/PREP/=/^(above|across|after|among|at|before|behind|below|between|by|during|for|from|in|on|since|till|to|until)$/ # TODO: extend the list
 @/PRON/=/^(i|you|he|she|it|we|they|this|these|that|those|something|somebody|someone|nothing|nobody|anyone)$/ # TODO: extend the list
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
@@ -34,6 +34,7 @@
 @/:poss/=/^:poss$/
 @/:part-of/=/^:part-of$/
 @/:time/=/^:time$/
+@/:month/=/^:month$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
 @/:prep-prep/=/^:prep-[a-z]+$/
@@ -53,6 +54,8 @@
 @/REIF/=/^[a-z]+(-[a-z]+)*-91$/
 
 @/have-org-role-91/=/^have-org-role-91$/
+
+@/date-entity/=/^date-entity$/
 
 @/name/=/^name$/
 @/person/=/^person$/
@@ -387,6 +390,26 @@ mkVP=vp < (/FRAME/ < /:ARG1/=obj)
 # (mkVP (frame mkVP)) => (mkVP frame mkVP)
 mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [move vp_i >2 vp_o]
+
+# mkNP : PN -> NP
+# mkAdv: Prep -> NP -> Adv
+# (:time (var (prep (:op1 (var (date-entity (:month [1-12]))))))) => (mkAdv prep_Prep (mkNP (monthPN september_Month)))
+/:time/=time < (/VAR/ < (/PREP/=prep <: (/:op1/=op < (/VAR/ < (/date-entity/ <: (/:month/ < /NUM/=month))))))
+[relabel prep /^(.+)$/$1_Prep/]
+[relabel month /^(.+)$/$1_Month/]
+[adjoinF (mkAdv=adv (mkNP (monthPN=pn @))) time]
+[move month >1 pn]
+[delete op]
+[move prep >1 adv]
+[delete time]
+
+# mkNP : PN -> NP
+# mkAdv: Prep -> NP -> Adv
+# :time (var (date-entity (:month [1-12])))) => (mkAdv in_Prep (mkNP (monthPN september_Month)))
+/:time/=time < (/VAR/ < (/date-entity/ <: (/:month/=month < /NUM/=num)))
+[relabel num /^(.+)$/$1_Month/]
+[adjoinF (mkAdv in_Prep (mkNP (monthPN @))) num]
+[excise time month]
 
 # mkNP : N -> NP
 # mkAdv: Prep -> NP -> Adv

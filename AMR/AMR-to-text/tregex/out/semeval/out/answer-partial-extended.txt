@@ -935,8 +935,8 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: Me and my son's father have been broken up since August.
-AST: (mkText (mkUtt (mkS (mkCl S.i_NP (passiveVP L.break_up_V2)))) fullStopPunct)
-TXT: [I am broken up .]
+AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct)
+TXT: [I am broken up since August .]
 
 SNT: I want to start dating other people and my son's father says if I do he will have nothing to do with his son.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP L.want_VS (mkS (mkCl (mkVP L.start_VS (mkS (mkCl (mkVP L.date_V2 (mkNP S.aPl_Det (mkCN L.other_A L.person_N))))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.say_V)))))) fullStopPunct)
@@ -1087,7 +1087,7 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.legal_A) (mkS (
 TXT: [it isn't legal that an amount is paid .]
 
 SNT: Hello I started university in September, didn't immediately gel with it obviously like most people.
-AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkCN L.hello_N)))) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (P.mkAdV "immediate") (mkVP gel-00)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N)))))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkCN L.hello_N)))) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (P.mkAdV "immediate") (mkVP gel-00)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month))))))))))) fullStopPunct))
 TXT: [unknown qualified constant L.hello_N] [constant not found: gel]
 
 SNT: However, I knew it would take me some time to adjust, because I have always been very introverted, and shy and especially anxious and all the rest of it.
@@ -1383,8 +1383,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_S
 TXT: [it is contrasted that I don't know if anyone reads this .]
 
 SNT: This September I left home, and started at University. I was incredibly anxious about doing this, but rather delayed thinking about it until I got here! Now I'm here, and have been for over two weeks, I feel terribly overwhelmed by it all and feel unintelligent and socially awkward.
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP L.leave_V2 (mkNP S.a_Quant (mkCN L.home_N))))) (mkS (mkCl (mkVP (mkVP L.start_V) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.university_N))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkAP L.incredible_AdA (mkAP L.anxious_A)) (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP delay-01)))))) fullStopPunct))
-TXT: [I leave a home and it starts a university .] [unknown qualified constant L.incredible_AdA]
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP (mkVP L.leave_V2 (mkNP S.a_Quant (mkCN L.home_N))) (S.mkAdv L.in_Prep (mkNP (monthPN september_Month)))))) (mkS (mkCl (mkVP (mkVP L.start_V) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.university_N))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkAP L.incredible_AdA (mkAP L.anxious_A)) (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP delay-01)))))) fullStopPunct))
+TXT: [I leave a home in September and it starts a university .] [unknown qualified constant L.incredible_AdA]
 
 SNT: I have been struggling emotionally for the majority of my life since moving to Secondary School, although I did lose my dad at around the age of 9 and always used to blame that for my feelings. I have had two periods of counselling in my life, over roughly 15 months from December 2009 until around March this year.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "emotional") (mkVP L.struggle_V))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.have_V2 (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN L.period_N) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP L.live_V)))))))))) fullStopPunct))
@@ -2731,8 +2731,8 @@ AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP S.a_Quant (mkCN (mkCN L.m
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP S.a_Quant (mkCN (mkCN L.military_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US")))))) (mkVP (passiveVP L.say_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.concern_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.foment_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.such_A L.revolution_N)))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "radical") (mkVP L.move_V))))))))))))))))) fullStopPunct)]
 
 SNT: The political mainstream in Latin America has shifted leftward since the late 1990s.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.politics_N L.mainstream_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Latin America"))))) (mkVP (passiveVP L.shift_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.leftward_N))))))) fullStopPunct)
-TXT: [unknown qualified constant L.leftward_N]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.politics_N L.mainstream_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Latin America"))))) (mkVP (mkVP (passiveVP L.shift_V2) (S.mkAdv L.since_Prep (mkNP L.late_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.leftward_N))))))) fullStopPunct)
+TXT: [unknown qualified constant L.late_N]
 
 SNT: This leftward shift is largely in reaction to the perceived failure of free-market economics.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.react_V2) (P.mkAdv "large")) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (mkCN (mkCN L.economics_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN L.free_A (mkCN L.market_N)))))) (passiveVP L.fail_V2)))))))) fullStopPunct)
@@ -3995,7 +3995,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Montesinos")) (mkNP S.a_Quant (mkC
 TXT: [constant not found: advise]
 
 SNT: Fujimori resigned in 001100 over a bribery scandal and is now imprisoned in Lima for alleged connection with the scandal.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Fujimori")) (mkVP (mkVP L.resign_V) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN L.scandal_N)))))) (mkS (mkCl (mkVP (P.mkAdV "now") (mkVP (mkVP (passiveVP L.imprison_V2) (S.mkAdv S.because_Subj (mkS (mkCl (passiveVP L.connect_V2))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Lima")))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Fujimori")) (mkVP (mkVP (mkVP L.resign_V) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN L.scandal_N)))) (S.mkAdv L.in_Prep (mkNP (monthPN 1january_Month)))))) (mkS (mkCl (mkVP (P.mkAdV "now") (mkVP (mkVP (passiveVP L.imprison_V2) (S.mkAdv S.because_Subj (mkS (mkCl (passiveVP L.connect_V2))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Lima")))))))))) fullStopPunct)
 TXT: [no overload instance of mkAdv]
 
 SNT: 2002-08-29
@@ -5095,8 +5095,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Poon")) (mkVP L.state_VS (mkS (mkC
 TXT: [unknown qualified constant L.promote_VS]
 
 SNT: City University of Hong Kong (CityU) and the University of Science and Technology of China (USTC) in Anhui province signed an agreement in June to jointly establish a high level joint research center in Suzhou.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "City University of Hong Kong")) (mkVP (mkVP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.agreement_N))) (E.PurposeVP (mkVP (mkVP (P.mkAdV "jointly") (mkVP L.establish_V2 (mkNP S.a_Quant (mkCN L.center_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Suzhou")))))) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "University of Science and Technology of China"))))))) fullStopPunct)
-TXT: [City University of Hong Kong signs an agreement to jointly establish a center in Suzhou of University of Science and Technology of China .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "City University of Hong Kong")) (mkVP (mkVP (mkVP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.agreement_N))) (E.PurposeVP (mkVP (mkVP (P.mkAdV "jointly") (mkVP L.establish_V2 (mkNP S.a_Quant (mkCN L.center_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Suzhou")))))) (S.mkAdv L.in_Prep (mkNP (monthPN june_Month)))) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "University of Science and Technology of China"))))))) fullStopPunct)
+TXT: [City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China .]
 
 SNT: The University of Science and Technology of China is a university established by the Chinese Academy of Sciences (CAS).
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Chinese Academy of Sciences")) (mkVP L.establish_VS (mkS (mkCl (mkNP (P.mkPN "University of Science and Technology of China")) (mkNP S.a_Quant (mkCN L.university_N)))))))) fullStopPunct)

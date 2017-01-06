@@ -58,5 +58,7 @@ abstract TestTrees = TestLexicon ** {
 	fun t55_I_don_t_know_if_anyone_will_read_this : Text ;
 	fun t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces : Text ;
 	fun t57_especially_China_suffered_the_ravages_of_Japan : Text ;
+	fun t58_I_started_university_in_September : Text ;
+	fun t59_we_have_been_broken_up_since_August : Text ;
 
 }
