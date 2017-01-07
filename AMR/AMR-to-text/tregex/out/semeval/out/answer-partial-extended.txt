@@ -1983,7 +1983,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.country_N) (m
 TXT: [unknown qualified constant L.include_A]
 
 SNT: Documents outlining the Israeli proposal were distributed to the 45-member Nuclear Suppliers Group (NSG) in March 2007.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_V)))))))) (passiveVP L.distribute_V2)))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_V)))))))) (mkVP (passiveVP L.distribute_V2) (monthYearAdv march_Month (intYear (ss "2007"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.outline_VS]
 
 SNT: The Israeli presentation was made in a nonpaper that allows for official deniability.
@@ -2007,7 +2007,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkNum (
 TXT: [1 criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged .]
 
 SNT: The documents circulated on Capitol Hill in September 2007 as the Bush administration worked toward an agreement with Indian officials.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.document_N)) (mkVP (mkVP (passiveVP L.circulate_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.person_N L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V))))) (mkVP L.work_V))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Capitol Hill"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.document_N)) (mkVP (mkVP (mkVP (passiveVP L.circulate_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.person_N L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V))))) (mkVP L.work_V))))) (monthYearAdv september_Month (intYear (ss "2007")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Capitol Hill"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.administrate_V]
 
 SNT: Executive Director of the Arms Control Association in Washington Daryl Kimball stated the Israeli document could affect the debate over India.
@@ -2023,8 +2023,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN (mkC
 TXT: [no overload instance of mkCl]
 
 SNT: Consensus on India will be difficult to reach when the NSG meets in November 2007.
-AST: (mkText (mkUtt (mkS (mkCl (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.consensus_N) (S.mkAdv L.about_Prep (mkNP (P.mkPN "India"))))) (mkVP (passiveVP L.reach_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP (P.mkPN "NSG")) (mkVP L.meet_V))))))) (mkAP L.difficult_A)))) fullStopPunct)
-TXT: [no overload instance of mkCl]
+AST: (mkText (mkUtt (mkS (mkCl (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.consensus_N) (S.mkAdv L.about_Prep (mkNP (P.mkPN "India"))))) (mkVP (passiveVP L.reach_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP (P.mkPN "NSG")) (mkVP (mkVP L.meet_V) (monthYearAdv 1january_Month (intYear (ss "2007")))))))))) (mkAP L.difficult_A)))) fullStopPunct)
+TXT: [ type of 1]
 
 SNT: Israel's proposal gives officials from some countries reason to suggest an alternative approach to a specific exemption.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.reason_N)) (mkVP (passiveVP L.give_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_V)))))))) fullStopPunct)
@@ -2215,8 +2215,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkN
 TXT: [it is possible that 6 Predef.BIND , Predef.BIND 0 Predef.BIND 0 Predef.BIND 0 centrifuges that are run produce a uranium that suffices 1 bomb .]
 
 SNT: 20080500 the International Atomic Energy Agency stated that Iran possessed 3500 centrifuges in operations.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "International Atomic Energy Agency")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.possess_V2 (mkNP S.a_Quant (mkNum (mkDigits "3500")) (mkCN (mkCN L.centrifuge_N) (mkRS (mkRCl S.which_RP (passiveVP L.operate_V2)))))))))))) fullStopPunct)
-TXT: [International Atomic Energy Agency states that Iran possesses 3 Predef.BIND , Predef.BIND 5 Predef.BIND 0 Predef.BIND 0 centrifuges that are operated .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "International Atomic Energy Agency")) (mkVP (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.possess_V2 (mkNP S.a_Quant (mkNum (mkDigits "3500")) (mkCN (mkCN L.centrifuge_N) (mkRS (mkRCl S.which_RP (passiveVP L.operate_V2))))))))) (monthYearAdv may_Month (intYear (ss "2008"))))))) fullStopPunct)
+TXT: [International Atomic Energy Agency states in May 2008 that Iran possesses 3 Predef.BIND , Predef.BIND 5 Predef.BIND 0 Predef.BIND 0 centrifuges that are operated .]
 
 SNT: 2008-11-14
 AST: (d date-entity)
@@ -2487,8 +2487,8 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (m
 TXT: [a troop that is armed marches and it back turns on power .]
 
 SNT: In 010100 and 010200 the national utility, United energy systems cut power to a number of military installations around Russia.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (ss "nation") (mkNP (P.mkPN "United Energy Systems"))) (mkVP (mkVP L.cut_V2 (mkNP (mkCN L.power_N))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.military_A L.installation_N))))))) fullStopPunct)
-TXT: [nation United Energy Systems cuts power in a military installation .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (ss "nation") (mkNP (P.mkPN "United Energy Systems"))) (mkVP (mkVP L.cut_V2 (mkNP (mkCN (mkCN (mkCN L.power_N) (monthYearAdv february_Month (intYear (ss "2001")))) (monthYearAdv january_Month (intYear (ss "2001")))))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.military_A L.installation_N))))))) fullStopPunct)
+TXT: [nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation .]
 
 SNT: The military installations that lost power included the Russian space forces monitoring center on the Kamchatka Peninsula.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.center_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Kamchatka")))) (mkRS (mkRCl S.which_RP (mkVP L.monitor_V2 (mkNP (P.mkPN "Russian Space Forces"))))))) (mkVP (passiveVP L.include_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.military_A L.installation_N) (mkRS (mkRCl S.which_RP (mkVP L.lose_V2 (mkNP (mkCN L.power_N)))))))))))) fullStopPunct)
@@ -2547,7 +2547,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "United States")) (mkVP (mkVP L.dis
 TXT: [unknown qualified constant L.dissuade_VV]
 
 SNT: 20010400 the United States reduced previous support for operations targeting drug-running aircraft when a Peruvian jet shot down a small plane misidentified as a drug carrier and killed an American missionary and her child.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "United States")) (mkVP L.reduce_VS (mkS (mkCl (mkVP (P.mkAdV "previous") (mkVP L.support_V2 (mkNP S.a_Quant (mkCN (mkCN L.operation_N) (mkRS (mkRCl S.which_RP (mkVP L.target_V2 (mkNP S.a_Quant (mkCN (mkCN L.aircraft_N) (mkRS (mkRCl S.which_RP (mkVP L.run_V2 (mkNP S.a_Quant (mkCN L.drug_N)))))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "United States")) (mkVP (mkVP L.reduce_VS (mkS (mkCl (mkVP (P.mkAdV "previous") (mkVP L.support_V2 (mkNP S.a_Quant (mkCN (mkCN L.operation_N) (mkRS (mkRCl S.which_RP (mkVP L.target_V2 (mkNP S.a_Quant (mkCN (mkCN L.aircraft_N) (mkRS (mkRCl S.which_RP (mkVP L.run_V2 (mkNP S.a_Quant (mkCN L.drug_N))))))))))))))))) (monthYearAdv april_Month (intYear (ss "2001"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.reduce_VS]
 
 SNT: Relatives of the victims sued the US government and won a settlement due to the Government's provision of intelligence and technical support to the operation.
@@ -2667,7 +2667,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Viegas")) (mkVP L.state_VS (mkS (m
 TXT: [unknown qualified constant L.appear_V2]
 
 SNT: 20010400 Rio de Janeiro's most notorious drug boss, Fernandinho Beira-Mar, was captured in Colombia in a guns-for drugs pipeline involving left-wing guerrillas.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.boss_N L.of_Prep) (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.deal_V2 (mkNP S.a_Quant (mkCN L.drug_N)))))))) (mkNP (P.mkPN "Fernandinho Beira-Mar")))) (mkVP (mkVP (passiveVP L.capture_V2) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.gun_N L.pipeline_N) (S.mkAdv L.for_Prep (mkNP S.a_Quant (mkCN L.drug_N)))) (mkRS (mkRCl S.which_RP (mkAP (mkAP L.involve_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.guerrilla_N))))))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.boss_N L.of_Prep) (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.deal_V2 (mkNP S.a_Quant (mkCN L.drug_N)))))))) (mkNP (P.mkPN "Fernandinho Beira-Mar")))) (mkVP (mkVP (mkVP (passiveVP L.capture_V2) (monthYearAdv april_Month (intYear (ss "2001")))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.gun_N L.pipeline_N) (S.mkAdv L.for_Prep (mkNP S.a_Quant (mkCN L.drug_N)))) (mkRS (mkRCl S.which_RP (mkAP (mkAP L.involve_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.guerrilla_N))))))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.involve_A]
 
 SNT: Brazil's northern Amazon corridor has become an increasingly busy and essential route in the global drug trade and is used for smuggling arms, gold and diamonds.
@@ -2791,7 +2791,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Campos")) (mkVP L.say_VS (mkS (mkC
 TXT: [unknown qualified constant L.prepare_VS]
 
 SNT: In May, Chavez's government announced details in 050500 of an $18.6 million deal with a Russian firm to purchase 100000 AK-103 assault rifles with 30 rounds of ammunition each and the technology transfer for Venezuela to manufacture the rifles.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.organization_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Chavez")))) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP L.announce_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.detail_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.deal_VV (mkVP L.purchase_V2 (mkNP S.a_Quant (mkNum (mkDigits "100000")) (E.CompoundCN L.each_N L.rifle_N))) (mkNP S.a_Quant (mkCN (mkCN L.firm_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia")))))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (passiveVP L.transfer_V2) (E.PurposeVP (mkVP L.manufacture_V))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Venezuela")))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.organization_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Chavez")))) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP (mkVP L.announce_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.detail_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.deal_VV (mkVP L.purchase_V2 (mkNP S.a_Quant (mkNum (mkDigits "100000")) (E.CompoundCN L.each_N L.rifle_N))) (mkNP S.a_Quant (mkCN (mkCN L.firm_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia")))))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (passiveVP L.transfer_V2) (E.PurposeVP (mkVP L.manufacture_V))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Venezuela"))))))))) (monthYearAdv may_Month (intYear (ss "2005"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.deal_VV]
 
 SNT: The deal works out to $186.22 per rifle.
@@ -2891,12 +2891,12 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Quintero")) (mkVP L.say_VS (mkS S.
 TXT: [unknown qualified constant L.any_N]
 
 SNT: 100000 reservists in 050600 engaged with the Venezuelan navy in a massive war game to repel a stronger country that had invaded.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "100000")) (mkCN L.reservist_N)) (mkNP S.a_Quant (mkCN (mkCN L.navy_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Venezuela"))))))) (mkVP (mkVP (passiveVP L.engage_V2) (E.PurposeVP (mkVP L.repel_V2 (mkNP S.a_Quant (mkCN (mkCN (mkCN L.country_N) (mkRS (mkRCl S.which_RP (mkVP L.invade_V)))) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.strong_V2) (P.mkAdv "more"))))))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (E.CompoundCN L.war_N L.massive_A L.game_N))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "100000")) (mkCN L.reservist_N)) (mkNP S.a_Quant (mkCN (mkCN L.navy_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Venezuela"))))))) (mkVP (mkVP (mkVP (passiveVP L.engage_V2) (monthYearAdv june_Month (intYear (ss "2005")))) (E.PurposeVP (mkVP L.repel_V2 (mkNP S.a_Quant (mkCN (mkCN (mkCN L.country_N) (mkRS (mkRCl S.which_RP (mkVP L.invade_V)))) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.strong_V2) (P.mkAdv "more"))))))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (E.CompoundCN L.war_N L.massive_A L.game_N))))))) fullStopPunct)
 TXT: [unknown qualified constant L.invade_V]
 
 SNT: 40 employees of the state oil company participated in a similar exercise with 1200 soldiers in 050600.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "40")) (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (E.CompoundCN L.oil_N L.company_N)) L.employ_V2)))) (mkVP L.participate_V2 (mkNP S.a_Quant (mkCN (mkCN L.exercise_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2))))))))) fullStopPunct)
-TXT: [4 Predef.BIND 0 persons that an oil company employs participate an exercise that is resembled .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "40")) (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (E.CompoundCN L.oil_N L.company_N)) L.employ_V2)))) (mkVP (mkVP L.participate_V2 (mkNP S.a_Quant (mkCN (mkCN L.exercise_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))))) (monthYearAdv june_Month (intYear (ss "2005"))))))) fullStopPunct)
+TXT: [4 Predef.BIND 0 persons that an oil company employs participate an exercise that is resembled in June 2005 .]
 
 SNT: Pro-Chavez circles here warn of asymmetrical warfare.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.circle_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.here_N)))) (mkRS (mkRCl S.which_RP (mkVP L.favor_V2 (mkNP (P.mkPN "Chavez"))))))) (mkVP L.warn_V2 (mkNP S.a_Quant (mkCN L.symmetrical_A L.warfare_N)))))) fullStopPunct)
@@ -2935,8 +2935,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Chavez")) (mkVP (mkVP L.shut_down_
 TXT: [Chavez shuts down it in 2004 .]
 
 SNT: 5 US military trainers and students participating in an exchange program were ordered to leave the country in 050400.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.order_V2) (E.PurposeVP (mkVP L.leave_V2 (mkNP S.a_Quant (mkCN L.country_N)))))))) fullStopPunct)
-TXT: [it is ordered to leave a country .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.order_V2) (E.PurposeVP (mkVP (mkVP L.leave_V2 (mkNP S.a_Quant (mkCN L.country_N))) (monthYearAdv april_Month (intYear (ss "2005"))))))))) fullStopPunct)
+TXT: [it is ordered to leave a country in April 2005 .]
 
 SNT: Analysts say that it is likely Chavez is trying to indoctrinate his public and armed forces.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.analyze_V))))) (mkVP L.say_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.likely_A) (mkS (mkCl (mkNP (P.mkPN "Chavez")) (mkVP L.try_VS (mkS (mkCl (mkVP L.indoctrinate_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.public_N)) (mkNP S.a_Quant (mkCN (mkCN L.force_N) (mkRS (mkRCl S.which_RP (passiveVP L.arm_V2)))))))))))))))))))) fullStopPunct)
@@ -2959,12 +2959,12 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: The North Korean government may be prepared to begin shutting down a plutonium producing reactor in June 2007 as the first step toward disabling the Unit by December 2007.
-AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP begin-01))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP (mkVP begin-01) (monthYearAdv june_Month (intYear (ss "2007")))))))))))) fullStopPunct)
 TXT: [constant not found: begin]
 
 SNT: Assistant Secretary of State Christopher Hill stated on 18 June 2007 that the North Korean government may be prepared to begin shutting down a plutonium producing reactor in June 2007 as the first step toward disabling the Unit by December 2007.
-AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 (L.secretary_N (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.foreign_N)))) L.of_Prep)) (mkVP (mkVP (passiveVP L.state_V2) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007")))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP begin-01))))))))))))) fullStopPunct)
-TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 (L.secretary_N (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.foreign_N)))) L.of_Prep)) (mkVP (mkVP (passiveVP L.state_V2) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007")))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP begin-01))))))))))))) fullStopPunct)]
+AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 (L.secretary_N (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.foreign_N)))) L.of_Prep)) (mkVP (mkVP (passiveVP L.state_V2) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007")))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP (mkVP begin-01) (monthYearAdv june_Month (intYear (ss "2007")))))))))))))))) fullStopPunct)
+TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 (L.secretary_N (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.foreign_N)))) L.of_Prep)) (mkVP (mkVP (passiveVP L.state_V2) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007")))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "North Korea"))))))) (mkVP (passiveVP L.prepare_V2) (E.PurposeVP (mkVP (mkVP begin-01) (monthYearAdv june_Month (intYear (ss "2007")))))))))))))))) fullStopPunct)]
 
 SNT: Hill is the head American negotiator on North Korea's nuclear weapons program.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.head_A L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.negotiate_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN (mkCN (mkCN L.program_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.weapon_N)))) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "North Korea")))))))))))))) fullStopPunct)
@@ -2991,7 +2991,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkC
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkCl (have-org-role-91 (mkNP (P.mkPN "IAEA"))) (mkVP (passiveVP L.hold_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.talk_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.reactor_N)) (passiveVP L.seal_V2))))))))))))))) fullStopPunct)]
 
 SNT: North Korean officials refused to proceed with a February 2007 agreement to begin decommissioning the Yongbyon reactor until funds worth 25 million dollars in accounts linked to North Korea held in a Macao Bank were transferred to North Korea.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "North Korea")))) (mkVP (passiveVP L.refuse_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.proceed_VS (mkS (mkCl (mkVP (passiveVP L.agree_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.begin_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Yongbyon")) (passiveVP L.decommission_V2))))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "North Korea")))) (mkVP (passiveVP L.refuse_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.proceed_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.agree_V2) (monthYearAdv february_Month (intYear (ss "2007")))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.begin_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Yongbyon")) (passiveVP L.decommission_V2))))))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.proceed_VS]
 
 SNT: The money was frozen when officials from the United States accused the Banco Delta Asia of complicity in financial crimes on behalf of North Korea.
@@ -3839,7 +3839,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Fujimori"
 TXT: [unknown qualified constant L.avoid_VS]
 
 SNT: Montesinos fled Peru in October 2000 but was captured in Venezuela on 23 June 2001.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (mkVP (mkVP capture-01) (dayMonthYearAdv (intMonthday (ss "23")) june_Month (intYear (ss "2001")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Venezuela")))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Montesinos")) (mkVP L.flee_V2 (mkNP (P.mkPN "Peru")))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (mkVP (mkVP capture-01) (dayMonthYearAdv (intMonthday (ss "23")) june_Month (intYear (ss "2001")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Venezuela")))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Montesinos")) (mkVP (mkVP L.flee_V2 (mkNP (P.mkPN "Peru"))) (monthYearAdv october_Month (intYear (ss "2000"))))))))))) fullStopPunct)
 TXT: [constant not found: capture]
 
 SNT: Montesinos heard the sentence at the Callao Naval Base where Montesinos has been imprisoned since 2001.
@@ -4183,7 +4183,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.insurgent_N) (mkRS 
 TXT: [unknown qualified constant L.increase_VS]
 
 SNT: The Nepali government initiated peace talks with the guerrillas in August 2001 in order to find a peaceful solution to the guerrilla insurgency that has killed more than 5000 people including policemen, guerrilla members and civilians since it began in the Himalayan kingdom in 1996.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Nepal"))))))) (mkVP (mkVP L.initiate_VS (mkS (mkCl (mkVP (mkVP L.talk_V2 (mkNP (mkCN L.peace_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.guerrilla_N))))))) (E.PurposeVP (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.thing_N)))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Nepal"))))))) (mkVP (mkVP (mkVP L.initiate_VS (mkS (mkCl (mkVP (mkVP L.talk_V2 (mkNP (mkCN L.peace_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.guerrilla_N))))))) (E.PurposeVP (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.thing_N))))) (monthYearAdv august_Month (intYear (ss "2001"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.initiate_VS]
 
 SNT: The 3 rounds of talks held were inconclusive as the guerrillas demanded the establishment of a republican State, an interim government and a new constitution, which the Nepali government rejected.
@@ -4227,7 +4227,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP (P.mkAdV "also") (mk
 TXT: [unknown qualified constant L.seek_VS]
 
 SNT: Tang stated the SCO still faces a very stern anti-terrorism fight and cited the October 2002 hostage crisis in Moscow.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "SCO")) (mkVP (P.mkAdV "still") (mkVP L.face_VS (mkS (mkCl (mkNP (mkCN L.terrorism_N)) (passiveVP L.fight_V2)))))))))) (mkS (mkCl (mkVP L.cite_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.hostage_N L.crisis_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Moscow"))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "SCO")) (mkVP (P.mkAdV "still") (mkVP L.face_VS (mkS (mkCl (mkNP (mkCN L.terrorism_N)) (passiveVP L.fight_V2)))))))))) (mkS (mkCl (mkVP L.cite_V2 (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.hostage_N L.crisis_N) (monthYearAdv october_Month (intYear (ss "2002")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Moscow"))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.face_VS]
 
 SNT: Tang stated the fact that the terrorist attack in Moscow was masterminded by national separatists and regional extremists demonstrated the necessity and correctness of efforts in reducing the 3-forces of terrorism, separatism and extremism.
@@ -4495,8 +4495,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.claim_VS (mk
 TXT: [unknown qualified constant L.responsible_VS]
 
 SNT: These assassinations include that of the Teheran Evin prison's former director assodalah Ladjevardi in August 980800 and of former Commandant in chief of the Iranian army General Ali Sayad Chirazi in 990400.
-AST: (mkText (mkUtt (mkS (mkCl (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.director_N L.of_Prep) (mkNP (P.mkPN "Evin Prison"))) (mkNP (P.mkPN "Assodalah Ladjevardi")))) (passiveVP L.assassinate_V2))) (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.commandant_N L.of_Prep) (mkNP S.a_Quant (mkCN (mkCN L.army_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran")))))) (mkNP (P.mkPN "Ali Sayad Chirazi")))) (passiveVP L.assassinate_V2))))) (passiveVP L.include_V2)))) fullStopPunct)
-TXT: [director of Evin Prison Assodalah Ladjevardi is assassinated and commandant of an army from Iran Ali Sayad Chirazi is assassinated is included .]
+AST: (mkText (mkUtt (mkS (mkCl (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.director_N L.of_Prep) (mkNP (P.mkPN "Evin Prison"))) (mkNP (P.mkPN "Assodalah Ladjevardi")))) (mkVP (passiveVP L.assassinate_V2) (monthYearAdv august_Month (intYear (ss "1998")))))) (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.commandant_N L.of_Prep) (mkNP S.a_Quant (mkCN (mkCN L.army_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran")))))) (mkNP (P.mkPN "Ali Sayad Chirazi")))) (mkVP (passiveVP L.assassinate_V2) (monthYearAdv april_Month (intYear (ss "1999")))))))) (passiveVP L.include_V2)))) fullStopPunct)
+TXT: [director of Evin Prison Assodalah Ladjevardi is assassinated in August 1998 and commandant of an army from Iran Ali Sayad Chirazi is assassinated in April 1999 is included .]
 
 SNT: 2003-07-09
 AST: (d date-entity)
@@ -4583,8 +4583,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (P.mkAdV "jointly") (mkVP L.chair_V2 (mkNP 
 TXT: [it jointly chairs Joint Commission .]
 
 SNT: Dlamini-Zuma participated in the Brazil-Africa Forum in Fortaleza, Brazil, in 030600.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Dlamini-Zuma")) (mkVP (mkVP L.participate_V2 (mkNP (P.mkPN "Brazil-Africa Forum"))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Fortaleza"))))))) fullStopPunct)
-TXT: [Dlamini-Zuma participates Brazil-Africa Forum in Fortaleza .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Dlamini-Zuma")) (mkVP (mkVP (mkVP L.participate_V2 (mkNP (P.mkPN "Brazil-Africa Forum"))) (monthYearAdv june_Month (intYear (ss "2003")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Fortaleza"))))))) fullStopPunct)
+TXT: [Dlamini-Zuma participates Brazil-Africa Forum in June 2003 in Fortaleza .]
 
 SNT: The South African Foreign Affairs Department stated that The historic and strategic India-Brazil-South Africa agreement which resulted from the Brazil-Africa Forum had outlined plans for trilateral political and economic cooperation between India, Brazil and South Africa.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkNP (P.mkPN "Foreign Affairs Department")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "South Africa")))) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.outline_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.plan_V) (E.PurposeVP (mkVP (mkVP (P.mkAdV "trilateral") (mkVP L.cooperate_V)) (S.mkAdv L.PPT_Prep (mkNP S.and_Conj (mkListNP (mkNP (mkCN L.politics_N)) (mkNP S.a_Quant (mkCN L.economy_N)))))))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "India")) (mkNP (P.mkPN "Brazil")))) (mkVP L.agree_V))))))))))) fullStopPunct)
@@ -4647,7 +4647,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.greet_V2 (mkNP (P.mkPN "Chirac"))) 
 TXT: [it greets Chirac in a space center in Krasnoznamernsk .]
 
 SNT: The closed Soviet-era military facility was founded in 570000 and collects and analyzes all information gathered from Russia's military spy satellites.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.analyze_V2 (mkNP L.all_Det (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.gather_V2)))))))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.military_A L.facility_N) (mkRS (mkRCl S.which_RP (passiveVP L.close_V2))))) (passiveVP L.found_V2))) (mkS (mkCl (mkVP L.collect_V))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.analyze_V2 (mkNP L.all_Det (mkCN (mkCN L.information_N) (mkRS (mkRCl S.which_RP (passiveVP L.gather_V2)))))))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.military_A L.facility_N) (mkRS (mkRCl S.which_RP (passiveVP L.close_V2))))) (mkVP (passiveVP L.found_V2) (monthYearAdv july_Month (intYear (ss "2005")))))) (mkS (mkCl (mkVP L.collect_V))))))) fullStopPunct)
 TXT: [{s = "it"]
 
 SNT: The space center is also involved in launches of intercontinental ballistic missiles and is working on a plan to develop defensive early warning systems.
@@ -5083,8 +5083,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.city_N L.universi
 TXT: [unknown qualified constant L.collaborate_VV]
 
 SNT: In June 2004 Hong Kong Polytechnic University (PolyU) joined national university science and technology park of the Virtual University Park in Shenzhen, China becoming the first tertiary institution of Hong Kong to establish research centers and training facilities in mainland China.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hong Kong Polytechnic University")) (mkVP L.join_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.university_N L.park_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Virtual University Park"))))))))) fullStopPunct)
-TXT: [Hong Kong Polytechnic University joins a university park of Virtual University Park .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hong Kong Polytechnic University")) (mkVP (mkVP L.join_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.university_N L.park_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Virtual University Park")))))) (monthYearAdv june_Month (intYear (ss "2004"))))))) fullStopPunct)
+TXT: [Hong Kong Polytechnic University joins a university park of Virtual University Park in June 2004 .]
 
 SNT: President of PolyU Poon Chung-kwong stated that both public and private sectors in Hong Kong are strengthening connections with mainland China in various areas.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.president_N L.of_Prep) (mkNP (P.mkPN "PolyU"))) (mkNP (P.mkPN "Poon Chung-kwong")))) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (S.and_Conj (S.mkAdv L.in_Prep (mkNP (P.mkPN "Hong Kong")))) (mkListNP (mkNP S.a_Quant (mkCN L.public_A (mkCN L.sector_N))) (mkNP S.a_Quant (mkCN L.private_A (mkCN L.sector_N))))) (mkVP L.strengthen_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.connect_V2) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.various_A L.area_N)))) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN (mkCN L.mainland_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN "China"))))))))))))))))) fullStopPunct)
@@ -5139,7 +5139,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.university_N)) (mkVP L.co
 TXT: [unknown qualified constant L.continue_VS]
 
 SNT: Xinhua News Agency , Beijing , September 1st , by reporter Guojun Yang
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Guojun Yang"))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Guojun Yang"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: When meeting with Chavalit Yoncayu , vice-premier and concurrent Minister of Domestic Affairs of Thailand , at the Diaoyutai State Guesthouse today , Huaqing Liu , vice-chairman of the Central Military Commission said that China placed a great deal of importance in developing friendship with the government , people and Armed Forces of Thailand , especially the economic and trade cooperation between the two countries .
@@ -5171,7 +5171,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
 TXT: [it ends .]
 
 SNT: Xinhua News Agency , Beijing , September 1st
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V]
 
 SNT: Guofang Shen , The foreign ministry spokesperson , announced at a news conference held this afternoon that President Gentzs Aerpade of the Hungary Republic , would pay a State visit to China from September 14th to the 17th at the invitation of president Zemin Jiang .
@@ -5191,7 +5191,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
 TXT: [it ends .]
 
 SNT: Xinhua News Agency , Bishket , April 23rd , by reporters Menjun Ju and Xiaoguang Hu
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Menjun Ju")) (mkNP (P.mkPN "Xiaoguang Hu"))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Bishket"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Menjun Ju")) (mkNP (P.mkPN "Xiaoguang Hu"))))) (dayMonthAdv (intMonthday (ss "23")) april_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Bishket"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: Principles of parties concerned from China and Kirghizia signed six documents here today .
@@ -5239,7 +5239,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
 TXT: [it ends .]
 
 SNT: Xinhua News Agency , Tokyo , September 1st , by reporter Yiguo Yu
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Yiguo Yu"))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Yiguo Yu"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: The Japanese delegation participating in the Sixth Far East and South Pacific Region Handicapped Sports Meet held a grand swearing in ceremony in Tokyo this afternoon .
@@ -5299,11 +5299,11 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_
 TXT: [unknown qualified constant L.title_V2]
 
 SNT: Xinhua News Agency , August 31st .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP L.byline_V)))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "31")) august_Month))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V]
 
 SNT: Xinhua News Agency , Seoul , August 31st , by reporter Shuifu Tang
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Shuifu Tang"))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Seoul"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Shuifu Tang"))) (dayMonthAdv (intMonthday (ss "31")) august_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Seoul"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: The first " Le Tian Cup " China and Korea Go competition started today at Fushan , the second largest city of Korea .
@@ -5363,7 +5363,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.he_NP (mkVP (mkVP (P.mkAdV "before") (mkVP L.wi
 TXT: [constant not found: play]
 
 SNT: The Go teams from China and Korea will shift to Seoul on September 1st , and will hold the second competition in the Le Tian Hotel on the 2nd .
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.game_A L.team_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkNP S.a_Quant (mkCN (mkCN L.team_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Korea"))))))) (mkVP (passiveVP L.shift_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Seoul")))))) (mkS (mkCl (mkVP (mkVP (L.compete_V (S.mkOrd (mkDigits "2")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Le Tian Hotel"))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.game_A L.team_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkNP S.a_Quant (mkCN (mkCN L.team_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Korea"))))))) (mkVP (mkVP (passiveVP L.shift_V2) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Seoul")))))) (mkS (mkCl (mkVP (mkVP (L.compete_V (S.mkOrd (mkDigits "2")))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Le Tian Hotel"))))))))) fullStopPunct)
 TXT: [A function type is expected for compete_V instead of type V]
 
 SNT: According to the rules discussed and agreed upon by both sides , if the two teams draw with 7 : 7 , then the final result will be determined by the result of the competition between Weiping Nie of the Chinese team and Xunxuan Cao of the Korean team .
@@ -5379,7 +5379,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
 TXT: [it ends .]
 
 SNT: Xinhua News Agency , Rome , September 1st , by reporters Aiguo Yang and Changrui Huang
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.report_V)))) (mkListNP (mkNP (P.mkPN "Aiguo Yang")) (mkNP (P.mkPN "Changrui Huang"))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.report_V)))) (mkListNP (mkNP (P.mkPN "Aiguo Yang")) (mkNP (P.mkPN "Changrui Huang"))))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: The 1 - meter diving board preliminaries of the Seventh World Swimming Championship were held here this morning .
@@ -5443,7 +5443,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
 TXT: [it ends .]
 
 SNT: Xinhua News Agency , Rome , September 1st , by reporters Changrui Huang and Aiguo Yang
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Changrui Huang")) (mkNP (P.mkPN "Aiguo Yang"))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Changrui Huang")) (mkNP (P.mkPN "Aiguo Yang"))))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: The performance of the female competitors of the Chinese diving team , Mingxia Fu and Bin Chi , in the first 6 rounds of the 10 - meter platform diving preliminary competition at the Seventh World Swimming Championships held here today was ideal , and hopes of entering the heats are in sight .

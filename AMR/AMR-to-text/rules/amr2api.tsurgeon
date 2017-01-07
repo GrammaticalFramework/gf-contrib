@@ -394,10 +394,10 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [move vp_i >2 vp_o]
 
 # dayMonthYearAdv : Monthday -> Month -> Year -> Adv
-# (:time (var (date-entity (:year year) (:month month) (:day day)))) => (dayMonthYearAdv (intMonthday day) month_Month (intYear day))
+# (:time (var (date-entity (:year year) (:month month) (:day day)))) => (dayMonthYearAdv (intMonthday day) month_Month (intYear year))
 /:time/=time < (/VAR/ < (/date-entity/=entity < (/:year/=year < /NUM/=y) < (/:month/=month < /NUM/=m) < (/:day/=day < /NUM/=d)))
 [relabel m /^(.+)$/$1_Month/]
-[adjoinF (dayMonthYearAdv=date (intMonthday ss=day2) @ (intYear ss=year2)) month]
+[adjoinF (dayMonthYearAdv (intMonthday ss=day2) @ (intYear ss=year2)) month]
 [excise month month]
 [relabel y /^(.+)$/"$1"/]
 [move year >1 year2]
@@ -405,6 +405,28 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [relabel d /^(.+)$/"$1"/]
 [move day >1 day2]
 [excise day day]
+[excise time entity]
+
+# dayMonthAdv : Monthday -> Month -> Adv
+# (:time (var (date-entity (:month month) (:day day)))) => (dayMonthAdv (intMonthday day) month_Month)
+/:time/=time < (/VAR/ < (/date-entity/=entity < (/:month/=month < /NUM/=m) < (/:day/=day < /NUM/=d)))
+[relabel m /^(.+)$/$1_Month/]
+[adjoinF (dayMonthAdv (intMonthday ss=day2) @) month]
+[excise month month]
+[relabel d /^(.+)$/"$1"/]
+[move day >1 day2]
+[excise day day]
+[excise time entity]
+
+# monthYearAdv : Month -> Year -> Adv
+# (:time (var (date-entity (:year year) (:month month)))) => (monthYearAdv month_Month (intYear year))
+/:time/=time < (/VAR/ < (/date-entity/=entity < (/:year/=year < /NUM/=y) < (/:month/=month < /NUM/=m)))
+[relabel m /^(.+)$/$1_Month/]
+[adjoinF (monthYearAdv @ (intYear ss=year2)) month]
+[excise month month]
+[relabel y /^(.+)$/"$1"/]
+[move year >1 year2]
+[excise year year]
 [excise time entity]
 
 # monthAdv : Month -> Adv
