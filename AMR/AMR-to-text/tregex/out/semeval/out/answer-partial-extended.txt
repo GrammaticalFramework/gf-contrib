@@ -1299,8 +1299,8 @@ AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (m
 TXT: [A function type is expected for something_NP instead of type NP]
 
 SNT: You could go to the library on saturdays and do a good 8 hours of studying there.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.go_V)))))) (mkS (mkCl (mkVP L.study_V)))))) fullStopPunct)
-TXT: [it is possible that you go and it studies .]
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (weekdayPunctualAdv saturday_Weekday))))))) (mkS (mkCl (mkVP L.study_V)))))) fullStopPunct)
+TXT: [it is possible that you go on Saturday and it studies .]
 
 SNT: Is there a friend's house you could go to- form a study group?
 AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.form_V2 (mkNP S.a_Quant (mkCN (mkCN L.group_N) (mkRS (mkRCl S.which_RP (mkVP L.study_V))))))))))))))) questMarkPunct)
@@ -4411,7 +4411,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Alliot-Marie")) (mkVP meet-03 (mkC
 TXT: [constant not found: meet]
 
 SNT: Alliot-Marie arrived on Sunday.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Alliot-Marie")) (passiveVP L.arrive_V2)))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Alliot-Marie")) (mkVP (passiveVP L.arrive_V2) (weekdayPunctualAdv sunday_Weekday))))) fullStopPunct)
 TXT: [unknown qualified constant L.arrive_V2]
 
 SNT: 2003-06-24

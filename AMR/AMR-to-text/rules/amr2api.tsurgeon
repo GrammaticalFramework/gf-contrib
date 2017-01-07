@@ -14,6 +14,7 @@
 @/CONJ/=/^(and|or)$/
 @/NUM/=/^[0-9]+$/
 @/NE_TYPE/=/^[a-z-]+$/ # TODO: enumerate
+@/DAY/=/^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/
 
 @/:ARGm/=/^:ARG[01]$/
 @/:ARGm-of/=/^:ARG[01]-of$/
@@ -37,6 +38,7 @@
 @/:year/=/^:year$/
 @/:month/=/^:month$/
 @/:day/=/^:day$/
+@/:weekday/=/^:weekday$/
 @/:location/=/^:location$/
 @/:topic/=/^:topic$/
 @/:prep-prep/=/^:prep-[a-z]+$/
@@ -70,7 +72,7 @@
 @/VP/=/^(mk|passive)VP$/
 @/NP/=/^(mk|[SL][.][a-z]+_)NP$/
 @/CN/=/^(mk|E[.]Compound)CN$/
-@/Adv/=/^(mkAdv|E[.]PurposeVP|monthAdv|yearAdv|dayMonthAdv|monthYearAdv|dayMonthYearAdv)$/
+@/Adv/=/^(mkAdv|E[.]PurposeVP|monthAdv|yearAdv|dayMonthAdv|monthYearAdv|dayMonthYearAdv|weekdayPunctualAdv)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
 @/det_Det/=/^[SL][.](a|the|every|few|many|more|much|some|another|all)_Det$/ # TODO: sync
@@ -442,6 +444,13 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 [relabel y /^(.+)$/"$1"/]
 [adjoinF (yearAdv (intYear (ss @))) y]
 [excise time year]
+
+# weekdayPunctualAdv : Weekday -> Adv
+# (:time (var (date-entity (:weekday (var day))))) => (weekdayPunctualAdv day_Weekday)
+/:time/=time < (/VAR/ < (/date-entity/ < (/:weekday/ < (/VAR/=var < /DAY/=day))))
+[relabel day /^(.+)$/$1_Weekday/]
+[adjoinF (weekdayPunctualAdv @) day]
+[excise time var]
 
 # mkAdv: Prep -> NP -> Adv
 # (:time (var (prep (:op1 (var (date-entity (:month [1-12]))))))) => (mkAdv prep_Prep (mkNP (monthPN [1-12]_Month)))
