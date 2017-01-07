@@ -204,12 +204,12 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t43_they_should_have_been_expelled_from_school_at_a_minimum
-TestTreesEng: it is recommended that they are expelled from a school at a minimum .
+TestTreesEng: it is recommended that they are expelled to a school at a minimum .
 TestTreesLav: 
 TestTreesRus: 
 
 TestTrees: t44_my_opinion_is_based_on_the_information_provided
-TestTreesEng: a thing that I opine is based from information that is provided .
+TestTreesEng: a thing that I opine is based to information that is provided .
 TestTreesLav: 
 TestTreesRus: 
 
@@ -250,6 +250,51 @@ TestTreesRus:
 
 TestTrees: t52_the_people_are_already_incredibly_fully_equipped
 TestTreesEng: a person is already incredibly fully equipped .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t53_never_go_back_to_that_time_when_signing_the_treaties
+TestTreesEng: you don't ever go back to that time when we sign a treaty !
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal
+TestTreesEng: Radio Nepal reports that 3 policemen are killed and 1 &+ 9 other policemen are wounded when a guerrilla ambushes a vehicle in the West of Nepal .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t55_I_don_t_know_if_anyone_will_read_this
+TestTreesEng: I don't know if anyone reads this .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces
+TestTreesEng: it isn't clear if a soldier from Russia and a soldier from Georgia combat or it is limited to fight between a separatist and a force .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t57_especially_China_suffered_the_ravages_of_Japan
+TestTreesEng: especially China suffers that Japan ravages .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t58_I_started_university_in_September
+TestTreesEng: I start a university in September .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t59_we_have_been_broken_up_since_August
+TestTreesEng: we are broken up since August .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t60_I_started_university_on_1_September_1999
+TestTreesEng: I start a university on 1 September 1999 .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t61_I_started_university_in_1999
+TestTreesEng: I start a university in 1999 .
 TestTreesLav: 
 TestTreesRus: 
 

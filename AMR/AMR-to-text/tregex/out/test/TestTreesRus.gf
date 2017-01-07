@@ -1,7 +1,7 @@
 --# -path=.:alltenses:../../../lexicons/translator:../semeval
 
 concrete TestTreesRus of TestTrees = TestLexiconRus **
-open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {
+open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus), Prelude in {
 
 	flags
 		coding = utf8 ;

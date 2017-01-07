@@ -32,6 +32,7 @@ abstract Leaves = Cat, Dictionary ** {
 		quote_VS : VS ;			-- missing in Dictionary
 		recommend_VS : VS ;		-- only recommend_V2 in Dictionary
 		refuse_VS : VS ;		-- missing in Dictionary
+		suffer_VS : VS ;		-- missing in Dictionary
 		want_VS : VS ;			-- subcat in Dictionary
 
 		center_N : N ;			-- missing in Dictionary

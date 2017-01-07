@@ -40,17 +40,20 @@ public class Tester {
 
             eng.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             eng.println("concrete " + name + "Eng of " + name + " = TestLexiconEng **");
-            eng.println("open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng) in {");
+            eng.println(
+                    "open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng), ConstructionEng, Prelude in {");
             eng.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = en_US ;\n");
 
             lav.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             lav.println("concrete " + name + "Lav of " + name + " = TestLexiconLav **");
-            lav.println("open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav) in {");
+            lav.println(
+                    "open SyntaxLav, (S=SyntaxLav), (E=ExtraLav), (L=TestLexiconLav), (P=ParadigmsLav), Prelude in {");
             lav.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = lv_LV ;\n");
 
             rus.println("--# -path=.:alltenses:../../../lexicons/translator:../semeval\n");
             rus.println("concrete " + name + "Rus of " + name + " = TestLexiconRus **");
-            rus.println("open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus) in {");
+            rus.println(
+                    "open SyntaxRus, (S=SyntaxRus), (E=ExtraRus), (L=TestLexiconRus), (P=ParadigmsRus), Prelude in {");
             rus.println("\n\tflags\n\t\tcoding = utf8 ;\n\t\tlanguage = ru_RU ;\n");
 
             gfs.println("import " + name + "Eng.gf" + " " + name + "Lav.gf" + " " + name + "Rus.gf\n");
@@ -979,7 +982,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkQS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP))))))))) questMarkPunct)");
+                "(mkText (mkUtt (mkQS (mkQCl (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP L.another_Det (mkCN (mkCN L.side_N) (S.mkAdv L.part_Prep S.this_NP)))))))))) questMarkPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
@@ -1033,6 +1036,170 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (P.mkAdV \"fully\") (mkVP (P.mkAdV \"incredibly\") (mkVP (P.mkAdV \"already\") (passiveVP L.equip_V2))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Never go back to that time when signing the treaties!
+    @Test
+    public void t53_never_go_back_to_that_time_when_signing_the_treaties() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(g / go-back-19 :mode imperative :polarity - :ARG0 (y / you) :ARG2 (t2 / time :mod (t3 / that) :time (s / sign-02 :ARG0 (w / we) :ARG1 (t / treaty))) :time (e / ever))");
+        assertEquals(amr,
+                "(g (go-back-19 (:mode imperative) (:polarity -) (:ARG0 (y you)) (:ARG2 (t2 (time (:mod (t3 that)) (:time (s (sign-02 (:ARG0 (w we)) (:ARG1 (t treaty)))))))) (:time (e ever))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP (mkVP (P.mkAdV \"ever\") (mkVP L.go_back_V)) (S.mkAdv L.DIR_Prep (mkNP S.that_Det (mkCN (mkCN L.time_N) (S.mkAdv S.when_Subj (mkS (mkCl S.we_NP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.treaty_N))))))))))))) exclMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Radio Nepal reported that 3 policemen were killed and 19 others wounded when their vehicle
+    // was ambushed by guerrillas in western Nepal.
+    @Test
+    public void
+            t54_Radio_Nepal_reported_that_3_policemen_were_killed_and_19_others_wounded_when_their_vehicle_was_ambushed_by_guerrillas_in_western_Nepal() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(r / report-01 :ARG0 (p3 / publication :name (n / name :op1 \"Radio\" :op2 \"Nepal\")) :ARG1 (a / and :op1 (k / kill-01 :ARG1 (p / policeman :quant 3)) :op2 (w / wound-01 :ARG1 (p2 / policeman :quant 19 :mod (o2 / other))) :time (a3 / ambush-01 :ARG0 (g / guerrilla) :ARG1 (v / vehicle) :location (w3 / west :part-of (c / country :name (n2 / name :op1 \"Nepal\"))))))");
+        assertEquals(amr,
+                "(r (report-01 (:ARG0 (p3 (publication (:name (n (name (:op1 \"Radio\") (:op2 \"Nepal\"))))))) (:ARG1 (a (and (:op1 (k (kill-01 (:ARG1 (p (policeman (:quant 3))))))) (:op2 (w (wound-01 (:ARG1 (p2 (policeman (:quant 19) (:mod (o2 other)))))))) (:time (a3 (ambush-01 (:ARG0 (g guerrilla)) (:ARG1 (v vehicle)) (:location (w3 (west (:part-of (c (country (:name (n2 (name (:op1 \"Nepal\"))))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN \"Radio Nepal\")) (mkVP L.report_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"3\")) (mkCN L.policeman_N)) (passiveVP L.kill_V2))) (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits \"19\")) (mkCN L.other_A L.policeman_N)) (mkVP (passiveVP L.wound_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.guerrilla_N)) (mkVP (mkVP L.ambush_V2 (mkNP S.a_Quant (mkCN L.vehicle_N))) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN (mkCN L.west_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN \"Nepal\"))))))))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I don't know if anyone will read this.
+    @Test
+    public void t55_I_don_t_know_if_anyone_will_read_this() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(k / know-01 :polarity - :ARG0 (i / i) :ARG1 (r / read-01 :mode interrogative :ARG0 (a / anyone) :ARG1 (t / this)))");
+        assertEquals(amr,
+                "(k (know-01 (:polarity -) (:ARG0 (i i)) (:ARG1 (r (read-01 (:mode interrogative) (:ARG0 (a anyone)) (:ARG1 (t this)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP (mkVP L.know_V) (S.mkAdv S.if_Subj (mkS (mkCl L.anyone_NP (mkVP L.read_V2 S.this_NP)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // It was unclear whether combat had taken place between Russian and Georgian soldiers or had
+    // been limited to fighting between separatists and Georgian forces.
+    // TODO: 'whether [..] or whether [..]'
+    // TODO: 'Georgian forces' (cannot be resolved by a pronoun)
+    @Test
+    public void
+            t56_it_was_unclear_whether_combat_had_taken_place_between_Russian_and_Georgian_soldiers_or_had_been_limited_to_fighting_between_separatists_and_Georgian_forces() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(c / clear-06 :polarity - :ARG1 (o / or :mode interrogative :op1 (c2 / combat-01 :ARG0 (a3 / and :op1 (s / soldier :mod (c3 / country :name (n / name :op1 \"Russia\"))) :op2 (s3 / soldier :mod (c4 / country :name (n2 / name :op1 \"Georgia\"))))) :op2 (l2 / limit-01 :ARG1 c2 :ARG2 (f / fight-01 :ARG0 (b / between :op1 (s2 / separatist) :op2 (f2 / force))))))");
+        assertEquals(amr,
+                "(c (clear-06 (:polarity -) (:ARG1 (o (or (:mode interrogative) (:op1 (c2 (combat-01 (:ARG0 (a3 (and (:op1 (s (soldier (:mod (c3 (country (:name (n (name (:op1 \"Russia\")))))))))) (:op2 (s3 (soldier (:mod (c4 (country (:name (n2 (name (:op1 \"Georgia\")))))))))))))))) (:op2 (l2 (limit-01 (:ARG1 c2) (:ARG2 (f (fight-01 (:ARG0 (b (between (:op1 (s2 separatist)) (:op2 (f2 force))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS negativePol (mkCl (mkVP (mkVP (mkAP L.clear_A)) (S.mkAdv S.if_Subj (mkS S.or_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Russia\"))))) (mkNP S.a_Quant (mkCN (mkCN L.soldier_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"Georgia\"))))))) (mkVP L.combat_V))) (mkS (mkCl (mkVP (passiveVP L.limit_V2) (E.PurposeVP (mkVP (mkVP L.fight_V) (S.mkAdv L.between_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.separatist_N)) (mkNP S.a_Quant (mkCN L.force_N))))))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Especially China suffered the ravages of Japan.
+    @Test
+    public void
+            t57_especially_China_suffered_the_ravages_of_Japan() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / suffer-01 :ARG0 (c / country :name (n / name :op1 \"China\") :mod (e / especially)) :ARG1 (r / ravage-01 :ARG0 (c2 / country :name (n2 / name :op1 \"Japan\")) :ARG1 c))");
+        assertEquals(amr,
+                "(s (suffer-01 (:ARG0 (c (country (:name (n (name (:op1 \"China\")))) (:mod (e especially))))) (:ARG1 (r (ravage-01 (:ARG0 (c2 (country (:name (n2 (name (:op1 \"Japan\"))))))) (:ARG1 c))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (ss \"especially\") (mkNP (P.mkPN \"China\"))) (mkVP L.suffer_VS (mkS (mkCl (mkNP (P.mkPN \"Japan\")) (mkVP L.ravage_V))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university in September.
+    @Test
+    public void
+            t58_I_started_university_in_September() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :month 9))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:month 9))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (monthAdv september_Month))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // We have been broken up since August.
+    @Test
+    public void
+            t59_we_have_been_broken_up_since_August() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(b / break-up-08 :ARG1 (w / we) :time (s2 / since :op1 (d / date-entity :month 8)))");
+        assertEquals(amr,
+                "(b (break-up-08 (:ARG1 (w we)) (:time (s2 (since (:op1 (d (date-entity (:month 8)))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.break_up_V2) (S.mkAdv L.since_Prep (mkNP (monthPN august_Month))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university on 1 September 1999.
+    @Test
+    public void
+            t60_I_started_university_on_1_September_1999() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :year 1999 :month 9 :day 1))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:year 1999) (:month 9) (:day 1))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (dayMonthYearAdv (intMonthday (ss \"1\")) september_Month (intYear (ss \"1999\"))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I started university in 1999.
+    @Test
+    public void
+            t61_I_started_university_in_1999() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s / start-01 :ARG0 (i / i) :ARG1 (u / university) :time (d / date-entity :year 1999))");
+        assertEquals(amr,
+                "(s (start-01 (:ARG0 (i i)) (:ARG1 (u university)) (:time (d (date-entity (:year 1999))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (yearAdv (intYear (ss \"1999\"))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

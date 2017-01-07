@@ -1,6 +1,7 @@
 --# -path=../../../lexicons/translator
 
-concrete LeavesEng of Leaves = CatEng, DictionaryEng - [information_N, traffic_V] **
+concrete LeavesEng of Leaves = CatEng, DictionaryEng -
+[information_N, okay_A, organization_N, recognize_1_V2, recognize_VS, traffic_V] **
 open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 	flags
@@ -29,6 +30,8 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		pass_V2 = mkV2 pass_V ;
 		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
 
+		recognize_1_V2 = mkV2 (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;	-- TODO: remove variants in DictionaryEng
+
 		obligate_VV = mkVV (mkV "obligate" "obligates" "obligated" "obligated" "obligating") ;
 		urge_VV = mkVV (mkV "urge") ;
 
@@ -38,8 +41,10 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
 		quote_VS = mkVS quote_V ;
+		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
+		suffer_VS = mkVS suffer_V ;
 		want_VS = mkVS want_V ;
 
 		center_N = mkN "center" ;
@@ -47,8 +52,10 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		official_N = mkN "official" ;
+		organization_N = mkN "organization" ;	-- TODO: remove variants in DictionaryEng
 
 		interest_A = interesting_A ;
+		okay_A = compoundA (mkA "okay") ;	-- TODO: remove variants in DictionaryEng
 
 		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;
@@ -61,7 +68,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 		CAU_Prep = for_Prep ;	-- vs. because_of_Prep
 		COM_Prep = of_Prep ;
-		DIR_Prep = from_Prep ;
+		DIR_Prep = to_Prep ;
 		GOL_Prep = to_Prep ;
 		LOC_Prep = mkPrep "" ;	-- FIXME
 		MNR_Prep = mkPrep "" ;	-- no Prep
@@ -203,7 +210,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		property_N = property_1_N ;
 		race_N = race_1_N ;
 		real_N = real_1_N ;
-		recognize_V2 = recognize_1_V2 ;
+		recognize_V2 = LeavesEng.recognize_1_V2 ;
 		record_N = record_1_N ;
 		regime_N = regime_1_N ;
 		right_A = right_1_A ;
