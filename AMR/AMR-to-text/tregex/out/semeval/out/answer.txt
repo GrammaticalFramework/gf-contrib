@@ -504,7 +504,7 @@ Israel.
 
 Kimball states.
 
-type of one
+
 
 
 
@@ -913,7 +913,7 @@ A narcotic.
 
 
 
-type of one
+A survey is issued on 27 November 2008.
 
 
 
