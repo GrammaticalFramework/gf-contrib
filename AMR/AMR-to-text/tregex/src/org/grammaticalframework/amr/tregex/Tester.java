@@ -1204,4 +1204,22 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // You could go to the library on Saturdays.
+    @Test
+    public void
+            t62_you_could_go_to_the_library_on_Saturdays() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(p / possible-01 :ARG1 (g / go-02 :ARG0 (y / you) :ARG4 (l / library) :time (d / date-entity :weekday (s / saturday))))");
+        assertEquals(amr,
+                "(p (possible-01 (:ARG1 (g (go-02 (:ARG0 (y you)) (:ARG4 (l library)) (:time (d (date-entity (:weekday (s saturday))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP (mkVP L.go_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.library_N)))) (weekdayPunctualAdv saturday_Weekday)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

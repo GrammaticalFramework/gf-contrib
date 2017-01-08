@@ -69,6 +69,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		CAU_Prep = for_Prep ;	-- vs. because_of_Prep
 		COM_Prep = of_Prep ;
 		DIR_Prep = to_Prep ;
+		EXT_Prep = mkPrep "" ;	-- no Prep
 		GOL_Prep = to_Prep ;
 		LOC_Prep = mkPrep "" ;	-- FIXME
 		MNR_Prep = mkPrep "" ;	-- no Prep

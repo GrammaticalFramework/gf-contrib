@@ -54,6 +54,7 @@ abstract Leaves = Cat, Dictionary ** {
 		CAU_Prep : Prep ;		-- temporary
 		COM_Prep : Prep ;		-- temporary
 		DIR_Prep : Prep ;		-- temporary
+		EXT_Prep : Prep ;		-- temporary
 		GOL_Prep : Prep ;		-- temporary
 		LOC_Prep : Prep ;		-- temporary
 		MNR_Prep : Prep ;		-- temporary

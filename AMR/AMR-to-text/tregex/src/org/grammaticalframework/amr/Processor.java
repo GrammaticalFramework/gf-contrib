@@ -107,9 +107,14 @@ public class Processor {
      * @param out
      */
     private void writeLog(Map<String, Integer> log, PrintWriter out) {
+        int total = 0;
+
         for (String key : log.keySet()) {
             out.println(log.get(key) + "\t" + key);
+            total = total + log.get(key);
         }
+
+        out.println(total + "\tTOTAL");
     }
 
     /**

@@ -830,8 +830,8 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [delete degree]
 
 # mkVP : VP -> Adv -> VP
-# (VP (frame (:ARG2 NP))) => (mkVP (VP frame) (mkAdv prep_Prep NP))
-/VP/=vp_i < (/FRAME/ < (/:ARG2/=prep < /NP/=np))
+# (VP (frame (:ARG[2-9] NP))) => (mkVP (VP frame) (mkAdv prep_Prep NP))
+/VP/=vp_i < (/FRAME/ < (/:ARGn/=prep < /NP/=np))
 [relabel prep /^(.+)-(.+)$/$2_Prep/]
 [adjoinF (mkAdv=adv @) prep]
 [move np >2 adv]
@@ -839,7 +839,7 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [move adv >2 vp_o]
 
 # mkVP : VP -> Adv -> VP
-# (mkVP|passiveVP (frame (:ARG[0-9] mkAdv))) => (mkVP (mkVP|passiveVP (frame)) mkAdv)
+# (VP (frame (:ARG[0-9] mkAdv))) => (mkVP (VP frame) mkAdv)
 /VP/=vp_i [[< /FRAME/ < (/:ARGx/=arg < mkAdv=adv)] | [< (/FRAME/ < (/:ARGx/=arg < mkAdv=adv))]]
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
