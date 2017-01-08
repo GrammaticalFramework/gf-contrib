@@ -483,8 +483,8 @@ AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.
 TXT: [unknown qualified constant L.have_VS] [unknown qualified constant L.come_V2]
 
 SNT: There are two kinds of smart female stars. Those of the first kind always hold very high integrity and sternly reject all such invitations;
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.that_Det (mkCN (L.kind_A (S.mkOrd (mkDigits "1"))) L.person_N)) (mkVP (P.mkAdV "always") (mkVP L.hold_V2 (mkNP S.a_Quant (mkCN (mkCN L.integrity_N) (mkRS (mkRCl S.which_RP (mkAP L.very_AdA (mkAP L.high_A)))))))))) (mkS (mkCl (mkVP (P.mkAdV "stern") (mkVP L.reject_VS (mkS (mkCl (mkVP (P.mkAdV "such") (mkVP (P.mkAdV "all") (mkVP L.invite_V)))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.smart_A (mkCN L.female_N)) (mkRS (mkRCl S.which_RP (passiveVP L.star_V2))))) (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.kind_N))))) fullStopPunct))
-TXT: [unknown qualified constant L.reject_VS] [a smart female that is starred is 2 kinds .]
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.that_Det (mkCN (L.kind_A (S.mkOrd (mkDigits "1"))) L.person_N)) (mkVP (P.mkAdV "always") (mkVP L.hold_V2 (mkNP S.a_Quant (mkCN (mkCN L.integrity_N) (mkRS (mkRCl S.which_RP (mkAP L.very_AdA (mkAP L.high_A)))))))))) (mkS (mkCl (mkVP (P.mkAdV "stern") (mkVP L.reject_VS (mkS (mkCl (mkVP (P.mkAdV "such") (mkVP (P.mkAdV "all") (mkVP L.invite_V)))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.smart_A (mkCN L.female_N)) (mkRS (mkRCl S.which_RP (passiveVP L.star_V2))))) (mkAP (L.kind_A (mkNum (mkDigits "2"))))))) fullStopPunct))
+TXT: [unknown qualified constant L.reject_VS] [A function type is expected for kind_A instead of type A]
 
 SNT: the second kind are good at playing the trick and making their objectives achieved with their seed money,
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.good_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (L.kind_A (S.mkOrd (mkDigits "2"))) L.person_N)))))))) fullStopPunct)
@@ -615,8 +615,8 @@ AST: (mkText (mkUtt (mkNP L.another_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.wh
 TXT: [another thing that is predicted .]
 
 SNT: After a few more years of scattered subdivision development and approval of mega-commercial projects at major 288 intersections , the need for new road improvements will soar .
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.soar_V2) (S.mkAdv L.after_Prep (mkNP L.and_N))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.road_N)) (passiveVP L.improve_V2)))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.and_N]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.soar_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.road_N)) (passiveVP L.improve_V2)))))))))))) fullStopPunct)
+TXT: [it is soared that it is needed that a road is improved .]
 
 SNT: Before the end of the decade , we may well see the unfunded liability zoom well past the original $ 400 million it took to build the original highway .
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP L.well_AdA (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.see_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.liability_N) (mkRS negativePol (mkRCl S.which_RP (passiveVP L.fund_V2))))) (passiveVP L.zoom_V2))))))))))) fullStopPunct)
@@ -1523,7 +1523,7 @@ AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkCN L.hello_N)))) (mkText 
 TXT: [unknown qualified constant L.hello_N] [I am a girl that is addicted to harm a self .]
 
 SNT: i started when i was seven as i slit each firnger indevidually with sissors, and from that day i never stopped,
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP (mkVP L.start_VV (mkVP (mkVP L.slit_V2 (mkNP S.a_Quant (E.CompoundCN L.each_N L.individual_A L.finger_N))) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.scissors_N))))) (S.mkAdv S.when_Subj (mkS (mkCl (passiveVP L.age_V2))))))) (mkS negativePol (mkCl (mkVP (P.mkAdV "ever") (mkVP (mkVP L.stop_V) (S.mkAdv L.from_Prep (mkNP L.day_N))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP (mkVP L.start_VV (mkVP (mkVP L.slit_V2 (mkNP S.a_Quant (E.CompoundCN L.each_N L.individual_A L.finger_N))) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.scissors_N))))) (S.mkAdv S.when_Subj (mkS (mkCl (passiveVP L.age_V2))))))) (mkS negativePol (mkCl (mkVP (P.mkAdV "ever") (mkVP L.stop_V))))))) fullStopPunct)
 TXT: [unknown qualified constant L.start_VV]
 
 SNT: it has got worse as i have a scar on my leg as i slit in my ex boyfriends name with stables,as i wont stop cutting unless i bleed,
@@ -1667,7 +1667,7 @@ AST: (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl S.i_NP (mkVP L.find_
 TXT: [unknown qualified constant L.belong_V]
 
 SNT: I often have to check twice at one go, then after 30 seconds for some reason I cant resist checking again!
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (passiveVP L.obligate_V2))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP (L.possible_A (S.mkAdv S.because_Subj (mkNP S.somePl_Det (mkCN L.reason_N))))) (mkS (mkCl (mkVP L.resist_VS (mkS (mkCl (mkVP (P.mkAdV "again") (mkVP L.check_V))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (passiveVP L.obligate_V2))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP (L.possible_A (S.mkAdv (P.mkPrep "after") (mkNP S.a_Quant (mkNum (mkDigits "30")) (mkCN L.second_N))) (S.mkAdv S.because_Subj (mkNP S.somePl_Det (mkCN L.reason_N))))) (mkS (mkCl (mkVP L.resist_VS (mkS (mkCl (mkVP (P.mkAdV "again") (mkVP L.check_V))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.resist_VS]
 
 SNT: Why is this!?
@@ -1687,7 +1687,7 @@ AST: (a (amr-unknown (mkRS (mkRCl S.which_RP S.i_NP L.do_V2))))
 TXT: [command not parsed: cc -one (a (amr-unknown (mkRS (mkRCl S.which_RP S.i_NP L.do_V2))))]
 
 SNT: If I don't check, I get very very anxious, which does sort of go away after 15-30 mins, but often the anxiety is so much that I can't wait that long.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (S.mkAdv L.PPT_Prep (mkNP (S.much_Det (mkRS (mkRCl S.which_RP (mkVP L.cause_VS (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (passiveVP L.wait_V2)))))))))) (mkCN L.anxiety_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP (passiveVP L.get_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.anxious_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "sort") (mkVP (passiveVP L.go_V2) (S.mkAdv L.after_Prep (mkNP L.between_N))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (S.mkAdv L.PPT_Prep (mkNP (S.much_Det (mkRS (mkRCl S.which_RP (mkVP L.cause_VS (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (passiveVP L.wait_V2)))))))))) (mkCN L.anxiety_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP (passiveVP L.get_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.anxious_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "sort") (passiveVP L.go_V2))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.anxious_N]
 
 SNT: I feel if I lost my wallet or phone, then I'm doomed or so I feel.
@@ -2187,8 +2187,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP (mkVP (mkVP L.refuse
 TXT: [unknown qualified constant L.respond_V2]
 
 SNT: The talks constituted the highest-level diplomatic contact between the US and Iran for nearly 30 years.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.constitute_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP (P.mkAdV "diplomacy") (mkVP L.contact_V2 (mkNP (P.mkPN "Iran")))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.talk_V)))))))) fullStopPunct)
-TXT: [it is constituted that US diplomacy contacts Iran that it talks .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.constitute_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP (P.mkAdV "diplomacy") (mkVP (mkVP L.contact_V2 (mkNP (P.mkPN "Iran"))) (S.mkAdv (P.mkPrep "nearly") (mkNP S.a_Quant (mkNum (mkDigits "30")) (mkCN L.year_N))))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.talk_V)))))))) fullStopPunct)
+TXT: [it is constituted that US diplomacy contacts Iran nearly 3 Predef.BIND 0 years that it talks .]
 
 SNT: Solana, burns and European envoys set a deadline for Iran to respond positively before initiating new sanctions including prohibitions on selling Iran refined petroleum products vital to the country's economy.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.continent_A L.envoy_N)) (mkListNP (mkNP (P.mkPN "Solana")) (mkNP (P.mkPN "Burns"))))) (mkVP L.set_V2 (mkNP S.a_Quant (mkCN L.deadline_N)))))) fullStopPunct)
@@ -2731,8 +2731,8 @@ AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP S.a_Quant (mkCN (mkCN L.m
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (mkNP S.a_Quant (mkCN (mkCN L.military_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US")))))) (mkVP (passiveVP L.say_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.concern_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.foment_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.such_A L.revolution_N)))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "radical") (mkVP L.move_V))))))))))))))))) fullStopPunct)]
 
 SNT: The political mainstream in Latin America has shifted leftward since the late 1990s.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.politics_N L.mainstream_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Latin America"))))) (mkVP (mkVP (passiveVP L.shift_V2) (S.mkAdv L.since_Prep (mkNP L.late_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.leftward_N))))))) fullStopPunct)
-TXT: [unknown qualified constant L.late_N]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.politics_N L.mainstream_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Latin America"))))) (mkVP (passiveVP L.shift_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.leftward_N))))))) fullStopPunct)
+TXT: [unknown qualified constant L.leftward_N]
 
 SNT: This leftward shift is largely in reaction to the perceived failure of free-market economics.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.react_V2) (P.mkAdv "large")) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (mkCN (mkCN L.economics_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN L.free_A (mkCN L.market_N)))))) (passiveVP L.fail_V2)))))))) fullStopPunct)
@@ -2883,8 +2883,8 @@ AST: (h (have-org-role-91 (P.mkN2 L.commander_N L.of_Prep)))
 TXT: [command not parsed: cc -one (h (have-org-role-91 (P.mkN2 L.commander_N L.of_Prep)))]
 
 SNT: Quintero said in an interview that the armed forces hope to train 50000 civilians over 20 weekends in the second half of 050000 and could train 300000 more in 060000.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Quintero")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.force_N) (mkRS (mkRCl S.which_RP (passiveVP L.arm_V2))))) (mkVP L.hope_VS (mkS (mkCl (mkVP (mkVP (mkVP L.train_V) (S.mkAdv L.over_Prep (mkNP (L.weekend_N (mkNum (mkDigits "20")))))) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkNum (mkDigits "50000")) (mkCN L.civilian_N))))))))) (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (mkVP (mkVP L.train_V) (yearAdv (intYear (ss "2006")))) (S.mkAdv L.PPT_Prep (mkNP L.more_Det (mkNum (mkDigits "300000")) (mkCN L.civilian_N))))))))))))))) fullStopPunct)
-TXT: [A function type is expected for weekend_N instead of type N]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Quintero")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.force_N) (mkRS (mkRCl S.which_RP (passiveVP L.arm_V2))))) (mkVP L.hope_VS (mkS (mkCl (mkVP (mkVP L.train_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkNum (mkDigits "50000")) (mkCN L.civilian_N))))))))) (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (mkVP (mkVP L.train_V) (yearAdv (intYear (ss "2006")))) (S.mkAdv L.PPT_Prep (mkNP L.more_Det (mkNum (mkDigits "300000")) (mkCN L.civilian_N))))))))))))))) fullStopPunct)
+TXT: [no overload instance of mkNP]
 
 SNT: Quintero said that Venezuelans don't want to be the colony of any empire and have to be ready for any possibility.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Quintero")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Venezuela"))))) (mkVP L.want_V2 (mkNP S.a_Quant (mkCN (mkCN L.colony_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (E.CompoundCN L.any_N L.empire_N)))))))) (mkS (mkCl (mkVP L.obligate_VV (mkVP ready-02)))))))))) fullStopPunct)
@@ -2907,8 +2907,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.symmetrical_A L.warfare_N
 TXT: [constant not found: coin]
 
 SNT: The US government has given $3.3 billion in mostly military aid to Colombia in the past 5 years.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP (mkVP L.give_V) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
-TXT: [an organization that governs US gives to Colombia .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP (mkVP (mkVP L.give_V) (S.mkAdv (P.mkPrep "past") (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN L.year_N)))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
+TXT: [an organization that governs US gives past 5 years to Colombia .]
 
 SNT: Chavez loyalists fear that the US government could instigate a proxy war between Colombia and Venezuela as a way to oust Chavez and control Venezuelan oil.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.loyal_A (mkCN L.person_N))) (mkVP L.fear_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP L.instigate_VS (mkS (mkCl (mkNP (P.mkPN "Colombia")) (mkVP (P.mkAdV "proxy") (mkVP L.war_V2 (mkNP (P.mkPN "Venezuela"))))))))))))) fullStopPunct)
@@ -2971,7 +2971,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkNP S.a_Quant (mkCN (mkC
 TXT: [Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea .]
 
 SNT: Hill stated stalled efforts to dismantle North Korea's nuclear weapons program could move ahead after the weekend of 16 June 2007 and 17 June 2007 when Pyongyang officials invited inspectors from the International Atomic Energy Agency to visit for talks on verifying and monitoring a shutdown.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (mkVP (mkVP (passiveVP L.move_V2) (S.mkAdv L.after_Prep (mkNP L.weekend_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.ahead_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.effort_N))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (mkVP (passiveVP L.move_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.ahead_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.effort_N))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.ahead_N]
 
 SNT: Following talks with Chinese negotiator Wu Dawei Hill stated the shutdown has long been anticipated.
@@ -4223,7 +4223,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP L.state_VS (mkS S.an
 TXT: [unknown qualified constant L.focus_VS]
 
 SNT: Tang also stated the Chinese government seeks to complete the drafting of relevant documents before next year's SCO summit and to attempt to officially open the secretariat after the summit.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP (P.mkAdV "also") (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "China"))))))) (mkVP L.seek_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (mkVP L.complete_VS (mkS (mkCl (mkVP L.draft_V2 (mkNP S.a_Quant (mkCN L.relevant_A (mkCN L.document_N))))))) (S.mkAdv L.before_Prep (mkNP L.summit_N))))) (mkS (mkCl (mkVP L.attempt_VS (mkS (mkCl (mkVP (P.mkAdV "official") (mkVP L.open_V2 (mkNP S.a_Quant (mkCN L.secretariat_N))))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Tang")) (mkVP (P.mkAdV "also") (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "China"))))))) (mkVP L.seek_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.complete_VS (mkS (mkCl (mkVP L.draft_V2 (mkNP S.a_Quant (mkCN L.relevant_A (mkCN L.document_N))))))))) (mkS (mkCl (mkVP L.attempt_VS (mkS (mkCl (mkVP (P.mkAdV "official") (mkVP L.open_V2 (mkNP S.a_Quant (mkCN L.secretariat_N))))))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.seek_VS]
 
 SNT: Tang stated the SCO still faces a very stern anti-terrorism fight and cited the October 2002 hostage crisis in Moscow.
@@ -5007,8 +5007,8 @@ AST: (mkText (mkUtt (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.per
 TXT: [a person that leads , money , an economy , politics , a technology , an international and an organization that governs .]
 
 SNT: German Chancellor Gerhard Schroeder attended meetings with Vietnamese government leaders after the 5th Asia-Europe Meeting summit in Hanoi.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chancellor_N L.of_Prep) (mkNP (P.mkPN "Germany"))) (mkNP (P.mkPN "Gerhard Schroeder")))) (mkVP (mkVP (passiveVP L.attend_V2) (S.mkAdv L.after_Prep (mkNP (L.summit_N (S.mkOrd (mkDigits "5")) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Hanoi"))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.meet_V2 (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.lead_V2 (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Vietnam")))))))))))))))))))) fullStopPunct)
-TXT: [A function type is expected for summit_N instead of type N]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chancellor_N L.of_Prep) (mkNP (P.mkPN "Germany"))) (mkNP (P.mkPN "Gerhard Schroeder")))) (mkVP (passiveVP L.attend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.meet_V2 (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.lead_V2 (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Vietnam")))))))))))))))))))) fullStopPunct)
+TXT: [chancellor of Germany Gerhard Schroeder is attended that it meets a person that leads an organization that governs Vietnam .]
 
 SNT: German and Vietnamese officials signed 5 documents on financial, technical and business cooperation totaling over 260 million dollars.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (passiveVP L.total_V2))))))))) fullStopPunct)
@@ -5207,8 +5207,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkS (S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkA
 TXT: [unknown qualified constant L.exchange_V]
 
 SNT: After the signing ceremony , Kirghizian President Akayev and Premier Peng Li respectively answered questions from reporters .
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (P.mkAdV "respective") (mkVP (mkVP L.answer_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.report_V))))) L.question_V2))))) (S.mkAdv L.after_Prep (mkNP L.ceremony_N))))))) fullStopPunct)
-TXT: [it respective answers a thing that a person that reports questions after ceremony .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (P.mkAdV "respective") (mkVP L.answer_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.report_V))))) L.question_V2))))))))) fullStopPunct)
+TXT: [it respective answers a thing that a person that reports questions .]
 
 SNT: Akayev highly commended the results of the conference with Peng Li
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Akayev")) (mkVP (mkVP L.commend_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkAP (mkAP L.result_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.conference_N) (S.mkAdv L.with_Prep (mkNP (P.mkPN "Peng Li"))))))))))))) (P.mkAdv "high"))))) fullStopPunct)
@@ -5287,8 +5287,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.delegation_N) (S.mk
 TXT: [a delegation from Japan is flown .]
 
 SNT: After the closing ceremonies of the Sports Meet , they will continue to remain in Beijing for two days , to carry out interaction activities with relevant Chinese parties and visit and tour , and return to Japan on 13th .
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.they_NP (mkVP (mkVP (passiveVP L.remain_V2) (S.mkAdv L.after_Prep (mkNP (L.ceremony_N (mkRS (mkRCl S.which_RP (mkVP L.close_V2 (mkNP (P.mkPN "Sports Meet"))))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing")))))) (mkS (mkCl (mkVP (passiveVP L.return_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Japan"))))))))) fullStopPunct)
-TXT: [A function type is expected for ceremony_N instead of type N]
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.they_NP (mkVP (passiveVP L.remain_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing")))))) (mkS (mkCl (mkVP (passiveVP L.return_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Japan"))))))))) fullStopPunct)
+TXT: [they are remained in Beijing and it is returned to Japan .]
 
 SNT: ( End )
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)
