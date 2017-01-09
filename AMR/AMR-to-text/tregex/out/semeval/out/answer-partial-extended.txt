@@ -631,7 +631,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.thank_V2 S.you_NP) (S.mkAdv 
 TXT: [I thank you for nothing .]
 
 SNT: I think we could have spent the $ 400 million better elsewhere .
-AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.think_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.spend_V2 (mkNP S.a_Quant (mkCN L.elsewhere_N)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.think_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP (mkVP L.spend_V2 (mkNP S.a_Quant (mkCN L.elsewhere_N))) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkNum (mkDigits "400000000")) (mkCN L.dollar_N))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.elsewhere_N]
 
 SNT: I do n't think you can blame 288 for creating those people .
@@ -895,8 +895,8 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.understand_V2 (mkNP S.a_Quant
 TXT: [it doesn't understand an exact thing .]
 
 SNT: Gas could go to $ 10 a gallon
-AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP (mkCN L.gas_N)) (passiveVP L.go_V2))))))) fullStopPunct)
-TXT: [it is possible that gas is gone .]
+AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP (mkCN L.gas_N)) (mkVP (passiveVP L.go_V2) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkNum (mkDigits "10")) (mkCN L.dollar_N)))))))))) fullStopPunct)
+TXT: [it is possible that gas is gone of 1 Predef.BIND 0 dollars .]
 
 SNT: and I 'd still pay to live in the country .
 AST: (a and)
@@ -919,7 +919,7 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.contrast_VV (mkVP L.right_VV 
 TXT: [unknown qualified constant L.contrast_VV]
 
 SNT: What 's consistently overlooked in the debate ovre 288 is what else that $ 400 million could have been spent on .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.else_N L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.spend_V2))))) (passiveVP L.overlook_V2)))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.else_N L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.spend_V2) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkNum (mkDigits "400000000")) (mkCN L.dollar_N)))))))) (passiveVP L.overlook_V2)))) fullStopPunct)
 TXT: [unknown qualified constant L.else_N]
 
 SNT: How much traffic congestion could have been alleviated had the money been applied to other pressing road projects or , god forbid , even non-road projects .
@@ -2415,8 +2415,8 @@ AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep))
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep)) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.have_condition_V2) (E.PurposeVP (mkVP (mkVP L.shut_down_V2 (mkNP (mkCN L.power_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.scientist_N)) (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP destroy-01)))))))))))))) fullStopPunct)]
 
 SNT: General Nikolai N. Urakov would like the United States and Western countries that have contributed about 6 million United States dollars to the transformation of the former bioweapons complex to contribute another 500000 United States dollars per year to pay the State Scientific Center of applied microbiology's electric bills and arrears.
-AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep)) (mkVP (passiveVP L.like_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.contribute_VV (mkVP L.transform_V2 (mkNP S.a_Quant (E.CompoundCN L.bioweapon_N L.complex_N))) (a7 about))))) (mkListNP (mkNP (P.mkPN "United States")) (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "West"))))))) (mkVP (mkVP L.contribute_VS (mkS (mkCl (passiveVP L.rate_entity_V2)))) (E.PurposeVP (mkVP (mkVP L.pay_V) (S.mkAdv L.PPT_Prep (mkNP (S.and_Conj (S.mkAdv S.possess_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))) (mkListNP (mkNP S.a_Quant (mkCN L.electric_A L.bill_N)) (mkNP S.a_Quant (mkCN L.arrear_N))))))))))))))) fullStopPunct)
-TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep)) (mkVP (passiveVP L.like_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.contribute_VV (mkVP L.transform_V2 (mkNP S.a_Quant (E.CompoundCN L.bioweapon_N L.complex_N))) (a7 about))))) (mkListNP (mkNP (P.mkPN "United States")) (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "West"))))))) (mkVP (mkVP L.contribute_VS (mkS (mkCl (passiveVP L.rate_entity_V2)))) (E.PurposeVP (mkVP (mkVP L.pay_V) (S.mkAdv L.PPT_Prep (mkNP (S.and_Conj (S.mkAdv S.possess_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))) (mkListNP (mkNP S.a_Quant (mkCN L.electric_A L.bill_N)) (mkNP S.a_Quant (mkCN L.arrear_N))))))))))))))) fullStopPunct)]
+AST: (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep)) (mkVP (passiveVP L.like_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.contribute_VV (mkVP L.transform_V2 (mkNP S.a_Quant (E.CompoundCN L.bioweapon_N L.complex_N))) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkNum (mkDigits "6000000")) (mkNP S.a_Quant (mkCN L.dollar_N)))))))) (mkListNP (mkNP (P.mkPN "United States")) (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "West"))))))) (mkVP (mkVP L.contribute_VS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "500000")) d) (passiveVP L.rate_entity_V2)))) (E.PurposeVP (mkVP (mkVP L.pay_V) (S.mkAdv L.PPT_Prep (mkNP (S.and_Conj (S.mkAdv S.possess_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))) (mkListNP (mkNP S.a_Quant (mkCN L.electric_A L.bill_N)) (mkNP S.a_Quant (mkCN L.arrear_N))))))))))))))) fullStopPunct)
+TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (have-org-role-91 (P.mkN2 L.general_N L.of_Prep)) (mkVP (passiveVP L.like_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.contribute_VV (mkVP L.transform_V2 (mkNP S.a_Quant (E.CompoundCN L.bioweapon_N L.complex_N))) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkNum (mkDigits "6000000")) (mkNP S.a_Quant (mkCN L.dollar_N)))))))) (mkListNP (mkNP (P.mkPN "United States")) (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "West"))))))) (mkVP (mkVP L.contribute_VS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "500000")) d) (passiveVP L.rate_entity_V2)))) (E.PurposeVP (mkVP (mkVP L.pay_V) (S.mkAdv L.PPT_Prep (mkNP (S.and_Conj (S.mkAdv S.possess_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))) (mkListNP (mkNP S.a_Quant (mkCN L.electric_A L.bill_N)) (mkNP S.a_Quant (mkCN L.arrear_N))))))))))))))) fullStopPunct)]
 
 SNT: An American scientist who works closely with the State Scientific Center of applied microbiology stated that the Russian government was responsible for paying for the State Scientific Center of applied microbiology's electric bills.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.scientist_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "America")))) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.work_V) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology")))))))) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Russia"))))))) (mkVP L.responsible_VS (mkS (mkCl (mkVP (mkVP L.pay_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN L.electric_A L.bill_N))))))))))))) fullStopPunct)
@@ -2579,8 +2579,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP
 TXT: [unknown qualified constant L.hopeful_VS]
 
 SNT: The US is scheduled to provide 10.2 million dollars in drug and law enforcement aid to Brazil in 2004.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP (passiveVP L.schedule_V2) (E.PurposeVP (mkVP (mkVP provide-01) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Brazil"))))))))) fullStopPunct)
-TXT: [constant not found: provide]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP (passiveVP L.schedule_V2) (E.PurposeVP (mkVP (mkVP L.provide_V2 (mkNP S.a_Quant (mkNum (mkDigits "10200000")) (mkCN L.dollar_N))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Brazil"))))))))) fullStopPunct)
+TXT: [US is scheduled to provide 1 Predef.BIND 0 Predef.BIND , Predef.BIND 2 Predef.BIND 0 Predef.BIND 0 Predef.BIND , Predef.BIND 0 Predef.BIND 0 Predef.BIND 0 dollars to Brazil .]
 
 SNT: Former air force chief and current Director of the Air Institute at estacio de sa University in Rio de Janeiro General Mauro Jose Miranda gandra stated that the measure was a courageous step by the Government but the impact may be more political than practical because of self-imposed restrictions by the Brazilian government.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chief_N L.of_Prep) (mkNP (P.mkPN "Air Force"))) (mkNP (P.mkPN "Mauro Jose Miranda Gandra")))) (mkVP (passiveVP L.state_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (mkVP possible-01) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN L.thing_N)))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP (P.mkAdV "courage") (passiveVP L.step_V2))))))))))))) fullStopPunct)
@@ -2791,7 +2791,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Campos")) (mkVP L.say_VS (mkS (mkC
 TXT: [unknown qualified constant L.prepare_VS]
 
 SNT: In May, Chavez's government announced details in 050500 of an $18.6 million deal with a Russian firm to purchase 100000 AK-103 assault rifles with 30 rounds of ammunition each and the technology transfer for Venezuela to manufacture the rifles.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.organization_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Chavez")))) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP (mkVP L.announce_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.detail_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.deal_VV (mkVP L.purchase_V2 (mkNP S.a_Quant (mkNum (mkDigits "100000")) (E.CompoundCN L.each_N L.rifle_N))) (mkNP S.a_Quant (mkCN (mkCN L.firm_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia")))))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (passiveVP L.transfer_V2) (E.PurposeVP (mkVP L.manufacture_V))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Venezuela"))))))))) (monthYearAdv may_Month (intYear (ss "2005"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.organization_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Chavez")))) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP (mkVP L.announce_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.detail_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.deal_VV (mkVP L.purchase_V2 (mkNP S.a_Quant (mkNum (mkDigits "100000")) (E.CompoundCN L.each_N L.rifle_N))) (mkNP S.a_Quant (mkCN (mkCN L.firm_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Russia")))))) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkNum (mkDigits "18600000")) (mkCN L.dollar_N)))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (passiveVP L.transfer_V2) (E.PurposeVP (mkVP L.manufacture_V))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Venezuela"))))))))) (monthYearAdv may_Month (intYear (ss "2005"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.deal_VV]
 
 SNT: The deal works out to $186.22 per rifle.
@@ -2907,8 +2907,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.symmetrical_A L.warfare_N
 TXT: [constant not found: coin]
 
 SNT: The US government has given $3.3 billion in mostly military aid to Colombia in the past 5 years.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP (mkVP (mkVP L.give_V) (S.mkAdv (P.mkPrep "past") (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN L.year_N)))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
-TXT: [an organization that governs US gives past 5 years to Colombia .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP (mkVP (mkVP L.give_V2 (mkNP S.a_Quant (mkNum (mkDigits "3300000000")) (mkCN L.dollar_N))) (S.mkAdv (P.mkPrep "past") (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN L.year_N)))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Colombia"))))))) fullStopPunct)
+TXT: [Predef.error "cannot deal with so many digits: 3300000000"]
 
 SNT: Chavez loyalists fear that the US government could instigate a proxy war between Colombia and Venezuela as a way to oust Chavez and control Venezuelan oil.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.loyal_A (mkCN L.person_N))) (mkVP L.fear_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "US"))))))) (mkVP L.instigate_VS (mkS (mkCl (mkNP (P.mkPN "Colombia")) (mkVP (P.mkAdV "proxy") (mkVP L.war_V2 (mkNP (P.mkPN "Venezuela"))))))))))))) fullStopPunct)
@@ -3543,8 +3543,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.official_N)) (mkVP (mkVP 
 TXT: [unknown qualified constant L.approach_VS]
 
 SNT: The pirates initially requested 35 million U.S. dollars and then reduced their request to 20 million U.S. dollars.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.pirate_N)) (mkVP (P.mkAdV "initially") (mkVP L.request_V)))) (mkS (mkCl (mkVP (P.mkAdV "then") (mkVP L.reduce_V))))))) fullStopPunct)
-TXT: [unknown qualified constant L.request_V]
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.pirate_N)) (mkVP (P.mkAdV "initially") (mkVP L.request_V2 (mkNP S.a_Quant (mkNum (mkDigits "35000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "U.S.")))))))))) (mkS (mkCl (mkVP (mkVP (P.mkAdV "then") (mkVP L.reduce_V)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkNum (mkDigits "20000000")) (mkNP S.a_Quant (mkCN L.dollar_N)))))))))) fullStopPunct)
+TXT: [no overload instance of mkNP]
 
 SNT: The pirates have consistently expressed willingness to negotiate the financial figures.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.pirate_N)) (mkVP L.express_VS (mkS (mkCl (mkVP L.will_VS (mkS (mkCl (mkVP (mkVP L.negotiate_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (E.CompoundCN L.finance_N L.figure_N))))))))))))) fullStopPunct)
@@ -3675,8 +3675,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.south_A L.region_N)) (mkN
 TXT: [a South region is an area that is heavily irrigated .]
 
 SNT: The U.N. estimates the insurgents made as much as 300 million dollars from the opium trade last year.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "U.N.")) (mkVP L.estimate_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.insurgent_N)) (mkVP L.make_VV (mkVP L.trade_V2 (mkNP S.a_Quant (mkCN L.opium_N))) (m3 (monetary-quantity (mkNum (mkDigits "300000000"))))))))))) fullStopPunct)
-TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "U.N.")) (mkVP L.estimate_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.insurgent_N)) (mkVP L.make_VV (mkVP L.trade_V2 (mkNP S.a_Quant (mkCN L.opium_N))) (m3 (monetary-quantity (mkNum (mkDigits "300000000"))))))))))) fullStopPunct)]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "U.N.")) (mkVP L.estimate_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.insurgent_N)) (mkVP L.make_VV (mkVP L.trade_V2 (mkNP S.a_Quant (mkCN L.opium_N))) (mkNP S.a_Quant (mkNum (mkDigits "300000000")) (mkCN L.dollar_N))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.make_VV]
 
 SNT: Costa said a lot of war effort can be funded with 2 to 300 million dollars.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Costa")) (mkVP L.say_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (passiveVP L.fund_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (L.effort_N (mkNP S.a_Quant (mkCN L.war_N)))))))))))))))))) fullStopPunct)
@@ -4611,8 +4611,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkNP (P.mkPN "Foreign Affairs Department")
 TXT: [Foreign Affairs Department from South Africa states Brazil .]
 
 SNT: Trade between Brazil and South Africa totaled 696 million United States dollars in 020000 and 296 million United States dollars more in the trade balance going to Brazil.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.total_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Brazil")) (mkVP (mkVP L.trade_V) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "South Africa"))))))))))) fullStopPunct)
-TXT: [{s = "it"]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.total_V2) (S.mkAdv L.PRD_Prep (mkNP (S.and_Conj (yearAdv (intYear (ss "2002")))) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "696000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))))) (mkNP S.a_Quant (mkNum (mkDigits "296000000")) d))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Brazil")) (mkVP (mkVP L.trade_V) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "South Africa"))))))))))) fullStopPunct)
+TXT: [constant not found: d]
 
 SNT: The South African Foreign Affairs Department stated that the South African delegation is to brief the Brazilians on progress with the African Union and the New Partnership for Africa' s development.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Foreign Affairs Department")) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "South Africa"))))) (mkVP L.brief_VV (mkVP L.progress_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Africa Union")) (mkNP (P.mkPN "New Partnership"))))) (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Brazil")))))))))))) fullStopPunct)
@@ -4819,7 +4819,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Wen")) (m
 TXT: [unknown qualified constant L.pledge_VV]
 
 SNT: Wen stated that trade between China and Germany has amounted to 41.8 billion U.S. dollars totaling one-third of China-Europe trade volume.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.amount_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "China")) (mkVP (mkVP L.trade_V) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "Germany")))))))))) (mkS (mkCl (mkVP (passiveVP L.total_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (mkCN L.volume_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.include_V2) (S.mkAdv (mkNP S.a_Quant (mkCN L.volume_N)))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (mkVP (passiveVP L.amount_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkNum (mkDigits "41800000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "U.S.")))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "China")) (mkVP (mkVP L.trade_V) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "Germany")))))))))) (mkS (mkCl (mkVP (passiveVP L.total_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (mkCN L.volume_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.include_V2) (S.mkAdv (mkNP S.a_Quant (mkCN L.volume_N)))))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.amount_V2]
 
 SNT: Wen stated that both China-German and China-Europe trade are expected to double by 2010.
@@ -4851,7 +4851,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.invest_V)))) fullStopPunct)
 TXT: [it invests .]
 
 SNT: Wen stated that German investment projects in China have exceeded 3500 with total investment near 10 billion U.S. dollars.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.project_N)) (mkVP L.exceed_V))) (mkS (mkCl (mkVP (passiveVP L.near_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.invest_V))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.project_N)) (mkVP L.exceed_V))) (mkS (mkCl (mkVP (mkVP (passiveVP L.near_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkNum (mkDigits "10000000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "U.S.")))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.invest_V))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.exceed_V]
 
 SNT: Some German firms such as Volkswagen, Siemens and Daimler-Chrysler have a reputation for high quality and efficiency.
@@ -5011,8 +5011,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chancellor_N L.of_Pre
 TXT: [chancellor of Germany Gerhard Schroeder is attended that it meets a person that leads an organization that governs Vietnam .]
 
 SNT: German and Vietnamese officials signed 5 documents on financial, technical and business cooperation totaling over 260 million dollars.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (passiveVP L.total_V2))))))))) fullStopPunct)
-TXT: [{s = "it"]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.total_V2) (S.mkAdv L.over_Prep (mkNP S.a_Quant (mkNum (mkDigits "260000000")) (mkCN L.dollar_N)))))))))))) fullStopPunct)
+TXT: [Predef.error "cannot deal with so many digits: 260000000"]
 
 SNT: Media reports stated on 10 October 2004 that Vietnamese and German officials have pledged to further Vietnamese and German relations in such fields as investment, trade and technology and to support each other in the United Nations (UN).
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.media_N L.report_N)) (mkVP (mkVP L.state_VS (mkS (mkCl (mkVP L.pledge_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (L.relation_N (mkNP S.a_Quant (mkCN L.field_N))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.each_N)) (mkVP (mkVP L.support_V2 (mkNP S.a_Quant (mkCN L.other_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "United Nations")))))))))))) (dayMonthYearAdv (intMonthday (ss "10")) october_Month (intYear (ss "2004"))))))) fullStopPunct)
@@ -5031,8 +5031,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkAP L.important_A) (mkNP (mkCN (mkCN (P.mkN2 L.
 TXT: [no overload instance of mkCl]
 
 SNT: Vietnamese and German officials signed 5 documents on financial, technical and business cooperation totaling over 260 million US dollars.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (passiveVP L.total_V2))))))))) fullStopPunct)
-TXT: [{s = "it"]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "5")) (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.total_V2) (S.mkAdv L.over_Prep (mkNP S.a_Quant (mkNum (mkDigits "260000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US")))))))))))))))) fullStopPunct)
+TXT: [no overload instance of mkNP]
 
 SNT: The documents cover financial cooperation for 2 stages in the 2003-2005 period and the purchase of 16 locomotives for the Vietnam Railway Corporation and equipment for a local cement plant.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.document_N)) (mkVP L.cover_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (mkVP (P.mkAdV "finance") (mkVP L.cooperate_V)) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.stage_N)))))) (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "16")) (mkCN L.locomotive_N)) (mkVP (passiveVP L.purchase_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Vietnam Railway Corporation")))))))))))) fullStopPunct)
@@ -5371,8 +5371,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkR
 TXT: [unknown qualified constant L.result_A]
 
 SNT: The prize money of the competition this time is 100,000 US dollars , the team that wins will get 70,000 US dollars , while the team that loses will get 30,000 US dollars .
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.team_N) (mkRS (mkRCl S.which_RP (mkVP L.win_V))))) (mkVP L.get_V))) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.team_N) (mkRS (mkRCl S.which_RP (mkVP L.lose_V))))) (mkVP L.get_V)))))) fullStopPunct))
-TXT: [unknown qualified constant L.get_V]
+AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkNum (mkDigits "100000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "United States")))))))) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.team_N) (mkRS (mkRCl S.which_RP (mkVP L.win_V))))) (mkVP L.get_V2 (mkNP S.a_Quant (mkNum (mkDigits "70000")) (mkNP S.a_Quant (mkCN L.dollar_N)))))) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.team_N) (mkRS (mkRCl S.which_RP (mkVP L.lose_V))))) (mkVP L.get_V2 (mkNP S.a_Quant (mkNum (mkDigits "30000")) (mkNP S.a_Quant (mkCN L.dollar_N))))))))) fullStopPunct))
+TXT: [no overload instance of mkNP] [no overload instance of mkNP]
 
 SNT: ( End )
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.end_V)))) fullStopPunct)

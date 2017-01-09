@@ -46,6 +46,7 @@ public class Processor {
             + "|no overload instance of"
             + "|missing record fields:"
             + "|warning:"
+            + "|Predef.error"
             + "|null"
             + "|\\{s ="
             + ").*";
@@ -222,7 +223,7 @@ public class Processor {
             txt = "";
 
             for (String s : snt) {
-                if (!s.toLowerCase().matches(FAILURE)) {
+                if (!s.toLowerCase().matches(FAILURE.toLowerCase())) {
                     txt = txt + " " + posteditSentence(s);
                 } else {
                     logFailures(s);

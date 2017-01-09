@@ -63,6 +63,7 @@
 
 @/date-entity/=/^date-entity$/
 @/temporal-quantity/=/^temporal-quantity$/
+@/monetary-quantity/=/^monetary-quantity$/
 
 @/name/=/^name$/
 @/person/=/^person$/
@@ -206,6 +207,14 @@
 /:purpose/=adv < (/VAR/=var < /FRAME/)
 [relabel adv /^:purpose$/E.PurposeVP/]
 [relabel var /^.+$/mkVP/]
+
+# mkNP : Quant -> Num -> CN -> NP
+# (var (monetary-quantity mkNum (:unit mkCN))) => (mkNP S.a_Quant mkNum mkCN)
+/VAR/=var < (/monetary-quantity/=money < mkNum=num < /:unit/=unit)
+[adjoinF (mkNP=np S.a_Quant @) num]
+[move unit >3 np]
+[excise unit unit]
+[excise var money]
 
 # mkN2 : N -> Prep -> N2
 # ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
