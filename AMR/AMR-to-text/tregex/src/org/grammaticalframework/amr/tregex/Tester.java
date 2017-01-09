@@ -1204,4 +1204,43 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // You could go to the library on Saturdays.
+    // FIXME: word order (time goes last)
+    @Test
+    public void
+            t62_you_could_go_to_the_library_on_Saturdays() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(p / possible-01 :ARG1 (g / go-02 :ARG0 (y / you) :ARG4 (l / library) :time (d / date-entity :weekday (s / saturday))))");
+        assertEquals(amr,
+                "(p (possible-01 (:ARG1 (g (go-02 (:ARG0 (y you)) (:ARG4 (l library)) (:time (d (date-entity (:weekday (s saturday))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (mkVP (mkVP L.go_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.library_N)))) (weekdayPunctualAdv saturday_Weekday)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // The US government has given $3.3 billion to Colombia in the past 5 years.
+    // FIXME: word order (time goes last)
+    // FIXME: large numbers (Predef.error)
+    @Test
+    public void
+            t63_the_US_government_has_given_3_3_billion_to_Colombia_in_the_past_5_years() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(g / give-01 :ARG0 (g2 / government-organization :ARG0-of (g3 / govern-01 :ARG1 (c / country :name (n / name :op1 \"US\")))) :ARG1 (m / monetary-quantity :quant 3300000000 :unit (d / dollar)) :ARG2 (c2 / country :name (n2 / name :op1 \"Colombia\")) :time (p / past :op1 (t / temporal-quantity :quant 5 :unit (y / year))))");
+        assertEquals(amr,
+                "(g (give-01 (:ARG0 (g2 (government-organization (:ARG0-of (g3 (govern-01 (:ARG1 (c (country (:name (n (name (:op1 \"US\"))))))))))))) (:ARG1 (m (monetary-quantity (:quant 3300000000) (:unit (d dollar))))) (:ARG2 (c2 (country (:name (n2 (name (:op1 \"Colombia\"))))))) (:time (p (past (:op1 (t (temporal-quantity (:quant 5) (:unit (y year))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN \"US\"))))))) (mkVP (mkVP (mkVP L.give_V2 (mkNP S.a_Quant (mkNum (mkDigits \"3300000000\")) (mkCN L.dollar_N))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN \"Colombia\")))) (S.mkAdv (P.mkPrep \"past\") (mkNP S.a_Quant (mkNum (mkDigits \"5\")) (mkCN L.year_N))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

@@ -46,6 +46,7 @@ public class Processor {
             + "|no overload instance of"
             + "|missing record fields:"
             + "|warning:"
+            + "|Predef.error"
             + "|null"
             + "|\\{s ="
             + ").*";
@@ -107,9 +108,14 @@ public class Processor {
      * @param out
      */
     private void writeLog(Map<String, Integer> log, PrintWriter out) {
+        int total = 0;
+
         for (String key : log.keySet()) {
             out.println(log.get(key) + "\t" + key);
+            total = total + log.get(key);
         }
+
+        out.println(total + "\tTOTAL");
     }
 
     /**
@@ -217,7 +223,7 @@ public class Processor {
             txt = "";
 
             for (String s : snt) {
-                if (!s.toLowerCase().matches(FAILURE)) {
+                if (!s.toLowerCase().matches(FAILURE.toLowerCase())) {
                     txt = txt + " " + posteditSentence(s);
                 } else {
                     logFailures(s);
@@ -302,6 +308,18 @@ public class Processor {
         snt = snt.replaceAll("\\b(?<!\\d[,.])8(?![,.]\\d)\\b", "eight");
         snt = snt.replaceAll("\\b(?<!\\d[,.])9(?![,.]\\d)\\b", "nine");
         snt = snt.replaceAll("\\b(?<!\\d[,.])10(?![,.]\\d)\\b", "ten");
+
+        // Undo replacement for dates
+        snt = snt.replaceAll("\\bone (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "1 $1");
+        snt = snt.replaceAll("\\btwo (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "2 $1");
+        snt = snt.replaceAll("\\bthree (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "3 $1");
+        snt = snt.replaceAll("\\bfour (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "4 $1");
+        snt = snt.replaceAll("\\bfive (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "5 $1");
+        snt = snt.replaceAll("\\bsix (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "6 $1");
+        snt = snt.replaceAll("\\bseven (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "7 $1");
+        snt = snt.replaceAll("\\beight (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "8 $1");
+        snt = snt.replaceAll("\\bnine (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "9 $1");
+        snt = snt.replaceAll("\\bten (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "10 $1");
 
         snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
         snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation

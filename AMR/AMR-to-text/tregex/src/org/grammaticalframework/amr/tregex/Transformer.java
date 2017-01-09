@@ -254,6 +254,10 @@ public class Transformer {
      * @return
      */
     public String postprocessAST(String ast) {
+        ast = ast.replace("10_Month", "october_Month");
+        ast = ast.replace("11_Month", "november_Month");
+        ast = ast.replace("12_Month", "december_Month");
+
         ast = ast.replace("1_Month", "january_Month");
         ast = ast.replace("2_Month", "february_Month");
         ast = ast.replace("3_Month", "march_Month");
@@ -263,9 +267,6 @@ public class Transformer {
         ast = ast.replace("7_Month", "july_Month");
         ast = ast.replace("8_Month", "august_Month");
         ast = ast.replace("9_Month", "september_Month");
-        ast = ast.replace("10_Month", "october_Month");
-        ast = ast.replace("11_Month", "november_Month");
-        ast = ast.replace("12_Month", "december_Month");
 
         return ast;
     }
