@@ -22,7 +22,7 @@ import org.junit.runners.MethodSorters;
 public class Tester {
 
     public static final String name = "TestTrees";
-    public static final String path = "out/test/" + name;
+    public static final String path = "out/tests/" + name;
     public static final String rules = "../rules/amr2api.tsurgeon";
     public static final String roles = "../lexicons/propbank/frames-roles.txt";
 
