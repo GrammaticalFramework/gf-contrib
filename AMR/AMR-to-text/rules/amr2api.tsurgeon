@@ -1199,7 +1199,7 @@ possess_Prep=prep
 /Cl/ <1 /VAR/=var
 [delete var]
 
-/:ARGm/=arg <: /VAR/
+/:ARGx/=arg <: /VAR/
 [delete arg]
 
 /:location/=loc <: /VAR/
