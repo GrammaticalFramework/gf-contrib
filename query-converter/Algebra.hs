@@ -7,7 +7,7 @@ import Data.Char
 import qualified Data.Map as M
 import AbsRelAlgebra
 import PrintRelAlgebra
-import qualified PrintKeywordRelAlgebra as KW
+----import qualified PrintKeywordRelAlgebra as KW
 
 --------------
 
@@ -15,8 +15,8 @@ prRel :: Rel -> String
 prRel = unwords . lines . printTree -- remove newlines due to latex braces
 
 -- print in the keyword notation
-prKeywordRel :: Rel -> String
-prKeywordRel = unwords . lines . KW.printTree -- remove newlines due to latex braces
+----prKeywordRel :: Rel -> String
+----prKeywordRel = unwords . lines . KW.printTree -- remove newlines due to latex braces
 
 prRelLatex :: Rel -> String
 prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . printTree 
