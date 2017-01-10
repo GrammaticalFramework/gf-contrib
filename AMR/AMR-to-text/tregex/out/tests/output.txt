@@ -298,3 +298,13 @@ TestTreesEng: I start a university in 1999 .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t64_youngest_brother_is_a_tender_youth
+TestTreesEng: youngest brother is tender youth .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t65_I_d_recommend_you_go_and_see_your_doctor
+TestTreesEng: I recommend that you go to see doctor .
+TestTreesLav: 
+TestTreesRus: 
+

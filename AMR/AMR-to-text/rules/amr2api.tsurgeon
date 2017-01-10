@@ -59,7 +59,7 @@
 
 @/REIF/=/^[a-z]+(-[a-z]+)*-91$/
 
-@/have-org-role-91/=/^have-org-role-91$/
+@/ROLE/=/^(have-org-role-91|have-rel-role-91)$/
 
 @/date-entity/=/^date-entity$/
 @/temporal-quantity/=/^temporal-quantity$/
@@ -160,20 +160,20 @@
 /VAR/ < /^[a-z]+-[a-z]+-[0-9]+$/=frame
 [relabel frame /^(.+)-(.+)-(.+)$/$1_$2-$3/]
 
-# ((:ARG0-of (var 'have-org-role-91')) :ord) => (:ARG0-of (var ('have-org-role-91' :ord)))
-/:ARG0-of/ < (/VAR/ < /have-org-role-91/=org) $ /:ord/=ord
+# ((:ARG0-of (var role)) :ord) => (:ARG0-of (var (role :ord)))
+/:ARG0-of/ < (/VAR/ < /ROLE/=org) $ /:ord/=ord
 [move ord >-1 org]
 
-# (var ('person' :relation (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
-/VAR/ < (/person/ < /^:(name|location)$/=rel < (/:ARG0-of/ < (/VAR/ < /have-org-role-91/=role)))
+# (var ('person' :relation (:ARG0-of (var role)))) => (var role)
+/VAR/ < (/person/ < /^:(name|location)$/=rel < (/:ARG0-of/ < (/VAR/ < /ROLE/=role)))
 [move rel >-1 role]
 
-# (var ('person' :ARG0-of (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
-/VAR/ < (/person/ < (/:ARG0-of/=arg !<< /have-org-role-91/) < (/:ARG0-of/ < (/VAR/ < /have-org-role-91/=role)))
+# (var ('person' :ARG0-of (:ARG0-of (var role)))) => (var role)
+/VAR/ < (/person/ < (/:ARG0-of/=arg !<< /ROLE/) < (/:ARG0-of/ < (/VAR/ < /ROLE/=role)))
 [move arg >-1 role]
 
-# (var ('person' (:ARG0-of (var 'have-org-role-91')))) => (var 'have-org-role-91')
-/VAR/=var1 < (/person/ < (/:ARG0-of/ < (/VAR/=var2 < /have-org-role-91/)))
+# (var ('person' (:ARG0-of (var role)))) => (var role)
+/VAR/=var1 < (/person/ < (/:ARG0-of/ < (/VAR/=var2 < /ROLE/)))
 [excise var1 var2]
 
 # TODO: move other pre-editing rules here
@@ -217,24 +217,30 @@
 [excise var money]
 
 # mkN2 : N -> Prep -> N2
-# ('have-org-role-91' (:ARG2 (var entity))) => ('have-org-role-91' (mkN2 entity_N of_Prep))
-/have-org-role-91/ < (/:ARG2/=title < (/VAR/=var < /WORD/=entity))
+# (role (:ARG2 (var entity))) => (role (mkN2 entity_N of_Prep))
+/ROLE/ < (/:ARG2/=title < (/VAR/=var < /WORD/=entity))
 [relabel entity /^(.+)$/$1_N/]
 [adjoinF (mkN2=n2 @) entity]
 [insert (of_Prep) >2 n2]
 [excise title var]
 
 # mkCN : N2 -> NP -> CN
-# ('have-org-role-91' :ARG1 mkN2) => (mkCN (mkN2 :ARG1))
-/have-org-role-91/=cn < (/:ARG1/=org $ mkN2=title)
+# (role :ARG1 mkN2) => (mkCN (mkN2 :ARG1))
+/ROLE/=cn < (/:ARG1/=org $ mkN2=title)
 [move title $+ org]
 [adjoin (mkCN TEMP=temp@) cn]
 [excise temp temp]
 
+# mkCN : N2 -> CN
+# (role mkN2) => (mkCN mkN2)
+/ROLE/=role <: mkN2=n2
+[adjoinF (mkCN @) n2]
+[excise role role]
+
 # mkRCl : RP -> NP -> RCl
 # mkRS : RCl -> RS
-# (:mod 'have-org-role-91') => (mkRS (mkRCl which_RP mkNP))
-/:mod/=mod < /have-org-role-91/=org
+# (:mod role) => (mkRS (mkRCl which_RP mkNP))
+/:mod/=mod < /ROLE/=org
 [adjoin (mkRS (mkRCl S.which_RP (mkNP S.a_Quant mkCN@))) org]
 
 # mkRCl : RP -> NP -> RCl
@@ -366,6 +372,11 @@ mkCl=cl < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
 # (var frame) => (mkS (mkCl mkVP))
 /VAR/=var < /FRAME/
 [adjoin (mkS (mkCl mkVP@)) var]
+
+# mkNP : Det -> CN -> NP
+# (frame (:ARG[01] CN)) => (frame (:ARG[01] (mkNP a_Det CN)))
+/FRAME/ < (/:ARGm/ < /CN/=cn)
+[adjoinF (mkNP @) cn]
 
 # mkCl : NP -> VP -> Cl
 # (mkCl (mkVP (frame :ARG0))) => (mkCl :ARG0 (mkVP frame))
@@ -746,6 +757,21 @@ mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/coun
 [delete mod]
 
 # mkCN : A -> CN -> CN
+# (mkCN (mkN2 (noun_N (:mod (var adj))))) => (mkCN adj (mkCN mkN2))
+mkCN=cn_i < (mkN2 < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/country/ < /:name/)))))
+[adjoinF (mkCN=cn_o @) cn_i]
+[relabel adj /^(.+)$/$1_A/]
+[move adj >1 cn_o]
+[delete mod]
+
+# mkAP : Ord -> AP
+# mkOrd : A -> Ord
+# (adj_A (:degree (var 'most'))) => (mkAP (mkOrd adj_A))
+/adj_A/=adj < (/:degree/=degree < (/VAR/ < most))
+[adjoinF (mkAP (mkOrd @)) adj]
+[delete degree]
+
+# mkCN : A -> CN -> CN
 # (mkCN (adj1 (:degree (var adj2)))) => (mkCN adj2 (mkCN adj1))
 mkCN=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /ADJ/=adj2)))
 [relabel adj2 /^(.+)$/$1_A/]
@@ -1108,7 +1134,7 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 mkCl < mkCN=cn
 [adjoinF (mkNP @) cn]
 
-# (:ARG1 NP) => (NP)
+# (:ARG[01] NP) => (NP)
 /:ARGm/=arg < /NP/
 [excise arg arg]
 
@@ -1212,6 +1238,10 @@ possess_Prep=prep
 
 /REL/=unk
 [delete unk]
+
+/ROLE/=role
+[adjoinF (mkNP S.a_Det L.person_N @) role]
+[delete role]
 
 #/REIF/=unk
 #[delete unk]

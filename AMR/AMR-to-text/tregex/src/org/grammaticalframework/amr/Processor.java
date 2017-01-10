@@ -29,7 +29,10 @@ public class Processor {
     private String file_rules;
     private String file_roles;
 
+    private String batch;
+
     private boolean unk;
+    private boolean eval;
 
     private Map<String, Integer> unk_rels;
     private Map<String, Integer> unk_nodes;
@@ -125,12 +128,15 @@ public class Processor {
      * @param path_out
      * @param file_rules
      * @param file_roles
+     * @param batch
      */
-    public Processor(String path_in, String path_out, String file_rules, String file_roles) {
+    public Processor(String path_in, String path_out, String file_rules, String file_roles, String batch) {
         this.path_in = path_in;
         this.path_out = path_out;
         this.file_rules = file_rules;
         this.file_roles = file_roles;
+        this.batch = batch;
+        this.eval = (batch.equals("evaluation")) ? true : false;
     }
 
     /**
@@ -138,7 +144,7 @@ public class Processor {
      * @return
      */
     public List<Pair<String, String>> readAMRs() throws Exception {
-        File path_amr = new File(path_in);
+        File path_amr = new File(path_in + batch + "/");
 
         if (!path_amr.isDirectory()) {
             return null;
@@ -162,7 +168,7 @@ public class Processor {
             while ((line = input.readLine()) != null) {
                 line = line.trim();
 
-                if (line.startsWith("# ::snt")) {
+                if ((!eval && line.startsWith("# ::snt")) || (eval && line.startsWith("# ::id"))) {
                     // Add previous AMR (if any) to the list
                     if (amr.length() > 0) {
                         amrs.add(new Pair<String, String>(snt, amr.toString().trim()));
@@ -170,7 +176,7 @@ public class Processor {
                         count++;
                     }
 
-                    snt = line.substring("# ::snt".length()).trim();
+                    snt = (eval) ? "" : line.substring("# ::snt".length()).trim();
                 } else if (line.startsWith("#")) {
                     continue;
                 } else if (!line.isEmpty()) {
@@ -202,9 +208,11 @@ public class Processor {
     public void writeResults(List<Map<String, String>> results) throws Exception {
         String filename = (!unk) ? "answer" : "answer-partial";
 
-        PrintWriter ans = new PrintWriter(path_out + "out/" + filename + ".txt", "UTF-8");
-        PrintWriter ext = new PrintWriter(path_out + "out/" + filename + "-extended.txt", "UTF-8");
-        PrintWriter xxx = new PrintWriter(path_out + "out/" + filename + "-extended-amrs.txt", "UTF-8");
+        PrintWriter ans = new PrintWriter(path_out + "out/" + batch + "/" + filename + ".txt", "UTF-8");
+        PrintWriter ext = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended.txt", "UTF-8");
+        PrintWriter xxx = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended-amrs.txt", "UTF-8");
+
+        PrintWriter orig = (eval) ? null : new PrintWriter(path_out + "out/" + batch + "/original.txt", "UTF-8");
 
         for (Map<String, String> record : results) {
             String txt = "[" + record.get("TXT").replace(SEPARATOR, "] [") + "]";
@@ -217,6 +225,10 @@ public class Processor {
             ext.println("SNT: " + record.get("SNT"));
             ext.println("AST: " + record.get("AST"));
             ext.println("TXT: " + txt + "\n");
+
+            if (orig != null) {
+                orig.println(record.get("SNT"));
+            }
 
             String[] snt = record.get("TXT").split(SEPARATOR);
 
@@ -237,11 +249,20 @@ public class Processor {
         ext.close();
         xxx.close();
 
-        PrintWriter log_rels = new PrintWriter(path_out + "log/" + filename + "-unk-relations.log", "UTF-8");
-        PrintWriter log_nodes = new PrintWriter(path_out + "log/" + filename + "-unk-nodes.log", "UTF-8");
-        PrintWriter log_entries = new PrintWriter(path_out + "log/" + filename + "-unk-entries.log", "UTF-8");
-        PrintWriter log_funs = new PrintWriter(path_out + "log/" + filename + "-unk-functions.log", "UTF-8");
-        PrintWriter log_types = new PrintWriter(path_out + "log/" + filename + "-unk-types.log", "UTF-8");
+        if (orig != null) {
+            orig.close();
+        }
+
+        PrintWriter log_rels =
+                new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-relations.log", "UTF-8");
+        PrintWriter log_nodes =
+                new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-nodes.log", "UTF-8");
+        PrintWriter log_entries =
+                new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-entries.log", "UTF-8");
+        PrintWriter log_funs =
+                new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-functions.log", "UTF-8");
+        PrintWriter log_types =
+                new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-types.log", "UTF-8");
 
         writeLog(unk_rels, log_rels);
         writeLog(unk_nodes, log_nodes);
@@ -294,6 +315,7 @@ public class Processor {
      * @return
      */
     public static String posteditSentence(String snt) {
+        // Bind digits of numbers
         snt = snt.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
 
         // Replace [0..10] with words
@@ -321,9 +343,14 @@ public class Processor {
         snt = snt.replaceAll("\\bnine (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "9 $1");
         snt = snt.replaceAll("\\bten (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "10 $1");
 
-        snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
+        // Remove meaningless words that are often generated in a wrong order
+        snt = snt.replaceAll("\\b(oh|too)\\b", "");
+
+        snt = snt.replaceAll("[ ]{2,}", " ").trim(); // Normalize spaces
         snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
         snt = snt.replaceAll("[.][.]$", "."); // Remove a redundant full-stop
+
+        snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
 
         return snt;
     }
@@ -344,7 +371,13 @@ public class Processor {
             record.put("SNT", amr.first);
             record.put("AMR", amr.second);
 
-            String ast = amr2gf.transformToGF(amr2gf.transformToLISP(amr.second)).get(0);
+            String lisp = amr2gf.transformToLISP(amr.second);
+
+            if (lisp == null) {
+                System.err.println("AMR failed: " + amr.second);
+            }
+
+            String ast = amr2gf.transformToGF(lisp).get(0);
 
             String[] snt = splitSentences(ast); // Because of multi-sentence AMRs
 
@@ -421,18 +454,40 @@ public class Processor {
      * @param args
      */
     public static void main(String[] args) throws Exception {
+        // Dry run data
         Processor amr2txt = new Processor(
                 "../amrs/",
                 "out/semeval/",
                 "../rules/amr2api.tsurgeon",
-                "../lexicons/propbank/frames-roles.txt");
+                "../lexicons/propbank/frames-roles.txt",
+                "dryrun");
 
-        System.out.println("# Run: full sentences only");
+        System.out.println();
+
+        System.out.println("# Dry run: full sentences only");
         amr2txt.run(false);
 
         System.out.println();
 
-        System.out.println("# Run: including partial sentences");
+        System.out.println("# Dry run: including partial sentences");
+        amr2txt.run(true);
+
+        // Evaluation data
+        amr2txt = new Processor(
+                "../amrs/",
+                "out/semeval/",
+                "../rules/amr2api.tsurgeon",
+                "../lexicons/propbank/frames-roles.txt",
+                "evaluation");
+
+        System.out.println();
+
+        System.out.println("# Evaluation: full sentences only");
+        amr2txt.run(false);
+
+        System.out.println();
+
+        System.out.println("# Evaluation: including partial sentences");
         amr2txt.run(true);
     }
 

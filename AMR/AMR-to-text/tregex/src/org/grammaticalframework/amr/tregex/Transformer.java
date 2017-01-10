@@ -280,7 +280,14 @@ public class Transformer {
      */
     public List<String> transformToGF(String amr) {
         List<String> ast = new ArrayList<String>();
-        TreeReader penn = new PennTreeReader(new StringReader(amr));
+        TreeReader penn = null;
+
+        if (amr != null) {
+            penn = new PennTreeReader(new StringReader(amr));
+        } else {
+            ast.add("NULL");
+            return ast;
+        }
 
         try {
             // First input tree
@@ -290,7 +297,13 @@ public class Transformer {
                 enrichAMR(input, new Stack<Tree>());
 
                 Tree output = Tsurgeon.processPatternsOnTree(tregex, input);
-                ast.add(postprocessAST(output.toString()));
+
+                if (output != null) {
+                    ast.add(postprocessAST(output.toString()));
+                } else {
+                    ast.add("NULL");
+                    System.err.println("Tsurgeon failed: " + input);
+                }
 
                 // Next input tree
                 input = penn.readTree();

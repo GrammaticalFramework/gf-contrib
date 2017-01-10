@@ -75,10 +75,10 @@ public class AMRGrammar extends BaseParser<AMRNode> {
                 Sequence(Bool(), (peek()).addChild(new AMRNode(match()))));
     }
 
-    // Str = '"' [^\"\s]+ '"'
+    // Str = '"' [^"]+ '"'
     @SuppressSubnodes
     public Rule Str() {
-        return Sequence('"', OneOrMore(Sequence(TestNot(FirstOf('"', Space())), ANY)), '"');
+        return Sequence('"', OneOrMore(Sequence(TestNot('"'), ANY)), '"');
     }
 
     // Num = [+-]?\d+(\.\d+)?

@@ -22,7 +22,7 @@ import org.junit.runners.MethodSorters;
 public class Tester {
 
     public static final String name = "TestTrees";
-    public static final String path = "out/test/" + name;
+    public static final String path = "out/tests/" + name;
     public static final String rules = "../rules/amr2api.tsurgeon";
     public static final String roles = "../lexicons/propbank/frames-roles.txt";
 
@@ -1239,6 +1239,43 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN \"US\"))))))) (mkVP (mkVP (mkVP L.give_V2 (mkNP S.a_Quant (mkNum (mkDigits \"3300000000\")) (mkCN L.dollar_N))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN \"Colombia\")))) (S.mkAdv (P.mkPrep \"past\") (mkNP S.a_Quant (mkNum (mkDigits \"5\")) (mkCN L.year_N))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Youngest brother is a tender youth.
+    @Test
+    public void
+            t64_youngest_brother_is_a_tender_youth() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(y / youth :ARG1-of (t / tender-02) :domain (p / person :ARG0-of (h / have-rel-role-91 :ARG2 (b / brother :mod (y2 / young :degree (m / most))))))");
+        assertEquals(amr,
+                "(y (youth (:ARG1-of (t tender-02)) (:domain (p (person (:ARG0-of (h (have-rel-role-91 (:ARG2 (b (brother (:mod (y2 (young (:degree (m most))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkAP (S.mkOrd L.young_A)) (mkCN (P.mkN2 L.brother_N L.of_Prep)))) (mkNP (mkCN L.tender_A (mkCN L.youth_N)))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // I'd recommend you go and see your doctor.
+    // FIXME: 'a doctor' (vs. '[the] president of China')
+    @Test
+    public void
+            t65_I_d_recommend_you_go_and_see_your_doctor() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(r / recommend-01 :ARG0 (i / i) :ARG1 (g / go-02 :ARG0 (y / you) :purpose (s / see-01 :ARG0 y :ARG1 (p / person :ARG0-of (h / have-rel-role-91 :ARG1 y :ARG2 (d / doctor))))) :ARG2 y)");
+        assertEquals(amr,
+                "(r (recommend-01 (:ARG0 (i i)) (:ARG1 (g (go-02 (:ARG0 (y you)) (:purpose (s (see-01 (:ARG0 y) (:ARG1 (p (person (:ARG0-of (h (have-rel-role-91 (:ARG1 y) (:ARG2 (d doctor)))))))))))))) (:ARG2 y)))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.recommend_VS (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.see_V2 (mkNP (mkCN (P.mkN2 L.doctor_N L.of_Prep)))))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
