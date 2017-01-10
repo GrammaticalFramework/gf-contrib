@@ -32,6 +32,7 @@ public class Processor {
     private String batch;
 
     private boolean unk;
+    private boolean eval;
 
     private Map<String, Integer> unk_rels;
     private Map<String, Integer> unk_nodes;
@@ -135,6 +136,7 @@ public class Processor {
         this.file_rules = file_rules;
         this.file_roles = file_roles;
         this.batch = batch;
+        this.eval = (batch.equals("evaluation")) ? true : false;
     }
 
     /**
@@ -147,8 +149,6 @@ public class Processor {
         if (!path_amr.isDirectory()) {
             return null;
         }
-
-        boolean eval = (batch.equals("evaluation")) ? true : false;
 
         List<Pair<String, String>> amrs = new ArrayList<Pair<String, String>>();
         StringBuilder amr = new StringBuilder();
@@ -212,6 +212,8 @@ public class Processor {
         PrintWriter ext = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended.txt", "UTF-8");
         PrintWriter xxx = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended-amrs.txt", "UTF-8");
 
+        PrintWriter orig = (eval) ? null : new PrintWriter(path_out + "out/" + batch + "/original.txt", "UTF-8");
+
         for (Map<String, String> record : results) {
             String txt = "[" + record.get("TXT").replace(SEPARATOR, "] [") + "]";
 
@@ -223,6 +225,10 @@ public class Processor {
             ext.println("SNT: " + record.get("SNT"));
             ext.println("AST: " + record.get("AST"));
             ext.println("TXT: " + txt + "\n");
+
+            if (orig != null) {
+                orig.println(record.get("SNT"));
+            }
 
             String[] snt = record.get("TXT").split(SEPARATOR);
 
@@ -242,6 +248,10 @@ public class Processor {
         ans.close();
         ext.close();
         xxx.close();
+
+        if (orig != null) {
+            orig.close();
+        }
 
         PrintWriter log_rels =
                 new PrintWriter(path_out + "log/" + batch + "/" + filename + "-unk-relations.log", "UTF-8");

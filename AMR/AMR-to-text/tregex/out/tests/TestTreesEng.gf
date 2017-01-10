@@ -127,4 +127,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t61_I_started_university_in_1999 = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (yearAdv (intYear (ss "1999"))))))) fullStopPunct) ;
 
+	lin t64_youngest_brother_is_a_tender_youth = (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkAP (S.mkOrd L.young_A)) (mkCN (P.mkN2 L.brother_N L.of_Prep)))) (mkNP (mkCN L.tender_A (mkCN L.youth_N)))))) fullStopPunct) ;
+
 }

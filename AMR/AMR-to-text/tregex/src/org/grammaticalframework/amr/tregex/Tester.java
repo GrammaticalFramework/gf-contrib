@@ -1243,4 +1243,22 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // Youngest brother is a tender youth.
+    @Test
+    public void
+            t64_youngest_brother_is_a_tender_youth() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(y / youth :ARG1-of (t / tender-02) :domain (p / person :ARG0-of (h / have-rel-role-91 :ARG2 (b / brother :mod (y2 / young :degree (m / most))))))");
+        assertEquals(amr,
+                "(y (youth (:ARG1-of (t tender-02)) (:domain (p (person (:ARG0-of (h (have-rel-role-91 (:ARG2 (b (brother (:mod (y2 (young (:degree (m most))))))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkAP (S.mkOrd L.young_A)) (mkCN (P.mkN2 L.brother_N L.of_Prep)))) (mkNP (mkCN L.tender_A (mkCN L.youth_N)))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

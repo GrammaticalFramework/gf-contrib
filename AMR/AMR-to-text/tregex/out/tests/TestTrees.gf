@@ -62,5 +62,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t59_we_have_been_broken_up_since_August : Text ;
 	fun t60_I_started_university_on_1_September_1999 : Text ;
 	fun t61_I_started_university_in_1999 : Text ;
+	fun t64_youngest_brother_is_a_tender_youth : Text ;
 
 }
