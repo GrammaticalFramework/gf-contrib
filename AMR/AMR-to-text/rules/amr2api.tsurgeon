@@ -373,6 +373,11 @@ mkCl=cl < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/)) !<1 /VAR/
 /VAR/=var < /FRAME/
 [adjoin (mkS (mkCl mkVP@)) var]
 
+# mkNP : Det -> CN -> NP
+# (frame (:ARG[01] CN)) => (frame (:ARG[01] (mkNP a_Det CN)))
+/FRAME/ < (/:ARGm/ < /CN/=cn)
+[adjoinF (mkNP @) cn]
+
 # mkCl : NP -> VP -> Cl
 # (mkCl (mkVP (frame :ARG0))) => (mkCl :ARG0 (mkVP frame))
 mkCl=cl < (mkVP < (/FRAME/ < /:ARG0/=subj))
@@ -1129,7 +1134,7 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 mkCl < mkCN=cn
 [adjoinF (mkNP @) cn]
 
-# (:ARG1 NP) => (NP)
+# (:ARG[01] NP) => (NP)
 /:ARGm/=arg < /NP/
 [excise arg arg]
 
@@ -1235,7 +1240,7 @@ possess_Prep=prep
 [delete unk]
 
 /ROLE/=role
-[adjoinF (mkNP a_Det L.person_N @) role]
+[adjoinF (mkNP S.a_Det L.person_N @) role]
 [delete role]
 
 #/REIF/=unk

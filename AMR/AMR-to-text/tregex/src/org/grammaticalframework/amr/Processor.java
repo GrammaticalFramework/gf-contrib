@@ -315,6 +315,7 @@ public class Processor {
      * @return
      */
     public static String posteditSentence(String snt) {
+        // Bind digits of numbers
         snt = snt.replaceAll("([ ]*Predef[.]BIND[ ]*)", "");
 
         // Replace [0..10] with words
@@ -342,9 +343,14 @@ public class Processor {
         snt = snt.replaceAll("\\bnine (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "9 $1");
         snt = snt.replaceAll("\\bten (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "10 $1");
 
-        snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
+        // Remove meaningless words that are often generated in a wrong order
+        snt = snt.replaceAll("\\b(oh|too)\\b", "");
+
+        snt = snt.replaceAll("[ ]{2,}", " ").trim(); // Normalize spaces
         snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
         snt = snt.replaceAll("[.][.]$", "."); // Remove a redundant full-stop
+
+        snt = snt.substring(0, 1).toUpperCase() + snt.substring(1); // Capitalize first letter
 
         return snt;
     }

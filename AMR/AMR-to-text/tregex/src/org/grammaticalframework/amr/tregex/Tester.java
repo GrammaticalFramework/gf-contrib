@@ -1261,4 +1261,23 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // I'd recommend you go and see your doctor.
+    // FIXME: 'a doctor' (vs. '[the] president of China')
+    @Test
+    public void
+            t65_I_d_recommend_you_go_and_see_your_doctor() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(r / recommend-01 :ARG0 (i / i) :ARG1 (g / go-02 :ARG0 (y / you) :purpose (s / see-01 :ARG0 y :ARG1 (p / person :ARG0-of (h / have-rel-role-91 :ARG1 y :ARG2 (d / doctor))))) :ARG2 y)");
+        assertEquals(amr,
+                "(r (recommend-01 (:ARG0 (i i)) (:ARG1 (g (go-02 (:ARG0 (y you)) (:purpose (s (see-01 (:ARG0 y) (:ARG1 (p (person (:ARG0-of (h (have-rel-role-91 (:ARG1 y) (:ARG2 (d doctor)))))))))))))) (:ARG2 y)))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.recommend_VS (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.see_V2 (mkNP (mkCN (P.mkN2 L.doctor_N L.of_Prep)))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
