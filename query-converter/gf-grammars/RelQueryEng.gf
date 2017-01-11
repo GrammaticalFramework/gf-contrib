@@ -13,7 +13,7 @@ in {
 
 lincat
   Query =    Utt ;
-  Rel =      {text : Text ; cn  : CN   ; isSimple : Bool} ;
+  Rel =      {text : Text ; cn  : CN       ; isSimple : Bool} ;
   [Rel] =    {text : Text ; cns : G.ListCN ; isSimple : Bool} ;
   Cond =     {text : Text ; s : S ; ns : S ; isSimple : Bool} ;
   [Cond] =   {text : Text ; s : S ; ns : S ; isSimple : Bool} ;

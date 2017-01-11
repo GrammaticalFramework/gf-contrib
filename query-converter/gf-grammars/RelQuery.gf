@@ -32,9 +32,10 @@ fun
   QText : Rel -> Query ;  -- relation as text, typically long
   QNoun : Rel -> Query ;  -- relation as noun, typically short
 
-  RTable : TableIdent -> Rel ;
-  RSelect : Cond -> Rel -> Rel ;
+  RTable   : TableIdent          -> Rel ;
+  RSelect  : Cond         -> Rel -> Rel ;
   RProject : [Projection] -> Rel -> Rel ;
+  RRename  : Renaming     -> Rel -> Rel ;
   ----
   RCartesian : [Rel] -> Rel ;  -- < R x S
   ----

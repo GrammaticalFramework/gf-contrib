@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -fno-warn-unused-binds -fno-warn-missing-signatures #-}
 {-# LANGUAGE CPP,MagicHash #-}
 {-# LINE 3 "LexRelAlgebra.x" #-}
 
@@ -9,6 +10,7 @@ module LexRelAlgebra where
 
 import qualified Data.Bits
 import Data.Word (Word8)
+import Data.Char (ord)
 
 #if __GLASGOW_HASKELL__ >= 603
 #include "ghcconfig.h"
@@ -17,17 +19,17 @@ import Data.Word (Word8)
 #endif
 #if __GLASGOW_HASKELL__ >= 503
 import Data.Array
-import Data.Char (ord)
 import Data.Array.Base (unsafeAt)
 #else
 import Array
-import Char (ord)
 #endif
 #if __GLASGOW_HASKELL__ >= 503
 import GHC.Exts
 #else
 import GlaExts
 #endif
+alex_tab_size :: Int
+alex_tab_size = 8
 alex_base :: AlexAddr
 alex_base = AlexA# "\xf8\xff\xff\xff\x93\xff\xff\xff\x90\xff\xff\xff\x8d\xff\xff\xff\x8c\xff\xff\xff\x3c\x00\x00\x00\xbc\x00\x00\x00\x3c\x01\x00\x00\xbc\x01\x00\x00\x3c\x02\x00\x00\xbc\x02\x00\x00\x3c\x03\x00\x00\xbc\x03\x00\x00\xa9\xff\xff\xff\xa6\xff\xff\xff\x9d\xff\xff\xff\xae\xff\xff\xff\x91\xff\xff\xff\x3c\x04\x00\x00\xbc\x04\x00\x00\x3c\x05\x00\x00\xbc\x05\x00\x00\x3c\x06\x00\x00\xbc\x06\x00\x00\x3c\x07\x00\x00\xbc\x07\x00\x00\xa2\xff\xff\xff\xaf\xff\xff\xff\xa8\xff\xff\xff\xa3\xff\xff\xff\x9e\xff\xff\xff\xd9\xff\xff\xff\xb6\xff\xff\xff\xac\xff\xff\xff\xb0\xff\xff\xff\xb5\xff\xff\xff\xb4\xff\xff\xff\xc5\xff\xff\xff\xb3\xff\xff\xff\xd2\xff\xff\xff\xce\xff\xff\xff\xbd\xff\xff\xff\x18\x00\x00\x00\xee\xff\xff\xff\xf1\xff\xff\xff\xdc\xff\xff\xff\xe9\xff\xff\xff\x11\x00\x00\x00\xfc\xff\xff\xff\x1a\x00\x00\x00\x03\x00\x00\x00\x01\x00\x00\x00\x04\x00\x00\x00\x19\x00\x00\x00\x14\x00\x00\x00\x15\x00\x00\x00\x08\x00\x00\x00\x0e\x00\x00\x00\x23\x00\x00\x00\x12\x00\x00\x00\x25\x00\x00\x00\x1b\x00\x00\x00\x10\x00\x00\x00\x13\x00\x00\x00\x16\x00\x00\x00\x00\x00\x00\x00\x2d\x08\x00\x00\x00\x00\x00\x00\x9e\x08\x00\x00\x00\x00\x00\x00\x0f\x09\x00\x00\x00\x00\x00\x00\x80\x09\x00\x00\x00\x00\x00\x00\xf1\x09\x00\x00\x00\x00\x00\x00\x62\x0a\x00\x00\x00\x00\x00\x00\xd3\x0a\x00\x00\x00\x00\x00\x00\x44\x0b\x00\x00\x44\x0c\x00\x00\xa2\x0c\x00\x00\x57\x0c\x00\x00\x00\x00\x00\x00\x98\x0c\x00\x00\x00\x00\x00\x00\xd9\x0c\x00\x00\x00\x00\x00\x00\x1a\x0d\x00\x00\x00\x00\x00\x00\x5b\x0d\x00\x00\x00\x00\x00\x00\x9c\x0d\x00\x00\x00\x00\x00\x00\xdd\x0d\x00\x00\x00\x00\x00\x00\x1e\x0e\x00\x00\x00\x00\x00\x00\x5f\x0e\x00\x00\x60\x00\x00\x00\x6a\x00\x00\x00\x74\x00\x00\x00\x5f\x0f\x00\x00\x60\x0f\x00\x00\x1c\x00\x00\x00\x23\x10\x00\x00\xe3\x0f\x00\x00\x00\x00\x00\x00\xe3\x10\x00\x00\xa3\x10\x00\x00\x00\x00\x00\x00\xa3\x11\x00\x00\x63\x11\x00\x00\x00\x00\x00\x00\x63\x12\x00\x00\x23\x12\x00\x00\x00\x00\x00\x00\x23\x13\x00\x00\xe3\x12\x00\x00\x00\x00\x00\x00\xe3\x13\x00\x00\xa3\x13\x00\x00\x00\x00\x00\x00\xa3\x14\x00\x00\x63\x14\x00\x00\x00\x00\x00\x00\x63\x15\x00\x00\x7d\x0c\x00\x00\x23\x15\x00\x00\x00\x00\x00\x00\x19\x16\x00\x00\x0f\x17\x00\x00\x05\x18\x00\x00\xfb\x18\x00\x00\xf1\x19\x00\x00\xe7\x1a\x00\x00\xdd\x1b\x00\x00\xd3\x1c\x00\x00\xc3\x0c\x00\x00\x48\x00\x00\x00\x4c\x00\x00\x00\x00\x00\x00\x00\xac\x1d\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\xf4\x15\x00\x00\xc4\x0c\x00\x00"#
 
@@ -40,10 +42,14 @@ alex_check = AlexA# "\xff\xff\x09\x00\x0a\x00\x0b\x00\x0c\x00\x0d\x00\x73\x00\x7
 alex_deflt :: AlexAddr
 alex_deflt = AlexA# "\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x54\x00\x54\x00\x56\x00\x56\x00\x58\x00\x58\x00\x5a\x00\x5a\x00\x5c\x00\x5c\x00\x5e\x00\x5e\x00\x60\x00\x60\x00\x62\x00\x62\x00\x67\x00\xff\xff\x67\x00\x6c\x00\x6c\x00\x6f\x00\x6f\x00\x72\x00\x72\x00\x75\x00\x75\x00\x78\x00\x78\x00\x7b\x00\x7b\x00\x7e\x00\x7e\x00\x82\x00\x82\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x8a\x00\x8a\x00\x8a\x00\x89\x00\x89\x00\x89\x00\x88\x00\x88\x00\x88\x00\x87\x00\x87\x00\x87\x00\x86\x00\x86\x00\x86\x00\x85\x00\x85\x00\x85\x00\x84\x00\x84\x00\x84\x00\x83\x00\xff\xff\x83\x00\x83\x00\x83\x00\x84\x00\x85\x00\x86\x00\x87\x00\x88\x00\x89\x00\x8a\x00\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff"#
 
-alex_accept = listArray (0::Int,147) [AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAcc (alex_action_9),AlexAcc (alex_action_9),AlexAcc (alex_action_9),AlexAcc (alex_action_10),AlexAcc (alex_action_11),AlexAcc (alex_action_12),AlexAcc (alex_action_13),AlexAcc (alex_action_13)]
-{-# LINE 44 "LexRelAlgebra.x" #-}
+alex_accept = listArray (0::Int,147) [AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccNone,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAccSkip,AlexAcc 7,AlexAcc 6,AlexAcc 5,AlexAcc 4,AlexAcc 3,AlexAcc 2,AlexAcc 1,AlexAcc 0]
+
+alex_actions = array (0::Int,8) [(7,alex_action_9),(6,alex_action_9),(5,alex_action_9),(4,alex_action_10),(3,alex_action_11),(2,alex_action_12),(1,alex_action_13),(0,alex_action_13)]
+
+{-# LINE 45 "LexRelAlgebra.x" #-}
 
 
+tok :: (Posn -> String -> Token) -> (Posn -> String -> Token)
 tok f p s = f p s
 
 share :: String -> String
@@ -59,24 +65,33 @@ data Tok =
 
  deriving (Eq,Show,Ord)
 
-data Token = 
+data Token =
    PT  Posn Tok
  | Err Posn
   deriving (Eq,Show,Ord)
 
+tokenPos :: [Token] -> String
 tokenPos (PT (Pn _ l _) _ :_) = "line " ++ show l
 tokenPos (Err (Pn _ l _) :_) = "line " ++ show l
 tokenPos _ = "end of file"
 
+tokenPosn :: Token -> Posn
 tokenPosn (PT p _) = p
 tokenPosn (Err p) = p
+
+tokenLineCol :: Token -> (Int, Int)
 tokenLineCol = posLineCol . tokenPosn
+
+posLineCol :: Posn -> (Int, Int)
 posLineCol (Pn _ l c) = (l,c)
+
+mkPosToken :: Token -> ((Int, Int), String)
 mkPosToken t@(PT p _) = (posLineCol p, prToken t)
 
+prToken :: Token -> String
 prToken t = case t of
   PT _ (TS s _) -> s
-  PT _ (TL s)   -> s
+  PT _ (TL s)   -> show s
   PT _ (TI s)   -> s
   PT _ (TV s)   -> s
   PT _ (TD s)   -> s
@@ -93,6 +108,7 @@ eitherResIdent tv s = treeFind resWords
                               | s > a  = treeFind right
                               | s == a = t
 
+resWords :: BTree
 resWords = b "OR" 23 (b "<>" 12 (b "," 6 (b ")" 3 (b "(" 2 (b "%" 1 N N) N) (b "+" 5 (b "*" 4 N N) N)) (b "/" 9 (b "." 8 (b "-" 7 N N) N) (b "<=" 11 (b "<" 10 N N) N))) (b "COUNT" 18 (b ">=" 15 (b ">" 14 (b "=" 13 N N) N) (b "AVG" 17 (b "AND" 16 N N) N)) (b "MIN" 21 (b "MAX" 20 (b "LIKE" 19 N N) N) (b "NOT" 22 N N)))) (b "\\gamma_{" 35 (b "\\bowtie^{o}_{" 29 (b "\\bowtie" 26 (b "\\backslash" 25 (b "SUM" 24 N N) N) (b "\\bowtie^{oR}_{" 28 (b "\\bowtie^{oL}_{" 27 N N) N)) (b "\\cup" 32 (b "\\cap" 31 (b "\\bowtie_{" 30 N N) N) (b "\\downarrow" 34 (b "\\delta" 33 N N) N))) (b "\\sigma_{" 41 (b "\\pi_{" 38 (b "\\mbox{\\textbf{let}}" 37 (b "\\mbox{\\textbf{\\;in\\;}}" 36 N N) N) (b "\\rightarrow" 40 (b "\\rho_{" 39 N N) N)) (b "\\uparrow" 44 (b "\\times" 43 (b "\\tau_{" 42 N N) N) (b "}" 45 N N))))
    where b s n = let bs = id s
                   in B bs (TS bs n)
@@ -154,7 +170,7 @@ alexGetByte (p, _, [], s) =
 alexInputPrevChar :: AlexInput -> Char
 alexInputPrevChar (p, c, bs, s) = c
 
-  -- | Encode a Haskell String to a list of Word8 values, in UTF8 format.
+-- | Encode a Haskell String to a list of Word8 values, in UTF8 format.
 utf8Encode :: Char -> [Word8]
 utf8Encode = map fromIntegral . go . ord
  where
@@ -181,6 +197,465 @@ alex_action_11 =  tok (\p s -> PT p (TL $ share $ unescapeInitTail s))
 alex_action_12 =  tok (\p s -> PT p (TI $ share s))    
 alex_action_13 =  tok (\p s -> PT p (TD $ share s)) 
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
+{-# LINE 1 "templates/GenericTemplate.hs" #-}
+{-# LINE 1 "<built-in>" #-}
+{-# LINE 18 "<built-in>" #-}
+{-# LINE 1 "/Library/Frameworks/GHC.framework/Versions/8.0.1-x86_64/usr/lib/ghc-8.0.1/include/ghcversion.h" #-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-# LINE 19 "<built-in>" #-}
+{-# LINE 1 "/var/folders/l1/h4s6r3md17g86sxpbv8hqscr0000gn/T/ghc3812_0/ghc_2.h" #-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-# LINE 20 "<built-in>" #-}
+{-# LINE 1 "templates/GenericTemplate.hs" #-}
 -- -----------------------------------------------------------------------------
 -- ALEX TEMPLATE
 --
@@ -191,6 +666,7 @@ alex_action_13 =  tok (\p s -> PT p (TD $ share s))
 -- INTERNALS and main scanner engine
 
 
+{-# LINE 21 "templates/GenericTemplate.hs" #-}
 
 
 
@@ -205,6 +681,7 @@ alex_action_13 =  tok (\p s -> PT p (TD $ share s))
 #define EQ(n,m) (n ==# m)
 #endif
 
+{-# LINE 51 "templates/GenericTemplate.hs" #-}
 
 
 data AlexAddr = AlexA# Addr#
@@ -231,13 +708,13 @@ alexIndexInt16OffAddr (AlexA# arr) off =
 
 
 {-# INLINE alexIndexInt32OffAddr #-}
-alexIndexInt32OffAddr (AlexA# arr) off = 
+alexIndexInt32OffAddr (AlexA# arr) off =
 #ifdef WORDS_BIGENDIAN
   narrow32Int# i
   where
    i    = word2Int# ((b3 `uncheckedShiftL#` 24#) `or#`
-		     (b2 `uncheckedShiftL#` 16#) `or#`
-		     (b1 `uncheckedShiftL#` 8#) `or#` b0)
+                     (b2 `uncheckedShiftL#` 16#) `or#`
+                     (b1 `uncheckedShiftL#` 8#) `or#` b0)
    b3   = int2Word# (ord# (indexCharOffAddr# arr (off' +# 3#)))
    b2   = int2Word# (ord# (indexCharOffAddr# arr (off' +# 2#)))
    b1   = int2Word# (ord# (indexCharOffAddr# arr (off' +# 1#)))
@@ -277,30 +754,30 @@ alexScan input (I# (sc))
 
 alexScanUser user input (I# (sc))
   = case alex_scan_tkn user input 0# input sc AlexNone of
-	(AlexNone, input') ->
-		case alexGetByte input of
-			Nothing -> 
+  (AlexNone, input') ->
+    case alexGetByte input of
+      Nothing ->
 
 
 
-				   AlexEOF
-			Just _ ->
+                                   AlexEOF
+      Just _ ->
 
 
 
-				   AlexError input'
+                                   AlexError input'
 
-	(AlexLastSkip input'' len, _) ->
-
-
-
-		AlexSkip input'' len
-
-	(AlexLastAcc k input''' len, _) ->
+  (AlexLastSkip input'' len, _) ->
 
 
 
-		AlexToken input''' len k
+    AlexSkip input'' len
+
+  (AlexLastAcc k input''' len, _) ->
+
+
+
+    AlexToken input''' len (alex_actions ! k)
 
 
 -- Push the input through the DFA, remembering the most recent accepting
@@ -308,13 +785,13 @@ alexScanUser user input (I# (sc))
 
 alex_scan_tkn user orig_input len input s last_acc =
   input `seq` -- strict in the input
-  let 
-	new_acc = (check_accs (alex_accept `quickIndex` (I# (s))))
+  let
+  new_acc = (check_accs (alex_accept `quickIndex` (I# (s))))
   in
   new_acc `seq`
   case alexGetByte input of
      Nothing -> (new_acc, input)
-     Just (c, new_input) -> 
+     Just (c, new_input) ->
 
 
 
@@ -323,41 +800,33 @@ alex_scan_tkn user orig_input len input s last_acc =
                 base   = alexIndexInt32OffAddr alex_base s
                 offset = (base +# ord_c)
                 check  = alexIndexInt16OffAddr alex_check offset
-		
+
                 new_s = if GTE(offset,0#) && EQ(check,ord_c)
-			  then alexIndexInt16OffAddr alex_table offset
-			  else alexIndexInt16OffAddr alex_deflt s
-	in
+                          then alexIndexInt16OffAddr alex_table offset
+                          else alexIndexInt16OffAddr alex_deflt s
+        in
         case new_s of
-	    -1# -> (new_acc, input)
-		-- on an error, we want to keep the input *before* the
-		-- character that failed, not after.
-    	    _ -> alex_scan_tkn user orig_input (if c < 0x80 || c >= 0xC0 then (len +# 1#) else len)
+            -1# -> (new_acc, input)
+                -- on an error, we want to keep the input *before* the
+                -- character that failed, not after.
+            _ -> alex_scan_tkn user orig_input (if c < 0x80 || c >= 0xC0 then (len +# 1#) else len)
                                                 -- note that the length is increased ONLY if this is the 1st byte in a char encoding)
-			new_input new_s new_acc
+                        new_input new_s new_acc
       }
   where
-	check_accs (AlexAccNone) = last_acc
-	check_accs (AlexAcc a  ) = AlexLastAcc a input (I# (len))
-	check_accs (AlexAccSkip) = AlexLastSkip  input (I# (len))
+        check_accs (AlexAccNone) = last_acc
+        check_accs (AlexAcc a  ) = AlexLastAcc a input (I# (len))
+        check_accs (AlexAccSkip) = AlexLastSkip  input (I# (len))
 
+{-# LINE 198 "templates/GenericTemplate.hs" #-}
 
-data AlexLastAcc a
+data AlexLastAcc
   = AlexNone
-  | AlexLastAcc a !AlexInput !Int
-  | AlexLastSkip  !AlexInput !Int
+  | AlexLastAcc !Int !AlexInput !Int
+  | AlexLastSkip     !AlexInput !Int
 
-instance Functor AlexLastAcc where
-    fmap f AlexNone = AlexNone
-    fmap f (AlexLastAcc x y z) = AlexLastAcc (f x) y z
-    fmap f (AlexLastSkip x y) = AlexLastSkip x y
-
-data AlexAcc a user
+data AlexAcc user
   = AlexAccNone
-  | AlexAcc a
+  | AlexAcc Int
   | AlexAccSkip
-
-
--- used by wrappers
-iUnbox (I# (i)) = i
 

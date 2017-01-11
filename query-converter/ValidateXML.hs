@@ -18,7 +18,7 @@ failure :: Show a => a -> Result
 failure x = Bad $ "Undefined case: " ++ show x
 
 ---- TODO: better printer in ToXML
-printXML :: Tree a -> String
+printXML :: Print a => a -> String
 printXML = unspace . printTree where
   unspace s = case s of
     '<':' ':cs -> '<':unspace cs

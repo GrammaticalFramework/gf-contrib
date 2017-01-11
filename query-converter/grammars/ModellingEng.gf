@@ -1,6 +1,7 @@
 concrete ModellingEng of Modelling = open
   SyntaxEng,
-  ParadigmsEng
+  ParadigmsEng,
+  (E=ExtraEng)
 
 in {
 
@@ -33,7 +34,7 @@ lin
   EWeakEntity ent supps atts = mkS (mkCl (mkNP a_Det (mkCN ent supps)) have_V2 atts) ;
   ERelationship rel rels atts = mkS (mkCl rels.subj (mkVP can_VV (mkVP rel rels.obj))) ;  ---- atts 
   ESubEntity subent superent atts =
-    mkS (mkCl (mkNP a_Det subent) (mkNP a_Det (mkCN superent (mkRS (mkRCl which_RP (mkVP have_V2 atts)))))) ;
+    mkS (mkCl (mkNP a_Det subent) (mkNP a_Det (mkCN superent (mkRS (mkRCl E.that_RP (mkVP have_V2 atts)))))) ;
 
   SEntity ent supprel = SyntaxEng.mkAdv supprel (mkNP a_Det ent) ;
 
@@ -53,16 +54,45 @@ lin
   SOf = possess_Prep ;
   SIn = in_Prep ;
 
+-- constructors
+oper
+  mkEntity = overload {
+    mkEntity : Str -> CN
+      = \s -> (mkCN (mkN s)) ;
+    mkEntity : Str -> Str -> CN
+      = \s,t -> (mkCN (mkN s t)) ;
+    mkEntity : CN -> CN
+      = \cn -> cn ;
+    } ;
+  mkAttrib = overload {
+    mkAttrib : Str -> CN
+      = \s -> (mkCN (mkN s)) ;
+    mkAttrib : Str -> Str -> Attrib
+      = \s,t -> lin Attrib (mkCN (mkN s t)) ;
+    mkAttrib : CN -> Attrib
+      = \cn -> lin Attrib cn ;
+    } ;
+
+  mkRelationship = overload {
+    mkRelationship : Str -> VPSlash
+      = \s -> (mkVPSlash (mkV2 (mkV s))) ;
+    mkRelationship : V2 -> VPSlash
+      = \v -> (mkVPSlash v) ;
+    mkRelationship : VPSlash -> VPSlash
+      = \vps -> vps ;
+    } ;
+
+
 
 ---- example
-
-  ECountry  = mkCN (mkN "country") ;
-  ECurrency = mkCN (mkN "currency") ;
-  EKingdom  = mkCN (mkN "kingdom") ;
-  ACapital  = mkCN (mkN "capital") ;
-  AMonarch  = mkCN (mkN "monarch") ;
-  ACode     = mkCN (mkN "code") ;
-  RUse      = mkVPSlash (mkV2 "use") ;
+lin
+  ECountry  = mkEntity "country" ;
+  ECurrency = mkEntity "currency" ;
+  EKingdom  = mkEntity "kingdom" ;
+  ACapital  = mkAttrib "capital" ;
+  AMonarch  = mkAttrib "monarch" ;
+  ACode     = mkAttrib "code" ;
+  RUse      = mkRelationship "use" ;
 
 
 }

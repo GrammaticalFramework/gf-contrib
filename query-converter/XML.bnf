@@ -4,15 +4,15 @@ DXML.     Document ::= Header DTD Element ;
 
 ETag.     Element ::= StartTag [Element] EndTag ;  -- match of tags must be checked later
 EEmpty.   Element ::= EmptyTag ;
-EData.    Element ::= Word ; ---- not real PCData
+EData.    Element ::= XWord ; ---- not real PCData
 
 terminator Element "" ;
 
-WIdent.   Word ::= Ident ;
-WInt.     Word ::= Integer ;
-WFloat.   Word ::= Double ;
+WIdent.   XWord ::= Ident ;
+WInt.     XWord ::= Integer ;
+WFloat.   XWord ::= Double ;
 
----terminator Word "" ;
+---terminator XWord "" ;
 
 STTag.    StartTag  ::= "<" Ident [Attr] ">" ;
 ETTag.    EndTag    ::= "</" Ident ">" ;
