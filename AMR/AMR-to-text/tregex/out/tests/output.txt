@@ -308,3 +308,8 @@ TestTreesEng: I recommend that you go to see doctor .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t66_two_successful_companies_enter_the_market_in_a_big_way
+TestTreesEng: 2 successful companies enter a market in a big way .
+TestTreesLav: 
+TestTreesRus: 
+

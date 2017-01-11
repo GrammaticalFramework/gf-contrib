@@ -131,4 +131,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t65_I_d_recommend_you_go_and_see_your_doctor = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.recommend_VS (mkS (mkCl S.you_NP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.see_V2 (mkNP (mkCN (P.mkN2 L.doctor_N L.of_Prep)))))))))))) fullStopPunct) ;
 
+	lin t66_two_successful_companies_enter_the_market_in_a_big_way = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.successful_A L.company_N)) (mkVP (mkVP L.enter_V2 (mkNP S.a_Quant (mkCN L.market_N))) (S.mkAdv L.in_Prep (mkNP S.a_Det (mkCN L.big_A L.way_N))))))) fullStopPunct) ;
+
 }
