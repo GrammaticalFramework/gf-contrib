@@ -1,119 +1,119 @@
-You resolutely support a person that starts a thread!
+FULL	You resolutely support a person that starts a thread!
 
-A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
-You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
+FULL	A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
+PART	You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
 
-I agree that a person that starts a thread analyzes. I like Hua Mulan.
-I wish much that it is born.
-We tolerate Japan.
-I say to a fellow citizen.
+PART	I agree that a person that starts a thread analyzes. I like Hua Mulan.
+PART	I wish much that it is born.
+PART	We tolerate Japan.
+FULL	I say to a fellow citizen.
 
 
-Diaoyu Islands always belongs to China. Because there is a history reason a thing that originally belongs to us is become a controversy.
-Is it possible that we allow this?
-I say to a fellow citizen that a militarism of Japan brings a grave disaster to a continent person.
-Especially China suffers that Japan ravages.
-Nanjing Massacre adds a layer that isn't ever faded an ancient city.
-I say many instances that are cited that are difficultly recorded to a fellow citizen.
+PART	Diaoyu Islands always belongs to China. Because there is a history reason a thing that originally belongs to us is become a controversy.
+FULL	Is it possible that we allow this?
+PART	I say to a fellow citizen that a militarism of Japan brings a grave disaster to a continent person.
+PART	Especially China suffers that Japan ravages.
+PART	Nanjing Massacre adds a layer that isn't ever faded an ancient city.
+PART	I say many instances that are cited that are difficultly recorded to a fellow citizen.
 
-It is still inferred that all persons that experience that era vivid remember.
-Because Japan now wants that it reverses a verdict about an aggression history it wakes up a citizen and a person in Asia from China.
+FULL	It is still inferred that all persons that experience that era vivid remember.
+PART	Because Japan now wants that it reverses a verdict about an aggression history it wakes up a citizen and a person in Asia from China.
 
-An interest of a country and a nation unity guarantees a honor.
+PART	An interest of a country and a nation unity guarantees a honor.
 
 
-I say to a fellow citizen that it is done.
+PART	I say to a fellow citizen that it is done.
 
-We are obligated.
+PART	We are obligated.
 
 
 
 
-It serves to a benevolence peace.
+PART	It serves to a benevolence peace.
 
 
-It agitates a string of a thing that is thought of my memory.
-A thing that I think is gone.
-It leads.
+PART	It agitates a string of a thing that is thought of my memory.
+PART	A thing that I think is gone.
+PART	It leads.
 
-We are obligated.
-It defends.
+PART	We are obligated.
+PART	It defends.
 
 
-I say time to a fellow citizen. It is caused that we are obligated.
+PART	I say time to a fellow citizen. It is caused that we are obligated.
 
-Few groups are created.
-5,000 advanced kind aircraft to combat are manufactured.
+PART	Few groups are created.
+PART	5,000 advanced kind aircraft to combat are manufactured.
 
-It is resumed that it nucleus experiments and a military force is established in a space.
+PART	It is resumed that it nucleus experiments and a military force is established in a space.
 
 
-It is abandoned that you are committed to first use a nucleus weapon.
-It is retained when it threatens to a nation security that there is a right.
-Qin Shi Huang unifies China.
+PART	It is abandoned that you are committed to first use a nucleus weapon.
+PART	It is retained when it threatens to a nation security that there is a right.
+FULL	Qin Shi Huang unifies China.
 
 
 
-You paint a red lip!
-You protect Diaoyu Islands!
-We bitterly lose Ryukyu Islands.
+PART	You paint a red lip!
+FULL	You protect Diaoyu Islands!
+FULL	We bitterly lose Ryukyu Islands.
 
 
-Smoke and a cloud chase a wave that is flown.
-Youngest brother is tender youth.
+FULL	Smoke and a cloud chase a wave that is flown.
+PART	Youngest brother is tender youth.
 
-A flag is looked over.
-We brandish a weapon and it crosses.
+FULL	A flag is looked over.
+PART	We brandish a weapon and it crosses.
 
 
 
 
 
-They even ride a head of us.
-Does a person from China still do this?
-It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
-Time. It is calm that there is China.
-All lives of our citizen are carefree. Official is extravagant.
-We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
+FULL	They even ride a head of us.
+PART	Does a person from China still do this?
+PART	It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
+PART	Time. It is calm that there is China.
+PART	All lives of our citizen are carefree. Official is extravagant.
+PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
 
-China is gone!
-We fight for a scale war. It isn't possible that China loses.
-It is contrasted that we need a show in a life.
-I just pass by.
-A whole society is resembled to this.
+FULL	China is gone!
+PART	We fight for a scale war. It isn't possible that China loses.
+FULL	It is contrasted that we need a show in a life.
+FULL	I just pass by.
+PART	A whole society is resembled to this.
 
 
-A thing is sensed somewhat.
+PART	A thing is sensed somewhat.
 
-A group.
-It is hard that there is a life.
+PART	A group.
+FULL	It is hard that there is a life.
 
-It is normal that there is that.
-It is contrasted to want a face that they want money.
-You know that a person that acts is obligated.
+PART	It is normal that there is that.
+PART	It is contrasted to want a face that they want money.
+PART	You know that a person that acts is obligated.
 
-It is okay.
-It is easy. It is resembled that it lives.
-Somebody.
-This humiliates a vermicelli word.
-A haha.
+PART	It is okay.
+PART	It is easy. It is resembled that it lives.
+PART	Somebody.
+PART	This humiliates a vermicelli word.
+PART	A haha.
 
-Reality.
-You shoot that hooligan!
-A cheap person that performs.
-A cheap person that performs.
-It is dirty that there is a circle. A scum, a bird and a beast.
-It isn't easy that there is that female that is starred.
-It is possible that you make money.
+FULL	Reality.
+FULL	You shoot that hooligan!
+FULL	A cheap person that performs.
+FULL	A cheap person that performs.
+PART	It is dirty that there is a circle. A scum, a bird and a beast.
+FULL	It isn't easy that there is that female that is starred.
+PART	It is possible that you make money.
 
 
-You just behave!
-It is recommended to us that it is future done.
+FULL	You just behave!
+FULL	It is recommended to us that it is future done.
 
-Because they just play in a circle it isn't so bad that there is it.
-It contrasts old Zhang Jizhong.
+PART	Because they just play in a circle it isn't so bad that there is it.
+FULL	It contrasts old Zhang Jizhong.
 
-It is possible that China has a pure innocent girl.
+PART	It is possible that China has a pure innocent girl.
 
 
 
@@ -125,58 +125,58 @@ It is possible that China has a pure innocent girl.
 
 
 
-A thing is sensed somewhat.
-It agrees.
-It isn't well easy that there is a person that acts!
-They deserve it. They ask that.
+PART	A thing is sensed somewhat.
+FULL	It agrees.
+FULL	It isn't well easy that there is a person that acts!
+FULL	They deserve it. They ask that.
 
 
 
 
 
-Circumference Route is opened.
+PART	Circumference Route is opened.
 
-Richmond Times-Dispatch today tells a tale.
-Will Jones reports that traffic in one section of Huguenot Trail is doubled.
-It is surged.
-17 near accidents are reported.
+PART	Richmond Times-Dispatch today tells a tale.
+PART	Will Jones reports that traffic in one section of Huguenot Trail is doubled.
+PART	It is surged.
+PART	17 near accidents are reported.
 
-VDOT doesn't have money to construct a road in a region.
+PART	VDOT doesn't have money to construct a road in a region.
 
 
-This is a doh moment that is major!
+FULL	This is a doh moment that is major!
 
 
 
 
-I think that it is possible that it lags.
+PART	I think that it is possible that it lags.
 
-Another thing that is predicted.
-It is soared that it is needed that a road is improved.
+FULL	Another thing that is predicted.
+PART	It is soared that it is needed that a road is improved.
 
 
-I thank you for nothing.
+FULL	I thank you for nothing.
 
 
 
 
-You now understand a thing that a person feels.
+PART	You now understand a thing that a person feels.
 
-It contrasts.
-Richmond has traffic.
+PART	It contrasts.
+PART	Richmond has traffic.
 
 
-A road.
-You just think that it is possible that it is spent of this money!
+PART	A road.
+FULL	You just think that it is possible that it is spent of this money!
 
-It is very nice that it obliges us.
+FULL	It is very nice that it obliges us.
 
-A same old problem.
-You are accused.
-It is claimed that it isn't possible that you pave a way.
-Anonymous.
-That is a fair point.
-A person makes a good point.
+PART	A same old problem.
+PART	You are accused.
+PART	It is claimed that it isn't possible that you pave a way.
+FULL	Anonymous.
+FULL	That is a fair point.
+PART	A person makes a good point.
 
 
 
@@ -185,97 +185,97 @@ A person makes a good point.
 
 
 
-I say to TMT that it doesn't understand a point.
-You are sticked to traffic.
+FULL	I say to TMT that it doesn't understand a point.
+PART	You are sticked to traffic.
 
-It is needed that a business is supported.
+PART	It is needed that a business is supported.
 
-It is recommended that it does two things.
+PART	It is recommended that it does two things.
 
 
 
 
-EMR.
+FULL	EMR.
 
 
-I think that they are intertwined.
+PART	I think that they are intertwined.
 
 
 
 
-I agree.
-It is in fact possible that it suffices.
+FULL	I agree.
+PART	It is in fact possible that it suffices.
 
 
 
 
-I drive.
-I commute to a location.
+PART	I drive.
+PART	I commute to a location.
 
-It is zoned.
+PART	It is zoned.
 
-It is wonderful that there is a road.
-It is possible that it commerce develops to us and it is possible that it works.
-It is possible that you think that a land is used.
+PART	It is wonderful that there is a road.
+PART	It is possible that it commerce develops to us and it is possible that it works.
+PART	It is possible that you think that a land is used.
 
-It refuses that I work in a downtown area.
+FULL	It refuses that I work in a downtown area.
 
 
-It doesn't understand an exact thing.
-It is possible that gas is gone of ten dollars.
+PART	It doesn't understand an exact thing.
+PART	It is possible that gas is gone of ten dollars.
 
 
-This infatuation baffles me truly.
+PART	This infatuation baffles me truly.
 
 
 
 
 
 
-I am broken up since August.
+PART	I am broken up since August.
 
 
-A much is gone on in his life and it thinks that it is possible that we are worked.
+PART	A much is gone on in his life and it thinks that it is possible that we are worked.
 
 
 
 
-I believe that every child needs parent.
+PART	I believe that every child needs parent.
 
 
-It is very bad that it threatens to you.
-It is obligated because it is just escalated that you don't give in that.
+PART	It is very bad that it threatens to you.
+PART	It is obligated because it is just escalated that you don't give in that.
 
-It is contrasted that he sees.
-Does it get through you?
-You date!
-You meet all person kinds!
+PART	It is contrasted that he sees.
+FULL	Does it get through you?
+FULL	You date!
+FULL	You meet all person kinds!
 
 
-I agree. His business is one other thing.
-I don't tell to him.
+PART	I agree. His business is one other thing.
+FULL	I don't tell to him.
 
 
-You need.
+PART	You need.
 
 
-You keep that thing that is recorded!
+FULL	You keep that thing that is recorded!
 
 
-You tell that it is needed that it goes!
+PART	You tell that it is needed that it goes!
 
 
 
 
-I like because it doesn't like that it counts a copper that it is neared most.
+PART	I like because it doesn't like that it counts a copper that it is neared most.
 
-It isn't legal that an amount is paid.
+PART	It isn't legal that an amount is paid.
 
 
-It goes out and it is most hard.
-I go when it is sober to a union bar.
-It contrasts a point.
-I don't enjoy a university.
+PART	It goes out and it is most hard.
+PART	I go when it is sober to a union bar.
+PART	It contrasts a point.
+PART	I don't enjoy a university.
 
 
 
@@ -285,51 +285,51 @@ I don't enjoy a university.
 
 
 
-It doesn't want that it is gone and it fails.
-Is it possible that someone some advises me?
+PART	It doesn't want that it is gone and it fails.
+PART	Is it possible that someone some advises me?
 
 
 
-You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
-You now keep it!
-I recommend that you go to see doctor.
-It is possible that it benefits you.
+PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
+FULL	You now keep it!
+FULL	I recommend that you go to see doctor.
+PART	It is possible that it benefits you.
 
 
 
-She is an epilepsy and it is manic depressed.
-She is horrible.
+PART	She is an epilepsy and it is manic depressed.
+PART	She is horrible.
 
 
 
-I then anger a person that teaches.
+PART	I then anger a person that teaches.
 
-I am not passed an exam and it already accepts that it is defeated and this year makes that it is failed.
-I don't ever make a grade.
-I wish that it is possible that it wipes out her.
+PART	I am not passed an exam and it already accepts that it is defeated and this year makes that it is failed.
+FULL	I don't ever make a grade.
+PART	I wish that it is possible that it wipes out her.
 
 
-It is recommended that it is more good that there is it.
-It contrasts.
+PART	It is recommended that it is more good that there is it.
+PART	It contrasts.
 
-You are thanked.
+PART	You are thanked.
 
 
-Does she even have?
-You don't know that it doesn't get a good grade.
-A life throws a thing to you.
+FULL	Does she even have?
+PART	You don't know that it doesn't get a good grade.
+PART	A life throws a thing to you.
 
 
 
 
 
-It is possible that you go on Saturday to a library and it studies.
-Is it possible that you go to form a group that studies to a house?
+PART	It is possible that you go on Saturday to a library and it studies.
+PART	Is it possible that you go to form a group that studies to a house?
 
-I know a thing that you feel.
-Mum of me is spit.
-I recommend high that it is taken up that it smokes.
-It is a joke.
+FULL	I know a thing that you feel.
+PART	Mum of me is spit.
+FULL	I recommend high that it is taken up that it smokes.
+FULL	It is a joke.
 
 
 
@@ -339,111 +339,111 @@ It is a joke.
 
 
 
-You don't go to go with it to an over top.
+PART	You don't go to go with it to an over top.
 
 
-It is of course possible that you are respected. It is contrasted that it isn't nice that there is that.
-It is contrasted that I don't know if anyone reads this.
-I leave a home in September and it starts a university.
-I emotional struggle. I have two periods when it lives.
-I moment feel a thing that is resembled.
+PART	It is of course possible that you are respected. It is contrasted that it isn't nice that there is that.
+PART	It is contrasted that I don't know if anyone reads this.
+FULL	I leave a home in September and it starts a university.
+PART	I emotional struggle. I have two periods when it lives.
+PART	I moment feel a thing that is resembled.
 
 
-Friend says that I am lazy and it isn't possible that it disagrees.
+PART	Friend says that I am lazy and it isn't possible that it disagrees.
 
 
 
-You aren't kind.
-Good luck.
+PART	You aren't kind.
+FULL	Good luck.
 
-I focus to an idol.
+PART	I focus to an idol.
 
 
 
-I hope that this helps.
+FULL	I hope that this helps.
 
-It is more comfortable that there is me.
+FULL	It is more comfortable that there is me.
 
 
-You know a thing.
+PART	You know a thing.
 
-It is possible that a headache is a tumor symptom.
+PART	It is possible that a headache is a tumor symptom.
 
-It is contrasted that a symptom doesn't always apply.
-It is contrasted that I walk on my toe.
+PART	It is contrasted that a symptom doesn't always apply.
+PART	It is contrasted that I walk on my toe.
 
-It then contrasts.
-Because it is told to me that it doesn't walk on my toe it walks on my toe.
+PART	It then contrasts.
+PART	Because it is told to me that it doesn't walk on my toe it walks on my toe.
 
 
 
-I don't read to a random symptom that is resembled to that.
-I am a girl that is addicted to harm a self.
+PART	I don't read to a random symptom that is resembled to that.
+PART	I am a girl that is addicted to harm a self.
 
 
-I have a slit in my arm.
-They are healed and I then cut a staple and a razor.
+PART	I have a slit in my arm.
+PART	They are healed and I then cut a staple and a razor.
 
-I am tempted when it writes this really.
-I am addicted.
-I think it.
+PART	I am tempted when it writes this really.
+FULL	I am addicted.
+PART	I think it.
 
 
-He just cares.
+FULL	He just cares.
 
 
-Mum of me also suffers bipolar and it has a depression.
-I don't want that it stops.
+FULL	Mum of me also suffers bipolar and it has a depression.
+FULL	I don't want that it stops.
 
-It contrasts.
-I don't tell to him.
-I don't want that it hurts him. I don't want that he hurts.
+PART	It contrasts.
+PART	I don't tell to him.
+FULL	I don't want that it hurts him. I don't want that he hurts.
 
-I thank you.
+PART	I thank you.
 
-You talk and a thing that is gone on is told is recommended.
-It is possible.
-It is possible that a person helps you.
-It is likely that it is only worsened.
+FULL	You talk and a thing that is gone on is told is recommended.
+PART	It is possible.
+PART	It is possible that a person helps you.
+PART	It is likely that it is only worsened.
 
-You don't do this!
+PART	You don't do this!
 
 
 
-It is possible that you do it. I find a salvation.
+PART	It is possible that you do it. I find a salvation.
 
 
-It is possible that you overcome it.
+FULL	It is possible that you overcome it.
 
 
 
 
-OCD.
+FULL	OCD.
 
 
 
-I just wish that it is possible that it goes out.
+PART	I just wish that it is possible that it goes out.
 
 
 
-It is contrasted that a person thinks that it is crazy that there is me.
-You advise me.
+PART	It is contrasted that a person thinks that it is crazy that there is me.
+PART	You advise me.
 
-It knows that it is more easy that it says.
-Because a doctor sees that there is a case you don't worry that!
+PART	It knows that it is more easy that it says.
+PART	Because a doctor sees that there is a case you don't worry that!
 
 
-It is gradual decreased.
-That is just sounded me.
+PART	It is gradual decreased.
+PART	That is just sounded me.
 
-I am sometimes convinced to lock them.
+PART	I am sometimes convinced to lock them.
 
 
 
 
 
 
-It contrasts.
+PART	It contrasts.
 
 
 
@@ -453,42 +453,42 @@ It contrasts.
 
 
 
-It is worked to me and I suffer a random attack!
-It is started that it is just started that a tiny thing worries me really.
-I find that it helps.
+PART	It is worked to me and I suffer a random attack!
+PART	It is started that it is just started that a tiny thing worries me really.
+PART	I find that it helps.
 
-It contrasts!
-I have friend that suffers severe anxiety.
-A doctor gives a medication to her and it makes that it is more good.
+PART	It contrasts!
+PART	I have friend that suffers severe anxiety.
+PART	A doctor gives a medication to her and it makes that it is more good.
 
-Islamic Republic of Iran.
-Politics, an international and a weapon.
+FULL	Islamic Republic of Iran.
+PART	Politics, an international and a weapon.
 
-It suspects that it is masked an energy program of Iran that there is an effort.
-It suspects that it is masked an energy program of Iran that there is an effort.
+PART	It suspects that it is masked an energy program of Iran that there is an effort.
+PART	It suspects that it is masked an energy program of Iran that there is an effort.
 
-International Atomic Energy Agency distributes a publication that is limited.
-A thing that is found is reflected.
+PART	International Atomic Energy Agency distributes a publication that is limited.
+PART	A thing that is found is reflected.
 
-It says that a thing that IAEA reports says that it steps to a forward.
-Reuters quotes that it states that it is slowed that an organization that governs Iran is an effort.
+PART	It says that a thing that IAEA reports says that it steps to a forward.
+PART	Reuters quotes that it states that it is slowed that an organization that governs Iran is an effort.
 
 
 
-Some expert persons state that IAEA cedes a much to Iran.
+PART	Some expert persons state that IAEA cedes a much to Iran.
 
-An expert person that doesn't depend states that it is short that Iran agrees of IAEA that a person that inspects accesses more nucleus sites and information.
+PART	An expert person that doesn't depend states that it is short that Iran agrees of IAEA that a person that inspects accesses more nucleus sites and information.
 
-Casey states that a nucleus program that moves to a forward is continued.
+PART	Casey states that a nucleus program that moves to a forward is continued.
 
-An expert person states that it is recommended that it is previously resolved that a transparency is an issue.
-Executive director of partisan Arms Control Association Daryl G. Kimball states that it addresses a problem.
-Kimball states that an organization that governs Iran is a design.
-Official of Iran states that it reduces.
+PART	An expert person states that it is recommended that it is previously resolved that a transparency is an issue.
+PART	Executive director of partisan Arms Control Association Daryl G. Kimball states that it addresses a problem.
+PART	Kimball states that an organization that governs Iran is a design.
+PART	Official of Iran states that it reduces.
 
 
 
-Israel.
+FULL	Israel.
 
 
 
@@ -496,17 +496,17 @@ Israel.
 
 
 
-A letter says that a presentation from Israel is offered on 17 March 2007.
+PART	A letter says that a presentation from Israel is offered on 17 March 2007.
 
 
-One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
+PART	One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
 
 
-Kimball states.
+FULL	Kimball states.
 
 
-It gives a reason.
-It is good and it is more good.
+PART	It gives a reason.
+PART	It is good and it is more good.
 
 
 
@@ -514,90 +514,90 @@ It is good and it is more good.
 
 
 
-Seigel states.
+FULL	Seigel states.
 
-Israel is recognized.
+PART	Israel is recognized.
 
-Official of NSG previously suggests that it approaches.
+PART	Official of NSG previously suggests that it approaches.
 
 
-Iran.
+FULL	Iran.
 
 
 
-President of Iran Mahmoud Ahmadinejad states on 26 July 2008 to a scholar in Mashbad that it expands an arsenal to 5,000 overs.
+PART	President of Iran Mahmoud Ahmadinejad states on 26 July 2008 to a scholar in Mashbad that it expands an arsenal to 5,000 overs.
 
-Iran articulates a goal of 50,000 centrifuges that are operated in a near plant that enriches.
+PART	Iran articulates a goal of 50,000 centrifuges that are operated in a near plant that enriches.
 
-A thing that media reports differs a number that Ahmadinejad cites.
-A news agency from Iran reports that Ahmadinejad states that it has 6,000 centrifuges that are worked.
-Another news agency from Iran states that Ahmadinejad refers a centrifuge.
-An expert person discounts a significance of a thing that Ahmadinejad claims because information about a functionality of a centrifuge is absented.
-Does it state that a number is less important?
+PART	A thing that media reports differs a number that Ahmadinejad cites.
+PART	A news agency from Iran reports that Ahmadinejad states that it has 6,000 centrifuges that are worked.
+PART	Another news agency from Iran states that Ahmadinejad refers a centrifuge.
+FULL	An expert person discounts a significance of a thing that Ahmadinejad claims because information about a functionality of a centrifuge is absented.
+PART	Does it state that a number is less important?
 
-It states that a problem about a technical hinders a program of Iran.
+PART	It states that a problem about a technical hinders a program of Iran.
 
 
-An expert person states that it is simple that a uranium is produced of a grade material.
+PART	An expert person states that it is simple that a uranium is produced of a grade material.
 
 
-A package that US endorses.
+PART	A package that US endorses.
 
-Official of US repeats that it states that it isn't possible that it is begun that it negotiates.
+PART	Official of US repeats that it states that it isn't possible that it is begun that it negotiates.
 
 
-A continent envoy, Solana and Burns set a deadline.
+PART	A continent envoy, Solana and Burns set a deadline.
 
 
 
-It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb.
-It is possible that 6,000 centrifuges that are run produce a uranium that suffices one bomb.
-International Atomic Energy Agency states in May 2008 that Iran possesses 3,500 centrifuges that are operated.
+PART	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb.
+PART	It is possible that 6,000 centrifuges that are run produce a uranium that suffices one bomb.
+FULL	International Atomic Energy Agency states in May 2008 that Iran possesses 3,500 centrifuges that are operated.
 
-United States, France, China, Iran and Russian Federation.
-An international and a weapon.
+FULL	United States, France, China, Iran and Russian Federation.
+PART	An international and a weapon.
 
 
-There is a process.
-It is ended that it meets on 13 November 2008.
+PART	There is a process.
+PART	It is ended that it meets on 13 November 2008.
 
 
-Russia and China are tied politics and a business Islamic Republic of Iran and it doesn't feel that it is domestic pressured.
-United States isn't tied politics and a business Islamic Republic of Iran and it feels that it is domestic pressured.
-Russia and China hold power.
+PART	Russia and China are tied politics and a business Islamic Republic of Iran and it doesn't feel that it is domestic pressured.
+PART	United States isn't tied politics and a business Islamic Republic of Iran and it feels that it is domestic pressured.
+PART	Russia and China hold power.
 
 
-It is reported that Iran is progressed about a reactor facility to research that is near.
+PART	It is reported that Iran is progressed about a reactor facility to research that is near.
 
-An image that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
+PART	An image that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
 
-David Albright states that an image says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
+PART	David Albright states that an image says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
 
-Iran states that it pursues a nucleus technology.
-United States and a country in West that is allied suspect that it is preceded to create a weapon infrastructure that Iran is an effort.
-It is legal that a uranium of a low grade is produced.
+PART	Iran states that it pursues a nucleus technology.
+PART	United States and a country in West that is allied suspect that it is preceded to create a weapon infrastructure that Iran is an effort.
+PART	It is legal that a uranium of a low grade is produced.
 
 
-It is expected that International Atomic Energy Agency releases a thing that criticizes Iran that is reported.
-International Atomic Energy Agency is a watchdog agency.
+PART	It is expected that International Atomic Energy Agency releases a thing that criticizes Iran that is reported.
+PART	International Atomic Energy Agency is a watchdog agency.
 
 
 
 
 
-Russian Federation.
-A weapon, energy, an international and science.
+FULL	Russian Federation.
+FULL	A weapon, energy, an international and science.
 
-A large repository that is stored a laboratory complex from Russia threatens that it loses electricity.
+PART	A large repository that is stored a laboratory complex from Russia threatens that it loses electricity.
 
-A laboratory complex from Russia is a campus and it serves a location.
-A headline that isn't correct states that a virus that kills threatens.
+PART	A laboratory complex from Russia is a campus and it serves a location.
+PART	A headline that isn't correct states that a virus that kills threatens.
 
 
 
 
 
-It states that State Scientific Center of Applied Microbiology has a system that protects that is relied quite.
+PART	It states that State Scientific Center of Applied Microbiology has a system that protects that is relied quite.
 
 
 
@@ -610,60 +610,60 @@ It states that State Scientific Center of Applied Microbiology has a system that
 
 
 
-Randall Lee Beatty states that it is known that State Scientific Center of Applied Microbiology doesn't pay an electricity bill.
+PART	Randall Lee Beatty states that it is known that State Scientific Center of Applied Microbiology doesn't pay an electricity bill.
 
-A strain bacterium is stored State Scientific Center of Applied Microbiology and many bacteria that are included are stored a cryogen cask that is isolated to an environment that is cooled in a liquid nitrogen.
+PART	A strain bacterium is stored State Scientific Center of Applied Microbiology and many bacteria that are included are stored a cryogen cask that is isolated to an environment that is cooled in a liquid nitrogen.
 
-It states that it main threatens because power is cut to an organism.
+PART	It states that it main threatens because power is cut to an organism.
 
 
 
-A missile silo doesn't lose power.
-A troop that is armed marches and it back turns on power.
-Nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation.
-A center in Kamchatka that monitors Russian Space Forces is included to a military installation that loses power.
+PART	A missile silo doesn't lose power.
+PART	A troop that is armed marches and it back turns on power.
+PART	Nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation.
+FULL	A center in Kamchatka that monitors Russian Space Forces is included to a military installation that loses power.
 
-It shows that a utility and a military war tug.
-It is included that a residence in a country is built.
+PART	It shows that a utility and a military war tug.
+PART	It is included that a residence in a country is built.
 
-Brazil.
+FULL	Brazil.
 
-Brazil implements law that allows that Air Force targets an aircraft that traffics a drug in an airspace / Air Force targets an aircraft that traffics a drug in an air space.
-A liability concerns US.
+PART	Brazil implements law that allows that Air Force targets an aircraft that traffics a drug in an airspace / Air Force targets an aircraft that traffics a drug in an air space.
+PART	A liability concerns US.
 
-A thing that is planned requires eight precaution steps.
+PART	A thing that is planned requires eight precaution steps.
 
 
 
 
 
-Official of State Department from US states.
+FULL	Official of State Department from US states.
 
 
-An organization that governs US consults an organization that governs Brazil a law provision.
+PART	An organization that governs US consults an organization that governs Brazil a law provision.
 
 
-US is scheduled to provide 10,200,000 dollars to Brazil.
+PART	US is scheduled to provide 10,200,000 dollars to Brazil.
 
 
 
-Gandra states that a provision undermines an essential purpose of a decree.
+PART	Gandra states that a provision undermines an essential purpose of a decree.
 
-It prompts an organization that governs.
+PART	It prompts an organization that governs.
 
-It states.
+PART	It states.
 
-Some persons that pilot an aircraft that runs a drug feel to a retribution that it is so immune.
-A constitution is questioned.
+PART	Some persons that pilot an aircraft that runs a drug feel to a retribution that it is so immune.
+PART	A constitution is questioned.
 
 
 
-This person gains an over power.
-Brazil inaugurates radar SIVAM in 2002.
-A system uses a technology from United States.
+PART	This person gains an over power.
+FULL	Brazil inaugurates radar SIVAM in 2002.
+FULL	A system uses a technology from United States.
 
 
-It some flies.
+PART	It some flies.
 
 
 
@@ -671,150 +671,150 @@ It some flies.
 
 
 
-Venezuela.
-A military, a person that leads, an international and a weapon.
-It worries.
+FULL	Venezuela.
+FULL	A military, a person that leads, an international and a weapon.
+PART	It worries.
 
 
-Venezuela is a state that produces petroleum most.
+PART	Venezuela is a state that produces petroleum most.
 
 
 
 
 
 
-A left person is elected to lead Venezuela, Ecuador, Uruguay, Chile, Brazil and Argentina.
+FULL	A left person is elected to lead Venezuela, Ecuador, Uruguay, Chile, Brazil and Argentina.
 
 
 
 
-Espinoza says that it complains that Colombia is a country in Latin America.
-Espinoza says that it is full that there is history from US.
+PART	Espinoza says that it complains that Colombia is a country in Latin America.
+PART	Espinoza says that it is full that there is history from US.
 
 
-Chavez is first elected in 1998 and it rates of a popularity.
+PART	Chavez is first elected in 1998 and it rates of a popularity.
 
 
 
 
 
-This thing is costed less.
+PART	This thing is costed less.
 
 
 
-It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
+PART	It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
 
-Ochoa states that Venezuela doesn't purchase an arm and it says that Chavez doesn't aggressively buy a weapon.
+PART	Ochoa states that Venezuela doesn't purchase an arm and it says that Chavez doesn't aggressively buy a weapon.
 
 
 
 
-It says that a person that rebels has money and it doesn't interest.
+PART	It says that a person that rebels has money and it doesn't interest.
 
-It is implied that it is possible that it aids to a guerrilla.
-It is possible that it distresses a domestic person that opposes Chavez more.
+FULL	It is implied that it is possible that it aids to a guerrilla.
+PART	It is possible that it distresses a domestic person that opposes Chavez more.
 
 
-A unit of a person that defends is created in Free University, a neighborhood and a state company and it reports.
+PART	A unit of a person that defends is created in Free University, a neighborhood and a state company and it reports.
 
 
 
 
 
 
-40 persons that an oil company employs participate an exercise that is resembled in June 2005.
+PART	40 persons that an oil company employs participate an exercise that is resembled in June 2005.
 
 
 
 
 
-Official says that a person side wishes because it politics calculates that Mr. Chavez reaches power that it makes that there is a relation.
+PART	Official says that a person side wishes because it politics calculates that Mr. Chavez reaches power that it makes that there is a relation.
 
-A military from US has Cooperation Office in a fort from Venezuela.
-Chavez shuts down it in 2004.
-It is ordered to leave a country in April 2005.
+PART	A military from US has Cooperation Office in a fort from Venezuela.
+FULL	Chavez shuts down it in 2004.
+FULL	It is ordered to leave a country in April 2005.
 
-A person that analyzes says that it isn't proved that Chavez uses that force.
+PART	A person that analyzes says that it isn't proved that Chavez uses that force.
 
-Democratic.
+FULL	Democratic.
 
 
 
-Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea.
+FULL	Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea.
 
 
 
-Associated Press reports in Vienna that IAEA states on 18 June 2007 that a team visits Pyongyang to discuss a manner.
-Hill states that it holds that it is talked that a reactor is sealed.
+PART	Associated Press reports in Vienna that IAEA states on 18 June 2007 that a team visits Pyongyang to discuss a manner.
+PART	Hill states that it holds that it is talked that a reactor is sealed.
 
-Money is frozen when official of United States accuses Banco Delta Asia a complicity.
-A fund is wired on 14 June 2007 to New York Federal Reserve Bank.
+PART	Money is frozen when official of United States accuses Banco Delta Asia a complicity.
+PART	A fund is wired on 14 June 2007 to New York Federal Reserve Bank.
 
 
-It is also involved that a timetable is set.
+PART	It is also involved that a timetable is set.
 
 
 
 
-Islamic Republic of Iran.
-An international and a weapon.
+FULL	Islamic Republic of Iran.
+PART	An international and a weapon.
 
 
-It isn't resolved that there is an issue.
+PART	It isn't resolved that there is an issue.
 
 
-President of Iran Mahmoud Ahmadinejad states on 28 August 2007.
+PART	President of Iran Mahmoud Ahmadinejad states on 28 August 2007.
 
 
-Iran is a nucleus nation.
+FULL	Iran is a nucleus nation.
 
 
 
 
 
-United States and France are included to a region organization that governs.
+PART	United States and France are included to a region organization that governs.
 
-It is slowed that there is a process.
-It is avoided that it is answered that it is questioned that Iran past violates a treaty.
-David Albright states.
-It isn't possible that a thing that Iran claims is verified.
+PART	It is slowed that there is a process.
+FULL	It is avoided that it is answered that it is questioned that Iran past violates a treaty.
+FULL	David Albright states.
+FULL	It isn't possible that a thing that Iran claims is verified.
 
 
-It sets a bad precedent.
+PART	It sets a bad precedent.
 
 
 
-Senior fellow of International Institute for Strategic Studies Mark Fitzpatrick states.
+FULL	Senior fellow of International Institute for Strategic Studies Mark Fitzpatrick states.
 
 
 
-International Institute for Strategic Studies is located in London.
+FULL	International Institute for Strategic Studies is located in London.
 
-Institute for Science and International Security is a private organization that is located in Washington.
-International Atomic Energy Agency is based in Vienna.
+PART	Institute for Science and International Security is a private organization that is located in Washington.
+FULL	International Atomic Energy Agency is based in Vienna.
 
-Islamic Republic of Iran.
+FULL	Islamic Republic of Iran.
 
-A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
-A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
 
-Nuclear Suppliers Group is composed of an advanced country.
+PART	Nuclear Suppliers Group is composed of an advanced country.
 
 
 
 
-Diplomat of a country that is interested to expose an extent avails a list.
-It avails a list.
+PART	Diplomat of a country that is interested to expose an extent avails a list.
+PART	It avails a list.
 
-A furnace, a compressor, a powder and a plant component are included to an item that is offered to sell when it deals that is listed.
-It is included to an organization from Iran that end uses.
+PART	A furnace, a compressor, a powder and a plant component are included to an item that is offered to sell when it deals that is listed.
+FULL	It is included to an organization from Iran that end uses.
 
 
 
-It is contrasted that Iran signs Nuclear Nonproliferation Treaty.
+FULL	It is contrasted that Iran signs Nuclear Nonproliferation Treaty.
 
-Georgia and Russian Federation.
-An international and an organization that governs.
+FULL	Georgia and Russian Federation.
+PART	An international and an organization that governs.
 
 
 
@@ -822,49 +822,49 @@ An international and an organization that governs.
 
 
 
-NATO, U.S. and other nations in West condemn violence.
-NATO, U.S. and other nations in West demand that it is ceased that it fires.
+FULL	NATO, U.S. and other nations in West condemn violence.
+FULL	NATO, U.S. and other nations in West demand that it is ceased that it fires.
 
-A soldier from Russia is remained in Georgia.
+FULL	A soldier from Russia is remained in Georgia.
 
 
-Prime minister of Russia Vladimir V. Putin states that a war is started.
-President of Georgia Mikheil Saakashvili accuses Russia.
-Georgia mobilizes a military reserve.
-A web site of an organization that governs Georgia intermittently crashes on 8 August 2008.
+FULL	Prime minister of Russia Vladimir V. Putin states that a war is started.
+PART	President of Georgia Mikheil Saakashvili accuses Russia.
+FULL	Georgia mobilizes a military reserve.
+FULL	A web site of an organization that governs Georgia intermittently crashes on 8 August 2008.
 
 
 
 
-It conflicts in Chechnya.
-A military incursion of Russia indicates confidence and a resolve.
+PART	It conflicts in Chechnya.
+PART	A military incursion of Russia indicates confidence and a resolve.
 
 
 
 
 
-It isn't clear if a soldier from Russia and a soldier from Georgia combat in a ground or it is limited to fight between a separatist and a force.
+PART	It isn't clear if a soldier from Russia and a soldier from Georgia combat in a ground or it is limited to fight between a separatist and a force.
 
-Georgia is mountainous.
-Georgia is a province that rebels.
+FULL	Georgia is mountainous.
+FULL	Georgia is a province that rebels.
 
-Iraq.
-A technology, an international and a telecom.
+FULL	Iraq.
+PART	A technology, an international and a telecom.
 
 
 
-An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
-Isn't it clear that it is begun that it attacks?
+PART	An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
+PART	Isn't it clear that it is begun that it attacks?
 
 
-An alternative address is still operated.
+PART	An alternative address is still operated.
 
-It isn't possible that it is claimed that it hacks and Iran asserts that XP is based in United Arab Emirates is independently verified.
-A news site from Iran states on 19 September 2008 that many web sites that are attacked that are related are again run.
-It is posted that it states and it states that it attacks.
-A thing that is stated says.
+FULL	It isn't possible that it is claimed that it hacks and Iran asserts that XP is based in United Arab Emirates is independently verified.
+PART	A news site from Iran states on 19 September 2008 that many web sites that are attacked that are related are again run.
+PART	It is posted that it states and it states that it attacks.
+FULL	A thing that is stated says.
 
-XP erases a site.
+PART	XP erases a site.
 
 
 
@@ -872,10 +872,10 @@ XP erases a site.
 
 
 
-Kenya, Somalia and Ukraine.
+FULL	Kenya, Somalia and Ukraine.
 
 
-It emerges.
+PART	It emerges.
 
 
 
@@ -886,88 +886,88 @@ It emerges.
 
 
 
-A ship is hijacked in 2008.
+PART	A ship is hijacked in 2008.
 
 
 
-A ship.
+PART	A ship.
 
-A thing that evidences a weapon subsequent emerges.
-It is most likely that it is remained a secret that it deals.
-An official from Ukraine is adamant.
-Diplomat of Ukraine in Kenya Oleh Belokolos states.
+PART	A thing that evidences a weapon subsequent emerges.
+PART	It is most likely that it is remained a secret that it deals.
+PART	An official from Ukraine is adamant.
+FULL	Diplomat of Ukraine in Kenya Oleh Belokolos states.
 
-All appropriate paperworks are validated.
-Ukraine abides.
+FULL	All appropriate paperworks are validated.
+FULL	Ukraine abides.
 
 
 
-Southern Sudan is an autonomy region.
+FULL	Southern Sudan is an autonomy region.
 
 
-Spokesman of a pirate Sugule Ali states that money sole interests.
+PART	Spokesman of a pirate Sugule Ali states that money sole interests.
 
-Afghanistan.
-A narcotic.
-Antonio Maria Costa says that Afghanistan produces much opium.
-Antonio Maria Costa says that Afghanistan produces much opium.
-Costa says this when U.N. Drug Office prepares to a person that reports.
+FULL	Afghanistan.
+FULL	A narcotic.
+PART	Antonio Maria Costa says that Afghanistan produces much opium.
+PART	Antonio Maria Costa says that Afghanistan produces much opium.
+PART	Costa says this when U.N. Drug Office prepares to a person that reports.
 
-A survey is issued on 27 November 2008.
+FULL	A survey is issued on 27 November 2008.
 
 
-A South region is an area that is heavily irrigated.
+PART	A South region is an area that is heavily irrigated.
 
 
 
-Costa says that a result is a glut that depresses a thing.
+PART	Costa says that a result is a glut that depresses a thing.
 
-An amount that is increased is also processed in Afghanistan.
-Costa adds that an insurgent holds an opium.
-Costa says a surplus and it threatens that it devalues their stockpile.
-United Nations finds that Afghanistan produces in 2008.
+FULL	An amount that is increased is also processed in Afghanistan.
+PART	Costa adds that an insurgent holds an opium.
+PART	Costa says a surplus and it threatens that it devalues their stockpile.
+FULL	United Nations finds that Afghanistan produces in 2008.
 
 
-This then supports a thing.
-Diplomat of Italy Costa that serves to U.N. Office on Drugs and Crime
+PART	This then supports a thing.
+PART	Diplomat of Italy Costa that serves to U.N. Office on Drugs and Crime
 
-South Africa.
-Money, an organization that governs, an international and terrorism.
+FULL	South Africa.
+FULL	Money, an organization that governs, an international and terrorism.
 
 
 
 
 
-Muslims Against Illegitimate Leaders is a group that is based in Cape Town.
-Muslim Judicial Council refutes a report.
+FULL	Muslims Against Illegitimate Leaders is a group that is based in Cape Town.
+FULL	Muslim Judicial Council refutes a report.
 
 
 
 
 
-Peru.
-An international and money.
+FULL	Peru.
+PART	An international and money.
 
-Montesinos is sentenced.
+PART	Montesinos is sentenced.
 
 
-Montesinos is sentenced.
+PART	Montesinos is sentenced.
 
-It states that Montesinos admits that it is charged that an authority is abused.
+PART	It states that Montesinos admits that it is charged that an authority is abused.
 
 
 
 
 
-Montesinos hears a thing in Callao Naval Base.
-Montesinos states that it consults a lawyer that defends.
+PART	Montesinos hears a thing in Callao Naval Base.
+PART	Montesinos states that it consults a lawyer that defends.
 
-Hong Kong.
-An international and an organization that governs.
+FULL	Hong Kong.
+PART	An international and an organization that governs.
 
 
 
-A city police recently works of Public Security Bureau and it carries out a raid of a series and an operation.
+PART	A city police recently works of Public Security Bureau and it carries out a raid of a series and an operation.
 
 
 
@@ -976,8 +976,8 @@ A city police recently works of Public Security Bureau and it carries out a raid
 
 
 
-Hong Kong is chosen.
-It meets.
+PART	Hong Kong is chosen.
+PART	It meets.
 
 
 
@@ -985,236 +985,236 @@ It meets.
 
 
 
-Peru.
+FULL	Peru.
 
 
 
 
-Alto Huallaga is located.
-A story is based.
+FULL	Alto Huallaga is located.
+PART	A story is based.
 
 
 
 
-Montesinos is a close person that advises president of Peru Alberto Fujimori.
+PART	Montesinos is a close person that advises president of Peru Alberto Fujimori.
 
 
-Nepal.
-A military, terrorism and a dissent.
-It injures a soldier.
-Officer of a city police reports.
+FULL	Nepal.
+FULL	A military, terrorism and a dissent.
+PART	It injures a soldier.
+PART	Officer of a city police reports.
 
-It is believed that an insurgent that opposes an organization that governs plants a bomb.
-A soldier that is injured is admitted a hospital in Kathmandu of an army.
-Other damages or a casualty aren't reported in an incident.
+FULL	It is believed that an insurgent that opposes an organization that governs plants a bomb.
+FULL	A soldier that is injured is admitted a hospital in Kathmandu of an army.
+PART	Other damages or a casualty aren't reported in an incident.
 
 
 
 
-Nepal.
-Terrorism and politics.
+FULL	Nepal.
+PART	Terrorism and politics.
 
-An insurgent plans when it elects Parliament that it attacks.
+PART	An insurgent plans when it elects Parliament that it attacks.
 
 
-A bomb incident in Kathmandu Valley that is major.
-A bomb is exploded in a supermarket in a center of Kathmandu on 28 August 2002.
-One soldier is killed in Lalitpur on 29 August 2002 a bomb.
-Two bomb incidents in a municipality in Lalitpur and a shop in Kathmandu that are separate.
-A bomb is exploded in a metropolis office on 4 September 2002.
+PART	A bomb incident in Kathmandu Valley that is major.
+PART	A bomb is exploded in a supermarket in a center of Kathmandu on 28 August 2002.
+FULL	One soldier is killed in Lalitpur on 29 August 2002 a bomb.
+PART	Two bomb incidents in a municipality in Lalitpur and a shop in Kathmandu that are separate.
+PART	A bomb is exploded in a metropolis office on 4 September 2002.
 
 
 
 
 
-US State Department states on 3 September 2002 that an insurgent that opposes an organization that governs plans new violence.
-An organization that governs Nepal considers that it reimposes an emergency state to maintain law and an order.
+PART	US State Department states on 3 September 2002 that an insurgent that opposes an organization that governs plans new violence.
+FULL	An organization that governs Nepal considers that it reimposes an emergency state to maintain law and an order.
 
 
-An organization that governs Nepal imposes an emergency state on 26 November 2001.
+PART	An organization that governs Nepal imposes an emergency state on 26 November 2001.
 
-Nepal.
+FULL	Nepal.
 
 
 
-Radio Nepal quotes that it states.
-Personnel of a police is killed when two vehicles are moved to search a guerrilla to Tikapur.
+PART	Radio Nepal quotes that it states.
+PART	Personnel of a police is killed when two vehicles are moved to search a guerrilla to Tikapur.
 
-A person that drives a vehicle is also killed.
-Personnel of a police is still missed.
-Personnel of a police is brought to treat to Kathmandu and Nepalgunj and additional personnel of a security is mobilized to defend to a guerrilla in an area.
+PART	A person that drives a vehicle is also killed.
+FULL	Personnel of a police is still missed.
+FULL	Personnel of a police is brought to treat to Kathmandu and Nepalgunj and additional personnel of a security is mobilized to defend to a guerrilla in an area.
 
 
 
-It is killed.
+PART	It is killed.
 
-Uzbekistan, Tajikistan, Kyrgyzstan, Kazakhstan, China and Russian Federation.
-Politics, an international and terrorism.
+FULL	Uzbekistan, Tajikistan, Kyrgyzstan, Kazakhstan, China and Russian Federation.
+FULL	Politics, an international and terrorism.
 
 
 
 
 
 
-Tang states that it demonstrates that it is needed that there is an effort and it is correct.
+PART	Tang states that it demonstrates that it is needed that there is an effort and it is correct.
 
-Tang states.
-Tang states that an organization that governs China signs a multilateral pact.
-Tang states a thing that is tasked that there is a measure.
-Tang states that it cooperates an economy.
+FULL	Tang states.
+PART	Tang states that an organization that governs China signs a multilateral pact.
+PART	Tang states a thing that is tasked that there is a measure.
+PART	Tang states that it cooperates an economy.
 
 
 
 
 
-Tang states that SCO passes a temporary pact when it meets on 23 November 2002.
+PART	Tang states that SCO passes a temporary pact when it meets on 23 November 2002.
 
 
-Iraq.
+FULL	Iraq.
 
-It searches seven sites from Iraq on 28 December 2002 a weapon that is banned.
+PART	It searches seven sites from Iraq on 28 December 2002 a weapon that is banned.
 
-A team visits a juice plant of National Food Industries Co.
+PART	A team visits a juice plant of National Food Industries Co.
 
-A biology team is returned to vaccine Al Kindi.
+PART	A biology team is returned to vaccine Al Kindi.
 
 
 
-Other persons that inspect carry out a field operation on 28 December 2002 in Hadre Air Force and two private companies that trade.
+PART	Other persons that inspect carry out a field operation on 28 December 2002 in Hadre Air Force and two private companies that trade.
 
 
 
-France and India.
-A technology, an organization that governs, money, a military, an international and a weapon.
+FULL	France and India.
+FULL	A technology, an organization that governs, money, a military, an international and a weapon.
 
 
-France offers on 28 April 2003 to India that it military cooperates.
+PART	France offers on 28 April 2003 to India that it military cooperates.
 
 
-Alliot-Marie states.
-It is needed that it international cooperates.
+FULL	Alliot-Marie states.
+PART	It is needed that it international cooperates.
 
 
-France offers in 2002 that it sells.
-France agrees.
-A mine of a high intensity is strung in Kashmir in a line.
-Terrorism that crosses a border is checked.
+FULL	France offers in 2002 that it sells.
+FULL	France agrees.
+PART	A mine of a high intensity is strung in Kashmir in a line.
+FULL	Terrorism that crosses a border is checked.
 
-Alliot-Marie meets minister of India George Fernandes.
+PART	Alliot-Marie meets minister of India George Fernandes.
 
 
-France.
-An international and an organization that governs.
+FULL	France.
+PART	An international and an organization that governs.
 
 
 
-De Villepin says.
-De Villepin says that a person from France acts.
-A police from France raids a headquarters in a northwest of Paris of Mujahedeen on 22 June 2003.
+FULL	De Villepin says.
+PART	De Villepin says that a person from France acts.
+FULL	A police from France raids a headquarters in a northwest of Paris of Mujahedeen on 22 June 2003.
 
-An organization that governs Iran denies this thing that is claimed.
-A judiciary now investigates member of Mujahedeen.
+FULL	An organization that governs Iran denies this thing that is claimed.
+PART	A judiciary now investigates member of Mujahedeen.
 
-A computer, equipment, a city map and a bulletproof jacket are seized when a police raids.
-Iran, United States and European Union classify Mujahedeen a terrorism organization.
-A young person from Iran that is educated in a college forms Mujahedeen and it is described a group organization that is left.
+PART	A computer, equipment, a city map and a bulletproof jacket are seized when a police raids.
+FULL	Iran, United States and European Union classify Mujahedeen a terrorism organization.
+PART	A young person from Iran that is educated in a college forms Mujahedeen and it is described a group organization that is left.
 
 
 
 
-Director of Evin Prison Assodalah Ladjevardi is assassinated in August 1998 and chief commandant of an army from Iran Ali Sayad Chirazi is assassinated in April 1999 is included.
+PART	Director of Evin Prison Assodalah Ladjevardi is assassinated in August 1998 and chief commandant of an army from Iran Ali Sayad Chirazi is assassinated in April 1999 is included.
 
-Australia.
-A person that leads, an organization that governs, an international and a weapon.
+FULL	Australia.
+FULL	A person that leads, an organization that governs, an international and a weapon.
 
 
-Associated Press quotes on 9 June 2003 that it states that an organization that governs doesn't consider that it contributes a military.
-Howard states that an organization that governs Australia considers and it is obligated to choose a descriptor and a word.
+PART	Associated Press quotes on 9 June 2003 that it states that an organization that governs doesn't consider that it contributes a military.
+PART	Howard states that an organization that governs Australia considers and it is obligated to choose a descriptor and a word.
 
-An organization that governs United States recently forms Proliferation Security Initiative.
+FULL	An organization that governs United States recently forms Proliferation Security Initiative.
 
-Member of Proliferation Security Initiative considers a way.
+PART	Member of Proliferation Security Initiative considers a way.
 
 
-India, South Africa and Brazil.
-An international and politics.
+FULL	India, South Africa and Brazil.
+FULL	An international and politics.
 
 
 
-Spokeswoman Manusha Pillay states that an aircraft is landed in an airport base.
+PART	Spokeswoman Manusha Pillay states that an aircraft is landed in an airport base.
 
-It jointly chairs Joint Commission.
-Dlamini-Zuma participates Brazil-Africa Forum in June 2003 in Fortaleza.
+FULL	It jointly chairs Joint Commission.
+FULL	Dlamini-Zuma participates Brazil-Africa Forum in June 2003 in Fortaleza.
 
 
 
 
-It also addresses a new threat an international security.
-Foreign Affairs Department from South Africa states Brazil.
+PART	It also addresses a new threat an international security.
+FULL	Foreign Affairs Department from South Africa states Brazil.
 
 
 
-Russia.
-A person that leads, a space, a military, a technology, an international and an organization that governs.
+FULL	Russia.
+FULL	A person that leads, a space, a military, a technology, an international and an organization that governs.
 
 
-Chirac is flown to meet president of Russia Vladimir Putin in a space center.
-It greets Chirac in a space center in Krasnoznamernsk.
+PART	Chirac is flown to meet president of Russia Vladimir Putin in a space center.
+FULL	It greets Chirac in a space center in Krasnoznamernsk.
 
 
-It is held that Putin meets Chirac.
+PART	It is held that Putin meets Chirac.
 
-France is a country that leads European Space Agency.
-Chirac visits when an organization that governs Russia displays that it is uneasy.
+FULL	France is a country that leads European Space Agency.
+PART	Chirac visits when an organization that governs Russia displays that it is uneasy.
 
-It is operated, space Titov is a military facility and Russian Space Forces runs.
+PART	It is operated, space Titov is a military facility and Russian Space Forces runs.
 
 
 
-Philippines.
-Media, an international and terrorism.
+FULL	Philippines.
+FULL	Media, an international and terrorism.
 
 
-ABS-CBN News states that Isamudin Raduan Hambali is identified.
+FULL	ABS-CBN News states that Isamudin Raduan Hambali is identified.
 
 
-Hambali is blacklisted as a terrorist that is wanted to Asia most.
-Hambali is arrested in Thailand.
+FULL	Hambali is blacklisted as a terrorist that is wanted to Asia most.
+PART	Hambali is arrested in Thailand.
 
-A thing that is recorded says that it is possible that brother of Osama bin Laden Sheik Mohammed Khalid travels a country and it travels.
-Sheik Mohammed Khalid funds a terrorist network in Philippines.
-It is placed that a military and a police are alerted.
-Six organization suspects are captured in Metro Manila when it is raided.
+PART	A thing that is recorded says that it is possible that brother of Osama bin Laden Sheik Mohammed Khalid travels a country and it travels.
+PART	Sheik Mohammed Khalid funds a terrorist network in Philippines.
+PART	It is placed that a military and a police are alerted.
+PART	Six organization suspects are captured in Metro Manila when it is raided.
 
 
-News ABS-CBN is a station of a local television in Manila.
+FULL	News ABS-CBN is a station of a local television in Manila.
 
-China and Germany.
-An economy, politics, a technology, an international and an organization that governs.
-Premier of China discusses that it is planned that Germany cooperates.
+FULL	China and Germany.
+FULL	An economy, politics, a technology, an international and an organization that governs.
+PART	Premier of China discusses that it is planned that Germany cooperates.
 
 
-It interviews Wen.
+PART	It interviews Wen.
 
 
-Wen states Germany.
+FULL	Wen states Germany.
 
 
 
 
 
 
-Wen states that it is expected that it is doubled in 2010 that China and Germany trade.
-Wen states that an organization that governs China and an organization that governs Germany plan that it cooperates.
+FULL	Wen states that it is expected that it is doubled in 2010 that China and Germany trade.
+PART	Wen states that an organization that governs China and an organization that governs Germany plan that it cooperates.
 
-China considers that Germany is partnered in Europe.
+PART	China considers that Germany is partnered in Europe.
 
-Wen states that an organization that governs China supports an enterprise that invests to Germany.
-It invests.
+PART	Wen states that an organization that governs China supports an enterprise that invests to Germany.
+PART	It invests.
 
-Some firms from Germany are reputed.
-Wen states that it is possible that an enterprise from China is progressed and it learns that it manages.
-Wen states that Germany partners China in Europe.
+PART	Some firms from Germany are reputed.
+PART	Wen states that it is possible that an enterprise from China is progressed and it learns that it manages.
+PART	Wen states that Germany partners China in Europe.
 
 
 
@@ -1222,9 +1222,9 @@ Wen states that Germany partners China in Europe.
 
 
 
-Wen states that it is contrasted that it is easy that it wins to a war.
+PART	Wen states that it is contrasted that it is easy that it wins to a war.
 
-Wen states that it obligates to implement an organization resolution that is relevant.
+PART	Wen states that it obligates to implement an organization resolution that is relevant.
 
 
 
@@ -1232,24 +1232,24 @@ Wen states that it obligates to implement an organization resolution that is rel
 
 
 
-China and Kyrgyzstan.
-An international and an organization that governs.
+FULL	China and Kyrgyzstan.
+PART	An international and an organization that governs.
 
 
-It signs a communiqué on 22 September 2004.
+FULL	It signs a communiqué on 22 September 2004.
 
 
 
-A terrorist group that is so called is comprised of a terrorist cell that is a mind.
+PART	A terrorist group that is so called is comprised of a terrorist cell that is a mind.
 
-China and Kyrgyzstan say that it is recommended that peace and stability are established.
+PART	China and Kyrgyzstan say that it is recommended that peace and stability are established.
 
 
 
 
 
-Vietnam and Germany.
-A person that leads, money, an economy, politics, a technology, an international and an organization that governs.
+FULL	Vietnam and Germany.
+FULL	A person that leads, money, an economy, politics, a technology, an international and an organization that governs.
 
 
 
@@ -1258,29 +1258,29 @@ A person that leads, money, an economy, politics, a technology, an international
 
 
 
-President of Vietnam Tran Duc Luong states when it meets Schroeder that an organization that governs likes that it receives to Germany and it is developed.
+PART	President of Vietnam Tran Duc Luong states when it meets Schroeder that an organization that governs likes that it receives to Germany and it is developed.
 
 
-An organization that governs Germany offers to an organization that governs Vietnam that it official assists.
-A volume is risen in 2003.
+PART	An organization that governs Germany offers to an organization that governs Vietnam that it official assists.
+PART	A volume is risen in 2003.
 
-Hong Kong and China.
-A technology and an international.
+FULL	Hong Kong and China.
+FULL	A technology and an international.
 
 
 
-Hong Kong Polytechnic University joins a university park of Virtual University Park in June 2004.
+PART	Hong Kong Polytechnic University joins a university park of Virtual University Park in June 2004.
 
 
-City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China.
+PART	City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China.
 
-An agreement is based to a principle.
+PART	An agreement is based to a principle.
 
 
 
 
-It collaborates.
-President of HKUST Paul Ching-Wu Chu states.
+PART	It collaborates.
+FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
 
@@ -1290,38 +1290,38 @@ President of HKUST Paul Ching-Wu Chu states.
 
 
 
-It ends.
+FULL	It ends.
 
 
-He also announces that premier of Gabon Republic Casymier Auye Muba formal visits China.
+PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal visits China.
 
-It ends.
+FULL	It ends.
 
 
-It attends a ceremony.
+PART	It attends a ceremony.
 
-It respective answers a thing that a person that reports questions.
+PART	It respective answers a thing that a person that reports questions.
 
 
 
 
 
 
-It ends.
+FULL	It ends.
 
-A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand ceremony in Tokyo.
+PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand ceremony in Tokyo.
 
-A nurse, a doctor, a sportsman and a person that coaches are neat sat.
-A ground is filled an atmosphere.
-Minister of State Welfare Ministry from Japan Souyasen delivers a speech that bolsters to a delegation.
+PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
+PART	A ground is filled an atmosphere.
+PART	Minister of State Welfare Ministry from Japan Souyasen delivers a speech that bolsters to a delegation.
 
 
-Souya emphasizes that a delegation from Japan is obligated to use this opportunity.
-Souya hands over a delegation flag of a delegation.
+PART	Souya emphasizes that a delegation from Japan is obligated to use this opportunity.
+PART	Souya hands over a delegation flag of a delegation.
 
-A delegation from Japan is flown.
-They are remained in Beijing and it is returned to Japan.
-It ends.
+PART	A delegation from Japan is flown.
+PART	They are remained in Beijing and it is returned to Japan.
+FULL	It ends.
 
 
 
@@ -1329,36 +1329,36 @@ It ends.
 
 
 
-Weiping Nie, Xiaoguang Liu and Hao Chang win to a middle game.
-Dayuan Cao wins.
+PART	Weiping Nie, Xiaoguang Liu and Hao Chang win to a middle game.
+PART	Dayuan Cao wins.
 
-XunXuan Cao wins to a middle game.
-Changhao Li wins and Changhe Liu wins.
+PART	XunXuan Cao wins to a middle game.
+PART	Changhao Li wins and Changhe Liu wins.
 
-It contrasts.
+PART	It contrasts.
 
 
 
 
 
 
-It ends.
+FULL	It ends.
 
 
 
-Wei Lan occupies a position.
+PART	Wei Lan occupies a position.
 
 
-Si Aiwan is scored a point.
+PART	Si Aiwan is scored a point.
 
 
 
 
 
 
-It is held that it preliminary competes.
+PART	It is held that it preliminary competes.
 
-It ends.
+FULL	It ends.
 
 
 
@@ -1368,4 +1368,4 @@ It ends.
 
 
 
-It ends.
+FULL	It ends.

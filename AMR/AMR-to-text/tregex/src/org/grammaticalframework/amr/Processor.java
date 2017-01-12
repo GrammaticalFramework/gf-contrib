@@ -34,6 +34,8 @@ public class Processor {
     private boolean unk;
     private boolean eval;
 
+    private List<String> full_snt;
+
     private Map<String, Integer> unk_rels;
     private Map<String, Integer> unk_nodes;
     private Map<String, Integer> unk_entries;
@@ -137,6 +139,7 @@ public class Processor {
         this.file_roles = file_roles;
         this.batch = batch;
         this.eval = (batch.equals("evaluation")) ? true : false;
+        this.full_snt = new ArrayList<String>();
     }
 
     /**
@@ -206,13 +209,20 @@ public class Processor {
      * @param results
      */
     public void writeResults(List<Map<String, String>> results) throws Exception {
-        String filename = (!unk) ? "answer" : "answer-partial";
+        String filename = "answer-partial";
+
+        if (!unk) {
+            filename = "answer";
+            full_snt = new ArrayList<String>();
+        }
 
         PrintWriter ans = new PrintWriter(path_out + "out/" + batch + "/" + filename + ".txt", "UTF-8");
         PrintWriter ext = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended.txt", "UTF-8");
         PrintWriter xxx = new PrintWriter(path_out + "out/" + batch + "/" + filename + "-extended-amrs.txt", "UTF-8");
 
         PrintWriter orig = (eval) ? null : new PrintWriter(path_out + "out/" + batch + "/original.txt", "UTF-8");
+
+        int line = 0;
 
         for (Map<String, String> record : results) {
             String txt = "[" + record.get("TXT").replace(SEPARATOR, "] [") + "]";
@@ -242,7 +252,24 @@ public class Processor {
                 }
             }
 
-            ans.println(txt.trim());
+            txt = txt.trim();
+
+            if (unk) {
+                if (!txt.isEmpty()) {
+                    if (txt.equals(full_snt.get(line))) {
+                        ans.println("FULL\t" + txt);
+                    } else {
+                        ans.println("PART\t" + txt);
+                    }
+                } else {
+                    ans.println(txt);
+                }
+            } else {
+                ans.println(txt);
+                full_snt.add(txt);
+            }
+
+            line++;
         }
 
         ans.close();
