@@ -65,5 +65,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t64_youngest_brother_is_a_tender_youth : Text ;
 	fun t65_I_d_recommend_you_go_and_see_your_doctor : Text ;
 	fun t66_two_successful_companies_enter_the_market_in_a_big_way : Text ;
+	fun t67_how_long_are_we_going_to_tolerate_Japan : Text ;
 
 }

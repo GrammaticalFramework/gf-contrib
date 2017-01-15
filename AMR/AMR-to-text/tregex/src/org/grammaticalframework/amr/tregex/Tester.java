@@ -1299,4 +1299,22 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // ::snt How Long are We Going to Tolerate Japan?
+    @Test
+    public void
+            t67_how_long_are_we_going_to_tolerate_Japan() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(t / tolerate-01 :ARG0 (w / we) :ARG1 (c / country :name (n / name :op1 \"Japan\")) :duration (a / amr-unknown))");
+        assertEquals(amr,
+                "(t (tolerate-01 (:ARG0 (w we)) (:ARG1 (c (country (:name (n (name (:op1 \"Japan\"))))))) (:duration (a amr-unknown))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl (mkIAdv S.how_IAdv (S.mkAdv L.long_A)) (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN \"Japan\"))))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

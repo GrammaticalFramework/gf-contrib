@@ -133,4 +133,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t66_two_successful_companies_enter_the_market_in_a_big_way = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.successful_A L.company_N)) (mkVP (mkVP L.enter_V2 (mkNP S.a_Quant (mkCN L.market_N))) (S.mkAdv L.in_Prep (mkNP S.a_Det (mkCN L.big_A L.way_N))))))) fullStopPunct) ;
 
+	lin t67_how_long_are_we_going_to_tolerate_Japan = (mkText (mkUtt (mkQS (mkQCl (mkIAdv S.how_IAdv (S.mkAdv L.long_A)) (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN "Japan"))))))) questMarkPunct) ;
+
 }

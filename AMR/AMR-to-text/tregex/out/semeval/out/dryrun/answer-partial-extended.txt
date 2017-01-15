@@ -27,8 +27,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.wish_VS (mkS (mkCl (passiveV
 TXT: [I wish much that it is born .]
 
 SNT: How Long are We Going to Tolerate Japan?
-AST: (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN "Japan")))))) fullStopPunct)
-TXT: [we tolerate Japan .]
+AST: (mkText (mkUtt (mkQS (mkQCl (mkIAdv S.how_IAdv (S.mkAdv L.long_A)) (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN "Japan"))))))) questMarkPunct)
+TXT: [how long do we tolerate Japan ?]
 
 SNT: My fellow citizens:
 AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.fellow_A L.citizen_N))))))) fullStopPunct)
@@ -71,8 +71,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (P.mkAdV "just") (mkVP L.resemble_V))))) fu
 TXT: [unknown qualified constant L.resemble_V]
 
 SNT: All the people who experienced that era must still remember it vividly; even our younger generations also will cry with tears streaming down our cheeks, and our blood boils with indignation, whenever we turn to this page of history and read!
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (P.mkAdV "still") (passiveVP L.infer_V2)) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP L.all_Det (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.experience_V2 (mkNP S.that_Det (mkCN L.era_N))))))) (mkVP (P.mkAdV "vivid") (mkVP L.remember_V))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.we_Pron (mkCN L.even_A L.young_A L.generation_N)) (mkVP (P.mkAdV "also") (mkVP L.cry_V2 (mkNP S.a_Quant (mkCN (mkCN L.tear_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.stream_V2) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.cheek_N)))))))))))) (mkS (mkCl (mkNP (mkCN L.blood_N)) (mkVP (P.mkAdV "indignation") (passiveVP L.boil_V2))))))) fullStopPunct))
-TXT: [it is still inferred that all persons that experience that era vivid remember .] [unknown qualified constant L.stream_V2]
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (P.mkAdV "still") (passiveVP L.infer_V2)) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP L.all_Det (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.experience_V2 (mkNP S.that_Det (mkCN L.era_N))))))) (mkVP (P.mkAdV "vividly") (mkVP L.remember_V))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.we_Pron (mkCN L.even_A L.young_A L.generation_N)) (mkVP (P.mkAdV "also") (mkVP L.cry_V2 (mkNP S.a_Quant (mkCN (mkCN L.tear_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.stream_V2) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.cheek_N)))))))))))) (mkS (mkCl (mkNP (mkCN L.blood_N)) (mkVP (P.mkAdV "indignation") (passiveVP L.boil_V2))))))) fullStopPunct))
+TXT: [it is still inferred that all persons that experience that era vividly remember .] [unknown qualified constant L.stream_V2]
 
 SNT: Now Japan actually wants to reverse the verdict on the history of its aggression - fellow citizens, fellow Chinese in Asia, wake up!
 AST: (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP (P.mkAdV "now") (mkVP L.want_VS (mkS (mkCl (mkVP L.reverse_V2 (mkNP S.a_Quant (mkCN (mkCN L.verdict_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.aggression_N L.history_N))))))))))))) (mkS (mkCl (mkVP L.wake_up_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.citizen_N)) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Asia")))) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China")))))))))))) fullStopPunct)

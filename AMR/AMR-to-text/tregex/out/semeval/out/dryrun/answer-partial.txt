@@ -5,7 +5,7 @@ PART	You aren't ever gone back to that time! It is sharp that there is a sword a
 
 PART	I agree that a person that starts a thread analyzes. I like Hua Mulan.
 PART	I wish much that it is born.
-PART	We tolerate Japan.
+FULL	How long do we tolerate Japan?
 FULL	I say to a fellow citizen.
 
 
@@ -16,7 +16,7 @@ PART	Especially China suffers that Japan ravages.
 PART	Nanjing Massacre adds a layer that isn't ever faded an ancient city.
 PART	I say many instances that are cited that are difficultly recorded to a fellow citizen.
 
-FULL	It is still inferred that all persons that experience that era vivid remember.
+FULL	It is still inferred that all persons that experience that era vividly remember.
 PART	Because Japan now wants that it reverses a verdict about an aggression history it wakes up a citizen and a person in Asia from China.
 
 PART	An interest of a country and a nation unity guarantees a honor.
@@ -73,7 +73,7 @@ FULL	They even ride a head of us.
 PART	Does a person from China still do this?
 PART	It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
 PART	Time. It is calm that there is China.
-PART	All lives of our citizen are carefree. Official is extravagant.
+PART	All lives of our citizen are too carefree. Official is too extravagant.
 PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
 
 FULL	China is gone!
@@ -127,7 +127,7 @@ PART	It is possible that China has a pure innocent girl.
 
 PART	A thing is sensed somewhat.
 FULL	It agrees.
-FULL	It isn't well easy that there is a person that acts!
+FULL	It isn't oh well easy that there is a person that acts!
 FULL	They deserve it. They ask that.
 
 
@@ -292,7 +292,7 @@ PART	Is it possible that someone some advises me?
 
 PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
 FULL	You now keep it!
-FULL	I recommend that you go to see doctor.
+FULL	I recommend that you go to too see doctor.
 PART	It is possible that it benefits you.
 
 
@@ -327,7 +327,7 @@ PART	It is possible that you go on Saturday to a library and it studies.
 PART	Is it possible that you go to form a group that studies to a house?
 
 FULL	I know a thing that you feel.
-PART	Mum of me is spit.
+PART	Mum of me is too spit.
 FULL	I recommend high that it is taken up that it smokes.
 FULL	It is a joke.
 

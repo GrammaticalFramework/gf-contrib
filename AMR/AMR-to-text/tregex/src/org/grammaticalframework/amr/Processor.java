@@ -371,7 +371,7 @@ public class Processor {
         snt = snt.replaceAll("\\bten (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", "10 $1");
 
         // Remove meaningless words that are often generated in a wrong order
-        snt = snt.replaceAll("\\b(oh|too)\\b", "");
+        // snt = snt.replaceAll("\\b(oh|too)\\b", "");
 
         snt = snt.replaceAll("[ ]{2,}", " ").trim(); // Normalize spaces
         snt = snt.replaceAll(" ([,.!?])", "$1"); // Remove spaces before punctuation
