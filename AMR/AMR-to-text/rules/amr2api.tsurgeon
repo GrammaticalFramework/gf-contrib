@@ -71,13 +71,15 @@
 
 @/name/=/^name$/
 @/person/=/^person$/
-@/country/=/^country$/
+
+@/location/=/^(location|city|district|county|region|state|province|country|continent|ocean|sea|lake|river|gulf|bay|strait|canal|peninsula|mountain|volcano|valley|canyon|island|desert|forest|moon|planet|star|constellation)$/
 
 @/S/=/^mk[R]?S$/
 @/Cl/=/^mk[R]?Cl$/
 @/VP/=/^(mk|passive)VP$/
 @/NP/=/^(mk|[SL][.][a-z]+_)NP$/
 @/CN/=/^(mk|E[.]Compound)CN$/
+@/CompoundCN/=/^E[.]CompoundCN$/
 @/Adv/=/^(mkAdv|E[.]PurposeVP|monthAdv|yearAdv|dayMonthAdv|monthYearAdv|dayMonthYearAdv|weekdayPunctualAdv)$/
 
 @/pron_NP/=/^S[.](i|you|he|she|it|we|they)_NP$/
@@ -211,7 +213,7 @@
 [relabel var /^.+$/mkVP/]
 
 # mkNP : Quant -> Num -> CN -> NP
-# (var (monetary-quantity mkNum (:unit mkCN))) => (mkNP S.a_Quant mkNum mkCN)
+# (var (monetary-quantity mkNum (:unit [CN]))) => (mkNP a_Quant mkNum [CN])
 /VAR/=var < (/monetary-quantity/=money < mkNum=num < /:unit/=unit)
 [adjoinF (mkNP=np S.a_Quant @) num]
 [move unit >3 np]
@@ -500,7 +502,7 @@ mkVP=vp_o < (/FRAME/ < mkVP=vp_i)
 # mkAdv: Prep -> NP -> Adv
 # mkPrep : Str -> Prep
 # mkNP : Quant -> Num -> CN -> NP
-# (:time (var (prep (:op1 (var (temporal-quantity mkNum (:unit mkCN))))))) => (mkAdv prep_Prep mkNP)
+# (:time (var (prep (:op1 (var (temporal-quantity mkNum (:unit [CN]))))))) => (mkAdv prep_Prep mkNP)
 /:time/=time < (/VAR/=var < (/WORD/=prep < (/:op1/=op < (/VAR/ < (/temporal-quantity/ < mkNum=num < /:unit/=unit)))))
 [relabel prep /^(.+)$/"$1"/]
 [adjoinF (mkAdv (P.mkPrep @) (mkNP=np S.a_Quant)) prep]
@@ -622,7 +624,7 @@ mkNP=np <1 /quant_Quant/ <2 (mkCN < (/VAR/ < (/WORD/ < /^(mkNum|:quant)$/=quant)
 [move quant >2 np]
 
 # mkNP : Det -> CN -> NP
-# (mkNP (quant_Quant (:quant (var det)) [mkCN])) => (mkNP det_Det [mkCN])
+# (mkNP (quant_Quant (:quant (var det)) [CN])) => (mkNP det_Det [CN])
 mkNP <1 /quant_Quant/=quant <2 (/:quant/=temp < (/VAR/ < /^(~/DET/|~/DET_EXTRA/)$/=det))
 [relabel det /^(.+)$/S.$1_Det/]
 [relabel det /^S.some_Det$/S.somePl_Det/]
@@ -706,8 +708,8 @@ mkCN=cn_i < mkN2 < /:ARG1/ < mkRS=rs
 [move rs >2 cn_o]
 
 # mkAdv : Prep -> NP
-# (:mod (var ('country' (:name mkNP)))) => (mkAdv from_Prep mkNP)
-/:mod/=mod < (/VAR/ < (/country/ < (/:name/=name < mkNP=np)))
+# (:mod (var ('location' (:name mkNP)))) => (mkAdv from_Prep mkNP)
+/:mod/=mod < (/VAR/ < (/location/ < (/:name/=name < mkNP=np)))
 [adjoinF (mkAdv from_Prep @) np]
 [excise mod name]
 
@@ -750,14 +752,14 @@ mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < mkAP=ap))
 
 # mkCN : A -> N -> CN
 # (mkCN (noun_N (:mod (var adj)))) => (mkCN adj_A noun_N)
-mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/country/ < /:name/))))
+mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/location/ < /:name/))))
 [relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn]
 [delete mod]
 
 # mkCN : A -> CN -> CN
 # (mkCN (mkN2 (noun_N (:mod (var adj))))) => (mkCN adj (mkCN mkN2))
-mkCN=cn_i < (mkN2 < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/country/ < /:name/)))))
+mkCN=cn_i < (mkN2 < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < /ADJ/=adj !< (/location/ < /:name/)))))
 [adjoinF (mkCN=cn_o @) cn_i]
 [relabel adj /^(.+)$/$1_A/]
 [move adj >1 cn_o]
@@ -780,7 +782,7 @@ mkCN=cn1 < (/adj_A/ < (/:degree/=degree < (/VAR/ < /ADJ/=adj2)))
 
 # CompoundCN : N -> N -> CN
 # (mkCN (noun_N (:mod (var noun)))) => (CompoundCN noun_N noun_N)
-mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < (/WORD/=noun !< mkRS) !< (/country/ < /:name/))))
+mkCN=cn < (/^(~/noun_N/|~/FRAME/)$/ < (/:mod/=mod < (/VAR/ < (/WORD/=noun !< mkRS) !< (/location/ < /:name/))))
 [relabel noun /^(.+)$/$1_N/]
 [move noun >1 cn]
 [delete mod]
@@ -1058,7 +1060,7 @@ mkS=s < (mkCl=cl < (/VP/ < (/FRAME/ < (/:duration/=wh < (/VAR/ < /amr-unknown/))
 # mkUtt : QS -> Utt
 # mkQS : QCl -> QS
 # mkQCl : Cl -> QCl
-# (ROOT (mkS (.. (:mode interrogative)))) => (mkText (mkUtt mkQS) questMarkPunct)
+# (ROOT (mkS (mkCl (.. (:mode interrogative))))) => (mkText (mkUtt mkQS) questMarkPunct)
 mkS=s < (mkCl=cl << (/:mode/=mode < interrogative)) [> /:sntN/ | !> /ANY/]
 [relabel s /^.+$/mkQS/]
 [adjoinF (mkQCl @) cl]
@@ -1106,16 +1108,24 @@ mkS < (/conj_Conj/ < mkAdv=adv) < (mkListS <- (mkS < (mkCl < /VP/=vp_i)))
 [adjoinF (mkVP=vp_o @) vp_i]
 [move adv >2 vp_o]
 
-# (mkNP a_Quant (mkCN definite_N)) => (mkNP the_Quant (mkCN definite_N))
+# (mkNP a_Quant (mkCN definite_N)) => (mkNP the_Quant mkCN)
 mkNP < /a_Quant/=quant <+(mkCN) /definite_N/
 [relabel quant /a_Quant/the_Quant/]
 
-# (mkNP a_Quant (mkCN uncountable_N)) => (mkNP (mkCN uncountable_N))
+# (mkNP a_Quant (CompoundCN noun_N definite_N)) => (mkNP the_Quant CompoundCN)
+mkNP <1 /a_Quant/=quant <2 (/CompoundCN/ <1 /noun_N/ <2 /definite_N/)
+[relabel quant /a_Quant/the_Quant/]
+
+# (mkNP a_Quant (mkCN uncountable_N)) => (mkNP mkCN)
 mkNP < /a_Quant/=quant <+(mkCN) /uncountable_N/
 [delete quant]
 
-# (mkNP a_Quant (mkCN other_A noun_N)) => (mkNP aPl_Det (mkCN other_A noun_N))
-mkNP < /a_Quant/=quant !< mkNum <+(mkCN) (other_A $+ /noun_N/)
+# (mkNP a_Quant (CompoundCN noun_N uncountable_N)) => (mkNP CompoundCN)
+mkNP <1 /a_Quant/=quant <2 (/CompoundCN/ <1 /noun_N/ <2 /uncountable_N/)
+[delete quant]
+
+# (mkNP a_Quant (CN other_A noun_N)) => (mkNP aPl_Det (CN other_A noun_N))
+mkNP < /a_Quant/=quant !< mkNum <+(/CN/) (other_A $+ /noun_N/)
 [relabel quant /a_Quant/aPl_Det/]
 
 # (mkAP frame) => (mkAP frame_A)
@@ -1153,15 +1163,15 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 [adjoinF (mkCN=cn_o @) cn_i]
 [move adv >2 cn_o]
 
-# (mkCl mkCN) => (mkCl (mkNP mkCN))
-mkCl < mkCN=cn
+# (mkCl CN) => (mkCl (mkNP CN))
+mkCl < /CN/=cn
 [adjoinF (mkNP @) cn]
 
 # (:ARG[01] NP) => (NP)
 /:ARGm/=arg < /NP/
 [excise arg arg]
 
-# (mkVP (mkVP)) => (mkVP)
+# (mkVP VP) => (mkVP)
 mkVP=vp_o <: /VP/
 [excise vp_o vp_o]
 

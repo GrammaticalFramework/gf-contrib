@@ -37,7 +37,7 @@ PART	I think Republican Party.
 
 
 
-PART	An ambassador visits a person from France that researches in a city prison.
+FULL	An ambassador visits a person from France that researches in a prison from Tehran.
 
 
 
@@ -85,7 +85,7 @@ PART	It is reported that Google gives a ground to Europe.
 
 FULL	The Financial Times says that a company agrees.
 PART	A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
-PART	A letter says that Google also promises to consult a continent company that publishes.
+PART	A letter says that Google also promises to consult a company from Europe that publishes.
 
 
 
@@ -233,7 +233,7 @@ PART	A rabbi from Israel is accused to shoot a person that studies.
 
 
 
-PART	Spokesman of a city police Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
+PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
 
 PART	A rabbi is arrested.
 
@@ -272,7 +272,7 @@ PART	A person that holds that it is protested that works masses in a street.
 
 PART	A factory in an industry zone that is key is shut down.
 PART	A factory is reopened.
-PART	A person from Bangladesh that makes a clothes to a region brand that is major that works demands a wage.
+PART	A person from Bangladesh that makes a clothes to a major brand from West that works demands a wage.
 
 
 PART	A garment accounts.
@@ -378,7 +378,7 @@ FULL	Atlanta.
 PART	It claims that Dexter King refuses that it provides a document.
 PART	Three siblings that sole hold a share are contrasted to meet a person that holds a share.
 FULL	Dexter King also sues sister.
-PART	A person that wins wants that a state lottery pays.
+PART	A person that wins wants that a lottery from Texas pays.
 FULL	Austin.
 PART	A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission for money.
 
@@ -444,7 +444,7 @@ PART	American Civil Liberties Union sues.
 
 
 PART	An organization that governs U.S. denies a visa to scholar Habib.
-PART	State ACLU sues in 2007.
+PART	ACLU from Massachusetts sues in 2007.
 PART	A visa of Ramadan from U.S. is revoked when it is moved to take a job in University of Notre Dame to Indiana in 2004.
 
 PART	It is denied because it donates 1,336 dollars to charity that gives money to Hamas that he applies a visa.
@@ -452,7 +452,7 @@ PART	It is denied because it donates 1,336 dollars to charity that gives money t
 
 
 PART	Habib says that it is thrilled.
-PART	Habib lives when it earns a doctorate about a politics science to City University of New York in United States.
+PART	Habib lives when it earns a doctorate about politics science to City University of New York in United States.
 PART	Does he say that it is excluded?
 
 
@@ -688,7 +688,7 @@ PART	It has this idiot idea.
 
 PART	A still event. An event isn't stopped.
 
-
+FULL	An entire ocean from Caribbean Ocean is poisoned.
 FULL	Oil is washed up.
 PART	An oil slick is still moved and it poisons Gulf Ocean and Atlantic Ocean.
 PART	An event is continued.
@@ -847,7 +847,7 @@ PART	A document file in a right side.
 
 FULL	A thing that is defined.
 PART	Crude oil that is meant petroleum is found.
-PART	A lease condensate, a liquid of natural gas, an oil sand, an oil shale, extra heavy oil, conventional oil and heavy oil are included.
+PART	A lease condensate, a liquid of natural gas, oil sand, an oil shale, extra heavy oil, conventional oil and heavy oil are included.
 
 PART	It is funny that you think that it finds something and it again pats in a back.
 
@@ -878,7 +878,7 @@ PART	It is more clean that there are them.
 
 
 
-FULL	I also understand because excess electricity allows that it splits a hydrogen gas that France stockpiles hydrogen.
+FULL	I also understand because excess electricity allows that it splits hydrogen gas that France stockpiles hydrogen.
 FULL	We or U.S.
 FULL	President gives in Harry Reid and it closes Yucca Mountain.
 PART	This is a major project that is costed that is designed to store a nucleus fuel of our nation that is spent.

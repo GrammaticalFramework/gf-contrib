@@ -11,13 +11,13 @@ FULL	I say to a fellow citizen.
 
 PART	Diaoyu Islands always belongs to China. Because there is a history reason a thing that originally belongs to us is become a controversy.
 FULL	Is it possible that we allow this?
-PART	I say to a fellow citizen that a militarism of Japan brings a grave disaster to a continent person.
+FULL	I say to a fellow citizen that a militarism of Japan brings a grave disaster to a person from Asia.
 PART	Especially China suffers that Japan ravages.
 PART	Nanjing Massacre adds a layer that isn't ever faded an ancient city.
 PART	I say many instances that are cited that are difficultly recorded to a fellow citizen.
 
 FULL	It is still inferred that all persons that experience that era vividly remember.
-PART	Because Japan now wants that it reverses a verdict about an aggression history it wakes up a citizen and a person in Asia from China.
+PART	Because Japan now wants that it reverses a verdict about aggression history it wakes up a citizen and a person in Asia from China.
 
 PART	An interest of a country and a nation unity guarantees a honor.
 
@@ -29,7 +29,7 @@ PART	We are obligated.
 
 
 
-PART	It serves to a benevolence peace.
+PART	It serves to benevolence peace.
 
 
 PART	It agitates a string of a thing that is thought of my memory.
@@ -546,7 +546,7 @@ PART	A package that US endorses.
 PART	Official of US repeats that it states that it isn't possible that it is begun that it negotiates.
 
 
-PART	A continent envoy, Solana and Burns set a deadline.
+PART	An envoy from Europe, Solana and Burns set a deadline.
 
 
 
@@ -658,7 +658,7 @@ PART	A constitution is questioned.
 
 
 
-PART	This person gains an over power.
+PART	This person gains over power.
 FULL	Brazil inaugurates radar SIVAM in 2002.
 FULL	A system uses a technology from United States.
 
@@ -666,7 +666,7 @@ FULL	A system uses a technology from United States.
 PART	It some flies.
 
 
-
+PART	A north corridor of Brazil from Amazon is become a busy essential route and it is used to smuggle a diamond, an arm and gold.
 
 
 
@@ -772,7 +772,7 @@ FULL	Iran is a nucleus nation.
 
 
 
-PART	United States and France are included to a region organization that governs.
+FULL	United States and France are included to an organization from West that governs.
 
 PART	It is slowed that there is a process.
 FULL	It is avoided that it is answered that it is questioned that Iran past violates a treaty.
@@ -967,7 +967,7 @@ PART	An international and an organization that governs.
 
 
 
-PART	A city police recently works of Public Security Bureau and it carries out a raid of a series and an operation.
+PART	A police from Hong Kong recently works of Public Security Bureau and it carries out a raid of a series and an operation.
 
 
 
@@ -1002,7 +1002,7 @@ PART	Montesinos is a close person that advises president of Peru Alberto Fujimor
 FULL	Nepal.
 FULL	A military, terrorism and a dissent.
 PART	It injures a soldier.
-PART	Officer of a city police reports.
+FULL	Officer of a police from Kathmandu reports.
 
 FULL	It is believed that an insurgent that opposes an organization that governs plants a bomb.
 FULL	A soldier that is injured is admitted a hospital in Kathmandu of an army.
@@ -1021,7 +1021,7 @@ PART	A bomb incident in Kathmandu Valley that is major.
 PART	A bomb is exploded in a supermarket in a center of Kathmandu on 28 August 2002.
 FULL	One soldier is killed in Lalitpur on 29 August 2002 a bomb.
 PART	Two bomb incidents in a municipality in Lalitpur and a shop in Kathmandu that are separate.
-PART	A bomb is exploded in a metropolis office on 4 September 2002.
+FULL	A bomb is exploded in a metropolis office from Kathmandu on 4 September 2002.
 
 
 
@@ -1115,7 +1115,7 @@ FULL	A police from France raids a headquarters in a northwest of Paris of Mujahe
 FULL	An organization that governs Iran denies this thing that is claimed.
 PART	A judiciary now investigates member of Mujahedeen.
 
-PART	A computer, equipment, a city map and a bulletproof jacket are seized when a police raids.
+PART	A computer, equipment, a map from Paris and a bulletproof jacket are seized when a police raids.
 FULL	Iran, United States and European Union classify Mujahedeen a terrorism organization.
 PART	A young person from Iran that is educated in a college forms Mujahedeen and it is described a group organization that is left.
 
@@ -1240,7 +1240,7 @@ FULL	It signs a communiqué on 22 September 2004.
 
 
 
-PART	A terrorist group that is so called is comprised of a terrorist cell that is a mind.
+PART	A terrorist group from Eastern Turkistan that is so called is comprised of a terrorist cell that is a mind.
 
 PART	China and Kyrgyzstan say that it is recommended that peace and stability are established.
 
