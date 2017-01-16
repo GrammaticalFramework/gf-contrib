@@ -141,4 +141,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t70_what_did_the_girl_find = (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V))))) questMarkPunct) ;
 
+	lin t71_where_did_the_girl_find_the_boy = (mkText (mkUtt (mkQS (mkQCl S.where_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.boy_N))))))) questMarkPunct) ;
+
 }

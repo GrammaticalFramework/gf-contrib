@@ -1116,8 +1116,7 @@ public class Tester {
 
     // Especially China suffered the ravages of Japan.
     @Test
-    public void
-            t57_especially_China_suffered_the_ravages_of_Japan() {
+    public void t57_especially_China_suffered_the_ravages_of_Japan() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1134,8 +1133,7 @@ public class Tester {
 
     // I started university in September.
     @Test
-    public void
-            t58_I_started_university_in_September() {
+    public void t58_I_started_university_in_September() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1152,8 +1150,7 @@ public class Tester {
 
     // We have been broken up since August.
     @Test
-    public void
-            t59_we_have_been_broken_up_since_August() {
+    public void t59_we_have_been_broken_up_since_August() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1170,8 +1167,7 @@ public class Tester {
 
     // I started university on 1 September 1999.
     @Test
-    public void
-            t60_I_started_university_on_1_September_1999() {
+    public void t60_I_started_university_on_1_September_1999() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1188,8 +1184,7 @@ public class Tester {
 
     // I started university in 1999.
     @Test
-    public void
-            t61_I_started_university_in_1999() {
+    public void t61_I_started_university_in_1999() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1207,8 +1202,7 @@ public class Tester {
     // You could go to the library on Saturdays.
     // FIXME: word order (time goes last)
     @Test
-    public void
-            t62_you_could_go_to_the_library_on_Saturdays() {
+    public void t62_you_could_go_to_the_library_on_Saturdays() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1227,8 +1221,7 @@ public class Tester {
     // FIXME: word order (time goes last)
     // FIXME: large numbers (Predef.error)
     @Test
-    public void
-            t63_the_US_government_has_given_3_3_billion_to_Colombia_in_the_past_5_years() {
+    public void t63_the_US_government_has_given_3_3_billion_to_Colombia_in_the_past_5_years() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1245,8 +1238,7 @@ public class Tester {
 
     // Youngest brother is a tender youth.
     @Test
-    public void
-            t64_youngest_brother_is_a_tender_youth() {
+    public void t64_youngest_brother_is_a_tender_youth() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1265,8 +1257,7 @@ public class Tester {
     // FIXME: 'a doctor' (vs. '[the] president of China')
     // FIXME: 'your doctor'
     @Test
-    public void
-            t65_I_d_recommend_you_go_and_see_your_doctor() {
+    public void t65_I_d_recommend_you_go_and_see_your_doctor() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1283,8 +1274,7 @@ public class Tester {
 
     // Two successful companies enter the market in a big way.
     @Test
-    public void
-            t66_two_successful_companies_enter_the_market_in_a_big_way() {
+    public void t66_two_successful_companies_enter_the_market_in_a_big_way() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1301,8 +1291,7 @@ public class Tester {
 
     // ::snt How Long are We Going to Tolerate Japan?
     @Test
-    public void
-            t67_how_long_are_we_going_to_tolerate_Japan() {
+    public void t67_how_long_are_we_going_to_tolerate_Japan() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1319,8 +1308,7 @@ public class Tester {
 
     // How do we fly?
     @Test
-    public void
-            t68_how_do_we_fly() {
+    public void t68_how_do_we_fly() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1337,8 +1325,7 @@ public class Tester {
 
     // How can we fly?
     @Test
-    public void
-            t69_how_can_we_fly() {
+    public void t69_how_can_we_fly() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1355,8 +1342,7 @@ public class Tester {
 
     // What did the girl find?
     @Test
-    public void
-            t70_what_did_the_girl_find() {
+    public void t70_what_did_the_girl_find() {
         Transformer t = new Transformer(rules, roles, false);
 
         String amr = t.transformToLISP(
@@ -1367,6 +1353,23 @@ public class Tester {
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
                 "(mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // Where did the girl find the boy?
+    @Test
+    public void t71_where_did_the_girl_find_the_boy() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(f / find-01 :ARG0 (g / girl) :ARG1 (b / boy) :location (a / amr-unknown))");
+        assertEquals(amr,
+                "(f (find-01 (:ARG0 (g girl)) (:ARG1 (b boy)) (:location (a amr-unknown))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl S.where_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.boy_N))))))) questMarkPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

@@ -333,3 +333,8 @@ TestTreesEng: what does a girl find ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t71_where_did_the_girl_find_the_boy
+TestTreesEng: where does a girl find a boy ?
+TestTreesLav: 
+TestTreesRus: 
+
