@@ -6,9 +6,13 @@ abstract Leaves = Cat, Dictionary ** {
 
 		-- Manually added:
 
+		administrate_V : V ;	-- missing in Dictionary
 		analyze_V : V ;			-- only analyze_V2 in Dictionary
 		attack_V : V ;			-- only attack_V2 in Dictionary
+		cause_V : V ;			-- only cause_V2 in Dictionary
+		counsel_V : V ;			-- only counsel_V2 in Dictionary
 		defend_V : V ;			-- subcat in Dictionary
+		do_V : V ;				-- subcat in Dictionary
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
@@ -23,6 +27,7 @@ abstract Leaves = Cat, Dictionary ** {
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
 
 		obligate_VV : VV ;		-- only obligate_V2 in Dictionary
+		start_VV : VV ;			-- only start_V2 in Dictionary
 		urge_VV : VV ;			-- missing in Dictionary
 
 		allow_VS : VS ;			-- subcat in Dictionary
@@ -30,10 +35,12 @@ abstract Leaves = Cat, Dictionary ** {
 		make_VS : VS ;			-- subcat in Dictionary
 		need_VS : VS ;			-- subcat in Dictionary
 		offer_VS : VS ;			-- subcat in Dictionary
+		outline_VS : VS ;		-- only outline_V2 in Dictionary
 		quote_VS : VS ;			-- missing in Dictionary
 		recommend_VS : VS ;		-- only recommend_V2 in Dictionary
 		refuse_VS : VS ;		-- missing in Dictionary
 		suffer_VS : VS ;		-- missing in Dictionary
+		support_VS : VS ;		-- missing in Dictionary
 		want_VS : VS ;			-- subcat in Dictionary
 
 		center_N : N ;			-- missing in Dictionary
@@ -46,6 +53,8 @@ abstract Leaves = Cat, Dictionary ** {
 		just_AdA : AdA ;		-- missing in Dictionary
 		more_AdA : AdA ;		-- missing in Dictionary
 		most_AdA : AdA ;		-- missing in Dictionary
+
+		what_IAdv : IAdv ;		-- FIXME (?)
 
 		all_Det : Det ;			-- vs. all_Quant
 		more_Det : Det ;		-- vs. more_Quant

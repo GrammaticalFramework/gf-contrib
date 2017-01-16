@@ -142,7 +142,7 @@ PART	It is surged.
 PART	17 near accidents are reported.
 
 PART	VDOT doesn't have money to construct a road in a region.
-
+PART	It causes.
 
 FULL	This is a doh moment that is major!
 
@@ -242,7 +242,7 @@ PART	A much is gone on in his life and it thinks that it is possible that we are
 
 PART	I believe that every child needs parent.
 
-
+PART	What do I do?
 PART	It is very bad that it threatens to you.
 PART	It is obligated because it is just escalated that you don't give in that.
 
@@ -254,7 +254,7 @@ FULL	You meet all person kinds!
 
 PART	I agree. His business is one other thing.
 FULL	I don't tell to him.
-
+PART	It is contrasted that it doesn't cause.
 
 PART	You need.
 
@@ -278,10 +278,10 @@ PART	It contrasts a point.
 PART	I don't enjoy a university.
 
 
+PART	It isn't worked out because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
 
 
-
-
+PART	I have a person that counsels because it is possible that you only have and it doubts that it helps much.
 
 
 
@@ -291,7 +291,7 @@ PART	Is it possible that someone some advises me?
 
 
 PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
-FULL	You now keep it!
+PART	You don't shut off and it does because it tries a new thing well! You now keep it!
 FULL	I recommend that you go to too see doctor.
 PART	It is possible that it benefits you.
 
@@ -357,7 +357,7 @@ PART	You aren't kind.
 FULL	Good luck.
 
 PART	I focus to an idol.
-
+PART	Does it cause? Does it cause? Does it cause?
 
 
 FULL	I hope that this helps.
@@ -376,7 +376,7 @@ PART	It then contrasts.
 PART	Because it is told to me that it doesn't walk on my toe it walks on my toe.
 
 
-
+PART	A person that does is drilled it.
 PART	I don't read to a random symptom that is resembled to that.
 PART	I am a girl that is addicted to harm a self.
 
@@ -398,7 +398,7 @@ FULL	I don't want that it stops.
 PART	It contrasts.
 PART	I don't tell to him.
 FULL	I don't want that it hurts him. I don't want that he hurts.
-
+FULL	What do I do?
 PART	I thank you.
 
 FULL	You talk and a thing that is gone on is told is recommended.
@@ -431,7 +431,7 @@ PART	You advise me.
 
 PART	It knows that it is more easy that it says.
 PART	Because a doctor sees that there is a case you don't worry that!
-
+PART	I do about OCD.
 
 PART	It is gradual decreased.
 PART	That is just sounded me.
@@ -449,7 +449,7 @@ PART	It contrasts.
 
 
 
-
+PART	Do I see that I speak to a person that counsels?
 
 
 
@@ -494,13 +494,13 @@ FULL	Israel.
 
 
 
-
+PART	A document that outlines that Israel proposes is distributed in March 2007.
 
 PART	A letter says that a presentation from Israel is offered on 17 March 2007.
 
 
 PART	One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
-
+PART	A document is circulated when a person organization that administrates works in September 2007 in Capitol Hill.
 
 FULL	Kimball states.
 
@@ -509,9 +509,9 @@ PART	It gives a reason.
 PART	It is good and it is more good.
 
 
+PART	It views a pact an important part of a legacy of an organization that administrates.
 
-
-
+PART	It is possible that it affects a legacy of an organization that administrates.
 
 
 FULL	Seigel states.
@@ -1145,7 +1145,7 @@ PART	Spokeswoman Manusha Pillay states that an aircraft is landed in an airport 
 
 FULL	It jointly chairs Joint Commission.
 FULL	Dlamini-Zuma participates Brazil-Africa Forum in June 2003 in Fortaleza.
-
+PART	Foreign Affairs Department from South Africa states that it outlines that it plans to trilateral cooperate politics and an economy.
 
 
 
@@ -1225,7 +1225,7 @@ PART	Wen states that Germany partners China in Europe.
 PART	Wen states that it is contrasted that it is easy that it wins to a war.
 
 PART	Wen states that it obligates to implement an organization resolution that is relevant.
-
+PART	Wen states that an organization that governs China supports that peace in Middle East is planned and it is remained.
 
 
 

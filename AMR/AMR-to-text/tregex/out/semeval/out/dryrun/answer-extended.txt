@@ -975,8 +975,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (think-01 S.he_NP) (:AR
 TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (think-01 S.he_NP) (:ARG1 (mkS (mkCl S.it_NP (mkAP (mkAP (L.possible_A (:condition (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.have_V))))))))) (mkS (mkCl (mkVP L.have_V2 S.i_NP)))))))))))) fullStopPunct)]
 
 SNT: What do I do to move on with my life.
-AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (L.do_V (:ARG2-of (mkS (mkCl (mkVP (mkVP L.move_V) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.life_N)))))))))))) fullStopPunct)
-TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (L.do_V (:ARG2-of (mkS (mkCl (mkVP (mkVP L.move_V) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.life_N)))))))))))) fullStopPunct)]
+AST: (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl S.i_NP (mkVP (L.do_V (:ARG2-of (mkS (mkCl (mkVP (mkVP L.move_V) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.life_N))))))))))))) questMarkPunct)
+TXT: [command not parsed: cc -one (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl S.i_NP (mkVP (L.do_V (:ARG2-of (mkS (mkCl (mkVP (mkVP L.move_V) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.life_N))))))))))))) questMarkPunct)]
 
 SNT: Your ex is threatening you using your son... bad, bad, bad.
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP L.very_AdA (mkAP (mkAP L.bad_A) (mkS (mkCl (:ARG0 (have-rel-role-91 (:time (e ex)))) (mkVP (mkVP (L.threaten_V (:ARG2-of (mkS (mkCl (mkVP L.use_V2 (mkNP (mkCN (P.mkN2 L.son_N L.of_Prep))))))))) (S.mkAdv L.GOL_Prep S.you_NP))))))))) fullStopPunct)
@@ -1396,7 +1396,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAd
 
 SNT: Neither of my counsellers have diagnosed me with depression, and both have suggested I do not suffer from it, but it is a huge worry to me, as depression was the cause of my dad's death, suicide.
 AST: (mkText (mkUtt (mkS (mkCl (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.counsel_V))))) (mkVP (mkVP L.diagnose_V2 S.i_NP) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.depression_N)))))) (mkS (mkCl (mkVP L.suggest_VS (mkS negativePol (mkCl (mkVP L.suffer_V)))))))) (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (P.mkAdV "huge") (mkVP (mkVP worry-01) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN (mkCN (mkCN L.depression_N) (mkRS (mkRCl S.which_RP (mkVP L.cause_V2 (mkNP S.a_Quant (mkCN L.suicide_N)))))) (mkRS (mkRCl S.which_RP (mkVP L.cause_VS (mkS (mkCl (mkNP (mkCN (P.mkN2 L.dad_N L.of_Prep))) (passiveVP L.die_V2)))))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.counsel_V]
+TXT: [constant not found: worry]
 
 SNT: I have tried to solve my problems before, and have found exercise and meditation particularly useful, and have also tried things like self-help books and tapes. But my general feeling, is, 'Is this what my life will be? My one chance at existance, my one chance of being a young man, I am wasting it!' And these feelings are beating away at me.
 AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkAdV "also") (mkVP L.try_V2 (mkNP S.a_Quant (mkCN (L.thing_N (:example (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.book_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "self") (mkVP L.help_V)))))) (mkNP S.a_Quant (mkCN (L.tape_N (:ARG0-of h)))))))))))))) (mkListS (mkS (mkCl S.i_NP (mkVP (P.mkAdV "before") (mkVP L.try_VS (mkS (mkCl (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl S.it_NP (mkAP L.particular_AdA (mkAP (mkAP L.useful_A) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.exercise_N)) (mkNP S.a_Quant (mkCN L.meditation_N))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP L.contrast_VV (mkVP (feel-01 S.i_NP (:ARG1-of (mkS (mkCl S.it_NP (mkAP L.general_A))))) (:ARG1 (mkS (mkCl S.this_NP (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP live-01))))))))))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.waste_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.one_N (L.chance_N (:ARG1 (mkS (mkCl (passiveVP L.exist_V2))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN (L.chance_N (:ARG1 (mkS (mkCl (mkNP S.a_Quant (mkCN L.young_A L.man_N))))) (:mod o)))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.feel_V2)))) (mkVP (passiveVP (L.beat_V2 (:prep-at i4))) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.away_N))))))) fullStopPunct))
@@ -1599,8 +1599,8 @@ AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.want_V
 TXT: [I don't want that it hurts him .] [I don't want that he hurts .]
 
 SNT: what do i do
-AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.do_V)))) fullStopPunct)
-TXT: [unknown qualified constant L.do_V]
+AST: (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl S.i_NP (mkVP L.do_V))))) questMarkPunct)
+TXT: [what do I do ?]
 
 SNT: thanks you for reading
 AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (L.thank_V2 (:ARG2-CAU (mkS (mkCl (mkVP L.read_V))))) S.you_NP)))) fullStopPunct)

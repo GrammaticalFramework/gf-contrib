@@ -1047,10 +1047,10 @@ mkNP=np_i <1 (/:mod/=mod < (/VAR/ <: /WORD/=word)) <2 mkPN
 # mkUtt : QS -> Utt
 # mkQS : QCl -> QS
 # mkQCl : IAdv -> Cl -> QCl
-# (ROOT (mkS (mkCl (mkAP (mkS (mkCl (VP (frame (:manner (var amr-unknown)))))))))) => (mkText (mkUtt (mkQS (mkQCl how_IAdv mkCl))) questMarkPunct)
-mkS=s < (mkCl=cl < (mkAP < (mkS < (mkCl < (/VP/ < (/FRAME/ < (/:manner/=wh < (/VAR/ < /amr-unknown/)))))))) [> /:sntN/ | !> /ANY/]
+# (ROOT (mkS (mkCl (VP frame (var amr-unknown))))) => (mkText (mkUtt (mkQS (mkQCl what_IAdv mkCl))) questMarkPunct)
+mkS=s < (mkCl=cl < (/VP/ < /FRAME/ < (/VAR/=wh < /amr-unknown/))) [> /:sntN/ | !> /ANY/]
 [relabel s /^.+$/mkQS/]
-[adjoinF (mkQCl=qcl S.how_IAdv @) cl]
+[adjoinF (mkQCl=qcl L.what_IAdv @) cl]
 [adjoinF (mkText (mkUtt @) questMarkPunct) s]
 [delete wh]
 
@@ -1060,6 +1060,17 @@ mkS=s < (mkCl=cl < (mkAP < (mkS < (mkCl < (/VP/ < (/FRAME/ < (/:manner/=wh < (/V
 # mkQCl : IAdv -> Cl -> QCl
 # (ROOT (mkS (mkCl (VP (frame (:manner (var amr-unknown))))))) => (mkText (mkUtt (mkQS (mkQCl how_IAdv mkCl))) questMarkPunct)
 mkS=s < (mkCl=cl < (/VP/ < (/FRAME/ < (/:manner/=wh < (/VAR/ < /amr-unknown/))))) [> /:sntN/ | !> /ANY/]
+[relabel s /^.+$/mkQS/]
+[adjoinF (mkQCl=qcl S.how_IAdv @) cl]
+[adjoinF (mkText (mkUtt @) questMarkPunct) s]
+[delete wh]
+
+# mkText : Utt -> Punct -> Text
+# mkUtt : QS -> Utt
+# mkQS : QCl -> QS
+# mkQCl : IAdv -> Cl -> QCl
+# (ROOT (mkS (mkCl (mkAP (mkS (mkCl (VP (frame (:manner (var amr-unknown)))))))))) => (mkText (mkUtt (mkQS (mkQCl how_IAdv mkCl))) questMarkPunct)
+mkS=s < (mkCl=cl < (mkAP < (mkS < (mkCl < (/VP/ < (/FRAME/ < (/:manner/=wh < (/VAR/ < /amr-unknown/)))))))) [> /:sntN/ | !> /ANY/]
 [relabel s /^.+$/mkQS/]
 [adjoinF (mkQCl=qcl S.how_IAdv @) cl]
 [adjoinF (mkText (mkUtt @) questMarkPunct) s]

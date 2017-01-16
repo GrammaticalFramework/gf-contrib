@@ -836,7 +836,7 @@ FULL	You don't provide that data because it is possible.
 
 
 
-
+PART	You do!
 PART	A chart says a source in a bottom.
 
 
@@ -939,8 +939,8 @@ PART	An environment group says that four expert persons evade a navy from Denmar
 FULL	Yoda says.
 FULL	They are an idiot.
 PART	History shows to us that president increases a debt exponential!
-
-
+FULL	It causes.
+PART	It causes.
 
 
 
@@ -977,7 +977,7 @@ FULL	You make that it guesses!
 
 
 PART	Are we supposed?
-
+PART	It causes.
 
 FULL	Do I get a cookie?
 FULL	It is sure.
@@ -986,7 +986,7 @@ FULL	It is sure.
 FULL	It cries!
 FULL	We tell to you.
 
-FULL	Senator makes.
+FULL	What does senator make?
 
 
 PART	It explains a thing to me!
@@ -1004,7 +1004,7 @@ FULL	Congressman busts some serious nuts.
 
 PART	An exact thing that they want.
 
-
+FULL	It causes.
 
 PART	It contrasts.
 
@@ -1076,7 +1076,7 @@ PART	It states.
 
 PART	A mortgage.
 FULL	Does it pay a car?
-PART	You go on!
+PART	What do you go on?
 FULL	A military doesn't pay that.
 
 
@@ -1195,7 +1195,7 @@ PART	It is given that there is a break.
 PART	Do you know that it sees soldier?
 
 PART	It is right that there is that. I run and it also runs.
-FULL	I wonder.
+FULL	What do I wonder?
 
 FULL	This just confirms it.
 PART	A military doesn't have a butt job.
@@ -1217,7 +1217,7 @@ PART	It wakes up a turd boy!
 
 PART	It also shows a thing.
 PART	I hope that it gives a reputation that is negatived to a pathetic ass of you that doesn't serve.
-
+FULL	It is sure that I do.
 PART	Before an incident
 PART	Veteran doesn't see a day.
 
@@ -1240,7 +1240,7 @@ PART	You ask!
 PART	A bullshit.
 FULL	I know.
 
-
+FULL	Do I do?
 
 
 FULL	I ask and it tells that you are filled a shit.

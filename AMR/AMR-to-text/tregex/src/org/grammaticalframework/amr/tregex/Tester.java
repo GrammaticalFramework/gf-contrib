@@ -1353,4 +1353,22 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // What did the girl find?
+    @Test
+    public void
+            t70_what_did_the_girl_find() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(f / find-01 :ARG0 (g / girl) :ARG1 (a / amr-unknown))");
+        assertEquals(amr,
+                "(f (find-01 (:ARG0 (g girl)) (:ARG1 (a amr-unknown))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

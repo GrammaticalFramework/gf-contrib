@@ -68,5 +68,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t67_how_long_are_we_going_to_tolerate_Japan : Text ;
 	fun t68_how_do_we_fly : Text ;
 	fun t69_how_can_we_fly : Text ;
+	fun t70_what_did_the_girl_find : Text ;
 
 }

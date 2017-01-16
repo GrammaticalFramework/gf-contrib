@@ -328,3 +328,8 @@ TestTreesEng: how is it possible that we fly ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t70_what_did_the_girl_find
+TestTreesEng: what does a girl find ?
+TestTreesLav: 
+TestTreesRus: 
+

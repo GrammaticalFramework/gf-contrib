@@ -2,7 +2,7 @@
 
 concrete LeavesEng of Leaves = CatEng, DictionaryEng -
 [information_N, okay_A, organization_N, recognize_1_V2, recognize_VS, traffic_V] **
-open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
+open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 
 	flags
 
@@ -14,9 +14,13 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 		-- Manually added:
 
+		administrate_V = mkV "administrate" "administrates" "administrated" "administrated" "administrating" ;
 		analyze_V = mkV "analyze" "analyzes" "analyzed" "analyzed" "analyzing" ;
 		attack_V = mkV "attack" "attacks" "attacked" "attacked" "attacking" ;
+		cause_V = mkV "cause" "causes" "caused" "caused" "causing" ;
+		counsel_V = mkV "counsel" "counsels" "counselled" "counselled" "counselling" ;
 		defend_V = mkV "defend" ;
+		do_V = IrregEng.do_V ;
 		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
 		inspect_V = mkV "inspect" "inspects" "inspected" "inspected" "inspecting" ;
 		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting" ;
@@ -34,6 +38,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		recognize_1_V2 = mkV2 (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;	-- TODO: remove variants in DictionaryEng
 
 		obligate_VV = mkVV (mkV "obligate" "obligates" "obligated" "obligated" "obligating") ;
+		start_VV = mkVV start_V ;
 		urge_VV = mkVV (mkV "urge") ;
 
 		allow_VS = mkVS (mkV "allow" "allows" "allowed" "allowed" "allowing") ;
@@ -41,11 +46,13 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		make_VS = mkVS (IrregEng.make_V) ;
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
+		outline_VS = mkVS (mkV "outline" "outlines" "outlined" "outlined" "outlining") ;
 		quote_VS = mkVS quote_V ;
 		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
 		suffer_VS = mkVS suffer_V ;
+		support_VS = mkVS (mkV "support" "supports" "supported" "supported" "supporting") ;
 		want_VS = mkVS want_V ;
 
 		center_N = mkN "center" ;
@@ -61,6 +68,8 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;
 		most_AdA = mkAdA "most" ;
+
+		what_IAdv = ss "what" ;
 
 		all_Det = mkDeterminer plural "all" ;
 		more_Det = mkDeterminer plural "more" ;
