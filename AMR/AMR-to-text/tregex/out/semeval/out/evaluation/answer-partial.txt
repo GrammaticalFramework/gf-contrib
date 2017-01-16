@@ -1,12 +1,12 @@
 
 
-It travels on Saturday to a residence in Majorca.
+PART	It travels on Saturday to a residence in Majorca.
 
-He tells on Saturday to a person that reports in an airport that we are obligated.
+PART	He tells on Saturday to a person that reports in an airport that we are obligated.
 
 
 
-An authority blames ETA.
+PART	An authority blames ETA.
 
 
 
@@ -17,32 +17,32 @@ An authority blames ETA.
 
 
 
+PART	Menendez says in a press conference in US Capitol that it believes that it pays a price.
 
 
 
 
+PART	A group person from America doesn't bloc vote Obama.
 
-A group person from America doesn't bloc vote Obama.
 
 
+PART	I think Republican Party.
 
-I think Republican Party.
 
 
 
 
 
-A person is also underlined that a person is blocked that it is voted that it is confirmed to group Miguel Estrada.
 
 
 
 
-An ambassador visits a person from France that researches in a city prison.
+FULL	An ambassador visits a person from France that researches in a prison from Tehran.
 
 
 
-A person visits.
-It is contrasted to give a detail that an office says that father of Reiss is met that it leads from France.
+PART	It visits.
+PART	It is contrasted to give a detail that an office says that it meets father of Reiss.
 
 
 
@@ -50,53 +50,54 @@ It is contrasted to give a detail that an office says that father of Reiss is me
 
 
 
-White House says on Tuesday that it recommends that Megrahi is remained a jail.
+PART	White House says on Tuesday that it recommends that Megrahi is remained a jail.
 
 
-Lawyer is told to a court that it is very weak and it adds that it suffers a pain and it is distressed.
+PART	Lawyer tells to a court that it is very weak and it adds that it suffers a pain and it is distressed.
 
 
-It is expected that it decides.
+PART	It is expected that it decides.
 
 
 
-It is suggested that it is possible that Megrahi is freed that media reports.
+PART	It suggests that it is possible that Megrahi is freed.
 
 
-She adds that he decides.
+PART	She adds that he decides.
 
+PART	It weekend calls MacAskill to press.
 
 
-Lawyer of Megrahi is said in a court that it believes that it is helped that it is speeded up that it decides that it is dropped that it appeals.
 
-John Mosey says.
-PLO picks a new person that leads when it landmark meets.
+FULL	John Mosey says.
+FULL	PLO picks a new person that leads when it landmark meets.
 
-A parliament of Palestine Liberation Organisation elects six new members on Thursday an executive body.
-A spokesman says that Hanan Ashrawi, Ahmed Qorei and top Saeb Erakat are included to elect six persons.
+FULL	A parliament of Palestine Liberation Organisation elects six new members on Thursday an executive body.
+PART	A spokesman says that Hanan Ashrawi, Ahmed Qorei and top Saeb Erakat are included to elect six persons.
 
 
+FULL	President of Palestinian Authority Mahmud Abbas heads an executive committee.
 
+PART	It creates Palestinian Authority when Arafat is returned after 27 years to a land in Palestine in July 1994.
+PART	It is contrasted that an international community recognizes PLO.
+PART	It is reported that Google gives a ground to Europe.
 
-It creates Palestinian Authority when Arafat is returned after 27 years to a land in Palestine in July 1994.
-It is contrasted that an international community recognizes PLO.
-It is reported that Google gives a ground to Europe.
 
+FULL	The Financial Times says that a company agrees.
+PART	A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
+PART	A letter says that Google also promises to consult a company from Europe that publishes.
 
-The Financial Times says that a company agrees.
-A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
-A letter says that Google also promises to consult a continent company that publishes.
 
 
 
 
+FULL	Football.
 
-Football.
 
 
 
+PART	It adds that an other is injured.
 
-It adds that an other is injured.
 
 
 
@@ -104,105 +105,103 @@ It adds that an other is injured.
 
 
 
+PART	Another sign is read.
+PART	It is seen that a council adopts a report.
 
-Another sign is read.
-It is seen that a council adopts a report.
 
 
 
 
 
 
+PART	Interior Ministry says that it kills 12 persons and it wounds 83 persons.
 
-Interior Ministry says that 12 persons are killed that it suicide attacks in Kabul and it wounds 83 persons.
 
+PART	A document court says that it gives DSB on Thursday.
+PART	Does it say that a court gives DSB to an opportunity to indicate that it is possible that it takes over?
 
 
-Is it said that a court gives DSB to an opportunity to indicate that it is possible that it takes over that a district court in Amsterdam rules?
 
 
+PART	News ANP reports that chief executive of a bank Dirk Scheringa says when it leaves a court that it is remained.
 
+PART	A person that holds an account withdraws.
+PART	DSB says that it holds in Netherlands.
 
-News ANP reports that chief executive of a bank Dirk Scheringa is said when it leaves a court that it is remained.
+FULL	It also main sponsors football AZ Alkmaar.
+PART	An organization that promises that governs announces that it is possible that a person that holds an account back claims.
+PART	Football. Barnes faces time.
 
-A person that holds an account withdraws.
-DSB says that it holds in Netherlands.
+PART	Winger of Liverpool and England John Barnes insists on Wednesday that because there is an oversight it is bankrupted.
 
-It also main sponsors football AZ Alkmaar.
-An organization that promises that governs announces that it is possible that a person that holds an account back claims.
-Football. Barnes faces time.
 
-Winger of Liverpool and England John Barnes is insisted on Wednesday that because there is an oversight it is bankrupted.
+PART	Barnes is charged native Jamaica.
 
 
-Barnes is charged native Jamaica.
 
+PART	A group person from Bosnia and Herzegovina that leads when it wars says that it is pleased to attend a conference on 3 November 2009 about a status.
 
 
-A group person from Bosnia and Herzegovina that leads when it wars says that it is pleased to attend a conference on 3 November 2009 about a status.
+FULL	He tells to a person that judges that it doesn't have adequate time to prepare for it.
 
+PART	A person that judges blocks a video.
 
-He tells to a person that judges that it doesn't have adequate time to prepare for it.
 
-A person that judges blocks a video.
 
 
-A person is issued that it temporary orders.
+PART	Lopez claims that a contract is breached and it seeks 10,000,000 dollars.
+PART	A record shows that Ed Meyer is also named.
 
-Lopez claims that a contract is breached and it seeks 10,000,000 dollars.
-A record shows that Ed Meyer is also named.
 
+PART	A person that arbitrates eventual awards 545,000 dollars to Lopez.
 
-A person that arbitrates eventual awards 545,000 dollars to Lopez.
 
 
+PART	A ministry says that a person from Bulgaria is life sentenced in Iran.
 
-A ministry says that a person from Bulgaria is life sentenced in Iran.
 
+PART	Spokesman Dragovest Goranov says that Zhivko Rusev is informed a thing that a court decides.
+PART	Rusev is arrested in September 2008 to find a heroin in a truck.
+FULL	He is imprisoned since then in Iran.
+PART	Goranov says on Monday that Rusev maintains that it is innocent and we advise.
+PART	He adds that we estimate some lights in an end of a tunnel because it rules.
 
-Spokesman Dragovest Goranov is said that Zhivko Rusev is informed a thing that a court decides.
-Rusev is arrested in September 2008 to find a heroin in a truck.
-He is imprisoned since then in Iran.
-Goranov says on Monday that Rusev maintains that it is innocent and we advise.
-He adds that we estimate some lights in an end of a tunnel because it rules.
 
 
 
 
+FULL	Larry Elliott is executed an electrocution.
 
-Larry Elliott is executed an electrocution.
+PART	Elliott is sentenced and it is sentenced.
+PART	Elliott knows a victim.
 
-Elliott is sentenced and it is sentenced.
-Elliott knows a victim.
+PART	It is pronounced that it dies.
 
-It is pronounced that it dies.
+PART	Virginia executes an inmate.
 
-Virginia executes an inmate.
 
 
 
 
+PART	Ali Ibrahim Al-Sudani is described.
 
-Ali Ibrahim Al-Sudani is described.
 
 
+PART	129 group radicals are expelled to a territory of France.
 
-129 group radicals are expelled to a territory of France.
 
 
+PART	It is carried out in Evin Prison that there is a hanging.
 
-It is carried out in Evin Prison that there is a hanging.
 
-It is brought that a person that is executed in 2010 in Iran is numbered that there is a latest hanging.
 
 
 
-It is cleared that it weds Malik that it deals.
 
-It is gotten back on Wednesday that Shoaib Malik from Pakistan is celebrity wedded Sania Mirza from India.
 
-Mother of Ayesha Farisa Siddiqui is told to a news conference in Hyderabad that paper is signed.
+PART	It is gotten back on Wednesday that Shoaib Malik from Pakistan is celebrity wedded Sania Mirza from India.
 
+PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad that paper is signed.
 
 
 
@@ -221,63 +220,64 @@ Mother of Ayesha Farisa Siddiqui is told to a news conference in Hyderabad that 
 
 
 
-A local medic says that a person from Palestine is killed when it protests on Wednesday in Gaza Strip that it fires from Israel.
-Muawiya Hassanein says that Ahmed Salim is taken to Al-Shifa.
-A military from Israel comments.
-A person that witnesses says that Salim accompanies a group that hurls a rock to a troop from Israel that is stationed when it protests along a border.
 
+PART	A local medic says that it kills a person from Palestine when it protests on Wednesday in Gaza Strip.
+PART	Muawiya Hassanein says that Ahmed Salim is taken to Al-Shifa.
+PART	A military from Israel comments.
+PART	A person that witnesses says that Salim accompanies a group that hurls a rock to a troop from Israel that is stationed when it protests along a border.
 
 
 
-A rabbi from Israel is accused to shoot a person that studies.
 
+PART	A rabbi from Israel is accused to shoot a person that studies.
 
 
-Spokesman of a city police Shmuel Ben Ruby is told to AFP that it is suspected him that it fires in a motorcycle.
 
-A rabbi is arrested.
+PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
 
-Governor of Nigeria that faces a graft is arrested in Dubai.
+PART	A rabbi is arrested.
 
-A person is arrested in Dubai.
-Interpol arrests governor of Delta James Ibori on Wednesday.
-It is confirmed that Interpol arrests him.
-Ibori is charged.
-Metropolitan Police confirms that Ibori is arrested.
+PART	Governor of Nigeria that faces a graft is arrested in Dubai.
 
+PART	A person is arrested in Dubai.
+PART	Interpol arrests governor of Delta James Ibori on Wednesday.
+PART	It is confirmed that Interpol arrests him.
+PART	Ibori is charged.
+FULL	Metropolitan Police confirms that Ibori is arrested.
 
 
 
-An official and an official say that it doesn't have information.
 
-He flees a country.
+PART	An official and an official say that it doesn't have information.
 
+PART	He flees a country.
 
 
 
-It is succeeded that it is bid / bidden that his asset is frozen.
 
+PART	It is succeeded that it is bid / bidden that his asset is frozen.
 
 
-A person is arrested.
 
-It is spread in a street in Dhaka that a garment is protested in Bangladesh.
+PART	A person is arrested.
+PART	Governor of 36 states of Nigeria controls a public fund.
+FULL	It is spread in a street in Dhaka that a garment is protested in Bangladesh.
 
-A person that works to a garment factory blocks a key road in Dhaka on Wednesday.
+PART	A person that works to a garment factory blocks a key road in Dhaka on Wednesday.
 
-A person that holds that it is protested that works masses in a street.
+PART	A person that holds that it is protested that works masses in a street.
 
 
 
 
-A factory in an industry zone that is key is shut down.
-A factory is reopened.
-A person from Bangladesh that makes a clothes to a region brand that is major that works demands a wage.
+PART	A factory in an industry zone that is key is shut down.
+PART	A factory is reopened.
+PART	A person from Bangladesh that makes a clothes to a major brand from West that works demands a wage.
 
 
-A garment accounts.
+PART	A garment accounts.
 
-A retailer writes in January that it requests that a wage is increased.
+PART	A retailer writes in January that it requests that a wage is increased.
 
 
 
@@ -288,53 +288,53 @@ A retailer writes in January that it requests that a wage is increased.
 
 
 
-Member of a television crew of M-Net Supersport is seized in March in Imo State.
-They are freed.
+FULL	Member of a television crew of M-Net Supersport is seized in March in Imo State.
+PART	They are freed.
 
-Georgia seizes a ship from Ukraine because it visits Abkhazia.
+FULL	Georgia seizes a ship from Ukraine because it visits Abkhazia.
 
 
 
-A channel reports that a vessel that is loaded wheat is anchored in a port in Poti of Georgia and it investigates.
+FULL	A channel reports that a vessel that is loaded wheat is anchored in a port in Poti of Georgia and it investigates.
 
 
 
 
 
-A pirate says that a ransom is paid a tanker from South Korea.
+PART	A pirate says that a ransom is paid a tanker from South Korea.
 
-A pirate from Somalia says on Saturday that it receives a record ransom.
+PART	A pirate from Somalia says on Saturday that it receives a record ransom.
 
-Abdi Yare says in Hobyo that money is dropped and a pirate shares.
+PART	Abdi Yare says in Hobyo that money is dropped and a pirate shares.
 
-Samho Dream is seized when it heads Louisiana in April in Indian Ocean.
+PART	Samho Dream is seized when it heads Louisiana in April in Indian Ocean.
 
-They hold a vessel.
-A biggest sum is previous paid.
-A source says that between 3,000,000 dollars and 8,000,000 dollars is paid in January 2009 and between 5,500,000 dollars and 9,000,000 dollars is paid Maran Centaurus.
-Official is said that a missile salvo from US kills 15 persons in Pakistan.
+PART	They hold a vessel.
+PART	A biggest sum is previously paid.
+PART	A source says that between 3,000,000 dollars and 8,000,000 dollars is paid in January 2009 and between 5,500,000 dollars and 9,000,000 dollars is paid Maran Centaurus.
+FULL	Official says that a missile salvo from US kills 15 persons in Pakistan.
 
 
 
-They say that ten militants are killed in Nawab that it strikes further.
-Senior official is told to AFP that a person is killed when a drone from US fires a missile.
+PART	They say that it kills ten militants in Nawab.
+PART	Senior official tells to AFP that a person is killed when a drone from US fires a missile.
 
-A person is confirmed.
-Minister is appointed.
 
+PART	Minister is appointed.
 
-A person is announced that a person is become a next minister.
 
+PART	It announces that a person is become a next minister.
 
 
 
-Rudd says that it announces that it changes further.
-Fitzgibbon resigns.
 
+PART	Rudd says that it announces that it changes further.
+PART	Fitzgibbon resigns.
 
-It is contrasted that he decides that it resigns to protect an integrity of an organization that governs.
 
+PART	It is contrasted that he decides that it resigns to protect an integrity of an organization that governs.
 
+PART	Emir of Kuwait pardons a maid from Philippines.
 
 
 
@@ -342,152 +342,153 @@ It is contrasted that he decides that it resigns to protect an integrity of an o
 
 
 
-De Castro says.
+FULL	De Castro says.
+PART	It also thanks a person that leads Kuwait for a magnanimity and compassion.
 
 
+PART	It travels to plead for a life of another maid in a row that is convicted in 2007 to Kuwait.
+PART	A person that helps about a domestic works in Kuwait and it complains that a salary isn't paid and it is physical abused.
 
-A person travels to plead for a life of another maid in a row that is convicted in 2007 to Kuwait.
-A person that helps about a domestic works in Kuwait and it complains that a salary isn't paid and it is physical abused.
 
 
+FULL	Buffalo.
 
-Buffalo.
 
 
+PART	It is arrested on 9 August.
 
-It is arrested on 9 August.
 
 
+FULL	Boston.
 
-Boston.
 
+PART	A family says that he also suffers emphysema and diabetes.
 
-A family says that he also suffers emphysema and diabetes.
+PART	A person
 
-A person
 
+PART	He steps down chairman of EMC in January 2001.
+PART	Egan gets a bachelor degree about art about science and a master degree about science.
+PART	He doesn't ever forget a hardscrabble route and it is donated to Northeastern University.
+FULL	Egan leaves behind.
+PART	It says that child of King meets to discuss an estate.
+FULL	Atlanta.
 
-He steps down chairman of EMC in January 2001.
-Egan gets a bachelor degree about art about science and a master degree about science.
-He doesn't ever forget a hardscrabble route and it is donated to Northeastern University.
-Egan leaves behind.
-A person is said that child of King meets to discuss an estate.
-Atlanta.
 
+PART	It claims that Dexter King refuses that it provides a document.
+PART	Three siblings that sole hold a share are contrasted to meet a person that holds a share.
+FULL	Dexter King also sues sister.
+PART	A person that wins wants that a lottery from Texas pays.
+FULL	Austin.
+PART	A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission for money.
 
-It is claimed that Dexter King refuses that it provides a document that it sues.
-Three siblings that sole hold a share are contrasted to meet a person that holds a share.
-Dexter King also sues sister.
-A person that wins wants that a state lottery pays.
-Austin.
-A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission for money.
+PART	Pankaj Joshi is accused.
 
-Pankaj Joshi is accused.
+PART	He is charged to claim a lottery prize.
 
-He is charged to claim a lottery prize.
 
+PART	Willis says on Tuesday that it hopes that it has it in a hand.
+PART	Breen says that it plans that it meets a general counsel of a lottery.
 
-Willis says on Tuesday that it hopes that it has it in a hand.
-Breen says that it plans that it meets a general counsel of a lottery.
-Spokesman of a commission is declined that it comments.
-Willis says that it doesn't ever doubt Joshi when it buys a ticket in Lucky Food Store.
+PART	Willis says that it doesn't ever doubt Joshi when it buys a ticket in Lucky Food Store.
 
-I always treat a respect.
+FULL	I always treat a respect.
+PART	President of Romania nominates mayor of Bucharest.
+FULL	Bucharest.
+PART	President of Romania nominates mayor of Bucharest.
 
-Bucharest.
+PART	He says that it wants an organization that politics supports that governs.
+FULL	Negoita belongs to Democratic Liberal Party.
 
 
-He says that it wants an organization that politics supports that governs.
-Negoita belongs to Democratic Liberal Party.
+PART	Romania doesn't have a proper organization that governs.
 
+FULL	Lucasville.
+PART	Ohio executes a person that kills on Tuesday.
+PART	Kenneth Biros is pronounced on Tuesday.
 
-Romania doesn't have a proper organization that governs.
 
-Lucasville.
-Ohio executes a person that kills on Tuesday.
-Kenneth Biros is pronounced on Tuesday.
 
 
+FULL	It is too easy that there is that.
 
 
-It is easy that there is that.
+PART	Director of a prison Terry Collins says that a team takes time and it considers that it is free that there is a process.
+PART	Ohio overhauls a procedure.
 
 
-Director of a prison Terry Collins is said that a team takes time and it considers that it is free that there is a process.
-Ohio overhauls a procedure.
+PART	A state has two goals.
 
 
-A state has two goals.
+PART	A procedure that allows that two drugs are injected to a muscle that backs up is created.
 
 
-A procedure that allows that two drugs are injected to a muscle that backs up is created.
 
 
 
 
+PART	Biros kills Engstrom in 1991 and it then scatters a part of a body to Ohio and Pennsylvania.
 
+PART	Biros says that it is paroled.
 
-Biros kills Engstrom in 1991 and it then scatters a part of a body to Ohio and Pennsylvania.
 
-Biros says that it is paroled.
+FULL	New York.
 
 
-New York.
 
-Spokesman of a department Darby Holladay is said that a person is signed that it orders.
 
+PART	Holladay notes that it is changed that U.S. postures.
 
-Holladay notes that it is changed that U.S. postures.
+PART	He adds that it decides.
+PART	American Civil Liberties Union sues.
 
-He adds that it decides.
-American Civil Liberties Union sues.
 
+PART	An organization that governs U.S. denies a visa to scholar Habib.
+PART	ACLU from Massachusetts sues in 2007.
+PART	A visa of Ramadan from U.S. is revoked when it is moved to take a job in University of Notre Dame to Indiana in 2004.
 
-An organization that governs U.S. denies a visa to scholar Habib.
-State ACLU sues in 2007.
-A visa of Ramadan from U.S. is revoked when it is moved to take a job in University of Notre Dame to Indiana in 2004.
+PART	It is denied because it donates 1,336 dollars to charity that gives money to Hamas that he applies a visa.
 
-It is denied because it donates 1,336 dollars to charity that gives money to Hamas that he applies a visa.
 
 
+PART	Habib says that it is thrilled.
+PART	Habib lives when it earns a doctorate about politics science to City University of New York in United States.
+PART	Does he say that it is excluded?
 
-Habib says that it is thrilled.
-Habib lives when it earns a doctorate about a politics science to City University of New York in United States.
-Does he say that it is excluded?
 
+FULL	My politics doesn't concern that.
 
-My politics doesn't concern that.
+PART	It contributes.
+PART	Is it possible that it decides?
+FULL	Los Angeles.
+PART	Does it hear a thing that is argued to determine that it is possible that it sentences Roman Polanski when it is absented in California on Friday?
+PART	Attorney says that it recommends that it is sentenced when it is absented to serve time.
 
-A person contributes.
-Is it possible that a person decides?
-Los Angeles.
+PART	Polanski spends in a jail in Switzerland.
 
-Attorney is said that it recommends that it is sentenced when it is absented to serve time.
 
-Polanski spends in a jail in Switzerland.
 
 
 
 
 
 
+FULL	Polanski flees.
 
 
-Polanski flees.
 
+FULL	Washington.
 
 
-Washington.
 
 
-Official is spoken that it discusses that it calls.
 
 
 
+FULL	A term of Bernanke is expired on 31 January.
+PART	It already says that it votes.
+PART	Bernanke is become.
 
-A term of Bernanke is expired on 31 January.
-A person is already said that it votes.
-Bernanke is become.
 
 
 
@@ -495,799 +496,798 @@ Bernanke is become.
 
 
 
+FULL	Official says that secretary of Treasury Timothy Geithner also calls a person that legislates.
 
+FULL	Philip Elliott contributes to this thing that is reported.
+FULL	Tehran.
 
+FULL	It is approved that an estate of Jackson is compensated to a person that administers.
+FULL	Los Angeles.
+PART	It agrees on Wednesday that two men that administer an estate of Michael Jackson receive.
 
-Philip Elliott contributes to this thing that is reported.
-Tehran.
+PART	Branca and McClain receive.
+PART	Beckloff approves a thing that is arranged.
 
-It is approved that an estate of Jackson is compensated to a person that administers.
-Los Angeles.
 
+FULL	Howard Weitzman says that it compensates to them fair.
+FULL	Attorney of Katherine Jackson Adam Streisand agrees.
+FULL	He says that it thinks that it is very reasonable that there is this.
 
-Branca and McClain receive.
-Beckloff approves a thing that is arranged.
+FULL	Weitzman notes.
 
 
-Howard Weitzman says that it compensates to them fair.
-Attorney of Katherine Jackson Adam Streisand agrees.
-He says that it thinks that it is very reasonable that there is this.
 
-Weitzman notes.
+FULL	Beckloff says.
+PART	An organization that governs hints that it cracks down.
+PART	A thing on 12 May 2010 in Bangkok.
 
 
+PART	Does it tell when it is asked that this implies that a security force cracks down on Tuesday to Associated Press that prime minister already hands out some guidelines?
+FULL	They are tomorrow implemented.
+PART	It paralyzes a home portion in a center of Bangkok.
 
-Beckloff says.
-An organization that governs hints that it cracks down.
-A thing on 12 May 2010 in Bangkok.
+PART	That is presented a part of a package and it is seen a way.
 
 
 
-They are tomorrow implemented.
-A home portion in a center of Bangkok is paralyzed that it protests.
+PART	Panitan says that it is now withdrawn that it is initially offered that it elects.
 
-That is presented a part of a package and it is seen a way.
 
 
+PART	They want that a person that leads is charged.
 
-Panitan says that it is now withdrawn that it is initially offered that it elects.
+PART	It says that a violent incident that is related kills 29 persons and it wounds a person.
 
+PART	A thing on 29 June 2010 in Geneva.
 
 
-They want that a person that leads is charged.
 
 
 
-A thing on 29 June 2010 in Geneva.
 
 
+PART	Hayek maintains that it is possible that they survive.
+PART	A company that makes a watch is merged to form SMH.
 
+FULL	SMH is renamed in 1998 Swatch Group.
 
 
+PART	He tells in 2004 to International Herald Tribune that a person buys this watch.
+FULL	Hayek is become a nation figure.
 
+PART	He is become to vocal criticize two big banks that are meant Credit Suisse Group and UBS AG and it says that it threatens to an economy of Switzerland.
+FULL	Hayek is born in 1928 in Beirut.
 
-Hayek maintains that it is possible that they survive.
-A company that makes a watch is merged to form SMH.
+FULL	He founds Hayek Engineering in 1963 in Zurich.
 
-SMH is renamed in 1998 Swatch Group.
 
 
-He tells in 2004 to International Herald Tribune that a person buys this watch.
-Hayek is become a nation figure.
 
-He is become to vocal criticize two big banks that are meant Credit Suisse Group and UBS AG and it says that it threatens to an economy of Switzerland that it business practices.
-Hayek is born in 1928 in Beirut.
+PART	Hayek says that Swatch produces an emotionality, beauty and a sensuality in a watch and it also produces a high technology.
 
-He founds Hayek Engineering in 1963 in Zurich.
 
+FULL	Other persons that survive are detailed and a funeral is arranged isn't immediate known.
+FULL	A person from Iraq is convicted to smuggle a person to Australia.
+PART	A thing on 12 August 2010 in Perth.
+PART	A man from Iraq is convicted to smuggle a person.
+FULL	A district court in Perth from Australia finds on Wednesday that it is guilty that there is Hadi Ahmadi.
+PART	It is possible that he is sentenced a prison.
 
 
+PART	A person that then pays to a person that smuggles a person that flies that seeks an asylum targets Australia.
+FULL	A person that prosecutes tells to a court that Ahmadi works to Achmad Olong.
+PART	Olong serves a prison term in Australia.
 
-Hayek says that Swatch produces an emotionality, beauty and a sensuality in a watch and it also produces a high technology.
+FULL	Spain extradites a person that is suspect that there is a war crime to Bosnia.
+PART	A thing on 26 August 2010 in Sarajevo.
 
+FULL	Veselin Vlahovic is extradited on Thursday to Spain.
+FULL	Vlahovic is known a monster in Grbavica.
+PART	An organization that governs Spain decides that it allows that he is extradited to Bosnia.
+PART	It is contrasted that Vlahovic is jailed in Montenegro.
 
-Other persons that survive are detailed and a funeral is arranged isn't immediate known.
-A person from Iraq is convicted to smuggle a person to Australia.
-A thing on 12 August 2010 in Perth.
-A man from Iraq is convicted to smuggle a person.
-A district court in Perth from Australia finds on Wednesday that it is guilty that there is Hadi Ahmadi.
-It is possible that he is sentenced a prison.
+PART	A thing on 9 September 2010 in Los Angeles.
 
+PART	Fernando Flores sues a pop superstar and Advanced Security Concepts Corp on Wednesday in a suburb court in Los Angeles.
+PART	He claims that a person that sings exposes.
 
-A person that then pays to a person that smuggles a person that flies that seeks an asylum targets Australia.
-A person that prosecutes tells to a court that Ahmadi works to Achmad Olong.
-Olong serves a prison term in Australia.
+PART	An email isn't returned.
+PART	A woman that answers a phone in Advanced Security is declined.
 
-Spain extradites a person that is suspect that there is a war crime to Bosnia.
-A thing on 26 August 2010 in Sarajevo.
+PART	Lawyer says that Kid Rock defends.
+FULL	Decatur.
 
-Veselin Vlahovic is extradited on Thursday to Spain.
-Vlahovic is known a monster in Grbavica.
-An organization that governs Spain decides that it allows that he is extradited to Bosnia.
-It is contrasted that Vlahovic is jailed in Montenegro.
 
-A thing on 9 September 2010 in Los Angeles.
+PART	Lawyer says that Harlen Akins claims that a group beats and it seeks a punitive damage that isn't specified and 6,000 dollars.
 
-Fernando Flores sues a pop superstar and Advanced Security Concepts Corp on Wednesday in a suburb court in Los Angeles.
-He claims that a person that sings exposes.
 
-An email isn't returned.
-A woman that answers a phone in Advanced Security is declined.
 
-Lawyer is said that Kid Rock defends.
-Decatur.
 
 
 
 
 
 
+PART	It is contrasted that a video shows that a party fights.
+PART	Kid Rock pleads in March 2008 that it is guilty.
+PART	It says that it is expected that it is wrapped up that it civil tries.
 
+FULL	Jackson.
 
 
+FULL	Wright says that it is sealed that a divorce is termed.
+PART	Wright says on Friday that it is done.
 
 
 
-It is contrasted that a video shows that a party fights.
-Kid Rock pleads in March 2008 that it is guilty.
-A person is said that it is expected that it is wrapped up that it civil tries.
 
-Jackson.
 
+FULL	Colley-Lee.
+FULL	A couple is married on 16 June 1984.
 
-Wright says that it is sealed that a divorce is termed.
-Wright says on Friday that it is done.
 
+FULL	It isn't filed that it charges.
 
 
+PART	Freeman wins Oscar.
+FULL	Driving Miss Daisy, The Shawshank Redemption, The Dark Knight and Bruce Almighty are also included to credit him a screen.
+FULL	It isn't too really bright that there is you.
 
+FULL	YouTube.
+FULL	YouTube.
+FULL	YouTube.
+FULL	YouTube.
+PART	It is possible that a private citizen posts a video. It is a public forum.
+FULL	FOX, NBC, CNN and ABC.
 
-Colley-Lee.
-A couple is married on 16 June 1984.
+PART	It before warns to them.
 
+FULL	This local group still fights.
+PART	It is taken off in YouTube that it all posts.
+FULL	It now lasts.
 
-It isn't filed that it charges.
 
 
-Freeman wins Oscar.
-Driving Miss Daisy, The Shawshank Redemption, The Dark Knight and Bruce Almighty are also included to credit him a screen.
-It isn't really bright that there is you.
+PART	BP is caught.
+PART	BP is caught.
+FULL	Do you yet get a picture?
+FULL	BP and media brainwash you.
 
-YouTube.
-YouTube.
-YouTube.
-YouTube.
-It is possible that a private citizen posts a video. It is a public forum.
-FOX, NBC, CNN and ABC.
+FULL	It wakes up you!
 
-It before warns to them.
 
-This local group still fights.
-It is taken off in YouTube that it all posts.
-It now lasts.
+FULL	Conventional media.
+PART	It is contrasted to fit something to an agenda that a sort media that doesn't depend reports a story.
+PART	A much about Faux Nooz.
 
 
+PART	It is a big mess and it needs that it big cleans up.
+PART	A catastrophe is reported and a boat to fish heads an out.
+PART	Because a stigma is a biggest problem a person avoids an entire area.
+PART	It is good.
 
-BP is caught.
-BP is caught.
-Do you yet get a picture?
-BP and media brainwash you.
 
-It wakes up you!
 
+PART	It is busy.
 
-Conventional media.
-It is contrasted to fit something to an agenda that a sort media that doesn't depend reports a story.
-A much about Faux Nooz.
 
 
-It is a big mess and it needs that it big cleans up.
-A catastrophe is reported and a boat to fish heads an out.
-Because a stigma is a biggest problem a person avoids an entire area.
-It is good.
+FULL	They hope that all lives are eliminated to an earth and an event is just looked.
 
 
+PART	It soon entertains us.
 
-It is busy.
 
 
 
-They hope that all lives are eliminated to an earth and an event is just looked.
 
 
-We are soon entertained that Obama is an effort.
+PART	It isn't possible that I still believe that they cap it.
 
+PART	It has this idiot idea.
 
+PART	A still event. An event isn't stopped.
 
+FULL	An entire ocean from Caribbean Ocean is poisoned.
+FULL	Oil is washed up.
+PART	An oil slick is still moved and it poisons Gulf Ocean and Atlantic Ocean.
+PART	An event is continued.
 
+PART	A cancer poison that kills.
+PART	It kills.
 
+PART	Oil in Miami Beach.
+FULL	I don't hear that.
 
-It isn't possible that I still believe that they cap it.
 
-It has this idiot idea.
 
-A still event. An event isn't stopped.
+FULL	Is entire Caribbean poisoned?
 
 
-Oil is washed up.
-An oil slick is still moved and it poisons Gulf Ocean and Atlantic Ocean.
-An event is continued.
 
-A cancer poison that kills.
-It kills.
+FULL	You otherwise know a thing that I talk.
 
-Oil in Miami Beach.
-I don't hear that.
+FULL	Son of Prescott Bush George H. W. Bush isn't ever called.
+PART	An idea about a stigma that makes that I vomit.
 
 
+FULL	A wow.
+PART	A hyperbole.
 
-Is entire Caribbean poisoned?
 
 
+PART	A tar ball is found in Cocoa Beach. Gulf Stream goes along a shore. You find oil.
 
-You otherwise know a thing that I talk.
 
-Son of Prescott Bush George H. W. Bush isn't ever called.
-An idea about a stigma that makes that I vomit.
 
 
-A wow.
-A hyperbole.
 
 
+PART	USGS believes that U.S. has oil.
 
-A tar ball is found in Cocoa Beach. Gulf Stream goes along a shore. You find oil.
 
 
 
 
+PART	This narrow portion of Gulf of Mexico produces oil and gas.
+PART	Department of Energy estimates that a federal portion that is currently comprised is risen.
 
 
-USGS believes that U.S. has oil.
+PART	American Association of Petroleum Geologists estimates that ANWR contains oil.
 
 
 
 
 
-This narrow portion of Gulf of Mexico produces oil and gas.
-Department of Energy estimates that a federal portion that is currently comprised is risen.
+PART	That.
+FULL	It forecasts.
 
+PART	It is inferred that EIA, DoE, IEA and Pentagon just pump a card.
+PART	A thing that is forecasted is a thing that is guessed.
 
-American Association of Petroleum Geologists estimates that ANWR contains oil.
+PART	Do you ever see that it is resembled to a thing that it is proper managed?
+PART	You bring up a stuff and EPA monitors.
 
+PART	A past is brought up.
+PART	You read a bull.
+PART	I live in the East of KY. I see that it runs because it mines.
+PART	I also remember last time.
 
+PART	A part of a country doesn't have a shale reserve.
 
 
+FULL	EPA doesn't now allow that.
 
-That.
-It forecasts.
 
-It is inferred that EIA, DoE, IEA and Pentagon just pump a card.
-A thing that is forecasted is a thing that is guessed.
+FULL	It isn't possible that it is serious that there is you.
 
-Do you ever see that it is resembled to a thing that it is proper managed?
-You bring up a stuff and EPA monitors.
+PART	A way.
+PART	A thing.
+PART	It deregulates OSHA and EPA.
+PART	OSHA is an agency.
+PART	It is become to deregulate an agency.
+FULL	I say to Mr. Malthus that a market doesn't lie.
 
-A past is brought up.
-You read a bull.
-I live in the East of KY. I see that it runs because it mines that it streams.
-I also remember last time.
+FULL	It is caused that they don't lie.
+PART	I just check an organization chart and it is risen in every sector of a globe that crude oil is produced.
+FULL	United States.
+FULL	It is risen that it produces. Other OECD.
+FULL	It is declined that it produces. OECD.
+FULL	It is risen that it produces. OECD.
+PART	It is risen that it produces. An organization.
+FULL	It is risen that it produces. U.S.S.R.
+FULL	It is risen that it produces. Other OECD.
+FULL	It is risen that it produces. OECD.
+FULL	It is risen that it produces.
+FULL	It is risen that it produces.
 
-A part of a country doesn't have a shale reserve.
+FULL	I give a source to you.
+PART	I say it.
+PART	It is a product spreadsheet.
 
 
-EPA doesn't now allow that.
+PART	A pipeline is blown up in Nigeria.
+PART	A capacity.
 
 
-It isn't possible that it is serious that there is you.
 
-A way.
-A thing.
 
-OSHA is an agency.
-It is become to deregulate an agency.
-I say to Mr. Malthus that a market doesn't lie.
+PART	You see a doom and a gloom.
 
-It is caused that they don't lie.
-I just check an organization chart and it is risen in every sector of a globe that crude oil is produced.
-United States.
-It is risen that it produces. Other OECD.
-It is declined that it produces. OECD.
-It is risen that it produces. OECD.
-It is risen that it produces. An organization.
-It is risen that it produces. U.S.S.R.
-It is risen that it produces. Other OECD.
-It is risen that it produces. OECD.
-It is risen that it produces.
-It is risen that it produces.
+PART	It worries a person.
+PART	We use a vital commodity.
 
-I give a source to you.
-I say it.
-It is a product spreadsheet.
 
+PART	We pump out more things.
 
-A pipeline is blown up in Nigeria.
-A capacity.
+PART	It then enters an industry in a big way.
+PART	We learn that U.S. is sat.
+FULL	We are gone.
+PART	It goes.
+FULL	Do you want an energy security?
+FULL	You want natural gas.
+PART	A thin layer that is stacked is a shale rock.
+PART	A shale isn't near conducted.
+PART	It contrasts.
 
 
+PART	We ignore a shale.
 
+PART	There is a process.
+PART	Tiny grain that holds a shale layer is carried.
 
-You see a doom and a gloom.
 
 
-We use a vital commodity.
+PART	It is dropped that oil is priced.
+PART	Oil that is peaked.
 
 
-We pump out more things.
 
-Two incredible technologies then enter an industry.
-We learn that U.S. is sat.
-We are gone.
-It goes.
-Do you want an energy security?
-You want natural gas.
-A thin layer that is stacked is a shale rock.
-A shale isn't near conducted.
-It contrasts.
 
+PART	A capacity isn't meantime meant a squat.
+PART	Do you even know a thing?
+PART	A probable.
 
-We ignore a shale.
+PART	A reserve.
+PART	New oil is discovered.
 
-There is a process.
-Tiny grain that holds a shale layer is carried.
+FULL	You don't provide that data because it is possible.
 
 
 
-It is dropped that oil is priced.
-Oil that is peaked.
 
 
+PART	A chart says a source in a bottom.
 
 
-A capacity isn't meantime meant a squat.
-Do you even know a thing?
-A probable.
+PART	A document file in a right side.
 
-A reserve.
-New oil is discovered.
 
-You don't provide that data because it is possible.
 
 
+FULL	A thing that is defined.
+PART	Crude oil that is meant petroleum is found.
+PART	A lease condensate, a liquid of natural gas, oil sand, an oil shale, extra heavy oil, conventional oil and heavy oil are included.
 
+PART	It is funny that you think that it finds something and it again pats in a back.
 
 
-A chart says a source in a bottom.
 
+PART	I still recall that it reads that it is priced that an oil shale is extracted.
+PART	We now have oil that is locked up in an oil shale in USA.
 
-A document file in a right side.
 
 
+PART	Does a sheep buy into this?
 
 
-A thing that is defined.
-Crude oil that is meant petroleum is found.
-A lease condensate, a liquid of natural gas, an oil sand, an oil shale, extra heavy oil, conventional oil and heavy oil are included.
 
-It is funny that you think that it finds something and it again pats in a back.
+FULL	It jokes of an ethanol.
 
 
 
-I still recall that it reads that it is priced that an oil shale is extracted.
-We now have oil that is locked up in an oil shale in USA.
+PART	It is wrong that there is nothing.
 
 
 
-Does a sheep buy into this?
+PART	It is more clean that there are them.
 
 
 
-It jokes of an ethanol.
 
 
 
-It is wrong that there is nothing.
 
+FULL	I also understand because excess electricity allows that it splits hydrogen gas that France stockpiles hydrogen.
+FULL	We or U.S.
+FULL	President gives in Harry Reid and it closes Yucca Mountain.
+PART	This is a major project that is costed that is designed to store a nucleus fuel of our nation that is spent.
+PART	Yucca Mountain is geology studied.
 
+PART	It contrasts.
+PART	It holds a hostage that U.S. doesn't energy depend.
 
-It is more clean that there are them.
+FULL	I am an idealist.
+PART	It contrasts.
+PART	We have a slash in power that has a logical mentality that is skewed and an outlook about a future of this country.
 
 
 
+FULL	I live in Silicon Valley.
 
+FULL	It is an empty lot to park.
 
 
 
-I also understand because excess electricity allows that it splits a hydrogen gas that France stockpiles hydrogen.
-We or U.S.
 
-This is a major project that is costed that is designed to store a nucleus fuel of our nation that is spent.
-Yucca Mountain is geology studied.
+FULL	It contrasts.
 
-It contrasts.
-It holds a hostage that U.S. doesn't energy depend.
+FULL	It is gone to a far reach of a world that hardware is manufactured.
+FULL	It is okay that there is that.
+FULL	It contrasts.
+PART	It researches and it develops.
 
-I am an idealist.
-It contrasts.
-We have a slash in power that has a logical mentality that is skewed and an outlook about a future of this country.
+FULL	We are a country that innovates.
 
 
 
-I live in Silicon Valley.
+FULL	It is possible that only Sean Penn affords Tesla Motors.
 
-It is an empty lot to park.
+FULL	It is possible that I go on.
 
+FULL	There is an ecology issue.
 
 
+FULL	A well.
+PART	True oil.
+PART	It isn't true that there are other stuffs.
 
-It contrasts.
 
-It is gone to a far reach of a world that hardware is manufactured.
-It is okay that there is that.
-It contrasts.
-It researches and it develops.
 
-We are a country that innovates.
 
+PART	United States Geological Survey suggests that a seabed holds.
 
 
-It is possible that only Sean Penn affords Tesla Motors.
 
-It is possible that I go on.
 
-There is an ecology issue.
+PART	It is barred that it doesn't hold.
 
+PART	A progressive old agenda is pushed and it then retires in 2012.
 
-A well.
-True oil.
-It isn't true that there are other stuffs.
+PART	An environment group says that four expert persons evade a navy from Denmark to climb an inside of an oil rig of Cairn Energy.
 
+FULL	Yoda says.
+FULL	They are an idiot.
+PART	History shows to us that president increases a debt exponential!
 
 
 
-United States Geological Survey suggests that a seabed holds.
 
 
 
+PART	A debt is contrasted.
+FULL	I also think that it isn't possible that it is sustained.
 
-It is barred that it doesn't hold.
 
-A progressive old agenda is pushed and it then retires in 2012.
+FULL	I guess that it is more easy that it sticks a collective head of us to sand.
 
-An environment group says that four expert persons evade a navy from Denmark to climb an inside of an oil rig of Cairn Energy.
+PART	It is obvious that there is it.
 
-Yoda says.
-They are an idiot.
 
 
 
 
+FULL	A poorest person suffers most.
 
 
 
-A debt is contrasted.
-I also think that it isn't possible that it is sustained.
 
+PART	They create more debts that are fed to a system.
 
-I guess that it is more easy that it sticks a collective head of us to sand.
 
-It is obvious that there is it.
+PART	It doesn't also consider that you owe 220 dollars to a bank.
+FULL	A logic and a principal about mathematics are defied.
 
 
+PART	It says.
+PART	Do you kid me?
+FULL	You make that it guesses!
 
 
 
-A poorest person suffers most.
 
+PART	Are we supposed?
 
 
+FULL	Do I get a cookie?
+FULL	It is sure.
 
-They create more debts that are fed to a system.
 
+FULL	It cries!
+FULL	We tell to you.
 
-It doesn't also consider that you owe 220 dollars to a bank.
-A logic and a principal about mathematics are defied.
+FULL	Senator makes.
 
 
-It says.
-Do you kid me?
-You make that it guesses!
+PART	It explains a thing to me!
 
 
+FULL	Congressman busts some serious nuts.
 
 
-Are we supposed?
 
 
-Do I get a cookie?
-It is sure.
 
 
-It cries!
-We tell to you.
 
-Senator is made.
 
 
-It explains a thing to me!
+PART	An exact thing that they want.
 
 
 
+PART	It contrasts.
 
+FULL	I think.
+PART	You speak a fucking mailer.
 
+PART	It is obvious that there is you.
 
+FULL	It is broken that we are promised.
+FULL	It isn't free that there is a free medical!
+PART	You enroll to Tricare.
 
+PART	It is contrasted that it is more cheap that there is it.
 
 
 
 
 
-An exact thing that they want.
 
 
 
-It contrasts.
+FULL	It is excepted that it shoots to you.
 
-I think.
-You speak a fucking mailer.
 
-It is obvious that there is you.
 
-It is broken that we are promised.
-It isn't free that there is a free medical!
-You enroll to Tricare.
 
-It is contrasted that it is more cheap that there is it.
 
 
+FULL	A patriotism.
+FULL	It is sure.
+FULL	Do you ever hear Tricare Standard or Thrift Savings Plan?
 
 
 
 
 
 
-It is excepted that it shoots to you.
+FULL	It doesn't compare.
 
 
 
+PART	We see a same bullshit.
 
+PART	You are seen in a commissary on Sunday.
 
 
-A patriotism.
-It is sure.
-Do you ever hear Tricare Standard or Thrift Savings Plan?
+PART	I like a way that means a stuff that is frozen.
+PART	It is remembered that you start off a stuff that is frozen.
+PART	I don't like at all that it arranges.
 
+PART	You are thanked.
+FULL	It is voluntary that there is a military.
+PART	Nobody is forced.
+FULL	You know when it joins that it shoots.
+PART	It is same.
 
+PART	It contrasts.
 
 
 
 
-It doesn't compare.
+PART	We want that it is good that there are equipment and a gear and it pays.
 
+PART	You don't join up and it doesn't worry a kid.
+FULL	It is possible that you forget a patriotism.
+PART	I am sick that veteran whines.
 
+PART	It states.
 
-We see a same bullshit.
+PART	A mortgage.
+FULL	Does it pay a car?
+PART	You go on!
+FULL	A military doesn't pay that.
 
-You are seen in a commissary on Sunday.
 
+PART	That is a point of this topic.
+PART	A real reason that causes that a military is joined.
 
-I like a way that means a stuff that is frozen.
-It is remembered that you start off a stuff that is frozen.
-I don't like at all that it arranges.
 
-You are thanked.
-It is voluntary that there is a military.
-Nobody is forced.
-You know when it joins that it shoots.
-It is same.
 
-It contrasts.
+PART	It just moves in a smooth road.
 
 
+PART	Without a shoe
+FULL	Clean water is had.
 
+FULL	Silence.
+PART	Much hot water is had.
+PART	A person doesn't have a clue about a thing.
 
-We want that it is good that there are equipment and a gear and it pays.
 
-You don't join up and a kid isn't worried that medicine is planned.
-It is possible that you forget a patriotism.
-I am sick that veteran whines.
 
-It states.
 
-A mortgage.
-Does it pay a car?
-You go on!
-A military doesn't pay that.
 
 
-That is a point of this topic.
-A real reason that causes that a military is joined.
 
 
+PART	Every group plans that it does this.
 
-It just moves in a smooth road.
 
+PART	An organization person controls House.
 
-Without a shoe
-Clean water is had.
+PART	Is it said to you?
+FULL	I am deployed Kuwait and Saudi Arabia.
 
-Silence.
-Much hot water is had.
-A person doesn't have a clue about a thing.
 
 
 
 
+PART	A person burns a flag and it calls a just piece.
 
+PART	It just looks a great way.
 
 
 
-Every group plans that it does this.
 
+PART	I am caught total!
+PART	It benefits.
 
-An organization person controls House.
 
-Is it said to you?
-I am deployed Kuwait and Saudi Arabia.
 
 
-Parent is explained to me.
+PART	It is said to a shit stain that it pays a car or it pays a mortgage isn't included.
+FULL	Don't you thank Obama?
 
+PART	I read.
+PART	He doesn't need that you are thanked.
 
-A person burns a flag and it calls a just piece.
+PART	Senate is laughed for his budget.
+PART	I imagine a thing.
+FULL	A person needs that it knows a thing that a fool does.
 
-It just looks a great way.
+PART	It is said to a shit stain that it pays a car or it pays a mortgage isn't included.
 
 
+PART	It is obvious that you serve.
+PART	It is said to you!
+PART	You are kind yy stupid.
+PART	VA benefits.
+PART	You know that it fights. It is possible that I have a decent check in a hand.
+PART	It says.
+PART	It isn't fortunate.
+PART	She thinks that it is same.
+PART	A bunch posts to this thread.
+PART	It just illustrates my point about a thing.
 
 
-I am caught total!
-It benefits.
 
 
+FULL	You misunderstand my point.
 
+PART	I think that a union is as much as important.
 
-It is said to a shit stain that it pays a car or it pays a mortgage isn't included.
-Don't you thank Obama?
 
-I read.
-He doesn't need that you are thanked.
 
-Senate is laughed for his budget.
-I imagine a thing.
-A person needs that it knows a thing that a fool does.
+PART	Do you like a week and an overtime?
+FULL	You thank a union!
 
-It is said to a shit stain that it pays a car or it pays a mortgage isn't included.
 
 
-It is obvious that you serve.
-It is said to you!
-You are kind yy stupid.
-VA benefits.
-You know that it fights. It is possible that I have a decent check in a hand.
-It says.
-It isn't fortunate.
-She thinks that it is same.
-A bunch posts to this thread.
-It just illustrates my point about a thing.
 
 
 
 
-You misunderstand my point.
+PART	Is it had that they pay a more?
+PART	It is away taken to them that there is a right.
 
-I think that a union is as much as important.
 
 
+FULL	I agree.
 
-Do you like a week and an overtime?
-You thank a union!
 
+PART	It is same.
 
 
 
+PART	Do you know few bad apples that I mention?
+PART	I just consider you.
 
 
 
-Is it had that they pay a more?
-It is away taken to them that there is a right.
+PART	It serves to you.
 
 
+PART	It forces you.
+FULL	A wage is paid to you.
+PART	It is given that there is a break.
+PART	Do you know that it sees soldier?
 
-I agree.
+PART	It is right that there is that. I run and it also runs.
+FULL	I wonder.
 
+FULL	This just confirms it.
+PART	A military doesn't have a butt job.
 
-It is same.
 
 
 
-Do you know few bad apples that I mention?
-I just consider you.
 
+PART	It is constant trained that person that doesn't present combat that it is remained.
 
+FULL	God blesses them!
 
-It serves to you.
 
 
-It forces you.
-A wage is paid to you.
-It is given that there is a break.
-Do you know that it sees soldier?
+PART	A thing is told to me.
+PART	It wakes up a turd boy!
 
-It is right that there is that. I run and it also runs.
-I wonder.
 
-This just confirms it.
-A military doesn't have a butt job.
 
+PART	It also shows a thing.
+PART	I hope that it gives a reputation that is negatived to a pathetic ass of you that doesn't serve.
 
+PART	Before an incident
+PART	Veteran doesn't see a day.
 
 
+FULL	It pays to them and it is become when it leaves a military a criminal and a bum.
 
-It is constant trained that person that doesn't present combat that it is remained.
 
-God blesses them!
 
 
+PART	Do you ever go a post?
 
-A thing is told to me.
-It wakes up a turd boy!
+PART	You argue!
+PART	You are a serious piece and it deserves a brick that is thrown to a fucking head.
 
+FULL	It hurts truth.
 
+PART	You ask!
 
 
+PART	A bullshit.
+FULL	I know.
 
 
-Before an incident
 
 
+FULL	I ask and it tells that you are filled a shit.
 
-It pays to them and it is become when it leaves a military a criminal and a bum.
+PART	I don't think that it retires.
+FULL	I near pop a bastard.
+PART	I remember a location.
 
+PART	It is contrasted that I know a thing that that implies!
+FULL	That is done.
+PART	An organization post and few others.
 
 
 
-Do you ever go a post?
+PART	Is a problem had?
+PART	It relates.
+FULL	Is a drug a problem?
+FULL	Is it beaten?
 
-You argue!
-You are a serious piece and it deserves a brick that is thrown to a fucking head.
+PART	It relates.
+FULL	A fuck.
 
-It hurts truth.
+FULL	We lose a close person to Vietnam War.
+FULL	I also know a criminal that goes to serve that scams a system when it is out.
+PART	It isn't more good that there is veteran.
 
-You ask!
+PART	We go to a society and it works.
+PART	You are an idiot.
 
+PART	You only know.
 
-A bullshit.
-I know.
+FULL	It is a just gibberish in a real world of an idiot.
+FULL	I am excused fuck!
+FULL	Do you agree of Dante?
 
+PART	It is sorry.
 
+PART	It is good that there is it.
+FULL	I don't insinuate that.
 
 
-I ask and it tells that you are filled a shit.
 
-I don't think that it retires.
-I near pop a bastard.
-I remember a location.
 
-It is contrasted that I know a thing that that implies!
-That is done.
-An organization post and few others.
+FULL	It concerns money all.
+FULL	You follow money!
 
 
 
-Is a problem had?
-It relates.
-Is a drug a problem?
-Is it beaten?
 
-It relates.
-A fuck.
-
-We lose a close person to Vietnam War.
-I also know a criminal that goes to serve that scams a system when it is out.
-It isn't more good that there is veteran.
-
-We go to a society and it works.
-You are an idiot.
-
-You only know.
-
-It is a just gibberish in a real world of an idiot.
-I am excused fuck!
-Do you agree of Dante?
-
-It is sorry.
-
-It is good that there is it.
-I don't insinuate that.
-
-
-
-
-It concerns money all.
-You follow money!
-
-
-
-
-You deal it!
+FULL	You deal it!
