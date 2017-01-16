@@ -318,3 +318,13 @@ TestTreesEng: how long do we tolerate Japan ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t68_how_do_we_fly
+TestTreesEng: how do we fly ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t69_how_can_we_fly
+TestTreesEng: how is it possible that we fly ?
+TestTreesLav: 
+TestTreesRus: 
+

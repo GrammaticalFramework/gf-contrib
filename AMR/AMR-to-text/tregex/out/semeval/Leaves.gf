@@ -16,6 +16,7 @@ abstract Leaves = Cat, Dictionary ** {
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
 		explode_V2 : V2 ;		-- subcat in Dictionary
+		fall_V2 : V2 ;			-- subcat in Dictionary
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
@@ -58,6 +59,7 @@ abstract Leaves = Cat, Dictionary ** {
 		GOL_Prep : Prep ;		-- temporary
 		LOC_Prep : Prep ;		-- temporary
 		MNR_Prep : Prep ;		-- temporary
+		PAG_Prep : Prep ;		-- temporary
 		PPT_Prep : Prep ;		-- temporary
 		PRD_Prep : Prep ;		-- temporary
 		PRP_Prep : Prep ;		-- temporary

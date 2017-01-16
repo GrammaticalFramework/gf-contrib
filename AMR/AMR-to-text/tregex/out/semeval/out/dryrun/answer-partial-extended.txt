@@ -235,8 +235,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (P.mkAdV "bitterly") (mkVP L.lose_V
 TXT: [we bitterly lose Ryukyu Islands .]
 
 SNT: How can we allow the Diaoyu Islands to fall to other countries
-AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.allow_VS (mkS (mkCl (mkNP (P.mkPN "Diaoyu Islands")) (mkVP (passiveVP L.fall_V2) (S.mkAdv L.PAG_Prep (mkNP S.aPl_Det (mkCN L.other_A L.country_N))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.fall_V2]
+AST: (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.allow_VS (mkS (mkCl (mkNP (P.mkPN "Diaoyu Islands")) (mkVP (passiveVP L.fall_V2) (S.mkAdv L.PAG_Prep (mkNP S.aPl_Det (mkCN L.other_A L.country_N)))))))))))))) questMarkPunct)
+TXT: [how is it possible that we allow that Diaoyu Islands is fallen to other countries ?]
 
 SNT: One hundred years of vicissitudes
 AST: (t (temporal-quantity (mkNum (mkDigits "100"))))
@@ -423,8 +423,8 @@ AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L
 TXT: [it isn't easy that there is that female that is starred .] [constant not found: blame]
 
 SNT: Everybody is doing this, how can you make money if you don't do this
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.everybody_N)) (mkVP L.do_V2 S.this_NP)))) fullStopPunct) (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.make_V2 (mkNP (mkCN L.money_N))))))))) fullStopPunct))
-TXT: [unknown qualified constant L.everybody_N] [it is possible that you make money .]
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.everybody_N)) (mkVP L.do_V2 S.this_NP)))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.make_V2 (mkNP (mkCN L.money_N)))))))))) questMarkPunct))
+TXT: [unknown qualified constant L.everybody_N] [how is it possible that you make money ?]
 
 SNT: She is a proud woman in front of others but is in melancholy mood when staying alone ...
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkVP L.pride_V)))))))) fullStopPunct)

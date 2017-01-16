@@ -25,6 +25,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 
 		belong_V2 = belong_to_V2 ;
 		explode_V2 = mkV2 explode_V ;
+		fall_V2 = mkV2 (IrregEng.fall_V) ;
 		go_V2 = mkV2 (IrregEng.go_V) ;
 		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
 		pass_V2 = mkV2 pass_V ;
@@ -73,6 +74,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng in {
 		GOL_Prep = to_Prep ;
 		LOC_Prep = mkPrep "" ;	-- FIXME
 		MNR_Prep = mkPrep "" ;	-- no Prep
+		PAG_Prep = to_Prep ;	-- FIXME
 		PPT_Prep = mkPrep "" ;	-- no Prep
 		PRD_Prep = mkPrep "" ;	-- no Prep
 		PRP_Prep = for_Prep ;

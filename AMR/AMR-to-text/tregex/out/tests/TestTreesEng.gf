@@ -135,4 +135,8 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t67_how_long_are_we_going_to_tolerate_Japan = (mkText (mkUtt (mkQS (mkQCl (mkIAdv S.how_IAdv (S.mkAdv L.long_A)) (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN "Japan"))))))) questMarkPunct) ;
 
+	lin t68_how_do_we_fly = (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.we_NP (mkVP L.fly_V))))) questMarkPunct) ;
+
+	lin t69_how_can_we_fly = (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.fly_V)))))))) questMarkPunct) ;
+
 }

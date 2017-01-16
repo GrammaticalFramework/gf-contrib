@@ -1317,4 +1317,40 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // How do we fly?
+    @Test
+    public void
+            t68_how_do_we_fly() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(a / fly-01 :ARG0 (w / we) :manner (a2 / amr-unknown))");
+        assertEquals(amr,
+                "(a (fly-01 (:ARG0 (w we)) (:manner (a2 amr-unknown))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.we_NP (mkVP L.fly_V))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // How can we fly?
+    @Test
+    public void
+            t69_how_can_we_fly() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(p / possible-01 :ARG1 (a / fly-01 :ARG0 (w / we) :manner (a2 / amr-unknown)))");
+        assertEquals(amr,
+                "(p (possible-01 (:ARG1 (a (fly-01 (:ARG0 (w we)) (:manner (a2 amr-unknown)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.fly_V)))))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

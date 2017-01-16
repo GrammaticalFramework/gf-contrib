@@ -57,7 +57,7 @@ FULL	Qin Shi Huang unifies China.
 PART	You paint a red lip!
 FULL	You protect Diaoyu Islands!
 FULL	We bitterly lose Ryukyu Islands.
-
+FULL	How is it possible that we allow that Diaoyu Islands is fallen to other countries?
 
 FULL	Smoke and a cloud chase a wave that is flown.
 PART	Youngest brother is tender youth.
@@ -104,7 +104,7 @@ FULL	A cheap person that performs.
 FULL	A cheap person that performs.
 PART	It is dirty that there is a circle. A scum, a bird and a beast.
 FULL	It isn't easy that there is that female that is starred.
-PART	It is possible that you make money.
+PART	How is it possible that you make money?
 
 
 FULL	You just behave!

@@ -796,7 +796,7 @@ PART	You see a doom and a gloom.
 
 PART	It worries a person.
 PART	We use a vital commodity.
-
+PART	It is fallen that natural domestic gas is reserved.
 
 PART	We pump out more things.
 
