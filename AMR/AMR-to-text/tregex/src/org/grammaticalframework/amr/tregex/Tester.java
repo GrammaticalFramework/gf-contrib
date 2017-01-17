@@ -1391,4 +1391,39 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // I suffer from random panic attacks.
+    // FIXME: missing 'from' (AMR vs. PropBank)
+    @Test
+    public void t73_I_suffer_from_random_panic_attacks() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(s2 / suffer-01 :ARG0 (i / i) :ARG1 (a2 / attack :mod (p2 / panic-01) :mod (r / random)))");
+        assertEquals(amr,
+                "(s2 (suffer-01 (:ARG0 (i i)) (:ARG1 (a2 (attack (:mod (p2 panic-01)) (:mod (r random)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.suffer_V2 (mkNP S.a_Quant (mkCN L.random_A (E.CompoundCN L.panic_N L.attack_N))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // The list names companies that were prevented from carrying out deals.
+    @Test
+    public void t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(n / name-01 :ARG0 (l / list) :ARG1 (c / company :ARG1-of (p / prevent-01 :ARG2 (c6 / carry-out-03 :ARG0 a2 :ARG1 (d / deal-01)))))");
+        assertEquals(amr,
+                "(n (name-01 (:ARG0 (l list)) (:ARG1 (c (company (:ARG1-of (p (prevent-01 (:ARG2 (c6 (carry-out-03 (:ARG0 a2) (:ARG1 (d deal-01)))))))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.list_N)) (mkVP L.name_V2 (mkNP S.a_Quant (mkCN (mkCN L.company_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.prevent_V2) (E.PurposeVP (mkVP L.carry_out_V2 (mkNP S.a_Quant (mkCN L.deal_N))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

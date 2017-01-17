@@ -14,45 +14,50 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 
 		-- Manually added:
 
-		administrate_V = mkV "administrate" "administrates" "administrated" "administrated" "administrating" ;
-		analyze_V = mkV "analyze" "analyzes" "analyzed" "analyzed" "analyzing" ;
-		attack_V = mkV "attack" "attacks" "attacked" "attacked" "attacking" ;
-		cause_V = mkV "cause" "causes" "caused" "caused" "causing" ;
+		administrate_V = mkV "administrate" ;
+		analyze_V = mkV "analyze" ;
+		attack_V = mkV "attack" ;
+		cause_V = mkV "cause" ;
 		counsel_V = mkV "counsel" "counsels" "counselled" "counselled" "counselling" ;
 		defend_V = mkV "defend" ;
 		do_V = IrregEng.do_V ;
 		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
-		inspect_V = mkV "inspect" "inspects" "inspected" "inspected" "inspecting" ;
-		prosecute_V = mkV "prosecute" "prosecutes" "prosecuted" "prosecuted" "prosecuting" ;
-		state_V = mkV "state" "states" "stated" "stated" "stating" ;
+		exempt_V = mkV "exempt" ;
+		inspect_V = mkV "inspect" ;
+		prosecute_V = mkV "prosecute" ;
+		state_V = mkV "state" ;
 		traffic_V = mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking" ;
 
 		belong_V2 = belong_to_V2 ;
+		conflict_V2 = mkV2 (partV conflict_V "about") ;
 		explode_V2 = mkV2 explode_V ;
 		fall_V2 = mkV2 (IrregEng.fall_V) ;
 		go_V2 = mkV2 (IrregEng.go_V) ;
-		google_V2 = mkV2 (mkV "google" "googles" "googled" "googled" "googling") ;
+		google_V2 = mkV2 (mkV "google") ;
 		pass_V2 = mkV2 pass_V ;
 		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
+		transfer_V2 = mkV2 transfer_V ;
 
-		recognize_1_V2 = mkV2 (mkV "recognize" "recognizes" "recognized" "recognized" "recognizing") ;	-- TODO: remove variants in DictionaryEng
+		recognize_1_V2 = mkV2 (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 
-		obligate_VV = mkVV (mkV "obligate" "obligates" "obligated" "obligated" "obligating") ;
+		convince_VV = mkVV (mkV "convince") ;
+		obligate_VV = mkVV (mkV "obligate") ;
+		order_VV = mkVV order_V ;
 		start_VV = mkVV start_V ;
 		urge_VV = mkVV (mkV "urge") ;
 
-		allow_VS = mkVS (mkV "allow" "allows" "allowed" "allowed" "allowing") ;
+		allow_VS = mkVS (mkV "allow") ;
 		cause_VS = mkVS (mkV "cause") ;
 		make_VS = mkVS (IrregEng.make_V) ;
 		need_VS = mkVS need_V ;
-		offer_VS = mkVS (mkV "offer" "offers" "offered" "offered" "offering") ;
-		outline_VS = mkVS (mkV "outline" "outlines" "outlined" "outlined" "outlining") ;
+		offer_VS = mkVS (mkV "offer") ;
+		outline_VS = mkVS (mkV "outline") ;
 		quote_VS = mkVS quote_V ;
 		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
 		suffer_VS = mkVS suffer_V ;
-		support_VS = mkVS (mkV "support" "supports" "supported" "supported" "supporting") ;
+		support_VS = mkVS (mkV "support") ;
 		want_VS = mkVS want_V ;
 
 		center_N = mkN "center" ;
@@ -88,6 +93,17 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		PRD_Prep = mkPrep "" ;	-- no Prep
 		PRP_Prep = for_Prep ;
 		VSP_Prep = of_Prep ;
+
+		-- Mapping of PropBank noun frames
+
+		assemble_N = assembly_N ;
+		proliferate_N = proliferation_N ;
+		negotiate_N = negotiation_N ;
+		agree_N = agreement_N ;
+		investigate_N = investigation_N ;
+		explode_N = explosion_N ;
+		discuss_N = discussion_N ;
+		swear_in_N = swearing_N ;	-- this one is not straightforward
 
 		-- Extracted from DictionaryEng:
 

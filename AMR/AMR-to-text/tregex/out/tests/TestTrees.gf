@@ -71,5 +71,7 @@ abstract TestTrees = TestLexicon ** {
 	fun t70_what_did_the_girl_find : Text ;
 	fun t71_where_did_the_girl_find_the_boy : Text ;
 	fun t72_create_a_few_battle_groups : Text ;
+	fun t73_I_suffer_from_random_panic_attacks : Text ;
+	fun t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals : Text ;
 
 }

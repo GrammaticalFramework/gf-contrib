@@ -343,3 +343,13 @@ TestTreesEng: few battle groups are created .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t73_I_suffer_from_random_panic_attacks
+TestTreesEng: I suffer a random panic attack .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals
+TestTreesEng: a list names a company that is prevented to carry out a deal .
+TestTreesLav: 
+TestTreesRus: 
+

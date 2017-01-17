@@ -46,7 +46,7 @@ PART	It is contrasted to give a detail that an office says that it meets father 
 
 
 
-
+PART	A person that is ailed that bombs in Lockerbie drops an appeal.
 
 
 
@@ -118,7 +118,7 @@ PART	Interior Ministry says that it kills 12 persons and it wounds 83 persons.
 
 
 PART	A document court says that it gives DSB on Thursday.
-PART	Does it say that a court gives DSB to an opportunity to indicate that it is possible that it takes over?
+
 
 
 
@@ -132,7 +132,7 @@ FULL	It also main sponsors football AZ Alkmaar.
 PART	An organization that promises that governs announces that it is possible that a person that holds an account back claims.
 PART	Football. Barnes faces a tax time.
 
-PART	Winger of Liverpool and England John Barnes insists on Wednesday that because there is an oversight it is bankrupted.
+
 
 
 PART	Barnes is charged native Jamaica.
@@ -175,7 +175,7 @@ FULL	Larry Elliott is executed an electrocution.
 PART	Elliott is sentenced and it is sentenced.
 PART	Elliott knows a victim.
 
-PART	It is pronounced that it dies.
+PART	A die is pronounced.
 
 PART	Virginia executes an inmate.
 
@@ -191,7 +191,7 @@ PART	129 group radicals are expelled to a territory of France.
 
 
 
-PART	It is carried out in Evin Prison that there is a hanging.
+PART	A hanging is carried out in Evin Prison.
 
 
 
@@ -234,7 +234,7 @@ PART	A rabbi from Israel is accused to shoot a person that studies.
 
 
 PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
-
+PART	It is contrasted to ban a report that it attacks in January.
 PART	A rabbi is arrested.
 
 PART	Governor of Nigeria that faces a graft is arrested in Dubai.
@@ -341,11 +341,11 @@ PART	Emir of Kuwait pardons a maid from Philippines.
 
 
 
-
+FULL	Spokesman of Foreign Affairs Department Ed Malaya says that a pardon is signed on 1 June.
 FULL	De Castro says.
 PART	It also thanks a person that leads Kuwait for a magnanimity and compassion.
 
-
+PART	A pardon is meant to free her and ambassador of Philippines Ricardo Endaya says that it is expected.
 PART	It travels to plead for a life of another maid in a die row that is convicted in 2007 to Kuwait.
 PART	A person that helps about a domestic works in Kuwait and it complains that a salary isn't paid and it is physical abused.
 
@@ -375,7 +375,7 @@ PART	It says that child of King meets to discuss an estate.
 FULL	Atlanta.
 
 
-PART	It claims that Dexter King refuses that it provides a document.
+
 PART	Three siblings that sole hold a share are contrasted to meet a person that holds a share.
 FULL	Dexter King also sues sister.
 PART	A person that wins wants that a lottery from Texas pays.
@@ -524,13 +524,13 @@ PART	A thing on 12 May 2010 in Bangkok.
 
 PART	Does it tell when it is asked that this implies that a security force cracks down on Tuesday to Associated Press that prime minister already hands out some guidelines?
 FULL	They are tomorrow implemented.
-PART	It paralyzes a home portion in a center of Bangkok.
+PART	A protest paralyzes a home portion in a center of Bangkok.
 
 
 
 
 
-PART	Panitan says that it is now withdrawn that it is initially offered that it elects.
+
 
 
 
@@ -626,7 +626,7 @@ FULL	Colley-Lee.
 FULL	A couple is married on 16 June 1984.
 
 
-FULL	It isn't filed that it charges.
+FULL	A charge isn't filed.
 
 
 PART	Freeman wins Oscar.
@@ -640,7 +640,7 @@ FULL	YouTube.
 PART	It is possible that a private citizen posts a video. It is a public forum.
 FULL	FOX, NBC, CNN and ABC.
 
-PART	It before warns to them.
+PART	It before warns to them. They stop a work.
 
 FULL	This local group still fights.
 PART	It is taken off in YouTube that it all posts.
@@ -771,15 +771,15 @@ FULL	I say to Mr. Malthus that a market doesn't lie.
 FULL	It is caused that they don't lie.
 PART	I just check an organization chart and it is risen in every sector of a globe that crude oil is produced.
 FULL	United States.
-FULL	It is risen that it produces. Other OECD.
-FULL	It is declined that it produces. OECD.
-FULL	It is risen that it produces. OECD.
-PART	It is risen that it produces. An organization.
-FULL	It is risen that it produces. U.S.S.R.
-FULL	It is risen that it produces. Other OECD.
-FULL	It is risen that it produces. OECD.
-FULL	It is risen that it produces.
-FULL	It is risen that it produces.
+FULL	A produce is risen. Other OECD.
+FULL	A produce is declined. OECD.
+FULL	A produce is risen. OECD.
+PART	A produce is risen. An organization.
+FULL	A produce is risen. U.S.S.R.
+FULL	A produce is risen. Other OECD.
+FULL	A produce is risen. OECD.
+FULL	A produce is risen.
+FULL	A produce is risen.
 
 FULL	I give a source to you.
 PART	I say it.
@@ -788,8 +788,8 @@ PART	It is a product spreadsheet.
 
 PART	A pipeline is blown up in Nigeria.
 PART	A capacity.
-
-
+PART	A demand is dropped because there is a recession.
+PART	A demand is now risen.
 
 
 PART	You see a doom and a gloom.
@@ -857,7 +857,7 @@ PART	I still recall that it reads that it is priced that an oil shale is extract
 PART	We now have oil that is locked up in an oil shale in USA.
 
 
-
+FULL	You give a break to me!
 PART	Does a sheep buy into this?
 
 
@@ -1028,7 +1028,7 @@ PART	It is contrasted that it is more cheap that there is it.
 
 FULL	It is excepted that it shoots to you.
 
-
+PART	You join a serve and it gets a thing.
 
 
 
@@ -1118,7 +1118,7 @@ PART	A person burns a flag and it calls a just piece.
 
 PART	It just looks a great way.
 
-
+PART	I then go a parade.
 
 
 PART	I am caught total!
@@ -1185,7 +1185,7 @@ PART	Do you know few bad apples that I mention?
 PART	I just consider you.
 
 
-
+FULL	I then say that you deserve a cut because it votes a wrong party.
 PART	It serves to you.
 
 

@@ -14,19 +14,24 @@ abstract Leaves = Cat, Dictionary ** {
 		defend_V : V ;			-- subcat in Dictionary
 		do_V : V ;				-- subcat in Dictionary
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
+		exempt_V : V ;			-- only exempt_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
+		conflict_V2 : V2 ;		-- only conflict_V in Dictionary
 		explode_V2 : V2 ;		-- subcat in Dictionary
 		fall_V2 : V2 ;			-- subcat in Dictionary
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
+		transfer_V2 : V2 ;		-- subcat in Dictionary
 
+		convince_VV : VV ;		-- only convince_V2 in Dictionary
 		obligate_VV : VV ;		-- only obligate_V2 in Dictionary
+		order_VV : VV ;			-- subcat in Dictionary
 		start_VV : VV ;			-- only start_V2 in Dictionary
 		urge_VV : VV ;			-- missing in Dictionary
 
@@ -73,6 +78,17 @@ abstract Leaves = Cat, Dictionary ** {
 		PRD_Prep : Prep ;		-- temporary
 		PRP_Prep : Prep ;		-- temporary
 		VSP_Prep : Prep ;		-- temporary
+
+		-- Mapping of PropBank noun frames
+
+		assemble_N : N ;
+		proliferate_N : N ;
+		negotiate_N : N ;
+		agree_N : N ;
+		investigate_N : N ;
+		explode_N : N ;
+		discuss_N : N ;
+		swear_in_N : N ;
 
 		-- Extracted from DictionaryEng:
 
