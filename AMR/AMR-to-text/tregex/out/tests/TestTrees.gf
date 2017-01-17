@@ -66,5 +66,12 @@ abstract TestTrees = TestLexicon ** {
 	fun t65_I_d_recommend_you_go_and_see_your_doctor : Text ;
 	fun t66_two_successful_companies_enter_the_market_in_a_big_way : Text ;
 	fun t67_how_long_are_we_going_to_tolerate_Japan : Text ;
+	fun t68_how_do_we_fly : Text ;
+	fun t69_how_can_we_fly : Text ;
+	fun t70_what_did_the_girl_find : Text ;
+	fun t71_where_did_the_girl_find_the_boy : Text ;
+	fun t72_create_a_few_battle_groups : Text ;
+	fun t73_I_suffer_from_random_panic_attacks : Text ;
+	fun t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals : Text ;
 
 }

@@ -135,4 +135,18 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t67_how_long_are_we_going_to_tolerate_Japan = (mkText (mkUtt (mkQS (mkQCl (mkIAdv S.how_IAdv (S.mkAdv L.long_A)) (mkCl S.we_NP (mkVP L.tolerate_V2 (mkNP (P.mkPN "Japan"))))))) questMarkPunct) ;
 
+	lin t68_how_do_we_fly = (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.we_NP (mkVP L.fly_V))))) questMarkPunct) ;
+
+	lin t69_how_can_we_fly = (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.fly_V)))))))) questMarkPunct) ;
+
+	lin t70_what_did_the_girl_find = (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V))))) questMarkPunct) ;
+
+	lin t71_where_did_the_girl_find_the_boy = (mkText (mkUtt (mkQS (mkQCl S.where_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.boy_N))))))) questMarkPunct) ;
+
+	lin t72_create_a_few_battle_groups = (mkText (mkUtt (mkS (mkCl (mkNP S.few_Det (E.CompoundCN L.battle_N L.group_N)) (passiveVP L.create_V2)))) fullStopPunct) ;
+
+	lin t73_I_suffer_from_random_panic_attacks = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.suffer_V2 (mkNP S.a_Quant (mkCN L.random_A (E.CompoundCN L.panic_N L.attack_N))))))) fullStopPunct) ;
+
+	lin t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.list_N)) (mkVP L.name_V2 (mkNP S.a_Quant (mkCN (mkCN L.company_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.prevent_V2) (E.PurposeVP (mkVP L.carry_out_V2 (mkNP S.a_Quant (mkCN L.deal_N))))))))))))) fullStopPunct) ;
+
 }

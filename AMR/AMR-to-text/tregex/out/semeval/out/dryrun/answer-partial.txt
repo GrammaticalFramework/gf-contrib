@@ -42,22 +42,22 @@ PART	It defends.
 
 PART	I say time to a fellow citizen. It is caused that we are obligated.
 
-PART	Few groups are created.
+PART	Few battle groups are created.
 PART	5,000 advanced kind aircraft to combat are manufactured.
 
-PART	It is resumed that it nucleus experiments and a military force is established in a space.
+FULL	It is resumed that it nucleus experiments and a military force is established in a space.
 
 
 PART	It is abandoned that you are committed to first use a nucleus weapon.
 PART	It is retained when it threatens to a nation security that there is a right.
-FULL	Qin Shi Huang unifies China.
+FULL	Qin Shi Huang unifies China. Zheng Chenggong recovers Taiwan.
 
 
 
 PART	You paint a red lip!
 FULL	You protect Diaoyu Islands!
 FULL	We bitterly lose Ryukyu Islands.
-
+FULL	How is it possible that we allow that Diaoyu Islands is fallen to other countries?
 
 FULL	Smoke and a cloud chase a wave that is flown.
 PART	Youngest brother is tender youth.
@@ -104,7 +104,7 @@ FULL	A cheap person that performs.
 FULL	A cheap person that performs.
 PART	It is dirty that there is a circle. A scum, a bird and a beast.
 FULL	It isn't easy that there is that female that is starred.
-PART	It is possible that you make money.
+PART	Everybody does this. How is it possible that you make money?
 
 
 FULL	You just behave!
@@ -142,7 +142,7 @@ PART	It is surged.
 PART	17 near accidents are reported.
 
 PART	VDOT doesn't have money to construct a road in a region.
-
+PART	It causes.
 
 FULL	This is a doh moment that is major!
 
@@ -242,7 +242,7 @@ PART	A much is gone on in his life and it thinks that it is possible that we are
 
 PART	I believe that every child needs parent.
 
-
+PART	What do I do?
 PART	It is very bad that it threatens to you.
 PART	It is obligated because it is just escalated that you don't give in that.
 
@@ -254,7 +254,7 @@ FULL	You meet all person kinds!
 
 PART	I agree. His business is one other thing.
 FULL	I don't tell to him.
-
+PART	It is contrasted that it doesn't cause.
 
 PART	You need.
 
@@ -278,10 +278,10 @@ PART	It contrasts a point.
 PART	I don't enjoy a university.
 
 
+PART	It isn't worked out because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
 
 
-
-
+PART	I have a person that counsels because it is possible that you only have and it doubts that it helps much.
 
 
 
@@ -291,7 +291,7 @@ PART	Is it possible that someone some advises me?
 
 
 PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
-FULL	You now keep it!
+PART	You don't shut off and it does because it tries a new thing well! You now keep it!
 FULL	I recommend that you go to too see doctor.
 PART	It is possible that it benefits you.
 
@@ -357,7 +357,7 @@ PART	You aren't kind.
 FULL	Good luck.
 
 PART	I focus to an idol.
-
+PART	Does it cause? Does it cause? Does it cause?
 
 
 FULL	I hope that this helps.
@@ -376,7 +376,7 @@ PART	It then contrasts.
 PART	Because it is told to me that it doesn't walk on my toe it walks on my toe.
 
 
-
+PART	A person that does is drilled it.
 PART	I don't read to a random symptom that is resembled to that.
 PART	I am a girl that is addicted to harm a self.
 
@@ -398,7 +398,7 @@ FULL	I don't want that it stops.
 PART	It contrasts.
 PART	I don't tell to him.
 FULL	I don't want that it hurts him. I don't want that he hurts.
-
+FULL	What do I do?
 PART	I thank you.
 
 FULL	You talk and a thing that is gone on is told is recommended.
@@ -431,7 +431,7 @@ PART	You advise me.
 
 PART	It knows that it is more easy that it says.
 PART	Because a doctor sees that there is a case you don't worry that!
-
+PART	I do about OCD.
 
 PART	It is gradual decreased.
 PART	That is just sounded me.
@@ -449,11 +449,11 @@ PART	It contrasts.
 
 
 
+PART	Do I see that I speak to a person that counsels?
 
 
 
-
-PART	It is worked to me and I suffer a random attack!
+PART	It is worked to me and I suffer a random panic attack!
 PART	It is started that it is just started that a tiny thing worries me really.
 PART	I find that it helps.
 
@@ -482,7 +482,7 @@ PART	An expert person that doesn't depend states that it is short that Iran agre
 PART	Casey states that a nucleus program that moves to a forward is continued.
 
 PART	An expert person states that it is recommended that it is previously resolved that a transparency is an issue.
-PART	Executive director of partisan Arms Control Association Daryl G. Kimball states that it addresses a problem.
+PART	Executive director of partisan Arms Control Association Daryl G. Kimball states that an agreement addresses a problem.
 PART	Kimball states that an organization that governs Iran is a design.
 PART	Official of Iran states that it reduces.
 
@@ -490,17 +490,17 @@ PART	Official of Iran states that it reduces.
 
 FULL	Israel.
 
+PART	A document that outlines that Israel proposes that it allows that a nucleus technology is internationally transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group.
 
 
 
-
-
+PART	A document that outlines that Israel proposes is distributed in March 2007.
 
 PART	A letter says that a presentation from Israel is offered on 17 March 2007.
 
 
 PART	One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
-
+PART	A document is circulated when a person organization that administrates works in September 2007 in Capitol Hill.
 
 FULL	Kimball states.
 
@@ -509,9 +509,9 @@ PART	It gives a reason.
 PART	It is good and it is more good.
 
 
+PART	It views a pact an important part of a policy legacy of an organization that administrates.
 
-
-
+PART	It is possible that it affects a policy legacy of an organization that administrates.
 
 
 FULL	Seigel states.
@@ -539,11 +539,11 @@ PART	It states that a problem about a technical hinders a program of Iran.
 
 
 PART	An expert person states that it is simple that a uranium is produced of a grade material.
-
+PART	Ahmadinejad states that West still pursues that a negotiation is resumed.
 
 PART	A package that US endorses.
 
-PART	Official of US repeats that it states that it isn't possible that it is begun that it negotiates.
+PART	Official of US repeats that it states that it isn't possible that a negotiation is begun.
 
 
 PART	An envoy from Europe, Solana and Burns set a deadline.
@@ -564,7 +564,7 @@ PART	It is ended that it meets on 13 November 2008.
 
 PART	Russia and China are tied politics and a business Islamic Republic of Iran and it doesn't feel that it is domestic pressured.
 PART	United States isn't tied politics and a business Islamic Republic of Iran and it feels that it is domestic pressured.
-PART	Russia and China hold power.
+PART	Russia and China hold a veto power.
 
 
 PART	It is reported that Iran is progressed about a reactor facility to research that is near.
@@ -623,7 +623,7 @@ PART	A troop that is armed marches and it back turns on power.
 PART	Nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation.
 FULL	A center in Kamchatka that monitors Russian Space Forces is included to a military installation that loses power.
 
-PART	It shows that a utility and a military war tug.
+PART	An investigation shows that a utility and a military war tug.
 PART	It is included that a residence in a country is built.
 
 FULL	Brazil.
@@ -633,10 +633,10 @@ PART	A liability concerns US.
 
 PART	A thing that is planned requires eight precaution steps.
 
+PART	It is contrasted to ever put a policy an effect that law that permits a such action is originally approved in 1998.
 
 
-
-
+FULL	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
 FULL	Official of State Department from US states.
 
 
@@ -645,7 +645,7 @@ PART	An organization that governs US consults an organization that governs Brazi
 
 PART	US is scheduled to provide 10,200,000 dollars to Brazil.
 
-
+PART	Official of Brazil states that a policy isn't applied against an aircraft that a child boards.
 
 PART	Gandra states that a provision undermines an essential purpose of a decree.
 
@@ -658,7 +658,7 @@ PART	A constitution is questioned.
 
 
 
-PART	This person gains over power.
+PART	This person gains a die power.
 FULL	Brazil inaugurates radar SIVAM in 2002.
 FULL	A system uses a technology from United States.
 
@@ -699,7 +699,7 @@ PART	Chavez is first elected in 1998 and it rates of a popularity.
 
 
 PART	This thing is costed less.
-
+PART	An organization that governs Venezuela also intends that it buys six navy crafts, ten helicopters and ten transport planes.
 
 
 PART	It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
@@ -744,7 +744,7 @@ FULL	Hill is a head person from United States that negotiates a program about a 
 
 
 
-PART	Associated Press reports in Vienna that IAEA states on 18 June 2007 that a team visits Pyongyang to discuss a manner.
+
 PART	Hill states that it holds that it is talked that a reactor is sealed.
 
 PART	Money is frozen when official of United States accuses Banco Delta Asia a complicity.
@@ -760,7 +760,7 @@ FULL	Islamic Republic of Iran.
 PART	An international and a weapon.
 
 
-PART	It isn't resolved that there is an issue.
+PART	An issue isn't resolved.
 
 
 PART	President of Iran Mahmoud Ahmadinejad states on 28 August 2007.
@@ -786,11 +786,11 @@ PART	It sets a bad precedent.
 
 FULL	Senior fellow of International Institute for Strategic Studies Mark Fitzpatrick states.
 
-
+PART	It draws out a negotiation.
 
 FULL	International Institute for Strategic Studies is located in London.
 
-PART	Institute for Science and International Security is a private organization that is located in Washington.
+FULL	Institute for Science and International Security is a private research organization that is located in Washington.
 FULL	International Atomic Energy Agency is based in Vienna.
 
 FULL	Islamic Republic of Iran.
@@ -821,9 +821,9 @@ PART	An international and an organization that governs.
 
 
 
-
+PART	It supports that a separatist area bitterly conflicts about Georgia.
 FULL	NATO, U.S. and other nations in West condemn violence.
-FULL	NATO, U.S. and other nations in West demand that it is ceased that it fires.
+FULL	NATO, U.S. and other nations in West demand that a fire is ceased.
 
 FULL	A soldier from Russia is remained in Georgia.
 
@@ -854,12 +854,12 @@ PART	A technology, an international and a telecom.
 
 
 PART	An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
-PART	Isn't it clear that it is begun that it attacks?
+PART	Isn't it clear that an attack is begun?
 
 
 PART	An alternative address is still operated.
 
-FULL	It isn't possible that it is claimed that it hacks and Iran asserts that XP is based in United Arab Emirates is independently verified.
+FULL	It isn't possible that a hack is claimed and Iran asserts that XP is based in United Arab Emirates is independently verified.
 PART	A news site from Iran states on 19 September 2008 that many web sites that are attacked that are related are again run.
 PART	It is posted that it states and it states that it attacks.
 FULL	A thing that is stated says.
@@ -883,7 +883,7 @@ PART	It emerges.
 
 
 
-
+FULL	An official states on 8 October 2008 that it progresses and a party approaches an agreement.
 
 
 PART	A ship is hijacked in 2008.
@@ -893,7 +893,7 @@ PART	A ship is hijacked in 2008.
 PART	A ship.
 
 PART	A thing that evidences a weapon subsequent emerges.
-PART	It is most likely that it is remained a secret that it deals.
+PART	It is most likely that a deal is remained a secret.
 PART	An official from Ukraine is adamant.
 FULL	Diplomat of Ukraine in Kenya Oleh Belokolos states.
 
@@ -901,7 +901,7 @@ FULL	All appropriate paperworks are validated.
 FULL	Ukraine abides.
 
 
-
+PART	A politician from Kenya demands an answer and it calls to a commission that it examines a situation.
 FULL	Southern Sudan is an autonomy region.
 
 
@@ -949,7 +949,7 @@ FULL	Peru.
 PART	An international and money.
 
 PART	Montesinos is sentenced.
-
+FULL	Montesinos plans that it appeals a sentence.
 
 PART	Montesinos is sentenced.
 
@@ -1014,7 +1014,7 @@ PART	Other damages or a casualty aren't reported in an incident.
 FULL	Nepal.
 PART	Terrorism and politics.
 
-PART	An insurgent plans when it elects Parliament that it attacks.
+PART	An insurgent plans an attack when it elects Parliament.
 
 
 PART	A bomb incident in Kathmandu Valley that is major.
@@ -1092,14 +1092,14 @@ PART	France offers on 28 April 2003 to India that it military cooperates.
 
 
 FULL	Alliot-Marie states.
-PART	It is needed that it international cooperates.
+PART	It is needed that it internationally cooperates.
 
 
 FULL	France offers in 2002 that it sells.
 FULL	France agrees.
 PART	A mine of a high intensity is strung in Kashmir in a line.
 FULL	Terrorism that crosses a border is checked.
-
+FULL	A system of a tank from India that controls a fire is upgraded.
 PART	Alliot-Marie meets minister of India George Fernandes.
 
 
@@ -1133,19 +1133,19 @@ PART	Howard states that an organization that governs Australia considers and it 
 
 FULL	An organization that governs United States recently forms Proliferation Security Initiative.
 
-PART	Member of Proliferation Security Initiative considers a way.
+
 
 
 FULL	India, South Africa and Brazil.
 FULL	An international and politics.
 
 
-
+FULL	A discussion is held in Pretoria.
 PART	Spokeswoman Manusha Pillay states that an aircraft is landed in an airport base.
 
 FULL	It jointly chairs Joint Commission.
 FULL	Dlamini-Zuma participates Brazil-Africa Forum in June 2003 in Fortaleza.
-
+PART	Foreign Affairs Department from South Africa states that it outlines that it plans to trilateral cooperate politics and an economy.
 
 
 
@@ -1225,7 +1225,7 @@ PART	Wen states that Germany partners China in Europe.
 PART	Wen states that it is contrasted that it is easy that it wins to a war.
 
 PART	Wen states that it obligates to implement an organization resolution that is relevant.
-
+PART	Wen states that an organization that governs China supports that peace in Middle East is planned and it is remained.
 
 
 
@@ -1240,7 +1240,7 @@ FULL	It signs a communiqué on 22 September 2004.
 
 
 
-PART	A terrorist group from Eastern Turkistan that is so called is comprised of a terrorist cell that is a mind.
+
 
 PART	China and Kyrgyzstan say that it is recommended that peace and stability are established.
 
@@ -1262,7 +1262,7 @@ PART	President of Vietnam Tran Duc Luong states when it meets Schroeder that an 
 
 
 PART	An organization that governs Germany offers to an organization that governs Vietnam that it official assists.
-PART	A volume is risen in 2003.
+
 
 FULL	Hong Kong and China.
 FULL	A technology and an international.
@@ -1272,9 +1272,9 @@ FULL	A technology and an international.
 PART	Hong Kong Polytechnic University joins a university park of Virtual University Park in June 2004.
 
 
-PART	City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China.
+PART	City University of Hong Kong signs an agreement to jointly establish a research center in Suzhou in June of University of Science and Technology of China.
 
-PART	An agreement is based to a principle.
+
 
 
 
@@ -1298,25 +1298,25 @@ PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal 
 FULL	It ends.
 
 
-PART	It attends a ceremony.
+FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
 
-
+PART	He expresses that it promotes stability, peace of Central Asia and a security.
 
 
 
 
 FULL	It ends.
 
-PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand ceremony in Tokyo.
+PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand swearing ceremony in Tokyo.
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
 PART	A ground is filled an atmosphere.
-PART	Minister of State Welfare Ministry from Japan Souyasen delivers a speech that bolsters to a delegation.
 
 
-PART	Souya emphasizes that a delegation from Japan is obligated to use this opportunity.
+
+
 PART	Souya hands over a delegation flag of a delegation.
 
 PART	A delegation from Japan is flown.
@@ -1346,7 +1346,7 @@ FULL	It ends.
 
 
 
-PART	Wei Lan occupies a position.
+PART	Wei Lan occupies a lead position.
 
 
 PART	Si Aiwan is scored a point.

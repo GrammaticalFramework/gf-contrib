@@ -318,3 +318,38 @@ TestTreesEng: how long do we tolerate Japan ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t68_how_do_we_fly
+TestTreesEng: how do we fly ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t69_how_can_we_fly
+TestTreesEng: how is it possible that we fly ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t70_what_did_the_girl_find
+TestTreesEng: what does a girl find ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t71_where_did_the_girl_find_the_boy
+TestTreesEng: where does a girl find a boy ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t72_create_a_few_battle_groups
+TestTreesEng: few battle groups are created .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t73_I_suffer_from_random_panic_attacks
+TestTreesEng: I suffer a random panic attack .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals
+TestTreesEng: a list names a company that is prevented to carry out a deal .
+TestTreesLav: 
+TestTreesRus: 
+
