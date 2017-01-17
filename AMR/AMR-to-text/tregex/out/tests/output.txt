@@ -353,3 +353,8 @@ TestTreesEng: a list names a company that is prevented to carry out a deal .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t75_I_have_tried_to_solve_my_problems
+TestTreesEng: I try to solve a problem .
+TestTreesLav: 
+TestTreesRus: 
+

@@ -19,7 +19,7 @@ PART	I say many instances that are cited that are difficultly recorded to a fell
 FULL	It is still inferred that all persons that experience that era vividly remember.
 PART	Because Japan now wants that it reverses a verdict about aggression history it wakes up a citizen and a person in Asia from China.
 
-PART	An interest of a country and a nation unity guarantees a honor.
+PART	An interest of a country and a nation unity guarantees a honor. It isn't possible that we let that a native land is separated.
 
 
 PART	I say to a fellow citizen that it is done.
@@ -64,7 +64,7 @@ PART	Youngest brother is tender youth.
 
 FULL	A flag is looked over.
 PART	We brandish a weapon and it crosses.
-
+FULL	You let that a horse drinks to Pacific Ocean!
 
 
 
@@ -75,7 +75,7 @@ PART	It is recommended that we tell to a whole world that it isn't possible that
 PART	Time. It is calm that there is China.
 PART	All lives of our citizen are too carefree. Official is too extravagant.
 PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
-
+PART	You let that they know that US is a panacea!
 FULL	China is gone!
 PART	We fight for a scale war. It isn't possible that China loses.
 FULL	It is contrasted that we need a show in a life.
@@ -233,7 +233,7 @@ PART	This infatuation baffles me truly.
 
 
 PART	I am broken up since August.
-
+PART	I want that it starts to date other persons and father says.
 
 PART	A much is gone on in his life and it thinks that it is possible that we are worked.
 
@@ -261,7 +261,7 @@ PART	You need.
 
 FULL	You keep that thing that is recorded!
 
-
+PART	You try to aid!
 PART	You tell that it is needed that it goes!
 
 
@@ -330,7 +330,7 @@ FULL	I know a thing that you feel.
 PART	Mum of me is too spit.
 FULL	I recommend high that it is taken up that it smokes.
 FULL	It is a joke.
-
+PART	I think that it is become a person that is more weak and it way down dulls a personality to try to befriend some persons in a university.
 
 
 
@@ -451,10 +451,10 @@ PART	It contrasts.
 
 PART	Do I see that I speak to a person that counsels?
 
-
+PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start.
 
 PART	It is worked to me and I suffer a random panic attack!
-PART	It is started that it is just started that a tiny thing worries me really.
+
 PART	I find that it helps.
 
 PART	It contrasts!
@@ -472,7 +472,7 @@ PART	A thing that is found is reflected.
 
 PART	It says that a thing that IAEA reports says that it steps to a forward.
 PART	Reuters quotes that it states that it is slowed that an organization that governs Iran is an effort.
-
+PART	A thing that IAEA reports states that it is obligated.
 
 
 PART	Some expert persons state that IAEA cedes a much to Iran.
@@ -536,14 +536,14 @@ FULL	An expert person discounts a significance of a thing that Ahmadinejad claim
 PART	Does it state that a number is less important?
 
 PART	It states that a problem about a technical hinders a program of Iran.
-
+PART	Iran repeats that it asserts that a nucleus program aims to only produce electricity because it contradicts a group principle.
 
 PART	An expert person states that it is simple that a uranium is produced of a grade material.
 PART	Ahmadinejad states that West still pursues that a negotiation is resumed.
 
 PART	A package that US endorses.
 
-PART	Official of US repeats that it states that it isn't possible that a negotiation is begun.
+
 
 
 PART	An envoy from Europe, Solana and Burns set a deadline.
@@ -733,13 +733,13 @@ PART	Official says that a person side wishes because it politics calculates that
 PART	A military from US has Cooperation Office in a fort from Venezuela.
 FULL	Chavez shuts down it in 2004.
 FULL	It is ordered to leave a country in April 2005.
-
+FULL	A person that analyzes says that it is likely that Chavez tries to indoctrinate a public and a force that is armed.
 PART	A person that analyzes says that it isn't proved that Chavez uses that force.
 
 FULL	Democratic.
 
-
-
+PART	It is possible that an organization that governs North Korea is prepared.
+PART	It states on 18 June 2007 that it is possible that an organization that governs North Korea is prepared.
 FULL	Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea.
 
 
@@ -854,7 +854,7 @@ PART	A technology, an international and a telecom.
 
 
 PART	An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
-PART	Isn't it clear that an attack is begun?
+
 
 
 PART	An alternative address is still operated.
@@ -978,7 +978,7 @@ PART	A police from Hong Kong recently works of Public Security Bureau and it car
 
 PART	Hong Kong is chosen.
 PART	It meets.
-
+PART	A letter of internal news of a police from Hong Kong recently reports that a conference aims to provide a think environment that is flexible.
 
 
 
@@ -1132,7 +1132,7 @@ PART	Associated Press quotes on 9 June 2003 that it states that an organization 
 PART	Howard states that an organization that governs Australia considers and it is obligated to choose a descriptor and a word.
 
 FULL	An organization that governs United States recently forms Proliferation Security Initiative.
-
+FULL	Proliferation Security Initiative starts to meet in Brisbane on 9 July 2003.
 
 
 
@@ -1313,7 +1313,7 @@ PART	A delegation from Japan that participates Far East and South Pacific Region
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
 PART	A ground is filled an atmosphere.
-
+PART	Minister of State Welfare Ministry from Japan Souyasen delivers a departure speech that bolsters to a delegation.
 
 
 

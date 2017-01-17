@@ -55,6 +55,8 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		criticize_VS = mkVS criticize_V ;
 		express_VS = mkVS (mkV "express" "expresses" "expressed" "expressed" "expressing") ;
 		intend_VS = mkVS (mkV "intend") ;
+		let_VS = mkVS (IrregEng.let_V) ;
+		love_VS = mkVS (mkV "love") ;
 		make_VS = mkVS (IrregEng.make_V) ;
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer") ;
@@ -104,14 +106,18 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 
 		-- Mapping of PropBank noun frames
 
-		assemble_N = assembly_N ;
-		proliferate_N = proliferation_N ;
-		negotiate_N = negotiation_N ;
 		agree_N = agreement_N ;
-		investigate_N = investigation_N ;
-		explode_N = explosion_N ;
+		assemble_N = assembly_N ;
+		depart_N = departure_N ;
 		discuss_N = discussion_N ;
+		explode_N = explosion_N ;
+		investigate_N = investigation_N ;
+		negotiate_N = negotiation_N ;
+		participate_N = participation_N ;
+		proliferate_N = proliferation_N ;
+		secede_N = secession_N ;
 		swear_in_N = swearing_N ;	-- this one is not straightforward
+		verify_N = verification_N ;
 
 		-- Extracted from DictionaryEng:
 

@@ -125,6 +125,7 @@ public class FrameExtractor {
 
         PrintWriter frame_entries = new PrintWriter("../lexicons/propbank/frames-entries.txt", "UTF-8");
         PrintWriter frame_roles = new PrintWriter("../lexicons/propbank/frames-roles.txt", "UTF-8");
+        PrintWriter frame_verb = new PrintWriter("../lexicons/propbank/frames-verbs.txt", "UTF-8");
         PrintWriter frame_adj = new PrintWriter("../lexicons/propbank/frames-adjectives.txt", "UTF-8");
         PrintWriter frame_adj_maybe = new PrintWriter("../lexicons/propbank/frames-adjectives-maybe.txt", "UTF-8");
         PrintWriter frame_noun = new PrintWriter("../lexicons/propbank/frames-nouns.txt", "UTF-8");
@@ -139,10 +140,13 @@ public class FrameExtractor {
 
             boolean adjective = false;
             boolean noun = false;
+            boolean verb = false;
             boolean other = false;
 
             for (String e : entries) {
-                if (e.endsWith("_A")) {
+                if (e.endsWith("_V")) {
+                    verb = true;
+                } else if (e.endsWith("_A")) {
                     adjective = true;
                 } else if (e.endsWith("_N")) {
                     noun = true;
@@ -151,13 +155,17 @@ public class FrameExtractor {
                 }
             }
 
-            if (adjective && !noun && !other) {
+            if (verb && !adjective && !noun && !other) {
+                frame_verb.println(frame);
+            }
+
+            if (adjective && !verb && !noun && !other) {
                 frame_adj.println(frame);
             } else if (adjective) {
                 frame_adj_maybe.println(frame);
             }
 
-            if (noun && !adjective && !other) {
+            if (noun && !verb && !adjective && !other) {
                 frame_noun.println(frame);
             } else if (noun && !adjective) {
                 frame_noun_maybe.println(frame);
@@ -166,6 +174,7 @@ public class FrameExtractor {
 
         frame_entries.close();
         frame_roles.close();
+        frame_verb.close();
         frame_adj.close();
         frame_adj_maybe.close();
         frame_noun.close();

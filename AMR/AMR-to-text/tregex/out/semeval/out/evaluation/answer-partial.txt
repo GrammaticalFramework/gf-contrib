@@ -436,7 +436,7 @@ FULL	New York.
 
 
 
-
+PART	We let that it speaks.
 PART	Holladay notes that it is changed that U.S. postures.
 
 PART	He adds that it decides.
@@ -596,11 +596,11 @@ PART	A woman that answers a phone in Advanced Security is declined.
 
 PART	Lawyer says that Kid Rock defends.
 FULL	Decatur.
-
+PART	Lawyer in a court says that it tries to defend when a fight is broken in 2007 in a suburb facility.
 
 PART	Lawyer says that Harlen Akins claims that a group beats and it seeks a punitive damage that isn't specified and 6,000 dollars.
 
-
+PART	Lawyer of Kid Rock and five other persons that are sued William Horton says that Akins demonstrates a pattern when it tries to defuse a situation.
 
 
 
@@ -927,7 +927,7 @@ PART	It isn't true that there are other stuffs.
 
 PART	United States Geological Survey suggests that a seabed holds.
 
-
+PART	You know that they darndest try to drive us stone age.
 
 
 PART	It is barred that it doesn't hold.
@@ -1110,7 +1110,7 @@ PART	An organization person controls House.
 PART	Is it said to you?
 FULL	I am deployed Kuwait and Saudi Arabia.
 
-
+PART	I remember that it loves that it goes.
 
 
 

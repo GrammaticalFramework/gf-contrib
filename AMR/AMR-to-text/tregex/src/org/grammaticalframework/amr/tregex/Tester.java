@@ -1426,4 +1426,22 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // I have tried to solve my problems.
+    // FIXME: 'my problems' (poss)
+    @Test
+    public void t75_I_have_tried_to_solve_my_problems() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(t / try-01 :ARG0 (i / i) :ARG1 (s / solve-01 :ARG0 i :ARG1 (p / problem :poss i)))");
+        assertEquals(amr,
+                "(t (try-01 (:ARG0 (i i)) (:ARG1 (s (solve-01 (:ARG0 i) (:ARG1 (p (problem (:poss i)))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.try_VV (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

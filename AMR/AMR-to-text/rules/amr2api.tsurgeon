@@ -346,11 +346,16 @@ mkCl=cl !< /:ARG0/ < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/))
 [adjoinF (passiveVP @) frame]
 
 # mkVP : VV -> VP -> VP
-# TODO: (frame1 :ARG0 (:ARG1 (var frame2)))
+# (frame_VV (:ARG1 (var frame))) => (frame_VV (mkVP frame))
+# TODO: extend the list of VV frames
+/^(aim-01|begin-01|continue-01|start-01|try-01)$/ < (/:ARG1/=vp < (/VAR/=var < /FRAME/=vv))
+[move vv >1 vp]
+[relabel vp /^.+$/mkVP/]
+[delete var]
 
 # mkVP : VV -> VP -> VP
 # (frame1 (:ARG2 (var (frame2 :ARG1)))) => (frame1 (mkVP frame2 :ARG1))
-/FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < /:ARG1/=compl)))
+/FRAME/ < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < /:ARG1/=compl)))
 [move vv >1 vp]
 [move compl >2 vp]
 [relabel vp /^.+$/mkVP/]
@@ -358,7 +363,7 @@ mkCl=cl !< /:ARG0/ < (mkVP < (/FRAME/=frame < /:ARG1/=subj !< /:ARG0/))
 
 # mkVP : VV -> VP -> VP
 # (frame1 (:ARG2 (var (frame2 (:ARG0 (var 'between')))))) => (frame1 (mkVP frame2 :ARG0))
-/FRAME/=frame < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < (/:ARG0/=compl < (/VAR/ < between)))))
+/FRAME/ < (/:ARG2/=vp < (/VAR/=var < (/FRAME/=vv < (/:ARG0/=compl < (/VAR/ < between)))))
 [move vv >1 vp]
 [move compl >2 vp]
 [relabel vp /^.+$/mkVP/]

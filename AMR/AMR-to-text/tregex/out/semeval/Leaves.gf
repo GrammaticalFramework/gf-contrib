@@ -44,6 +44,8 @@ abstract Leaves = Cat, Dictionary ** {
 		criticize_VS : VS ;		-- only criticize_V2 in Dictionary
 		express_VS : VS ;		-- only express_V2 in Dictionary
 		intend_VS : VS ;		-- only intend_V2 in Dictionary
+		let_VS : VS ;			-- subcat in Dictionary
+		love_VS : VS ;			-- only love_V2 in Dictionary
 		make_VS : VS ;			-- subcat in Dictionary
 		need_VS : VS ;			-- subcat in Dictionary
 		offer_VS : VS ;			-- subcat in Dictionary
@@ -89,14 +91,18 @@ abstract Leaves = Cat, Dictionary ** {
 
 		-- Mapping of PropBank noun frames
 
-		assemble_N : N ;
-		proliferate_N : N ;
-		negotiate_N : N ;
 		agree_N : N ;
-		investigate_N : N ;
-		explode_N : N ;
+		assemble_N : N ;
+		depart_N : N ;
 		discuss_N : N ;
+		explode_N : N ;
+		investigate_N : N ;
+		negotiate_N : N ;
+		participate_N : N ;
+		proliferate_N : N ;
+		secede_N : N ;
 		swear_in_N : N ;
+		verify_N : N ;
 
 		-- Extracted from DictionaryEng:
 

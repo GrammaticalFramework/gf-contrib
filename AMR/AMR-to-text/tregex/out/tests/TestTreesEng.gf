@@ -149,4 +149,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals = (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.list_N)) (mkVP L.name_V2 (mkNP S.a_Quant (mkCN (mkCN L.company_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.prevent_V2) (E.PurposeVP (mkVP L.carry_out_V2 (mkNP S.a_Quant (mkCN L.deal_N))))))))))))) fullStopPunct) ;
 
+	lin t75_I_have_tried_to_solve_my_problems = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.try_VV (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))) fullStopPunct) ;
+
 }
