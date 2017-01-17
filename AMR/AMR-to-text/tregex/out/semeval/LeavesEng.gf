@@ -27,6 +27,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		prosecute_V = mkV "prosecute" ;
 		state_V = mkV "state" ;
 		traffic_V = mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking" ;
+		support_V = mkV "support" ;
 
 		belong_V2 = belong_to_V2 ;
 		conflict_V2 = mkV2 (partV conflict_V "about") ;
@@ -35,11 +36,13 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		go_V2 = mkV2 (IrregEng.go_V) ;
 		google_V2 = mkV2 (mkV "google") ;
 		pass_V2 = mkV2 pass_V ;
+		recover_V2 = mkV2 recover_V ;
 		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
 		transfer_V2 = mkV2 transfer_V ;
 
 		recognize_1_V2 = mkV2 (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 
+		contrast_VV = mkVV contrast_V ;
 		convince_VV = mkVV (mkV "convince") ;
 		obligate_VV = mkVV (mkV "obligate") ;
 		order_VV = mkVV order_V ;
@@ -47,11 +50,16 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		urge_VV = mkVV (mkV "urge") ;
 
 		allow_VS = mkVS (mkV "allow") ;
+		call_VS = mkVS call_V ;
 		cause_VS = mkVS (mkV "cause") ;
+		criticize_VS = mkVS criticize_V ;
+		express_VS = mkVS (mkV "express" "expresses" "expressed" "expressed" "expressing") ;
+		intend_VS = mkVS (mkV "intend") ;
 		make_VS = mkVS (IrregEng.make_V) ;
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer") ;
 		outline_VS = mkVS (mkV "outline") ;
+		pursue_VS =  mkVS pursue_V ;
 		quote_VS = mkVS quote_V ;
 		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;

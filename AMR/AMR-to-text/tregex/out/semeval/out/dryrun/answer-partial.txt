@@ -50,7 +50,7 @@ FULL	It is resumed that it nucleus experiments and a military force is establish
 
 PART	It is abandoned that you are committed to first use a nucleus weapon.
 PART	It is retained when it threatens to a nation security that there is a right.
-FULL	Qin Shi Huang unifies China.
+FULL	Qin Shi Huang unifies China. Zheng Chenggong recovers Taiwan.
 
 
 
@@ -104,7 +104,7 @@ FULL	A cheap person that performs.
 FULL	A cheap person that performs.
 PART	It is dirty that there is a circle. A scum, a bird and a beast.
 FULL	It isn't easy that there is that female that is starred.
-PART	How is it possible that you make money?
+PART	Everybody does this. How is it possible that you make money?
 
 
 FULL	You just behave!
@@ -490,7 +490,7 @@ PART	Official of Iran states that it reduces.
 
 FULL	Israel.
 
-PART	A document that outlines that Israel proposes that it allows that a nucleus technology is international transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group.
+PART	A document that outlines that Israel proposes that it allows that a nucleus technology is internationally transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group.
 
 
 
@@ -539,7 +539,7 @@ PART	It states that a problem about a technical hinders a program of Iran.
 
 
 PART	An expert person states that it is simple that a uranium is produced of a grade material.
-
+PART	Ahmadinejad states that West still pursues that a negotiation is resumed.
 
 PART	A package that US endorses.
 
@@ -699,7 +699,7 @@ PART	Chavez is first elected in 1998 and it rates of a popularity.
 
 
 PART	This thing is costed less.
-
+PART	An organization that governs Venezuela also intends that it buys six navy crafts, ten helicopters and ten transport planes.
 
 
 PART	It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
@@ -901,7 +901,7 @@ FULL	All appropriate paperworks are validated.
 FULL	Ukraine abides.
 
 
-
+PART	A politician from Kenya demands an answer and it calls to a commission that it examines a situation.
 FULL	Southern Sudan is an autonomy region.
 
 
@@ -1092,7 +1092,7 @@ PART	France offers on 28 April 2003 to India that it military cooperates.
 
 
 FULL	Alliot-Marie states.
-PART	It is needed that it international cooperates.
+PART	It is needed that it internationally cooperates.
 
 
 FULL	France offers in 2002 that it sells.
@@ -1302,7 +1302,7 @@ FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
 
-
+PART	He expresses that it promotes stability, peace of Central Asia and a security.
 
 
 

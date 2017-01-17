@@ -18,6 +18,7 @@ abstract Leaves = Cat, Dictionary ** {
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
+		support_V : V ;			-- only support_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
 		conflict_V2 : V2 ;		-- only conflict_V in Dictionary
@@ -26,9 +27,11 @@ abstract Leaves = Cat, Dictionary ** {
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
+		recover_V2 : V2 ; 		-- only recover_V in Dictionary
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
 		transfer_V2 : V2 ;		-- subcat in Dictionary
 
+		contrast_VV : VV ;		-- only contrast_V2 in Dictionary
 		convince_VV : VV ;		-- only convince_V2 in Dictionary
 		obligate_VV : VV ;		-- only obligate_V2 in Dictionary
 		order_VV : VV ;			-- subcat in Dictionary
@@ -36,11 +39,16 @@ abstract Leaves = Cat, Dictionary ** {
 		urge_VV : VV ;			-- missing in Dictionary
 
 		allow_VS : VS ;			-- subcat in Dictionary
+		call_VS : VS ;			-- only call_V2 in Dictionary
 		cause_VS : VS ;			-- subcat in Dictionary
+		criticize_VS : VS ;		-- only criticize_V2 in Dictionary
+		express_VS : VS ;		-- only express_V2 in Dictionary
+		intend_VS : VS ;		-- only intend_V2 in Dictionary
 		make_VS : VS ;			-- subcat in Dictionary
 		need_VS : VS ;			-- subcat in Dictionary
 		offer_VS : VS ;			-- subcat in Dictionary
 		outline_VS : VS ;		-- only outline_V2 in Dictionary
+		pursue_VS : VS ;		-- only pursue_V2 in Dictionary
 		quote_VS : VS ;			-- missing in Dictionary
 		recommend_VS : VS ;		-- only recommend_V2 in Dictionary
 		refuse_VS : VS ;		-- missing in Dictionary

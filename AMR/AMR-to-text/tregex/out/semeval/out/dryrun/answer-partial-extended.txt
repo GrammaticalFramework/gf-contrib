@@ -35,7 +35,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_V) (S.mkAdv L.GOL_Prep (
 TXT: [I say to a fellow citizen .]
 
 SNT: Hello, everyone! We all know the "September 18th" Incident, but now Japan again has a premeditated plan for another "September 18th" on the sea, another "Lugou Bridge on the sea".
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_V2 (mkNP S.a_Quant (mkCN L.hello_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.everyone_N))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.have_concession_V2) (E.PurposeVP (mkVP (L.know_V2 S.we_NP) (mkNP (P.mkPN "September"))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP (P.mkAdV "again") (mkVP (P.mkAdV "now") (mkVP L.plan_V2 (mkNP L.another_Det (mkCN (mkCN (mkCN (mkCN L.incident_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.sea_N)))) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.mean_V2) (S.mkAdv L.PPT_Prep (mkNP (ss "another") (mkNP (P.mkPN "Lugou Bridge"))))))))))))))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_V2 (mkNP S.a_Quant (mkCN L.hello_N))) (S.mkAdv L.GOL_Prep S.everyone_NP))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.have_concession_V2) (E.PurposeVP (mkVP (L.know_V2 S.we_NP) (mkNP (P.mkPN "September"))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Japan")) (mkVP (P.mkAdV "again") (mkVP (P.mkAdV "now") (mkVP L.plan_V2 (mkNP L.another_Det (mkCN (mkCN (mkCN (mkCN L.incident_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.sea_N)))) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.mean_V2) (S.mkAdv L.PPT_Prep (mkNP (ss "another") (mkNP (P.mkPN "Lugou Bridge"))))))))))))))))))) fullStopPunct))
 TXT: [unknown qualified constant L.hello_N] [unknown qualified constant L.have_concession_V2]
 
 SNT: Japan surprisingly defied the strong condemnation of the whole world, openly invaded our country's sacred territory, "the Diaoyu Islands".
@@ -59,7 +59,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (ss "especially") (mkNP (P.mkPN "China"))) 
 TXT: [especially China suffers that Japan ravages .]
 
 SNT: In the Northeast, Japanese Unit 731 cruelly conducted human body experiments on living people of China, Korea and other countries, the method of which were extremely brutal; the Nanjing Massacre added a layer of blood to the ancient capital which will never fade away; the big bloody battles at Hengyang and Changsha laid bare the bones of the dead over a thousand kilometers and killed off everything ...
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP (mkNP (P.mkPN "Unit")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkVP (mkVP (mkVP (P.mkAdV "cruel") (mkVP L.experiment_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (E.CompoundCN L.country_N L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.live_V))))) (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.live_V) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China")))))))) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Korea")))) (mkRS (mkRCl S.which_RP (mkVP L.live_V)))))))))) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN (mkCN L.method_N) (mkRS (mkRCl S.which_RP (mkAP L.extreme_AdA (mkAP L.brutal_A)))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Northeast"))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Nanjing Massacre")) (mkVP (mkVP L.add_V2 (mkNP S.a_Quant (mkCN (mkCN L.layer_N) (mkRS negativePol (mkRCl S.which_RP (mkVP (P.mkAdV "ever") (passiveVP L.fade_V2))))))) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN L.ancient_A L.city_N))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.bare_V2 (mkNP S.a_Quant (mkCN (mkCN L.bone_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (passiveVP L.die_V2))))))))))) (mkS (mkCl (mkVP L.kill_off_V2 (mkNP S.a_Quant (mkCN L.everything_N)))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP (mkNP (P.mkPN "Unit")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkVP (mkVP (mkVP (P.mkAdV "cruel") (mkVP L.experiment_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (E.CompoundCN L.country_N L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.live_V))))) (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.live_V) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China")))))))) (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Korea")))) (mkRS (mkRCl S.which_RP (mkVP L.live_V)))))))))) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN (mkCN L.method_N) (mkRS (mkRCl S.which_RP (mkAP L.extreme_AdA (mkAP L.brutal_A)))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Northeast"))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Nanjing Massacre")) (mkVP (mkVP L.add_V2 (mkNP S.a_Quant (mkCN (mkCN L.layer_N) (mkRS negativePol (mkRCl S.which_RP (mkVP (P.mkAdV "ever") (passiveVP L.fade_V2))))))) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN L.ancient_A L.city_N))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.bare_V2 (mkNP S.a_Quant (mkCN (mkCN L.bone_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (passiveVP L.die_V2))))))))))) (mkS (mkCl (mkVP L.kill_off_V2 S.everything_NP)))))) fullStopPunct))
 TXT: [unknown qualified constant L.extreme_AdA] [Nanjing Massacre adds a layer that isn't ever faded an ancient city .] [unknown qualified constant L.die_V2]
 
 SNT: My fellow citizens, of the heinous crimes committed by Japan in China, there are too many instances to cite, difficult to record without exhausting all bamboo strips.
@@ -208,7 +208,7 @@ TXT: [it is retained when it threatens to a nation security that there is a righ
 
 SNT: My fellow citizens, only if we have self-confidence and self-improvement, can we strive to be strong. Qin Shi Huang unified China. Zheng Chenggong recovered Taiwan. In our responsibilities we must carry on the farsightedness, insight, and strong will of our predecessors.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.say_V2) (S.mkAdv L.GOL_Prep (mkNP S.i_Pron (mkCN L.fellow_A L.citizen_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.we_NP (mkVP L.strive_VS (mkS (mkCl (passiveVP L.strong_V2)))))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Qin Shi Huang")) (mkVP L.unify_V2 (mkNP (P.mkPN "China")))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Zheng Chenggong")) (mkVP L.recover_V2 (mkNP (P.mkPN "Taiwan")))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl S.we_NP (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP carry_on-02)))))) fullStopPunct))
-TXT: [unknown qualified constant L.strive_VS] [Qin Shi Huang unifies China .] [unknown qualified constant L.recover_V2] [constant not found: carry_on]
+TXT: [unknown qualified constant L.strive_VS] [Qin Shi Huang unifies China .] [Zheng Chenggong recovers Taiwan .] [constant not found: carry_on]
 
 SNT: Now, that piece of land trembling far away from the embrace of the motherland is shaking, moaning, and calling. Fellow citizens, let us carry forward the unfulfilled wishes of previous generals, moving forward courageously!
 AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP L.call_V))) (mkListS (mkS (mkCl (mkNP S.that_Det (mkCN (mkCN (mkCN L.piece_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN L.land_N)))) (mkRS (mkRCl S.which_RP (passiveVP L.tremble_V2))))) (passiveVP L.shake_V2))) (mkS (mkCl (mkVP L.moan_V))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.say_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.fellow_A L.citizen_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP L.carry_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP wish-01)))))))))))) exclMarkPunct))
@@ -423,8 +423,8 @@ AST: (multi-sentence (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L
 TXT: [it isn't easy that there is that female that is starred .] [constant not found: blame]
 
 SNT: Everybody is doing this, how can you make money if you don't do this
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.everybody_N)) (mkVP L.do_V2 S.this_NP)))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.make_V2 (mkNP (mkCN L.money_N)))))))))) questMarkPunct))
-TXT: [unknown qualified constant L.everybody_N] [how is it possible that you make money ?]
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.everybody_NP (mkVP L.do_V2 S.this_NP)))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl S.how_IAdv (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.make_V2 (mkNP (mkCN L.money_N)))))))))) questMarkPunct))
+TXT: [everybody does this .] [how is it possible that you make money ?]
 
 SNT: She is a proud woman in front of others but is in melancholy mood when staying alone ...
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.contrast_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkVP L.pride_V)))))))) fullStopPunct)
@@ -716,7 +716,7 @@ TXT: [a person makes a good point .]
 
 SNT: However , this situation hammers home the validity of the state auditor 's report finding that the CTB and VDOT fail to fund transportation projects based on a comprehensive state transportation plan , but rather , based on whoever does the best job of lobbying .
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (hammer-02 (mkNP S.this_Det (mkCN L.situation_N)))))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: hammer]
 
 SNT: I submit that this is a disgraceful situation that should not be tolerated .
 AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.submit_VS (mkS (mkCl S.this_NP (mkNP S.a_Quant (mkCN (mkCN (mkCN L.situation_N) (mkRS (mkRCl S.which_RP (mkVP L.disgrace_V)))) (mkRS negativePol (mkRCl S.which_RP (passiveVP L.tolerate_V2))))))))))) fullStopPunct)
@@ -808,7 +808,7 @@ TXT: [A function type is expected for obvious_A instead of type A]
 
 SNT: but in the aggregate if we demonize business long enough we will eventually find out we all work for the Devil .
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (P.mkAdV "eventual") (mkVP (mkVP (find-01 S.we_NP)) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.aggregate_N))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: find]
 
 SNT: I do n't see there is any point in claiming as `` a solution '' a balance that is dynamic and ever changing in nature .
 AST: (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP L.see_VS (mkS (mkCl (mkVP (passiveVP L.have_purpose_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.claim_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.solve_V) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.balance_N)))))))))))))))))) fullStopPunct)
@@ -851,8 +851,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.commute_V) (S.mkAdv L.GOL_Pr
 TXT: [I commute to a location .]
 
 SNT: I 've never seen anything remotely resembling a `` flood '' of traffic .
-AST: (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP (P.mkAdV "ever") (mkVP L.see_V2 (mkNP S.a_Quant (mkCN (mkCN L.anything_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (P.mkAdv "remote"))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.anything_N]
+AST: (mkText (mkUtt (mkS negativePol (mkCl S.i_NP (mkVP (P.mkAdV "ever") (mkVP L.see_V2 (S.anything_NP (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (P.mkAdv "remote")))))))))) fullStopPunct)
+TXT: [record type expected for: S]
 
 SNT: It 's a 55 mph zone - 75 to 100 cars in `` a morning '' - over how much time ?
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (passiveVP L.zone_V2)))) fullStopPunct)
@@ -916,7 +916,7 @@ TXT: [unknown qualified constant L.every_N]
 
 SNT: But you do n't have a right to have the rest of the state to underwrite construction of a $ 400 million highway to make it easier to shop and get to work .
 AST: (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.contrast_VV (mkVP L.right_VV (mkVP (underwrite-01 (mkNP S.a_Quant (mkCN (mkCN L.rest_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN L.state_N))))))) S.you_NP))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [unknown qualified constant L.right_VV]
 
 SNT: What 's consistently overlooked in the debate ovre 288 is what else that $ 400 million could have been spent on .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.else_N L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.spend_V2) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkNum (mkDigits "400000000")) (mkCN L.dollar_N)))))))) (passiveVP L.overlook_V2)))) fullStopPunct)
@@ -956,7 +956,7 @@ TXT: [unknown qualified constant L.there_N]
 
 SNT: But he has no one his family and him dont get along and have their own issues.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (have-03 S.he_NP)))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.family_N)) (mkVP (passiveVP L.get_along_V2) (S.mkAdv L.COM_Prep S.he_NP)))) (mkS (mkCl (mkVP L.have_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.issue_N)))))))))) fullStopPunct))
-TXT: [unknown qualified constant L.contrast_VV] [unknown qualified constant L.get_along_V2]
+TXT: [constant not found: have] [unknown qualified constant L.get_along_V2]
 
 SNT: I don't want to be miserable anymore and the longer he is around the more miserable I will be.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl S.i_NP (mkVP (P.mkAdV "anymore") (mkVP L.want_VS (mkS (mkCl (mkAP L.miserable_A))))))) (mkS (mkCl (mkAP L.more_AdA (mkAP L.miserable_A))))))) fullStopPunct)
@@ -972,7 +972,7 @@ TXT: [I believe that every child needs parent .]
 
 SNT: But he thinks if he cant have me no one can.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (think-01 S.he_NP)))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: think]
 
 SNT: What do I do to move on with my life.
 AST: (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl S.i_NP (mkVP L.do_V))))) questMarkPunct)
@@ -1087,7 +1087,7 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.legal_A) (mkS (
 TXT: [it isn't legal that an amount is paid .]
 
 SNT: Hello I started university in September, didn't immediately gel with it obviously like most people.
-AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkCN L.hello_N)))) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (P.mkAdV "immediate") (mkVP gel-00)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (monthAdv september_Month))))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkNP S.a_Quant (mkCN L.hello_N)))) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (P.mkAdV "immediately") (mkVP gel-00)))) (S.mkAdv S.that_Subj (mkS (mkCl S.i_NP (mkVP (mkVP L.start_V2 (mkNP S.a_Quant (mkCN L.university_N))) (monthAdv september_Month))))))))) fullStopPunct))
 TXT: [unknown qualified constant L.hello_N] [constant not found: gel]
 
 SNT: However, I knew it would take me some time to adjust, because I have always been very introverted, and shy and especially anxious and all the rest of it.
@@ -1236,11 +1236,11 @@ TXT: [I wish that it is possible that it wipes out her .] [A function type is ex
 
 SNT: But then, I think I'm just being selfish.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (P.mkAdV "then") (mkVP (think-01 S.i_NP))))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: think]
 
 SNT: But surely, my life isn't meant to be like this?
 AST: (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.contrast_VV (mkVP mean-02))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: mean]
 
 SNT: It should be so much better. B
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP L.more_AdA (mkAP (mkAP L.good_A) (mkS (mkCl S.it_NP))))))))))) fullStopPunct)
@@ -1332,7 +1332,7 @@ TXT: [unknown qualified constant L.try_VS]
 
 SNT: But being overly-nice to people has lead them to believe that they can say or do whatever the hell they want to me...
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP L.lead_VV (mkVP believe-01)))))) exclMarkPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [unknown qualified constant L.lead_VV]
 
 SNT: they show absolutely no respect.
 AST: (mkText (mkUtt (mkS (mkCl S.they_NP (mkVP L.show_VS (mkS negativePol (mkCl (mkVP (P.mkAdV "absolute") (mkVP L.respect_V)))))))) fullStopPunct)
@@ -1360,7 +1360,7 @@ TXT: [unknown qualified constant L.have_condition_V2]
 
 SNT: You could start with 'No, sorry but I'm busy'
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP L.start_VV (mkVP L.contrast_VV (mkVP busy-01))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.contrast_VV]
+TXT: [constant not found: busy]
 
 SNT: Of course, don't go over the top with it lest you go in completely the opposite direction.
 AST: (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkVP (mkVP (mkVP (mkVP L.go_V) (E.PurposeVP (mkVP L.go_V))) (S.mkAdv L.with_Prep S.it_NP)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (E.CompoundCN L.over_N L.top_N))))))) fullStopPunct)
@@ -1391,7 +1391,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "emotional"
 TXT: [I emotional struggle .] [I have 2 periods when it lives .]
 
 SNT: I feel at the moment like the problems in my life are incredibly overwhelming, and are making me ever more doubtful of my always low self-esteem. I have no ability to concentrate on work, often find myself becoming very quiet in social occasions, and doubt myself over anything and everything.
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "moment") (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (mkVP L.doubt_V) (S.mkAdv L.about_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.anything_N)) (mkNP S.a_Quant (mkCN L.everything_N)))))))) (mkListS (mkS negativePol (mkCl S.i_NP (mkVP (passiveVP L.capable_V2) (E.PurposeVP (mkVP L.concentrate_V2 (mkNP S.a_Quant (mkCN L.work_N))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl (mkVP (passiveVP L.become_V2) (E.PurposeVP (mkVP (mkVP (mkVP quiet-03) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.society_N L.occasion_N)))))) (P.mkAdv "very"))))))))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (P.mkAdV "moment") (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.resemble_V2)))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (mkVP L.doubt_V) (S.mkAdv L.about_Prep (mkNP S.and_Conj (mkListNP S.anything_NP S.everything_NP)))))) (mkListS (mkS negativePol (mkCl S.i_NP (mkVP (passiveVP L.capable_V2) (E.PurposeVP (mkVP L.concentrate_V2 (mkNP S.a_Quant (mkCN L.work_N))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl (mkVP (passiveVP L.become_V2) (E.PurposeVP (mkVP (mkVP (mkVP quiet-03) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.society_N L.occasion_N)))))) (P.mkAdv "very"))))))))))))) fullStopPunct))
 TXT: [I moment feel a thing that is resembled .] [unknown qualified constant L.doubt_V]
 
 SNT: Neither of my counsellers have diagnosed me with depression, and both have suggested I do not suffer from it, but it is a huge worry to me, as depression was the cause of my dad's death, suicide.
@@ -1400,11 +1400,11 @@ TXT: [constant not found: worry]
 
 SNT: I have tried to solve my problems before, and have found exercise and meditation particularly useful, and have also tried things like self-help books and tapes. But my general feeling, is, 'Is this what my life will be? My one chance at existance, my one chance of being a young man, I am wasting it!' And these feelings are beating away at me.
 AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkAdV "also") (mkVP L.try_V2 (mkNP S.a_Quant (mkCN L.thing_N)))))) (mkListS (mkS (mkCl S.i_NP (mkVP (P.mkAdV "before") (mkVP L.try_VS (mkS (mkCl (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))))) (mkS (mkCl (mkVP L.find_VS (mkS (mkCl S.it_NP (mkAP L.particular_AdA (mkAP (mkAP L.useful_A) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.exercise_N)) (mkNP S.a_Quant (mkCN L.meditation_N))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP L.contrast_VV (mkVP (feel-01 S.i_NP))))))) questMarkPunct) (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.waste_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.one_N L.chance_N)))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.chance_N)))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP S.i_NP L.feel_V2)))) (mkVP (passiveVP L.beat_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.away_N))))))) fullStopPunct))
-TXT: [unknown qualified constant L.try_VS] [unknown qualified constant L.contrast_VV] [unknown qualified constant L.waste_VS] [unknown qualified constant L.away_N]
+TXT: [unknown qualified constant L.try_VS] [constant not found: feel] [unknown qualified constant L.waste_VS] [unknown qualified constant L.away_N]
 
 SNT: I simply don't know what to do, and when I think of things to do, I never follow through with it. Friends often say I'm lazy, and I can't disagree a lot of the time. I feel like everything anyone could do to help, people have tried, and time and time again I fail.
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl S.i_NP (mkVP (P.mkAdV "simple") (mkVP L.know_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP do-02)))))))) (mkS negativePol (mkCl (mkVP (P.mkAdV "ever") (mkVP (mkVP L.follow_through_V) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP L.think_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP do-02))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (mkCN (P.mkN2 L.friend_N L.of_Prep))) (mkVP L.say_VS (mkS (mkCl S.i_NP (mkAP L.lazy_A)))))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.disagree_V))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (E.PurposeVP (mkVP (L.try_V2 (mkNP S.a_Quant (mkCN L.person_N))) (mkNP S.a_Quant (mkCN (mkCN L.everything_N) (mkRS (mkRCl S.which_RP L.anyone_NP L.do_V2)))))))))))))) (mkS (mkCl (passiveVP L.fail_V2)))))) fullStopPunct))
-TXT: [constant not found: do] [friend says that I am lazy and it isn't possible that it disagrees .] [unknown qualified constant L.everything_N]
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl S.i_NP (mkVP (P.mkAdV "simple") (mkVP L.know_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP do-02)))))))) (mkS negativePol (mkCl (mkVP (P.mkAdV "ever") (mkVP (mkVP L.follow_through_V) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP L.think_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP do-02))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (mkCN (P.mkN2 L.friend_N L.of_Prep))) (mkVP L.say_VS (mkS (mkCl S.i_NP (mkAP L.lazy_A)))))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.disagree_V))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (E.PurposeVP (mkVP (L.try_V2 (mkNP S.a_Quant (mkCN L.person_N))) (S.everything_NP (mkRS (mkRCl S.which_RP L.anyone_NP L.do_V2))))))))))))) (mkS (mkCl (passiveVP L.fail_V2)))))) fullStopPunct))
+TXT: [constant not found: do] [friend says that I am lazy and it isn't possible that it disagrees .] [A function type is expected for try_V2 instead of type V2]
 
 SNT: Sorry to anyone whose read this jumbled mess, and I feel a bit like a self-seeking moaner, but I truly do feel desperate.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkAP (mkAP L.sorry_A) (mkS (mkCl S.i_NP))))) (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP feel-01))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.feel_VS (mkS (mkCl (mkVP (passiveVP L.resemble_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "self") (mkVP L.seek_V))))) (mkRS (mkRCl S.which_RP (mkVP L.moan_V)))))))))) (P.mkAdv "bit"))))))))))) fullStopPunct)
@@ -1419,8 +1419,8 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkAP (L.professi
 TXT: [unknown qualified constant L.healthy_N]
 
 SNT: Most people feel unintelligent and awkward when they first get to uni- you're definitely not alone there. But I would really recommend that you get an appointment with your uni counselling services. It doesn't really matter whether anyone has told you that you are depressed or not, you are obviously having some problems at the minute and could use some support- labels aren't as important as your experiences. Meditation and exercise are really helpful, so definitely try to do those. But yeah, you will have to engage with help and life in general to get somewhere- but don't beat yourself up about feeling unmotivated to do anything at the minute, lots of people feel like this and hopefully it will pass as you begin to feel better. Being unkind to yourself will only make you feel worse- be kind to yourself and get some help.
-AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (mkVP L.feel_V) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (passiveVP (L.get_V2 (S.mkOrd (mkDigits "1")))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.university_N))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (mkVP (recommend-01 S.i_NP)) (P.mkAdv "really")))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl (mkVP (passiveVP L.matter_V2) (S.mkAdv S.that_Subj (mkS (mkCl L.anyone_NP (mkVP (mkVP L.tell_VS (mkS S.or_Conj (mkListS (mkS (mkCl (passiveVP L.depress_V2))) (mkS negativePol (mkCl (passiveVP L.depress_V2)))))) (S.mkAdv L.GOL_Prep S.you_NP))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkVP (P.mkAdV "minute") (mkVP L.have_V2 (mkNP S.somePl_Det (mkCN L.problem_N)))))) (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.use_VS (mkS (mkCl (mkVP (P.mkAdV "some") (passiveVP L.support_V2))))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkAP L.equal_AdA (mkAP L.important_A))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkAP L.really_AdA (mkAP L.helpful_A))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.contrast_VV (mkVP L.contrast_VV (mkVP (mkVP beat_up-05) (S.mkAdv S.because_Subj (mkS (mkCl (mkVP L.feel_VS (mkS negativePol (mkCl (mkVP (passiveVP L.motivate_V2) (E.PurposeVP (mkVP (P.mkAdV "minute") (mkVP L.do_V2 (mkNP S.a_Quant (mkCN L.anything_N)))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (S.mkAdv L.DIR_Prep S.this_NP))))))))) (mkS (mkCl (mkVP (passiveVP L.pass_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP L.begin_VS (mkS (mkCl S.you_NP (mkVP L.feel_VS (mkS (mkCl S.it_NP (mkAP L.more_AdA (mkAP L.well_A))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkAP L.kind_A)))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkAP L.kind_A))) (mkS (mkCl (mkVP L.get_VS (mkS (mkCl (mkVP (P.mkAdV "some") (mkVP L.help_V)))))))))) exclMarkPunct))
-TXT: [A function type is expected for get_V2 instead of type V2] [unknown qualified constant L.contrast_VV] [unknown qualified constant L.matter_V2] [unknown qualified constant L.use_VS] [unknown qualified constant L.equal_AdA] [no overload instance of mkCl] [unknown qualified constant L.contrast_VV] [unknown qualified constant L.begin_VS] [you aren't kind .] [unknown qualified constant L.get_VS]
+AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (mkVP L.feel_V) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (passiveVP (L.get_V2 (S.mkOrd (mkDigits "1")))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.university_N))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP L.contrast_VV (mkVP (mkVP (recommend-01 S.i_NP)) (P.mkAdv "really")))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl (mkVP (passiveVP L.matter_V2) (S.mkAdv S.that_Subj (mkS (mkCl L.anyone_NP (mkVP (mkVP L.tell_VS (mkS S.or_Conj (mkListS (mkS (mkCl (passiveVP L.depress_V2))) (mkS negativePol (mkCl (passiveVP L.depress_V2)))))) (S.mkAdv L.GOL_Prep S.you_NP))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkVP (P.mkAdV "minute") (mkVP L.have_V2 (mkNP S.somePl_Det (mkCN L.problem_N)))))) (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.use_VS (mkS (mkCl (mkVP (P.mkAdV "some") (passiveVP L.support_V2))))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkAP L.equal_AdA (mkAP L.important_A))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkAP L.really_AdA (mkAP L.helpful_A))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl (mkVP L.contrast_VV (mkVP L.contrast_VV (mkVP (mkVP beat_up-05) (S.mkAdv S.because_Subj (mkS (mkCl (mkVP L.feel_VS (mkS negativePol (mkCl (mkVP (passiveVP L.motivate_V2) (E.PurposeVP (mkVP (P.mkAdV "minute") (mkVP L.do_V2 S.anything_NP)))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.resemble_V2) (S.mkAdv L.DIR_Prep S.this_NP))))))))) (mkS (mkCl (mkVP (passiveVP L.pass_V2) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP L.begin_VS (mkS (mkCl S.you_NP (mkVP L.feel_VS (mkS (mkCl S.it_NP (mkAP L.more_AdA (mkAP L.well_A))))))))))))))))) fullStopPunct) (mkText (mkUtt (mkS negativePol (mkCl S.you_NP (mkAP L.kind_A)))) fullStopPunct) (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkAP L.kind_A))) (mkS (mkCl (mkVP L.get_VS (mkS (mkCl (mkVP (P.mkAdV "some") (mkVP L.help_V)))))))))) exclMarkPunct))
+TXT: [A function type is expected for get_V2 instead of type V2] [constant not found: recommend] [unknown qualified constant L.matter_V2] [unknown qualified constant L.use_VS] [unknown qualified constant L.equal_AdA] [no overload instance of mkCl] [constant not found: beat_up] [unknown qualified constant L.begin_VS] [you aren't kind .] [unknown qualified constant L.get_VS]
 
 SNT: Good luck.
 AST: (mkText (mkUtt (mkNP (mkCN L.good_A (mkCN L.luck_N)))))
@@ -1663,7 +1663,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.yo
 TXT: [it is possible that you overcome it .]
 
 SNT: So I think Ive got a form of OCD because for the past year, I've found that everytime I go out, especially to Uni, I'm always checking my belongings to make sure I haven't lost or left anything.
-AST: (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl S.i_NP (mkVP L.find_VS (mkS (mkCl (mkVP (P.mkAdV "always") (mkVP (mkVP L.check_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP L.belong_V)))))) (E.PurposeVP (mkVP L.ensure_VS (mkS S.or_Conj (mkListS (mkS negativePol (mkCl (mkVP L.lose_V2 (mkNP S.a_Quant (mkCN L.anything_N))))) (mkS negativePol (mkCl (mkVP L.leave_behind_V))))))))))))))) (mkS (mkCl (mkVP (P.mkAdV "so") (mkVP L.think_VS (mkS (mkCl (mkVP L.get_V2 (mkNP (ss "form") (mkNP (P.mkPN "OCD")))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (S.mkAdv S.because_Subj (mkS (mkCl S.i_NP (mkVP L.find_VS (mkS (mkCl (mkVP (P.mkAdV "always") (mkVP (mkVP L.check_V2 (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP L.belong_V)))))) (E.PurposeVP (mkVP L.ensure_VS (mkS S.or_Conj (mkListS (mkS negativePol (mkCl (mkVP L.lose_V2 S.anything_NP))) (mkS negativePol (mkCl (mkVP L.leave_behind_V))))))))))))))) (mkS (mkCl (mkVP (P.mkAdV "so") (mkVP L.think_VS (mkS (mkCl (mkVP L.get_V2 (mkNP (ss "form") (mkNP (P.mkPN "OCD")))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.belong_V]
 
 SNT: I often have to check twice at one go, then after 30 seconds for some reason I cant resist checking again!
@@ -1967,15 +1967,15 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: Documents outlining the Israeli proposal to allow the international transfer of nuclear technology to States that have not signed on to nonproliferation rules were distributed to the Nuclear Suppliers Group.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_VS (mkS (mkCl (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N)))))))))))))))))))))) (mkVP (passiveVP L.distribute_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Nuclear Suppliers Group"))))))) fullStopPunct)
-TXT: [a document that outlines that Israel proposes that it allows that a nucleus technology is international transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_VS (mkS (mkCl (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.technology_N)) (mkVP (mkVP (P.mkAdV "internationally") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N)))))))))))))))))))))) (mkVP (passiveVP L.distribute_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Nuclear Suppliers Group"))))))) fullStopPunct)
+TXT: [a document that outlines that Israel proposes that it allows that a nucleus technology is internationally transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group .]
 
 SNT: The proposal may complicate the Bush administration's efforts to win an exemption for India to engage in nuclear trade.
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.propose_V2))))) (mkVP L.complicate_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.person_N L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V))))) (mkNP S.a_Quant (mkCN L.effort_N))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.complicate_VS]
 
 SNT: Israeli officials convinced a key group of nations engaged in nuclear trade to adopt new guidelines allowing the international transfer of nuclear technology to States that have not signed on to nonproliferation rules.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Israel")))) (mkVP L.convince_VV (mkVP L.adopt_V2 (mkNP S.a_Quant (mkCN (mkCN L.new_A (mkCN L.guideline_N)) (mkRS (mkRCl S.which_RP (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N))))))))))))))))) (mkNP S.a_Quant (mkCN L.key_A (mkCN L.group_N))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Israel")))) (mkVP L.convince_VV (mkVP L.adopt_V2 (mkNP S.a_Quant (mkCN (mkCN L.new_A (mkCN L.guideline_N)) (mkRS (mkRCl S.which_RP (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (P.mkAdV "internationally") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N))))))))))))))))) (mkNP S.a_Quant (mkCN L.key_A (mkCN L.group_N))))))) fullStopPunct)
 TXT: [no overload instance of mkVP]
 
 SNT: Countries including India, Israel and Pakistan that have not signed the nuclear Non-Proliferation Treaty are prohibited from participating in international nuclear trade which includes purchasing reactors, uranium fuel or yellowcake.
@@ -2155,8 +2155,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.repeat_VS (mkS (mk
 TXT: [unknown qualified constant L.aim_VS]
 
 SNT: The US, Israel, Europe and the majority of Western arms control experts believe that Iran is pursuing the capability to produce bombs immediately in the event of a decision.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (L.expert_A (mkVP L.control_V2 (mkNP S.a_Quant (mkCN L.arm_N)))) (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "West")))))) (mkListNP (mkNP (P.mkPN "Europe")) (mkListNP (mkNP (P.mkPN "US")) (mkNP (P.mkPN "Israel")))))) (mkVP L.believe_VS (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.pursue_VS (mkS (mkCl (mkVP (passiveVP L.capable_V2) (E.PurposeVP (mkVP (P.mkAdV "immediate") (mkVP L.produce_V2 (mkNP S.a_Quant (mkCN L.bomb_N))))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.pursue_VS]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (L.expert_A (mkVP L.control_V2 (mkNP S.a_Quant (mkCN L.arm_N)))) (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "West")))))) (mkListNP (mkNP (P.mkPN "Europe")) (mkListNP (mkNP (P.mkPN "US")) (mkNP (P.mkPN "Israel")))))) (mkVP L.believe_VS (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.pursue_VS (mkS (mkCl (mkVP (passiveVP L.capable_V2) (E.PurposeVP (mkVP (P.mkAdV "immediately") (mkVP L.produce_V2 (mkNP S.a_Quant (mkCN L.bomb_N))))))))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.capable_V2]
 
 SNT: Experts stated that producing weapons-grade uranium from reactor-grade material is relatively simple.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.expert_A (mkCN L.person_N))) (mkVP L.state_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.simple_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.uranium_N)) (mkVP (passiveVP L.produce_V2) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (E.CompoundCN L.grade_N L.material_N))))))))))))) fullStopPunct)
@@ -2164,7 +2164,7 @@ TXT: [an expert person states that it is simple that a uranium is produced of a 
 
 SNT: Ahmadinejad stated that after Iran resisted the West's demands for a halt in nuclear activities, the West still pursued the resumption of negotiations.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Ahmadinejad")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "West")) (mkVP (P.mkAdV "still") (mkVP L.pursue_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.negotiate_N)) (passiveVP L.resume_V2))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.pursue_VS]
+TXT: [Ahmadinejad states that West still pursues that a negotiation is resumed .]
 
 SNT: EU foreign policy chief Javier Solana recently presented Iran with 2 offers --
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chief_N L.of_Prep) (mkNP (P.mkPN "EU"))) (mkNP (P.mkPN "Javier Solana")))) (mkVP (mkVP (P.mkAdV "recently") (mkVP L.present_VS (mkS (mkCl (mkVP (L.offer_V (mkNum (mkDigits "2")))))))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Iran"))))))) fullStopPunct)
@@ -2576,7 +2576,7 @@ TXT: [unknown qualified constant L.encounter_VS]
 
 SNT: Brazilian officials have expressed hope that the policy will be endorsed by the US before going into effect.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Brazil")))) (mkVP L.express_VS (mkS (mkCl (mkVP L.hopeful_VS (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP L.endorse_V2 (mkNP S.a_Quant (mkCN L.policy_N)))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.express_VS]
+TXT: [unknown qualified constant L.hopeful_VS]
 
 SNT: The US is scheduled to provide 10.2 million dollars in drug and law enforcement aid to Brazil in 2004.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP (passiveVP L.schedule_V2) (E.PurposeVP (mkVP (mkVP L.provide_V2 (mkNP S.a_Quant (mkNum (mkDigits "10200000")) (mkCN L.dollar_N))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Brazil"))))))))) fullStopPunct)
@@ -2755,8 +2755,8 @@ AST: (h (mkNP S.a_Det L.person_N))
 TXT: [constant not found: h]
 
 SNT: Espinoza said that Peru has 500000 rifles and no one says anything.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Espinoza")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Peru")) (mkVP L.have_V2 (mkNP S.a_Quant (mkNum (mkDigits "500000")) (mkCN L.rifle_N))))) (mkS (mkCl (mkVP L.say_V2 (mkNP S.a_Quant (mkCN L.anything_N))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.anything_N]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Espinoza")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Peru")) (mkVP L.have_V2 (mkNP S.a_Quant (mkNum (mkDigits "500000")) (mkCN L.rifle_N))))) (mkS (mkCl (mkVP L.say_V2 S.anything_NP))))))))) fullStopPunct)
+TXT: [record type expected for: S]
 
 SNT: Espinoza said no one complains that Colombia is the most militarized country in Latin America.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Espinoza")) (mkVP L.say_VS (mkS (mkCl (mkVP L.complain_VS (mkS (mkCl (mkNP (P.mkPN "Colombia")) (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Latin America")))))))))))))) fullStopPunct)
@@ -2804,7 +2804,7 @@ TXT: [this thing is costed less .]
 
 SNT: The Government of Venezuela also intends to buy 10 Russian helicopters, 10 Spanish transport planes, and 6 Spanish naval craft.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Venezuela"))))))) (mkVP (P.mkAdV "also") (mkVP L.intend_VS (mkS (mkCl (mkVP L.buy_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "6")) (E.CompoundCN L.navy_N L.craft_N)) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "10")) (mkCN L.helicopter_N)) (mkNP S.a_Quant (mkNum (mkDigits "10")) (E.CompoundCN L.transport_N L.plane_N))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.intend_VS]
+TXT: [an organization that governs Venezuela also intends that it buys 6 navy crafts , 1 Predef.BIND 0 helicopters and 1 Predef.BIND 0 transport planes .]
 
 SNT: Venezuelan officials say the government is negotiating with Brazil to buy around 24 air support and training planes.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Venezuela")))) (mkVP L.say_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP L.negotiate_VV (mkVP L.buy_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.plane_N) (E.PurposeVP (mkVP L.support_V2 (mkNP (mkCN L.air_N)))))) (mkNP S.a_Quant (mkCN (mkCN L.plane_N) (E.PurposeVP (mkVP L.train_V))))))) (mkNP (P.mkPN "Brazil"))))))))) fullStopPunct)
@@ -2860,7 +2860,7 @@ TXT: [it is possible that it distresses a domestic person that opposes Chavez mo
 
 SNT: Chavez called earlier in 050000 for so-called Revolutionary units to start preparing the public to resist a superpower aggressor and said the first step would be to train from 100000 to 2 million volunteers in the coming years to back up active-duty armed forces.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Chavez")) (mkVP (P.mkAdV "so") (mkVP L.call_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.unit_N) (mkRS (mkRCl S.which_RP (passiveVP L.call_V2))))) (mkVP L.start_VS (mkS (mkCl (mkVP L.prepare_VV (mkVP L.resist_V2 (mkNP S.a_Quant (E.CompoundCN L.superpower_N L.aggressor_N))) (mkNP S.a_Quant (mkCN L.public_N)))))))))))) (mkS (mkCl (mkVP L.say_VS (mkS (mkCl (mkVP (L.step_V (S.mkOrd (mkDigits "1")))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.call_VS]
+TXT: [unknown qualified constant L.start_VS]
 
 SNT: Military analysts estimate Venezuela's active-duty armed forces number 83,000.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.analyze_V2 (mkNP S.a_Quant (mkCN L.military_N))))))) (mkVP L.estimate_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.duty_N L.force_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Venezuela")))) (mkRS (mkRCl S.which_RP (passiveVP L.arm_V2))))) (passiveVP L.number_V2))))))) fullStopPunct)
@@ -3040,7 +3040,7 @@ TXT: [an international and a weapon .]
 
 SNT: Leading arms control experts criticize a new nuclear activities plan released by Iran and the U.N.'s International Atomic Energy Agency as ineffectual and dangerous.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.expert_A (mkVP L.control_V2 (mkNP S.a_Quant (mkCN L.arm_N)))) (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.lead_V)))))) (mkVP (mkVP L.criticize_VS (mkS (mkCl (mkVP (passiveVP L.plan_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "nucleus") (mkVP L.activity_V))))))))) (S.mkAdv L.CAU_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.effectual_N)) (mkNP S.a_Quant (mkCN L.dangerous_N))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.criticize_VS]
+TXT: [unknown qualified constant L.activity_V]
 
 SNT: On 27 August 2007 Iran and the U.N.'s International Atomic Energy Agency released a plan for resolving issues by December 2007.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Iran")) (mkNP (P.mkPN "International Atomic Energy Agency")))) (mkVP (mkVP L.release_VS (mkS (mkCl (mkVP L.plan_VS (mkS (mkCl (mkVP L.resolve_V2 (mkNP S.a_Quant (mkCN L.issue_N))))))))) (dayMonthYearAdv (intMonthday (ss "27")) august_Month (intYear (ss "2007"))))))) fullStopPunct)
@@ -3079,7 +3079,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.have_VS (mkS (mkCl
 TXT: [unknown qualified constant L.have_VS]
 
 SNT: Iran will not succumb to international pressure to curb Iran's nuclear projects.
-AST: (mkText (mkUtt (mkS negativePol (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.succumb_VS (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.pressure_VV (mkVP L.curb_V2 (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.project_N))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS negativePol (mkCl (mkNP (P.mkPN "Iran")) (mkVP L.succumb_VS (mkS (mkCl (mkVP (P.mkAdV "internationally") (mkVP L.pressure_VV (mkVP L.curb_V2 (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.project_N))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.succumb_VS]
 
 SNT: Iran's nuclear projects are for peaceful purposes.
@@ -3548,7 +3548,7 @@ TXT: [no overload instance of mkNP]
 
 SNT: The pirates have consistently expressed willingness to negotiate the financial figures.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.pirate_N)) (mkVP L.express_VS (mkS (mkCl (mkVP L.will_VS (mkS (mkCl (mkVP (mkVP L.negotiate_V) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (E.CompoundCN L.finance_N L.figure_N))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.express_VS]
+TXT: [unknown qualified constant L.will_VS]
 
 SNT: More than 25 ships have been hijacked in 2008 off the Somalia coast with a typical ransom of between 1 and 2 million U.S. dollars.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.ship_N)) (mkVP (passiveVP L.hijack_V2) (yearAdv (intYear (ss "2008"))))))) fullStopPunct)
@@ -3612,7 +3612,7 @@ TXT: [unknown qualified constant L.rely_VV]
 
 SNT: Kenyan politicians were demanding answers and have called for several commissions to examine the situation.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.politician_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Kenya"))))) (mkVP L.demand_V2 (mkNP S.a_Quant (mkCN L.answer_N))))) (mkS (mkCl (mkVP (mkVP L.call_VS (mkS (mkCl (mkVP L.examine_V2 (mkNP S.a_Quant (mkCN L.situation_N)))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.commission_N))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.call_VS]
+TXT: [a politician from Kenya demands an answer and it calls to a commission that it examines a situation .]
 
 SNT: Southern Sudan is an autonomous region that is currently increasing its military and that uses Soviet-designed tanks.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Southern Sudan")) (mkNP S.a_Quant (E.CompoundCN L.autonomy_N L.region_N))))) fullStopPunct)
@@ -4375,8 +4375,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Alliot-Marie")) (mkVP L.state_V)))
 TXT: [Alliot-Marie states .]
 
 SNT: International cooperation is necessary especially after the recent war in Iraq.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.cooperate_V))))))))) fullStopPunct)
-TXT: [it is needed that it international cooperates .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.need_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "internationally") (mkVP L.cooperate_V))))))))) fullStopPunct)
+TXT: [it is needed that it internationally cooperates .]
 
 SNT: France wants to deepen the intensity of its defense relations with India.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "France")) (mkVP L.want_VS (mkS (mkCl (mkVP L.deepen_VS (mkS (mkCl (mkVP L.intensify_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (L.relation_N (mkNP S.a_Quant (mkCN L.defend_N))))))))))))))))) fullStopPunct)
@@ -4979,7 +4979,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")
 TXT: [China and Kyrgyzstan say that it is recommended that peace and stability are established .]
 
 SNT: China and Kyrgyzstan also agree that international disputes should be solved by peaceful means and the United Nations should play a leading role in safeguarding peace and security in the world and efforts should be made to diversify modes of development.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP (P.mkAdV "also") (mkVP L.agree_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.try_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.mode_N)) (passiveVP L.diversify_V2))))))))))) (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.solve_V2) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.peaceful_A L.means_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.dispute_V)))))))))))) (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.play_V2 (mkNP S.a_Quant (E.CompoundCN (L.lead_N (mkVP (mkVP L.safeguard_V2 (mkNP S.and_Conj (mkListNP (mkNP (mkCN L.peace_N)) (mkNP S.a_Quant (mkCN L.security_N))))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.world_N))))) L.role_N))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP (P.mkAdV "also") (mkVP L.agree_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.try_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.mode_N)) (passiveVP L.diversify_V2))))))))))) (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.solve_V2) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.peaceful_A L.means_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "internationally") (mkVP L.dispute_V)))))))))))) (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.play_V2 (mkNP S.a_Quant (E.CompoundCN (L.lead_N (mkVP (mkVP L.safeguard_V2 (mkNP S.and_Conj (mkListNP (mkNP (mkCN L.peace_N)) (mkNP S.a_Quant (mkCN L.security_N))))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.world_N))))) L.role_N))))))))))))))))) fullStopPunct)
 TXT: [A function type is expected for lead_N instead of type N]
 
 SNT: China and Kyrgyzstan further agree in the communique that the Shanghai Cooperation Organization's purposes and principles conform to reality and the development trend and the SCO's activities are conducive to regional peace and stability.
@@ -5135,7 +5135,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "HKUST")) (mkVP L.increase_VS (mkS 
 TXT: [unknown qualified constant L.increase_VS]
 
 SNT: The University will continue to leverage its extensive relationships with international research institutions and multi-national corporations to enhance the development of advanced technologies which can find immediate practical application in China.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.university_N)) (mkVP L.continue_VS (mkS (mkCl (mkVP (mkVP L.leverage_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.relation_N))))) (E.PurposeVP (mkVP L.enhance_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.advanced_A (mkCN (mkCN L.technology_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "immediate") (mkVP (P.mkAdV "practical") (mkVP (passiveVP L.apply_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "China"))))))))))) (passiveVP L.develop_V2)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.university_N)) (mkVP L.continue_VS (mkS (mkCl (mkVP (mkVP L.leverage_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.relation_N))))) (E.PurposeVP (mkVP L.enhance_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.advanced_A (mkCN (mkCN L.technology_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "immediately") (mkVP (P.mkAdV "practical") (mkVP (passiveVP L.apply_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "China"))))))))))) (passiveVP L.develop_V2)))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.continue_VS]
 
 SNT: Xinhua News Agency , Beijing , September 1st , by reporter Guojun Yang
@@ -5216,7 +5216,7 @@ TXT: [unknown qualified constant L.result_A]
 
 SNT: He expressed that , this visit by Premier Peng Li would promote the peace , security and stability of the Central Asian region .
 AST: (mkText (mkUtt (mkS (mkCl S.he_NP (mkVP L.express_VS (mkS (mkCl (mkVP L.promote_V2 (mkNP S.and_Conj (mkListNP (mkNP (mkCN L.stability_N)) (mkListNP (mkNP (mkCN (mkCN L.peace_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Central Asia"))))) (mkNP S.a_Quant (mkCN L.security_N)))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.express_VS]
+TXT: [he expresses that it promotes stability , peace of Central Asia and a security .]
 
 SNT: He felt that , the recently signed documents were very important in enforcing good neighborhood relations and friendly cooperation between both countries .
 AST: (mkText (mkUtt (mkS (mkCl S.he_NP (mkVP L.feel_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "recently") (passiveVP L.sign_V2)))))) (mkAP L.very_AdA (mkAP (L.important_A (E.PurposeVP (mkVP L.enforce_V))))))))))) fullStopPunct)
@@ -5228,7 +5228,7 @@ TXT: [unknown qualified constant L.cooperate_V2]
 
 SNT: He expressed hopes that the Central Asian region would be stable and developed , and that the standard of living of the people would continuously improve .
 AST: (mkText (mkUtt (mkS (mkCl S.he_NP (mkVP L.express_VS (mkS (mkCl (mkVP L.hopeful_V))))))) fullStopPunct)
-TXT: [unknown qualified constant L.express_VS]
+TXT: [unknown qualified constant L.hopeful_V]
 
 SNT: Peng Li hoped that the Kirghizian news media would relay greetings from the Chinese people to the Kirghizian people .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Peng Li")) (mkVP L.hope_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.news_N L.media_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Kirghizia"))))) (mkVP L.relay_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkVP L.greet_V2 (mkNP S.a_Quant (mkCN L.person_N)))))))))))) fullStopPunct)
@@ -5427,7 +5427,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.he_NP (mkVP L.feel_V2 (mkNP L.more_Det (mkCN (m
 TXT: [unknown qualified constant L.participate_VS]
 
 SNT: They still lack experience in international competitions .
-AST: (mkText (mkUtt (mkS (mkCl S.they_NP (mkVP (P.mkAdV "still") (mkVP L.lack_VS (mkS (mkCl (mkVP L.experience_VS (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.compete_V)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl S.they_NP (mkVP (P.mkAdV "still") (mkVP L.lack_VS (mkS (mkCl (mkVP L.experience_VS (mkS (mkCl (mkVP (P.mkAdV "internationally") (mkVP L.compete_V)))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.lack_VS]
 
 SNT: The preliminary competition for the women 's 10 - meter platform diving will be held this afternoon .
