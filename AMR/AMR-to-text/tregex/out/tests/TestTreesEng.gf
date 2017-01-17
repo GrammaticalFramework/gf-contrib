@@ -143,4 +143,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t71_where_did_the_girl_find_the_boy = (mkText (mkUtt (mkQS (mkQCl S.where_IAdv (mkCl (mkNP S.a_Quant (mkCN L.girl_N)) (mkVP L.find_V2 (mkNP S.a_Quant (mkCN L.boy_N))))))) questMarkPunct) ;
 
+	lin t72_create_a_few_battle_groups = (mkText (mkUtt (mkS (mkCl (mkNP S.few_Det (E.CompoundCN L.battle_N L.group_N)) (passiveVP L.create_V2)))) fullStopPunct) ;
+
 }

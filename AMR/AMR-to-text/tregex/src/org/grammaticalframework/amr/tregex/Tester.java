@@ -1374,4 +1374,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // Create a few battle groups.
+    @Test
+    public void t72_create_a_few_battle_groups() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(c / create-01 :ARG1 (g / group :mod (b / battle-01) :quant (f / few)) :li 2)");
+        assertEquals(amr,
+                "(c (create-01 (:ARG1 (g (group (:mod (b battle-01)) (:quant (f few))))) (:li 2)))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP S.few_Det (E.CompoundCN L.battle_N L.group_N)) (passiveVP L.create_V2)))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

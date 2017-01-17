@@ -338,3 +338,8 @@ TestTreesEng: where does a girl find a boy ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t72_create_a_few_battle_groups
+TestTreesEng: few battle groups are created .
+TestTreesLav: 
+TestTreesRus: 
+

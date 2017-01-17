@@ -42,10 +42,10 @@ PART	It defends.
 
 PART	I say time to a fellow citizen. It is caused that we are obligated.
 
-PART	Few groups are created.
+PART	Few battle groups are created.
 PART	5,000 advanced kind aircraft to combat are manufactured.
 
-PART	It is resumed that it nucleus experiments and a military force is established in a space.
+FULL	It is resumed that it nucleus experiments and a military force is established in a space.
 
 
 PART	It is abandoned that you are committed to first use a nucleus weapon.
@@ -453,7 +453,7 @@ PART	Do I see that I speak to a person that counsels?
 
 
 
-PART	It is worked to me and I suffer a random attack!
+
 PART	It is started that it is just started that a tiny thing worries me really.
 PART	I find that it helps.
 
@@ -509,9 +509,9 @@ PART	It gives a reason.
 PART	It is good and it is more good.
 
 
-PART	It views a pact an important part of a legacy of an organization that administrates.
+PART	It views a pact an important part of a policy legacy of an organization that administrates.
 
-PART	It is possible that it affects a legacy of an organization that administrates.
+PART	It is possible that it affects a policy legacy of an organization that administrates.
 
 
 FULL	Seigel states.
@@ -564,7 +564,7 @@ PART	It is ended that it meets on 13 November 2008.
 
 PART	Russia and China are tied politics and a business Islamic Republic of Iran and it doesn't feel that it is domestic pressured.
 PART	United States isn't tied politics and a business Islamic Republic of Iran and it feels that it is domestic pressured.
-PART	Russia and China hold power.
+PART	Russia and China hold a veto power.
 
 
 PART	It is reported that Iran is progressed about a reactor facility to research that is near.
@@ -744,7 +744,7 @@ FULL	Hill is a head person from United States that negotiates a program about a 
 
 
 
-PART	Associated Press reports in Vienna that IAEA states on 18 June 2007 that a team visits Pyongyang to discuss a manner.
+
 PART	Hill states that it holds that it is talked that a reactor is sealed.
 
 PART	Money is frozen when official of United States accuses Banco Delta Asia a complicity.
@@ -790,7 +790,7 @@ FULL	Senior fellow of International Institute for Strategic Studies Mark Fitzpat
 
 FULL	International Institute for Strategic Studies is located in London.
 
-PART	Institute for Science and International Security is a private organization that is located in Washington.
+FULL	Institute for Science and International Security is a private research organization that is located in Washington.
 FULL	International Atomic Energy Agency is based in Vienna.
 
 FULL	Islamic Republic of Iran.
@@ -1133,7 +1133,7 @@ PART	Howard states that an organization that governs Australia considers and it 
 
 FULL	An organization that governs United States recently forms Proliferation Security Initiative.
 
-PART	Member of Proliferation Security Initiative considers a way.
+
 
 
 FULL	India, South Africa and Brazil.
@@ -1262,7 +1262,7 @@ PART	President of Vietnam Tran Duc Luong states when it meets Schroeder that an 
 
 
 PART	An organization that governs Germany offers to an organization that governs Vietnam that it official assists.
-PART	A volume is risen in 2003.
+
 
 FULL	Hong Kong and China.
 FULL	A technology and an international.
@@ -1272,9 +1272,9 @@ FULL	A technology and an international.
 PART	Hong Kong Polytechnic University joins a university park of Virtual University Park in June 2004.
 
 
-PART	City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China.
+PART	City University of Hong Kong signs an agreement to jointly establish a research center in Suzhou in June of University of Science and Technology of China.
 
-PART	An agreement is based to a principle.
+
 
 
 
@@ -1298,7 +1298,7 @@ PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal 
 FULL	It ends.
 
 
-PART	It attends a ceremony.
+FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
 
@@ -1309,14 +1309,14 @@ PART	It respective answers a thing that a person that reports questions.
 
 FULL	It ends.
 
-PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand ceremony in Tokyo.
+
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
 PART	A ground is filled an atmosphere.
-PART	Minister of State Welfare Ministry from Japan Souyasen delivers a speech that bolsters to a delegation.
 
 
-PART	Souya emphasizes that a delegation from Japan is obligated to use this opportunity.
+
+
 PART	Souya hands over a delegation flag of a delegation.
 
 PART	A delegation from Japan is flown.
@@ -1346,7 +1346,7 @@ FULL	It ends.
 
 
 
-PART	Wei Lan occupies a position.
+PART	Wei Lan occupies a lead position.
 
 
 PART	Si Aiwan is scored a point.

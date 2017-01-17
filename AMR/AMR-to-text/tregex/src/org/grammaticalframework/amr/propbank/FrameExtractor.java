@@ -159,7 +159,7 @@ public class FrameExtractor {
 
             if (noun && !adjective && !other) {
                 frame_noun.println(frame);
-            } else if (noun) {
+            } else if (noun && !adjective) {
                 frame_noun_maybe.println(frame);
             }
         }

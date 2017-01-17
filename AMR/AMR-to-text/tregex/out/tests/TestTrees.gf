@@ -70,5 +70,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t69_how_can_we_fly : Text ;
 	fun t70_what_did_the_girl_find : Text ;
 	fun t71_where_did_the_girl_find_the_boy : Text ;
+	fun t72_create_a_few_battle_groups : Text ;
 
 }

@@ -171,12 +171,12 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP (mkVP L.say_V2 (mkNP
 TXT: [I say time to a fellow citizen .] [it is caused that we are obligated .]
 
 SNT: 1. Establish guaranteed funds, improve working environment and mechanisms, recruit back to China the hundreds of thousands of IT professionals who have emigrated to and linger in the United States and around the world.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN (mkCN L.professional_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.information_N L.technology_N)))) (mkRS (mkRCl S.which_RP (passiveVP L.linger_V2)))) (mkRS (mkRCl S.which_RP (mkVP L.emigrate_V))))) (passiveVP L.recruit_V2))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.fund_N) (mkRS (mkRCl S.which_RP (passiveVP L.guarantee_V2))))) (passiveVP L.establish_V2))) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.environment_N)) (mkNP S.a_Quant (mkCN L.mechanism_N)))) (passiveVP L.improve_V2))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN (mkCN L.professional_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (E.CompoundCN L.information_N L.technology_N)))) (mkRS (mkRCl S.which_RP (passiveVP L.linger_V2)))) (mkRS (mkRCl S.which_RP (mkVP L.emigrate_V))))) (passiveVP L.recruit_V2))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.fund_N) (mkRS (mkRCl S.which_RP (passiveVP L.guarantee_V2))))) (passiveVP L.establish_V2))) (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (E.CompoundCN L.work_N L.environment_N)) (mkNP S.a_Quant (E.CompoundCN L.work_N L.mechanism_N)))) (passiveVP L.improve_V2))))))) fullStopPunct)
 TXT: [unknown qualified constant L.linger_V2]
 
 SNT: 2. Create a few nuclear-powered aircraft carrier battle groups.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.few_Det (mkCN L.group_N)) (passiveVP L.create_V2)))) fullStopPunct)
-TXT: [few groups are created .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.few_Det (E.CompoundCN L.battle_N L.group_N)) (passiveVP L.create_V2)))) fullStopPunct)
+TXT: [few battle groups are created .]
 
 SNT: 3. Manufacture 5000 advanced combat aircraft of various kinds.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "5000")) (mkCN L.advanced_A (mkCN (mkCN L.kind_A L.aircraft_N) (E.PurposeVP (mkVP L.combat_V))))) (passiveVP L.manufacture_V2)))) fullStopPunct)
@@ -1819,8 +1819,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.recommend_VS (mkS (mkCl (mkVP L.tr
 TXT: [unknown qualified constant L.try_VS]
 
 SNT: Or if u cant do that-when you start to feel panicky, get one of your friends to make you laugh (it works for me and i suffer from random panic attacks lol
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkVP (passiveVP L.work_V2) (S.mkAdv L.GOL_Prep S.i_NP)))) (mkS (mkCl S.i_NP (mkVP L.suffer_V2 (mkNP S.a_Quant (mkCN L.random_A L.attack_N)))))))) exclMarkPunct))
-TXT: [it is worked to me and I suffer a random attack !]
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.it_NP (mkVP (passiveVP L.work_V2) (S.mkAdv L.GOL_Prep S.i_NP)))) (mkS (mkCl S.i_NP (mkVP L.suffer_V2 (mkNP S.a_Quant (E.CompoundCN L.panic_N L.random_A L.attack_N)))))))) exclMarkPunct))
+TXT: [missing record fields: s, g type of random_A]
 
 SNT: This started happening to me, where I'd just start being really anxious over tiny things, although from the sound of things, not as severely as you.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.start_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (P.mkAdV "just") (passiveVP L.start_V2)) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.tiny_A L.thing_N)) (mkVP (mkVP L.worry_V2 S.i_NP) (P.mkAdv "really"))))))))))))) fullStopPunct)
@@ -1967,7 +1967,7 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: Documents outlining the Israeli proposal to allow the international transfer of nuclear technology to States that have not signed on to nonproliferation rules were distributed to the Nuclear Suppliers Group.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_VS (mkS (mkCl (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (mkCN L.rule_N)))))))))))))))))))))) (mkVP (passiveVP L.distribute_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Nuclear Suppliers Group"))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP (mkVP L.outline_VS (mkS (mkCl (mkNP (P.mkPN "Israel")) (mkVP L.propose_VS (mkS (mkCl (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.nucleus_N L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N)))))))))))))))))))))) (mkVP (passiveVP L.distribute_V2) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Nuclear Suppliers Group"))))))) fullStopPunct)
 TXT: [unknown qualified constant L.transfer_V2]
 
 SNT: The proposal may complicate the Bush administration's efforts to win an exemption for India to engage in nuclear trade.
@@ -1975,7 +1975,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkN
 TXT: [unknown qualified constant L.complicate_VS]
 
 SNT: Israeli officials convinced a key group of nations engaged in nuclear trade to adopt new guidelines allowing the international transfer of nuclear technology to States that have not signed on to nonproliferation rules.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Israel")))) (mkVP L.convince_VV (mkVP L.adopt_V2 (mkNP S.a_Quant (mkCN (mkCN L.new_A (mkCN L.guideline_N)) (mkRS (mkRCl S.which_RP (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (mkCN L.rule_N))))))))))))))))) (mkNP S.a_Quant (mkCN L.key_A (mkCN L.group_N))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Israel")))) (mkVP L.convince_VV (mkVP L.adopt_V2 (mkNP S.a_Quant (mkCN (mkCN L.new_A (mkCN L.guideline_N)) (mkRS (mkRCl S.which_RP (mkVP L.allow_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (mkVP (mkVP (P.mkAdV "international") (passiveVP L.transfer_V2)) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.state_N) (mkRS negativePol (mkRCl S.which_RP (mkVP L.sign_on_V2 (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.rule_N))))))))))))))))) (mkNP S.a_Quant (mkCN L.key_A (mkCN L.group_N))))))) fullStopPunct)
 TXT: [unknown qualified constant L.convince_VV]
 
 SNT: Countries including India, Israel and Pakistan that have not signed the nuclear Non-Proliferation Treaty are prohibited from participating in international nuclear trade which includes purchasing reactors, uranium fuel or yellowcake.
@@ -2043,16 +2043,16 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkN
 TXT: [unknown qualified constant L.complicate_VS]
 
 SNT: President Bush and Secretary of State Condoleezza Rice view the Pact as an important part of the Bush administration's foreign policy legacy.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.view_V2 (mkNP S.a_Quant (mkCN L.pact_N))) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (mkCN L.important_A L.part_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN (mkCN L.legacy_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V)))))))))))))))) fullStopPunct)
-TXT: [it views a pact an important part of a legacy of an organization that administrates .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.view_V2 (mkNP S.a_Quant (mkCN L.pact_N))) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (mkCN L.important_A L.part_N) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.policy_N L.legacy_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V)))))))))))))))) fullStopPunct)
+TXT: [it views a pact an important part of a policy legacy of an organization that administrates .]
 
 SNT: The deal is controversial in India and Congress must give approval.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.deal_N)) (mkNP S.a_Quant (mkCN (mkCN L.controversy_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "India"))))))) (mkS (mkCl (mkVP L.obligate_VV (mkVP (give-01 (mkNP (P.mkPN "Congress")))))))))) fullStopPunct)
 TXT: [constant not found: give]
 
 SNT: Delays in winning approval for the India deal could have a negative effect on the administration's foreign policy legacy with delay until an election year having the most negative effect.
-AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.affect_V2 (mkNP S.a_Quant (mkCN (mkCN L.legacy_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V))))))))))))))) fullStopPunct)
-TXT: [it is possible that it affects a legacy of an organization that administrates .]
+AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP L.affect_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.policy_N L.legacy_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.administrate_V))))))))))))))) fullStopPunct)
+TXT: [it is possible that it affects a policy legacy of an organization that administrates .]
 
 SNT: State Department spokesman Tom Casey stated the U.S. government views the India deal as unique and does not see the deal as a precedent for any other country including Israel.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.spokesman_N L.of_Prep) (mkNP (P.mkPN "State Department"))) (mkNP (P.mkPN "Tom Casey")))) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "U.S."))))))) (mkVP (mkVP L.view_V2 (mkNP S.a_Quant (mkCN (mkCN L.deal_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "India")))))) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.unique_N)))))) (mkS negativePol (mkCl (mkVP (mkVP L.see_V) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.precedent_N)))))))))))) fullStopPunct)
@@ -2083,8 +2083,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP
 TXT: [official of NSG previously suggests that it approaches .]
 
 SNT: If modification of the NSG Guidelines were to take place along the lines proposed by Israeli officials the nuclear nonproliferation regime would be considerably enhanced.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.regime_N)) (mkVP (P.mkAdV "considerable") (passiveVP L.enhance_V2))))) fullStopPunct)
-TXT: [{s = "a"]
+AST: (mkText (mkUtt (mkS negativePol (mkCl (mkNP S.a_Quant (E.CompoundCN L.proliferate_N L.regime_N)) (mkVP (P.mkAdV "considerable") (passiveVP L.enhance_V2))))) fullStopPunct)
+TXT: [unknown qualified constant L.proliferate_N]
 
 SNT: 2008-07-26
 AST: (d date-entity)
@@ -2143,8 +2143,8 @@ AST: (mkText (mkUtt (mkQS (mkQCl (mkCl (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Qua
 TXT: [does it state that a number is less important ?]
 
 SNT: Arms control expert Jeffrey G. Lewis of the new America Foundation think tank stated that the Foundation was aware of Iran's goal of assembling 6000 centrifuges but the operational status of the machines is unknown.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP L.state_VS (mkS (mkCl (mkVP L.realize_V2 (mkNP S.a_Quant (mkCN L.goal_N))))))))) fullStopPunct)
-TXT: [{s = "it"]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP L.state_VS (mkS (mkCl (mkVP L.realize_V2 (mkNP S.a_Quant (E.CompoundCN (L.assemble_N (mkNP (P.mkPN "Iran")) (mkNP S.a_Quant (mkNum (mkDigits "6000")) (mkCN L.centrifuge_N))) L.goal_N))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.assemble_N]
 
 SNT: Diplomats and arms control experts stated that the Iranian enrichment program is hindered by technical problems.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.problem_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.technical_N))))) (mkVP L.hinder_V2 (mkNP S.a_Quant (mkCN (mkCN L.program_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Iran")))))))))))) fullStopPunct)
@@ -2263,8 +2263,8 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (mkNP (P.mkP
 TXT: [United States isn't tied politics and a business Islamic Republic of Iran and it feels that it is domestic pressured .]
 
 SNT: Russia and China hold veto power over Security Council decisions.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Russia")) (mkNP (P.mkPN "China")))) (mkVP L.hold_V2 (mkNP (mkCN L.power_N)))))) fullStopPunct)
-TXT: [Russia and China hold power .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Russia")) (mkNP (P.mkPN "China")))) (mkVP L.hold_V2 (mkNP S.a_Quant (E.CompoundCN L.veto_N L.power_N)))))) fullStopPunct)
+TXT: [Russia and China hold a veto power .]
 
 SNT: Moscow's Interfax news agency quoted Russian diplomat Sergei ryabkov as stating that the parties struck no deal on sanctions against Iran at the 081113 meeting and that the Western countries are in favor of the sanctions against Iran while China and Russia did not support sanctions against Iran.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (ss "news") (mkNP (P.mkPN "Interfax"))) (mkVP L.quote_VS (mkS S.and_Conj (mkListS (mkS negativePol (mkCl (mkNP S.a_Quant (mkCN L.party_N)) (mkVP (mkVP L.strike_VS (mkS (mkCl (mkVP L.deal_VV (mkVP L.sanction_V2 (mkNP (P.mkPN "Iran"))))))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP L.meet_V) (dayMonthYearAdv (intMonthday (ss "13")) november_Month (intYear (ss "2008")))))))))) (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP support-01))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.country_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "West"))))) (mkVP L.favor_V))))))))))))) fullStopPunct)
@@ -2803,7 +2803,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN L.thing_N)) (mkVP (passive
 TXT: [this thing is costed less .]
 
 SNT: The Government of Venezuela also intends to buy 10 Russian helicopters, 10 Spanish transport planes, and 6 Spanish naval craft.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Venezuela"))))))) (mkVP (P.mkAdV "also") (mkVP L.intend_VS (mkS (mkCl (mkVP L.buy_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "6")) (E.CompoundCN L.navy_N L.craft_N)) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "10")) (mkCN L.helicopter_N)) (mkNP S.a_Quant (mkNum (mkDigits "10")) (mkCN L.plane_N))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Venezuela"))))))) (mkVP (P.mkAdV "also") (mkVP L.intend_VS (mkS (mkCl (mkVP L.buy_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "6")) (E.CompoundCN L.navy_N L.craft_N)) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "10")) (mkCN L.helicopter_N)) (mkNP S.a_Quant (mkNum (mkDigits "10")) (E.CompoundCN L.transport_N L.plane_N))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.intend_VS]
 
 SNT: Venezuelan officials say the government is negotiating with Brazil to buy around 24 air support and training planes.
@@ -2983,8 +2983,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkC
 TXT: [constant not found: possible]
 
 SNT: The Associated Press reported from Vienna, Austria that the IAEA stated on 18 June 2007 that a team would visit Pyongyang the week of 24 June 2007 to discuss the manner in which inspectors will verify the shutdown.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Associated Press")) (mkVP (mkVP L.report_VS (mkS (mkCl (mkNP (P.mkPN "IAEA")) (mkVP (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.team_N)) (mkVP (mkVP L.visit_V2 (mkNP (P.mkPN "Pyongyang"))) (E.PurposeVP (mkVP L.discuss_V2 (mkNP S.a_Quant (mkCN L.manner_N)))))))) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007"))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Vienna"))))))) fullStopPunct)
-TXT: [Associated Press reports in Vienna that IAEA states on 18 June 2007 that a team visits Pyongyang to discuss a manner .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Associated Press")) (mkVP (mkVP L.report_VS (mkS (mkCl (mkNP (P.mkPN "IAEA")) (mkVP (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.team_N)) (mkVP (mkVP L.visit_V2 (mkNP (P.mkPN "Pyongyang"))) (E.PurposeVP (mkVP L.discuss_V2 (mkNP S.a_Quant (E.CompoundCN (L.verify_N (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.inspect_V)))))) L.manner_N)))))))) (dayMonthYearAdv (intMonthday (ss "18")) june_Month (intYear (ss "2007"))))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Vienna"))))))) fullStopPunct)
+TXT: [unknown qualified constant L.verify_N]
 
 SNT: Hill stated IAEA inspectors will hold talks with Pyongyang officials on sealing the reactor which would include the installation of television monitors at the site.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Hill")) (mkVP L.state_VS (mkS (mkCl (mkVP L.hold_VS (mkS (mkCl (mkVP (passiveVP L.talk_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.reactor_N)) (passiveVP L.seal_V2)))))))))))))) fullStopPunct)
@@ -3167,8 +3167,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.plutonium_N)) (mkAP (L.ma
 TXT: [A function type is expected for material_A instead of type A]
 
 SNT: The Institute for Science and International Security is a private research organization located in Washington.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Institute for Science and International Security")) (mkNP S.a_Quant (mkCN L.private_A (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.locate_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Washington")))))))))))) fullStopPunct)
-TXT: [Institute for Science and International Security is a private organization that is located in Washington .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Institute for Science and International Security")) (mkNP S.a_Quant (mkCN L.private_A (mkCN (E.CompoundCN L.research_N L.organization_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.locate_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Washington")))))))))))) fullStopPunct)
+TXT: [Institute for Science and International Security is a private research organization that is located in Washington .]
 
 SNT: The International Atomic Energy Agency is based in Vienna.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "International Atomic Energy Agency")) (mkVP (passiveVP L.base_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Vienna"))))))) fullStopPunct)
@@ -3227,7 +3227,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.avail_V) (S.mkAdv L.PPT_Prep (mkNP 
 TXT: [it avails a list .]
 
 SNT: The list names companies from Australia, Finland, Sweden, the United Arab Emirates and Iran that were prevented from carrying out deals because the items being sold were suspected of being militarily useful.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.list_N)) (mkVP L.name_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP (mkVP (passiveVP L.prevent_V2) (S.mkAdv S.because_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.suspect_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.item_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP L.useful_A))))))))) (E.PurposeVP (mkVP carry_out-03)))))) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkNP S.a_Quant (mkCN L.company_N))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.list_N)) (mkVP L.name_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP (mkVP (passiveVP L.prevent_V2) (S.mkAdv S.because_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.suspect_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (E.CompoundCN L.sell_N L.item_N)))) (S.mkAdv S.that_Subj (mkS (mkCl S.it_NP (mkAP L.useful_A))))))))) (E.PurposeVP (mkVP carry_out-03)))))) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkListNP (mkNP S.a_Quant (mkCN L.company_N)) (mkNP S.a_Quant (mkCN L.company_N))))))))))) fullStopPunct)
 TXT: [constant not found: carry_out]
 
 SNT: The listed items being offered for sale in the blocked deals included Nickel powder, petrochemical plant components, compressors, furnaces, steel flanges and fittings, electron microscopes, radiometric ore-sorting machines, valves and tubing, lasers, a rotary drilling rig, a mass spectrometer and a nitrogen production plant.
@@ -3667,8 +3667,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.find_VS 
 TXT: [unknown qualified constant L.result_V2]
 
 SNT: The study stated that the high output per acre was attributed to a good growing season in the south.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.study_N)) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.attribute_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.good_A (mkCN (mkCN L.season_N) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN L.south_N)))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.high_A (mkCN L.output_N))) (passiveVP L.rate_entity_V2))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.rate_entity_V2]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.study_N)) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.attribute_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.grow_N L.season_N) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN L.south_N)))) (mkRS (mkRCl S.which_RP (mkAP L.good_A))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.high_A (mkCN L.output_N))) (passiveVP L.rate_entity_V2))))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.grow_N]
 
 SNT: The southern region is a heavily irrigated area where the Taliban maintained a strong presence in 5 provinces and have systematically encouraged opium cultivation as a way to finance their insurgency for several years.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.south_A L.region_N)) (mkNP S.a_Quant (mkCN (mkCN L.area_N) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "heavily") (passiveVP L.irrigate_V2))))))))) fullStopPunct)
@@ -3919,7 +3919,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.meet_V)))) fullStopPunct)
 TXT: [it meets .]
 
 SNT: The Hong Kong police's internal news letter recently reported that the conference aimed to provide a flexible and forward-thinking environment for sharing information and taking positive action against the organized criminals of transnational drug trafficking.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.letter_N) (S.mkAdv L.of_Prep (mkNP (mkCN L.internal_A (mkCN L.news_N))))) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.police_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong")))))))) (mkVP (P.mkAdV "recently") (mkVP L.report_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.conference_N)) (mkVP L.aim_VS (mkS (mkCl (mkVP L.provide_V2 (mkNP S.a_Quant (mkCN L.flexible_A (mkCN L.environment_N)))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.letter_N) (S.mkAdv L.of_Prep (mkNP (mkCN L.internal_A (mkCN L.news_N))))) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.police_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong")))))))) (mkVP (P.mkAdV "recently") (mkVP L.report_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.conference_N)) (mkVP L.aim_VS (mkS (mkCl (mkVP L.provide_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.think_N L.environment_N) (mkRS (mkRCl S.which_RP (mkAP L.flexible_A)))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.aim_VS]
 
 SNT: The Hong Kong police's exchange of intelligence with the police on the Chinese mainland has been particularly intense.
@@ -3975,8 +3975,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.story_N)) (passiveVP L.ba
 TXT: [a story is based .]
 
 SNT: The Attorney General' s Office report collected an accusatory document handed over by an unnamed Peruvian army general.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkNP (P.mkPN "Attorney")) L.report_V2)))) (mkVP L.collect_V2 (mkNP S.a_Quant (mkCN (mkCN L.document_N) (mkRS (mkRCl S.which_RP hand_over-02)))))))) fullStopPunct)
-TXT: [constant not found: hand_over]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkNP (P.mkPN "Attorney")) L.report_V2)))) (mkVP L.collect_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.accuse_N L.document_N) (mkRS (mkRCl S.which_RP hand_over-02)))))))) fullStopPunct)
+TXT: [unknown qualified constant L.accuse_N]
 
 SNT: El Comercio said that in 920000 the government of then-president Alberto Fujimori put into effect the intelligence operation Scorpion to fight terrorism and drug trafficking in the Amazon region.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "El Comercio")) (mkVP L.say_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))) (mkVP (mkVP (mkVP (mkVP L.put_V2 (mkNP (ss "intelligence") (mkNP (P.mkPN "Scorpion")))) (yearAdv (intYear (ss "1992")))) (E.PurposeVP (mkVP (mkVP L.fight_off_V) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Amazon")))))) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.effect_N)))))))))) fullStopPunct)
@@ -4019,8 +4019,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.officer_N L.of_Prep) (mkNP 
 TXT: [officer of a police from Kathmandu reports .]
 
 SNT: 1 soldier of the Royal Nepal Army was seriously injured on 29 August 2002 when a bomb disposal team attempted to defuse the bomb left at an electricity pole in okubahal near Sundhara in Lalitpur district in Kathmandu.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "1")) (mkCN L.soldier_N)) (mkVP (mkVP (passiveVP L.injure_V2) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.team_N)) (mkVP L.attempt_VS (mkS (mkCl (mkVP L.defuse_V2 (mkNP S.a_Quant (mkCN (mkCN L.bomb_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.leave_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.electricity_N L.pole_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Okubahal"))))))))))))))))))) (dayMonthYearAdv (intMonthday (ss "29")) august_Month (intYear (ss "2002"))))))) fullStopPunct)
-TXT: [unknown qualified constant L.attempt_VS]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "1")) (mkCN L.soldier_N)) (mkVP (mkVP (passiveVP L.injure_V2) (S.mkAdv S.because_Subj (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN (L.dispose_N (mkNP S.a_Quant (mkCN L.bomb_N))) L.team_N)) (mkVP L.attempt_VS (mkS (mkCl (mkVP L.defuse_V2 (mkNP S.a_Quant (mkCN (mkCN L.bomb_N) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.leave_V2) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.electricity_N L.pole_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Okubahal"))))))))))))))))))) (dayMonthYearAdv (intMonthday (ss "29")) august_Month (intYear (ss "2002"))))))) fullStopPunct)
+TXT: [unknown qualified constant L.dispose_N]
 
 SNT: Anti-government insurgents are believed to have planted the bomb.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.believe_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.insurgent_N) (mkRS (mkRCl S.which_RP (mkVP L.oppose_V2 (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V)))))))))) (mkVP L.plant_V2 (mkNP S.a_Quant (mkCN L.bomb_N)))))))))) fullStopPunct)
@@ -4479,7 +4479,7 @@ AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (m
 TXT: [a young person from Iran that is educated in a college forms Mujahedeen and it is described a group organization that is left .]
 
 SNT: The People's Mujahedeen staged terrorist attacks inside Iran in the 1970s and killed several US military personnel and civilians working on defense projects in Teheran.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.stage_VS (mkS (mkCl (mkVP (P.mkAdV "terrorism") (mkVP L.attack_V))))))) (mkS (mkCl (mkVP L.kill_V2 (mkNP S.a_Quant (mkCN (mkCN L.and_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.work_V2 (mkNP S.a_Quant (mkCN L.project_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Teheran")))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.stage_VS (mkS (mkCl (mkVP (P.mkAdV "terrorism") (mkVP L.attack_V))))))) (mkS (mkCl (mkVP L.kill_V2 (mkNP S.a_Quant (mkCN (mkCN L.and_N) (mkRS (mkRCl S.which_RP (mkVP (mkVP L.work_V2 (mkNP S.a_Quant (E.CompoundCN L.defend_N L.project_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Teheran")))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.stage_VS]
 
 SNT: The People's Mujahedeen was part of the broad coalition that initially supported the Iranian Revolution and participated in the takeover in 790000 of the US embassy in Teheran.
@@ -4539,8 +4539,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Proliferation Security Initiative"
 TXT: [unknown qualified constant L.start_VS]
 
 SNT: Members of the Proliferation Security Initiative are considering ways of intercepting ships or aircraft suspected of carrying weapons of mass destruction.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.member_N L.of_Prep) (mkNP (P.mkPN "Proliferation Security Initiative")))) (mkVP L.consider_V2 (mkNP S.a_Quant (mkCN L.way_N)))))) fullStopPunct)
-TXT: [member of Proliferation Security Initiative considers a way .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.member_N L.of_Prep) (mkNP (P.mkPN "Proliferation Security Initiative")))) (mkVP L.consider_V2 (mkNP S.a_Quant (E.CompoundCN (L.intercept_N (mkNP (S.or_Conj (mkRS (mkRCl S.which_RP (mkAP (mkAP L.suspect_A) (mkS (mkCl (mkVP L.carry_V2 (mkNP S.a_Quant (mkCN (mkCN L.weapon_N) (mkRS (mkRCl S.which_RP (mkAP L.mass_AdA (mkAP L.destroy_A))))))))))))) (mkListNP (mkNP S.a_Quant (mkCN L.ship_N)) (mkNP S.a_Quant (mkCN L.aircraft_N))))) L.way_N)))))) fullStopPunct)
+TXT: [unknown qualified constant L.mass_AdA]
 
 SNT: The American government has reportedly suggested the Australian military could be involved in stopping nations from transporting weapons both on the high seas and through Australian territorial waters.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "United States"))))))) (mkVP L.suggest_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.military_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Australia"))))) (mkVP (passiveVP L.involve_V2) (E.PurposeVP (mkVP L.stop_VV (mkVP (mkVP L.transport_V2 (mkNP S.a_Quant (mkCN L.weapon_N))) (S.mkAdv L.GOL_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.high_A (mkCN L.sea_N))) (mkNP S.a_Quant (mkCN L.through_N)))))) (mkNP S.a_Quant (mkCN L.nation_N)))))))))))))) fullStopPunct)
@@ -4851,8 +4851,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP L.invest_V)))) fullStopPunct)
 TXT: [it invests .]
 
 SNT: Wen stated that German investment projects in China have exceeded 3500 with total investment near 10 billion U.S. dollars.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.project_N)) (mkVP L.exceed_V))) (mkS (mkCl (mkVP (mkVP (passiveVP L.near_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkNum (mkDigits "10000000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "U.S.")))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.invest_V))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.exceed_V]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN (L.invest_N (mkNP (P.mkPN "Germany")) (S.mkAdv L.in_Prep (mkNP (P.mkPN "China")))) L.project_N)) (mkVP L.exceed_V))) (mkS (mkCl (mkVP (mkVP (passiveVP L.near_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkNum (mkDigits "10000000000")) (mkNP S.a_Quant (mkCN (mkCN L.dollar_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "U.S.")))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.invest_V))))))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.invest_N]
 
 SNT: Some German firms such as Volkswagen, Siemens and Daimler-Chrysler have a reputation for high quality and efficiency.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.somePl_Det (mkCN (mkCN L.firm_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Germany"))))) (passiveVP L.repute_V2)))) fullStopPunct)
@@ -4911,7 +4911,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and
 TXT: [Wen states that an organization that governs China supports that peace in Middle East is planned and it is remained .]
 
 SNT: When asked to comment on how to temper China's rapidly growing economy and how to realize balanced growth Wen stated that the Chinese economy is very healthy in general with fast growth, increasing corporate profits, improving agricultural production, expanding foreign trade volume and rapidly growing fiscal revenue and individual incomes.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP (mkVP L.state_VS (mkS (S.and_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (E.CompoundCN L.finance_N L.revenue_N)) (mkNP S.a_Quant (mkCN L.individual_A L.income_N)))) (mkVP (P.mkAdV "rapid") (passiveVP L.grow_V2)))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.volume_N)) (passiveVP L.expand_V2))) (mkListS (mkS (mkCl (mkVP (passiveVP L.increase_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.corporate_N)) (mkVP L.profit_V))))))) (mkS (mkCl (mkVP (passiveVP L.improve_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "farming") (mkVP L.produce_V)))))))))))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.economy_N)) (mkAP L.very_AdA (mkAP (L.healthy_A (mkRS (mkRCl S.which_RP (mkAP L.general_A)))))))) (mkS (mkCl (passiveVP L.grow_V2)))))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (passiveVP L.ask_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.comment_V)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP (mkVP L.state_VS (mkS (S.and_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (E.CompoundCN L.finance_N L.revenue_N)) (mkNP S.a_Quant (mkCN L.individual_A L.income_N)))) (mkVP (P.mkAdV "rapid") (passiveVP L.grow_V2)))) (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.trade_N L.volume_N)) (passiveVP L.expand_V2))) (mkListS (mkS (mkCl (mkVP (passiveVP L.increase_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.corporate_N)) (mkVP L.profit_V))))))) (mkS (mkCl (mkVP (passiveVP L.improve_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "farming") (mkVP L.produce_V)))))))))))) (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.economy_N)) (mkAP L.very_AdA (mkAP (L.healthy_A (mkRS (mkRCl S.which_RP (mkAP L.general_A)))))))) (mkS (mkCl (passiveVP L.grow_V2)))))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (passiveVP L.ask_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.comment_V)))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.corporate_N]
 
 SNT: In order to restrict the excessive fixed asset construction that caused a rise in capital good prices and strained the supply of coal, electricity, oil and transportation, the Chinese government will increase its macro economic control and employ all necessary administrative methods.
@@ -4979,8 +4979,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")
 TXT: [China and Kyrgyzstan say that it is recommended that peace and stability are established .]
 
 SNT: China and Kyrgyzstan also agree that international disputes should be solved by peaceful means and the United Nations should play a leading role in safeguarding peace and security in the world and efforts should be made to diversify modes of development.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP (P.mkAdV "also") (mkVP L.agree_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.try_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.mode_N)) (passiveVP L.diversify_V2))))))))))) (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.solve_V2) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.peaceful_A L.means_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.dispute_V)))))))))))) (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.play_V2 (mkNP S.a_Quant (mkCN L.role_N))))))))))))))))) fullStopPunct)
-TXT: [{s = "China"]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP (P.mkAdV "also") (mkVP L.agree_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (passiveVP L.try_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.mode_N)) (passiveVP L.diversify_V2))))))))))) (mkListS (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (passiveVP L.solve_V2) (S.mkAdv L.MNR_Prep (mkNP S.a_Quant (mkCN L.peaceful_A L.means_N)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "international") (mkVP L.dispute_V)))))))))))) (mkS (mkCl (mkVP (passiveVP L.recommend_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.play_V2 (mkNP S.a_Quant (E.CompoundCN (L.lead_N (mkVP (mkVP L.safeguard_V2 (mkNP S.and_Conj (mkListNP (mkNP (mkCN L.peace_N)) (mkNP S.a_Quant (mkCN L.security_N))))) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.world_N))))) L.role_N))))))))))))))))) fullStopPunct)
+TXT: [A function type is expected for lead_N instead of type N]
 
 SNT: China and Kyrgyzstan further agree in the communique that the Shanghai Cooperation Organization's purposes and principles conform to reality and the development trend and the SCO's activities are conducive to regional peace and stability.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP (P.mkAdV "further") (mkVP L.agree_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.purpose_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Shanghai Cooperation Organization"))))) (mkNP S.a_Quant (mkCN L.principle_N)))) (mkVP (passiveVP L.conform_V2) (S.mkAdv L.GOL_Prep (mkNP (mkCN L.reality_N)))))) (mkS (mkCl (mkAP L.conducive_A)))))))))) fullStopPunct)
@@ -5055,8 +5055,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mk
 TXT: [an organization that governs Germany offers to an organization that governs Vietnam that it official assists .]
 
 SNT: The Vietnam-Germany trade volume rose 7.7 percent in 2003 to reach 1.4 billion dollars, of which 815.4 million dollars came from Vietnamese exports.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.volume_N)) (mkVP (passiveVP L.rise_V2) (yearAdv (intYear (ss "2003"))))))) fullStopPunct)
-TXT: [a volume is risen in 2003 .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN (L.trade_N (mkNP (P.mkPN "Vietnam"))) L.volume_N)) (mkVP (passiveVP L.rise_V2) (yearAdv (intYear (ss "2003"))))))) fullStopPunct)
+TXT: [A function type is expected for trade_N instead of type N]
 
 SNT: 2004-12-19
 AST: (d date-entity)
@@ -5071,7 +5071,7 @@ AST: (mkText (mkUtt (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.technolog
 TXT: [a technology and an international .]
 
 SNT: Hong Kong universities collaborate with universities, businesses and government sectors of mainland China to coordinate training programs and research centers to promote high-tech research, commercialization, and technology transfer.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP L.collaborate_VV (mkVP (mkVP L.coordinate_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.program_N)) (mkNP S.a_Quant (mkCN L.center_N))))) (E.PurposeVP (mkVP L.promote_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.commercialize_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.research_V))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (passiveVP L.transfer_V2)))))))) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.sector_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V)))))))) (mkListNP (mkNP S.a_Quant (mkCN (E.CompoundCN L.mainland_N L.university_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN "China"))))) (mkNP S.a_Quant (mkCN L.business_N))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP L.collaborate_VV (mkVP (mkVP L.coordinate_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (E.CompoundCN L.train_N L.program_N)) (mkNP S.a_Quant (E.CompoundCN L.research_N L.center_N))))) (E.PurposeVP (mkVP L.promote_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.commercialize_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.research_V))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.technology_N)) (passiveVP L.transfer_V2)))))))) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.sector_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V)))))))) (mkListNP (mkNP S.a_Quant (mkCN (E.CompoundCN L.mainland_N L.university_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN "China"))))) (mkNP S.a_Quant (mkCN L.business_N))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.collaborate_VV]
 
 SNT: In 2004 Hong Kong tertiary institutes actively contributed to improved relations between Hong Kong and mainland China in the research and development of high technology.
@@ -5079,7 +5079,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.tertiary_A L.instit
 TXT: [unknown qualified constant L.contribute_VV]
 
 SNT: Hong Kong universities have collaborated with tertiary education, business and government sectors of mainland China to direct training programs and research centers to promote research commercialization and technology transfer.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP L.collaborate_VV (mkVP L.direct_VV (mkVP promote-02) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.program_N)) (mkNP S.a_Quant (mkCN L.center_N))))) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.sector_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V)))))))) (mkListNP (mkNP S.a_Quant (E.CompoundCN L.education_N L.sector_N)) (mkNP S.a_Quant (E.CompoundCN L.business_N L.sector_N))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP L.collaborate_VV (mkVP L.direct_VV (mkVP promote-02) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (E.CompoundCN L.train_N L.program_N)) (mkNP S.a_Quant (E.CompoundCN L.research_N L.center_N))))) (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.sector_N) (S.mkAdv L.of_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V)))))))) (mkListNP (mkNP S.a_Quant (E.CompoundCN L.education_N L.sector_N)) (mkNP S.a_Quant (E.CompoundCN L.business_N L.sector_N))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.collaborate_VV]
 
 SNT: In June 2004 Hong Kong Polytechnic University (PolyU) joined national university science and technology park of the Virtual University Park in Shenzhen, China becoming the first tertiary institution of Hong Kong to establish research centers and training facilities in mainland China.
@@ -5095,19 +5095,19 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Poon")) (mkVP L.state_VS (mkS (mkC
 TXT: [unknown qualified constant L.facilitate_VS]
 
 SNT: City University of Hong Kong (CityU) and the University of Science and Technology of China (USTC) in Anhui province signed an agreement in June to jointly establish a high level joint research center in Suzhou.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "City University of Hong Kong")) (mkVP (mkVP (mkVP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.agreement_N))) (E.PurposeVP (mkVP (mkVP (P.mkAdV "jointly") (mkVP L.establish_V2 (mkNP S.a_Quant (mkCN L.center_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Suzhou")))))) (monthAdv june_Month)) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "University of Science and Technology of China"))))))) fullStopPunct)
-TXT: [City University of Hong Kong signs an agreement to jointly establish a center in Suzhou in June of University of Science and Technology of China .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "City University of Hong Kong")) (mkVP (mkVP (mkVP (mkVP L.sign_V2 (mkNP S.a_Quant (mkCN L.agreement_N))) (E.PurposeVP (mkVP (mkVP (P.mkAdV "jointly") (mkVP L.establish_V2 (mkNP S.a_Quant (E.CompoundCN L.research_N L.center_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Suzhou")))))) (monthAdv june_Month)) (S.mkAdv L.COM_Prep (mkNP (P.mkPN "University of Science and Technology of China"))))))) fullStopPunct)
+TXT: [City University of Hong Kong signs an agreement to jointly establish a research center in Suzhou in June of University of Science and Technology of China .]
 
 SNT: The University of Science and Technology of China is a university established by the Chinese Academy of Sciences (CAS).
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Chinese Academy of Sciences")) (mkVP L.establish_VS (mkS (mkCl (mkNP (P.mkPN "University of Science and Technology of China")) (mkNP S.a_Quant (mkCN L.university_N)))))))) fullStopPunct)
 TXT: [unknown qualified constant L.establish_VS]
 
 SNT: The agreement is based on the principle of mutually beneficial collaboration in which both universities complement each other's strengths in working together on joint research projects, supervision and teaching of research students and in administering professional training opportunities.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.agreement_N)) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (mkCN L.principle_N))))))) fullStopPunct)
-TXT: [an agreement is based to a principle .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.agreement_N)) (mkVP (passiveVP L.base_V2) (S.mkAdv L.DIR_Prep (mkNP S.a_Quant (E.CompoundCN L.collaborate_N L.principle_N))))))) fullStopPunct)
+TXT: [unknown qualified constant L.collaborate_N]
 
 SNT: In addition to partnering with education institutes Hong Kong universities have also joined large-scale high technology exchange programs in mainland China in order to enhance communication between the mainland and Hong Kong in the discipline.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP (P.mkAdV "also") (mkVP (mkVP L.join_V2 (mkNP S.a_Quant (mkCN (mkCN L.program_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (mkCN L.mainland_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN "China"))))))))) (E.PurposeVP (mkVP L.enhance_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.between_N L.communication_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.discipline_N)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.university_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Hong Kong"))))) (mkVP (P.mkAdV "also") (mkVP (mkVP L.join_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN (L.exchange_N (mkNP S.a_Quant (mkCN L.high_A (mkCN L.technology_N)))) L.program_N) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (mkCN L.mainland_N) (S.mkAdv L.part_Prep (mkNP (P.mkPN "China"))))))))) (E.PurposeVP (mkVP L.enhance_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.between_N L.communication_N) (S.mkAdv L.about_Prep (mkNP S.a_Quant (mkCN L.discipline_N)))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.between_N]
 
 SNT: The Hong Kong University of Science and Technology (HKUST) demonstrated its latest achievements in research and development at the 6th annual China Hi-Tech Fair (CHTF) held in Shenzhen in October 2004.
@@ -5199,8 +5199,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.principle_N) (S.mkA
 TXT: [unknown qualified constant L.here_N]
 
 SNT: Premier Peng Li and Kirghizian President Akayev attended the signing ceremony .
-AST: (mkText (mkUtt (mkS (mkCl (mkVP L.attend_V2 (mkNP S.a_Quant (mkCN L.ceremony_N)))))) fullStopPunct)
-TXT: [it attends a ceremony .]
+AST: (mkText (mkUtt (mkS (mkCl (mkVP L.attend_V2 (mkNP S.a_Quant (E.CompoundCN L.sign_N L.ceremony_N)))))) fullStopPunct)
+TXT: [it attends a sign ceremony .]
 
 SNT: The six documents are : an agreement on Chinese providing a loan to the Kirghizia government , an agreement on forming a combined Economy and Trade Committee between the Sino - Kirghizian governments , an note exchange on the presenting of materials to Kirghizia by China , a cultural cooperation agreement between the two countries of China and Kirghizia , ratification letters on exchanging consular treaties between the two countries , an agreement on cooperating on the China Trade Promotion Council and the Kirghizian Chamber of Industry and Commerce .
 AST: (mkText (mkUtt (mkS (mkCl (mkS (S.and_Conj (mkListS (mkS (mkCl (mkVP (P.mkAdV "note") (mkVP L.exchange_V)))) (mkS (mkCl (mkVP L.agree_VS (mkS (mkCl (mkVP L.cooperate_V2 (mkNP S.a_Quant (mkCN L.culture_N)))))))))) (mkListS (mkS (mkCl (mkVP (passiveVP L.agree_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP (mkVP L.loan_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "Kirghizia"))))))))))))))) (mkS (mkCl (mkVP (passiveVP L.agree_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V2 (mkNP (P.mkPN "China"))))))) (mkNP S.a_Quant (mkCN (mkCN L.organization_N) (mkRS (mkRCl S.which_RP (mkVP L.govern_V))))))) (mkVP L.form_V2 (mkNP (P.mkPN "Economy and Trade Committee"))))))))))) (mkVP (passiveVP L.include_V2) (S.mkAdv (mkNP S.a_Quant (mkNum (mkDigits "6")) (mkCN L.document_N))))))) fullStopPunct)
@@ -5243,8 +5243,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP 
 TXT: [unknown qualified constant L.byline_V2]
 
 SNT: The Japanese delegation participating in the Sixth Far East and South Pacific Region Handicapped Sports Meet held a grand swearing in ceremony in Tokyo this afternoon .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkRS (mkRCl S.which_RP (mkVP L.participate_V2 (mkNP (P.mkPN "Far East and South Pacific Region Handicapped Sports Meet"))))))) (mkVP (mkVP L.hold_V2 (mkNP S.a_Quant (mkCN L.grand_A L.ceremony_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
-TXT: [a delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand ceremony in Tokyo .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkRS (mkRCl S.which_RP (mkVP L.participate_V2 (mkNP (P.mkPN "Far East and South Pacific Region Handicapped Sports Meet"))))))) (mkVP (mkVP L.hold_V2 (mkNP S.a_Quant (E.CompoundCN L.swear_in_N L.grand_A L.ceremony_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
+TXT: [unknown qualified constant L.swear_in_N]
 
 SNT: A Japanese flag hung from the Chairman 's stage .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.flag_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan"))))) (mkVP (passiveVP L.hang_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.stage_N))))))) fullStopPunct)
@@ -5259,8 +5259,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.ground_N)) (mkVP (passive
 TXT: [a ground is filled an atmosphere .]
 
 SNT: Vice-minister of the Japanese State Welfare Ministry , Souyasen , delivered a " bolstering departure speech " to the delegation .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.minister_N L.of_Prep) (mkNP (mkNP (P.mkPN "State Welfare Ministry")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan"))))) (mkNP (P.mkPN "Souyasen")))) (mkVP (mkVP L.deliver_V2 (mkNP S.a_Quant (mkCN (mkCN L.speech_N) (mkRS (mkRCl S.which_RP (mkVP L.bolster_V)))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.delegation_N))))))) fullStopPunct)
-TXT: [minister of State Welfare Ministry from Japan Souyasen delivers a speech that bolsters to a delegation .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.minister_N L.of_Prep) (mkNP (mkNP (P.mkPN "State Welfare Ministry")) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan"))))) (mkNP (P.mkPN "Souyasen")))) (mkVP (mkVP L.deliver_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.depart_N L.speech_N) (mkRS (mkRCl S.which_RP (mkVP L.bolster_V)))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.delegation_N))))))) fullStopPunct)
+TXT: [unknown qualified constant L.depart_N]
 
 SNT: Souya said , the Far South Sports Meet was an international sports meet that attracts the world 's attention , and the scale of this sports meet to be held in Beijing is the largest to date .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Souya")) (mkVP say-01 (mkAP S.and_Conj (mkListAP (mkS (mkCl (mkNP (P.mkPN "Far South Sports Meet")) (mkAP L.sport_AdA (mkAP L.international_AdA (mkAP (L.meet_A (mkRS (mkRCl S.which_RP (mkVP L.attract_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.world_N)) (mkVP L.attend_V)))))) (mkRS (mkRCl S.which_RP (mkVP (passiveVP L.hold_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing")))))))))))) (mkS (mkCl (mkNP S.a_Quant (mkCN L.scale_N)) (mkAP (mkAP (S.mkOrd L.large_A))))))))))) fullStopPunct)
@@ -5271,15 +5271,15 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: Souya emphasized , the Japanese delegation must make use of this opportunity of participation in the Beijing Far South Sports Meet " to deepen friendship with athletes from various countries , and expand the scope of international friendliness . "
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Souya")) (mkVP L.emphasize_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan"))))) (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP L.use_V2 (mkNP S.this_Det (mkCN L.opportunity_N))))))))))) fullStopPunct)
-TXT: [Souya emphasizes that a delegation from Japan is obligated to use this opportunity .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Souya")) (mkVP L.emphasize_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan"))))) (mkVP (passiveVP L.obligate_V2) (E.PurposeVP (mkVP L.use_V2 (mkNP S.this_Det (E.CompoundCN (L.participate_N (mkNP (P.mkPN "Beijing Far South Sports Meet"))) L.opportunity_N))))))))))) fullStopPunct)
+TXT: [unknown qualified constant L.participate_N]
 
 SNT: Souya handed over the delegation flag of the Japanese delegation to the head of the delegation and Director of the Tokyo Handicapped Integrated Sports Center , Banminyan .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Souya")) (mkVP L.hand_over_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.delegation_N L.flag_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN L.delegation_N))))))))) fullStopPunct)
 TXT: [Souya hands over a delegation flag of a delegation .]
 
 SNT: From this tight , orderly , warm and serious swearing in ceremony , this reporter felt that , the Japanese Handicapped Sports Team was a team that was well trained , disciplined and possessed fighting spirit .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.report_V))))) (mkVP (mkVP L.feel_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN L.spirit_N)) (passiveVP L.possess_V2))) (mkListS (mkS (mkCl (mkVP (mkVP L.train_V) (S.mkAdv L.PPT_Prep (mkNP (P.mkPN "Japanese Handicapped Sports Team")))))) (mkS (mkCl (passiveVP L.discipline_V2))))))) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN L.tight_A (mkCN L.orderly_A (mkCN L.warm_A (mkCN L.serious_A (mkCN (mkCN L.ceremony_N) (E.PurposeVP (mkVP L.swear_in_V))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP S.this_Det (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.report_V))))) (mkVP (mkVP L.feel_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (E.CompoundCN L.fight_N L.spirit_N)) (passiveVP L.possess_V2))) (mkListS (mkS (mkCl (mkVP (mkVP L.train_V) (S.mkAdv L.PPT_Prep (mkNP (P.mkPN "Japanese Handicapped Sports Team")))))) (mkS (mkCl (passiveVP L.discipline_V2))))))) (S.mkAdv S.because_Subj (mkNP S.a_Quant (mkCN L.tight_A (mkCN L.orderly_A (mkCN L.warm_A (mkCN L.serious_A (mkCN (mkCN L.ceremony_N) (E.PurposeVP (mkVP L.swear_in_V))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.swear_in_V]
 
 SNT: The Japanese delegation will fly to Beijing on the 2nd .
@@ -5391,8 +5391,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L
 TXT: [unknown qualified constant L.semi_N]
 
 SNT: In the preliminaries , Wei Lan , who is 26 years old this year , from Guangdong , with outstanding skill , occupied the lead position with a total score of 355.35 points .
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wei Lan")) (mkVP L.occupy_V2 (mkNP S.a_Quant (mkCN L.position_N)))))) fullStopPunct)
-TXT: [Wei Lan occupies a position .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wei Lan")) (mkVP L.occupy_V2 (mkNP S.a_Quant (E.CompoundCN L.lead_N L.position_N)))))) fullStopPunct)
+TXT: [Wei Lan occupies a lead position .]
 
 SNT: Sheng Chen , who is 19 years old this year , from Hubei , is temporarily in the sixth position , the a total score of 342.60 points .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Sheng Chen")) (passiveVP (L.position_V2 (S.mkOrd (mkDigits "6"))))))) fullStopPunct)
