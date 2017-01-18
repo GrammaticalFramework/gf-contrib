@@ -3,7 +3,7 @@ FULL	You resolutely support a person that starts a thread!
 FULL	A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
 PART	You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
 
-PART	I agree that a person that starts a thread analyzes. I like Hua Mulan.
+FULL	I agree that a person that starts a thread analyzes.
 PART	I wish much that it is born.
 FULL	How long do we tolerate Japan?
 FULL	I say to a fellow citizen.
@@ -77,7 +77,7 @@ PART	All lives of our citizen are too carefree. Official is too extravagant.
 PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
 PART	You let that they know that US is a panacea!
 FULL	China is gone!
-PART	We fight for a scale war. It isn't possible that China loses.
+PART	We fight if Japan dares to invade a territory for a scale war. It isn't possible that China loses.
 FULL	It is contrasted that we need a show in a life.
 FULL	I just pass by.
 PART	A whole society is resembled to this.
@@ -104,7 +104,7 @@ FULL	A cheap person that performs.
 FULL	A cheap person that performs.
 PART	It is dirty that there is a circle. A scum, a bird and a beast.
 FULL	It isn't easy that there is that female that is starred.
-PART	Everybody does this. How is it possible that you make money?
+FULL	Everybody does this. How is it possible that you make money if it doesn't do?
 
 
 FULL	You just behave!
@@ -172,8 +172,8 @@ FULL	You just think that it is possible that it is spent of this money!
 FULL	It is very nice that it obliges us.
 
 PART	A same old problem.
-PART	You are accused.
-PART	It is claimed that it isn't possible that you pave a way.
+PART	You are accused if it is gotten.
+PART	It is claimed if it builds in a place that it isn't possible that you pave a way.
 FULL	Anonymous.
 FULL	That is a fair point.
 PART	A person makes a good point.
@@ -190,7 +190,7 @@ PART	You are sticked to traffic.
 
 PART	It is needed that a business is supported.
 
-PART	It is recommended that it does two things.
+FULL	It is recommended if we recognize that a road primary benefits a business that it does two things.
 
 
 
@@ -244,9 +244,9 @@ PART	I believe that every child needs parent.
 
 PART	What do I do?
 PART	It is very bad that it threatens to you.
-PART	It is obligated because it is just escalated that you don't give in that.
+FULL	It is obligated because it is just escalated if it gives in that you don't give in that.
 
-PART	It is contrasted that he sees.
+PART	It is contrasted that he sees if it loves son.
 FULL	Does it get through you?
 FULL	You date!
 FULL	You meet all person kinds!
@@ -261,7 +261,7 @@ PART	You need.
 
 FULL	You keep that thing that is recorded!
 
-PART	You try to aid!
+
 PART	You tell that it is needed that it goes!
 
 
@@ -278,10 +278,10 @@ PART	It contrasts a point.
 PART	I don't enjoy a university.
 
 
-PART	It isn't worked out because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
+PART	It isn't worked out if it opines because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
 
 
-PART	I have a person that counsels because it is possible that you only have and it doubts that it helps much.
+PART	I have a person that counsels because it is possible that you only have and it doubts that it helps if it doesn't already help much.
 
 
 
@@ -293,7 +293,7 @@ PART	Is it possible that someone some advises me?
 PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
 PART	You don't shut off and it does because it tries a new thing well! You now keep it!
 FULL	I recommend that you go to too see doctor.
-PART	It is possible that it benefits you.
+PART	It is possible that it benefits you if there is an anxious person.
 
 
 
@@ -342,7 +342,7 @@ PART	I think that it is become a person that is more weak and it way down dulls 
 PART	You don't go to go with it to an over top.
 
 
-PART	It is of course possible that you are respected. It is contrasted that it isn't nice that there is that.
+PART	It is contrasted that it isn't nice that there is that.
 PART	It is contrasted that I don't know if anyone reads this.
 FULL	I leave a home in September and it starts a university.
 PART	I emotional struggle. I have two periods when it lives.
@@ -403,9 +403,9 @@ PART	I thank you.
 
 FULL	You talk and a thing that is gone on is told is recommended.
 PART	It is possible.
-PART	It is possible that a person helps you.
-PART	It is likely that it is only worsened.
 
+
+PART	It is more good that this thing is gotten.
 PART	You don't do this!
 
 
@@ -484,7 +484,7 @@ PART	Casey states that a nucleus program that moves to a forward is continued.
 PART	An expert person states that it is recommended that it is previously resolved that a transparency is an issue.
 PART	Executive director of partisan Arms Control Association Daryl G. Kimball states that an agreement addresses a problem.
 PART	Kimball states that an organization that governs Iran is a design.
-PART	Official of Iran states that it reduces.
+PART	Official of Iran states that it reduces if it more sanctions.
 
 
 
@@ -499,7 +499,7 @@ PART	A document that outlines that Israel proposes is distributed in March 2007.
 PART	A letter says that a presentation from Israel is offered on 17 March 2007.
 
 
-PART	One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
+
 PART	A document is circulated when a person organization that administrates works in September 2007 in Capitol Hill.
 
 FULL	Kimball states.
@@ -519,7 +519,7 @@ FULL	Seigel states.
 PART	Israel is recognized.
 
 PART	Official of NSG previously suggests that it approaches.
-
+PART	A proliferation regime isn't considerable enhanced if NSG Guidelines is modified.
 
 FULL	Iran.
 
@@ -550,7 +550,7 @@ PART	An envoy from Europe, Solana and Burns set a deadline.
 
 
 
-PART	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb.
+
 PART	It is possible that 6,000 centrifuges that are run produce a uranium that suffices one bomb.
 FULL	International Atomic Energy Agency states in May 2008 that Iran possesses 3,500 centrifuges that are operated.
 
@@ -629,7 +629,7 @@ PART	It is included that a residence in a country is built.
 FULL	Brazil.
 
 PART	Brazil implements law that allows that Air Force targets an aircraft that traffics a drug in an airspace / Air Force targets an aircraft that traffics a drug in an air space.
-PART	A liability concerns US.
+FULL	A liability if a civilian plane is misidentified concerns US.
 
 PART	A thing that is planned requires eight precaution steps.
 

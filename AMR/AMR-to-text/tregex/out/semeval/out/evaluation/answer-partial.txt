@@ -380,7 +380,7 @@ PART	Three siblings that sole hold a share are contrasted to meet a person that 
 FULL	Dexter King also sues sister.
 PART	A person that wins wants that a lottery from Texas pays.
 FULL	Austin.
-PART	A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission for money.
+PART	A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission if it doesn't pay for money.
 
 PART	Pankaj Joshi is accused.
 
@@ -640,7 +640,7 @@ FULL	YouTube.
 PART	It is possible that a private citizen posts a video. It is a public forum.
 FULL	FOX, NBC, CNN and ABC.
 
-PART	It before warns to them. They stop a work.
+PART	They stop a work.
 
 FULL	This local group still fights.
 PART	It is taken off in YouTube that it all posts.
@@ -716,7 +716,7 @@ PART	A hyperbole.
 
 
 
-PART	A tar ball is found in Cocoa Beach. Gulf Stream goes along a shore. You find oil.
+PART	A tar ball is found in Cocoa Beach. Gulf Stream goes along a shore. You find oil if it is gone.
 
 
 
@@ -742,7 +742,7 @@ PART	American Association of Petroleum Geologists estimates that ANWR contains o
 PART	That.
 FULL	It forecasts.
 
-PART	It is inferred that EIA, DoE, IEA and Pentagon just pump a card.
+PART	It is inferred if a thing that I say is a hogwash that EIA, DoE, IEA and Pentagon just pump a card.
 PART	A thing that is forecasted is a thing that is guessed.
 
 PART	Do you ever see that it is resembled to a thing that it is proper managed?
@@ -927,7 +927,7 @@ PART	It isn't true that there are other stuffs.
 
 PART	United States Geological Survey suggests that a seabed holds.
 
-PART	You know that they darndest try to drive us stone age.
+PART	You know that they darndest try to drive us if it is possible stone age.
 
 
 PART	It is barred that it doesn't hold.
@@ -1015,7 +1015,7 @@ PART	It is obvious that there is you.
 
 FULL	It is broken that we are promised.
 FULL	It isn't free that there is a free medical!
-PART	You enroll to Tricare.
+PART	You enroll if it doesn't live to Tricare.
 
 PART	It is contrasted that it is more cheap that there is it.
 
@@ -1045,7 +1045,7 @@ FULL	Do you ever hear Tricare Standard or Thrift Savings Plan?
 FULL	It doesn't compare.
 
 
-
+FULL	It is precise caused that this regime needs that it is voted in November that it is out.
 PART	We see a same bullshit.
 
 PART	You are seen in a commissary on Sunday.
@@ -1081,7 +1081,7 @@ FULL	A military doesn't pay that.
 
 
 PART	That is a point of this topic.
-PART	A real reason that causes that a military is joined.
+
 
 
 
@@ -1268,7 +1268,7 @@ FULL	I also know a criminal that goes to serve that scams a system when it is ou
 PART	It isn't more good that there is veteran.
 
 PART	We go to a society and it works.
-PART	You are an idiot.
+PART	You are an idiot if it thinks that it is possible that we live.
 
 PART	You only know.
 

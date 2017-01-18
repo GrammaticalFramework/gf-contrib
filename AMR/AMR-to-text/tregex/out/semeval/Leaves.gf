@@ -16,7 +16,9 @@ abstract Leaves = Cat, Dictionary ** {
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
 		exempt_V : V ;			-- only exempt_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
+		opine_V : V ;			-- only opine_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
+		sanction_V : V ;		-- only sanction_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
 		support_V : V ;			-- only support_V2 in Dictionary
 
@@ -26,6 +28,8 @@ abstract Leaves = Cat, Dictionary ** {
 		fall_V2 : V2 ;			-- subcat in Dictionary
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
+		lane_V2 : V2 ;			-- missing in Dictionary
+		misidentify_V2 : V2 ;	-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
 		recover_V2 : V2 ; 		-- only recover_V in Dictionary
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
@@ -50,6 +54,7 @@ abstract Leaves = Cat, Dictionary ** {
 		need_VS : VS ;			-- subcat in Dictionary
 		offer_VS : VS ;			-- subcat in Dictionary
 		outline_VS : VS ;		-- only outline_V2 in Dictionary
+		present_VS : VS ;		-- only present_V2 in Dictionary
 		pursue_VS : VS ;		-- only pursue_V2 in Dictionary
 		quote_VS : VS ;			-- missing in Dictionary
 		recommend_VS : VS ;		-- only recommend_V2 in Dictionary

@@ -1,7 +1,7 @@
 --# -path=../../../lexicons/translator
 
 concrete LeavesEng of Leaves = CatEng, DictionaryEng -
-[information_N, okay_A, organization_N, recognize_1_V2, recognize_VS, traffic_V] **
+[get_V2, information_N, okay_A, organization_N, recognize_1_V2, recognize_VS, regime_1_N, traffic_V] **
 open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 
 	flags
@@ -24,7 +24,9 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		enrich_V = mkV "enrich" "enriches" "enriched" "enriched" "enriching" ;
 		exempt_V = mkV "exempt" ;
 		inspect_V = mkV "inspect" ;
+		opine_V = mkV "opine" ;
 		prosecute_V = mkV "prosecute" ;
+		sanction_V = mkV "sanction" ;
 		state_V = mkV "state" ;
 		traffic_V = mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking" ;
 		support_V = mkV "support" ;
@@ -33,14 +35,16 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		conflict_V2 = mkV2 (partV conflict_V "about") ;
 		explode_V2 = mkV2 explode_V ;
 		fall_V2 = mkV2 (IrregEng.fall_V) ;
+		get_V2 = mkV2 (IrregEng.get_V) ;			-- TODO: remove variants in DictionaryEng
 		go_V2 = mkV2 (IrregEng.go_V) ;
 		google_V2 = mkV2 (mkV "google") ;
+		lane_V2 = mkV2 (mkV "lane" "lanes" "laned" "laned" "laning") ;
+		misidentify_V2 = mkV2 (mkV "misidentify" "misidentifies" "misidentified" "misidentified" "misidentifying") ;
 		pass_V2 = mkV2 pass_V ;
 		recover_V2 = mkV2 recover_V ;
+		recognize_1_V2 = mkV2 (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 		traffic_V2 = mkV2 (mkV "traffic" "traffics" "trafficked" "trafficked" "trafficking") ;
 		transfer_V2 = mkV2 transfer_V ;
-
-		recognize_1_V2 = mkV2 (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
 
 		contrast_VV = mkVV contrast_V ;
 		convince_VV = mkVV (mkV "convince") ;
@@ -61,9 +65,10 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		need_VS = mkVS need_V ;
 		offer_VS = mkVS (mkV "offer") ;
 		outline_VS = mkVS (mkV "outline") ;
+		present_VS = mkVS (mkV "present") ;
 		pursue_VS =  mkVS pursue_V ;
 		quote_VS = mkVS quote_V ;
-		recognize_VS = mkVS (mkV "recognize") ;	-- TODO: remove variants in DictionaryEng
+		recognize_VS = mkVS (mkV "recognize") ;		-- TODO: remove variants in DictionaryEng
 		recommend_VS = mkVS (mkV "recommend") ;
 		refuse_VS = mkVS refuse_V ;
 		suffer_VS = mkVS suffer_V ;
@@ -75,10 +80,11 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		information_N = mkN "information" "information" ;	-- mass noun (vs. mkN "information" in DictionaryEng)
 		president_N = presidentMasc_N ;
 		official_N = mkN "official" ;
-		organization_N = mkN "organization" ;	-- TODO: remove variants in DictionaryEng
+		organization_N = mkN "organization" ;		-- TODO: remove variants in DictionaryEng
+		regime_1_N = mkN "regime" ;					-- TODO: remove variants in DictionaryEng
 
 		interest_A = interesting_A ;
-		okay_A = compoundA (mkA "okay") ;	-- TODO: remove variants in DictionaryEng
+		okay_A = compoundA (mkA "okay") ;			-- TODO: remove variants in DictionaryEng
 
 		just_AdA = mkAdA "just" ;
 		more_AdA = mkAdA "more" ;
@@ -254,7 +260,7 @@ open ParadigmsEng, MorphoEng, (S = SyntaxEng), IrregEng, Prelude in {
 		real_N = real_1_N ;
 		recognize_V2 = LeavesEng.recognize_1_V2 ;
 		record_N = record_1_N ;
-		regime_N = regime_1_N ;
+		regime_N = LeavesEng.regime_1_N ;
 		right_A = right_1_A ;
 		right_Adv = right_1_Adv ;
 		rock_N = rock_1_N ;
