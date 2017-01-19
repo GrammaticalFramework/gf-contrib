@@ -69,7 +69,7 @@ PART	It weekend calls MacAskill to press.
 
 
 
-FULL	John Mosey says.
+PART	John Mosey says.
 FULL	PLO picks a new person that leads when it landmark meets.
 
 FULL	A parliament of Palestine Liberation Organisation elects six new members on Thursday an executive body.
@@ -83,7 +83,7 @@ PART	It is contrasted that an international community recognizes PLO.
 PART	It is reported that Google gives a ground to Europe.
 
 
-FULL	The Financial Times says that a company agrees.
+PART	The Financial Times says that a company agrees.
 PART	A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
 PART	A letter says that Google also promises to consult a company from Europe that publishes.
 
@@ -342,7 +342,7 @@ PART	Emir of Kuwait pardons a maid from Philippines.
 
 
 FULL	Spokesman of Foreign Affairs Department Ed Malaya says that a pardon is signed on 1 June.
-FULL	De Castro says.
+PART	De Castro says.
 PART	It also thanks a person that leads Kuwait for a magnanimity and compassion.
 
 PART	A pardon is meant to free her and ambassador of Philippines Ricardo Endaya says that it is expected.
@@ -370,7 +370,7 @@ PART	A person
 PART	He steps down chairman of EMC in January 2001.
 PART	Egan gets a bachelor degree about art about science and a master degree about science.
 PART	He doesn't ever forget a hardscrabble route and it is donated to Northeastern University.
-FULL	Egan leaves behind.
+PART	Egan leaves behind.
 PART	It says that child of King meets to discuss an estate.
 FULL	Atlanta.
 
@@ -513,7 +513,7 @@ FULL	Howard Weitzman says that it compensates to them fair.
 FULL	Attorney of Katherine Jackson Adam Streisand agrees.
 FULL	He says that it thinks that it is very reasonable that there is this.
 
-FULL	Weitzman notes.
+PART	Weitzman notes.
 
 
 
@@ -642,7 +642,7 @@ FULL	FOX, NBC, CNN and ABC.
 
 PART	They stop a work.
 
-FULL	This local group still fights.
+PART	This local group still fights.
 PART	It is taken off in YouTube that it all posts.
 FULL	It now lasts.
 
@@ -1008,7 +1008,7 @@ FULL	It causes.
 
 PART	It contrasts.
 
-FULL	I think.
+PART	I think.
 PART	You speak a fucking mailer.
 
 PART	It is obvious that there is you.

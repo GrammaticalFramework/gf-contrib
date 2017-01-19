@@ -1246,7 +1246,7 @@ mkAdv <1 /because_Subj/ <2 (/:ARG0/=arg < mkNP)
 [move adv >2 vp_o]
 
 # (VP frame var) => (VP frame)
-/VP/ <1 /FRAME/ <2 /VAR/=var
+/VP/ <1 /FRAME/ <2 (/VAR/=var !< /ANY/)
 [delete var]
 
 # (CN (noun_N Adv)) => (mkCN (CN noun_N) Adv)
@@ -1361,7 +1361,11 @@ possess_Prep=prep
 /:li/=li <: /NUM/
 [delete li]
 
---- Remove unresolved relations, reifications, etc. (SemEval2017)
+--- Remove unresolved relations, reifications, etc.
+
+/VP/ <1 /FRAME/=frame <2 /VAR/=var
+[delete var]
+[relabel frame /^(.+)-(.+)$/L.$1_V/]
 
 /REL/=unk
 [delete unk]

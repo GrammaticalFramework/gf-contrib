@@ -315,7 +315,7 @@ PART	It contrasts.
 PART	You are thanked.
 
 
-FULL	Does she even have?
+PART	Does she even have?
 PART	You don't know that it doesn't get a good grade.
 PART	A life throws a thing to you.
 
@@ -389,7 +389,7 @@ FULL	I am addicted.
 PART	I think it.
 
 
-FULL	He just cares.
+PART	He just cares.
 
 
 FULL	Mum of me also suffers bipolar and it has a depression.
@@ -636,7 +636,7 @@ PART	A thing that is planned requires eight precaution steps.
 PART	It is contrasted to ever put a policy an effect that law that permits a such action is originally approved in 1998.
 
 
-FULL	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
+PART	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
 FULL	Official of State Department from US states.
 
 
@@ -898,7 +898,7 @@ PART	An official from Ukraine is adamant.
 FULL	Diplomat of Ukraine in Kenya Oleh Belokolos states.
 
 FULL	All appropriate paperworks are validated.
-FULL	Ukraine abides.
+PART	Ukraine abides.
 
 
 PART	A politician from Kenya demands an answer and it calls to a commission that it examines a situation.
@@ -925,7 +925,7 @@ PART	Costa says that a result is a glut that depresses a thing.
 FULL	An amount that is increased is also processed in Afghanistan.
 PART	Costa adds that an insurgent holds an opium.
 PART	Costa says a surplus and it threatens that it devalues their stockpile.
-FULL	United Nations finds that Afghanistan produces in 2008.
+PART	United Nations finds that Afghanistan produces in 2008.
 
 
 PART	This then supports a thing.
@@ -1058,7 +1058,7 @@ FULL	Politics, an international and terrorism.
 
 PART	Tang states that it demonstrates that it is needed that there is an effort and it is correct.
 
-FULL	Tang states.
+PART	Tang states.
 PART	Tang states that an organization that governs China signs a multilateral pact.
 PART	Tang states a thing that is tasked that there is a measure.
 PART	Tang states that it cooperates an economy.
@@ -1095,7 +1095,7 @@ FULL	Alliot-Marie states.
 PART	It is needed that it internationally cooperates.
 
 
-FULL	France offers in 2002 that it sells.
+PART	France offers in 2002 that it sells.
 FULL	France agrees.
 PART	A mine of a high intensity is strung in Kashmir in a line.
 FULL	Terrorism that crosses a border is checked.
@@ -1108,7 +1108,7 @@ PART	An international and an organization that governs.
 
 
 
-FULL	De Villepin says.
+PART	De Villepin says.
 PART	De Villepin says that a person from France acts.
 FULL	A police from France raids a headquarters in a northwest of Paris of Mujahedeen on 22 June 2003.
 
