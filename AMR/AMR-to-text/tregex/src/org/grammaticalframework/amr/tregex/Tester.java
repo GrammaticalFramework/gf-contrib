@@ -1480,4 +1480,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // ::snt What do Chinese still tolerate...
+    @Test
+    public void t78_what_do_Chinese_still_tolerate() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(t / tolerate-01 :ARG0 (p / person :mod (c / country :wiki \"China\" :name (n / name :op1 \"China\"))) :ARG1 (a / amr-unknown) :mod (s / still))");
+        assertEquals(amr,
+                "(t (tolerate-01 (:ARG0 (p (person (:mod (c (country (:wiki \"China\") (:name (n (name (:op1 \"China\")))))))))) (:ARG1 (a amr-unknown)) (:mod (s still))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"China\"))))) (mkVP (P.mkAdV \"still\") (mkVP L.tolerate_V)))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

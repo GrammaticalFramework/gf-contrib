@@ -363,3 +363,8 @@ TestTreesEng: it is possible that a person helps you if it tells .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t78_what_do_Chinese_still_tolerate
+TestTreesEng: what does a person from China still tolerate ?
+TestTreesLav: 
+TestTreesRus: 
+

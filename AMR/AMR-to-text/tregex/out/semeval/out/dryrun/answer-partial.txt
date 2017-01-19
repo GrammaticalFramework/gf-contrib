@@ -1,5 +1,5 @@
 FULL	You resolutely support a person that starts a thread!
-
+PART	You pledge!
 FULL	A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
 PART	You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
 
@@ -68,7 +68,7 @@ FULL	You let that a horse drinks to Pacific Ocean!
 
 
 
-
+FULL	What does a person from China still tolerate?
 FULL	They even ride a head of us.
 PART	Does a person from China still do this?
 PART	It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
@@ -208,7 +208,7 @@ PART	It is in fact possible that it suffices.
 
 
 
-
+FULL	It checks reality in here.
 PART	I drive.
 PART	I commute to a location.
 
@@ -261,7 +261,7 @@ PART	You need.
 
 FULL	You keep that thing that is recorded!
 
-
+PART	You try to aid if it isn't possible that it affords one!
 PART	You tell that it is needed that it goes!
 
 
@@ -274,7 +274,7 @@ PART	It isn't legal that an amount is paid.
 
 PART	It goes out and it is most hard.
 PART	I go when it is sober to a union bar.
-PART	It contrasts a point.
+PART	A fact in here. It contrasts a point.
 PART	I don't enjoy a university.
 
 
@@ -385,7 +385,7 @@ PART	I have a slit in my arm.
 PART	They are healed and I then cut a staple and a razor.
 
 PART	I am tempted when it writes this really.
-FULL	I am addicted.
+FULL	I am addicted. It again cuts when one is healed.
 PART	I think it.
 
 
@@ -451,7 +451,7 @@ PART	It contrasts.
 
 PART	Do I see that I speak to a person that counsels?
 
-PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start.
+PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start. A demise circle in there.
 
 PART	It is worked to me and I suffer a random panic attack!
 
@@ -543,7 +543,7 @@ PART	Ahmadinejad states that West still pursues that a negotiation is resumed.
 
 PART	A package that US endorses.
 
-
+PART	Official of US repeats that it states that it isn't possible that it begins to negotiate.
 
 
 PART	An envoy from Europe, Solana and Burns set a deadline.
@@ -852,9 +852,9 @@ FULL	Iraq.
 PART	A technology, an international and a telecom.
 
 
-
+PART	XP states that an any website that contains a contrary material is hacked.
 PART	An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
-
+PART	Isn't it clear that it begins to attack?
 
 
 PART	An alternative address is still operated.
@@ -867,7 +867,7 @@ FULL	A thing that is stated says.
 PART	XP erases a site.
 
 
-
+PART	An any website with a contrary material is punished.
 
 
 
@@ -885,7 +885,7 @@ PART	It emerges.
 
 FULL	An official states on 8 October 2008 that it progresses and a party approaches an agreement.
 
-
+PART	A pirate expresses that it wills that it negotiates a finance figure.
 PART	A ship is hijacked in 2008.
 
 
@@ -1168,7 +1168,7 @@ FULL	France is a country that leads European Space Agency.
 PART	Chirac visits when an organization that governs Russia displays that it is uneasy.
 
 PART	It is operated, space Titov is a military facility and Russian Space Forces runs.
-
+PART	Putin says that Chirac visits there.
 
 
 FULL	Philippines.
@@ -1234,7 +1234,7 @@ PART	Wen states that an organization that governs China supports that peace in M
 
 FULL	China and Kyrgyzstan.
 PART	An international and an organization that governs.
-
+PART	China and Kyrgyzstan pledge.
 
 FULL	It signs a communiqué on 22 September 2004.
 
@@ -1245,7 +1245,7 @@ FULL	It signs a communiqué on 22 September 2004.
 PART	China and Kyrgyzstan say that it is recommended that peace and stability are established.
 
 
-
+PART	A communiqué says that China and Kyrgyzstan will that it together works of other countries and there is a measure.
 
 
 FULL	Vietnam and Germany.
@@ -1283,7 +1283,7 @@ PART	It collaborates.
 FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
-
+FULL	Xinhua News Agency bylines Guojun Yang on 1 September in Beijing.
 
 
 
@@ -1291,13 +1291,13 @@ FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
 FULL	It ends.
-
+FULL	Xinhua News Agency bylines on 1 September in Beijing.
 
 PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal visits China.
 
 FULL	It ends.
-
-
+FULL	Xinhua News Agency bylines Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
+PART	A principle of a party that is concerned today signs six documents in here.
 FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
@@ -1308,7 +1308,7 @@ PART	He expresses that it promotes stability, peace of Central Asia and a securi
 
 
 FULL	It ends.
-
+FULL	Xinhua News Agency bylines Yiguo Yu on 1 September in Tokyo.
 PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand swearing ceremony in Tokyo.
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
@@ -1323,8 +1323,8 @@ PART	A delegation from Japan is flown.
 PART	They are remained in Beijing and it is returned to Japan.
 FULL	It ends.
 
-
-
+FULL	Xinhua News Agency bylines on 31 August.
+FULL	Xinhua News Agency bylines Shuifu Tang on 31 August in Seoul.
 
 
 
@@ -1344,7 +1344,7 @@ PART	It contrasts.
 
 FULL	It ends.
 
-
+PART	A preliminary about a board holds in here.
 
 PART	Wei Lan occupies a lead position.
 
@@ -1359,7 +1359,7 @@ PART	Si Aiwan is scored a point.
 PART	It is held that it preliminary competes.
 
 FULL	It ends.
-
+FULL	Xinhua News Agency bylines Changrui Huang and Aiguo Yang on 1 September in Rome.
 
 
 

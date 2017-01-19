@@ -9,6 +9,7 @@ abstract Leaves = Cat, Dictionary ** {
 		administrate_V : V ;	-- missing in Dictionary
 		analyze_V : V ;			-- only analyze_V2 in Dictionary
 		attack_V : V ;			-- only attack_V2 in Dictionary
+		byline_V : V ;			-- FIXME
 		cause_V : V ;			-- only cause_V2 in Dictionary
 		counsel_V : V ;			-- only counsel_V2 in Dictionary
 		defend_V : V ;			-- subcat in Dictionary
@@ -16,18 +17,23 @@ abstract Leaves = Cat, Dictionary ** {
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
 		exempt_V : V ;			-- only exempt_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
+		kidnap_V : V ;			-- only kidnap_V2 in Dictionary
 		opine_V : V ;			-- only opine_V2 in Dictionary
+		pledge_V : V ;			-- only pledge_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
 		sanction_V : V ;		-- only sanction_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
 		support_V : V ;			-- only support_V2 in Dictionary
+		tolerate_V : V ;		-- only tolerate_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
+		byline_V2 : V2 ;		-- FIXME
 		conflict_V2 : V2 ;		-- only conflict_V in Dictionary
 		explode_V2 : V2 ;		-- subcat in Dictionary
 		fall_V2 : V2 ;			-- subcat in Dictionary
 		go_V2 : V2 ;			-- subcat in Dictionary
 		google_V2 : V2 ;		-- missing in Dictionary
+		hyperlink_V2 : V2 ;		-- missing in Dictionary
 		lane_V2 : V2 ;			-- missing in Dictionary
 		misidentify_V2 : V2 ;	-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
@@ -35,6 +41,7 @@ abstract Leaves = Cat, Dictionary ** {
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
 		transfer_V2 : V2 ;		-- subcat in Dictionary
 
+		begin_VV : VV ;			-- only begin_V2 in Dictionary
 		contrast_VV : VV ;		-- only contrast_V2 in Dictionary
 		convince_VV : VV ;		-- only convince_V2 in Dictionary
 		obligate_VV : VV ;		-- only obligate_V2 in Dictionary
@@ -62,11 +69,17 @@ abstract Leaves = Cat, Dictionary ** {
 		suffer_VS : VS ;		-- missing in Dictionary
 		support_VS : VS ;		-- missing in Dictionary
 		want_VS : VS ;			-- subcat in Dictionary
+		will_VS : VS ;			-- only will_V2 in Dictionary
 
+		any_N : N ;				-- FIXME
 		center_N : N ;			-- missing in Dictionary
 		citizen_N : N ;			-- citizenFem_N in Dictionary
+		here_N : N ;			-- FIXME
 		president_N : N ;		-- presidentMasc_N in Dictionary
 		official_N : N ;		-- missing in Dictionary
+		one_N : N ;				-- missing in Dictionary / FIXME
+		some_N : N ;			-- FIXME
+		there_N : N ;			-- FIXME
 
 		interest_A : A ;		-- the mapping between "interest" and "interesting" is not straightforward
 

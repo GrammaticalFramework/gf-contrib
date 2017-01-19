@@ -1,5 +1,5 @@
 
-
+FULL	AFP bylines on 2 August 2009 in Madrid.
 PART	It travels on Saturday to a residence in Majorca.
 
 PART	He tells on Saturday to a person that reports in an airport that we are obligated.
@@ -11,7 +11,7 @@ PART	An authority blames ETA.
 
 
 
-
+FULL	AFP bylines on 5 August 2009 in Washington.
 
 
 PART	It is meant to ever doubt an outcome that it supports.
@@ -38,7 +38,7 @@ PART	I think Republican Party.
 
 
 FULL	An ambassador visits a person from France that researches in a prison from Tehran.
-
+FULL	AFP bylines on 14 August 2009 in Paris.
 
 
 PART	It visits.
@@ -47,7 +47,7 @@ PART	It is contrasted to give a detail that an office says that it meets father 
 
 
 PART	A person that is ailed that bombs in Lockerbie drops an appeal.
-
+FULL	AFP bylines on 18 August 2009 in Edinburgh.
 
 
 PART	White House says on Tuesday that it recommends that Megrahi is remained a jail.
@@ -71,7 +71,7 @@ PART	It weekend calls MacAskill to press.
 
 PART	John Mosey says.
 FULL	PLO picks a new person that leads when it landmark meets.
-
+FULL	AFP bylines on 27 August 2009 in Ramallah.
 FULL	A parliament of Palestine Liberation Organisation elects six new members on Thursday an executive body.
 PART	A spokesman says that Hanan Ashrawi, Ahmed Qorei and top Saeb Erakat are included to elect six persons.
 
@@ -81,7 +81,7 @@ FULL	President of Palestinian Authority Mahmud Abbas heads an executive committe
 PART	It creates Palestinian Authority when Arafat is returned after 27 years to a land in Palestine in July 1994.
 PART	It is contrasted that an international community recognizes PLO.
 PART	It is reported that Google gives a ground to Europe.
-
+FULL	AFP bylines on 7 September 2009 in London.
 
 PART	The Financial Times says that a company agrees.
 PART	A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
@@ -92,7 +92,7 @@ PART	A letter says that Google also promises to consult a company from Europe th
 
 
 FULL	Football.
-
+FULL	AFP bylines on 4 October 2009 in Sarajevo.
 
 
 
@@ -101,7 +101,7 @@ PART	It adds that an other is injured.
 
 
 
-
+FULL	AFP bylines on 5 October 2009 in Ramallah.
 
 
 
@@ -116,7 +116,7 @@ PART	It is seen that a council adopts a report.
 
 PART	Interior Ministry says that it kills 12 persons and it wounds 83 persons.
 
-
+FULL	AFP bylines on 15 October 2009 in The Hague.
 PART	A document court says that it gives DSB on Thursday.
 
 
@@ -131,13 +131,13 @@ PART	DSB says that it holds in Netherlands.
 FULL	It also main sponsors football AZ Alkmaar.
 PART	An organization that promises that governs announces that it is possible that a person that holds an account back claims.
 PART	Football. Barnes faces a tax time.
-
+FULL	AFP bylines on 21 October 2009 in London.
 
 
 
 PART	Barnes is charged native Jamaica.
 
-
+FULL	AFP bylines on 2 November 2009 in The Hague.
 
 PART	A group person from Bosnia and Herzegovina that leads when it wars says that it is pleased to attend a conference on 3 November 2009 about a status.
 
@@ -145,7 +145,7 @@ PART	A group person from Bosnia and Herzegovina that leads when it wars says tha
 FULL	He tells to a person that judges that it doesn't have adequate time to prepare for it.
 
 PART	A person that judges blocks a video.
-
+FULL	AFP bylines on 9 November 2009 in Los Angeles.
 
 
 
@@ -158,7 +158,7 @@ PART	A person that arbitrates eventual awards 545,000 dollars to Lopez.
 
 
 PART	A ministry says that a person from Bulgaria is life sentenced in Iran.
-
+FULL	AFP bylines on 9 November 2009 in Sofia.
 
 PART	Spokesman Dragovest Goranov says that Zhivko Rusev is informed a thing that a court decides.
 PART	Rusev is arrested in September 2008 to find a heroin in a truck.
@@ -168,7 +168,7 @@ PART	He adds that we estimate some lights in an end of a tunnel because it rules
 
 
 
-
+FULL	AFP bylines on 17 November 2009 in Washington.
 
 FULL	Larry Elliott is executed an electrocution.
 
@@ -181,7 +181,7 @@ PART	Virginia executes an inmate.
 
 
 
-
+FULL	AFP bylines on 7 January 2010 in Paris.
 
 PART	Ali Ibrahim Al-Sudani is described.
 
@@ -189,7 +189,7 @@ PART	Ali Ibrahim Al-Sudani is described.
 
 PART	129 group radicals are expelled to a territory of France.
 
-
+FULL	AFP bylines on 30 January 2010 in Tehran.
 
 PART	A hanging is carried out in Evin Prison.
 
@@ -198,7 +198,7 @@ PART	A hanging is carried out in Evin Prison.
 
 
 
-
+FULL	AFP bylines on 7 April 2010 in Hyderabad.
 PART	It is gotten back on Wednesday that Shoaib Malik from Pakistan is celebrity wedded Sania Mirza from India.
 
 PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad that paper is signed.
@@ -207,6 +207,7 @@ PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad th
 
 
 
+FULL	AFP bylines on 23 April 2010 in Beijing.
 
 
 
@@ -219,8 +220,7 @@ PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad th
 
 
 
-
-
+FULL	AFP bylines on 28 April 2010 in Gaza City.
 PART	A local medic says that it kills a person from Palestine when it protests on Wednesday in Gaza Strip.
 PART	Muawiya Hassanein says that Ahmed Salim is taken to Al-Shifa.
 PART	A military from Israel comments.
@@ -230,7 +230,7 @@ PART	A person that witnesses says that Salim accompanies a group that hurls a ro
 
 
 PART	A rabbi from Israel is accused to shoot a person that studies.
-
+FULL	AFP bylines on 5 May 2010 in Jerusalem.
 
 
 PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
@@ -238,7 +238,7 @@ PART	It is contrasted to ban a report that it attacks in January.
 PART	A rabbi is arrested.
 
 PART	Governor of Nigeria that faces a graft is arrested in Dubai.
-
+FULL	AFP bylines on 13 May 2010 in Abuja.
 PART	A person is arrested in Dubai.
 PART	Interpol arrests governor of Delta James Ibori on Wednesday.
 PART	It is confirmed that Interpol arrests him.
@@ -262,7 +262,7 @@ PART	It is succeeded that it is bid / bidden that his asset is frozen.
 PART	A person is arrested.
 PART	Governor of 36 states of Nigeria controls a public fund.
 FULL	It is spread in a street in Dhaka that a garment is protested in Bangladesh.
-
+FULL	AFP bylines on 30 June 2010 in Dhaka.
 PART	A person that works to a garment factory blocks a key road in Dhaka on Wednesday.
 
 PART	A person that holds that it is protested that works masses in a street.
@@ -279,12 +279,12 @@ PART	A garment accounts.
 
 PART	A retailer writes in January that it requests that a wage is increased.
 
+FULL	A union says that a person that kidnaps frees a journalist in the South of Nigeria that is enriched oil.
+FULL	AFP bylines on 18 July 2010 in Lagos.
 
 
 
-
-
-
+PART	It is contrasted that it kidnaps in the South of Nigeria.
 
 FULL	It also calls that they are immediately released.
 
@@ -292,7 +292,7 @@ FULL	Member of a television crew of M-Net Supersport is seized in March in Imo S
 PART	They are freed.
 
 FULL	Georgia seizes a ship from Ukraine because it visits Abkhazia.
-
+FULL	AFP bylines on 29 July 2010 in Tbilisi.
 
 
 FULL	A channel reports that a vessel that is loaded wheat is anchored in a port in Poti of Georgia and it investigates.
@@ -302,7 +302,7 @@ FULL	A channel reports that a vessel that is loaded wheat is anchored in a port 
 
 
 PART	A pirate says that a ransom is paid a tanker from South Korea.
-
+FULL	AFP bylines on 6 November 2010 in Mogadishu.
 PART	A pirate from Somalia says on Saturday that it receives a record ransom.
 
 PART	Abdi Yare says in Hobyo that money is dropped and a pirate shares.
@@ -313,7 +313,7 @@ PART	They hold a vessel.
 PART	A biggest sum is previously paid.
 PART	A source says that between 3,000,000 dollars and 8,000,000 dollars is paid in January 2009 and between 5,500,000 dollars and 9,000,000 dollars is paid Maran Centaurus.
 FULL	Official says that a missile salvo from US kills 15 persons in Pakistan.
-
+FULL	AFP bylines on 28 December 2010 in Miranshah.
 
 
 PART	They say that it kills ten militants in Nawab.
@@ -335,7 +335,7 @@ PART	Fitzgibbon resigns.
 PART	It is contrasted that he decides that it resigns to protect an integrity of an organization that governs.
 
 PART	Emir of Kuwait pardons a maid from Philippines.
-
+PART	It bylines on 11 June 2009 in Manila.
 
 
 
@@ -525,7 +525,7 @@ PART	A thing on 12 May 2010 in Bangkok.
 PART	Does it tell when it is asked that this implies that a security force cracks down on Tuesday to Associated Press that prime minister already hands out some guidelines?
 FULL	They are tomorrow implemented.
 PART	A protest paralyzes a home portion in a center of Bangkok.
-
+PART	Abhisit tells to Red Shirts that it wills that it holds a new poll.
 
 
 
@@ -564,7 +564,7 @@ FULL	He founds Hayek Engineering in 1963 in Zurich.
 
 
 PART	Hayek says that Swatch produces an emotionality, beauty and a sensuality in a watch and it also produces a high technology.
-
+FULL	Hayek begins to wind down a career when son Nick Hayek takes over chief executive of Swatch in 2003.
 
 FULL	Other persons that survive are detailed and a funeral is arranged isn't immediately known.
 FULL	A person from Iraq is convicted to smuggle a person to Australia.
@@ -640,7 +640,7 @@ FULL	YouTube.
 PART	It is possible that a private citizen posts a video. It is a public forum.
 FULL	FOX, NBC, CNN and ABC.
 
-PART	They stop a work.
+PART	A scandal about a local town that is exploded when they find out this just person to show in there that works. They stop a work.
 
 PART	This local group still fights.
 PART	It is taken off in YouTube that it all posts.
@@ -660,7 +660,7 @@ FULL	Conventional media.
 PART	It is contrasted to fit something to an agenda that a sort media that doesn't depend reports a story.
 PART	A much about Faux Nooz.
 
-
+FULL	A story in here is caused.
 PART	It is a big mess and it needs that it big cleans up.
 PART	A catastrophe is reported and a boat to fish heads an out.
 PART	Because a stigma is a biggest problem a person avoids an entire area.
@@ -698,8 +698,8 @@ PART	It kills.
 
 PART	Oil in Miami Beach.
 FULL	I don't hear that.
-
-
+PART	I get a member of a family in there.
+FULL	He doesn't either see any.
 
 FULL	Is entire Caribbean poisoned?
 
@@ -784,7 +784,7 @@ FULL	A produce is risen.
 FULL	I give a source to you.
 PART	I say it.
 PART	It is a product spreadsheet.
-
+FULL	A link in here is hyperlinked.
 
 PART	A pipeline is blown up in Nigeria.
 PART	A capacity.
@@ -820,7 +820,7 @@ PART	Tiny grain that holds a shale layer is carried.
 
 PART	It is dropped that oil is priced.
 PART	Oil that is peaked.
-
+PART	A produce capacity is measured in here of a sum.
 
 
 
@@ -834,12 +834,12 @@ PART	New oil is discovered.
 FULL	You don't provide that data because it is possible.
 
 
-
+PART	It is hyperlinked that a military from US warns of a business that it is possible that an oil output is dipped.
 
 PART	You do!
 PART	A chart says a source in a bottom.
 
-
+PART	Oilwatch Monthly is hyperlinked.
 PART	A document file in a right side.
 
 
@@ -864,7 +864,7 @@ PART	Does a sheep buy into this?
 
 FULL	It jokes of an ethanol.
 
-
+PART	We don't have a cane climate in here in U.S.
 
 PART	It is wrong that there is nothing.
 
@@ -933,7 +933,7 @@ PART	You know that they darndest try to drive us if it is possible stone age.
 PART	It is barred that it doesn't hold.
 FULL	Everything is wagered.
 PART	A progressive old agenda is pushed and it then retires in 2012.
-
+FULL	It is hyperlinked that Greenpeace claims that it shuts down an oil well in Greenland.
 PART	An environment group says that four expert persons evade a navy from Denmark to climb an inside of an oil rig of Cairn Energy.
 
 FULL	Yoda says.
@@ -985,7 +985,7 @@ FULL	It is sure.
 
 FULL	It cries!
 FULL	We tell to you.
-
+PART	It is contrasted to then leave one to complain that it is okay that there is it.
 FULL	What does senator make?
 
 
@@ -1201,7 +1201,7 @@ FULL	This just confirms it.
 PART	A military doesn't have a butt job.
 
 
-
+PART	A little child now ends it because a man in here tries to converse!
 
 
 PART	It is constant trained that person that doesn't present combat that it is remained.
@@ -1288,6 +1288,6 @@ FULL	It concerns money all.
 FULL	You follow money!
 
 
-
+PART	Another one is chalked up to right a dumb person.
 
 FULL	You deal it!
