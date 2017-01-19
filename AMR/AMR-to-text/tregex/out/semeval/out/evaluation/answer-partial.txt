@@ -1,5 +1,5 @@
 
-FULL	AFP bylines on 2 August 2009 in Madrid.
+FULL	AFP on 2 August 2009 in Madrid.
 PART	It travels on Saturday to a residence in Majorca.
 
 PART	He tells on Saturday to a person that reports in an airport that we are obligated.
@@ -11,7 +11,7 @@ PART	An authority blames ETA.
 
 
 
-FULL	AFP bylines on 5 August 2009 in Washington.
+FULL	AFP on 5 August 2009 in Washington.
 
 
 PART	It is meant to ever doubt an outcome that it supports.
@@ -38,7 +38,7 @@ PART	I think Republican Party.
 
 
 FULL	An ambassador visits a person from France that researches in a prison from Tehran.
-FULL	AFP bylines on 14 August 2009 in Paris.
+FULL	AFP on 14 August 2009 in Paris.
 
 
 PART	It visits.
@@ -47,7 +47,7 @@ PART	It is contrasted to give a detail that an office says that it meets father 
 
 
 PART	A person that is ailed that bombs in Lockerbie drops an appeal.
-FULL	AFP bylines on 18 August 2009 in Edinburgh.
+FULL	AFP on 18 August 2009 in Edinburgh.
 
 
 PART	White House says on Tuesday that it recommends that Megrahi is remained a jail.
@@ -71,7 +71,7 @@ PART	It weekend calls MacAskill to press.
 
 PART	John Mosey says.
 FULL	PLO picks a new person that leads when it landmark meets.
-FULL	AFP bylines on 27 August 2009 in Ramallah.
+FULL	AFP on 27 August 2009 in Ramallah.
 FULL	A parliament of Palestine Liberation Organisation elects six new members on Thursday an executive body.
 PART	A spokesman says that Hanan Ashrawi, Ahmed Qorei and top Saeb Erakat are included to elect six persons.
 
@@ -81,7 +81,7 @@ FULL	President of Palestinian Authority Mahmud Abbas heads an executive committe
 PART	It creates Palestinian Authority when Arafat is returned after 27 years to a land in Palestine in July 1994.
 PART	It is contrasted that an international community recognizes PLO.
 PART	It is reported that Google gives a ground to Europe.
-FULL	AFP bylines on 7 September 2009 in London.
+FULL	AFP on 7 September 2009 in London.
 
 PART	The Financial Times says that a company agrees.
 PART	A newspaper cites a letter that is weekend sent to a person that represents 16 organization companies that publish.
@@ -90,9 +90,9 @@ PART	A letter says that Google also promises to consult a company from Europe th
 
 
 
-
+PART	Google declines that it comments.
 FULL	Football.
-FULL	AFP bylines on 4 October 2009 in Sarajevo.
+FULL	AFP on 4 October 2009 in Sarajevo.
 
 
 
@@ -101,7 +101,7 @@ PART	It adds that an other is injured.
 
 
 
-FULL	AFP bylines on 5 October 2009 in Ramallah.
+FULL	AFP on 5 October 2009 in Ramallah.
 
 
 
@@ -116,7 +116,7 @@ PART	It is seen that a council adopts a report.
 
 PART	Interior Ministry says that it kills 12 persons and it wounds 83 persons.
 
-FULL	AFP bylines on 15 October 2009 in The Hague.
+FULL	AFP on 15 October 2009 in The Hague.
 PART	A document court says that it gives DSB on Thursday.
 
 
@@ -131,13 +131,13 @@ PART	DSB says that it holds in Netherlands.
 FULL	It also main sponsors football AZ Alkmaar.
 PART	An organization that promises that governs announces that it is possible that a person that holds an account back claims.
 PART	Football. Barnes faces a tax time.
-FULL	AFP bylines on 21 October 2009 in London.
+FULL	AFP on 21 October 2009 in London.
 
 
 
 PART	Barnes is charged native Jamaica.
 
-FULL	AFP bylines on 2 November 2009 in The Hague.
+FULL	AFP on 2 November 2009 in The Hague.
 
 PART	A group person from Bosnia and Herzegovina that leads when it wars says that it is pleased to attend a conference on 3 November 2009 about a status.
 
@@ -145,7 +145,7 @@ PART	A group person from Bosnia and Herzegovina that leads when it wars says tha
 FULL	He tells to a person that judges that it doesn't have adequate time to prepare for it.
 
 PART	A person that judges blocks a video.
-FULL	AFP bylines on 9 November 2009 in Los Angeles.
+FULL	AFP on 9 November 2009 in Los Angeles.
 
 
 
@@ -158,7 +158,7 @@ PART	A person that arbitrates eventual awards 545,000 dollars to Lopez.
 
 
 PART	A ministry says that a person from Bulgaria is life sentenced in Iran.
-FULL	AFP bylines on 9 November 2009 in Sofia.
+FULL	AFP on 9 November 2009 in Sofia.
 
 PART	Spokesman Dragovest Goranov says that Zhivko Rusev is informed a thing that a court decides.
 PART	Rusev is arrested in September 2008 to find a heroin in a truck.
@@ -168,7 +168,7 @@ PART	He adds that we estimate some lights in an end of a tunnel because it rules
 
 
 
-FULL	AFP bylines on 17 November 2009 in Washington.
+FULL	AFP on 17 November 2009 in Washington.
 
 FULL	Larry Elliott is executed an electrocution.
 
@@ -181,7 +181,7 @@ PART	Virginia executes an inmate.
 
 
 
-FULL	AFP bylines on 7 January 2010 in Paris.
+FULL	AFP on 7 January 2010 in Paris.
 
 PART	Ali Ibrahim Al-Sudani is described.
 
@@ -189,7 +189,7 @@ PART	Ali Ibrahim Al-Sudani is described.
 
 PART	129 group radicals are expelled to a territory of France.
 
-FULL	AFP bylines on 30 January 2010 in Tehran.
+FULL	AFP on 30 January 2010 in Tehran.
 
 PART	A hanging is carried out in Evin Prison.
 
@@ -198,7 +198,7 @@ PART	A hanging is carried out in Evin Prison.
 
 
 
-FULL	AFP bylines on 7 April 2010 in Hyderabad.
+FULL	AFP on 7 April 2010 in Hyderabad.
 PART	It is gotten back on Wednesday that Shoaib Malik from Pakistan is celebrity wedded Sania Mirza from India.
 
 PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad that paper is signed.
@@ -207,7 +207,7 @@ PART	Mother of Ayesha Farisa Siddiqui tells to a news conference in Hyderabad th
 
 
 
-FULL	AFP bylines on 23 April 2010 in Beijing.
+FULL	AFP on 23 April 2010 in Beijing.
 
 
 
@@ -220,7 +220,7 @@ FULL	AFP bylines on 23 April 2010 in Beijing.
 
 
 
-FULL	AFP bylines on 28 April 2010 in Gaza City.
+FULL	AFP on 28 April 2010 in Gaza City.
 PART	A local medic says that it kills a person from Palestine when it protests on Wednesday in Gaza Strip.
 PART	Muawiya Hassanein says that Ahmed Salim is taken to Al-Shifa.
 PART	A military from Israel comments.
@@ -230,7 +230,7 @@ PART	A person that witnesses says that Salim accompanies a group that hurls a ro
 
 
 PART	A rabbi from Israel is accused to shoot a person that studies.
-FULL	AFP bylines on 5 May 2010 in Jerusalem.
+FULL	AFP on 5 May 2010 in Jerusalem.
 
 
 PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
@@ -238,7 +238,7 @@ PART	It is contrasted to ban a report that it attacks in January.
 PART	A rabbi is arrested.
 
 PART	Governor of Nigeria that faces a graft is arrested in Dubai.
-FULL	AFP bylines on 13 May 2010 in Abuja.
+FULL	AFP on 13 May 2010 in Abuja.
 PART	A person is arrested in Dubai.
 PART	Interpol arrests governor of Delta James Ibori on Wednesday.
 PART	It is confirmed that Interpol arrests him.
@@ -262,7 +262,7 @@ PART	It is succeeded that it is bid / bidden that his asset is frozen.
 PART	A person is arrested.
 PART	Governor of 36 states of Nigeria controls a public fund.
 FULL	It is spread in a street in Dhaka that a garment is protested in Bangladesh.
-FULL	AFP bylines on 30 June 2010 in Dhaka.
+FULL	AFP on 30 June 2010 in Dhaka.
 PART	A person that works to a garment factory blocks a key road in Dhaka on Wednesday.
 
 PART	A person that holds that it is protested that works masses in a street.
@@ -280,7 +280,7 @@ PART	A garment accounts.
 PART	A retailer writes in January that it requests that a wage is increased.
 
 FULL	A union says that a person that kidnaps frees a journalist in the South of Nigeria that is enriched oil.
-FULL	AFP bylines on 18 July 2010 in Lagos.
+FULL	AFP on 18 July 2010 in Lagos.
 
 
 
@@ -292,7 +292,7 @@ FULL	Member of a television crew of M-Net Supersport is seized in March in Imo S
 PART	They are freed.
 
 FULL	Georgia seizes a ship from Ukraine because it visits Abkhazia.
-FULL	AFP bylines on 29 July 2010 in Tbilisi.
+FULL	AFP on 29 July 2010 in Tbilisi.
 
 
 FULL	A channel reports that a vessel that is loaded wheat is anchored in a port in Poti of Georgia and it investigates.
@@ -302,7 +302,7 @@ FULL	A channel reports that a vessel that is loaded wheat is anchored in a port 
 
 
 PART	A pirate says that a ransom is paid a tanker from South Korea.
-FULL	AFP bylines on 6 November 2010 in Mogadishu.
+FULL	AFP on 6 November 2010 in Mogadishu.
 PART	A pirate from Somalia says on Saturday that it receives a record ransom.
 
 PART	Abdi Yare says in Hobyo that money is dropped and a pirate shares.
@@ -313,7 +313,7 @@ PART	They hold a vessel.
 PART	A biggest sum is previously paid.
 PART	A source says that between 3,000,000 dollars and 8,000,000 dollars is paid in January 2009 and between 5,500,000 dollars and 9,000,000 dollars is paid Maran Centaurus.
 FULL	Official says that a missile salvo from US kills 15 persons in Pakistan.
-FULL	AFP bylines on 28 December 2010 in Miranshah.
+FULL	AFP on 28 December 2010 in Miranshah.
 
 
 PART	They say that it kills ten militants in Nawab.
@@ -335,7 +335,7 @@ PART	Fitzgibbon resigns.
 PART	It is contrasted that he decides that it resigns to protect an integrity of an organization that governs.
 
 PART	Emir of Kuwait pardons a maid from Philippines.
-PART	It bylines on 11 June 2009 in Manila.
+PART	It on 11 June 2009 in Manila.
 
 
 
@@ -389,7 +389,7 @@ PART	Money is recovered to a bank from U.S.
 
 PART	Willis says on Tuesday that it hopes that it has it in a hand.
 PART	Breen says that it plans that it meets a general counsel of a lottery.
-
+FULL	Spokesman of a commission declines that it comments.
 PART	Willis says that it doesn't ever doubt Joshi when it buys a ticket in Lucky Food Store.
 
 FULL	I always treat a respect.
@@ -597,9 +597,9 @@ PART	A woman that answers a phone in Advanced Security is declined.
 PART	Lawyer says that Kid Rock defends.
 FULL	Decatur.
 PART	Lawyer in a court says that it tries to defend when a fight is broken in 2007 in a suburb facility.
-
+PART	A person that is named that entertains and five persons are sued.
 PART	Lawyer says that Harlen Akins claims that a group beats and it seeks a punitive damage that isn't specified and 6,000 dollars.
-
+PART	Lawyer Eric Hertz says that it states in a court in DeKalb County that a person that entertains and a party behave.
 PART	Lawyer of Kid Rock and five other persons that are sued William Horton says that Akins demonstrates a pattern when it tries to defuse a situation.
 
 
@@ -665,7 +665,7 @@ PART	It is a big mess and it needs that it big cleans up.
 PART	A catastrophe is reported and a boat to fish heads an out.
 PART	Because a stigma is a biggest problem a person avoids an entire area.
 PART	It is good.
-
+FULL	You mean.
 
 
 PART	It is busy.
@@ -950,7 +950,7 @@ FULL	I also think that it isn't possible that it is sustained.
 
 
 FULL	I guess that it is more easy that it sticks a collective head of us to sand.
-
+FULL	God forbids that we actually confront a difficult problem.
 PART	It is obvious that there is it.
 
 

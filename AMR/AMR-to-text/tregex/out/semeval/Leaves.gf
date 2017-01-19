@@ -15,9 +15,11 @@ abstract Leaves = Cat, Dictionary ** {
 		defend_V : V ;			-- subcat in Dictionary
 		do_V : V ;				-- subcat in Dictionary
 		enrich_V : V ;			-- only enrich_V2 in Dictionary
+		entertain_V : V ;		-- only entertain_V2 in Dictionary
 		exempt_V : V ;			-- only exempt_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		kidnap_V : V ;			-- only kidnap_V2 in Dictionary
+		mean_V : V ;			-- from IrregEng
 		opine_V : V ;			-- only opine_V2 in Dictionary
 		pledge_V : V ;			-- only pledge_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
@@ -27,8 +29,9 @@ abstract Leaves = Cat, Dictionary ** {
 		tolerate_V : V ;		-- only tolerate_V2 in Dictionary
 
 		belong_V2 : V2 ;		-- the mapping between belong_V2 and belong_to_V2 is not straightforward
-		byline_V2 : V2 ;		-- FIXME
+		byline_V2 : V2 ;		-- FIXME (?)
 		conflict_V2 : V2 ;		-- only conflict_V in Dictionary
+		counter_V2 : V2 ;		-- subcat in Dictionary
 		explode_V2 : V2 ;		-- subcat in Dictionary
 		fall_V2 : V2 ;			-- subcat in Dictionary
 		go_V2 : V2 ;			-- subcat in Dictionary
@@ -38,6 +41,7 @@ abstract Leaves = Cat, Dictionary ** {
 		misidentify_V2 : V2 ;	-- missing in Dictionary
 		pass_V2 : V2 ;			-- subcat in Dictionary
 		recover_V2 : V2 ; 		-- only recover_V in Dictionary
+		result_V2 : V2 ;		-- only result_V in Dictionary
 		traffic_V2 : V2 ;		-- only traffic_V in Dictionary
 		transfer_V2 : V2 ;		-- subcat in Dictionary
 
@@ -53,7 +57,9 @@ abstract Leaves = Cat, Dictionary ** {
 		call_VS : VS ;			-- only call_V2 in Dictionary
 		cause_VS : VS ;			-- subcat in Dictionary
 		criticize_VS : VS ;		-- only criticize_V2 in Dictionary
+		decline_VS : VS ;		-- subcat in Dictionary
 		express_VS : VS ;		-- only express_V2 in Dictionary
+		forbid_VS : VS ;		-- only forbid_VS in Dictionary
 		intend_VS : VS ;		-- only intend_V2 in Dictionary
 		let_VS : VS ;			-- subcat in Dictionary
 		love_VS : VS ;			-- only love_V2 in Dictionary

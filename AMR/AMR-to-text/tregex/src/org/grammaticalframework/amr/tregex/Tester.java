@@ -1497,4 +1497,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // ::snt Xinhua News Agency, Tokyo, September 1st, by reporter Yiguo Yu
+    @Test
+    public void t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(b / byline-91 :ARG0 (p2 / publication :name (n / name :op1 \"Xinhua\" :op2 \"News\" :op3 \"Agency\")) :ARG1 (p / person :name (n2 / name :op1 \"Yiguo\" :op2 \"Yu\") :ARG0-of (r / report-01)) :location (c2 / city :name (n3 / name :op1 \"Tokyo\")) :time (d / date-entity :month 9 :day 1))");
+        assertEquals(amr,
+                "(b (byline-91 (:ARG0 (p2 (publication (:name (n (name (:op1 \"Xinhua\") (:op2 \"News\") (:op3 \"Agency\"))))))) (:ARG1 (p (person (:name (n2 (name (:op1 \"Yiguo\") (:op2 \"Yu\")))) (:ARG0-of (r report-01))))) (:location (c2 (city (:name (n3 (name (:op1 \"Tokyo\"))))))) (:time (d (date-entity (:month 9) (:day 1))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN \"Xinhua News Agency\")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN \"Yiguo Yu\"))) (dayMonthAdv (intMonthday (ss \"1\")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN \"Tokyo\"))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

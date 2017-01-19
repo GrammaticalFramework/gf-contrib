@@ -340,7 +340,7 @@ TXT: [unknown qualified constant L.total_AdA]
 
 SNT: Agree, just cheap entertainers. Their reputation in feudal China somewhat makes sense.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.cheap_A (mkCN L.just_A L.person_N)) (mkRS (mkRCl S.which_RP (mkVP L.entertain_V))))) (passiveVP L.agree_V2)))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct))
-TXT: [unknown qualified constant L.entertain_V] [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct)]
+TXT: [unknown qualified constant L.agree_V2] [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct)]
 
 SNT: Their life looks glorious
 AST: (mkText (mkUtt (mkS (mkCl (:ARG0 (mkS (mkCl S.they_NP (mkVP L.live_V)))) (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N)))))) fullStopPunct)
@@ -508,7 +508,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (
 
 SNT: Agree, just cheap entertainers. Their reputation in feudal China somewhat makes sense.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.cheap_A (mkCN L.just_A L.person_N)) (mkRS (mkRCl S.which_RP (mkVP L.entertain_V))))) (passiveVP L.agree_V2)))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct))
-TXT: [unknown qualified constant L.entertain_V] [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct)]
+TXT: [unknown qualified constant L.agree_V2] [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (L.thing_N (:ARG2-of (mkS (mkCl S.they_NP (mkVP (passiveVP L.repute_V2) (S.mkAdv L.in_Prep (mkNP (ss "feudal") (mkNP (P.mkPN "China"))))))))))) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct)]
 
 SNT: Agree!
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.agree_V)))) fullStopPunct)
@@ -4876,7 +4876,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")
 
 SNT: Wen stated that the arms embargo is an outdated result of the cold war.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "Cold War")) (mkVP (mkVP (P.mkAdV "outdated") (passiveVP L.result_V2)) (E.PurposeVP (mkVP L.embargo_V2 (mkNP S.a_Quant (mkCN L.arm_N))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [Wen states that Cold War is outdated resulted to embargo an arm .]
 
 SNT: Wen stated that China is deeply concerned with the current situation in Iraq and is sympathetic to the Iraqi people.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (L.situation_N (:time (c3 current)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Iraq"))))) (mkVP (L.concern_V2 (:ARG1-of (mkS (mkCl (mkVP L.deep_V))))) (mkNP (P.mkPN "China"))))) (mkS (mkCl (mkVP L.sympathize_V2 (mkNP S.a_Quant (mkCN (L.people_N (:mod c4))))))))))))) fullStopPunct)
@@ -5140,7 +5140,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkC
 
 SNT: Xinhua News Agency , Beijing , September 1st , by reporter Guojun Yang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Guojun Yang"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Guojun Yang on 1 September in Beijing .]
+TXT: [Xinhua News Agency by Guojun Yang on 1 September in Beijing .]
 
 SNT: When meeting with Chavalit Yoncayu , vice-premier and concurrent Minister of Domestic Affairs of Thailand , at the Diaoyutai State Guesthouse today , Huaqing Liu , vice-chairman of the Central Military Commission said that China placed a great deal of importance in developing friendship with the government , people and Armed Forces of Thailand , especially the economic and trade cooperation between the two countries .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 (L.chairman_N (:mod (v vice))) L.of_Prep) (mkNP (P.mkPN "Central Military Commission"))) (mkNP (P.mkPN "Huaqing Liu")))) (mkVP (mkVP L.say_VS (mkS (mkCl (mkNP (P.mkPN "China")) (mkVP L.place_VV (mkVP develop-02) (mkNP S.a_Quant (mkCN (L.important_N (:degree (d3 (deal (:mod (g2 great)))))))))))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP (P.mkAdV "today") (mkVP meet-03 (have-org-role-91 (P.mkN2 (L.premier_N (:mod (v2 vice))) L.of_Prep) (:name (mkNP (P.mkPN "Chavalit Yoncayu")))))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Diaoyutai State Guesthouse"))))))))))) fullStopPunct)
@@ -5172,7 +5172,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Beijing , September 1st
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines on 1 September in Beijing .]
+TXT: [Xinhua News Agency on 1 September in Beijing .]
 
 SNT: Guofang Shen , The foreign ministry spokesperson , announced at a news conference held this afternoon that President Gentzs Aerpade of the Hungary Republic , would pay a State visit to China from September 14th to the 17th at the invitation of president Zemin Jiang .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.spokesperson_N L.of_Prep) (mkNP (P.mkPN "Foreign Ministry"))) (mkNP (P.mkPN "Guofang Shen")))) (mkVP (mkVP L.announce_VS (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.president_N L.of_Prep) (mkNP (P.mkPN "Hungary Republic"))) (mkNP (P.mkPN "Gentzs Aerpade")))) (mkVP (P.mkAdV "state") (mkVP (L.visit_V2 (:time (d (date-interval (:op1 (d2 (date-entity (:month 9) (:day 14)))) (:op2 (d3 (date-entity (:month 9) (:day 17))))))) (:ARG2-of (mkS (mkCl (:ARG0 (have-org-role-91 (P.mkN2 L.president_N L.of_Prep) (:name (mkNP (P.mkPN "Zemin Jiang"))))) (mkVP L.invite_V))))) (mkNP (P.mkPN "China"))))))) (:time (mkNP S.a_Quant (mkCN (E.CompoundCN L.news_N L.conference_N) (mkRS (mkRCl S.which_RP (passiveVP (L.hold_V2 (:time (d4 (date-entity (:dayperiod (mkNP S.a_Quant (mkCN L.afternoon_N))) (:mod (t today)))))))))))))))) fullStopPunct)
@@ -5192,7 +5192,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Bishket , April 23rd , by reporters Menjun Ju and Xiaoguang Hu
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Menjun Ju")) (mkNP (P.mkPN "Xiaoguang Hu"))))) (dayMonthAdv (intMonthday (ss "23")) april_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Bishket"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Menjun Ju and Xiaoguang Hu on 23 April in Bishket .]
+TXT: [Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket .]
 
 SNT: Principles of parties concerned from China and Kirghizia signed six documents here today .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.principle_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN (L.party_N (:source (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kirghizia"))))))) (mkRS (mkRCl S.which_RP (passiveVP L.concern_V2)))))))) (mkVP (mkVP (P.mkAdV "today") (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "6")) (mkCN L.document_N)))) (S.mkAdv L.in_Prep (mkNP (mkCN L.here_N))))))) fullStopPunct)
@@ -5240,7 +5240,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Tokyo , September 1st , by reporter Yiguo Yu
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Yiguo Yu"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Yiguo Yu on 1 September in Tokyo .]
+TXT: [Xinhua News Agency by Yiguo Yu on 1 September in Tokyo .]
 
 SNT: The Japanese delegation participating in the Sixth Far East and South Pacific Region Handicapped Sports Meet held a grand swearing in ceremony in Tokyo this afternoon .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkRS (mkRCl S.which_RP (mkVP L.participate_V2 (mkNP (P.mkPN "Far East and South Pacific Region Handicapped Sports Meet"))))))) (mkVP (mkVP (L.hold_V2 (:time (d2 (date-entity (:dayperiod (mkNP S.a_Quant (mkCN L.afternoon_N))) (:mod (t today)))))) (mkNP S.a_Quant (mkCN L.grand_A (E.CompoundCN L.swear_in_N L.ceremony_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
@@ -5300,11 +5300,11 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.r
 
 SNT: Xinhua News Agency , August 31st .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "31")) august_Month))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines on 31 August .]
+TXT: [Xinhua News Agency on 31 August .]
 
 SNT: Xinhua News Agency , Seoul , August 31st , by reporter Shuifu Tang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Shuifu Tang"))) (dayMonthAdv (intMonthday (ss "31")) august_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Seoul"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Shuifu Tang on 31 August in Seoul .]
+TXT: [Xinhua News Agency by Shuifu Tang on 31 August in Seoul .]
 
 SNT: The first " Le Tian Cup " China and Korea Go competition started today at Fushan , the second largest city of Korea .
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (P.mkAdV "today") (mkVP L.start_VV (mkVP (L.compete_V (:wiki -) (mkNP (P.mkPN "China")) (:name (mkNP (P.mkPN "Le Tian Cup"))) (:mod (g2 (game (:wiki "Go_ game ") (:name (mkNP (P.mkPN "Go")))))))))) (S.mkAdv L.in_Prep (mkNP (ss ("large" (:degree (m most)) (:compared-to (mkNP (P.mkPN "Korea"))) (S.mkOrd (mkDigits "2")))) (mkNP (P.mkPN "Fushan")))))))) fullStopPunct)
@@ -5444,7 +5444,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Rome , September 1st , by reporters Changrui Huang and Aiguo Yang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Changrui Huang")) (mkNP (P.mkPN "Aiguo Yang"))))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Changrui Huang and Aiguo Yang on 1 September in Rome .]
+TXT: [Xinhua News Agency by Changrui Huang and Aiguo Yang on 1 September in Rome .]
 
 SNT: The performance of the female competitors of the Chinese diving team , Mingxia Fu and Bin Chi , in the first 6 rounds of the 10 - meter platform diving preliminary competition at the Seventh World Swimming Championships held here today was ideal , and hopes of entering the heats are in sight .
 AST: (a (and (:op1 (mkS (mkCl (mkS (mkCl (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP L.compete_V))) (:mod (f female)) (S.mkAdv L.part_Prep (mkNP S.a_Quant (mkCN (mkCN (mkCN L.team_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China")))) (mkRS (mkRCl S.which_RP (mkVP L.dive_V))))))) (mkListNP (mkNP (P.mkPN "Mingxia Fu")) (mkNP (P.mkPN "Bin Chi")))) (mkVP (mkVP L.perform_V) (S.mkAdv S.when_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN (L.round_N (mkNum (mkDigits "6")) (:ARG1 (mkS (mkCl (mkVP (P.mkAdV "preliminary") (mkVP (L.compete_V (:mod (d3 (dive-01 (:mod (p7 (platform (:mod (d4 (distance-quantity (mkNum (mkDigits "10")) (:unit (mkCN L.meter_N))))))))))) (:subevent-of (mkNP (P.mkPN "Seventh World Swimming Championships"))) (:ARG1-of (mkS (mkCl (mkVP (mkVP (P.mkAdV "today") (mkVP L.hold_V)) (S.mkAdv L.in_Prep (mkNP (mkCN L.here_N))))))))))))) (S.mkOrd (mkDigits "1"))))))))))) (mkAP L.ideal_A)))) (:op2 (i2 (in-sight (:domain (mkS (mkCl (mkVP (passiveVP L.hopeful_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.enter_V2 (mkNP (mkCN L.heat_N)))))))))))))))

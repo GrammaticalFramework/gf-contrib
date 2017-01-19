@@ -340,7 +340,7 @@ TXT: [unknown qualified constant L.total_AdA]
 
 SNT: Agree, just cheap entertainers. Their reputation in feudal China somewhat makes sense.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.cheap_A (mkCN L.just_A L.person_N)) (mkRS (mkRCl S.which_RP (mkVP L.entertain_V))))) (passiveVP L.agree_V2)))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct))
-TXT: [unknown qualified constant L.entertain_V] [a thing is sensed somewhat .]
+TXT: [unknown qualified constant L.agree_V2] [a thing is sensed somewhat .]
 
 SNT: Their life looks glorious
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N)))))) fullStopPunct)
@@ -508,7 +508,7 @@ TXT: [unknown qualified constant L.live_V2]
 
 SNT: Agree, just cheap entertainers. Their reputation in feudal China somewhat makes sense.
 AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.cheap_A (mkCN L.just_A L.person_N)) (mkRS (mkRCl S.which_RP (mkVP L.entertain_V))))) (passiveVP L.agree_V2)))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.thing_N)) (mkVP (passiveVP L.sense_V2) (P.mkAdv "somewhat"))))) fullStopPunct))
-TXT: [unknown qualified constant L.entertain_V] [a thing is sensed somewhat .]
+TXT: [unknown qualified constant L.agree_V2] [a thing is sensed somewhat .]
 
 SNT: Agree!
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.agree_V)))) fullStopPunct)
@@ -1128,7 +1128,7 @@ TXT: [unknown qualified constant L.only_N]
 
 SNT: - Now the work-load is up to my neck, I have major deadlines to hit, I am depressed, the anxiety is resulting in me feeling miserable all the time.
 AST: (mkText (mkUtt (mkS (S.and_Conj (mkListS (mkS (mkCl (passiveVP L.depress_V2))) (mkS (mkCl (mkNP (mkCN L.anxiety_N)) (mkVP (passiveVP L.result_V2) (E.PurposeVP (mkVP L.feel_V2 (mkNP S.a_Quant (mkCN L.miserable_N))))))))) (mkListS (mkS (mkCl (mkVP (mkVP (P.mkAdV "now") (passiveVP L.load_V2)) (S.mkAdv L.PPT_Prep (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (passiveVP L.work_V2))))))))) (mkS (mkCl (mkVP L.obligate_VV (mkVP L.hit_V2 (mkNP S.a_Quant (mkCN L.major_A (mkCN L.deadline_N)))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [unknown qualified constant L.miserable_N]
 
 SNT: In no longer have a counselor because you can only have them for so many sessions at a time, and I doubt it will help much this time, if it hasn't already.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.i_NP (mkVP (mkVP L.have_V2 (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.counsel_V)))))) (S.mkAdv S.because_Subj (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl S.you_NP (mkVP (P.mkAdV "only") (mkVP L.have_V))))))))))) (mkS (mkCl (mkVP L.doubt_VS (mkS (mkCl (mkVP (mkVP (mkVP L.help_V) (S.mkAdv S.if_Subj (mkS negativePol (mkCl (mkVP (P.mkAdV "already") (mkVP L.help_V)))))) (P.mkAdv "much")))))))))) fullStopPunct)
@@ -1800,7 +1800,7 @@ TXT: [unknown qualified constant L.wonder_V2]
 
 SNT: Speak to a doctor about it and see if anti-anxiety pills could take the edge off of things?
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.you_NP (mkVP (mkVP L.speak_V2 S.it_NP) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.doctor_N)))))) (mkS (mkCl (mkVP L.see_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.pill_N) (mkRS (mkRCl S.which_RP (mkVP L.counter_V2 (mkNP (mkCN L.anxiety_N))))))) (mkVP L.take_off_V2 (mkNP S.a_Quant (mkCN L.edge_N))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.counter_V2]
+TXT: [you speak it to a doctor and it sees that a pill that counters anxiety takes off an edge .]
 
 SNT: See if I can speak to a counsellor?
 AST: (mkText (mkUtt (mkQS (mkQCl (mkCl S.i_NP (mkVP L.see_VS (mkS (mkCl S.i_NP (mkVP (mkVP L.speak_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.counsel_V)))))))))))))) questMarkPunct)
@@ -2388,7 +2388,7 @@ TXT: [command not parsed: cc -one (b (be-located-at-91 (mkNP S.a_Quant (E.Compou
 
 SNT: Both Russian and Western officials have stated that it is unlikely that any public health threat would result from a power cutoff at the State Scientific Center of applied microbiology.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.state_VS (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.likely_A) (mkS (mkCl (mkVP (mkVP (passiveVP L.result_V2) (E.PurposeVP (mkVP (P.mkAdV "any") (mkVP threaten-01)))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (mkCN L.power_N)) (mkVP (passiveVP L.cut_off_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology"))))))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [constant not found: threaten]
 
 SNT: Russian and Western officials have stated that there is enough uncertainty that they could not be positive a loss of power at the State Scientific Center of applied microbiology would not cause a public health threat.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.state_V2 (mkNP S.a_Quant (mkCN (mkCN L.enough_A L.certainty_N) (mkRS (mkRCl S.which_RP (mkVP L.cause_VS (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (passiveVP L.know_V2) (S.mkAdv S.that_Subj (mkS (S.mkAdv S.because_Subj (mkS (mkCl (mkNP (mkCN L.power_N)) (mkVP (passiveVP L.lose_V2) (S.mkAdv L.in_Prep (mkNP (P.mkPN "State Scientific Center of Applied Microbiology"))))))) (mkNP S.a_Quant (mkCN L.threat_N))))))))))))))))))) fullStopPunct)
@@ -2560,7 +2560,7 @@ TXT: [official of State Department from US states .]
 
 SNT: US law may forbid assistance to countries that implement shoot-down laws under certain conditions.
 AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP (mkCN (mkCN L.law_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "US"))))) (mkVP L.forbid_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.country_N) (mkRS (mkRCl S.which_RP (mkVP L.implement_V2 (mkNP (mkCN L.law_N))))))) (passiveVP L.assist_V2)))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.forbid_VS]
+TXT: [it is possible that law from US forbids that a country that implements law is assisted .]
 
 SNT: The US agrees with the Brazilian assessment that the threat posed by drug traffickers is both very serious and increasing.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "US")) (mkVP L.agree_VS (mkS (mkCl (mkNP (P.mkPN "Brazil")) (mkVP L.assess_V))))))) fullStopPunct)
@@ -3484,7 +3484,7 @@ TXT: [unknown qualified constant L.consist_V2]
 
 SNT: The ayatollah's office in Najaf declined to comment on the cyber attack.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.office_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Najaf")))) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN L.ayatollah_N))))) (mkVP L.decline_VS (mkS (mkCl (mkVP L.comment_V))))))) fullStopPunct)
-TXT: [unknown qualified constant L.decline_VS]
+TXT: [an office in Najaf of an ayatollah declines that it comments .]
 
 SNT: Fars reported that a counterattack had been carried out against 2 major Wahhabi web sites which belong to puritanical strain of Sunni Islam that is dominant in Saudi Arabia.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Fars")) (mkVP L.report_VS (mkS (mkCl (mkVP (passiveVP L.carry_out_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN L.major_A (mkCN (E.CompoundCN L.web_N L.site_N) (mkRS (mkRCl S.which_RP (mkVP L.belong_VS (mkS (mkCl (mkVP (mkVP (P.mkAdV "puritan") (mkVP L.strain_V)) (S.mkAdv L.DIR_Prep (mkNP (P.mkPN "Sunni Islam")))))))))))) (passiveVP L.counterattack_V2))))))))))) fullStopPunct)
@@ -3572,7 +3572,7 @@ TXT: [a ship .]
 
 SNT: The weapons on board the ship included 33 T-72 tanks, 150 grenade launchers, 6 anti-aircraft guns and a large quantity of ammunition.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.ammunition_N)) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "6")) (mkCN (mkCN L.gun_N) (mkRS (mkRCl S.which_RP (mkVP L.counter_V2 (mkNP S.a_Quant (mkCN L.aircraft_N))))))) (mkListNP (mkNP S.a_Quant (mkNum (mkDigits "33")) (mkCN L.tank_N)) (mkNP S.a_Quant (mkNum (mkDigits "150")) (mkCN (mkCN L.product_N) (mkRS (mkRCl S.which_RP (mkVP L.launch_V2 (mkNP S.a_Quant (mkCN L.grenade_N))))))))))) (mkVP (passiveVP L.include_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN L.weapon_N) (mkRS (mkRCl S.which_RP (mkVP L.board_V2 (mkNP S.a_Quant (mkCN L.ship_N)))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.counter_V2]
+TXT: [an ammunition , 6 guns that counter an aircraft , 3 Predef.BIND 3 tanks and 1 Predef.BIND 5 Predef.BIND 0 products that launch a grenade are included to a weapon that boards a ship .]
 
 SNT: Evidence has subsequently emerged that the weapons were part of a clandestine arms deal between Kenya and the separatist region of southern Sudan.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.thing_N) (mkRS (mkRCl S.which_RP (mkVP L.evidence_V2 (mkNP S.a_Quant (mkCN L.weapon_N))))))) (mkVP (P.mkAdV "subsequent") (mkVP L.emerge_V))))) fullStopPunct)
@@ -3664,7 +3664,7 @@ TXT: [a survey is issued on 27 November 2008 .]
 
 SNT: The United Nations found that the result was a 19 percent reduction in the amount of land devoted to opium in Afghanistan even though the total tonnage of opium produced dropped by just 6 percent.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "United Nations")) (mkVP L.find_VS (mkS (mkCl (mkVP (passiveVP L.result_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.amount_N)) (passiveVP L.reduce_V2))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [United Nations finds that it is resulted that an amount is reduced .]
 
 SNT: The study stated that the high output per acre was attributed to a good growing season in the south.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN L.study_N)) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP (passiveVP L.attribute_V2) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.grow_N L.season_N) (S.mkAdv L.in_Prep (mkNP S.the_Quant (mkCN L.south_N)))) (mkRS (mkRCl S.which_RP (mkAP L.good_A))))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.high_A (mkCN L.output_N))) (passiveVP L.rate_entity_V2))))))))))) fullStopPunct)
@@ -4876,7 +4876,7 @@ TXT: [no overload instance of mkCl]
 
 SNT: Wen stated that the arms embargo is an outdated result of the cold war.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS (mkCl (mkNP (P.mkPN "Cold War")) (mkVP (mkVP (P.mkAdV "outdated") (passiveVP L.result_V2)) (E.PurposeVP (mkVP L.embargo_V2 (mkNP S.a_Quant (mkCN L.arm_N))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [Wen states that Cold War is outdated resulted to embargo an arm .]
 
 SNT: Wen stated that China is deeply concerned with the current situation in Iraq and is sympathetic to the Iraqi people.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Wen")) (mkVP L.state_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.situation_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Iraq"))))) (mkVP L.concern_V2 (mkNP (P.mkPN "China"))))) (mkS (mkCl (mkVP L.sympathize_V2 (mkNP S.a_Quant (mkCN L.people_N))))))))))) fullStopPunct)
@@ -4964,7 +4964,7 @@ TXT: [unknown qualified constant L.adopt_VS]
 
 SNT: China and Kyrgyzstan agree that the crackdown on the terrorist force of Eastern Turkistan is a major part of the international anti-terrorism campaign.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "China")) (mkNP (P.mkPN "Kyrgyzstan")))) (mkVP L.agree_VS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.international_A L.campaign_N) (mkRS (mkRCl S.which_RP (mkVP L.counter_V2 (mkNP (mkCN L.terrorism_N))))))) (mkVP (passiveVP L.have_part_V2) (E.PurposeVP (mkVP L.crack_down_V2 (mkNP S.a_Quant (mkCN (E.CompoundCN L.terrorist_N L.force_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Eastern Turkistan")))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.counter_V2]
+TXT: [unknown qualified constant L.have_part_V2]
 
 SNT: The so-called Eastern Turkistan terrorist group comprises a number of secession-minded terrorist cells.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (E.CompoundCN L.terrorist_N L.group_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Eastern Turkistan")))) (mkRS (mkRCl S.which_RP (mkVP (P.mkAdV "so") (passiveVP L.call_V2)))))) (mkVP (passiveVP L.comprise_V2) (S.mkAdv L.VSP_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.terrorist_N L.cell_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (mkCN (L.mind_N (mkNP S.a_Quant (mkCN L.secede_N)))))))))))))) fullStopPunct)
@@ -5140,7 +5140,7 @@ TXT: [unknown qualified constant L.leverage_VS]
 
 SNT: Xinhua News Agency , Beijing , September 1st , by reporter Guojun Yang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Guojun Yang"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Guojun Yang on 1 September in Beijing .]
+TXT: [Xinhua News Agency by Guojun Yang on 1 September in Beijing .]
 
 SNT: When meeting with Chavalit Yoncayu , vice-premier and concurrent Minister of Domestic Affairs of Thailand , at the Diaoyutai State Guesthouse today , Huaqing Liu , vice-chairman of the Central Military Commission said that China placed a great deal of importance in developing friendship with the government , people and Armed Forces of Thailand , especially the economic and trade cooperation between the two countries .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.chairman_N L.of_Prep) (mkNP (P.mkPN "Central Military Commission"))) (mkNP (P.mkPN "Huaqing Liu")))) (mkVP (mkVP L.say_VS (mkS (mkCl (mkNP (P.mkPN "China")) (mkVP L.place_VV (mkVP develop-02) (mkNP S.a_Quant (mkCN L.important_N)))))) (S.mkAdv S.when_Subj (mkS (mkCl (mkVP (mkVP (P.mkAdV "today") (mkVP meet-03 (mkNP S.a_Det L.person_N))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Diaoyutai State Guesthouse"))))))))))) fullStopPunct)
@@ -5172,7 +5172,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Beijing , September 1st
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Beijing"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines on 1 September in Beijing .]
+TXT: [Xinhua News Agency on 1 September in Beijing .]
 
 SNT: Guofang Shen , The foreign ministry spokesperson , announced at a news conference held this afternoon that President Gentzs Aerpade of the Hungary Republic , would pay a State visit to China from September 14th to the 17th at the invitation of president Zemin Jiang .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.spokesperson_N L.of_Prep) (mkNP (P.mkPN "Foreign Ministry"))) (mkNP (P.mkPN "Guofang Shen")))) (mkVP (mkVP L.announce_VS (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 L.president_N L.of_Prep) (mkNP (P.mkPN "Hungary Republic"))) (mkNP (P.mkPN "Gentzs Aerpade")))) (mkVP (P.mkAdV "state") (mkVP L.visit_V2 (mkNP (P.mkPN "China"))))))))))) fullStopPunct)
@@ -5192,7 +5192,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Bishket , April 23rd , by reporters Menjun Ju and Xiaoguang Hu
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Menjun Ju")) (mkNP (P.mkPN "Xiaoguang Hu"))))) (dayMonthAdv (intMonthday (ss "23")) april_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Bishket"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Menjun Ju and Xiaoguang Hu on 23 April in Bishket .]
+TXT: [Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket .]
 
 SNT: Principles of parties concerned from China and Kirghizia signed six documents here today .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.principle_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.party_N) (mkRS (mkRCl S.which_RP (passiveVP L.concern_V2)))))))) (mkVP (mkVP (P.mkAdV "today") (mkVP L.sign_V2 (mkNP S.a_Quant (mkNum (mkDigits "6")) (mkCN L.document_N)))) (S.mkAdv L.in_Prep (mkNP (mkCN L.here_N))))))) fullStopPunct)
@@ -5240,7 +5240,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Tokyo , September 1st , by reporter Yiguo Yu
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Yiguo Yu"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Yiguo Yu on 1 September in Tokyo .]
+TXT: [Xinhua News Agency by Yiguo Yu on 1 September in Tokyo .]
 
 SNT: The Japanese delegation participating in the Sixth Far East and South Pacific Region Handicapped Sports Meet held a grand swearing in ceremony in Tokyo this afternoon .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN (mkCN L.delegation_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Japan")))) (mkRS (mkRCl S.which_RP (mkVP L.participate_V2 (mkNP (P.mkPN "Far East and South Pacific Region Handicapped Sports Meet"))))))) (mkVP (mkVP L.hold_V2 (mkNP S.a_Quant (mkCN L.grand_A (E.CompoundCN L.swear_in_N L.ceremony_N)))) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct)
@@ -5300,11 +5300,11 @@ TXT: [unknown qualified constant L.title_V2]
 
 SNT: Xinhua News Agency , August 31st .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP L.byline_V) (dayMonthAdv (intMonthday (ss "31")) august_Month))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines on 31 August .]
+TXT: [Xinhua News Agency on 31 August .]
 
 SNT: Xinhua News Agency , Seoul , August 31st , by reporter Shuifu Tang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Shuifu Tang"))) (dayMonthAdv (intMonthday (ss "31")) august_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Seoul"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Shuifu Tang on 31 August in Seoul .]
+TXT: [Xinhua News Agency by Shuifu Tang on 31 August in Seoul .]
 
 SNT: The first " Le Tian Cup " China and Korea Go competition started today at Fushan , the second largest city of Korea .
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (P.mkAdV "today") (mkVP L.start_VV (mkVP (L.compete_V (mkNP (P.mkPN "China")))))) (S.mkAdv L.in_Prep (mkNP (ss ("large" (S.mkOrd (mkDigits "2")))) (mkNP (P.mkPN "Fushan")))))))) fullStopPunct)
@@ -5444,7 +5444,7 @@ TXT: [it ends .]
 
 SNT: Xinhua News Agency , Rome , September 1st , by reporters Changrui Huang and Aiguo Yang
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP S.and_Conj (mkListNP (mkNP (P.mkPN "Changrui Huang")) (mkNP (P.mkPN "Aiguo Yang"))))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Rome"))))))) fullStopPunct)
-TXT: [Xinhua News Agency bylines Changrui Huang and Aiguo Yang on 1 September in Rome .]
+TXT: [Xinhua News Agency by Changrui Huang and Aiguo Yang on 1 September in Rome .]
 
 SNT: The performance of the female competitors of the Chinese diving team , Mingxia Fu and Bin Chi , in the first 6 rounds of the 10 - meter platform diving preliminary competition at the Seventh World Swimming Championships held here today was ideal , and hopes of entering the heats are in sight .
 AST: (a and)
@@ -5472,7 +5472,7 @@ TXT: [unknown qualified constant L.compete_V2]
 
 SNT: The results of today 's preliminary women 's water - polo competition are : the Hungarian team defeated the Canadian team by 13 : 7 , the French team defeated the Brazilian team by 10 : 9 , the Australian team defeated the German team by 10 : 8 , the Russian team defeated the Dutch team by 7 : 6 , the US team defeated the Kazakhstani team by 10 : 5 , and the Italian team defeated the New Zealand team by 12 : 2 .
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.result_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.woman_N)) (mkVP (P.mkAdV "preliminary") (mkVP (P.mkAdV "today") (mkVP L.compete_V)))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.result_V2]
+TXT: [it is resulted that a woman today preliminary competes .]
 
 SNT: There are 12 teams totally participating in the competition .
 AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "12")) (mkCN L.team_N)) (mkVP L.participate_VS (mkS (mkCl (mkVP L.compete_V))))))) fullStopPunct)

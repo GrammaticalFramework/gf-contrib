@@ -448,7 +448,7 @@ PART	It contrasts.
 
 
 
-
+PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge.
 PART	Do I see that I speak to a person that counsels?
 
 PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start. A demise circle in there.
@@ -638,7 +638,7 @@ PART	It is contrasted to ever put a policy an effect that law that permits a suc
 
 PART	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
 FULL	Official of State Department from US states.
-
+PART	It is possible that law from US forbids that a country that implements law is assisted.
 
 PART	An organization that governs US consults an organization that governs Brazil a law provision.
 
@@ -869,7 +869,7 @@ PART	XP erases a site.
 
 PART	An any website with a contrary material is punished.
 
-
+PART	An office in Najaf of an ayatollah declines that it comments.
 
 
 FULL	Kenya, Somalia and Ukraine.
@@ -891,7 +891,7 @@ PART	A ship is hijacked in 2008.
 
 
 PART	A ship.
-
+PART	An ammunition, six guns that counter an aircraft, 33 tanks and 150 products that launch a grenade are included to a weapon that boards a ship.
 PART	A thing that evidences a weapon subsequent emerges.
 PART	It is most likely that a deal is remained a secret.
 PART	An official from Ukraine is adamant.
@@ -914,7 +914,7 @@ PART	Antonio Maria Costa says that Afghanistan produces much opium.
 PART	Costa says this when U.N. Drug Office prepares to a person that reports.
 
 FULL	A survey is issued on 27 November 2008.
-
+PART	United Nations finds that it is resulted that an amount is reduced.
 
 PART	A South region is an area that is heavily irrigated.
 
@@ -1217,7 +1217,7 @@ PART	Wen states that it is possible that an enterprise from China is progressed 
 PART	Wen states that Germany partners China in Europe.
 
 
-
+FULL	Wen states that Cold War is outdated resulted to embargo an arm.
 
 
 
@@ -1283,7 +1283,7 @@ PART	It collaborates.
 FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
-FULL	Xinhua News Agency bylines Guojun Yang on 1 September in Beijing.
+FULL	Xinhua News Agency by Guojun Yang on 1 September in Beijing.
 
 
 
@@ -1291,12 +1291,12 @@ FULL	Xinhua News Agency bylines Guojun Yang on 1 September in Beijing.
 
 
 FULL	It ends.
-FULL	Xinhua News Agency bylines on 1 September in Beijing.
+FULL	Xinhua News Agency on 1 September in Beijing.
 
 PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal visits China.
 
 FULL	It ends.
-FULL	Xinhua News Agency bylines Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
+FULL	Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
 PART	A principle of a party that is concerned today signs six documents in here.
 FULL	It attends a sign ceremony.
 
@@ -1308,7 +1308,7 @@ PART	He expresses that it promotes stability, peace of Central Asia and a securi
 
 
 FULL	It ends.
-FULL	Xinhua News Agency bylines Yiguo Yu on 1 September in Tokyo.
+FULL	Xinhua News Agency by Yiguo Yu on 1 September in Tokyo.
 PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand swearing ceremony in Tokyo.
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
@@ -1323,8 +1323,8 @@ PART	A delegation from Japan is flown.
 PART	They are remained in Beijing and it is returned to Japan.
 FULL	It ends.
 
-FULL	Xinhua News Agency bylines on 31 August.
-FULL	Xinhua News Agency bylines Shuifu Tang on 31 August in Seoul.
+FULL	Xinhua News Agency on 31 August.
+FULL	Xinhua News Agency by Shuifu Tang on 31 August in Seoul.
 
 
 
@@ -1359,13 +1359,13 @@ PART	Si Aiwan is scored a point.
 PART	It is held that it preliminary competes.
 
 FULL	It ends.
-FULL	Xinhua News Agency bylines Changrui Huang and Aiguo Yang on 1 September in Rome.
+FULL	Xinhua News Agency by Changrui Huang and Aiguo Yang on 1 September in Rome.
 
 
 
 
 
 
-
+PART	It is resulted that a woman today preliminary competes.
 
 FULL	It ends.

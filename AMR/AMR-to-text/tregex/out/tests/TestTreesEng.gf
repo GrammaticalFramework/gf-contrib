@@ -155,4 +155,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t78_what_do_Chinese_still_tolerate = (mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "China"))))) (mkVP (P.mkAdV "still") (mkVP L.tolerate_V)))))) questMarkPunct) ;
 
+	lin t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu = (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Xinhua News Agency")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN "Yiguo Yu"))) (dayMonthAdv (intMonthday (ss "1")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Tokyo"))))))) fullStopPunct) ;
+
 }

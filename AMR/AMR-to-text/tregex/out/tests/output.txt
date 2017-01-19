@@ -368,3 +368,8 @@ TestTreesEng: what does a person from China still tolerate ?
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu
+TestTreesEng: Xinhua News Agency by Yiguo Yu on 1 September in Tokyo .
+TestTreesLav: 
+TestTreesRus: 
+
