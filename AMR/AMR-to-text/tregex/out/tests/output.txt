@@ -358,3 +358,8 @@ TestTreesEng: I try to solve a problem .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t77_if_you_tell_people_they_can_help_you
+TestTreesEng: it is possible that a person helps you if it tells .
+TestTreesLav: 
+TestTreesRus: 
+

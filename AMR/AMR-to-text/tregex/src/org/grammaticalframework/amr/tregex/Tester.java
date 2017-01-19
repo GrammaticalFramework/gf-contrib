@@ -1444,4 +1444,40 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // If it gets worse then go to the doctor's.
+    // FIXME: order of Adv
+    @Test
+    public void t76_if_it_gets_worse_then_go_to_the_doctor_s() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(g / go-02 :mode imperative :ARG0 (y / you) :ARG4 (d / doctor) :condition (w / worsen-01 :ARG1 (i / it)))");
+        assertEquals(amr,
+                "(g (go-02 (:mode imperative) (:ARG0 (y you)) (:ARG4 (d doctor)) (:condition (w (worsen-01 (:ARG1 (i it)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.you_NP (mkVP (mkVP (mkVP L.go_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.doctor_N)))) (S.mkAdv S.if_Subj (mkS (mkCl S.it_NP (passiveVP L.worsen_V2)))))))) exclMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // ::snt If you tell people they can help you.
+    // FIXME: co-references (:ARG0, :ARG2)
+    @Test
+    public void t77_if_you_tell_people_they_can_help_you() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(p / possible-01 :ARG1 (h / help-01 :ARG0 (p2 / person) :ARG1 (y / you)) :condition (t / tell-01 :ARG0 y :ARG2 p2))");
+        assertEquals(amr,
+                "(p (possible-01 (:ARG1 (h (help-01 (:ARG0 (p2 person)) (:ARG1 (y you))))) (:condition (t (tell-01 (:ARG0 y) (:ARG2 p2))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.help_V2 S.you_NP))))) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP L.tell_V)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }

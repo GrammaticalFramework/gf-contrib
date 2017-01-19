@@ -151,4 +151,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t75_I_have_tried_to_solve_my_problems = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.try_VV (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))) fullStopPunct) ;
 
+	lin t77_if_you_tell_people_they_can_help_you = (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.help_V2 S.you_NP))))) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP L.tell_V)))))))) fullStopPunct) ;
+
 }

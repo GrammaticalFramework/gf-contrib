@@ -403,7 +403,7 @@ PART	I thank you.
 
 FULL	You talk and a thing that is gone on is told is recommended.
 PART	It is possible.
-
+FULL	It is possible that a person helps you if it tells.
 
 PART	It is more good that this thing is gotten.
 PART	You don't do this!
@@ -550,7 +550,7 @@ PART	An envoy from Europe, Solana and Burns set a deadline.
 
 
 
-
+FULL	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb if it is enriched high.
 PART	It is possible that 6,000 centrifuges that are run produce a uranium that suffices one bomb.
 FULL	International Atomic Energy Agency states in May 2008 that Iran possesses 3,500 centrifuges that are operated.
 
