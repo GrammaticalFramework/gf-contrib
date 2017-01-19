@@ -73,5 +73,9 @@ abstract TestTrees = TestLexicon ** {
 	fun t72_create_a_few_battle_groups : Text ;
 	fun t73_I_suffer_from_random_panic_attacks : Text ;
 	fun t74_the_list_names_companies_that_were_prevented_from_carrying_out_deals : Text ;
+	fun t75_I_have_tried_to_solve_my_problems : Text ;
+	fun t77_if_you_tell_people_they_can_help_you : Text ;
+	fun t78_what_do_Chinese_still_tolerate : Text ;
+	fun t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu : Text ;
 
 }

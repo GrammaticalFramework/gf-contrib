@@ -353,3 +353,23 @@ TestTreesEng: a list names a company that is prevented to carry out a deal .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t75_I_have_tried_to_solve_my_problems
+TestTreesEng: I try to solve a problem .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t77_if_you_tell_people_they_can_help_you
+TestTreesEng: it is possible that a person helps you if it tells .
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t78_what_do_Chinese_still_tolerate
+TestTreesEng: what does a person from China still tolerate ?
+TestTreesLav: 
+TestTreesRus: 
+
+TestTrees: t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu
+TestTreesEng: Xinhua News Agency by Yiguo Yu on 1 September in Tokyo .
+TestTreesLav: 
+TestTreesRus: 
+

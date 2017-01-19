@@ -1,9 +1,9 @@
 FULL	You resolutely support a person that starts a thread!
-
+PART	You pledge!
 FULL	A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
 PART	You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
 
-PART	I agree that a person that starts a thread analyzes. I like Hua Mulan.
+FULL	I agree that a person that starts a thread analyzes.
 PART	I wish much that it is born.
 FULL	How long do we tolerate Japan?
 FULL	I say to a fellow citizen.
@@ -19,7 +19,7 @@ PART	I say many instances that are cited that are difficultly recorded to a fell
 FULL	It is still inferred that all persons that experience that era vividly remember.
 PART	Because Japan now wants that it reverses a verdict about aggression history it wakes up a citizen and a person in Asia from China.
 
-PART	An interest of a country and a nation unity guarantees a honor.
+PART	An interest of a country and a nation unity guarantees a honor. It isn't possible that we let that a native land is separated.
 
 
 PART	I say to a fellow citizen that it is done.
@@ -64,20 +64,20 @@ PART	Youngest brother is tender youth.
 
 FULL	A flag is looked over.
 PART	We brandish a weapon and it crosses.
+FULL	You let that a horse drinks to Pacific Ocean!
 
 
 
-
-
+FULL	What does a person from China still tolerate?
 FULL	They even ride a head of us.
 PART	Does a person from China still do this?
 PART	It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
 PART	Time. It is calm that there is China.
 PART	All lives of our citizen are too carefree. Official is too extravagant.
 PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
-
+PART	You let that they know that US is a panacea!
 FULL	China is gone!
-PART	We fight for a scale war. It isn't possible that China loses.
+PART	We fight if Japan dares to invade a territory for a scale war. It isn't possible that China loses.
 FULL	It is contrasted that we need a show in a life.
 FULL	I just pass by.
 PART	A whole society is resembled to this.
@@ -104,7 +104,7 @@ FULL	A cheap person that performs.
 FULL	A cheap person that performs.
 PART	It is dirty that there is a circle. A scum, a bird and a beast.
 FULL	It isn't easy that there is that female that is starred.
-PART	Everybody does this. How is it possible that you make money?
+FULL	Everybody does this. How is it possible that you make money if it doesn't do?
 
 
 FULL	You just behave!
@@ -172,8 +172,8 @@ FULL	You just think that it is possible that it is spent of this money!
 FULL	It is very nice that it obliges us.
 
 PART	A same old problem.
-PART	You are accused.
-PART	It is claimed that it isn't possible that you pave a way.
+PART	You are accused if it is gotten.
+PART	It is claimed if it builds in a place that it isn't possible that you pave a way.
 FULL	Anonymous.
 FULL	That is a fair point.
 PART	A person makes a good point.
@@ -190,7 +190,7 @@ PART	You are sticked to traffic.
 
 PART	It is needed that a business is supported.
 
-PART	It is recommended that it does two things.
+FULL	It is recommended if we recognize that a road primary benefits a business that it does two things.
 
 
 
@@ -208,7 +208,7 @@ PART	It is in fact possible that it suffices.
 
 
 
-
+FULL	It checks reality in here.
 PART	I drive.
 PART	I commute to a location.
 
@@ -233,7 +233,7 @@ PART	This infatuation baffles me truly.
 
 
 PART	I am broken up since August.
-
+PART	I want that it starts to date other persons and father says.
 
 PART	A much is gone on in his life and it thinks that it is possible that we are worked.
 
@@ -244,9 +244,9 @@ PART	I believe that every child needs parent.
 
 PART	What do I do?
 PART	It is very bad that it threatens to you.
-PART	It is obligated because it is just escalated that you don't give in that.
+FULL	It is obligated because it is just escalated if it gives in that you don't give in that.
 
-PART	It is contrasted that he sees.
+PART	It is contrasted that he sees if it loves son.
 FULL	Does it get through you?
 FULL	You date!
 FULL	You meet all person kinds!
@@ -261,7 +261,7 @@ PART	You need.
 
 FULL	You keep that thing that is recorded!
 
-
+PART	You try to aid if it isn't possible that it affords one!
 PART	You tell that it is needed that it goes!
 
 
@@ -274,14 +274,14 @@ PART	It isn't legal that an amount is paid.
 
 PART	It goes out and it is most hard.
 PART	I go when it is sober to a union bar.
-PART	It contrasts a point.
+PART	A fact in here. It contrasts a point.
 PART	I don't enjoy a university.
 
 
-PART	It isn't worked out because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
+PART	It isn't worked out if it opines because it doesn't ever open up, a person that counsels is university assigned to me and it sees.
 
 
-PART	I have a person that counsels because it is possible that you only have and it doubts that it helps much.
+PART	I have a person that counsels because it is possible that you only have and it doubts that it helps if it doesn't already help much.
 
 
 
@@ -293,7 +293,7 @@ PART	Is it possible that someone some advises me?
 PART	You concentrate one bit of a thing that is worked that is meant an obvious most urgent thing that is assigned!
 PART	You don't shut off and it does because it tries a new thing well! You now keep it!
 FULL	I recommend that you go to too see doctor.
-PART	It is possible that it benefits you.
+PART	It is possible that it benefits you if there is an anxious person.
 
 
 
@@ -315,7 +315,7 @@ PART	It contrasts.
 PART	You are thanked.
 
 
-FULL	Does she even have?
+PART	Does she even have?
 PART	You don't know that it doesn't get a good grade.
 PART	A life throws a thing to you.
 
@@ -330,7 +330,7 @@ FULL	I know a thing that you feel.
 PART	Mum of me is too spit.
 FULL	I recommend high that it is taken up that it smokes.
 FULL	It is a joke.
-
+PART	I think that it is become a person that is more weak and it way down dulls a personality to try to befriend some persons in a university.
 
 
 
@@ -342,7 +342,7 @@ FULL	It is a joke.
 PART	You don't go to go with it to an over top.
 
 
-PART	It is of course possible that you are respected. It is contrasted that it isn't nice that there is that.
+PART	It is contrasted that it isn't nice that there is that.
 PART	It is contrasted that I don't know if anyone reads this.
 FULL	I leave a home in September and it starts a university.
 PART	I emotional struggle. I have two periods when it lives.
@@ -385,11 +385,11 @@ PART	I have a slit in my arm.
 PART	They are healed and I then cut a staple and a razor.
 
 PART	I am tempted when it writes this really.
-FULL	I am addicted.
+FULL	I am addicted. It again cuts when one is healed.
 PART	I think it.
 
 
-FULL	He just cares.
+PART	He just cares.
 
 
 FULL	Mum of me also suffers bipolar and it has a depression.
@@ -403,9 +403,9 @@ PART	I thank you.
 
 FULL	You talk and a thing that is gone on is told is recommended.
 PART	It is possible.
-PART	It is possible that a person helps you.
-PART	It is likely that it is only worsened.
+FULL	It is possible that a person helps you if it tells.
 
+PART	It is more good that this thing is gotten.
 PART	You don't do this!
 
 
@@ -448,13 +448,13 @@ PART	It contrasts.
 
 
 
-
+PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge.
 PART	Do I see that I speak to a person that counsels?
 
-
+PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start. A demise circle in there.
 
 PART	It is worked to me and I suffer a random panic attack!
-PART	It is started that it is just started that a tiny thing worries me really.
+
 PART	I find that it helps.
 
 PART	It contrasts!
@@ -472,7 +472,7 @@ PART	A thing that is found is reflected.
 
 PART	It says that a thing that IAEA reports says that it steps to a forward.
 PART	Reuters quotes that it states that it is slowed that an organization that governs Iran is an effort.
-
+PART	A thing that IAEA reports states that it is obligated.
 
 
 PART	Some expert persons state that IAEA cedes a much to Iran.
@@ -484,7 +484,7 @@ PART	Casey states that a nucleus program that moves to a forward is continued.
 PART	An expert person states that it is recommended that it is previously resolved that a transparency is an issue.
 PART	Executive director of partisan Arms Control Association Daryl G. Kimball states that an agreement addresses a problem.
 PART	Kimball states that an organization that governs Iran is a design.
-PART	Official of Iran states that it reduces.
+PART	Official of Iran states that it reduces if it more sanctions.
 
 
 
@@ -499,7 +499,7 @@ PART	A document that outlines that Israel proposes is distributed in March 2007.
 PART	A letter says that a presentation from Israel is offered on 17 March 2007.
 
 
-PART	One criterion indicates a status as a weapon state that doesn't declare of Israel and it says that it is recommended that it is allowed that a state is engaged.
+
 PART	A document is circulated when a person organization that administrates works in September 2007 in Capitol Hill.
 
 FULL	Kimball states.
@@ -519,7 +519,7 @@ FULL	Seigel states.
 PART	Israel is recognized.
 
 PART	Official of NSG previously suggests that it approaches.
-
+PART	A proliferation regime isn't considerable enhanced if NSG Guidelines is modified.
 
 FULL	Iran.
 
@@ -536,21 +536,21 @@ FULL	An expert person discounts a significance of a thing that Ahmadinejad claim
 PART	Does it state that a number is less important?
 
 PART	It states that a problem about a technical hinders a program of Iran.
-
+PART	Iran repeats that it asserts that a nucleus program aims to only produce electricity because it contradicts a group principle.
 
 PART	An expert person states that it is simple that a uranium is produced of a grade material.
 PART	Ahmadinejad states that West still pursues that a negotiation is resumed.
 
 PART	A package that US endorses.
 
-PART	Official of US repeats that it states that it isn't possible that a negotiation is begun.
+PART	Official of US repeats that it states that it isn't possible that it begins to negotiate.
 
 
 PART	An envoy from Europe, Solana and Burns set a deadline.
 
 
 
-PART	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb.
+FULL	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb if it is enriched high.
 PART	It is possible that 6,000 centrifuges that are run produce a uranium that suffices one bomb.
 FULL	International Atomic Energy Agency states in May 2008 that Iran possesses 3,500 centrifuges that are operated.
 
@@ -629,16 +629,16 @@ PART	It is included that a residence in a country is built.
 FULL	Brazil.
 
 PART	Brazil implements law that allows that Air Force targets an aircraft that traffics a drug in an airspace / Air Force targets an aircraft that traffics a drug in an air space.
-PART	A liability concerns US.
+FULL	A liability if a civilian plane is misidentified concerns US.
 
 PART	A thing that is planned requires eight precaution steps.
 
 PART	It is contrasted to ever put a policy an effect that law that permits a such action is originally approved in 1998.
 
 
-FULL	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
+PART	Relative of a victim sues an organization that governs US and it wins a settle because it provides to an operation.
 FULL	Official of State Department from US states.
-
+PART	It is possible that law from US forbids that a country that implements law is assisted.
 
 PART	An organization that governs US consults an organization that governs Brazil a law provision.
 
@@ -733,13 +733,13 @@ PART	Official says that a person side wishes because it politics calculates that
 PART	A military from US has Cooperation Office in a fort from Venezuela.
 FULL	Chavez shuts down it in 2004.
 FULL	It is ordered to leave a country in April 2005.
-
+FULL	A person that analyzes says that it is likely that Chavez tries to indoctrinate a public and a force that is armed.
 PART	A person that analyzes says that it isn't proved that Chavez uses that force.
 
 FULL	Democratic.
 
-
-
+PART	It is possible that an organization that governs North Korea is prepared.
+PART	It states on 18 June 2007 that it is possible that an organization that governs North Korea is prepared.
 FULL	Hill is a head person from United States that negotiates a program about a nucleus weapon of North Korea.
 
 
@@ -852,9 +852,9 @@ FULL	Iraq.
 PART	A technology, an international and a telecom.
 
 
-
+PART	XP states that an any website that contains a contrary material is hacked.
 PART	An official website of religion Grand Ayatollah Ali al-Sistani is defaced to cyber attack a site that is related and it is blocked.
-PART	Isn't it clear that an attack is begun?
+PART	Isn't it clear that it begins to attack?
 
 
 PART	An alternative address is still operated.
@@ -867,9 +867,9 @@ FULL	A thing that is stated says.
 PART	XP erases a site.
 
 
+PART	An any website with a contrary material is punished.
 
-
-
+PART	An office in Najaf of an ayatollah declines that it comments.
 
 
 FULL	Kenya, Somalia and Ukraine.
@@ -885,20 +885,20 @@ PART	It emerges.
 
 FULL	An official states on 8 October 2008 that it progresses and a party approaches an agreement.
 
-
+PART	A pirate expresses that it wills that it negotiates a finance figure.
 PART	A ship is hijacked in 2008.
 
 
 
 PART	A ship.
-
+PART	An ammunition, six guns that counter an aircraft, 33 tanks and 150 products that launch a grenade are included to a weapon that boards a ship.
 PART	A thing that evidences a weapon subsequent emerges.
 PART	It is most likely that a deal is remained a secret.
 PART	An official from Ukraine is adamant.
 FULL	Diplomat of Ukraine in Kenya Oleh Belokolos states.
 
 FULL	All appropriate paperworks are validated.
-FULL	Ukraine abides.
+PART	Ukraine abides.
 
 
 PART	A politician from Kenya demands an answer and it calls to a commission that it examines a situation.
@@ -914,7 +914,7 @@ PART	Antonio Maria Costa says that Afghanistan produces much opium.
 PART	Costa says this when U.N. Drug Office prepares to a person that reports.
 
 FULL	A survey is issued on 27 November 2008.
-
+PART	United Nations finds that it is resulted that an amount is reduced.
 
 PART	A South region is an area that is heavily irrigated.
 
@@ -925,7 +925,7 @@ PART	Costa says that a result is a glut that depresses a thing.
 FULL	An amount that is increased is also processed in Afghanistan.
 PART	Costa adds that an insurgent holds an opium.
 PART	Costa says a surplus and it threatens that it devalues their stockpile.
-FULL	United Nations finds that Afghanistan produces in 2008.
+PART	United Nations finds that Afghanistan produces in 2008.
 
 
 PART	This then supports a thing.
@@ -978,7 +978,7 @@ PART	A police from Hong Kong recently works of Public Security Bureau and it car
 
 PART	Hong Kong is chosen.
 PART	It meets.
-
+PART	A letter of internal news of a police from Hong Kong recently reports that a conference aims to provide a think environment that is flexible.
 
 
 
@@ -1058,7 +1058,7 @@ FULL	Politics, an international and terrorism.
 
 PART	Tang states that it demonstrates that it is needed that there is an effort and it is correct.
 
-FULL	Tang states.
+PART	Tang states.
 PART	Tang states that an organization that governs China signs a multilateral pact.
 PART	Tang states a thing that is tasked that there is a measure.
 PART	Tang states that it cooperates an economy.
@@ -1095,7 +1095,7 @@ FULL	Alliot-Marie states.
 PART	It is needed that it internationally cooperates.
 
 
-FULL	France offers in 2002 that it sells.
+PART	France offers in 2002 that it sells.
 FULL	France agrees.
 PART	A mine of a high intensity is strung in Kashmir in a line.
 FULL	Terrorism that crosses a border is checked.
@@ -1108,7 +1108,7 @@ PART	An international and an organization that governs.
 
 
 
-FULL	De Villepin says.
+PART	De Villepin says.
 PART	De Villepin says that a person from France acts.
 FULL	A police from France raids a headquarters in a northwest of Paris of Mujahedeen on 22 June 2003.
 
@@ -1132,7 +1132,7 @@ PART	Associated Press quotes on 9 June 2003 that it states that an organization 
 PART	Howard states that an organization that governs Australia considers and it is obligated to choose a descriptor and a word.
 
 FULL	An organization that governs United States recently forms Proliferation Security Initiative.
-
+FULL	Proliferation Security Initiative starts to meet in Brisbane on 9 July 2003.
 
 
 
@@ -1168,7 +1168,7 @@ FULL	France is a country that leads European Space Agency.
 PART	Chirac visits when an organization that governs Russia displays that it is uneasy.
 
 PART	It is operated, space Titov is a military facility and Russian Space Forces runs.
-
+PART	Putin says that Chirac visits there.
 
 
 FULL	Philippines.
@@ -1217,7 +1217,7 @@ PART	Wen states that it is possible that an enterprise from China is progressed 
 PART	Wen states that Germany partners China in Europe.
 
 
-
+FULL	Wen states that Cold War is outdated resulted to embargo an arm.
 
 
 
@@ -1234,7 +1234,7 @@ PART	Wen states that an organization that governs China supports that peace in M
 
 FULL	China and Kyrgyzstan.
 PART	An international and an organization that governs.
-
+PART	China and Kyrgyzstan pledge.
 
 FULL	It signs a communiqué on 22 September 2004.
 
@@ -1245,7 +1245,7 @@ FULL	It signs a communiqué on 22 September 2004.
 PART	China and Kyrgyzstan say that it is recommended that peace and stability are established.
 
 
-
+PART	A communiqué says that China and Kyrgyzstan will that it together works of other countries and there is a measure.
 
 
 FULL	Vietnam and Germany.
@@ -1283,7 +1283,7 @@ PART	It collaborates.
 FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
-
+FULL	Xinhua News Agency by Guojun Yang on 1 September in Beijing.
 
 
 
@@ -1291,13 +1291,13 @@ FULL	President of HKUST Paul Ching-Wu Chu states.
 
 
 FULL	It ends.
-
+FULL	Xinhua News Agency on 1 September in Beijing.
 
 PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal visits China.
 
 FULL	It ends.
-
-
+FULL	Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
+PART	A principle of a party that is concerned today signs six documents in here.
 FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
@@ -1308,12 +1308,12 @@ PART	He expresses that it promotes stability, peace of Central Asia and a securi
 
 
 FULL	It ends.
-
+FULL	Xinhua News Agency by Yiguo Yu on 1 September in Tokyo.
 PART	A delegation from Japan that participates Far East and South Pacific Region Handicapped Sports Meet holds a grand swearing ceremony in Tokyo.
 
 PART	A nurse, a doctor, a sportsman and a person that coaches are neat sat.
 PART	A ground is filled an atmosphere.
-
+PART	Minister of State Welfare Ministry from Japan Souyasen delivers a departure speech that bolsters to a delegation.
 
 
 
@@ -1323,8 +1323,8 @@ PART	A delegation from Japan is flown.
 PART	They are remained in Beijing and it is returned to Japan.
 FULL	It ends.
 
-
-
+FULL	Xinhua News Agency on 31 August.
+FULL	Xinhua News Agency by Shuifu Tang on 31 August in Seoul.
 
 
 
@@ -1344,7 +1344,7 @@ PART	It contrasts.
 
 FULL	It ends.
 
-
+PART	A preliminary about a board holds in here.
 
 PART	Wei Lan occupies a lead position.
 
@@ -1359,13 +1359,13 @@ PART	Si Aiwan is scored a point.
 PART	It is held that it preliminary competes.
 
 FULL	It ends.
+FULL	Xinhua News Agency by Changrui Huang and Aiguo Yang on 1 September in Rome.
 
 
 
 
 
 
-
-
+PART	It is resulted that a woman today preliminary competes.
 
 FULL	It ends.

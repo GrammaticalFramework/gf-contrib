@@ -1426,4 +1426,92 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // I have tried to solve my problems.
+    // FIXME: 'my problems' (poss)
+    @Test
+    public void t75_I_have_tried_to_solve_my_problems() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(t / try-01 :ARG0 (i / i) :ARG1 (s / solve-01 :ARG0 i :ARG1 (p / problem :poss i)))");
+        assertEquals(amr,
+                "(t (try-01 (:ARG0 (i i)) (:ARG1 (s (solve-01 (:ARG0 i) (:ARG1 (p (problem (:poss i)))))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.try_VV (mkVP L.solve_V2 (mkNP S.a_Quant (mkCN L.problem_N))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // If it gets worse then go to the doctor's.
+    // FIXME: order of Adv
+    @Test
+    public void t76_if_it_gets_worse_then_go_to_the_doctor_s() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(g / go-02 :mode imperative :ARG0 (y / you) :ARG4 (d / doctor) :condition (w / worsen-01 :ARG1 (i / it)))");
+        assertEquals(amr,
+                "(g (go-02 (:mode imperative) (:ARG0 (y you)) (:ARG4 (d doctor)) (:condition (w (worsen-01 (:ARG1 (i it)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.you_NP (mkVP (mkVP (mkVP L.go_V) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.doctor_N)))) (S.mkAdv S.if_Subj (mkS (mkCl S.it_NP (passiveVP L.worsen_V2)))))))) exclMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // ::snt If you tell people they can help you.
+    // FIXME: co-references (:ARG0, :ARG2)
+    @Test
+    public void t77_if_you_tell_people_they_can_help_you() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(p / possible-01 :ARG1 (h / help-01 :ARG0 (p2 / person) :ARG1 (y / you)) :condition (t / tell-01 :ARG0 y :ARG2 p2))");
+        assertEquals(amr,
+                "(p (possible-01 (:ARG1 (h (help-01 (:ARG0 (p2 person)) (:ARG1 (y you))))) (:condition (t (tell-01 (:ARG0 y) (:ARG2 p2))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN L.person_N)) (mkVP L.help_V2 S.you_NP))))) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP L.tell_V)))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // ::snt What do Chinese still tolerate...
+    @Test
+    public void t78_what_do_Chinese_still_tolerate() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(t / tolerate-01 :ARG0 (p / person :mod (c / country :wiki \"China\" :name (n / name :op1 \"China\"))) :ARG1 (a / amr-unknown) :mod (s / still))");
+        assertEquals(amr,
+                "(t (tolerate-01 (:ARG0 (p (person (:mod (c (country (:wiki \"China\") (:name (n (name (:op1 \"China\")))))))))) (:ARG1 (a amr-unknown)) (:mod (s still))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkQS (mkQCl L.what_IAdv (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN \"China\"))))) (mkVP (P.mkAdV \"still\") (mkVP L.tolerate_V)))))) questMarkPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
+    // ::snt Xinhua News Agency, Tokyo, September 1st, by reporter Yiguo Yu
+    @Test
+    public void t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(b / byline-91 :ARG0 (p2 / publication :name (n / name :op1 \"Xinhua\" :op2 \"News\" :op3 \"Agency\")) :ARG1 (p / person :name (n2 / name :op1 \"Yiguo\" :op2 \"Yu\") :ARG0-of (r / report-01)) :location (c2 / city :name (n3 / name :op1 \"Tokyo\")) :time (d / date-entity :month 9 :day 1))");
+        assertEquals(amr,
+                "(b (byline-91 (:ARG0 (p2 (publication (:name (n (name (:op1 \"Xinhua\") (:op2 \"News\") (:op3 \"Agency\"))))))) (:ARG1 (p (person (:name (n2 (name (:op1 \"Yiguo\") (:op2 \"Yu\")))) (:ARG0-of (r report-01))))) (:location (c2 (city (:name (n3 (name (:op1 \"Tokyo\"))))))) (:time (d (date-entity (:month 9) (:day 1))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN \"Xinhua News Agency\")) (mkVP (mkVP (mkVP L.byline_V2 (mkNP (P.mkPN \"Yiguo Yu\"))) (dayMonthAdv (intMonthday (ss \"1\")) september_Month)) (S.mkAdv L.in_Prep (mkNP (P.mkPN \"Tokyo\"))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
