@@ -124,10 +124,10 @@ prERElement e = case e of
     [name ++ "_" ++ attr ++ " [shape=ellipse fontsize=10 label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
     [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] 
   EEntity (EWeak strongrels) name attrs -> 
-    (name ++ " [shape=box style=bold fontsize=10] ;") :
+    (name ++ " [shape=box peripheries=2 fontsize=10] ;") :
     [name ++ "_" ++ attr ++ " [shape=ellipse, label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
     [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] ++
-    [rel ++ " [shape=diamond style=bold fontsize=10] ;" | (_,rel) <- strongrels] ++
+    [rel ++ " [shape=diamond peripheries=2 fontsize=10] ;" | (_,rel) <- strongrels] ++
     concat [
       [
       name ++ " -> " ++ rel ++ " [arrowhead=none]",
@@ -152,8 +152,8 @@ prERElement e = case e of
  where
    style s = case s of
      EStrong -> ""
-     EWeak _ -> "style=bold"
-   status b a = if b then "_" ++ a else a
+     EWeak _ -> "peripheries=2"
+   status b a = if b then "_" ++ a else a --- if b then "<<u>" ++ a ++ "</u>>" else a
    arrowhead a = case a of
      EAtMostOne -> ""
      EExactlyOne -> " [arrowhead=curve]"
