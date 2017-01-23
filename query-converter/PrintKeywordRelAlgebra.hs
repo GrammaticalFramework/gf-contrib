@@ -48,15 +48,15 @@ replicateS n f = concatS (replicate n f)
 -- the printer class does the job
 class Print a where
   prt :: Int -> a -> Doc
-  prtList :: Int -> [a] -> Doc
-  prtList i = concatD . map (prt i)
+  prtList :: [a] -> Doc
+  prtList = concatD . map (prt 0)
 
 instance Print a => Print [a] where
-  prt = prtList
+  prt _ = prtList
 
 instance Print Char where
   prt _ s = doc (showChar '\'' . mkEsc '\'' s . showChar '\'')
-  prtList _ s = doc (showChar '"' . concatS (map (mkEsc '"') s) . showChar '"')
+  prtList s = doc (showChar '"' . concatS (map (mkEsc '"') s) . showChar '"')
 
 mkEsc :: Char -> Char -> ShowS
 mkEsc q s = case s of
@@ -80,100 +80,122 @@ instance Print Double where
 
 instance Print Ident where
   prt _ (Ident i) = doc (showString ( i))
-  prtList _ [] = (concatD [])
-  prtList _ [x] = (concatD [prt 0 x])
-  prtList _ (x:xs) = (concatD [prt 0 x, doc (showString ","), prt 0 xs])
+  prtList es = case es of
+   [] -> (concatD [])
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
+
 
 
 instance Print Rels where
   prt i e = case e of
-    RRels rels -> prPrec i 0 (concatD [prt 0 rels])
+   RRels rels -> prPrec i 0 (concatD [prt 0 rels])
+
 
 instance Print Rel where
   prt i e = case e of
-    RTable id -> prPrec i 3 (concatD [prt 0 id])
-    RSelect cond rel -> prPrec i 2 (concatD [doc (showString "FILTER"), doc (showString "["), prt 0 cond, doc (showString "]"), prt 2 rel])
-    RProject projections rel -> prPrec i 2 (concatD [doc (showString "PROJECT"), doc (showString "["), prt 0 projections, doc (showString "]"), prt 2 rel])
-    RRename renaming rel -> prPrec i 2 (concatD [doc (showString "RENAME"), doc (showString "["), prt 0 renaming, doc (showString "]"), prt 2 rel])
-    RGroup ids aggregations rel -> prPrec i 2 (concatD [doc (showString "GROUP"), doc (showString "["), prt 0 ids, doc (showString ","), prt 0 aggregations, doc (showString "]"), prt 2 rel])
-    RSort sortexps rel -> prPrec i 2 (concatD [doc (showString "ORDER"), doc (showString "["), prt 0 sortexps, doc (showString "]"), prt 2 rel])
-    RDistinct rel -> prPrec i 2 (concatD [doc (showString "DISTINCT"), prt 2 rel])
-    RUnion rel1 rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "UNION"), prt 2 rel2])
-    RCartesian rel1 rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString ","), prt 2 rel2])
-    RExcept rel1 rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "EXCEPT"), prt 2 rel2])
-    RIntersect rel1 rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "INTERSECT"), prt 2 rel2])
-    RNaturalJoin rel1 rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "NATURAL"), doc (showString "JOIN"), prt 2 rel2])
-    RThetaJoin rel1 cond rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "JOIN"), doc (showString "["), prt 0 cond, doc (showString "]"), prt 2 rel2])
-    RInnerJoin rel1 ids rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "INNER"), doc (showString "JOIN"), doc (showString "["), prt 0 ids, doc (showString "]"), prt 2 rel2])
-    RFullOuterJoin rel1 ids rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "FULL"), doc (showString "OUTER"), doc (showString "JOIN"), doc (showString "["), prt 0 ids, doc (showString "]"), prt 2 rel2])
-    RLeftOuterJoin rel1 ids rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "LEFT"), doc (showString "OUTER"), doc (showString "JOIN"), doc (showString "["), prt 0 ids, doc (showString "]"), prt 2 rel2])
-    RRightOuterJoin rel1 ids rel2 -> prPrec i 1 (concatD [prt 1 rel1, doc (showString "RIGHT"), doc (showString "OUTER"), doc (showString "JOIN"), doc (showString "["), prt 0 ids, doc (showString "]"), prt 2 rel2])
-    RLet id rel1 rel2 -> prPrec i 0 (concatD [doc (showString "LET"), prt 0 id, doc (showString "="), prt 1 rel1, doc (showString "IN"), prt 0 rel2])
-  prtList _ [] = (concatD [])
-  prtList _ (x:xs) = (concatD [prt 0 x, prt 0 xs])
+   RTable id -> prPrec i 3 (concatD [prt 0 id])
+   RSelect cond rel -> prPrec i 2 (concatD [doc (showString "FILTER") , doc (showString "[") , prt 0 cond , doc (showString "]") , prt 2 rel])
+   RProject projections rel -> prPrec i 2 (concatD [doc (showString "PROJECT") , doc (showString "[") , prt 0 projections , doc (showString "]") , prt 2 rel])
+   RRename renaming rel -> prPrec i 2 (concatD [doc (showString "RENAME") , doc (showString "[") , prt 0 renaming , doc (showString "]") , prt 2 rel])
+   RGroup ids aggregations rel -> prPrec i 2 (concatD [doc (showString "GROUP") , doc (showString "[") , prt 0 ids , doc (showString ",") , prt 0 aggregations , doc (showString "]") , prt 2 rel])
+   RSort sortexps rel -> prPrec i 2 (concatD [doc (showString "ORDER") , doc (showString "[") , prt 0 sortexps , doc (showString "]") , prt 2 rel])
+   RDistinct rel -> prPrec i 2 (concatD [doc (showString "DISTINCT") , prt 2 rel])
+   RUnion rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "UNION") , prt 2 rel])
+   RCartesian rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString ",") , prt 2 rel])
+   RExcept rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "EXCEPT") , prt 2 rel])
+   RIntersect rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "INTERSECT") , prt 2 rel])
+   RNaturalJoin rel0 rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "NATURAL") , doc (showString "JOIN") , prt 2 rel])
+   RThetaJoin rel0 cond rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "JOIN") , doc (showString "[") , prt 0 cond , doc (showString "]") , prt 2 rel])
+   RInnerJoin rel0 ids rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "INNER") , doc (showString "JOIN") , doc (showString "[") , prt 0 ids , doc (showString "]") , prt 2 rel])
+   RFullOuterJoin rel0 ids rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "FULL") , doc (showString "OUTER") , doc (showString "JOIN") , doc (showString "[") , prt 0 ids , doc (showString "]") , prt 2 rel])
+   RLeftOuterJoin rel0 ids rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "LEFT") , doc (showString "OUTER") , doc (showString "JOIN") , doc (showString "[") , prt 0 ids , doc (showString "]") , prt 2 rel])
+   RRightOuterJoin rel0 ids rel -> prPrec i 1 (concatD [prt 1 rel0 , doc (showString "RIGHT") , doc (showString "OUTER") , doc (showString "JOIN") , doc (showString "[") , prt 0 ids , doc (showString "]") , prt 2 rel])
+   RLet id rel0 rel -> prPrec i 0 (concatD [doc (showString "LET") , prt 0 id , doc (showString "=") , prt 1 rel0 , doc (showString "IN") , prt 0 rel])
+
+  prtList es = case es of
+   [] -> (concatD [])
+   x:xs -> (concatD [prt 0 x , prt 0 xs])
+
 instance Print Cond where
   prt i e = case e of
-    CEq exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString "="), prt 0 exp2])
-    CNEq exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString "<>"), prt 0 exp2])
-    CLt exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString "<"), prt 0 exp2])
-    CGt exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString ">"), prt 0 exp2])
-    CLeq exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString "<="), prt 0 exp2])
-    CGeq exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString ">="), prt 0 exp2])
-    CLike exp1 exp2 -> prPrec i 2 (concatD [prt 0 exp1, doc (showString "LIKE"), prt 0 exp2])
-    CNot cond -> prPrec i 2 (concatD [doc (showString "NOT"), prt 3 cond])
-    CAnd cond1 cond2 -> prPrec i 1 (concatD [prt 1 cond1, doc (showString "AND"), prt 2 cond2])
-    COr cond1 cond2 -> prPrec i 1 (concatD [prt 1 cond1, doc (showString "OR"), prt 2 cond2])
+   CEq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "=") , prt 0 exp])
+   CNEq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "<>") , prt 0 exp])
+   CLt exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "<") , prt 0 exp])
+   CGt exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString ">") , prt 0 exp])
+   CLeq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "<=") , prt 0 exp])
+   CGeq exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString ">=") , prt 0 exp])
+   CLike exp0 exp -> prPrec i 2 (concatD [prt 0 exp0 , doc (showString "LIKE") , prt 0 exp])
+   CNot cond -> prPrec i 2 (concatD [doc (showString "NOT") , prt 3 cond])
+   CAnd cond0 cond -> prPrec i 1 (concatD [prt 1 cond0 , doc (showString "AND") , prt 2 cond])
+   COr cond0 cond -> prPrec i 1 (concatD [prt 1 cond0 , doc (showString "OR") , prt 2 cond])
+
 
 instance Print Exp where
   prt i e = case e of
-    EIdent id -> prPrec i 3 (concatD [prt 0 id])
-    EQIdent id1 id2 -> prPrec i 3 (concatD [prt 0 id1, doc (showString "."), prt 0 id2])
-    EString str -> prPrec i 3 (concatD [prt 0 str])
-    EInt n -> prPrec i 3 (concatD [prt 0 n])
-    EFloat d -> prPrec i 3 (concatD [prt 0 d])
-    EAggr function distinct id -> prPrec i 3 (concatD [prt 0 function, doc (showString "("), prt 0 distinct, prt 0 id, doc (showString ")")])
-    EMul exp1 exp2 -> prPrec i 2 (concatD [prt 2 exp1, doc (showString "*"), prt 3 exp2])
-    EDiv exp1 exp2 -> prPrec i 2 (concatD [prt 2 exp1, doc (showString "/"), prt 3 exp2])
-    ERem exp1 exp2 -> prPrec i 2 (concatD [prt 2 exp1, doc (showString "%"), prt 3 exp2])
-    EAdd exp1 exp2 -> prPrec i 1 (concatD [prt 1 exp1, doc (showString "+"), prt 2 exp2])
-    ESub exp1 exp2 -> prPrec i 1 (concatD [prt 1 exp1, doc (showString "-"), prt 2 exp2])
-  prtList _ [x] = (concatD [prt 0 x])
-  prtList _ (x:xs) = (concatD [prt 0 x, doc (showString ","), prt 0 xs])
+   EIdent id -> prPrec i 3 (concatD [prt 0 id])
+   EQIdent id0 id -> prPrec i 3 (concatD [prt 0 id0 , doc (showString ".") , prt 0 id])
+   EString str -> prPrec i 3 (concatD [prt 0 str])
+   EInt n -> prPrec i 3 (concatD [prt 0 n])
+   EFloat d -> prPrec i 3 (concatD [prt 0 d])
+   EAggr function distinct id -> prPrec i 3 (concatD [prt 0 function , doc (showString "(") , prt 0 distinct , prt 0 id , doc (showString ")")])
+   EMul exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "*") , prt 3 exp])
+   EDiv exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "/") , prt 3 exp])
+   ERem exp0 exp -> prPrec i 2 (concatD [prt 2 exp0 , doc (showString "%") , prt 3 exp])
+   EAdd exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "+") , prt 2 exp])
+   ESub exp0 exp -> prPrec i 1 (concatD [prt 1 exp0 , doc (showString "-") , prt 2 exp])
+
+  prtList es = case es of
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
+
 instance Print Projection where
   prt i e = case e of
-    PExp exp -> prPrec i 0 (concatD [prt 0 exp])
-    PRename exp id -> prPrec i 0 (concatD [prt 0 exp, doc (showString "AS"), prt 0 id])
-  prtList _ [x] = (concatD [prt 0 x])
-  prtList _ (x:xs) = (concatD [prt 0 x, doc (showString ","), prt 0 xs])
+   PExp exp -> prPrec i 0 (concatD [prt 0 exp])
+   PRename exp id -> prPrec i 0 (concatD [prt 0 exp , doc (showString "AS") , prt 0 id])
+
+  prtList es = case es of
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
+
 instance Print Renaming where
   prt i e = case e of
-    RRelation id -> prPrec i 0 (concatD [prt 0 id])
-    RAttributes id ids -> prPrec i 0 (concatD [prt 0 id, doc (showString "("), prt 0 ids, doc (showString ")")])
+   RRelation id -> prPrec i 0 (concatD [prt 0 id])
+   RAttributes id ids -> prPrec i 0 (concatD [prt 0 id , doc (showString "(") , prt 0 ids , doc (showString ")")])
+
 
 instance Print Aggregation where
   prt i e = case e of
-    AApp function distinct id -> prPrec i 0 (concatD [prt 0 function, doc (showString "("), prt 0 distinct, prt 0 id, doc (showString ")")])
-    ARename function distinct id exp -> prPrec i 0 (concatD [prt 0 function, doc (showString "("), prt 0 distinct, prt 0 id, doc (showString ")"), doc (showString "AS"), prt 0 exp])
-  prtList _ [] = (concatD [])
-  prtList _ [x] = (concatD [prt 0 x])
-  prtList _ (x:xs) = (concatD [prt 0 x, doc (showString ","), prt 0 xs])
+   AApp function distinct id -> prPrec i 0 (concatD [prt 0 function , doc (showString "(") , prt 0 distinct , prt 0 id , doc (showString ")")])
+   ARename function distinct id exp -> prPrec i 0 (concatD [prt 0 function , doc (showString "(") , prt 0 distinct , prt 0 id , doc (showString ")") , doc (showString "AS") , prt 0 exp])
+
+  prtList es = case es of
+   [] -> (concatD [])
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
+
 instance Print Function where
   prt i e = case e of
-    FAvg -> prPrec i 0 (concatD [doc (showString "AVG")])
-    FSum -> prPrec i 0 (concatD [doc (showString "SUM")])
-    FMax -> prPrec i 0 (concatD [doc (showString "MAX")])
-    FMin -> prPrec i 0 (concatD [doc (showString "MIN")])
-    FCount -> prPrec i 0 (concatD [doc (showString "COUNT")])
+   FAvg  -> prPrec i 0 (concatD [doc (showString "AVG")])
+   FSum  -> prPrec i 0 (concatD [doc (showString "SUM")])
+   FMax  -> prPrec i 0 (concatD [doc (showString "MAX")])
+   FMin  -> prPrec i 0 (concatD [doc (showString "MIN")])
+   FCount  -> prPrec i 0 (concatD [doc (showString "COUNT")])
+
 
 instance Print Distinct where
   prt i e = case e of
-    DNone -> prPrec i 0 (concatD [])
-    DDistinct -> prPrec i 0 (concatD [doc (showString "DISTINCT")])
+   DNone  -> prPrec i 0 (concatD [])
+   DDistinct  -> prPrec i 0 (concatD [doc (showString "DISTINCT")])
+
 
 instance Print SortExp where
   prt i e = case e of
-    SEAsc exp -> prPrec i 0 (concatD [prt 0 exp])
-    SEDesc exp -> prPrec i 0 (concatD [prt 0 exp, doc (showString "DESC")])
-  prtList _ [x] = (concatD [prt 0 x])
-  prtList _ (x:xs) = (concatD [prt 0 x, doc (showString ","), prt 0 xs])
+   SEAsc exp -> prPrec i 0 (concatD [prt 0 exp])
+   SEDesc exp -> prPrec i 0 (concatD [prt 0 exp , doc (showString "DESC")])
+
+  prtList es = case es of
+   [x] -> (concatD [prt 0 x])
+   x:xs -> (concatD [prt 0 x , doc (showString ",") , prt 0 xs])
+
 

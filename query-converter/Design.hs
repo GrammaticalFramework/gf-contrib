@@ -216,8 +216,8 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     trSchema :: ERElement -> Relation
     trSchema e = case e of
       EEntity (EWeak strongrels) name attrs -> (relation name){
-        attributes = attrs ++ [(qualif strong k, True)       | (strong,rel) <- strongrels, k <- keys strong],
-        references =          [(qualif strong k, (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
+        attributes = attrs ++ [(ifqualif strongrels rel (qualif strong k), True)       | (strong,rel) <- strongrels, k <- keys strong],
+        references =          [(ifqualif strongrels rel (qualif strong k), (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
         }
       EEntity EStrong name attrs -> 
           let exacts = [(k,b) | fab@(f,(a,b)) <- functions, a == name, k <- keys b] 
@@ -244,6 +244,7 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     entitiesWithKeys = [(r,(e,[k | (k,True) <- attrs])) | e@(EEntity _ r attrs) <- er] ++
                        [(r,(e,[])) | e@(ESubEntity _ r _ attrs) <- er]
     qualif (e:es) (k:ks) = toLower e : es ++ [toUpper k] ++ ks
+    ifqualif rs r = if length rs > 1 then qualif r else id
     mqualif mi e k = case mi of
       Just i -> qualif i k
       _ -> qualif e k  
@@ -300,7 +301,7 @@ getERElement s = case words s of
 ------------- natural language generation: very experimental and brittle
 
 erdiagram2text :: ERDiagram -> String
-erdiagram2text = unlines . map (mkSentence . unwords . trEl)
+erdiagram2text = unlines . map (mkSentence . unwords . punctuate . trEl)
  where
    trEl e = case e of
      EEntity EStrong name attrs -> 
@@ -316,7 +317,9 @@ erdiagram2text = unlines . map (mkSentence . unwords . trEl)
      ERelationship name ents@((x,(_,_)):(y,(arr,_)):_) attrs ->  ---- ignoring first arrow, arrow labels, more than two args
        trEnt indef x ++ ["can"] ++ trRel infinitive name ++ trModEnt indef arr y ++ ifn attrs ["with"] ++ conj (map trAttr attrs)
 
-   hasAttrs attrs = ifn attrs ["has"] ++ conj (map (trAttr . fst) attrs)
+   hasAttrs attrs = ifn attrs ["has"] ++ conj (map (trAttr . fst) attrs) ++
+                    let keys = [a | (a,k) <- attrs, k] in
+                    ifn keys ([".","It","is","uniquely","identified","by","the"] ++ conj (map (return . uncamel) keys))
 
    trEnt form e = let ue = uncamel e in [indefArt ue, ue]
 
@@ -346,6 +349,10 @@ erdiagram2text = unlines . map (mkSentence . unwords . trEl)
 
    mkSentence (c:cs) = toUpper c : cs ++ "."
 
+   punctuate ws = case ws of
+     w:p:ww | elem p [".",","] -> (w ++ p) : punctuate ww
+     w:ww -> w : punctuate ww
+     _ -> ws
 
 uncamel = map toLower . uncam where
    uncam s = case break isUpper s of 

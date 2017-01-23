@@ -4,7 +4,6 @@ module Main where
 
 import System.IO ( stdin, hGetContents )
 import System.Environment ( getArgs, getProgName )
-import System.Exit ( exitFailure, exitSuccess )
 
 import LexRelAlgebra
 import ParRelAlgebra
@@ -35,11 +34,9 @@ run v p s = let ts = myLLexer s in case p ts of
                           putStrV v "Tokens:"
                           putStrV v $ show ts
                           putStrLn s
-                          exitFailure
            Ok  tree -> do putStrLn "\nParse Successful!"
                           showTree v tree
 
-                          exitSuccess
 
 
 showTree :: (Show a, Print a) => Int -> a -> IO ()
@@ -48,25 +45,12 @@ showTree v tree
       putStrV v $ "\n[Abstract Syntax]\n\n" ++ show tree
       putStrV v $ "\n[Linearized tree]\n\n" ++ printTree tree
 
-usage :: IO ()
-usage = do
-  putStrLn $ unlines
-    [ "usage: Call with one of the following argument combinations:"
-    , "  --help          Display this help message."
-    , "  (no arguments)  Parse stdin verbosely."
-    , "  (files)         Parse content of files verbosely."
-    , "  -s (files)      Silent mode. Parse content of files silently."
-    ]
-  exitFailure
-
 main :: IO ()
-main = do
-  args <- getArgs
-  case args of
-    ["--help"] -> usage
-    [] -> hGetContents stdin >>= run 2 pRels
-    "-s":fs -> mapM_ (runFile 0 pRels) fs
-    fs -> mapM_ (runFile 2 pRels) fs
+main = do args <- getArgs
+          case args of
+            [] -> hGetContents stdin >>= run 2 pRels
+            "-s":fs -> mapM_ (runFile 0 pRels) fs
+            fs -> mapM_ (runFile 2 pRels) fs
 
 
 

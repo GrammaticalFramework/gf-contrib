@@ -13,11 +13,11 @@ failure x = Bad $ "Undefined case: " ++ show x
 transTree :: Tree c -> Result
 transTree t = case t of
   RRels rels -> failure t
-  RTable ident -> failure t
+  RTable i -> failure t
   RSelect cond rel -> failure t
   RProject projections rel -> failure t
   RRename renaming rel -> failure t
-  RGroup idents aggregations rel -> failure t
+  RGroup is aggregations rel -> failure t
   RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
@@ -26,11 +26,11 @@ transTree t = case t of
   RExcept rel0 rel1 -> failure t
   RNaturalJoin rel0 rel1 -> failure t
   RThetaJoin rel0 cond1 rel2 -> failure t
-  RInnerJoin rel0 idents1 rel2 -> failure t
-  RFullOuterJoin rel0 idents1 rel2 -> failure t
-  RLeftOuterJoin rel0 idents1 rel2 -> failure t
-  RRightOuterJoin rel0 idents1 rel2 -> failure t
-  RLet ident rel0 rel1 -> failure t
+  RInnerJoin rel0 is1 rel2 -> failure t
+  RFullOuterJoin rel0 is1 rel2 -> failure t
+  RLeftOuterJoin rel0 is1 rel2 -> failure t
+  RRightOuterJoin rel0 is1 rel2 -> failure t
+  RLet i rel0 rel1 -> failure t
   CEq exp0 exp1 -> failure t
   CNEq exp0 exp1 -> failure t
   CLt exp0 exp1 -> failure t
@@ -41,23 +41,23 @@ transTree t = case t of
   CNot cond -> failure t
   CAnd cond0 cond1 -> failure t
   COr cond0 cond1 -> failure t
-  EIdent ident -> failure t
-  EQIdent ident0 ident1 -> failure t
-  EString string -> failure t
-  EInt integer -> failure t
-  EFloat double -> failure t
-  EAggr function distinct ident -> failure t
+  EIdent i -> failure t
+  EQIdent i0 i1 -> failure t
+  EString str -> failure t
+  EInt n -> failure t
+  EFloat d -> failure t
+  EAggr function distinct i -> failure t
   EMul exp0 exp1 -> failure t
   EDiv exp0 exp1 -> failure t
   ERem exp0 exp1 -> failure t
   EAdd exp0 exp1 -> failure t
   ESub exp0 exp1 -> failure t
   PExp exp -> failure t
-  PRename exp ident -> failure t
-  RRelation ident -> failure t
-  RAttributes ident idents -> failure t
-  AApp function distinct ident -> failure t
-  ARename function distinct ident exp -> failure t
+  PRename exp i -> failure t
+  RRelation i -> failure t
+  RAttributes i is -> failure t
+  AApp function distinct i -> failure t
+  ARename function distinct i exp -> failure t
   FAvg  -> failure t
   FSum  -> failure t
   FMax  -> failure t
@@ -75,11 +75,11 @@ transRels t = case t of
 
 transRel :: Rel -> Result
 transRel t = case t of
-  RTable ident -> failure t
+  RTable i -> failure t
   RSelect cond rel -> failure t
   RProject projections rel -> failure t
   RRename renaming rel -> failure t
-  RGroup idents aggregations rel -> failure t
+  RGroup is aggregations rel -> failure t
   RSort sortexps rel -> failure t
   RDistinct rel -> failure t
   RUnion rel0 rel1 -> failure t
@@ -88,11 +88,11 @@ transRel t = case t of
   RExcept rel0 rel1 -> failure t
   RNaturalJoin rel0 rel1 -> failure t
   RThetaJoin rel0 cond1 rel2 -> failure t
-  RInnerJoin rel0 idents1 rel2 -> failure t
-  RFullOuterJoin rel0 idents1 rel2 -> failure t
-  RLeftOuterJoin rel0 idents1 rel2 -> failure t
-  RRightOuterJoin rel0 idents1 rel2 -> failure t
-  RLet ident rel0 rel1 -> failure t
+  RInnerJoin rel0 is1 rel2 -> failure t
+  RFullOuterJoin rel0 is1 rel2 -> failure t
+  RLeftOuterJoin rel0 is1 rel2 -> failure t
+  RRightOuterJoin rel0 is1 rel2 -> failure t
+  RLet i rel0 rel1 -> failure t
 
 transCond :: Cond -> Result
 transCond t = case t of
@@ -109,12 +109,12 @@ transCond t = case t of
 
 transExp :: Exp -> Result
 transExp t = case t of
-  EIdent ident -> failure t
-  EQIdent ident0 ident1 -> failure t
-  EString string -> failure t
-  EInt integer -> failure t
-  EFloat double -> failure t
-  EAggr function distinct ident -> failure t
+  EIdent i -> failure t
+  EQIdent i0 i1 -> failure t
+  EString str -> failure t
+  EInt n -> failure t
+  EFloat d -> failure t
+  EAggr function distinct i -> failure t
   EMul exp0 exp1 -> failure t
   EDiv exp0 exp1 -> failure t
   ERem exp0 exp1 -> failure t
@@ -124,17 +124,17 @@ transExp t = case t of
 transProjection :: Projection -> Result
 transProjection t = case t of
   PExp exp -> failure t
-  PRename exp ident -> failure t
+  PRename exp i -> failure t
 
 transRenaming :: Renaming -> Result
 transRenaming t = case t of
-  RRelation ident -> failure t
-  RAttributes ident idents -> failure t
+  RRelation i -> failure t
+  RAttributes i is -> failure t
 
 transAggregation :: Aggregation -> Result
 transAggregation t = case t of
-  AApp function distinct ident -> failure t
-  ARename function distinct ident exp -> failure t
+  AApp function distinct i -> failure t
+  ARename function distinct i exp -> failure t
 
 transFunction :: Function -> Result
 transFunction t = case t of
