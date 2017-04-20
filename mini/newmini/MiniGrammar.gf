@@ -1,26 +1,28 @@
 abstract MiniGrammar = {
 
+-- collected from GF/lib/src/abstract/*.gf
+-- the functions with lower-case names are shortcuts for special cases (marked ---s)
+-- except for those in Structural
+
   cat
   
 -- Common
-    Adv ;    -- verb-phrase-modifying adverb        e.g. "in the house"
-    Temp ;   -- temporal and aspectual features     e.g. past anterior
-    Tense ;  -- tense                               e.g. present, past, future
+    Utt ;    -- sentence, question, word...         e.g. "be quiet"
+    Adv ;    -- adverbial phrase                    e.g. "in the house"
+    Temp ;   -- temporal and aspectual features     e.g. present, past anterior
     Pol ;    -- polarity                            e.g. positive, negative
-    Ant ;    -- anteriority                         e.g. simultaneous, anterior
 
 -- Cat
-    S ;      -- declarative sentence                e.g. "she lived here"
+    S ;      -- declarative sentence                e.g. "she lives here"
     Cl ;     -- declarative clause, with all tenses e.g. "she looks at this"
-    VP ;     -- verb phrase                         e.g. "is very warm"
-    Comp ;   -- complement of copula, such as AP    e.g. "very warm"
+    VP ;     -- verb phrase                         e.g. "lives here"
     AP ;     -- adjectival phrase                   e.g. "very warm"
     CN ;     -- common noun (without determiner)    e.g. "red house"
     NP ;     -- noun phrase (subject or object)     e.g. "the red house"
     Pron ;   -- personal pronoun                    e.g. "she"
-    Det ;    -- determiner phrase                   e.g. "those seven"
+    Det ;    -- determiner phrase                   e.g. "those"
     Conj ;   -- conjunction                         e.g. "and"
-    Prep ;   -- preposition, or just case           e.g. "in"
+    Prep ;   -- preposition, or just case           e.g. "in", dative
     V ;      -- one-place verb                      e.g. "sleep" 
     V2 ;     -- two-place verb                      e.g. "love"
     A ;      -- one-place adjective                 e.g. "warm"
@@ -30,46 +32,56 @@ abstract MiniGrammar = {
   fun
 
 -- Noun
-    DetCN    : Det -> CN -> NP ;       -- the man
-    UsePN    : PN -> NP ;              -- John
-    UsePron  : Pron -> NP ;            -- he
----    IndefArt : Quant ;                 -- a/an
----    DefArt   : Quant ;                 -- the
-    UseN     : N -> CN ;               -- house
-    AdjCN    : AP -> CN  -> CN ;       -- big house
+    DetCN     : Det -> CN -> NP ;       -- the man
+    UsePN     : PN -> NP ;              -- John
+    UsePron   : Pron -> NP ;            -- he
+    a_Det     : Det ;                   -- indefinite singular ---s
+    aPl_Det   : Det ;                   -- indefinite plural   ---s
+    the_Det   : Det ;                   -- definite singular   ---s
+    thePl_Det : Det ;                   -- definite plural     ---s
+    UseN      : N -> CN ;               -- house
+    AdjCN     : AP -> CN  -> CN ;       -- big house
 
 -- Adjective
-    PositA   : A  -> AP ;              -- warm
+    PositA    : A  -> AP ;              -- warm
 
 -- Adverb
-    PrepNP   : Prep -> NP -> Adv ;     -- in the house
+    PrepNP    : Prep -> NP -> Adv ;     -- in the house
 
 -- Verb
-    UseV     : V   -> VP ;             -- sleep
-    ComplV2  : V2  -> NP -> VP ;       -- love it
-    UseComp  : Comp -> VP ;            -- be warm
-    AdvVP    : VP -> Adv -> VP ;       -- sleep here
-    CompAP   : AP  -> Comp ;           -- (be) small
+    UseV      : V   -> VP ;             -- sleep
+    ComplV2   : V2  -> NP -> VP ;       -- love it
+    useAP     : AP  -> VP ;             -- be small ---s
+    AdvVP     : VP -> Adv -> VP ;       -- sleep here
 
 -- Sentence
-    PredVP   : NP -> VP -> Cl ;            -- John walks
-    UseCl    : Temp -> Pol -> Cl  -> S ;   -- she had not slept
+    PredVP    : NP -> VP -> Cl ;        -- John walks / John does not walk
+    useCl     : Pol -> Cl  -> S ;       -- John does not walk
 
 
 -- Conjunction
-  cat
-    ListS ;
-  fun
-    ConjS     : Conj -> ListS -> S ;       -- he walks and she runs
-    BaseS     : S   -> S   -> ListS ;      -- John walks, Mary runs
+    conjS     : S -> Conj -> S -> S ;   -- he walks and she runs ---s
 
 -- Tense
-  fun
-    TTAnt  : Tense -> Ant -> Temp ; -- [tense + anteriority, e.g. past anterior]
-    PPos   : Pol ;                  -- I sleep  [positive polarity]
-    PNeg   : Pol ;                  -- I don't sleep [negative polarity]
-    TPres  : Tense ;                -- I sleep/have slept [present]
-    ASimul : Ant ;                  -- I sleep/slept [simultaneous, not compound]
-    AAnter : Ant ;                  -- I have slept/had slept [anterior, compound, "perfect"]
+    PPos      : Pol ;                   -- I sleep  [positive polarity]
+    PNeg      : Pol ;                   -- I do not sleep [negative polarity]
 
+-- Structural
+    and_Conj  : Conj ;
+    or_Conj   : Conj ;
+    
+    every_Det : Det ;
+    some_Det  : Det ;
+
+    in_Prep   : Prep ;
+    on_Prep   : Prep ;
+    with_Prep : Prep ;
+
+    i_Pron     : Pron ;
+    youSg_Pron : Pron ;
+    he_Pron    : Pron ;
+    she_Pron   : Pron ;
+    we_Pron    : Pron ;
+    youPl_Pron : Pron ;
+    
 }
