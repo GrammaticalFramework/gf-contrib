@@ -1,4 +1,8 @@
- lincat
+incomplete concrete MiniGrammarFunctor of MiniGrammar =
+  open
+    Grammar
+  in {
+lincat
    Utt = Grammar.Utt ;
    Adv = Grammar.Adv ;
    Temp = Grammar.Temp ;
@@ -24,29 +28,28 @@ lin
    UsePN = Grammar.UsePN ;
    UsePron = Grammar.UsePron ;
    MassNP = Grammar.MassNP ;
-   a_Det = Grammar.a_Det ;
-   aPl_Det = Grammar.aPl_Det ;
-   the_Det = Grammar.the_Det ;
-   thePl_Det = Grammar.thePl_Det ;
+   a_Det = Grammar.DetQuant IndefArt NumSg ;
+   aPl_Det = Grammar.DetQuant IndefArt NumPl ;
+   the_Det = Grammar.DetQuant DefArt NumSg ;
+   thePl_Det = Grammar.DetQuant DefArt NumPl ;
    UseN = Grammar.UseN ;
    AdjCN = Grammar.AdjCN ;
    PositA = Grammar.PositA ;
    PrepNP = Grammar.PrepNP ;
    UseV = Grammar.UseV ;
-   ComplV2 = Grammar.ComplV2 ;
-   useAP = Grammar.useAP ;
+   ComplV2 v = Grammar.ComplSlash (SlashV2a v) ;
+   UseAP ap = Grammar.UseComp (CompAP ap) ;
    AdvVP = Grammar.AdvVP ;
    PredVP = Grammar.PredVP ;
-   useCl = Grammar.useCl ;
+   UseCl pol cl = Grammar.UseCl (TTAnt TPres ASimul) pol cl ;
    UttS = Grammar.UttS ;
    UttNP = Grammar.UttNP ;
-   conjS = Grammar.conjS ;
+   CoordS conj x y = Grammar.ConjS conj (BaseS x y) ;
    PPos = Grammar.PPos ;
    PNeg = Grammar.PNeg ;
    and_Conj = Grammar.and_Conj ;
    or_Conj = Grammar.or_Conj ;
    every_Det = Grammar.every_Det ;
-   some_Det = Grammar.some_Det ;
    in_Prep = Grammar.in_Prep ;
    on_Prep = Grammar.on_Prep ;
    with_Prep = Grammar.with_Prep ;
@@ -56,3 +59,4 @@ lin
    she_Pron = Grammar.she_Pron ;
    we_Pron = Grammar.we_Pron ;
    youPl_Pron = Grammar.youPl_Pron ;
+}

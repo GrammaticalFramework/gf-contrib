@@ -1,8 +1,7 @@
 abstract MiniGrammar = {
 
 -- collected from GF/lib/src/abstract/*.gf
--- the functions with lower-case names are shortcuts for special cases (marked ---s)
--- except for those in Structural
+-- the functions marked ---s are shortcuts
 
   cat
   
@@ -51,20 +50,20 @@ abstract MiniGrammar = {
 
 -- Verb
     UseV      : V   -> VP ;             -- sleep
-    ComplV2   : V2  -> NP -> VP ;       -- love it
-    useAP     : AP  -> VP ;             -- be small ---s
+    ComplV2   : V2  -> NP -> VP ;       -- love it  ---s
+    UseAP     : AP  -> VP ;             -- be small ---s
     AdvVP     : VP -> Adv -> VP ;       -- sleep here
 
 -- Sentence
     PredVP    : NP -> VP -> Cl ;        -- John walks / John does not walk
-    useCl     : Pol -> Cl  -> S ;       -- John does not walk
+    UseCl     : Pol -> Cl  -> S ;       -- John does not walk
 
 -- Phrase
     UttS      : S  -> Utt ;
     UttNP     : NP -> Utt ;
 
 -- Conjunction
-    conjS     : S -> Conj -> S -> S ;   -- he walks and she runs ---s
+    CoordS    : Conj -> S -> S -> S ;   -- he walks and she runs ---s
 
 -- Tense
     PPos      : Pol ;                   -- I sleep  [positive polarity]
@@ -75,7 +74,6 @@ abstract MiniGrammar = {
     or_Conj   : Conj ;
     
     every_Det : Det ;
-    some_Det  : Det ;
 
     in_Prep   : Prep ;
     on_Prep   : Prep ;

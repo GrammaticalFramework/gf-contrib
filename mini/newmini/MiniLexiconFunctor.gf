@@ -1,4 +1,7 @@
-incomplete concrete MiniLexiconFunctor of MiniLexicon = {
+incomplete concrete MiniLexiconFunctor of MiniLexicon = MiniGrammar **
+  open
+    Lexicon
+  in {
 lin
    already_Adv = Lexicon.already_Adv ;
    animal_N = Lexicon.animal_N ;
