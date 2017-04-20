@@ -35,6 +35,7 @@ abstract MiniGrammar = {
     DetCN     : Det -> CN -> NP ;       -- the man
     UsePN     : PN -> NP ;              -- John
     UsePron   : Pron -> NP ;            -- he
+    MassNP    : CN -> NP ;              -- milk
     a_Det     : Det ;                   -- indefinite singular ---s
     aPl_Det   : Det ;                   -- indefinite plural   ---s
     the_Det   : Det ;                   -- definite singular   ---s
@@ -58,6 +59,9 @@ abstract MiniGrammar = {
     PredVP    : NP -> VP -> Cl ;        -- John walks / John does not walk
     useCl     : Pol -> Cl  -> S ;       -- John does not walk
 
+-- Phrase
+    UttS      : S  -> Utt ;
+    UttNP     : NP -> Utt ;
 
 -- Conjunction
     conjS     : S -> Conj -> S -> S ;   -- he walks and she runs ---s
