@@ -40,3 +40,12 @@ testSwe:
 	tail -2 latest-train-sv.tmp
 	grep "TRANSL" latest-train-sv.tmp | wc
 
+
+testNodalida:
+	time ./ud2gf -lEng -t10000 -k3000 -a1 -g1 -Dscaifgtn -CUDTranslate.labels,UDTranslateEng.labels treebanks/UD_English/en-ud-test.conllu >latest-test-en.tmp
+	time ./ud2gf -lSwe -t10000 -k3000 -a1 -g1 -Dscaifgtn -CUDTranslate.labels,UDTranslateSwe.labels treebanks/UD_Swedish/sv-ud-test.conllu >latest-test-sv.tmp
+	time ./ud2gf -lFin -Fdict-fin-eng.tsv -t10000 -k3000 -a1 -g1 -Dscaifgtn -CUDTranslate.labels,UDTranslateFin.labels treebanks/UD_Finnish/fi-ud-test.conllu >latest-test-fi.tmp
+	time ./ud2gf -lSwe -t10000 -k3000 -a1 -g1 -Dscaifgtn -CUDTranslate.labels treebanks/UD_Swedish/sv-ud-test.conllu >latest-test-sv-absonly.tmp
+	time ./ud2gf -lFin -Fdict-fin-eng.tsv -t10000 -k3000 -a1 -g1 -Dscaifgtn -CUDTranslate.labels treebanks/UD_Finnish/fi-ud-test.conllu >latest-test-fi-absonly.tmp
+
+

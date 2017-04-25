@@ -85,21 +85,25 @@ testConvOpt tot gram confs dic lang timout kill num gnum opts s = do
   let ss  = getSentences (lines s)
   let css = maybe ss (\n -> take n [ss !! i | i <- [1, max 2 (div (length ss) n)..]]) tot -- take every #s/n to get a more balanced distribution
   gcs <- mapM (\ (i,s) -> print i >> testConvSentence lang mpgf mfuns config dict timout kill num gnum opts s) (zip [1..] css)
-  let ave  =  round $ sum [(100*(fromIntegral c) :: Double) / ((fromIntegral g) :: Double) | (g,c,_,_) <- gcs] / fromIntegral (length css)
-  let mave =  round $ sum [(100*(fromIntegral i) :: Double) / ((fromIntegral g) :: Double) | (g,c,i,_) <- gcs] / fromIntegral (length css)
+  let ave  =  round $ sum [(100*(fromIntegral c) :: Double) / ((fromIntegral g) :: Double)  | (g,c,_,_,_)  <- gcs] / fromIntegral (length css)
+  let mave =  round $ sum [(100*(fromIntegral ti) :: Double) / ((fromIntegral g) :: Double) | (g,c,ti,_,_) <- gcs] / fromIntegral (length css)
+  let nave =  round $ sum [(100*(fromIntegral ni) :: Double) / ((fromIntegral g) :: Double) | (g,c,ti,ni,_) <- gcs] / fromIntegral (length css)
   let sents = length gcs
-  let compls = length [() | (g,c,_,_) <- gcs, c==g]
-  let mcompls = length [() | (g,c,i,_) <- gcs, i==g]
-  let timeouts = length [() | (_,_,_,(True,_)) <- gcs]
-  let killeds  = length [() | (_,_,_,(False,True)) <- gcs]
+  let compls  = length [() | (g,c,_,_,_) <- gcs, c==g]
+  let mcompls = length [() | (g,c,i,_,_) <- gcs, i==g]
+  let ncompls = length [() | (g,c,i,ni,_) <- gcs, ni==g]
+  let timeouts = length [() | (_,_,_,_,(True,_)) <- gcs]
+  let killeds  = length [() | (_,_,_,_,(False,True)) <- gcs]
   let timeout_N = if timeouts==1 then " timeout " else " timeouts " -- ;-)
   if elem 'n' opts
      then putStrLn $ unwords [
         show ave ++ "% nodes parsed",
         show mave ++ "% nodes interpreted",
+        show nave ++ "% children intepreted",
         show sents ++ " sentences",
         show compls ++ " completely parsed",
         show mcompls ++ " completely interpreted",
+        show ncompls ++ " children completely interpreted",
         show timeouts ++ timeout_N ++ show killeds ++ " truncated"
         ]
      else return ()
@@ -107,7 +111,7 @@ testConvOpt tot gram confs dic lang timout kill num gnum opts s = do
 -- testConvSentence (Just 23) "scdatn" means returning max 23 trees
 -- and showing both sentence s, conll tree c, dep tree d, ast a, gftree g, translation t ;
 -- returns the number of words given and covered; shows these with option n 
-testConvSentence :: Lang -> Maybe PGF -> Maybe (S.Set CId) -> Configuration -> Dictionary -> Maybe Int -> Maybe Int -> Maybe Int -> Maybe Int -> String -> [String] -> IO (Int,Int,Int,(Bool,Bool))
+testConvSentence :: Lang -> Maybe PGF -> Maybe (S.Set CId) -> Configuration -> Dictionary -> Maybe Int -> Maybe Int -> Maybe Int -> Maybe Int -> String -> [String] -> IO (Int,Int,Int,Int,(Bool,Bool))
 testConvSentence lang mpgf mfuns config dict timout kill num gnum opts s = ifTimeOut $ do
 
 -- use a GF grammar if one was read from a pgf file
@@ -150,8 +154,12 @@ testConvSentence lang mpgf mfuns config dict timout kill num gnum opts s = ifTim
 
 -- compute the number of nodes covered without the help of backups and mark the uncovered nodes with "*"
   let mbestnodes = if null gts0 then [] else nodesUsedGen src (ignoreBackups (head gts0))
-  let mcovered = length mbestnodes
+  let mcovered   = length mbestnodes
   let mcovereddep = mapTree (\dn -> if elem (position dn) mbestnodes then dn else (dn{status = status dn ++ "*"})) covereddep 
+
+  let nbestnodes = if null gts0 then [] else concatMap (nodesUsedGen src) (ignoreBackupSplines (head gts0))
+  let ncovered   = length nbestnodes
+  let ncovereddep = mapTree (\dn -> if elem (position dn) nbestnodes then (dn{status = status dn ++ "^"}) else dn) mcovereddep
 
 -- apply definitions to eliminate helper functions and native lexical items
   let gts1 = map (cleanupGFTree config) gts0
@@ -179,10 +187,12 @@ testConvSentence lang mpgf mfuns config dict timout kill num gnum opts s = ifTim
                    else return ()
   if elem 'a' opts then putStrLn $ unlines $  "LEXICALLY ANNOTATED TREE:" : map prAbsTree csts else
                    return ()
-  if elem 'f' opts then putStrLn $ "FINAL COVERAGE OF DEPTREE:\n" ++ prDepTree mcovereddep
+  --if elem 'f' opts then putStrLn $ "FINAL COVERAGE OF DEPTREE:\n" ++ prDepTree mcovereddep
+  --                 else return ()
+  if elem 'f' opts then putStrLn $ "FINAL COVERAGE OF DEPTREE:\n" ++ prDepTree ncovereddep
                    else return ()
   if elem 'i' opts then putStrLn $ unwords [
-                "INTERPRETED " ++ show mcovered ++ " / " ++ show given,
+                "INTERPRETED " ++ show mcovered ++ " / " ++ show given ++ " (N.INTERPRETED " ++ show ncovered ++ ")",
                  if mkilled then "TRUNCATED" else ""
                  ]
                    else return ()
@@ -194,17 +204,17 @@ testConvSentence lang mpgf mfuns config dict timout kill num gnum opts s = ifTim
                    return ()
   if elem 't' opts then putStrLn $ unlines $ "LINEARIZATIONS:" : map (unlines . linTree pgf) gts else
                    return ()
-  return (given,covered,mcovered,killed)
+  return (given,covered,mcovered,ncovered,killed)
  where
    ifTimeOut io = case timout of
      Nothing -> do
-       (c,g,i,k) <- io
-       return (c,g,i,(False,k))
+       (c,g,i,ni,k) <- io
+       return (c,g,i,ni,(False,k))
      Just t -> do
        res <- timeout (t*1000) io
        case res of
-         Just (c,g,i,k) -> return (c,g,i,(False,k))
+         Just (c,g,i,ni,k) -> return (c,g,i,ni,(False,k))
          Nothing -> do
            if elem 's' opts then (putStrLn $ "STRING: " ++ unwords (map ((!!1) . words) s)) >> putStrLn "timed out"
                             else return ()
-           return (length s,0,0,(True,False)) 
+           return (length s,0,0,0,(True,False)) 

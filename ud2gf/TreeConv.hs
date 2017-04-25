@@ -112,11 +112,12 @@ data AbsNode = AN {
   treecands :: [(GFTree,Cat)], -- local subtree candidates ---- used for lexical items only
   backtrees :: [GFTree],       -- collection of unused nodes, if any 
   tags      :: MorphoTags,     -- morphological tags
+  udtag     :: POS, 
   positio   :: Int             --- 0 for non-lexical functions
   } deriving (Show,Eq,Ord)
 
 initAbsNode :: AbsNode
-initAbsNode = AN initGFTree "String" "backup" [] [] "" 0
+initAbsNode = AN initGFTree "String" "backup" [] [] "" "" 0
 
 type AbsTree = Tree AbsNode
 
@@ -138,15 +139,25 @@ prAbsTree = prTree prAbsNode
 prAbsNode :: AbsNode -> String
 prAbsNode n = unwords [
   lab n,
+  udtag n,
   prGFTree (gftree n) ++ " : " ++ cat n,
   prTreecands (treecands n),
+  prBacktrees (backtrees n),
+  prCoveredNodes (gftree n),
   show (positio n)
   ]
+
+prBacktrees cs   = "{" ++ concat (intersperse ", " [prGFTree t | t <- cs]) ++ "}"
+
+prCoveredNodes t = "(" ++ concat (intersperse ","  [show n | n <- nub $ nodesUsedGen src t]) ++ ")"
 
 prTreecands cs = "[" ++ concat (intersperse ", " [prGFTree t ++ " : " ++ c | (t,c) <- cs]) ++ "]"
 
 sortByNodesUsed :: [AbsTree] -> [AbsTree]
 sortByNodesUsed ts = map snd $ reverse $ sort [(length (nodesUsedGen positio t),t) | t <- ts]
+
+sortByNodesUnUsed :: Int -> [AbsTree] -> [AbsTree]
+sortByNodesUnUsed n ts = map snd $ sort [(n - (length (nodesUsedGen positio t)),t) | t <- ts]
 
 nodesUsedGen :: (n -> Int) -> Tree n -> [Int]
 nodesUsedGen posi ast = nub (nus ast) where
@@ -163,6 +174,7 @@ dep2absNode d = initAbsNode {
   gftree = T initGFNode{fun = quote (lemma d), src = position d} [],
   lab = label d,
   tags = morpho d,
+  udtag = postag d,
   positio = position d
   }
 
@@ -182,7 +194,10 @@ deptree2abstreeLex config dict dt@(T dn dts) = T (annot dn) (map annots dts) whe
     cands1 = cands0 ++ [(gftree absnode0, cat absnode0)] -- keep initial String as backup candidate
     cands2 = case filter ((/="String") . snd) cands1 of  -- remove String candidates if there are others
                cs@(_:_) -> cs                            --- note: a String can sometimes be right,
-               _ -> cands1                               --- e.g. when a word is taken literally as a name
+               _ -> case coverOOV (head cands1) (postag d) (position d) (morpho d) of  --- e.g. when a word is taken literally or is missing from lexicon
+                      cs@(_:_) -> cs
+                      _ -> cands1 
+               -- _ -> cands1                            --- e.g. when a word is taken literally as a name
     cands  = nub cands2
 
   udCatMap = categories config
@@ -206,6 +221,17 @@ deptree2abstreeLex config dict dt@(T dn dts) = T (annot dn) (map annots dts) whe
     _:_ -> [(cnst f i, c) | f <- fs]         -- GF function constant with its category 
     []  -> [(cnst (quote lem) i, "String")]  -- unknown words are kept as strings
 
+  coverOOV (gft,gfc) pos i mor = alltrees where
+    oovFunctions = [fi | fi <- (functions config), length (argtypes fi) == 1, elem (gfc,"head") (argtypes fi)]
+    oovtrees = [(tree,cv) | 
+                     fi <- oovFunctions,
+                     and [hasTagandMorpho id mo pos mor | mo <- morphoconstraints fi],
+                     let cv = valtype fi,
+                     let fu = initGFNode{fun=funid fi, src=i},
+                     let tree = T fu [gft]              -- apply the function to the String argument
+               ]
+    alltrees = oovtrees
+
 --------------------------------------------------------------
 ---- configurations as data, read from a set of *.labels files
 --------------------------------------------------------------
@@ -214,11 +240,12 @@ type CatMap = M.Map POS [CatInfo]
 type DefMap = M.Map Fun ([Var],GFTree)
 
 data Configuration = Conf {
-  grammarname :: String,  -- name of abstract syntax
-  categories  :: CatMap,
-  functions   :: [FunInfo],
-  backups     :: [FunInfo],
-  definitions :: DefMap
+  grammarname    :: String,  -- name of abstract syntax
+  categories     :: CatMap,
+  functions      :: [FunInfo],
+  backups        :: [FunInfo],
+  definitions    :: DefMap,
+  helpcategories :: M.Map Cat Cat 
   } deriving Show
 
 data FunInfo = FI {
@@ -238,13 +265,24 @@ type MorphoConstraint = String ---- give more structure
 -- check if a morphological constraint is among the morpho tags
 hasMorpho :: (n -> String) -> MorphoConstraint -> n -> Bool
 hasMorpho mf c node
-  | take 6 c == "lemma=" = True      -- this is a lemma constraint, not morpho
+  | take 6 c == "lemma=" = True       -- this is a lemma constraint, not morpho
   | otherwise = isInfixOf c (mf node) ---- use structure
 
 -- a special case is constraint of form lemma=x
 hasLemma :: MorphoConstraint -> String -> Bool
 hasLemma mc s = case splitAt 6 mc of
   ("lemma=", l) -> l==s
+  _ -> True
+
+-- check if a morphological constraint is among the morpho tags
+hasTagandMorpho :: (n -> String) -> MorphoConstraint -> POS -> n -> Bool
+hasTagandMorpho id c pos node
+  | take 6 c == "udtag=" = hasUDtag c pos
+  | otherwise = hasMorpho id c node 
+
+hasUDtag :: MorphoConstraint -> String -> Bool 
+hasUDtag mc s = case splitAt 6 mc of 
+  ("udtag=", l) -> l==s
   _ -> True
 
 initFunInfo = FI "" "" [] []

@@ -3,6 +3,8 @@
 -- these functions have morphological conditions
 BareCN_   : CN -> NP ;        Number=Sing
 BareCN_ cn = MassNP cn
+----BareSgCN_ : CN -> NP ;        Number=Sing                 -- PK
+----BareSgCN_ cn = DetCN (DetQuant IndefArt NumSg) cn         -- PK
 BarePlCN_ : CN -> NP ;        Number=Plur
 BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
 
@@ -10,16 +12,114 @@ BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
 must_VV  : VV ; lemma=must
 can_1_VV : VV ; lemma=can
 i_Pron : Pron ; lemma=my  -- ---- as used in nmod:poss, must be a mistake
+UseCopula : VP ; lemma=be
+
 
 -- syncategorematic words
 
-Cop_      VERB  lemma=be
-AuxPass_  AUX   lemma=be
-InfMark_  PART  lemma=to
-Expl_     PRON  lemma=there
-Neg_      PART  lemma=not
-ThatMark_ SCONJ lemma=that
-Fut_      AUX   lemma=will
-Cond_     AUX   lemma=would
-Perf_     AUX   lemma=have
+Neg_          PART   lemma=not
+Fut_          AUX    lemma=will      VerbForm=Fin
+Cond_         AUX    lemma=would     VerbForm=Fin
+PrPerf_       AUX    lemma=have      VerbForm=Fin   Tense=Pres
+PaPerf_       AUX    lemma=have      VerbForm=Fin   Tense=Past
+FuPerf_       AUX    lemma=have      VerbForm=Inf
+PrCop_        VERB   lemma=be        VerbForm=Fin   Tense=Pres
+PaCop_        VERB   lemma=be        VerbForm=Fin   Tense=Past
+FuCop_        VERB   lemma=be        VerbForm=Inf
+PartCop_      VERB   lemma=be        VerbForm=Part  Tense=Past
+PrBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Pres
+PaBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Past
+FuBeVerb_     AUX    lemma=be        VerbForm=Inf
+PartBeVerb_   AUX    lemma=be        VerbForm=Part
+GerBeVerb_    AUX    lemma=be        VerbForm=Ger
+PrAuxPass_    AUX    lemma=be        VerbForm=Fin   Tense=Pres
+PaAuxPass_    AUX    lemma=be        VerbForm=Fin   Tense=Past
+InfAuxPass_   AUX    lemma=be        VerbForm=Inf
+PartAuxPass_  AUX    lemma=be        VerbForm=Part
+AuxPass_      AUX    lemma=get
+InfMark_      PART   lemma=to
+GenMark_      PART   lemma='s                                 -- PK
+Expl_         PRON   lemma=there
+Cleft_        PRON   lemma=it
+ThatMark_     SCONJ  lemma=that
+PrInd_        AUX    lemma=do        VerbForm=Fin   Tense=Pres
+PaInd_        AUX    lemma=do        VerbForm=Fin   Tense=Past 
+FuInd_        AUX    lemma=do        VerbForm=Inf 
+Comma_        PUNCT  lemma=,
+Amp_          PUNCT  lemma=&
+Orslash_      PUNCT  lemma=/
+----EOS_          PUNCT  lemma=.
+----EOQS_         PUNCT  lemma=?
 
+--Prepof_       ADP    lemma=of
+--Prepin_       ADP    lemma=in
+--Prepto_       ADP    lemma=to
+--Prepfor_      ADP    lemma=for
+--Prepon_       ADP    lemma=on
+--Prepwith_     ADP    lemma=with
+--Prepat_       ADP    lemma=at
+--Prepby_       ADP    lemma=by
+--Prepout_      ADP    lemma=out
+
+-- Exceptional tense handling for English specific things
+
+NegPresSimulVPSEng_ : Neg_ -> PrInd_ -> VP -> VPS ;            neg aux head       VerbForm=Inf
+NegPresSimulVPSEng_ p _ vp = MkVPS (TTAnt TPres ASimul) PNeg vp
+NegPastSimulVPSEng_ : Neg_ -> PaInd_ -> VP -> VPS ;            neg aux head       VerbForm=Inf
+NegPastSimulVPSEng_ p _ vp = MkVPS (TTAnt TPast ASimul) PNeg vp
+PPresSQVPSEng_ : PrInd_ -> QVP -> QVPS ;                     aux  head                 VerbForm=Inf
+PPresSQVPSEng_ _ qvp       = MkQVPS (TTAnt TPres ASimul) PPos qvp
+PPastSQVPSEng_ : PaInd_ -> QVP -> QVPS ;                     aux  head                 VerbForm=Inf 
+PPastSQVPSEng_ _ qvp       = MkQVPS (TTAnt TPast ASimul) PPos qvp
+NPresSQVPSEng_ : Neg_ -> PrInd_ -> QVP -> QVPS ;             neg  aux  head            VerbForm=Inf
+NPresSQVPSEng_ p _ qvp     = MkQVPS (TTAnt TPres ASimul) PNeg qvp
+NPastSQVPSEng_ : Neg_ -> PaInd_ -> QVP -> QVPS ;             neg  aux  head            VerbForm=Inf
+NPastSQVPSEng_ p _ qvp     = MkQVPS (TTAnt TPast ASimul) PNeg qvp
+
+---- AR: experiment with VPto_
+cat VPto_ = VP
+-- BackupVPto__ : VPto_ -> Backups -> VP ;     -- this does not work because BackupVP is applied in wrapBackup; not from grammar 
+ComplVV_ : VV -> VPto_ -> VP ;             head xcomp            -- (1)
+ComplVV_ vv vpto = ComplVV vv vpto
+MarkVP_  : InfMark_ -> VP -> VPto_ ;       mark head         -- (1)
+MarkVP_ m vp = vp
+MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VPto_ ;  mark cop head
+MarkComp_ m _ c = UseComp c
+
+GenNPs_ : NP -> GenMark_ -> Quant ; head case
+GenNPs_ np _ = GenNP np
+
+--cat NPof_ = NP
+--cat NPin_ = NP
+--cat NPto_ = NP
+--cat NPfor_ = NP
+--cat NPon_ = NP
+--cat NPwith_ = NP
+--cat NPat_ = NP
+--cat NPby_ = NP
+--cat NPout_ = NP
+--CasedNPof_   : Prepof_ -> NP -> NPof_ ;       case   head 
+--CasedNPin_   : Prepin_ -> NP -> NPin_ ;       case   head 
+--CasedNPto_   : Prepto_ -> NP -> NPto_ ;       case   head 
+--CasedNPfor_  : Prepfor_ -> NP -> NPfor_ ;     case   head 
+--CasedNPon_   : Prepon_ -> NP -> NPon_ ;       case   head 
+--CasedNPwith_ : Prepwith_ -> NP -> NPwith_ ;   case   head 
+--CasedNPat_   : Prepat_ -> NP -> NPat_ ;       case   head 
+--CasedNPby_   : Prepby_ -> NP -> NPby_ ;       case   head 
+--CasedNPout_  : Prepout_ -> NP -> NPout_ ;     case   head 
+--CasedNPof_ p np = np
+--CasedNPin_ p np = np
+--CasedNPto_ p np = np
+--CasedNPfor_ p np = np
+--CasedNPon_ p np = np
+--CasedNPwith_ p np = np
+--CasedNPat_ p np = np
+--CasedNPby_ p np = np
+--CasedNPout_ p np = np
+
+--DefCountNP_ : Quant -> Card -> NPof_ -> NP ;  det   head  nmod
+--CountNP_    : Card -> NPof_ -> NP ;           head  nmod
+--PartNP_     : CN -> NPof_ -> CN ;             head  nmod
+--DefCountNP_ q card np = CountNP (DetQuant q (NumCard card)) np
+--CountNP_ card np      = CountNP (DetQuant IndefArt (NumCard card)) np
+--PartNP_ cn np = PartNP cn np

@@ -1,14 +1,17 @@
 incomplete concrete UDTranslateFunctor of UDTranslate =
-  Translate, Extensions [GenNP]
-     ** open Syntax, Symbolic, Prelude in {
+  Translate,
+  Verb [UseCopula],
+  Extensions [GenNP,ComplVPIVV,UseQuantPN]
+     ** open Syntax, Symbolic, Extensions, Prelude in {
 
 lincat
   Top = {s : Str} ;
   Punct = {s : Str} ;
 
 lin
-  TopUtt utt = utt ;
-  TopUttPunct utt punct = {s = utt.s ++ punct.s} ;
+  TopPhr utt = utt ;
+  TopPhrPunct utt punct = {s = utt.s ++ punct.s} ;
+  ParaTaxis utt1 utt2 = {s = utt1.s ++ "-" ++ utt2.s} ;
 
   StringPunct s = {s = s.s} ;
   StringCard s = {s = \\_ => s.s ; n = plural} ;
@@ -19,6 +22,8 @@ lincat
   Backups = {s1,s2 : Str} ;
   Backup = {s : Str} ;
   [Backup] = {s : Str} ;
+
+  QVPS = Extensions.VPS ;
 
 oper
   backupsAdv : Backups -> Adv = \b -> lin Adv {s = bracket b.s2} ;
@@ -40,12 +45,14 @@ lin
   BackupVP  xp b = mkVP (lin AdV {s = bracket b.s1}) (mkVP xp (backupsAdv b)) ; ---- AdV not always the right place
   BackupVPSlash xp b = xp ** mkVP (lin AdV {s = bracket b.s1}) (mkVP <xp : VP> (backupsAdv b)) ; ---- AdV not always the right place
   BackupCl cl b = {s = \\t,a,p,o => bracket b.s1 ++ cl.s ! t ! a ! p ! o ++ bracket b.s2} ;
+  BackupQCl cl b = {s = \\t,a,p,o => bracket b.s1 ++ cl.s ! t ! a ! p ! o ++ bracket b.s2} ;
   BackupClSlash cl b = cl ** {s = \\t,a,p,o => bracket b.s1 ++ cl.s ! t ! a ! p ! o ++ bracket b.s2} ;
   BackupS s b = {s = bracket b.s1 ++ s.s ++ bracket b.s2} ;
   BackupQS s b = {s = \\o => bracket b.s1 ++ s.s ! o ++ bracket b.s2} ;
   BackupSC sc b = lin Utt {s = bracket b.s1 ++ sc.s ++ bracket b.s2} ;
   BackupSubj adv b = lin Subj {s = bracket b.s1 ++ adv.s ++ bracket b.s2} ;
   BackupUtt utt b = lin Utt {s = bracket b.s1 ++ utt.s ++ bracket b.s2} ;
+  BackupPhr utt b = lin Phr {s = bracket b.s1 ++ utt.s ++ bracket b.s2} ;
   BackupTop top b = lin Top {s = bracket b.s1 ++ top.s ++ bracket b.s2} ;
 
   APBackup ap = mkUtt ap ;
@@ -53,6 +60,8 @@ lin
   DetBackup det = mkUtt (mkNP det) ;
   InterjBackup i = mkUtt i ;
   NPBackup np = mkUtt np ;
+  VPBackup vp = mkUtt vp ;
+  VPSlachBackup vp = mkUtt <vp : VP> ;
   OrdBackup ord = mkUtt (mkAP ord) ;
   PNBackup pn = mkUtt (mkNP pn) ;
   PunctBackup p = p ;
@@ -61,6 +70,7 @@ lin
   SubjBackup subj = subj ;
   SymbBackup sy = sy ;
   UttBackup utt = utt ;
+
 
   these_Det = mkDet this_Quant pluralNum ;
   this_Det = mkDet this_Quant singularNum ;
@@ -83,5 +93,8 @@ lin
   five_Card = mkCard "5" ;
   ten_Card = mkCard "10" ;
 
+
+  PredSCVPS sc vps = Extensions.PredVPS (symb (mkSymb sc.s)) vps ;
+  ExplPredSCVPS sc vps = Extensions.PredVPS it_NP (AdvVPS vps (lin Adv sc)) ;
 
 }

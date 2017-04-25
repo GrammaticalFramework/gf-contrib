@@ -8,7 +8,8 @@ import Data.List
 import Text.PrettyPrint (render)
 import Debug.Trace
 
-tracePr v = v ----trace ("#" ++ show v) v
+tracePrS v = v ----trace ("#" ++ show v) v
+tracePrL v = v ----trace ("##" ++ show v ++ "\n\n") v
 traceMsgPr m v = v ----trace ("#" ++ m ++ " " ++ show v) v
 
 gftree2pgftree :: GFTree -> PGF.Tree
@@ -31,7 +32,7 @@ abstreeAnnotFuns config (T an ats) =
      an1  = annot an ats1             -- then build the tree in the top node
      an2  = applyBackup an1 ats1      -- then apply backup functions to gather the remaining children
      ats2 = ats1
-   in T an2 ats2   
+   in T an2 ats2 -- T an2{gftree = wrapBackup config (cat an2) (backtrees an2) (gftree an2)} ats2   
 
  where
 
@@ -72,17 +73,45 @@ abstreeAnnotFuns config (T an ats) =
         (_,(m,_)):_ -> takeWhile ((==m) . fst . snd) stls     -- choose cands with maximal coverage ;
         _ -> stls                                             -- size can differ if cat is different                    
 
+  unusedNodes n tcs =
+    let
+      tls  = [((t,c), (length ns-n, length ns)) |
+               (t,c) <- tcs, let ns = nub $ nodesUsedGen src t]     -- cands with coverage and size
+      stls = sortBy (\ (_,(m,_)) (_,(n,_)) -> compare n m) tls -- descending order
+    in map fst $ case stls of                                               
+        (_,(m,_)):_ -> takeWhile ((==m) . fst . snd) stls     -- choose cands with maximal coverage ;
+        _ -> stls                                             -- size can differ if cat is different                    
+  
   applyBackup an ats = 
     let
-      useds   = nub $ nodesUsedGen src (gftree an)                  -- list the children used in the actual gftree
-      ats1    = [at | at <- ats, notElem (positio (root at)) useds] -- list the children that are not used
-      backs   = [t |                                                -- find one Backup for each of these children
+      useds   = nub $ nodesUsedGen src (gftree an)      -- list the children used in the actual gftree
+      unuseds = [positio (root at) | at <- ats, notElem (positio (root at)) useds]
+      ats1    = [at | at <- ats, 
+                      elem (positio (root at)) unuseds] -- list the children that are not used
+      backs   = [t |                                    -- find one Backup for each of these children
                    at@(T n ts) <- ats1,
-                   t <- take 1 $ sortBy                             -- take the maximal backup to get the best lin
+                   t <- take 1 $ sortBy                 -- take the maximal backup to get the best lin
                       (\t u -> compare (sizeTree t) (sizeTree u))
                                 [t | ((t,_),_) <- backupApps n ts]]
+      wrapB n = n {gftree=wrapBackup config (cat n) (backtrees n) (gftree n), cat=(cat n)}
+      backs2  = [t |                                    -- find one Backup for each of these children
+                   at@(T n ts) <- ats1,                 -- n can contain backtrees of its own 
+                   t <- take 1 $ sortBy                 -- take the maximal backup to get the best lin
+                     (\t u -> compare (sizeTree t) (sizeTree u))
+                                [t | let wrapn=wrapB n, -- wrap n with its backtrees first 
+                                     ((t,_),_) <- backupApps wrapn ts]]
+      wrapBu  = wrapBackup config
+      backs3  = [t |                                    -- find one Backup for each of these children
+                   at@(T n ts) <- ats1,                 -- n can contain backtrees of its own
+                   let (wt,wc):wtcs = bestCands [(wrapBu c (backtrees n) t, c) | (t,c) <- allTreecands n],
+                   let wrapn = n {gftree=wt, cat=wc, treecands=wtcs, backtrees=[]},
+                   t <- take 1 $ sortBy                 -- take the maximal backup to get the best lin
+                      (\t u -> compare (sizeTree t) (sizeTree u))
+                                [t | ((t,_),_) <- backupApps wrapn ts]
+                ]
+      backs4  = concat [(backtrees n) | at@(T n ts) <- ats1];
     in
-      an{backtrees = backs}   -- just store the backup at this point: it may be applied to any candidate later
+      an{backtrees = backs++backs4}   -- just store the backup at this point: it may be applied to any candidate later
 
 
 -- all possible function application result on the current tree, both endo- and exocentric
@@ -116,7 +145,7 @@ funAppsOn config funinfos an ats =
 
                                                             -- 4. build a new tree to be added to candidates
     Just tbs <- [mapM (\x -> lookup x allGivenArgs) soughtArgs], -- make sure you can find all sought arguments
-    let fu = initGFNode{fun=funid fi},                           -- mark the function with the current position
+    let fu = initGFNode{fun=funid fi, src=posan},                -- mark the function with the current position
     let ts = [wrapBack c b t | (t,(c,b)) <- tbs],                -- apply the backups to the embedded arguments (except head),
     let tree = T fu ts,                                          -- apply the function to the arguments found
     isNewCand tree,                                              -- don't add the same tree again
@@ -127,14 +156,17 @@ funAppsOn config funinfos an ats =
    wrapBack = wrapBackup config
 
 wrapBackup :: Configuration -> Cat -> [GFTree] -> GFTree -> GFTree
-wrapBackup config c backs t = case backs of
-  [] -> t
-  _  -> T appw [t, app2 "MkBackups" bu1 bu2]
+wrapBackup config cat0 backs gt0 = case backs of
+  [] -> gt
+  _  -> T appw [gt, app2 "MkBackups" bu1 bu2]
  where
-  appw = initGFNode{fun = backupPrefix ++ c} ---- TODO: define backupPrefix in config ?
+  gt   = gt0 --- just change the wrapper cat, not yet the tree and its cat, so that functions above can match
+             --- otherwise: = cleanupGFTree config gt0
+  cat  = maybe cat0 id $ M.lookup cat0 (helpcategories config)  -- cat0
+  appw = initGFNode{fun = backupPrefix ++ cat, src = srct} ---- TODO: define backupPrefix in config ?
 
   sbs  = sort [(src (root b),b) | b <- backs]  -- sort by position
-  srct = src (root t)
+  srct = src (root gt0)
   bu1  = comb [b | (i,b) <- sbs, i <  srct]
   bu2  = comb [b | (i,b) <- sbs, i >= srct] --- cannot be ===
   comb ts = case ts of
@@ -144,12 +176,21 @@ wrapBackup config c backs t = case backs of
 -- restore the tree without backup functions; used for coverage statistics
 ignoreBackups :: GFTree -> GFTree
 ignoreBackups t = case t of
-  T f [b,c] | isBackup f -> ignoreBackups c
+  T f [b,c] | isWrapped f -> ignoreBackups b
   T f ts -> T f (map ignoreBackups ts)
  where
-   isBackup f = isPrefixOf backupPrefix (fun f)
+   isWrapped f = isPrefixOf backupPrefix (fun f)
 
-backupPrefix = "Backup"
+ignoreBackupSplines :: GFTree -> [GFTree]
+ignoreBackupSplines t = case t of
+  T f [b,c] | isBackup f -> concatMap ignoreBackupSplines (dropHeadSpline b) ++ ignoreBackupSplines c
+  T f ts -> ts
+ where
+   isBackup f = isPrefixOf backupPrefix (fun f)
+   dropHeadSpline b = [t | t <- children b, src (root b) /= src (root t)] 
+
+backupPrefix   = "Backup"     -- the function for wrapping something in backup: the wrapped tree is "interpreted"
+mkBackupPrefix = "MkBackups"  -- the function for building a backup: all of this is "uninterpreted"
 
 -- eliminate helper functions and unknown lexical functions
 cleanupGFTree :: Configuration -> GFTree -> GFTree
@@ -188,7 +229,7 @@ prPGFTreeLong t = maybe (prPGFTree t) prGFTreeLong (mgf t) where
 linTree :: PGF -> PGF.Tree -> [String]
 linTree pgf t = case inferExpr pgf t of
   Left err  -> ["TYPE ERROR: " ++ render (ppTcError err)]
-  Right (exp,_) -> map (("STRING TRANSLATION: " ++) . unlexBind) (linearizeAll pgf exp)
+  Right (exp,_) -> map (\ (lang,l) -> "("++(show lang)++")" ++ " STRING TRANSLATION : " ++ unlexBind l) (linearizeAllLang pgf exp)
 
 missingFunctions :: S.Set CId -> GFTree -> [Fun]
 missingFunctions funs t = [f | f <- funsIn t, notString f, not (S.member (mkCId f) funs)] where

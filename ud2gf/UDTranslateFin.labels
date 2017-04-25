@@ -8,7 +8,23 @@ BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
 
 Predet DET lemma=kaikki
 
-Cop_      VERB  lemma=olla
-Neg_      VERB  lemma=ei
-ThatMark_ SCONJ lemma=että
-Perf_     AUX   lemma=olla
+-- syncategorematic words
+
+Neg_          VERB   lemma=ei
+
+
+PrPerf_       AUX    lemma=olla      VerbForm=Fin   Tense=Pres
+PaPerf_       AUX    lemma=olla      VerbForm=Fin   Tense=Past
+FuPerf_       AUX    lemma=olla      VerbForm=Inf
+
+
+
+PrCop_        VERB   lemma=olla      VerbForm=Fin   Tense=Pres
+PaCop_        VERB   lemma=olla      VerbForm=Fin   Tense=Past
+FuCop_        VERB   lemma=olla      VerbForm=Inf
+PartCop_      VERB   lemma=olla      VerbForm=Past  Tense=Past
+
+ThatMark_     SCONJ  lemma=että
+Comma_        PUNCT  lemma=,
+Amp_          PUNCT  lemma=&
+Orslash_      PUNCT  lemma=/

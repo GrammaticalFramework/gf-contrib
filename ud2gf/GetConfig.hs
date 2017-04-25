@@ -17,7 +17,8 @@ getConfiguration files mpgf = do
   let catlines  = [ws | ws@(_:_) <- ls, not (any (flip elem ws) [";", ":", "=", "#"]) ]
   let funlines  = [ws | ws@(w:_) <- ls, w /="*",elem ":" ws]   -- functions defined in the config file
   let backuplines = [ws | "*":ws <- ls]
-  let deflines  = [ws | ws@(_:_) <- ls, elem "=" ws]
+  let deflines  = [ws | ws@(w:_) <- ls, elem "=" ws, w /= "cat"]
+  let helpcatlines  = [(k,c) | "cat":k:"=":c:_ <- ls]
 
   let lablines  = [ws | ws@(w:_) <- ls, w /="*",elem ";" ws, notElem ":" ws] -- labels for pgf functions
   let labmap    = M.fromList [(f,(ls,ms)) | f:";":lms <- lablines, let (ls,ms) = break (elem '=') lms]
@@ -40,13 +41,15 @@ getConfiguration files mpgf = do
                   ]
   let allfuns = newfuns ++ pgffuns                
   let bups = map pFunInfo backuplines
+  let helps = M.fromList helpcatlines
   
   return $ Conf {
     grammarname = case metalines of {(_:name:_):_ -> name ; _ -> error "cannot find grammar name"},
     categories  = pCatMap catlines,
     functions   = allfuns,
     backups     = bups,
-    definitions = getDefMap mpgf allfuns deflines
+    definitions = getDefMap mpgf allfuns helps deflines,
+    helpcategories = helps
     }
 
 pFunInfo :: [String] -> FunInfo
@@ -74,15 +77,17 @@ pCatMap = M.fromListWith (++) . concatMap pCatInfo where
      c:pms -> [(p,[initCatInfo{catid=c, mconstraints=ms}]) | let (ps,ms) = break (elem '=') pms, p <- ps]
      _ -> error $ "ERROR: no category info from " ++ unwords s
 
-getDefMap :: Maybe PGF.PGF -> [FunInfo] -> [[String]] -> DefMap
-getDefMap mpgf funs = M.fromList . filter check . map pDefInfo where
+getDefMap :: Maybe PGF.PGF -> [FunInfo] -> M.Map Cat Cat -> [[String]] -> DefMap
+getDefMap mpgf funs helps = M.fromList . filter check . map pDefInfo where
   pDefInfo s = case break (=="=") s of
      (p:vs, _:c:cs) -> (p, (vs, pGFTree (unwords (c:cs))))
      _ -> error $ "ERROR: no definition (yet) from " ++ unwords s
   check d@(p,(vs,t)) =
     let
       typ = case lookup p [(funid fi, (valtype fi, map fst (argtypes fi))) | fi <- funs] of
-          Just (c,cs) -> PGF.mkType [PGF.mkHypo (PGF.mkType [] (PGF.mkCId x) []) | x <- cs] (PGF.mkCId c) []
+          Just (c0,cs0) ->
+             let (c:cs) = map normalizeCat (c0:cs0) in
+             PGF.mkType [PGF.mkHypo (PGF.mkType [] (PGF.mkCId x) []) | x <- cs] (PGF.mkCId c) []
           Nothing -> error $ "ERROR IN DEFINITION: unknown function " ++ p
       exp = mkExp vs t
     in case mpgf of
@@ -95,6 +100,8 @@ getDefMap mpgf funs = M.fromList . filter check . map pDefInfo where
   mkFunApp s = case s of
       '"':_:_ | last s == '"' -> const (PGF.mkStr s)
       _ -> PGF.mkApp (PGF.mkCId s)
+
+  normalizeCat c = maybe c id $ M.lookup c helps
 
 
 pGFTree :: String -> GFTree
