@@ -8,7 +8,6 @@ abstract MiniGrammar = {
 -- Common
     Utt ;    -- sentence, question, word...         e.g. "be quiet"
     Adv ;    -- adverbial phrase                    e.g. "in the house"
-    Temp ;   -- temporal and aspectual features     e.g. present, past anterior
     Pol ;    -- polarity                            e.g. positive, negative
 
 -- Cat
@@ -29,6 +28,19 @@ abstract MiniGrammar = {
     PN ;     -- proper name                         e.g. "Paris"
 
   fun
+-- Phrase
+    UttS      : S  -> Utt ;
+    UttNP     : NP -> Utt ;
+
+-- Sentence
+    UsePresCl : Pol -> Cl  -> S ;       -- John does not walk ---s
+    PredVP    : NP -> VP -> Cl ;        -- John walks / John does not walk
+
+-- Verb
+    UseV      : V   -> VP ;             -- sleep
+    ComplV2   : V2  -> NP -> VP ;       -- love it  ---s
+    UseAP     : AP  -> VP ;             -- be small ---s
+    AdvVP     : VP -> Adv -> VP ;       -- sleep here
 
 -- Noun
     DetCN     : Det -> CN -> NP ;       -- the man
@@ -47,20 +59,6 @@ abstract MiniGrammar = {
 
 -- Adverb
     PrepNP    : Prep -> NP -> Adv ;     -- in the house
-
--- Verb
-    UseV      : V   -> VP ;             -- sleep
-    ComplV2   : V2  -> NP -> VP ;       -- love it  ---s
-    UseAP     : AP  -> VP ;             -- be small ---s
-    AdvVP     : VP -> Adv -> VP ;       -- sleep here
-
--- Sentence
-    PredVP    : NP -> VP -> Cl ;        -- John walks / John does not walk
-    UseCl     : Pol -> Cl  -> S ;       -- John does not walk
-
--- Phrase
-    UttS      : S  -> Utt ;
-    UttNP     : NP -> Utt ;
 
 -- Conjunction
     CoordS    : Conj -> S -> S -> S ;   -- he walks and she runs ---s
@@ -85,5 +83,6 @@ abstract MiniGrammar = {
     she_Pron   : Pron ;
     we_Pron    : Pron ;
     youPl_Pron : Pron ;
+    they_Pron  : Pron ;
     
 }

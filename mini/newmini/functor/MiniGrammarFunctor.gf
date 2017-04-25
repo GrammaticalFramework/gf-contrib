@@ -5,7 +5,6 @@ incomplete concrete MiniGrammarFunctor of MiniGrammar =
 lincat
    Utt = Grammar.Utt ;
    Adv = Grammar.Adv ;
-   Temp = Grammar.Temp ;
    Pol = Grammar.Pol ;
    S = Grammar.S ;
    Cl = Grammar.Cl ;
@@ -41,7 +40,7 @@ lin
    UseAP ap = Grammar.UseComp (CompAP ap) ;
    AdvVP = Grammar.AdvVP ;
    PredVP = Grammar.PredVP ;
-   UseCl pol cl = Grammar.UseCl (TTAnt TPres ASimul) pol cl ;
+   UsePresCl pol cl = Grammar.UseCl (TTAnt TPres ASimul) pol cl ;
    UttS = Grammar.UttS ;
    UttNP = Grammar.UttNP ;
    CoordS conj x y = Grammar.ConjS conj (BaseS x y) ;
@@ -59,4 +58,5 @@ lin
    she_Pron = Grammar.she_Pron ;
    we_Pron = Grammar.we_Pron ;
    youPl_Pron = Grammar.youPl_Pron ;
+   they_Pron = Grammar.they_Pron ;
 }
