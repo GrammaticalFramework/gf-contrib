@@ -71,3 +71,18 @@ The subdirectory functor/ gives a functor implementation using the RGL. Usable f
 - frequently test with gr and gt with appropriate categories
 
 
+
+=Dependency trees=
+
+This will be covered later during the course.
+The material here can be used as preparation for a UD project.
+
+Files:
+- MiniLang.labels     -- abstract labels, for all languages
+- MiniLangEng.labels  -- concrete labels, language specific, mainly to cover syncategorematic words
+
+Test:
+```
+  > gr -cat=S -number=10 | vd -view=open -output=latex -abslabels=MiniLang.labels -cnclabels=MiniLangEng.labels
+  > h vd
+```

@@ -3,7 +3,7 @@ concrete MiniGrammarEng of MiniGrammar = open MiniResEng, Prelude in {
 
   lincat
     Utt = {s : Str} ;
-    Adv = {s : Str} ;
+    Adv = Adverb ;
     Pol = {s : Str ; b : Bool} ;
     
     S  = {s : Str} ;
@@ -20,7 +20,7 @@ concrete MiniGrammarEng of MiniGrammar = open MiniResEng, Prelude in {
     V2 = Verb2 ;
     A = Adjective ;
     N = Noun ;
-    PN = {s : Str} ;
+    PN = ProperName ;
 
   lin
     UttS s = s ;

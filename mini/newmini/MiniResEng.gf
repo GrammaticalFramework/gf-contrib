@@ -31,7 +31,9 @@ oper
    mkN : Str -> Str -> Noun = mkNoun ;
    } ;
 
-  mkPN : Str -> {s : Str} = \s -> {s = s} ;
+  ProperName : Type = {s : Str} ;
+
+  mkPN : Str -> ProperName = \s -> {s = s} ;
 
   Adjective : Type = {s : Str} ;
 
@@ -63,7 +65,9 @@ oper
     mkV2 : Verb -> Str -> Verb2 = \v,p -> v ** {c = p} ;
     } ;
 
-  mkAdv : Str -> {s : Str} = \s -> {s = s} ;
+  Adverb : Type = {s : Str} ;
+
+  mkAdv : Str -> Adverb = \s -> {s = s} ;
 
   be_GVerb : GVerb = {
      s = table {

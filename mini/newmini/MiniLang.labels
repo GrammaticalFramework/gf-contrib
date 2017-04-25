@@ -1,0 +1,18 @@
+AdjCN amod head
+AdvVP head advmod
+ComplV2 head dobj
+CoordS cc head conj
+DetCN det head
+PredVP nsubj head
+PrepNP case head
+UsePresCl empty head
+
+A ADJ
+Conj CONJ
+Det DET
+N NOUN
+PN PROPN
+Prep PREP
+Pron PRON
+V VERB
+V2 VERB
