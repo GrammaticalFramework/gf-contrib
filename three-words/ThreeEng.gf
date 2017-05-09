@@ -9,7 +9,6 @@ lincat
   NP1 = NP ;
   VP1 = VP ;
   Adv2 = Adv ;
-  TV = V2 ; --- this will give prepositional verbs as well
 
   Tense0 = Tense ;
   Tense1 = {t : Tense ; a : Ant} ;

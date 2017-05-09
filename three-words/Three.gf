@@ -9,7 +9,6 @@ cat
   NP1 ;
   VP1 ;
   Adv2 ;
-  TV ;
 
   Tense0 ;
   Tense1 ;
@@ -33,9 +32,9 @@ fun
   n2quantpl : Quant -> N -> NP2 ;  -- these men
   n2det     : Det   -> N -> NP2 ;  -- every man
   
-  v1v  : V -> VP1 ;  -- runs
+  v1v  : V -> VP1 ;  -- runs  --- includes particle verbs too
 
-  v2tvn  : TV -> NP1 -> VP2 ;  -- loves her
+  v2tvn  : V2 -> NP1 -> VP2 ;  -- loves her  --- includes prepositional verbs too
   v2a    : A  -> VP2 ;         -- is cold
   v2adv  : Adv -> VP2 ;        -- is above
 
