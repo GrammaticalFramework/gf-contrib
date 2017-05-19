@@ -3,197 +3,1112 @@
 ------- dependency configurations for UDTranslate.gf
 ------------------------------------
 
--- regular functions from the grammar
+-++ REGULAR FUNCTIONS from the grammar
+-+  Core dependents of clausal predicates
 
-AdAP     : AdA -> AP -> AP ;   advmod head
-AdAdv    : AdA -> Adv -> Adv ; advmod head
-AdNum 	; advmod head
-AdVVP    : AdV -> VP -> VP ;   advmod head
-AdjCN    : AP -> CN -> CN ;    amod head
-AdvAP    : AP -> Adv -> AP ;   head advmod
-AdvCN 	; head nmod
-AdvNP 	; head advmod
-AdvNP 	; head nmod
-AdvNP    : NP -> Adv -> NP ;   head advmod
-AdvNP    : NP -> Adv -> NP ;   head advmod
-AdvS ;	advmod head
-AdvS  : Adv -> S -> S ; advmod head
-AdvVP    : VP -> Adv -> VP ;   head advmod
-AdvVP    : VP -> Adv -> VP ;   head nmod
-----ApposCN ; 	head appos
-ApposNP ;	head appos
-CompAP   : AP -> Comp ;
-CompAdv  : Adv -> Comp ;
-CompIAdv : IAdv -> IComp ;
-CompIP   : IP -> IComp ;
-CompNP   : NP -> Comp ;
-----ComparA ;	amod head
-ComplSlash ; 	head dobj
-----ComplSlashIP ; 	head dobj
-ComplVA ; 	head xcomp
-ComplVQ ;	head ccomp
-ComplVS  : VS -> S -> VP ;     head ccomp
+PredVPS   : NP -> VPS -> S ;  nsubj head
+PredVPS   : NP -> VPS -> S ;  nsubj:cop head
+PredVPS   : NP -> VPS -> S ;  nsubjpass head
+PredSCVPS : SC -> VPS -> S ;  csubj head 
+PredSCVPS : SC -> VPS -> S ;  csubj:cop head 
+PredSCVPS : SC -> VPS -> S ;  csubjpass head 
+----- to construct passives VPs, helper functions are used
+---PassVPSlash      : VPSlash -> VP ;
+---PassAgentVPSlash : VPSlash -> NP -> VP ;
 
-ComplVV  : VV -> VP -> VP ;    head xcomp
-ComplVV  : VV -> VP -> VP ;    aux head
-----CompoundAP ;	head amod
-CompoundN  ;	compound head
-----CountNP ; 	det head
-DetCN    : Det -> CN -> NP ;   det head
-DetNP    : Det -> NP ;
-----ExistIPAdv 	head advmod
-ExtAdvS ; 	advmod head
-----MkVPS 	empty empty head
-----PartNP 	nmod head
-PositA   : A -> AP ;       
-----PossNP 	; nmod head
-PredSCVP ;	csubj head
-PredVP   : NP -> VP -> Cl ;    nsubj head
-PredVP   : NP -> VP -> Cl ;    nsubj:cop head
-PredetNP : Predet -> NP -> NP ; det head
-PredetNP : Predet -> NP -> NP ; det:predet head
-PrefixPN : PN -> PN -> PN ; name head
-PrepIP ; 	case head
-PrepNP   : Prep -> NP -> Adv ; case head
-QuestIAdv ; 	advmod head
-QuestIComp ;	head nsubj
-QuestIComp ;	head nsubj:cop
-QuestSlash ; 	dobj head
-QuestVP  : IP -> VP -> QCl ;  nsubj head
-QuestVP  : IP -> VP -> QCl ;  nsubj:cop head
-----RelCN ;	head acl
-RelNP ;	head acl
-RelS ; 	head advcl
-RelSlash ; 	mark head
-RelVP ;	mark head
-SSubjS ;	head mark advcl
-SentAP   : AP -> SC -> AP ; head acl
-SentCN   : CN -> SC -> CN ; head acl
-SlashV2a : V2 -> VPSlash ; 
-Slash2V3 ; 	head iobj
-Slash3V3 ;	head dobj
-----SlashPrep ; 	head case
-SlashV2A ; 	head xcomp
-SlashV2Q ;	head ccomp
-SlashV2S ;	head ccomp
-SlashV2V ;	head xcomp
-----SlashV2VNP ; 	head dobj xcomp
-SlashVP ; 	nsubj head
-StringCard  : String -> Card ;
-StringPN    : String -> PN ;
-StringPunct : String -> Punct ;
-SubjS    : Subj -> S -> Adv ;  mark head
-TopUtt   : Utt -> Top ;    
-TopUttPunct : Utt -> Punct -> Top ; head punct
-UseN     : N -> CN ;       
-UsePN    : PN -> NP ;      
-UsePron  : Pron -> NP ;    
-UseV     : V -> VP ;       
-UttAP    : AP -> Utt ;
-UttAdv   : Adv -> Utt ;
-UttInterj : Interj -> Utt ;
-UttNP    : NP -> Utt ;
-UttS     : S -> Utt ;      
-----VPSlashPrep ; 	head case
+ComplSlash : VPSlash -> NP -> VP ;  head dobj 
+ComplVS : VS -> S -> VP  ;  head ccomp 
+ComplVQ : VQ -> QS -> VP ;  head ccomp 
+ComplVA : VA -> AP -> VP ;  head xcomp 
+ComplVV : VV -> VP -> VP ;  aux  head         VerbForm=Inf    -- matches modal verbs
+-- ComplVV : VV -> VP -> VP ;  head xcomp     -- now handled in language specific 
+---DirectComplVQ : Temp -> NP -> VQ -> QS -> S ;
+---DirectComplVS : Temp -> NP -> VS -> Utt -> S ;
+
+---ComplA2 : A2 -> NP -> AP ;  head  nmod         -- this is correct, 
+---ComplN2 : N2 -> NP -> CN ;  head  nmod         -- but should be handled using language specific rules 
+---ComplN3 : N3 -> NP -> N2 ;  head  nmod         -- because case of complements is encoded in the lexicon
+
+SlashV2a    : V2 -> VPSlash ; 
+Slash2V3    : V3 -> NP -> VPSlash  ;  head iobj 
+Slash3V3    : V3 -> NP -> VPSlash  ;  head dobj 
+SlashV2S    : V2S -> S -> VPSlash  ;  head ccomp 
+SlashV2Q    : V2Q -> QS -> VPSlash ;  head ccomp 
+SlashV2A    : V2A -> AP -> VPSlash ;  head xcomp 
+SlashV2V    : V2V -> VP -> VPSlash ;  head xcomp 
+---SlashV2VNP  : V2V -> NP -> VPSlash -> VPSlash ;  head dobj  xcomp
+---SlashVV     : VV -> VPSlash -> VPSlash ;
+---SlashVS     : NP -> VS -> SSlash -> ClSlash ;  nsubj  head  ccomp
+---SlashVP     : NP -> VPSlash -> ClSlash ;  nsubj head 
+---SlashVPS    : NP -> VPSlash -> SSlash ;   nsubj head
+---SlashPrep   : Cl -> Prep -> ClSlash ;   head   case
+---VPSlashPrep : VP -> Prep -> VPSlash ;   head   case
+
+-++ Noun dependents
+
+-+  (noun phrases and modifiers)
+
+DetCN    : Det -> CN -> NP    ;  det  head 
+DetNP    : Det -> NP          ; 
+PredetNP : Predet -> NP -> NP ;  det:predet  head 
+PredetNP : Predet -> NP -> NP ;  det  head 
+---DetQuant    : Quant -> Num -> Det ;
+---DetQuantOrd : Quant -> Num -> Ord -> Det ;
+PossPron : Pron -> Quant ;
+---GenNP    : NP -> Quant   ;               -- handled in language specific using helper functions
+---VocNP    : NP -> Voc     ;               -- handled in helper functions for PhrUtt*
+
+ApposCN  : CN -> NP -> CN  ;   head  appos 
+ApposCN  : CN -> NP -> CN  ;   head  compound 
+ApposCN  : CN -> NP -> CN  ;   head  name 
+ApposNP  : NP -> NP -> NP  ;   head  appos 
+ApposNP  : NP -> NP -> NP  ;   head  compound 
+ApposNP  : NP -> NP -> NP  ;   head  name 
+
+--- Different degrees of adjectives are included in the lexicon 
+--- as seperate entries, bad_A/worse_A/worst_A 
+--- Thus using these constrained versions reduces the performance
+--- Reverting back to simple PositA without any constraints
+--PositA     : A -> AP   ;     Degree=Pos
+--UseComparA : A -> AP   ;     Degree=Cmp
+--OrdSuperl  : A -> Ord  ;     Degree=Sup
+
+PositA   : A -> AP ;
+AdjCN    : AP -> CN -> CN  ;   amod  head 
+---AdvCN : CN -> Adv -> CN ;   head  nmod     -- avoid since it increases ambiguity 
+AdvNP 	 : NP -> Adv -> NP ;   head  advmod 
+AdvNP 	 : NP -> Adv -> NP ;   head  nmod 
+AdvNP 	 : NP -> Adv -> NP ;   head  acl      -- if Adv comes from SubjS or GerundAdv
+AdvAP    : AP -> Adv -> AP ;   head  nmod 
+AdvAP    : AP -> Adv -> AP ;   head  advmod 
+
+AdjOrd   : Ord -> AP ;
+AdnCAdv  : CAdv -> AdN ;
+DetDAP   : Det -> DAP ;
+----CAdvAP   : CAdv -> AP -> NP -> AP ;
+----ComparA  : A -> NP -> AP          ;   amod  head
+----ComparAdvAdj : CAdv -> A -> NP -> Adv ;
+----ComparAdvAdjS : CAdv -> A -> S -> Adv ;
+----MassNP   : CN -> NP ;
+----CountNP  : Det -> NP -> NP        ;   det   head
+----PartNP   : CN -> NP -> CN         ;   nmod  head 
+----PossNP   : CN -> NP -> CN         ;   nmod  head 
+----AdjDAP   : DAP -> AP -> DAP ;
+----CNNumNP  : NP -> Card -> NP ;
+----OrdNumeralSuperl : Numeral -> A -> Ord ;
+
+NumCard  : Card -> Num ;
+----NumDigits : Digits -> Card ;
+----NumNumeral : Numeral -> Card ;
+----OrdDigits  : Digits -> Ord ;
+----OrdNumeral : Numeral -> Ord ;
 
 
--- helper functions
+-+  (predicate/clausal modifiers)
+SentAP   : AP -> SC -> AP  ;        head   acl
+SentCN   : CN -> SC -> CN  ;        head   acl 
+RelCN    : CN -> RS -> CN  ;        head   acl
+RelCN    : CN -> RS -> CN  ;        head   acl:relcl
+RelNP    : NP -> RS -> NP  ;        head   acl
+RelNP    : NP -> RS -> NP  ;        head   acl:relcl
 
-ComplV2_ : V2 -> NP -> VP ; head dobj
-ComplV2_ : V2 -> NP -> VP ; head nmod
+-++ Compounding and unanalyzed nominals
+
+CompoundN  : N -> N -> N  ;   compound  head 
+CompoundAP : N -> A -> AP ;   compound  head
+
+PrefixCard : Card -> Card -> Card ;      compound  head
+-+  (names)
+-- (this should be changed for next version to next line)
+PrefixPN : PN -> PN -> PN ;              name  head 
+PrefixPN : PN -> PN -> PN ;              compound  head
+----PrefixPN : PN -> PN -> PN ;              head  name    -- (in case names are compositional like "Computer Science Department")
+UseQuantPN : Quant -> PN -> NP ;         det  head 
+
+-++ Non-core dependents of clausal predicates
+-+  (nominal and adverbial modifiers)
+
+PositAdAAdj : A -> AdA ;
+PositAdvAdj : A -> Adv ;
+AdAdV      : AdA -> AdV -> AdV   ;  advmod head
+AdVVP      : AdV -> VP -> VP     ;  advmod head 
+AdVVPSlash : AdV -> VPSlash -> VPSlash ; advmod head
+----AdvVPSlash : VPSlash -> Adv -> VPSlash ;
+AdAP       : AdA -> AP -> AP     ;  advmod head 
+AdAdv      : AdA -> Adv -> Adv   ;  advmod head 
+AdNum      : AdN -> Card -> Card ;  advmod head      
+AdvVPS     : VPS -> Adv -> VPS   ;  head advmod
+AdvVPS     : VPS -> Adv -> VPS   ;  head advcl
+AdvVPS     : VPS -> Adv -> VPS   ;  head nmod
+AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:npmod
+AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:tmod
+----AddAdvQVP  : QVP -> IAdv -> QVP ;  head nmod
+AddAdvQVPS : QVPS -> IAdv -> QVPS ;  head nmod        -- to be added
+AdvS       : Adv -> S -> S       ;  advmod head 
+AdvS       : Adv -> S -> S       ;  advcl head
+ExtAdvS    : Adv -> S -> S       ;  advmod head 
+----ExtAdvVP   : VP -> Adv -> VP ;
+----PresPartAP : VP -> AP ;
+----PastPartAP : VPSlash -> AP ;
+----PastPartAgentAP : VPSlash -> NP -> AP ;
+
+-+  (predicate/clausal modifiers)
+
+-++ Relative predicate constructors
+-++ RP is inconsistently annotated, (that,SCONJ,PronType=Rel,mark) and (which|who|whose,PRON,PronType=Rel,nsubj)
+-++ Case of "that" is handled using helper functions
+-++ Check when dobj label is used for RPs -- to do
+RelVPS   : RP -> VPS -> RS      ; nsubj  head
+RelVPS   : RP -> VPS -> RS      ; nsubjpass  head
+RelSSlash: RP -> SSlash  -> RS  ; dobj  head
+RelS     : S -> RS -> S         ; head  advcl 
+
+
+SSubjS   : S -> Subj -> S -> S  ; head mark advcl 
+SubjS    : Subj -> S -> Adv     ; mark head 
+----FocusObjS : NP -> SSlash -> S ;
+----FunRP     : Prep -> NP -> RP -> RP ;
+
+-++ Case-marking, prepositions, possesive
+PrepIP   : Prep -> IP -> IAdv ; case head 
+PrepNP   : Prep -> NP -> Adv ; case head 
+
+
+-++ Other constructors from GF Modules
+
+----ReflA2 : A2 -> AP ;
+----ReflVP : VPSlash -> VP ;
+
+
+
+
+-+  Questions
+
+ComplSlashIP : VPSlash -> IP -> QVP ;    head   dobj
+----QuestV2
+IdetIP      : IDet -> IP ;
+IdetCN      : IDet -> CN -> IP ;         det    head
+----IdetQuant  : IQuant -> Num -> IDet ;
+QuestVPS    : IP -> VPS -> QS ;          nsubj  head
+QuestVPS    : IP -> VPS -> QS ;          nsubj:cop   head
+QuestSlash  : IP -> ClSlash -> QCl ;     dobj   head 
+QuestIAdv   : IAdv -> Cl -> QCl ;        advmod head 
+QuestSSlash : IP -> SSlash -> QS ;       dobj   head 
+QuestSIAdv  : IAdv -> S -> QS ;          advmod head 
+QuestSIAdv  : IAdv -> S -> QS ;          mark   head
+----QuestIComp : IComp -> NP -> QCl ;    head   nsubj 
+----QuestIComp : IComp -> NP -> QCl ;    head   nsubj:cop 
+----AdvIAdv    : IAdv -> Adv -> IAdv ;
+----AdvIP      : IP -> Adv -> IP ;       head   nmod
+----AdvQVP     : VP -> IAdv -> QVP ;
+
+EmbedQS    : QS -> SC ;
+----EmbedS     : S -> SC ;
+----EmbedVP    : VP -> SC ;
+
+
+-+  Idioms
+
+---ProgrVP    : VP -> VP ;               -- helper functions handle this function
+---SelfAdvVP  : VP -> VP ;
+---SelfAdVVP  : VP -> VP ;
+---SelfNP     : NP -> NP ;
+---ExistNP    : NP -> Cl ;               -- helper functions handle this function
+---ExistNPAdv : NP -> Adv -> Cl ;        -- helper functions handle this function
+---ExistIP    : IP -> QCl ;              -- helper functions handle this function?
+---ExistIPAdv : IP -> Adv -> QCl ;       -- helper functions handle this function?
+---CleftNP    : NP -> RS -> Cl ;         -- helper functions handle this function
+---CleftAdv   : Adv -> S -> Cl ;         -- helper functions handle this function?
+---ImpersCl   : VP -> Cl ;               -- helper functions handle this function
+---GenericCl  : VP -> Cl ;               -- helper functions do not handle this function
+---ImpPl1     : VP -> Utt ;
+---ImpP3      : NP -> VP -> Utt ;
+---ImpVP      : VP -> Imp ;
+
+-+  Constructions
+
+----ByVP  : VP -> Adv ;
+----InLanguage : Language -> Adv ;
+----InOrderToVP : VP -> Adv ;
+
+-+  Copula constructions and related functions
+
+CompAP   : AP -> Comp ; 
+CompAdv  : Adv -> Comp ; 
+CompIAdv : IAdv -> IComp ; 
+CompIP   : IP -> IComp ; 
+CompNP   : NP -> Comp ; 
+----CompCN   : CN -> Comp ;
+
+-+  Tense constructor
+
+----TPres  : Tense ;
+----TPast  : Tense ;
+----TFut   : Tense ;
+----TCond  : Tense ;
+----ASimul : Ant ;
+----AAnter : Ant ;
+----TTAnt  : Tense -> Ant -> Temp ;
+
+-+  Use* functions for various types
+UseN       : N -> CN ; 
+UsePron    : Pron -> NP ; 
+UsePN      : PN -> NP ; 
+UseV       : V -> VP ; 
+----UseN2      : N2 -> CN ;
+----Use2N3     : N3 -> N2 ;
+----Use3N3     : N3 -> N2 ;
+----UseA2      : A2 -> AP ;
+----UseVC      : Temp -> Pol -> VC -> VPS ;
+----UseSlash   : Temp -> Pol -> ClSlash -> SSlash ;
+----UseComp    : Comp -> VP ;
+
+-+  Mk* constructor functions
+MkSymb        : String -> Symb  ;    udtag=X 
+MkSymb        : String -> Symb  ;    udtag=SYM
+----MkVPI  : VP -> VPI
+----MkVPS  : Temp -> Pol -> VP -> VPS ;     aux  neg head
+----MkQVPS : Temp -> Pol -> QVP -> QVPS ; 
+
+
+-+  Utt* functions for building top level utterances ;
+-+  (reducing these heavily reduces ambiguity with loss of coverage)
+UttAP     : AP -> Utt ; 
+UttAdV    : AdV -> Utt ;
+UttAdv    : Adv -> Utt ; 
+----UttCN     : CN -> Utt ;
+----UttCard   : Card -> Utt ;
+----UttIAdv   : IAdv -> Utt ;
+----UttIP     : IP -> Utt ;
+----UttInterj : Interj -> Utt ; 
+----UttImpSg  : Pol -> Imp -> Utt ;
+----UttImpPl  : Pol -> Imp -> Utt ;
+----UttImpPol : Pol -> Imp -> Utt ;
+UttNP     : NP -> Utt ; 
+UttQS     : QS -> Utt ;
+UttS      : S -> Utt ; 
+UttVPS    : VPS -> Utt ; 
+
+-+  Top function in UDTranslate grammar 
+-+  (handled mostly in helper functions)
+----PhrUtt      : PConj -> Utt -> Voc -> Phr ;   conj  head  vocative
+----TopPhr      : Phr -> Top ; 
+TopPhrPunct : Phr -> Punct -> Top ; head punct 
+
+-+  Functions used in Translate grammar but not in UDTranslate grammar
+
+----PredVP    : NP -> VP -> Cl  ;   nsubj   head 
+----PredVP    : NP -> VP -> Cl  ;   nsubj:cop   head 
+----PredSCVP  : SC -> VP -> Cl  ;   csubj   head 
+----PredSCVP  : SC -> VP -> Cl  ;   csubj:cop   head
+----AdvVP     : VP -> Adv -> VP ;   head   advmod 
+----AdvVP     : VP -> Adv -> VP ;   head   advcl        -- If Adv is GerundAdv
+----AdvVP     : VP -> Adv -> VP ;   head   nmod 
+----AdvVP     : VP -> Adv -> VP ;   head   nmod:npmod 
+----AdvVP     : VP -> Adv -> VP ;   head   nmod:tmod 
+----RelVP     : RP -> VP -> RCl ;   nsubj  head 
+----RelSlash  : RP -> ClSlash -> RCl ;   nsubj  head 
+----QuestVP   : IP -> VP -> QCl ;   nsubj head 
+----QuestVP   : IP -> VP -> QCl ;   nsubj:cop head 
+----QuestCl   : Cl -> QCl ;
+----UseCl     : Temp -> Pol -> Cl -> S ;
+----UseRCl    : Temp -> Pol -> RCl -> RS ;
+----UseQCl    : Temp -> Pol -> QCl -> QS ;
+----UttVP     : VP -> Utt ;
+
+
+-++ Other functions to facilitate UDTranslate
+
+StringCard  : String -> Card  ;    udtag=NUM      NumType=Card 
+StringPN    : String -> PN    ;
+StringPunct : String -> Punct ;    udtag=PUNCT
+PrefixForeign : Symb -> Symb -> Symb ;  foreign head
+
+-- these functions should only be included in WMTUDTranslate grammar
+---StringN       : String -> N     ;    udtag=NOUN
+---StringN2      : String -> N2    ;    udtag=NOUN
+---StringN3      : String -> N3    ;    udtag=NOUN
+---StringA       : String -> A     ;    udtag=ADJ
+---StringA2      : String -> A2    ;    udtag=ADJ
+---StringV       : String -> V     ;    udtag=VERB
+---StringV2      : String -> V2    ;    udtag=VERB
+---StringV3      : String -> V3    ;    udtag=VERB
+---StringVV      : String -> VV    ;    udtag=VERB
+---StringVA      : String -> VA    ;    udtag=VERB
+---StringVS      : String -> VS    ;    udtag=VERB
+---StringVQ      : String -> VQ    ;    udtag=VERB
+---StringV2V     : String -> V2V   ;    udtag=VERB
+---StringAdV     : String -> AdV   ;    udtag=ADV
+---StringConj    : String -> Conj  ;    udtag=CONJ
+---StringPron    : String -> Pron  ;    udtag=PRON     PronType=Prs
+---StringPrDet   : String -> Det   ;    udtag=PRON     PronType=Rel
+---StringRP      : String -> RP    ;    udtag=PRON     PronType=Rel
+---StringIP      : String -> IP    ;    udtag=PRON     PronType=Int
+---StringDet     : String -> Det   ;    udtag=DET
+---StringInterj  : String -> Interj ;   udtag=INTJ
+---StringPrep    : String -> Prep  ;    udtag=ADP
+---StringSubj    : String -> Subj  ;    udtag=SCONJ
+---StringAdvSubj : String -> Subj  ;    udtag=ADV      PronType=Int
+---StringIAdv    : String -> IAdv  ;    udtag=ADV      PronType=Int
+---StringAdv     : String -> Adv   ;
+
+
+
+------------------------------------
+
+-++ helper functions
+
+-+  Core dependents of clausal predicates
+
+ComplV2_ : V2 -> NP -> VP ; head dobj 
+ComplV2_ : V2 -> NP -> VP ; head nmod 
+ComplV2_ : V2 -> NP -> VP ; head nmod:npmod 
+ComplV2_ : V2 -> NP -> VP ; head nmod:tmod 
 ComplV2_ v np = ComplSlash (SlashV2a v) np
-ConjAdv_ : Conj -> Adv  -> Adv -> Adv ;  cc head conj
-ConjAdv_ c x y = ConjAdv c (BaseAdv x y)
-ConjAP_  : Conj -> AP -> AP -> AP ; cc head conj
-ConjAP_ c x y = ConjAP c (BaseAP x y)
-ConjAP3_  : AP -> Punct -> AP -> Conj -> AP -> AP ; head punct conj cc conj
-ConjAP3_ x p y c z = ConjAP c (ConsAP x (BaseAP y z))
-ConjNP_  : Conj -> NP -> NP -> NP ; cc head conj
-ConjNP_ c x y = ConjNP c (BaseNP x y)
-ConjNP3_  : NP -> Punct -> NP -> Conj -> NP -> NP ; head punct conj cc conj
-ConjNP3_ x p y c z = ConjNP c (ConsNP x (BaseNP y z))
-ConjRS_  : Conj -> RS  -> RS  -> RS ;  cc head conj
-ConjS_   : Conj -> S  -> S  -> S ;  cc head conj
-ConjS_ c x y = ConjS c (BaseS x y)
-ConjS3_  : S -> Punct -> S -> Conj -> S -> S ; head punct conj cc conj
-ConjS3_ x p y c z = ConjS c (ConsS x (BaseS y z))
-ConjVPS_   : Conj -> VPS  -> VPS  -> VPS ;  cc head conj
-ConjVPS_ c x y = ConjVPS c (BaseVPS x y)
-ConjVPS3_  : VPS -> Punct -> VPS -> Conj -> VPS -> VPS ; head punct conj cc conj
-ConjVPS3_ x p y c z = ConjVPS c (ConsVPS x (BaseVPS y z))
-DetGenNP_ : NP -> CN -> NP ; nmod:poss head  Number=Sing
-DetGenNP_ np cn = DetCN (DetQuant (GenNP np) NumSg) cn 
-DetGenNPPl_ : NP -> CN -> NP ; nmod:poss head  Number=Plur
-DetGenNPPl_ np cn = DetCN (DetQuant (GenNP np) NumPl) cn 
-EmbedS_  : ThatMark_ -> S -> SC ;  mark head
-EmbedS_ m s = EmbedS s
-EmbedVP_ : InfMark_  -> VP -> SC ; mark head
-EmbedVP_ m vp = EmbedVP vp
-ExistNP_ : Cop_ -> Expl_ -> NP -> Cl ; head expl nsubj
-ExistNP_ cop expl np = ExistNP np
-MarkS_ : ThatMark_ -> S -> S ; mark head
-MarkS_ m s = s
-MarkVP_ : InfMark_ -> VP -> VP ; mark head
-MarkVP_ m vp = vp
-MkVPS_   : VP -> VPS ;  Tense=Pres
-MkVPS_ vp = MkVPS (TTAnt TPres ASimul) PPos vp
-NegCl_   : Cl -> Neg_ -> S ;  head  neg Tense=Pres
-NegCl_ cl p = UseCl (TTAnt TPres ASimul) PNeg cl
-NegNotenseCl_   : Cl -> Neg_ -> S ;  head neg -- ---- TODO: find tense from the copula
-NegNotenseCl_ cl p = UseCl (TTAnt TPres ASimul) PNeg cl
-NegPastCl_  : Cl -> Neg_ -> S ;  head  neg Tense=Past       
-NegPastCl_ cl p = UseCl (TTAnt TPast ASimul) PNeg cl
-NegPastQCl_  : QCl -> Neg_ -> QS ;  head  neg Tense=Past       
-NegPastQCl_ cl p = UseQCl (TTAnt TPast ASimul) PNeg cl
-NegPastRCl_  : RCl -> Neg_ -> RS ;  head  neg Tense=Past       
-NegPastRCl_ cl p = UseRCl (TTAnt TPast ASimul) PNeg cl
-NegQCl_   : QCl -> Neg_ -> QS ; head  neg Tense=Pres
-NegQCl_ cl p = UseQCl (TTAnt TPres ASimul) PNeg cl
-NegRCl_   : RCl -> Neg_ -> RS ; head  neg Tense=Pres
-NegRCl_ cl p = UseRCl (TTAnt TPres ASimul) PNeg cl
-PosCondCl_ : Cond_ -> Cl -> S ; aux head
-PosCondCl_ cond cl = UseCl (TTAnt TCond ASimul) PPos cl
-PosFutCl_ : Fut_ -> Cl -> S ; aux head
-PosFutCl_ fut cl = UseCl (TTAnt TFut ASimul) PPos cl
-PosPerfCl_ : Perf_ -> Cl -> S ; aux head
-PosPerfCl_ perf cl = UseCl (TTAnt TPres AAnter) PPos cl
-PosCl_   : Cl -> S ;  Tense=Pres
-PosCl_ cl = UseCl (TTAnt TPres ASimul) PPos cl
-PosNotenseCl_   : Cl -> S ;   -- ---- TODO: find tense from the copula
-PosNotenseCl_ cl = UseCl (TTAnt TPres ASimul) PPos cl
-PosNotenseQCl_   : QCl -> QS ;   -- ---- TODO: find tense from the copula
-PosNotenseQCl_ cl = UseQCl (TTAnt TPres ASimul) PPos cl
-PosPastCl_   : Cl -> S ;  Tense=Past       
-PosPastCl_ cl = UseCl (TTAnt TPast ASimul) PPos cl
-PosPastQCl_   : QCl -> QS ;  Tense=Past       
-PosPastQCl_ cl = UseQCl (TTAnt TPast ASimul) PPos cl
-PosPastRCl_   : RCl -> RS ;  Tense=Past
-PosPastRCl_ cl = UseRCl (TTAnt TPast ASimul) PPos cl
-PosQCl_   : QCl -> QS ;  Tense=Pres
-PosQCl_ cl = UseQCl (TTAnt TPres ASimul) PPos cl
-PosRCl_   : RCl -> RS ;  Tense=Pres
-PosRCl_ cl = UseRCl (TTAnt TPres ASimul) PPos cl
-PossCN_   : Pron -> CN -> NP ;   nmod:poss head   Number=Sing
-PossCN_ pron cn = DetCN (DetQuant (PossPron pron) NumSg) cn
-PossPlCN_ : Pron -> CN -> NP ;   nmod:poss head   Number=Plur
+
+
+-+  Coordination constructions
+
+
+-- coordinations have been changed. 
+-- for co-ordinations of two items, no helper functions needed
+BaseAdv  : Adv  -> Adv  -> ListAdv  ;      head  conj
+BaseAdV  : AdV  -> AdV  -> ListAdV  ;      head  conj
+BaseCN   : CN   -> CN   -> ListCN   ;      head  conj
+--BaseDet  : Det  -> Det  -> ListDet  ;      head  conj
+BaseNP   : NP   -> NP   -> ListNP   ;      head  conj
+BaseAP   : AP   -> AP   -> ListAP   ;      head  conj
+BaseRS   : RS   -> RS   -> ListRS   ;      head  conj
+BaseS    : S    -> S    -> ListS    ;      head  conj
+BaseVPS  : VPS  -> VPS  -> ListVPS  ;      head  conj
+----BaseQVPS : QVPS -> QVPS -> ListQVPS ;      head  conj
+ConjAdv  : Conj -> ListAdv  -> Adv  ;      cc  head 
+ConjAdV  : Conj -> ListAdV  -> AdV  ;      cc  head
+ConjCN   : Conj -> ListCN   -> CN   ;      cc  head
+--ConjDet  : Conj -> ListDet  -> Det  ;      cc  head
+ConjNP   : Conj -> ListNP   -> NP   ;      cc  head
+ConjAP   : Conj -> ListAP   -> AP   ;      cc  head
+ConjRS   : Conj -> ListRS   -> RS   ;      cc  head
+ConjS    : Conj -> ListS    -> S    ;      cc  head
+ConjVPS  : Conj -> ListVPS  -> VPS  ;      cc  head
+----ConjQVPS : Conj -> ListQVPS -> QVPS ;      cc  head
+
+--  becase these  functions are exocentric, there is no risk
+--  they are applied towards the end to give the correct UD tree
+
+--  helper functions required to handle co-ordination of two items
+--  without an explicit Conjunction
+----- ConjAdv_  : Punct -> ListAdv -> Adv ;     cc  head 
+
+--  problems start to appear when co-ordination of more than two items
+--  occur. The grammar uses Cons* functions to add a new item 
+--  "in front of" the List* element. On the other hand UD adds new items
+--  "to end of"   the List* element. Below are how we can add items per
+--  UD regulations
+ConsAdv  : Adv  -> ListAdv  -> ListAdv ;   conj  head
+--  because the List* element was created in the first place using the
+--  first element in the coordination, this configuration helps to add
+--  new items. However, GF defines that the new element being added in
+--  Cons* should be added to the front of the list, linearizing such
+--  a tree using the concrete syntax would mess-up the order of the
+--  elements in the list. 
+--  Note, this configuration is wrong when going from GF to UD. 
+--  In such instances, the correct configuration would be 
+--  ConsAdv   : Adv -> ListAdv -> ListAdv ;   head   conj
+--  This creates a hierarchical dependency structure unlike the flat
+--  structure used in UD .
+--  The configuration of ConsAdv is also dangerous- because it
+--  is an endocentric function now.
+--  Nonetheless, having this configurations is a good? robust way 
+--  to handle arbitrary # of coordinations in UD2GF for coverage
+--  purposes 
+
+ConsAdV  : AdV  -> ListAdV  -> ListAdV ;   conj  head
+ConsCN   : CN   -> ListCN   -> ListCN  ;   conj  head
+--ConsDet  : Det  -> ListDet  -> ListDet ;   conj  head
+ConsNP   : NP   -> ListNP   -> ListNP  ;   conj  head
+ConsAP   : AP   -> ListAP   -> ListAP  ;   conj  head
+ConsRS   : RS   -> ListRS   -> ListRS  ;   conj  head
+ConsS    : S    -> ListS    -> ListS   ;   conj  head
+ConsVPS  : VPS  -> ListVPS  -> ListVPS ;   conj  head
+----ConsQVPS : QVPS -> ListQVPS -> ListQVPS ;  conj  head
+
+--  now we can define helper functions to get rid of pesky
+--  punct types. It is an identity function simply to cover
+--  punct types in UD2GF. The concrete syntax automatically
+--  adds these when linearizing the tree 
+DropCoLAdv_  : Comma_ -> ListAdv -> ListAdv ;   punct  head 
+DropCoLAdV_  : Comma_ -> ListAdV -> ListAdV ;   punct  head 
+DropCoLCN_   : Comma_ -> ListCN  -> ListCN  ;   punct  head 
+DropCoLDet_  : Comma_ -> ListDet -> ListDet ;   punct  head 
+DropCoLNP_   : Comma_ -> ListNP  -> ListNP  ;   punct  head 
+DropCoLAP_   : Comma_ -> ListAP  -> ListAP  ;   punct  head 
+DropCoLRS_   : Comma_ -> ListRS  -> ListRS  ;   punct  head 
+DropCoLS_    : Comma_ -> ListS   -> ListS   ;   punct  head 
+DropCoLVPS_  : Comma_ -> ListVPS -> ListVPS ;   punct  head 
+----DropCoLQVPS_ : Comma_ -> ListQVPS -> ListQVPS ;   punct  head 
+DropCoLAdv_ pu Lx = Lx
+DropCoLAdV_ pu Lx = Lx
+DropCoLCN_  pu Lx = Lx
+DropCoLDet_ pu Lx = Lx
+DropCoLNP_  pu Lx = Lx
+DropCoLAP_  pu Lx = Lx
+DropCoLRS_  pu Lx = Lx
+DropCoLS_   pu Lx = Lx
+DropCoLVPS_ pu Lx = Lx
+----DropCoLQVPS_ pu Lx = Lx
+--  we also need helper functions to handle `no-Conj' constructions.
+--  Two symbols, "/" and "&" are used as Conj with cc labels
+AmpConjAdv_   : Amp_ -> ListAdv -> Adv ;  cc  head 
+AmpConjAdV_   : Amp_ -> ListAdV -> AdV ;  cc  head 
+AmpConjCN_    : Amp_ -> ListCN  -> CN  ;  cc  head 
+--AmpConjDet_   : Amp_ -> ListDet -> Det ;  cc  head 
+AmpConjNP_    : Amp_ -> ListNP  -> NP  ;  cc  head 
+AmpConjAP_    : Amp_ -> ListAP  -> AP  ;  cc  head 
+AmpConjRS_    : Amp_ -> ListRS  -> RS  ;  cc  head 
+AmpConjS_     : Amp_ -> ListS   -> S   ;  cc  head 
+AmpConjVPS_   : Amp_ -> ListVPS -> VPS ;  cc  head 
+----AmpConjQVPS_  : Amp_ -> ListQVPS -> QVPS ;  cc  head 
+AmpConjAdv_ a Lx = (ConjAdv amp_Conj Lx)
+AmpConjAdV_ a Lx = (ConjAdV amp_Conj Lx)
+AmpConjCN_  a Lx = (ConjCN  amp_Conj Lx)
+--AmpConjDet_ a Lx = (ConjDet amp_Conj Lx)
+AmpConjNP_  a Lx = (ConjNP  amp_Conj Lx)
+AmpConjAP_  a Lx = (ConjAP  amp_Conj Lx)
+AmpConjRS_  a Lx = (ConjRS  amp_Conj Lx)
+AmpConjS_   a Lx = (ConjS   amp_Conj Lx)
+AmpConjVPS_ a Lx = (ConjVPS amp_Conj Lx)
+----AmpConjQVPS_  a Lx = (ConjQVPS amp_Conj Lx)
+
+OrConjAdv_   : Orslash_ -> ListAdv -> Adv ;  cc  head 
+OrConjAdV_   : Orslash_ -> ListAdV -> AdV ;  cc  head 
+OrConjCN_    : Orslash_ -> ListCN  -> CN  ;  cc  head 
+--OrConjDet_   : Orslash_ -> ListDet -> Det ;  cc  head 
+OrConjNP_    : Orslash_ -> ListNP  -> NP  ;  cc  head 
+OrConjAP_    : Orslash_ -> ListAP  -> AP  ;  cc  head 
+OrConjRS_    : Orslash_ -> ListRS  -> RS  ;  cc  head 
+OrConjS_     : Orslash_ -> ListS   -> S   ;  cc  head 
+OrConjVPS_   : Orslash_ -> ListVPS -> VPS ;  cc  head 
+----OrConjQVPS_  : Orslash_ -> ListQVPS -> QVPS ;  cc  head 
+OrConjAdv_ a Lx = (ConjAdv or_Conj Lx)
+OrConjAdV_ a Lx = (ConjAdV or_Conj Lx)
+OrConjCN_  a Lx = (ConjCN  or_Conj Lx)
+--OrConjDet_ a Lx = (ConjDet or_Conj Lx)
+OrConjNP_  a Lx = (ConjNP  or_Conj Lx)
+OrConjAP_  a Lx = (ConjAP  or_Conj Lx)
+OrConjRS_  a Lx = (ConjRS  or_Conj Lx)
+OrConjS_   a Lx = (ConjS   or_Conj Lx)
+OrConjVPS_ a Lx = (ConjVPS or_Conj Lx)
+----OrConjQVPS_a Lx = (ConjQVPS or_Conj Lx)
+
+ 
+-- Previous work by Aarne on handling two place coordinations
+---++ConjAdv_  : Conj -> Adv  -> Adv -> Adv ;      cc head conj 
+---++ConjAdV_  : Conj -> AdV  -> AdV -> AdV ;      cc head conj 
+---++ConjCN_   : Conj -> CN -> CN -> CN ;          cc head conj
+---++ConjDet_  : Conj -> Det -> Det -> Det ;       cc head conj
+---++ConjNP_   : Conj -> NP -> NP -> NP ;          cc head conj 
+---++ConjAP_   : Conj -> AP -> AP -> AP ;          cc head conj 
+---++ConjRS_   : Conj -> RS  -> RS  -> RS ;        cc head conj 
+---++ConjS_    : Conj -> S  -> S  -> S ;           cc head conj 
+---++ConjVPS_  : Conj -> VPS  -> VPS  -> VPS ;     cc head conj 
+---++----ConjQVPS_ : Conj -> QVPS -> QVPS -> QVPS ;    cc head conj
+---++ConjAdv_ c x y = ConjAdv c (BaseAdv x y)
+---++ConjAdV_ c x y = ConjAdV c (BaseAdV x y)
+---++ConjCN_  c x y = ConjCN  c (BaseCN  x y)
+---++ConjDet_ c x y = ConjDet c (BaseDet x y)
+---++ConjNP_  c x y = ConjNP  c (BaseNP  x y)
+---++ConjAP_  c x y = ConjAP  c (BaseAP  x y)
+---++ConjRS_  c x y = ConjRS  c (BaseRS  x y)
+---++ConjS_   c x y = ConjS   c (BaseS   x y)
+---++ConjVPS_ c x y = ConjVPS c (BaseVPS x y)
+---++----ConjQVPS_ c x y = ConjQVPS c (BaseQVPS x y)
+---++
+---++ConjAdv3_ : Adv -> Punct -> Adv -> Conj -> Adv -> Adv ;  head punct conj cc conj
+---++ConjAdv3_ : Adv -> Conj -> Adv -> Conj -> Adv -> Adv ;  head cc conj cc conj
+---++ConjAdv3_ x p y c z = ConjAdv c (ConsAdv x (BaseAdv y z))
+---++
+---++ConjAP3_  : AP -> Punct -> AP -> Conj -> AP -> AP ;      head punct conj cc conj 
+---++ConjAP3_  : AP -> Punct -> AP -> Conj -> AP -> AP ;      head cc conj cc conj
+---++ConjAP3_ x p y c z = ConjAP c (ConsAP x (BaseAP y z))
+---++
+---++ConjNP3_  : NP -> Punct -> NP -> Conj -> NP -> NP ;      head punct conj cc conj 
+---++ConjNP3_  : NP -> Punct -> NP -> Conj -> NP -> NP ;      head cc conj cc conj
+---++ConjNP3_ x p y c z = ConjNP c (ConsNP x (BaseNP y z))
+---++
+---++ConjRS3_  : RS -> Punct -> RS -> Conj -> RS -> RS ;      head punct conj cc conj
+---++ConjRS3_  : RS -> Punct -> RS -> Conj -> RS -> RS ;      head cc conj cc conj
+---++ConjRS3_ x p y c z = ConjRS c (ConsRS x (BaseRS y z))
+---++
+---++ConjS3_   : S -> Punct -> S -> Conj -> S -> S ;          head punct conj cc conj 
+---++ConjS3_   : S -> Punct -> S -> Conj -> S -> S ;          head cc conj cc conj
+---++ConjS3_ x p y c z = ConjS c (ConsS x (BaseS y z))
+---++
+---++ConjVPS3_ : VPS -> Punct -> VPS -> Conj -> VPS -> VPS ;  head punct conj cc conj 
+---++ConjVPS3_ : VPS -> Punct -> VPS -> Conj -> VPS -> VPS ;  head cc conj cc conj
+---++ConjVPS3_ x p y c z = ConjVPS c (ConsVPS x (BaseVPS y z))
+---++
+
+-+  Noun constructions
+
+PossSgCN_ : Pron -> CN -> NP ;  nmod:poss  head   Number=Sing 
+PossSgCN_ pron cn = DetCN (DetQuant (PossPron pron) NumSg) cn
+PossPlCN_ : Pron -> CN -> NP ;  nmod:poss  head   Number=Plur 
 PossPlCN_ pron cn = DetCN (DetQuant (PossPron pron) NumPl) cn
-PredPassAgentV2_ : NP -> AuxPass_ -> V2 -> NP -> Cl ; nsubjpass auxpass head nmod
-PredPassAgentV2_ np aux v2 ag = PredVP np (PassAgentVPSlash (SlashV2a v2) ag)
-PredPassV2_ : NP -> AuxPass_ -> V2 -> Cl ; nsubjpass auxpass head
-PredPassV2_ np aux v2 = PredVP np (PassVPSlash (SlashV2a v2))
-QuantCN_   : Quant -> CN -> NP ;   det head   Number=Sing
-QuantCN_ qu cn = DetCN (DetQuant qu NumSg) cn
-QuantPlCN_ : Quant -> CN -> NP ;   det head   Number=Plur
-QuantPlCN_ qu cn = DetCN (DetQuant qu NumPl) cn
-QuestIComp_ : Cop_ -> IComp -> NP -> QCl ;  cop head nsubj
-QuestIComp_ : Cop_ -> IComp -> NP -> QCl ;  cop head nsubj:cop
-QuestIComp_ v c np = QuestIComp c np
-UseComp_ : Cop_ -> Comp -> VP ;  cop head
-UseComp_ v c = UseComp c
-UttImpVP_ : VP -> Utt ;  Mood=Imp
-UttImpVP_ vp = UttImpSg PPos (ImpVP vp) 
-UttNegImpVP_ : VP -> Neg_ -> Utt ; head neg  Mood=Imp
-UttNegImpVP_ vp p = UttImpSg PNeg (ImpVP vp) 
+
+-- this works when GenNP can not be used, 
+-- either due to lack of nmod:poss or presence 
+-- of explicit GenMark_ as a seperate token like in English
+GenSgCN_  : Quant -> CN -> NP ;    nmod:poss  head   Number=Sing
+GenSgCN_  : Quant -> CN -> NP ;    nmod  head        Number=Sing
+GenPlCN_  : Quant -> CN -> NP ;    nmod:poss  head   Number=Plur
+GenPlCN_  : Quant -> CN -> NP ;    nmod  head        Number=Plur
+GenSgCN_  q cn = DetCN (DetQuant q NumSg) cn
+GenPlCN_  q cn = DetCN (DetQuant q NumPl) cn
+
+DetGenNPSg_ : NP -> CN -> NP ;    nmod:poss  head    Number=Sing 
+DetGenNPPl_ : NP -> CN -> NP ;    nmod:poss  head    Number=Plur 
+DetGenNPSg_ np cn = DetCN (DetQuant (GenNP np) NumSg) cn
+DetGenNPPl_ np cn = DetCN (DetQuant (GenNP np) NumPl) cn
+
+QuantSgCN_  : Quant  -> CN -> NP ;   det  head    Number=Sing 
+QuantPlCN_  : Quant  -> CN -> NP ;   det  head    Number=Plur 
+IQuantSgCN_ : IQuant -> CN -> IP ;   det  head    Number=Sing 
+IQuantPlCN_ : IQuant -> CN -> IP ;   det  head    Number=Plur 
+QuantSgCN_  qu cn = DetCN  (DetQuant  qu NumSg) cn
+QuantPlCN_  qu cn = DetCN  (DetQuant  qu NumPl) cn
+IQuantSgCN_ qu cn = IdetCN (IdetQuant qu NumSg) cn
+IQuantPlCN_ qu cn = IdetCN (IdetQuant qu NumPl) cn
+
+NumQuantCN_    : Card ->  Quant -> CN -> NP ;   nummod  det  head 
+NumIQuantCN_   : Card -> IQuant -> CN -> IP ;   nummod  det  head 
+NumNoQuantCN_  : Card -> CN -> NP ;             nummod  head 
+NumQuantCN_  num qu cn = DetCN  (DetQuant  qu (NumCard num)) cn
+NumIQuantCN_ num qu cn = IdetCN (IdetQuant qu (NumCard num)) cn
+NumNoQuantCN_ num cn   = DetCN  (DetQuant IndefArt (NumCard num)) cn
+
+----*UseQuantPN_ : Quant -> PN -> NP ;    det head
+----*UseQuantPN_ q pn = UseQuantPN q pn
+
+DetPredVPS_   : Det  -> VPS -> S ; nsubj  head
+DetPredVPS_ q vps = PredVPS (DetNP q) vps
+IDetQuestVPS_ : IDet -> VPS -> QS ;  nsubj head
+IDetQuestVPS_ q vps = QuestVPS (IdetIP q) vps
+
+EmbedCNVP_  : CN -> VP -> CN ; head acl
+EmbedCNVP_ cn vp = SentCN cn (EmbedVP vp)
+
+-+  Other forms of VP
+
+PresPartAP_      : VP -> AP ;                          VerbForm=Part  Tense=Pres
+PastPartAP_      : VPSlash -> AP ;                     VerbForm=Part  Tense=Past
+PastPartAgentAP_ : VPSlash -> NP -> AP ;   head nmod   VerbForm=Part  Tense=Past
+PresPartAP_ vp               = PresPartAP vp
+PastPartAP_ vpslash          = PastPartAP vpslash
+PastPartAgentAP_  vpslash np = PastPartAgentAP vpslash np
+
+-+  Tense and Polarity constructions for clauses
+
+---PosNoTenseVPS_ : VP -> VPS ;
+---PosNoTenseVPS_ vp = MkVPS (TTAnt TPres ASimul) PPos vp
+---NegNoTenseVPS_ : Neg_ -> VP -> VPS ; neg head 
+---NegNoTenseVPS_ p vp = MkVPS (TTAnt TPres ASimul) PNeg vp
+
+PosPresSimulVPS_ : VP -> VPS ;                              head               VerbForm=Fin  Tense=Pres 
+PosPresSimulVPS_ vp = MkVPS (TTAnt TPres ASimul) PPos vp
+PosPastSimulVPS_ : VP -> VPS ;                              head               VerbForm=Fin  Tense=Past
+PosPastSimulVPS_ vp = MkVPS (TTAnt TPast ASimul) PPos vp
+PosFutSimulVPS_  : Fut_ -> VP -> VPS ;                      aux head           VerbForm=Inf
+PosFutSimulVPS_  tf vp = MkVPS (TTAnt TFut  ASimul) PPos vp
+PosCondSimulVPS_ : Cond_ -> VP -> VPS ;                     aux head           VerbForm=Inf
+PosCondSimulVPS_ tc vp = MkVPS (TTAnt TCond ASimul) PPos vp
+PosPresAnterVPS_ : PrPerf_ -> VP -> VPS ;                   aux head           VerbForm=Part
+PosPresAnterVPS_ at vp = MkVPS (TTAnt TPres AAnter) PPos vp
+PosPastAnterVPS_ : PaPerf_ -> VP -> VPS ;                   aux head           VerbForm=Part
+PosPastAnterVPS_ at vp = MkVPS (TTAnt TPast AAnter) PPos vp
+PosFutAnterVPS_  : FuPerf_ -> Fut_ -> VP -> VPS ;           aux aux head       VerbForm=Part
+PosFutAnterVPS_  at tf vp = MkVPS (TTAnt TFut  AAnter) PPos vp
+PosCondAnterVPS_ : FuPerf_ -> Cond_ -> VP -> VPS ;          aux aux head       VerbForm=Part
+PosCondAnterVPS_ at tc vp = MkVPS (TTAnt TCond AAnter) PPos vp
+NegPresSimulVPS_ : Neg_ -> VP -> VPS ;                      neg head           VerbForm=Fin     Tense=Pres
+NegPresSimulVPS_ p vp = MkVPS (TTAnt TPres ASimul) PNeg vp
+NegPastSimulVPS_ : Neg_ -> VP -> VPS ;                      neg head           VerbForm=Fin     Tense=Past
+NegPastSimulVPS_ p vp = MkVPS (TTAnt TPast ASimul) PNeg vp
+NegFutSimulVPS_  : Neg_ -> Fut_ -> VP -> VPS ;              neg aux head       VerbForm=Inf
+NegFutSimulVPS_  p tf vp = MkVPS (TTAnt TFut  ASimul) PNeg vp
+NegCondSimulVPS_ : Neg_ -> Cond_ -> VP -> VPS ;             neg aux head       VerbForm=Inf
+NegCondSimulVPS_ p tc vp = MkVPS (TTAnt TCond ASimul) PNeg vp
+NegPresAnterVPS_ : Neg_ -> PrPerf_ -> VP -> VPS ;           neg aux head       VerbForm=Part
+NegPresAnterVPS_ p at vp = MkVPS (TTAnt TPres AAnter) PNeg vp
+NegPastAnterVPS_ : Neg_ -> PaPerf_ -> VP -> VPS ;           neg aux head       VerbForm=Part
+NegPastAnterVPS_ p at vp = MkVPS (TTAnt TPast AAnter) PNeg vp
+NegFutAnterVPS_  : Neg_ -> FuPerf_ -> Fut_ -> VP -> VPS ;   neg aux aux head   VerbForm=Part
+NegFutAnterVPS_  p at tf vp = MkVPS (TTAnt TFut  AAnter) PNeg vp
+NegCondAnterVPS_ : Neg_ -> FuPerf_ -> Cond_ -> VP -> VPS ;  neg aux aux head   VerbForm=Part
+NegCondAnterVPS_ p at tc vp = MkVPS (TTAnt TCond AAnter) PNeg vp
+
+-++ Question verb phrases  (to be verified)
+
+PPresSQVPS_ : QVP -> QVPS ;                               head                      VerbForm=Fin   Tense=Pres
+PPastSQVPS_ : QVP -> QVPS ;                               head                      VerbForm=Fin   Tense=Past
+PFutSQVPS_  : Fut_ -> QVP -> QVPS ;                       aux  head                 VerbForm=Inf
+PCondSQVPS_ : Cond_ -> QVP -> QVPS ;                      aux  head                 VerbForm=Inf
+PPresAQVPS_ : PrPerf_ -> QVP -> QVPS ;                    aux  head                 VerbForm=Part
+PPastAQVPS_ : PaPerf_ -> QVP -> QVPS ;                    aux  head                 VerbForm=Part
+PFutAQVPS_  : FuPerf_ -> Fut_ -> QVP -> QVPS ;            aux  aux  head            VerbForm=Part
+PCondAQVPS_ : FuPerf_ -> Cond_ -> QVP -> QVPS ;           aux  aux  head            VerbForm=Part
+NPresSQVPS_ : Neg_ -> QVP -> QVPS ;                       neg  head                 VerbForm=Fin   Tense=Pres
+NPastSQVPS_ : Neg_ -> QVP -> QVPS ;                       neg  head                 VerbForm=Fin   Tense=Past
+NFutSQVPS_  : Neg_ -> Fut_ -> QVP -> QVPS ;               neg  aux  head            VerbForm=Inf
+NCondSQVPS_ : Neg_ -> Cond_ -> QVP -> QVPS ;              neg  aux  head            VerbForm=Inf
+NPresAQVPS_ : Neg_ -> PrPerf_ -> QVP -> QVPS ;            neg  aux  head            VerbForm=Part
+NPastAQVPS_ : Neg_ -> PaPerf_ -> QVP -> QVPS ;            neg  aux  head            VerbForm=Part
+NFutAQVPS_  : Neg_ -> FuPerf_ -> Fut_ -> QVP -> QVPS ;    neg  aux  aux  head       VerbForm=Part
+NCondAQVPS_ : Neg_ -> FuPerf_ -> Cond_ -> QVP -> QVPS ;   neg  aux  aux  head       VerbForm=Part
+PPresSQVPS_ qvp         = MkQVPS (TTAnt TPres ASimul) PPos qvp
+PPastSQVPS_ qvp         = MkQVPS (TTAnt TPast ASimul) PPos qvp
+PFutSQVPS_  tf qvp      = MkQVPS (TTAnt TFut  ASimul) PPos qvp
+PCondSQVPS_ tc qvp      = MkQVPS (TTAnt TCond ASimul) PPos qvp
+PPresAQVPS_ at qvp      = MkQVPS (TTAnt TPres AAnter) PPos qvp
+PPastAQVPS_ at qvp      = MkQVPS (TTAnt TPast AAnter) PPos qvp
+PFutAQVPS_  at tf qvp   = MkQVPS (TTAnt TFut  AAnter) PPos qvp
+PCondAQVPS_ at tc qvp   = MkQVPS (TTAnt TCond AAnter) PPos qvp
+NPresSQVPS_ p qvp       = MkQVPS (TTAnt TPres ASimul) PNeg qvp
+NPastSQVPS_ p qvp       = MkQVPS (TTAnt TPast ASimul) PNeg qvp
+NFutSQVPS_  p tf qvp    = MkQVPS (TTAnt TFut  ASimul) PNeg qvp
+NCondSQVPS_ p tc qvp    = MkQVPS (TTAnt TCond ASimul) PNeg qvp
+NPresAQVPS_ p at qvp    = MkQVPS (TTAnt TPres AAnter) PNeg qvp
+NPastAQVPS_ p at qvp    = MkQVPS (TTAnt TPast AAnter) PNeg qvp
+NFutAQVPS_  p at tf qvp = MkQVPS (TTAnt TFut  AAnter) PNeg qvp
+NCondAQVPS_ p at tc qvp = MkQVPS (TTAnt TCond AAnter) PNeg qvp
+
+-++ Progressive verb phrases
+
+PPrSProgrVP_ : PrBeVerb_ -> VP -> VPS ;                                aux  head                 VerbForm=Ger
+PPrSProgrVP_ : PrBeVerb_ -> VP -> VPS ;                                aux  head                 VerbForm=Part  Tense=Pres
+PPaSProgrVP_ : PaBeVerb_ -> VP -> VPS ;                                aux  head                 VerbForm=Ger
+PPaSProgrVP_ : PaBeVerb_ -> VP -> VPS ;                                aux  head                 VerbForm=Part  Tense=Pres
+PFuSProgrVP_ : Fut_ -> FuBeVerb_ -> VP -> VPS ;                        aux  aux  head            VerbForm=Ger
+PFuSProgrVP_ : Fut_ -> FuBeVerb_ -> VP -> VPS ;                        aux  aux  head            VerbForm=Part  Tense=Pres
+PCoSProgrVP_ : Cond_ -> FuBeVerb_ -> VP -> VPS ;                       aux  aux  head            VerbForm=Ger
+PCoSProgrVP_ : Cond_ -> FuBeVerb_ -> VP -> VPS ;                       aux  aux  head            VerbForm=Part  Tense=Pres
+PPrAProgrVP_ : PrPerf_ -> PartBeVerb_ -> VP -> VPS ;                   aux  aux  head            VerbForm=Ger
+PPrAProgrVP_ : PrPerf_ -> PartBeVerb_ -> VP -> VPS ;                   aux  aux  head            VerbForm=Part  Tense=Pres
+PPaAProgrVP_ : PaPerf_ -> PartBeVerb_ -> VP -> VPS ;                   aux  aux  head            VerbForm=Ger
+PPaAProgrVP_ : PaPerf_ -> PartBeVerb_ -> VP -> VPS ;                   aux  aux  head            VerbForm=Part  Tense=Pres
+PFuAProgrVP_ : FuPerf_ -> Fut_ -> PartBeVerb_ -> VP -> VPS ;           aux  aux  aux  head       VerbForm=Ger
+PFuAProgrVP_ : FuPerf_ -> Fut_ -> PartBeVerb_ -> VP -> VPS ;           aux  aux  aux  head       VerbForm=Part  Tense=Pres
+PCoAProgrVP_ : FuPerf_ -> Cond_ -> PartBeVerb_ -> VP -> VPS ;          aux  aux  aux  head       VerbForm=Ger
+PCoAProgrVP_ : FuPerf_ -> Cond_ -> PartBeVerb_ -> VP -> VPS ;          aux  aux  aux  head       VerbForm=Part  Tense=Pres
+NPrSProgrVP_ : Neg_ -> PrBeVerb_ -> VP -> VPS ;                        neg  aux  head            VerbForm=Ger
+NPrSProgrVP_ : Neg_ -> PrBeVerb_ -> VP -> VPS ;                        neg  aux  head            VerbForm=Part  Tense=Pres
+NPaSProgrVP_ : Neg_ -> PaBeVerb_ -> VP -> VPS ;                        neg  aux  head            VerbForm=Ger
+NPaSProgrVP_ : Neg_ -> PaBeVerb_ -> VP -> VPS ;                        neg  aux  head            VerbForm=Part  Tense=Pres
+NFuSProgrVP_ : Neg_ -> Fut_ -> FuBeVerb_ -> VP -> VPS ;                neg  aux  aux  head       VerbForm=Ger
+NFuSProgrVP_ : Neg_ -> Fut_ -> FuBeVerb_ -> VP -> VPS ;                neg  aux  aux  head       VerbForm=Part  Tense=Pres
+NCoSProgrVP_ : Neg_ -> Cond_ -> FuBeVerb_ -> VP -> VPS ;               neg  aux  aux  head       VerbForm=Ger
+NCoSProgrVP_ : Neg_ -> Cond_ -> FuBeVerb_ -> VP -> VPS ;               neg  aux  aux  head       VerbForm=Part  Tense=Pres
+NPrAProgrVP_ : Neg_ -> PrPerf_ -> PartBeVerb_ -> VP -> VPS ;           neg  aux  aux  head       VerbForm=Ger
+NPrAProgrVP_ : Neg_ -> PrPerf_ -> PartBeVerb_ -> VP -> VPS ;           neg  aux  aux  head       VerbForm=Part  Tense=Pres
+NPaAProgrVP_ : Neg_ -> PaPerf_ -> PartBeVerb_ -> VP -> VPS ;           neg  aux  aux  head       VerbForm=Ger
+NPaAProgrVP_ : Neg_ -> PaPerf_ -> PartBeVerb_ -> VP -> VPS ;           neg  aux  aux  head       VerbForm=Part  Tense=Pres
+NFuAProgrVP_ : Neg_ -> FuPerf_ -> Fut_ -> PartBeVerb_ -> VP -> VPS ;   neg  aux  aux  aux  head  VerbForm=Ger
+NFuAProgrVP_ : Neg_ -> FuPerf_ -> Fut_ -> PartBeVerb_ -> VP -> VPS ;   neg  aux  aux  aux  head  VerbForm=Part  Tense=Pres
+NCoAProgrVP_ : Neg_ -> FuPerf_ -> Cond_ -> PartBeVerb_ -> VP -> VPS ;  neg  aux  aux  aux  head  VerbForm=Ger
+NCoAProgrVP_ : Neg_ -> FuPerf_ -> Cond_ -> PartBeVerb_ -> VP -> VPS ;  neg  aux  aux  aux  head  VerbForm=Part  Tense=Pres
+PPrSProgrVP_ _ vp          = MkVPS (TTAnt TPres ASimul) PPos (ProgrVP vp)
+PPaSProgrVP_ _ vp          = MkVPS (TTAnt TPast ASimul) PPos (ProgrVP vp)
+PFuSProgrVP_ tf _ vp       = MkVPS (TTAnt TFut  ASimul) PPos (ProgrVP vp)
+PCoSProgrVP_ tc _ vp       = MkVPS (TTAnt TCond ASimul) PPos (ProgrVP vp)
+PPrAProgrVP_ at _ vp       = MkVPS (TTAnt TPres AAnter) PPos (ProgrVP vp)
+PPaAProgrVP_ at _ vp       = MkVPS (TTAnt TPast AAnter) PPos (ProgrVP vp)
+PFuAProgrVP_ at tf _ vp    = MkVPS (TTAnt TFut  AAnter) PPos (ProgrVP vp)
+PCoAProgrVP_ at tc _ vp    = MkVPS (TTAnt TCond AAnter) PPos (ProgrVP vp)
+NPrSProgrVP_ p _ vp        = MkVPS (TTAnt TPres ASimul) PNeg (ProgrVP vp)
+NPaSProgrVP_ p _ vp        = MkVPS (TTAnt TPast ASimul) PNeg (ProgrVP vp)
+NFuSProgrVP_ p tf _ vp     = MkVPS (TTAnt TFut  ASimul) PNeg (ProgrVP vp)
+NCoSProgrVP_ p tc _ vp     = MkVPS (TTAnt TCond ASimul) PNeg (ProgrVP vp)
+NPrAProgrVP_ p at _ vp     = MkVPS (TTAnt TPres AAnter) PNeg (ProgrVP vp)
+NPaAProgrVP_ p at _ vp     = MkVPS (TTAnt TPast AAnter) PNeg (ProgrVP vp)
+NFuAProgrVP_ p at tf _ vp  = MkVPS (TTAnt TFut  AAnter) PNeg (ProgrVP vp)
+NCoAProgrVP_ p at tc _ vp  = MkVPS (TTAnt TCond AAnter) PNeg (ProgrVP vp)
+
+-++ If these do not match, likely it is a Gerund
+
+GerundAdv  : VP -> Adv  ;                    VerbForm=Ger
+GerundNP   : VP -> NP   ;                    VerbForm=Ger  -- very important, but results time out
+GerundAdv_ : GerBeVerb_ -> Comp -> Adv ;   cop  head
+GerundNP_  : GerBeVerb_ -> Comp -> NP  ;   cop  head
+GerundAdv_ _ c = GerundAdv (UseComp c)
+GerundNP_  _ c = GerundNP  (UseComp c)
+
+-+  Passive constructions
+
+PPrSPassVP_ : PrAuxPass_ -> VPSlash -> VPS ;                                 auxpass  head 
+PPaSPassVP_ : PaAuxPass_ -> VPSlash -> VPS ;                                 auxpass  head
+PFuSPassVP_ : Fut_ -> InfAuxPass_ -> VPSlash -> VPS ;                        aux  auxpass  head
+PCoSPassVP_ : Cond_ -> InfAuxPass_ -> VPSlash -> VPS ;                       aux  auxpass  head
+PPrAPassVP_ : PrPerf_ -> PartAuxPass_ -> VPSlash -> VPS ;                    aux  auxpass  head
+PPaAPassVP_ : PaPerf_ -> PartAuxPass_ -> VPSlash -> VPS ;                    aux  auxpass  head
+PFuAPassVP_ : FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> VPS ;            aux  aux  auxpass  head
+PCoAPassVP_ : FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> VPS ;           aux  aux  auxpass  head
+NPrSPassVP_ : Neg_ -> PrAuxPass_ -> VPSlash -> VPS ;                         neg  auxpass  head
+NPaSPassVP_ : Neg_ -> PaAuxPass_ -> VPSlash -> VPS ;                         neg  auxpass  head
+NFuSPassVP_ : Neg_ -> Fut_ -> InfAuxPass_ -> VPSlash -> VPS ;                neg  aux  auxpass  head
+NCoSPassVP_ : Neg_ -> Cond_ -> InfAuxPass_ -> VPSlash -> VPS ;               neg  aux  auxpass  head
+NPrAPassVP_ : Neg_ -> PrPerf_ -> PartAuxPass_ -> VPSlash -> VPS ;            neg  aux  auxpass  head
+NPaAPassVP_ : Neg_ -> PaPerf_ -> PartAuxPass_ -> VPSlash -> VPS ;            neg  aux  auxpass  head
+NFuAPassVP_ : Neg_ -> FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> VPS ;    neg  aux  aux  auxpass  head
+NCoAPassVP_ : Neg_ -> FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> VPS ;   neg  aux  aux  auxpass  head
+PPrSPassVP_ _ vpslash          = MkVPS (TTAnt TPres ASimul) PPos (PassVPSlash vpslash)
+PPaSPassVP_ _ vpslash          = MkVPS (TTAnt TPast ASimul) PPos (PassVPSlash vpslash)
+PFuSPassVP_ tf _ vpslash       = MkVPS (TTAnt TFut  ASimul) PPos (PassVPSlash vpslash)
+PCoSPassVP_ tc _ vpslash       = MkVPS (TTAnt TCond ASimul) PPos (PassVPSlash vpslash)
+PPrAPassVP_ at _ vpslash       = MkVPS (TTAnt TPres AAnter) PPos (PassVPSlash vpslash)
+PPaAPassVP_ at _ vpslash       = MkVPS (TTAnt TPast AAnter) PPos (PassVPSlash vpslash)
+PFuAPassVP_ at tf _ vpslash    = MkVPS (TTAnt TFut  AAnter) PPos (PassVPSlash vpslash)
+PCoAPassVP_ at tc _ vpslash    = MkVPS (TTAnt TCond AAnter) PPos (PassVPSlash vpslash)
+NPrSPassVP_ p _ vpslash        = MkVPS (TTAnt TPres ASimul) PNeg (PassVPSlash vpslash)
+NPaSPassVP_ p _ vpslash        = MkVPS (TTAnt TPast ASimul) PNeg (PassVPSlash vpslash)
+NFuSPassVP_ p tf _ vpslash     = MkVPS (TTAnt TFut  ASimul) PNeg (PassVPSlash vpslash)
+NCoSPassVP_ p tc _ vpslash     = MkVPS (TTAnt TCond ASimul) PNeg (PassVPSlash vpslash)
+NPrAPassVP_ p at _ vpslash     = MkVPS (TTAnt TPres AAnter) PNeg (PassVPSlash vpslash)
+NPaAPassVP_ p at _ vpslash     = MkVPS (TTAnt TPast AAnter) PNeg (PassVPSlash vpslash)
+NFuAPassVP_ p at tf _ vpslash  = MkVPS (TTAnt TFut  AAnter) PNeg (PassVPSlash vpslash)
+NCoAPassVP_ p at tc _ vpslash  = MkVPS (TTAnt TCond AAnter) PNeg (PassVPSlash vpslash)
+
+PPrSPassAgentVP_ : PrAuxPass_ -> VPSlash -> NP -> VPS ;                                 auxpass  head  nmod
+PPaSPassAgentVP_ : PaAuxPass_ -> VPSlash -> NP -> VPS ;                                 auxpass  head  nmod
+PFuSPassAgentVP_ : Fut_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                        aux  auxpass  head  nmod
+PCoSPassAgentVP_ : Cond_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                       aux  auxpass  head  nmod
+PPrAPassAgentVP_ : PrPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;                    aux  auxpass  head  nmod
+PPaAPassAgentVP_ : PaPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;                    aux  auxpass  head  nmod
+PFuAPassAgentVP_ : FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            aux  aux  auxpass  head  nmod
+PCoAPassAgentVP_ : FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;           aux  aux  auxpass  head  nmod
+NPrSPassAgentVP_ : Neg_ -> PrAuxPass_ -> VPSlash -> NP -> VPS ;                         neg  auxpass  head  nmod
+NPaSPassAgentVP_ : Neg_ -> PaAuxPass_ -> VPSlash -> NP -> VPS ;                         neg  auxpass  head  nmod
+NFuSPassAgentVP_ : Neg_ -> Fut_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                neg  aux  auxpass  head  nmod
+NCoSPassAgentVP_ : Neg_ -> Cond_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ; neg           aux  auxpass  head  nmod
+NPrAPassAgentVP_ : Neg_ -> PrPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            neg  aux  auxpass  head  nmod
+NPaAPassAgentVP_ : Neg_ -> PaPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            neg  aux  auxpass  head  nmod
+NFuAPassAgentVP_ : Neg_ -> FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;    neg  aux  aux auxpass  head  nmod
+NCoAPassAgentVP_ : Neg_ -> FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;   neg  aux  aux auxpass  head  nmod
+PPrSPassAgentVP_ _ vpslash np          = MkVPS (TTAnt TPres ASimul) PPos (PassAgentVPSlash vpslash np)
+PPaSPassAgentVP_ _ vpslash np          = MkVPS (TTAnt TPast ASimul) PPos (PassAgentVPSlash vpslash np)
+PFuSPassAgentVP_  _ _ vpslash np       = MkVPS (TTAnt TFut  ASimul) PPos (PassAgentVPSlash vpslash np)
+PCoSPassAgentVP_ _ _ vpslash np        = MkVPS (TTAnt TCond ASimul) PPos (PassAgentVPSlash vpslash np)
+PPrAPassAgentVP_ at _ vpslash np       = MkVPS (TTAnt TPres AAnter) PPos (PassAgentVPSlash vpslash np)
+PPaAPassAgentVP_ at _ vpslash np       = MkVPS (TTAnt TPast AAnter) PPos (PassAgentVPSlash vpslash np)
+PFuAPassAgentVP_  at tf _ vpslash np   = MkVPS (TTAnt TFut  AAnter) PPos (PassAgentVPSlash vpslash np)
+PCoAPassAgentVP_ at tc _ vpslash np    = MkVPS (TTAnt TCond AAnter) PPos (PassAgentVPSlash vpslash np)
+NPrSPassAgentVP_ p _ vpslash np        = MkVPS (TTAnt TPres ASimul) PNeg (PassAgentVPSlash vpslash np)
+NPaSPassAgentVP_ p _ vpslash np        = MkVPS (TTAnt TPast ASimul) PNeg (PassAgentVPSlash vpslash np)
+NFuSPassAgentVP_  p tf _ vpslash np    = MkVPS (TTAnt TFut  ASimul) PNeg (PassAgentVPSlash vpslash np)
+NCoSPassAgentVP_ p tc _ vpslash np     = MkVPS (TTAnt TCond ASimul) PNeg (PassAgentVPSlash vpslash np)
+NPrAPassAgentVP_ p at _ vpslash np     = MkVPS (TTAnt TPres AAnter) PNeg (PassAgentVPSlash vpslash np)
+NPaAPassAgentVP_ p at _ vpslash np     = MkVPS (TTAnt TPast AAnter) PNeg (PassAgentVPSlash vpslash np)
+NFuAPassAgentVP_  p at tf _ vpslash np = MkVPS (TTAnt TFut  AAnter) PNeg (PassAgentVPSlash vpslash np)
+NCoAPassAgentVP_ p at tc _ vpslash np  = MkVPS (TTAnt TCond AAnter) PNeg (PassAgentVPSlash vpslash np)
+
+
+-+  Tense and Polarity for Copula constructions
+
+--UseComp_ : FuCop_ -> Comp -> VP ;  cop head 
+--UseComp_ v c = UseComp c
+PPrSComp_ : PrCop_ -> Comp -> VPS ;                                cop  head
+PPaSComp_ : PaCop_ -> Comp -> VPS ;                                cop  head
+PFuSComp_ : Fut_ -> FuCop_ -> Comp -> VPS ;                        aux  cop  head
+PCoSComp_ : Cond_ -> FuCop_ -> Comp -> VPS ;                       aux  cop  head
+PPrAComp_ : PrPerf_ -> PartCop_ -> Comp -> VPS ;                   aux  cop  head
+PPaAComp_ : PaPerf_ -> PartCop_ -> Comp -> VPS ;                   aux  cop  head
+PFuAComp_ : FuPerf_ -> Fut_ -> PartCop_ -> Comp -> VPS ;           aux  aux  cop  head
+PCoAComp_ : FuPerf_ -> Cond_ -> PartCop_ -> Comp -> VPS ;          aux  aux  cop  head
+NPrSComp_ : Neg_ -> PrCop_ -> Comp -> VPS ;                        neg  cop  head
+NPaSComp_ : Neg_ -> PaCop_ -> Comp -> VPS ;                        neg  cop  head
+NFuSComp_ : Neg_ -> Fut_ -> FuCop_ -> Comp -> VPS ;                neg  aux  cop  head
+NCoSComp_ : Neg_ -> Cond_ -> FuCop_ -> Comp -> VPS ;               neg  aux  cop  head
+NPrAComp_ : Neg_ -> PrPerf_ -> PartCop_ -> Comp -> VPS ;           neg  aux  cop  head
+NPaAComp_ : Neg_ -> PaPerf_ -> PartCop_ -> Comp -> VPS ;           neg  aux  cop  head
+NFuAComp_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> Comp -> VPS ;   neg  aux  aux  cop  head
+NCoAComp_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> Comp -> VPS ;  neg  aux  aux  cop  head
+PPrSComp_ _ c         = MkVPS (TTAnt TPres ASimul) PPos (UseComp c)
+PPaSComp_ _ c         = MkVPS (TTAnt TPast ASimul) PPos (UseComp c)
+PFuSComp_ tf _ c      = MkVPS (TTAnt TFut  ASimul) PPos (UseComp c)
+PCoSComp_ tc _ c      = MkVPS (TTAnt TCond ASimul) PPos (UseComp c)
+PPrAComp_ at _ c      = MkVPS (TTAnt TPres AAnter) PPos (UseComp c)
+PPaAComp_ at _ c      = MkVPS (TTAnt TPast AAnter) PPos (UseComp c)
+PFuAComp_ at tf _ c   = MkVPS (TTAnt TFut  AAnter) PPos (UseComp c)
+PCoAComp_ at tc _ c   = MkVPS (TTAnt TCond AAnter) PPos (UseComp c)
+NPrSComp_ p _ c       = MkVPS (TTAnt TPres ASimul) PNeg (UseComp c)
+NPaSComp_ p _ c       = MkVPS (TTAnt TPast ASimul) PNeg (UseComp c)
+NFuSComp_ p tf _ c    = MkVPS (TTAnt TFut  ASimul) PNeg (UseComp c)
+NCoSComp_ p tc _ c    = MkVPS (TTAnt TCond ASimul) PNeg (UseComp c)
+NPrAComp_ p at _ c    = MkVPS (TTAnt TPres AAnter) PNeg (UseComp c)
+NPaAComp_ p at _ c    = MkVPS (TTAnt TPast AAnter) PNeg (UseComp c)
+NFuAComp_ p at tf _ c = MkVPS (TTAnt TFut  AAnter) PNeg (UseComp c)
+NCoAComp_ p at tc _ c = MkVPS (TTAnt TCond AAnter) PNeg (UseComp c)
+
+----QuestIComp_ : FuCop_ -> IComp -> NP -> QCl ;  cop head nsubj 
+----QuestIComp_ : FuCop_ -> IComp -> NP -> QCl ;  cop head nsubj:cop 
+----QuestIComp_ v c np = QuestIComp c np
+PPrSIComp_ : PrCop_ -> IComp -> NP -> QS ;                                cop  head  nsubj
+PPrSIComp_ : PrCop_ -> IComp -> NP -> QS ;                                cop  head  nsubj:cop
+PPaSIComp_ : PaCop_ -> IComp -> NP -> QS ;                                cop  head  nsubj
+PPaSIComp_ : PaCop_ -> IComp -> NP -> QS ;                                cop  head  nsubj:cop
+PFuSIComp_ : Fut_ -> FuCop_ -> IComp -> NP -> QS ;                        aux  cop   head  nsubj
+PFuSIComp_ : Fut_ -> FuCop_ -> IComp -> NP -> QS ;                        aux  cop   head  nsubj:cop
+PCoSIComp_ : Cond_ -> FuCop_ -> IComp -> NP -> QS ;                       aux  cop   head  nsubj
+PCoSIComp_ : Cond_ -> FuCop_ -> IComp -> NP -> QS ;                       aux  cop   head  nsubj:cop
+PPrAIComp_ : PrPerf_ -> PartCop_ -> IComp -> NP -> QS ;                   aux  cop   head  nsubj
+PPrAIComp_ : PrPerf_ -> PartCop_ -> IComp -> NP -> QS ;                   aux  cop   head  nsubj:cop
+PPaAIComp_ : PaPerf_ -> PartCop_ -> IComp -> NP -> QS ;                   aux  cop   head  nsubj
+PPaAIComp_ : PaPerf_ -> PartCop_ -> IComp -> NP -> QS ;                   aux  cop   head  nsubj:cop
+PFuAIComp_ : FuPerf_ -> Fut_ -> PartCop_ -> IComp -> NP -> QS ;           aux  aux   cop   head  nsubj
+PFuAIComp_ : FuPerf_ -> Fut_ -> PartCop_ -> IComp -> NP -> QS ;           aux  aux   cop   head  nsubj:cop
+PCoAIComp_ : FuPerf_ -> Cond_ -> PartCop_ -> IComp -> NP -> QS ;          aux  aux   cop   head  nsubj
+PCoAIComp_ : FuPerf_ -> Cond_ -> PartCop_ -> IComp -> NP -> QS ;          aux  aux   cop   head  nsubj:cop
+NPrSIComp_ : Neg_ -> PrCop_ -> IComp -> NP -> QS ;                        neg  cop   head  nsubj
+NPrSIComp_ : Neg_ -> PrCop_ -> IComp -> NP -> QS ;                        neg  cop   head  nsubj:cop
+NPaSIComp_ : Neg_ -> PaCop_ -> IComp -> NP -> QS ;                        neg  cop   head  nsubj
+NPaSIComp_ : Neg_ -> PaCop_ -> IComp -> NP -> QS ;                        neg  cop   head  nsubj:cop
+NFuSIComp_ : Neg_ -> Fut_ -> FuCop_ -> IComp -> NP -> QS ;                neg  aux   cop   head  nsubj
+NFuSIComp_ : Neg_ -> Fut_ -> FuCop_ -> IComp -> NP -> QS ;                neg  aux   cop   head  nsubj:cop
+NCoSIComp_ : Neg_ -> Cond_ -> FuCop_ -> IComp -> NP -> QS ;               neg  aux   cop   head  nsubj
+NCoSIComp_ : Neg_ -> Cond_ -> FuCop_ -> IComp -> NP -> QS ;               neg  aux   cop   head  nsubj:cop
+NPrAIComp_ : Neg_ -> PrPerf_ -> PartCop_ -> IComp -> NP -> QS ;           neg  aux   cop   head  nsubj
+NPrAIComp_ : Neg_ -> PrPerf_ -> PartCop_ -> IComp -> NP -> QS ;           neg  aux   cop   head  nsubj:cop
+NPaAIComp_ : Neg_ -> PaPerf_ -> PartCop_ -> IComp -> NP -> QS ;           neg  aux   cop   head  nsubj
+NPaAIComp_ : Neg_ -> PaPerf_ -> PartCop_ -> IComp -> NP -> QS ;           neg  aux   cop   head  nsubj:cop
+NFuAIComp_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> IComp -> NP -> QS ;   neg  aux   aux   cop   head  nsubj
+NFuAIComp_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> IComp -> NP -> QS ;   neg  aux   aux   cop   head  nsubj:cop
+NCoAIComp_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> IComp -> NP -> QS ;  neg  aux   aux   cop   head  nsubj
+NCoAIComp_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> IComp -> NP -> QS ;  neg  aux   aux   cop   head  nsubj:cop
+PPrSIComp_ _ ic np         = UseQCl (TTAnt TPres ASimul) PPos (QuestIComp ic np)
+PPaSIComp_ _ ic np         = UseQCl (TTAnt TPast ASimul) PPos (QuestIComp ic np)
+PFuSIComp_ tf _ ic np      = UseQCl (TTAnt TFut  ASimul) PPos (QuestIComp ic np)
+PCoSIComp_ tc _ ic np      = UseQCl (TTAnt TCond ASimul) PPos (QuestIComp ic np)
+PPrAIComp_ at _ ic np      = UseQCl (TTAnt TPres AAnter) PPos (QuestIComp ic np)
+PPaAIComp_ at _ ic np      = UseQCl (TTAnt TPast AAnter) PPos (QuestIComp ic np)
+PFuAIComp_ at tf _ ic np   = UseQCl (TTAnt TFut  AAnter) PPos (QuestIComp ic np)
+PCoAIComp_ at tc _ ic np   = UseQCl (TTAnt TCond AAnter) PPos (QuestIComp ic np)
+NPrSIComp_ p _ ic np       = UseQCl (TTAnt TPres ASimul) PNeg (QuestIComp ic np)
+NPaSIComp_ p _ ic np       = UseQCl (TTAnt TPast ASimul) PNeg (QuestIComp ic np)
+NFuSIComp_ p tf _ ic np    = UseQCl (TTAnt TFut  ASimul) PNeg (QuestIComp ic np)
+NCoSIComp_ p tc _ ic np    = UseQCl (TTAnt TCond ASimul) PNeg (QuestIComp ic np)
+NPrAIComp_ p at _ ic np    = UseQCl (TTAnt TPres AAnter) PNeg (QuestIComp ic np)
+NPaAIComp_ p at _ ic np    = UseQCl (TTAnt TPast AAnter) PNeg (QuestIComp ic np)
+NFuAIComp_ p at tf _ ic np = UseQCl (TTAnt TFut  AAnter) PNeg (QuestIComp ic np)
+NCoAIComp_ p at tc _ ic np = UseQCl (TTAnt TCond AAnter) PNeg (QuestIComp ic np)
+
+-+  Sentence constructions
+
+EmbedVP_ : InfMark_  -> VP -> SC ; mark head     VerbForm=Inf 
+EmbedVP_ m vp = EmbedVP vp
+EmbedComp_  : InfMark_ -> FuCop_ -> Comp -> SC ;  mark cop head
+EmbedComp_ m _ c = EmbedVP (UseComp c)
+EmbedS_  : ThatMark_ -> S -> SC ;  mark head 
+EmbedS_ m s = EmbedS s
+EmbedQS_ : ThatMark_ -> QS -> SC ; mark head
+EmbedQS_ m s = EmbedQS s
+
+----EmbedIP
+
+MarkS_ : ThatMark_ -> S -> S ; mark head 
+MarkS_ m s = s
+MarkVP_  : InfMark_ -> VP -> VP ; mark head 
+MarkVP_ m vp = vp
+MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VP ;  mark cop head
+MarkComp_ m _ c = UseComp c
+
+----RelVP_     : ThatMark_ -> VP -> RCl ;      mark head
+----RelCl_     : ThatMark_ -> Cl -> RCl ;      mark head
+----RelSlash_  : ThatMark_ -> ClSlash -> RCl ; mark head
+----RelVP_  m vp   = RelVP IdRP vp
+----RelCl_  m cl   = RelCl cl
+----RelSlash m cl  = RelSlash IdRP cl
+RelVPS_    : ThatMark_ -> VPS -> RS ;      mark head
+RelSSlash_ : ThatMark_ -> SSlash -> RS ;   mark head
+RelVPS_ m vps  = RelVPS IdRP vps
+RelSSlash_ m s = RelSSlash IdRP s
+
+-+  Idioms
+
+--ExistNP_ : BeVerb_ -> Expl_ -> NP -> Cl ; head expl nsubj 
+--ExistNP_ cop expl np = ExistNP np
+PPrSExistNP_ : PrCop_ -> Expl_ -> NP -> S ;                                head  expl  nsubj
+PPaSExistNP_ : PaCop_ -> Expl_ -> NP -> S ;                                head  expl  nsubj
+PFuSExistNP_ : Fut_ -> FuCop_ -> Expl_ -> NP -> S ;                        aux  head  expl  nsubj
+PCoSExistNP_ : Cond_ -> FuCop_ -> Expl_ -> NP -> S ;                       aux  head  expl  nsubj
+PPrAExistNP_ : PrPerf_ -> PartCop_ -> Expl_ -> NP -> S ;                   aux  head  expl  nsubj
+PPaAExistNP_ : PaPerf_ -> PartCop_ -> Expl_ -> NP -> S ;                   aux  head  expl  nsubj
+PFuAExistNP_ : FuPerf_ -> Fut_ -> PartCop_ -> Expl_ -> NP -> S ;           aux  aux  head  expl  nsubj
+PCoAExistNP_ : FuPerf_ -> Cond_ -> PartCop_ -> Expl_ -> NP -> S ;          aux  aux  head  expl  nsubj
+NPrSExistNP_ : Neg_ -> PrCop_ -> Expl_ -> NP -> S ;                        neg  head  expl  nsubj
+NPaSExistNP_ : Neg_ -> PaCop_ -> Expl_ -> NP -> S ;                        neg  head  expl  nsubj
+NFuSExistNP_ : Neg_ -> Fut_ -> FuCop_ -> Expl_ -> NP -> S ;                neg  aux  head  expl  nsubj
+NCoSExistNP_ : Neg_ -> Cond_ -> FuCop_ -> Expl_ -> NP -> S ;               neg  aux  head  expl  nsubj
+NPrAExistNP_ : Neg_ -> PrPerf_ -> PartCop_ -> Expl_ -> NP -> S ;           neg  aux  head  expl  nsubj
+NPaAExistNP_ : Neg_ -> PaPerf_ -> PartCop_ -> Expl_ -> NP -> S ;           neg  aux  head  expl  nsubj
+NFuAExistNP_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> Expl_ -> NP -> S ;   neg  aux  aux  head  expl  nsubj
+NCoAExistNP_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> Expl_ -> NP -> S ;  neg  aux  aux  head  expl  nsubj
+PPrSExistNP_ _ expl np          = UseCl (TTAnt TPres ASimul) PPos (ExistNP np)
+PPaSExistNP_ _ expl np          = UseCl (TTAnt TPast ASimul) PPos (ExistNP np)
+PFuSExistNP_ tf _ expl np       = UseCl (TTAnt TFut  ASimul) PPos (ExistNP np)
+PCoSExistNP_ tc _ expl np       = UseCl (TTAnt TCond ASimul) PPos (ExistNP np)
+PPrAExistNP_ at _ expl np       = UseCl (TTAnt TPres AAnter) PPos (ExistNP np)
+PPaAExistNP_ at _ expl np       = UseCl (TTAnt TPast AAnter) PPos (ExistNP np)
+PFuAExistNP_ at tf _ expl np    = UseCl (TTAnt TFut  AAnter) PPos (ExistNP np)
+PCoAExistNP_ at tc _ expl np    = UseCl (TTAnt TCond AAnter) PPos (ExistNP np)
+NPrSExistNP_ p _ expl np        = UseCl (TTAnt TPres ASimul) PNeg (ExistNP np)
+NPaSExistNP_ p _ expl np        = UseCl (TTAnt TPast ASimul) PNeg (ExistNP np)
+NFuSExistNP_ p tf _ expl np     = UseCl (TTAnt TFut  ASimul) PNeg (ExistNP np)
+NCoSExistNP_ p tc _ expl np     = UseCl (TTAnt TCond ASimul) PNeg (ExistNP np)
+NPrAExistNP_ p at _ expl np     = UseCl (TTAnt TPres AAnter) PNeg (ExistNP np)
+NPaAExistNP_ p at _ expl np     = UseCl (TTAnt TPast AAnter) PNeg (ExistNP np)
+NFuAExistNP_ p at tf _ expl np  = UseCl (TTAnt TFut  AAnter) PNeg (ExistNP np)
+NCoAExistNP_ p at tc _ expl np  = UseCl (TTAnt TCond AAnter) PNeg (ExistNP np)
+
+PPrSExistNPAdv_ : PrCop_ -> Expl_ -> NP -> Adv -> S ;                                head  expl  nsubj  nmod
+PPaSExistNPAdv_ : PaCop_ -> Expl_ -> NP -> Adv -> S ;                                head  expl  nsubj  nmod
+PFuSExistNPAdv_ : Fut_ -> FuCop_ -> Expl_ -> NP -> Adv -> S ;                        aux  head  expl  nsubj  nmod
+PCoSExistNPAdv_ : Cond_ -> FuCop_ -> Expl_ -> NP -> Adv -> S ;                       aux  head  expl  nsubj  nmod
+PPrAExistNPAdv_ : PrPerf_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;                   aux  head  expl  nsubj  nmod
+PPaAExistNPAdv_ : PaPerf_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;                   aux  head  expl  nsubj  nmod
+PFuAExistNPAdv_ : FuPerf_ -> Fut_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;           aux  aux  head  expl  nsubj  nmod
+PCoAExistNPAdv_ : FuPerf_ -> Cond_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;          aux  aux  head  expl  nsubj  nmod
+NPrSExistNPAdv_ : Neg_ -> PrCop_ -> Expl_ -> NP -> Adv -> S ;                        neg  head  expl  nsubj  nmod
+NPaSExistNPAdv_ : Neg_ -> PaCop_ -> Expl_ -> NP -> Adv -> S ;                        neg  head  expl  nsubj  nmod
+NFuSExistNPAdv_ : Neg_ -> Fut_ -> FuCop_ -> Expl_ -> NP -> Adv -> S ;                neg  aux  head  expl  nsubj  nmod
+NCoSExistNPAdv_ : Neg_ -> Cond_ -> FuCop_ -> Expl_ -> NP -> Adv -> S ;               neg  aux  head  expl  nsubj  nmod
+NPrAExistNPAdv_ : Neg_ -> PrPerf_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;           neg  aux  head  expl  nsubj  nmod
+NPaAExistNPAdv_ : Neg_ -> PaPerf_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;           neg  aux  head  expl  nsubj  nmod
+NFuAExistNPAdv_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;   neg  aux  aux  head  expl  nsubj  nmod
+NCoAExistNPAdv_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> Expl_ -> NP -> Adv -> S ;  neg  aux  aux  head  expl  nsubj  nmod
+PPrSExistNPAdv_ _ expl np adv          = UseCl (TTAnt TPres ASimul) PPos (ExistNPAdv np adv)
+PPaSExistNPAdv_ _ expl np adv          = UseCl (TTAnt TPast ASimul) PPos (ExistNPAdv np adv)
+PFuSExistNPAdv_ tf _ expl np adv       = UseCl (TTAnt TFut  ASimul) PPos (ExistNPAdv np adv)
+PCoSExistNPAdv_ tc _ expl np adv       = UseCl (TTAnt TCond ASimul) PPos (ExistNPAdv np adv)
+PPrAExistNPAdv_ at _ expl np adv       = UseCl (TTAnt TPres AAnter) PPos (ExistNPAdv np adv)
+PPaAExistNPAdv_ at _ expl np adv       = UseCl (TTAnt TPast AAnter) PPos (ExistNPAdv np adv)
+PFuAExistNPAdv_ at tf _ expl np adv    = UseCl (TTAnt TFut  AAnter) PPos (ExistNPAdv np adv)
+PCoAExistNPAdv_ at tc _ expl np adv    = UseCl (TTAnt TCond AAnter) PPos (ExistNPAdv np adv)
+NPrSExistNPAdv_ p _ expl np adv        = UseCl (TTAnt TPres ASimul) PNeg (ExistNPAdv np adv)
+NPaSExistNPAdv_ p _ expl np adv        = UseCl (TTAnt TPast ASimul) PNeg (ExistNPAdv np adv)
+NFuSExistNPAdv_ p tf _ expl np adv     = UseCl (TTAnt TFut  ASimul) PNeg (ExistNPAdv np adv)
+NCoSExistNPAdv_ p tc _ expl np adv     = UseCl (TTAnt TCond ASimul) PNeg (ExistNPAdv np adv)
+NPrAExistNPAdv_ p at _ expl np adv     = UseCl (TTAnt TPres AAnter) PNeg (ExistNPAdv np adv)
+NPaAExistNPAdv_ p at _ expl np adv     = UseCl (TTAnt TPast AAnter) PNeg (ExistNPAdv np adv)
+NFuAExistNPAdv_ p at tf _ expl np adv  = UseCl (TTAnt TFut  AAnter) PNeg (ExistNPAdv np adv)
+NCoAExistNPAdv_ p at tc _ expl np adv  = UseCl (TTAnt TCond AAnter) PNeg (ExistNPAdv np adv)
+
+PPrSCleftNP_ : PrCop_ -> Cleft_ -> NP -> RS -> S ;                                  cop  expl head acl:relcl
+PPaSCleftNP_ : PaCop_ -> Cleft_ -> NP -> RS -> S ;                                  cop  expl head acl:relcl
+PFuSCleftNP_ : Fut_ -> FuCop_ -> Cleft_ -> NP -> RS -> S ;                          aux  cop  expl head acl:relcl
+PCoSCleftNP_ : Cond_ -> FuCop_ -> Cleft_ -> NP -> RS -> S ;                         aux  cop  expl head acl:relcl
+PPrACleftNP_ : PrPerf_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;                     aux  cop  expl head acl:relcl
+PPaACleftNP_ : PaPerf_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;                     aux  cop  expl head acl:relcl
+PFuACleftNP_ : FuPerf_ -> Fut_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;             aux  aux  cop  expl head  acl:relcl
+PCoACleftNP_ : FuPerf_ -> Cond_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;            aux  aux  cop  expl head  acl:relcl
+NPrSCleftNP_ : Neg_ -> PrCop_ -> Cleft_ -> NP -> RS -> S ;                          neg  cop  expl head acl:relcl
+NPaSCleftNP_ : Neg_ -> PaCop_ -> Cleft_ -> NP -> RS -> S ;                          neg  cop  expl head acl:relcl
+NFuSCleftNP_ : Neg_ -> Fut_ -> FuCop_ -> Cleft_ -> NP -> RS -> S ;                  neg  aux  cop  expl head  acl:relcl
+NCoSCleftNP_ : Neg_ -> Cond_ -> FuCop_ -> Cleft_ -> NP -> RS -> S ;                 neg  aux  cop  expl head  acl:relcl
+NPrACleftNP_ : Neg_ -> PrPerf_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;             neg  aux  cop  expl head  acl:relcl
+NPaACleftNP_ : Neg_ -> PaPerf_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;             neg  aux  cop  expl head  acl:relcl
+NFuACleftNP_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;     neg  aux  aux  cop  expl  head  acl:relcl
+NCoACleftNP_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> Cleft_ -> NP -> RS -> S ;    neg  aux  aux  cop  expl  head  acl:relcl
+PPrSCleftNP_ _ cleft np rs           = UseCl (TTAnt TPres ASimul) PPos (CleftNP np rs)
+PPaSCleftNP_ _ cleft np rs           = UseCl (TTAnt TPast ASimul) PPos (CleftNP np rs)
+PFuSCleftNP_ tf _ cleft np rs        = UseCl (TTAnt TFut  ASimul) PPos (CleftNP np rs)
+PCoSCleftNP_ tc _ cleft np rs        = UseCl (TTAnt TCond ASimul) PPos (CleftNP np rs)
+PPrACleftNP_ at _ cleft np rs        = UseCl (TTAnt TPres AAnter) PPos (CleftNP np rs)
+PPaACleftNP_ at _ cleft np rs        = UseCl (TTAnt TPast AAnter) PPos (CleftNP np rs)
+PFuACleftNP_ at tf _ cleft np rs     = UseCl (TTAnt TFut  AAnter) PPos (CleftNP np rs)
+PCoACleftNP_ at tc _ cleft np rs     = UseCl (TTAnt TCond AAnter) PPos (CleftNP np rs)
+NPrSCleftNP_ p _ cleft np rs         = UseCl (TTAnt TPres ASimul) PNeg (CleftNP np rs)
+NPaSCleftNP_ p _ cleft np rs         = UseCl (TTAnt TPast ASimul) PNeg (CleftNP np rs)
+NFuSCleftNP_ p tf _ cleft np rs      = UseCl (TTAnt TFut  ASimul) PNeg (CleftNP np rs)
+NCoSCleftNP_ p tc _ cleft np rs      = UseCl (TTAnt TCond ASimul) PNeg (CleftNP np rs)
+NPrACleftNP_ p at _ cleft np rs      = UseCl (TTAnt TPres AAnter) PNeg (CleftNP np rs)
+NPaACleftNP_ p at _ cleft np rs      = UseCl (TTAnt TPast AAnter) PNeg (CleftNP np rs)
+NFuACleftNP_ p at tf _ cleft np rs   = UseCl (TTAnt TFut  AAnter) PNeg (CleftNP np rs)
+NCoACleftNP_ p at tc _ cleft np rs   = UseCl (TTAnt TCond AAnter) PNeg (CleftNP np rs)
+
+ExplPredSCVPSC_ : Cleft_ -> SC -> VPS -> S ;       expl  csubj      head
+ExplPredSCVPSC_ : Cleft_ -> SC -> VPS -> S ;       expl  csubj:cop  head
+ExplPredSCVPSC_ : Cleft_ -> SC -> VPS -> S ;       expl  csubjpass  head
+ExplPredSCVPS_  : Cleft_ -> S -> VPS -> S  ;       expl  csubj      head
+ExplPredSCVPS_  : Cleft_ -> S -> VPS -> S  ;       expl  csubj:cop  head
+ExplPredSCVPS_  : Cleft_ -> S -> VPS -> S  ;       expl  csubjpass  head
+ExplPredSCVPSC_ cleft sc vps = ExplPredSCVPS sc vps
+ExplPredSCVPS_  cleft s  vps = ExplPredSCVPS (EmbedS s) vps
+
+PPrSImpersCl_ : PrCop_ -> Cleft_ -> VP -> S ;                                      cop  expl head
+PPaSImpersCl_ : PaCop_ -> Cleft_ -> VP -> S ;                                      cop  expl head
+PFuSImpersCl_ : Fut_ -> FuCop_ -> Cleft_ -> VP -> S ;                              aux  cop  expl  head
+PCoSImpersCl_ : Cond_ -> FuCop_ -> Cleft_ -> VP -> S ;                             aux  cop  expl  head
+PPrAImpersCl_ : PrPerf_ -> PartCop_ -> Cleft_ -> VP -> S ;                         aux  cop  expl  head
+PPaAImpersCl_ : PaPerf_ -> PartCop_ -> Cleft_ -> VP -> S ;                         aux  cop  expl  head
+PFuAImpersCl_ : FuPerf_ -> Fut_ -> PartCop_ -> Cleft_ -> VP -> S ;                 aux  aux  cop   expl  head
+PCoAImpersCl_ : FuPerf_ -> Cond_ -> PartCop_ -> Cleft_ -> VP -> S ;                aux  aux  cop   expl  head
+NPrSImpersCl_ : Neg_ -> PrCop_ -> Cleft_ -> VP -> S ;                              neg  cop  expl  head
+NPaSImpersCl_ : Neg_ -> PaCop_ -> Cleft_ -> VP -> S ;                              neg  cop  expl  head
+NFuSImpersCl_ : Neg_ -> Fut_ -> FuCop_ -> Cleft_ -> VP -> S ;                      neg  aux  cop  expl  head
+NCoSImpersCl_ : Neg_ -> Cond_ -> FuCop_ -> Cleft_ -> VP -> S ;                     neg  aux  cop  expl  head
+NPrAImpersCl_ : Neg_ -> PrPerf_ -> PartCop_ -> Cleft_ -> VP -> S ;                 neg  aux  cop  expl  head
+NPaAImpersCl_ : Neg_ -> PaPerf_ -> PartCop_ -> Cleft_ -> VP -> S ;                 neg  aux  cop  expl  head
+NFuAImpersCl_ : Neg_ -> FuPerf_ -> Fut_ -> PartCop_ -> Cleft_ -> VP -> S ;         neg  aux  aux  cop   expl  head
+NCoAImpersCl_ : Neg_ -> FuPerf_ -> Cond_ -> PartCop_ -> Cleft_ -> VP -> S ;        neg  aux  aux  cop   expl  head
+PPrSImpersCl_ _ cleft vp           = UseCl (TTAnt TPres ASimul) PPos (ImpersCl vp)
+PPaSImpersCl_ _ cleft vp           = UseCl (TTAnt TPast ASimul) PPos (ImpersCl vp)
+PFuSImpersCl_ tf _ cleft vp        = UseCl (TTAnt TFut  ASimul) PPos (ImpersCl vp)
+PCoSImpersCl_ tc _ cleft vp        = UseCl (TTAnt TCond ASimul) PPos (ImpersCl vp)
+PPrAImpersCl_ at _ cleft vp        = UseCl (TTAnt TPres AAnter) PPos (ImpersCl vp)
+PPaAImpersCl_ at _ cleft vp        = UseCl (TTAnt TPast AAnter) PPos (ImpersCl vp)
+PFuAImpersCl_ at tf _ cleft vp     = UseCl (TTAnt TFut  AAnter) PPos (ImpersCl vp)
+PCoAImpersCl_ at tc _ cleft vp     = UseCl (TTAnt TCond AAnter) PPos (ImpersCl vp)
+NPrSImpersCl_ p _ cleft vp         = UseCl (TTAnt TPres ASimul) PNeg (ImpersCl vp)
+NPaSImpersCl_ p _ cleft vp         = UseCl (TTAnt TPast ASimul) PNeg (ImpersCl vp)
+NFuSImpersCl_ p tf _ cleft vp      = UseCl (TTAnt TFut  ASimul) PNeg (ImpersCl vp)
+NCoSImpersCl_ p tc _ cleft vp      = UseCl (TTAnt TCond ASimul) PNeg (ImpersCl vp)
+NPrAImpersCl_ p at _ cleft vp      = UseCl (TTAnt TPres AAnter) PNeg (ImpersCl vp)
+NPaAImpersCl_ p at _ cleft vp      = UseCl (TTAnt TPast AAnter) PNeg (ImpersCl vp)
+NFuAImpersCl_ p at tf _ cleft vp   = UseCl (TTAnt TFut  AAnter) PNeg (ImpersCl vp)
+NCoAImpersCl_ p at tc _ cleft vp   = UseCl (TTAnt TCond AAnter) PNeg (ImpersCl vp)
+
+-+  Handling punctuations
+-++ Letting Comma_ be dropped from the sentence to improve coverage 
+DropCoAdv_    : Comma_ -> Adv -> Adv ;    punct   head 
+DropCoNP_     : Comma_ -> NP  -> NP  ;    punct   head 
+DropCoS_      : Comma_ -> S   -> S   ;    punct   head 
+DropCoAdv_ pu x = x 
+DropCoNP_  pu x = x 
+DropCoS_   pu x = x 
+
+
+-+  Utterance constructions
+
+UttImpVP_ : VP -> Utt ;  Mood=Imp 
+UttImpVP_ vp = UttImpSg PPos (ImpVP vp)
+UttNegImpVP_ : VP -> Neg_ -> Utt ; head neg  Mood=Imp 
+UttNegImpVP_ vp p = UttImpSg PNeg (ImpVP vp)
+----UttImpPl
+----UttImpPol
+---- UttInterjS_ : Interj -> Utt -> Utt ; discourse head   -- PK
+---- UttInterjS_ i u = (UttInterj i)
+
+PhrUttNovoc_    : Utt -> Phr ;
+PhrUttVoc_      : Utt -> NP -> Phr ;           head  vocative 
+PhrUttConj_     : Conj -> Utt -> Phr ;         conj  head
+PhrUttPConj_    : PConj -> Utt -> Phr ;        conj  head
+PhrUttConjVoc_  : Conj -> Utt -> NP -> Phr ;   conj  head  vocative
+PhrUttPConjVoc_ : PConj -> Utt -> NP -> Phr ;  conj  head  vocative
+PhrUttNovoc_ utt          = PhrUtt NoPConj utt NoVoc
+PhrUttVoc_ utt np         = PhrUtt NoPConj utt (VocNP np)
+PhrUttPConj_ pc utt       = PhrUtt pc utt NoVoc
+PhrUttConj_  c utt        = PhrUtt (PConjConj c) utt NoVoc
+PhrUttPConjVoc_ pc utt np = PhrUtt pc utt (VocNP np)
+PhrUttConjVoc_  c utt np  = PhrUtt (PConjConj c) utt (VocNP np)
 
 -- backup construction functions
 
@@ -210,8 +1125,9 @@ UttNegImpVP_ vp p = UttImpSg PNeg (ImpVP vp)
 *  SubjBackup : Subj -> Backup ;
 *  SymbBackup : Symb -> Backup ;
 *  UttBackup : Utt -> Backup ;
-
-
+*  VPSlashBackup   : VPSlash -> Backup ;
+*  VPBackup  : VP -> Backup ;
+*  VPSBackup  : VPS -> Backup ;
 -- eliminated backup application functions
 --- other backup application functions are built-in
 
@@ -223,32 +1139,48 @@ BackupN c b = c -- BackupNP (MassNP (UseN c)) b
 -------------------------------------
 -- categories
 --------------------------------------
-A     ADJ
-AdA   ADV
-AdV   ADV
-Adv   ADV
-Card  NUM NumType=Card
-Conj  CONJ
-Det   DET
-IAdv  ADV
-Interj  INTJ
-IP    PRON PronType=Int
-IQuant DET PronType=Int
-N     NOUN
-NP    PRON PronType=Dem
-PN    PROPN
-Prep   ADP
-Pron  PRON PronType=Prs
-Punct  PUNCT
-Quant DET
-RP    PRON PronType=Rel
-String  PROPN SYM PUNCT
-String  NUM NumType=Card
-Subj  SCONJ
-V     VERB
-V2    VERB
-V2V   VERB
-VA    VERB
-VS    VERB
-VV    VERB AUX
+-+  OPEN classes
+N       NOUN 
+N       PROPN                    -- Iranians, Portuguese, Iraqi
+PN      PROPN 
+A       ADJ
+AdA     ADV                    	 -- ADJ (some entries are marked as ADJ like pretty, less, much) / PK
+AdN     ADV
+AdV     ADV 
+Adv     ADV                      -- ADJ
+IAdv    ADV     PronType=Int 
 
+---- PK (UD_ADJ can be Adv using AdAdv function), can be adjectives can be transformed to modifiers Adv using PositAdvAdj?)
+V       VERB 
+V2      VERB 
+V3      VERB
+-----V2    ADJ                   -- possible to construct an AP without consuming anything using type-raising functions
+V2V     VERB 
+VA      VERB 
+VS      VERB 
+VV      VERB
+VV      AUX      VerbForm=Fin
+VP	VERB                     -- for copula
+-+  CLOSED classes
+Card    NUM    NumType=Card 
+String  NUM    NumType=Card 
+Conj    CONJ 
+Pron    PRON   PronType=Prs 
+NP      PRON   PronType=Dem 
+Det     PRON   PronType=Rel
+RP      PRON   PronType=Rel
+IP      PRON   PronType=Int
+Predet  DET
+Det     DET 
+Quant   DET 
+IQuant  DET    PronType=Int 
+Interj  INTJ 
+Prep    ADP 
+Subj    SCONJ 
+Subj    ADV    PronType=Int
+Punct   PUNCT
+String  PUNCT
+----Quant   PRON PronType=Rel      -- PK (probably an error, that left one Iraqi dead)
+
+--- NOISY classes
+String  PROPN  SYM  X  PUNCT

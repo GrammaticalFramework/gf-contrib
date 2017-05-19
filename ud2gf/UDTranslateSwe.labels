@@ -1,22 +1,82 @@
 -- Swedish annotations on top of UDTranslate.labels
 
 BareCN_   : CN -> NP ;        Number=Sing Definite=Ind
-BareCN_ cn = MassNP cn
 BarePlCN_ : CN -> NP ;        Number=Plur Definite=Ind
+DefCN_    : CN -> NP ;        Number=Sing Definite=Def
+DefPlCN_  : CN -> NP ;        Number=Plur Definite=Def
+BareCN_ cn   = MassNP cn
 BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
-DefCN_   : CN -> NP ;        Number=Sing Definite=Def
-DefCN_ cn = DetCN (DetQuant DefArt NumSg) cn
-DefPlCN_ : CN -> NP ;        Number=Plur Definite=Def
-DefPlCN_ cn = DetCN (DetQuant DefArt NumPl) cn
+DefCN_ cn    = DetCN (DetQuant DefArt NumSg) cn
+DefPlCN_ cn  = DetCN (DetQuant DefArt NumPl) cn
 
-Predet DET lemma=all
+Predet        DET    lemma=all
 
-Cop_      VERB  lemma=vara
-InfMark_  PART  lemma=att
-Expl_     PRON  lemma=den -- used as another expletive 
-Neg_      PART  lemma=inte
-ThatMark_ SCONJ lemma=att
+-- syncategorematic words
 AuxPass_  AUX   lemma=vara -- ?
-Fut_      AUX   lemma=ska
-Cond_     AUX   lemma=skulle
-Perf_     AUX   lemma=ha
+
+Neg_          PART   lemma=inte
+Fut_          AUX    lemma=ska       VerbForm=Fin
+Cond_         AUX    lemma=skulle    VerbForm=Fin
+PrPerf_       AUX    lemma=ha        VerbForm=Fin   Tense=Pres
+PaPerf_       AUX    lemma=ha        VerbForm=Fin   Tense=Past
+FuPerf_       AUX    lemma=ha        VerbForm=Inf
+PrCop_        VERB   lemma=vara      VerbForm=Fin   Tense=Pres
+PaCop_        VERB   lemma=vara      VerbForm=Fin   Tense=Past
+FuCop_        VERB   lemma=vara      VerbForm=Inf
+PartCop_      VERB   lemma=vara      VerbForm=Part  Tense=Past
+
+PrBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Pres   -- ProgrVP is realized differently in Swedish than English
+PaBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Past
+FuBeVerb_     AUX    lemma=be        VerbForm=Inf
+PartBeVerb_   AUX    lemma=be        VerbForm=Part
+GerBeVerb_    AUX    lemma=be        VerbForm=Ger
+
+PrAuxPass_    AUX    lemma=bli       VerbForm=Fin   Tense=Pres
+PaAuxPass_    AUX    lemma=bli       VerbForm=Fin   Tense=Past
+InfAuxPass_   AUX    lemma=bli       VerbForm=Inf
+PartAuxPass_  AUX    lemma=bli       VerbForm=Part
+InfMark_      PART   lemma=att
+Expl_         PRON   lemma=den
+Cleft_        PRON   lemma=it
+ThatMark_     SCONJ  lemma=att
+
+Comma_        PUNCT  lemma=,
+Amp_          PUNCT  lemma=&
+Orslash_      PUNCT  lemma=/
+----EOS_          PUNCT  lemma=.
+----EOQS_         PUNCT  lemma=?
+
+
+
+---- AR: experiment with VPto_
+cat VPatt_ = VP
+ComplVV_ : VV -> VPatt_ -> VP ;         head xcomp            -- (1)
+ComplVV_ vv vpatt = ComplVV vv vpatt
+MarkVP_  : InfMark_ -> VP -> VPatt_ ;   mark head         -- (1)
+MarkVP_ m vp = vp
+MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VPatt_ ;  mark cop head
+MarkComp_ m _ c = UseComp c
+
+
+
+---++ Language-specific extensions over previously defined helper functions
+
+-- [nmod:agent]
+PPrSPassAgentVP_ : PrAuxPass_ -> VPSlash -> NP -> VPS ;                                 auxpass  head  nmod:agent
+PPaSPassAgentVP_ : PaAuxPass_ -> VPSlash -> NP -> VPS ;                                 auxpass  head  nmod:agent
+PFuSPassAgentVP_ : Fut_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                        aux  auxpass  head  nmod:agent
+PCoSPassAgentVP_ : Cond_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                       aux  auxpass  head  nmod:agent
+PPrAPassAgentVP_ : PrPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;                    aux  auxpass  head  nmod:agent
+PPaAPassAgentVP_ : PaPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;                    aux  auxpass  head  nmod:agent
+PFuAPassAgentVP_ : FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            aux  aux  auxpass  head  nmod:agent
+PCoAPassAgentVP_ : FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;           aux  aux  auxpass  head  nmod:agent
+NPrSPassAgentVP_ : Neg_ -> PrAuxPass_ -> VPSlash -> NP -> VPS ;                         neg  auxpass  head  nmod:agent
+NPaSPassAgentVP_ : Neg_ -> PaAuxPass_ -> VPSlash -> NP -> VPS ;                         neg  auxpass  head  nmod:agent
+NFuSPassAgentVP_ : Neg_ -> Fut_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ;                neg  aux  auxpass  head  nmod:agent
+NCoSPassAgentVP_ : Neg_ -> Cond_ -> InfAuxPass_ -> VPSlash -> NP -> VPS ; neg           aux  auxpass  head  nmod:agent
+NPrAPassAgentVP_ : Neg_ -> PrPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            neg  aux  auxpass  head  nmod:agent
+NPaAPassAgentVP_ : Neg_ -> PaPerf_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;            neg  aux  auxpass  head  nmod:agent
+NFuAPassAgentVP_ : Neg_ -> FuPerf_ -> Fut_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;    neg  aux  aux auxpass  head  nmod:agent
+NCoAPassAgentVP_ : Neg_ -> FuPerf_ -> Cond_ -> PartAuxPass_ -> VPSlash -> NP -> VPS ;   neg  aux  aux auxpass  head  nmod:agent
+
+
