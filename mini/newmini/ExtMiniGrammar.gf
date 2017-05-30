@@ -1,4 +1,10 @@
-abstract ExtMiniGrammar = MiniGrammar ** {
+abstract ExtMiniGrammar = MiniGrammar
+  - [
+   UsePresCl,ComplV2,UseAP,a_Det,aPl_Det,the_Det,thePl_Det,CoordS
+   ]
+
+
+  ** {
 
   cat
   
@@ -6,11 +12,9 @@ abstract ExtMiniGrammar = MiniGrammar ** {
 --+    Utt ;    -- sentence, question, word...         e.g. "be quiet"
     Interj ; -- interjection                        e.g. "alas"
 --+    Adv ;    -- verb-phrase-modifying adverb        e.g. "in the house"
-    AdV ;    -- adverb directly attached to verb    e.g. "always"
     AdA ;    -- adjective-modifying adverb          e.g. "very"
     
     IAdv ;   -- interrogative adverb                e.g. "why"
-    CAdv ;   -- comparative adverb                  e.g. "more"
     Temp ;   -- temporal and aspectual features     e.g. past anterior
     Tense ;  -- tense                               e.g. present, past, future
 --+    Pol ;    -- polarity                            e.g. positive, negative
@@ -136,4 +140,15 @@ abstract ExtMiniGrammar = MiniGrammar ** {
     ASimul : Ant ;                  -- I sleep/slept [simultaneous, not compound]
     AAnter : Ant ;                  -- I have slept/had slept [anterior, compound, "perfect"]
 
+-- Structural
+    if_Subj      : Subj ;
+    because_Subj : Subj ;
+    very_AdA     : AdA ;
+    who_IP       : IP ;
+    this_Quant   : Quant ;
+    when_IAdv    : IAdv ;
+    why_IAdv     : IAdv ;
+    want_VV      : VV ;
+    can_VV       : VV ;
+ 
 }
