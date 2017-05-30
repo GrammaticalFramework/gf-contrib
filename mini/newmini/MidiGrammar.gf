@@ -1,11 +1,11 @@
-abstract ExtMiniGrammar = MiniGrammar ** {
+abstract ExtMiniGrammar = {
 
   cat
   
 -- Common
---+    Utt ;    -- sentence, question, word...         e.g. "be quiet"
+    Utt ;    -- sentence, question, word...         e.g. "be quiet"
     Interj ; -- interjection                        e.g. "alas"
---+    Adv ;    -- verb-phrase-modifying adverb        e.g. "in the house"
+    Adv ;    -- verb-phrase-modifying adverb        e.g. "in the house"
     AdV ;    -- adverb directly attached to verb    e.g. "always"
     AdA ;    -- adjective-modifying adverb          e.g. "very"
     
@@ -13,76 +13,76 @@ abstract ExtMiniGrammar = MiniGrammar ** {
     CAdv ;   -- comparative adverb                  e.g. "more"
     Temp ;   -- temporal and aspectual features     e.g. past anterior
     Tense ;  -- tense                               e.g. present, past, future
---+    Pol ;    -- polarity                            e.g. positive, negative
+    Pol ;    -- polarity                            e.g. positive, negative
     Ant ;    -- anteriority                         e.g. simultaneous, anterior
 
 -- Cat
---+    S ;      -- declarative sentence                e.g. "she lived here"
+    S ;      -- declarative sentence                e.g. "she lived here"
     QS ;     -- question                            e.g. "where did she live"
---+    Cl ;     -- declarative clause, with all tenses e.g. "she looks at this"
+    Cl ;     -- declarative clause, with all tenses e.g. "she looks at this"
     Imp ;    -- imperative                          e.g. "look at this"
     QCl ;    -- question clause, with all tenses    e.g. "why does she walk"
     ClSlash; -- clause missing NP (S/NP in GPSG)    e.g. "she looks at"
     IP ;     -- interrogative pronoun               e.g. "who"
---+    VP ;     -- verb phrase                         e.g. "is very warm"
+    VP ;     -- verb phrase                         e.g. "is very warm"
     Comp ;   -- complement of copula, such as AP    e.g. "very warm"
     VPSlash; -- verb phrase missing complement      e.g. "give to John"
---+    AP ;     -- adjectival phrase                   e.g. "very warm"
---+    CN ;     -- common noun (without determiner)    e.g. "red house"
---+    NP ;     -- noun phrase (subject or object)     e.g. "the red house"
---+    Pron ;   -- personal pronoun                    e.g. "she"
---+    Det ;    -- determiner phrase                   e.g. "those seven"
+    AP ;     -- adjectival phrase                   e.g. "very warm"
+    CN ;     -- common noun (without determiner)    e.g. "red house"
+    NP ;     -- noun phrase (subject or object)     e.g. "the red house"
+    Pron ;   -- personal pronoun                    e.g. "she"
+    Det ;    -- determiner phrase                   e.g. "those seven"
     Quant ;  -- quantifier ('nucleus' of Det)       e.g. "this/these"
     Num ;    -- number determining element          e.g. "seven"
---+    Conj ;   -- conjunction                         e.g. "and"
+    Conj ;   -- conjunction                         e.g. "and"
     Subj ;   -- subjunction                         e.g. "if"
---+    Prep ;   -- preposition, or just case           e.g. "in"
---+    V ;      -- one-place verb                      e.g. "sleep" 
---+    V2 ;     -- two-place verb                      e.g. "love"
+    Prep ;   -- preposition, or just case           e.g. "in"
+    V ;      -- one-place verb                      e.g. "sleep" 
+    V2 ;     -- two-place verb                      e.g. "love"
     VV ;     -- verb-phrase-complement verb         e.g. "want"
     VS ;     -- sentence-complement verb            e.g. "claim"
---+    A ;      -- one-place adjective                 e.g. "warm"
---+    N ;      -- common noun                         e.g. "house"
---+    PN ;     -- proper name                         e.g. "Paris"
+    A ;      -- one-place adjective                 e.g. "warm"
+    N ;      -- common noun                         e.g. "house"
+    PN ;     -- proper name                         e.g. "Paris"
 
   fun
 
 -- Noun
---+    DetCN    : Det -> CN -> NP ;       -- the man
---+    UsePN    : PN -> NP ;              -- John
---+    UsePron  : Pron -> NP ;            -- he
+    DetCN    : Det -> CN -> NP ;       -- the man
+    UsePN    : PN -> NP ;              -- John
+    UsePron  : Pron -> NP ;            -- he
     DetQuant : Quant -> Num -> Det ;   -- these
     NumSg    : Num ;                   -- [singular]
     NumPl    : Num ;                   -- [plural]
     IndefArt : Quant ;                 -- a/an
     DefArt   : Quant ;                 -- the
---+    MassNP   : CN -> NP ;              -- beer
---+    UseN     : N -> CN ;               -- house
---+    AdjCN    : AP -> CN  -> CN ;       -- big house
+    MassNP   : CN -> NP ;              -- beer
+    UseN     : N -> CN ;               -- house
+    AdjCN    : AP -> CN  -> CN ;       -- big house
 
 -- Adjective
---+    PositA   : A  -> AP ;              -- warm
+    PositA   : A  -> AP ;              -- warm
     AdAP     : AdA -> AP -> AP ;       -- very warm
 
 -- Adverb
---+    PrepNP   : Prep -> NP -> Adv ;     -- in the house
+    PrepNP   : Prep -> NP -> Adv ;     -- in the house
     SubjS    : Subj -> S -> Adv ;      -- when she sleeps
 
 -- Verb
---+    UseV     : V   -> VP ;             -- sleep
+    UseV     : V   -> VP ;             -- sleep
     ComplVV  : VV  -> VP -> VP ;       -- want to run
     ComplVS  : VS  -> S  -> VP ;       -- say that she runs
     SlashV2a : V2        -> VPSlash ;  -- love (it)
     ComplSlash : VPSlash -> NP -> VP ; -- love it
     UseComp  : Comp -> VP ;            -- be warm
---+    AdvVP    : VP -> Adv -> VP ;       -- sleep here
+    AdvVP    : VP -> Adv -> VP ;       -- sleep here
     CompAP   : AP  -> Comp ;           -- (be) small
     CompNP   : NP  -> Comp ;           -- (be) the man
     CompAdv  : Adv -> Comp ;           -- (be) here
     CompCN   : CN  -> Comp ;           -- (be) a man/men
 
 -- Sentence
---+    PredVP   : NP -> VP -> Cl ;            -- John walks
+    PredVP   : NP -> VP -> Cl ;            -- John walks
     SlashVP  : NP -> VPSlash -> ClSlash ;  -- (whom) he sees
     ImpVP    : VP -> Imp ;                 -- love yourselves
     UseCl    : Temp -> Pol -> Cl  -> S ;   -- she had not slept
@@ -97,13 +97,13 @@ abstract ExtMiniGrammar = MiniGrammar ** {
     QuestIAdv   : IAdv -> Cl -> QCl ;    -- why does John walk
 
 -- Phrase
---+    UttS      : S   -> Utt ;                -- John walks
+    UttS      : S   -> Utt ;                -- John walks
     UttQS     : QS  -> Utt ;                -- is it good
     UttImpSg  : Pol -> Imp -> Utt ;         -- (don't) love yourself
     UttImpPl  : Pol -> Imp -> Utt ;         -- (don't) love yourselves
     UttIP     : IP   -> Utt ;               -- who
     UttIAdv   : IAdv -> Utt ;               -- why
---+    UttNP     : NP   -> Utt ;               -- this man
+    UttNP     : NP   -> Utt ;               -- this man
     UttAdv    : Adv  -> Utt ;               -- here
     UttVP     : VP   -> Utt ;               -- to sleep
     UttCN     : CN   -> Utt ;               -- house
@@ -129,8 +129,8 @@ abstract ExtMiniGrammar = MiniGrammar ** {
 -- Tense
   fun
     TTAnt  : Tense -> Ant -> Temp ; -- [tense + anteriority, e.g. past anterior]
---+    PPos   : Pol ;                  -- I sleep  [positive polarity]
---+    PNeg   : Pol ;                  -- I don't sleep [negative polarity]
+    PPos   : Pol ;                  -- I sleep  [positive polarity]
+    PNeg   : Pol ;                  -- I don't sleep [negative polarity]
     TPres  : Tense ;                -- I sleep/have slept [present]
     TPast  : Tense ;                -- I slept [past, "imperfect"]
     ASimul : Ant ;                  -- I sleep/slept [simultaneous, not compound]
