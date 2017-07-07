@@ -2,7 +2,7 @@
 (require ffi/unsafe
          "types.rkt")
 (provide get-concrete
-         parse/gen
+         parse/gen parse/list parse/sort
          unfold)
 
 
@@ -50,13 +50,38 @@
 
 
 
+; Parsing
 
-(require racket/generator)
-(define (parse/gen pgf input cat)
+(define (parse pgf input cat)
   (define pool (pgf-pool pgf))
   (define err (gu_new_exn pool))
-  (define parsings
-    (pgf_parse (pgf-cnc pgf) (symbol->string cat) input err pool pool))
+  (values
+    (pgf_parse (pgf-cnc pgf) (symbol->string cat) input err pool pool)
+    pool))
+
+(define (parse/list pgf input cat)
+  (define-values
+    (parsings pool)
+    (parse pgf input cat))
+  (let loop ([ps '()])
+    (let* ([ep (next_exp pool parsings)])
+      (if ep
+          (loop (cons
+                 (cons (pgf-exp-pb-prob ep)
+                       (pgf-exp-pb-expr ep))
+                 ps))
+          ps))))
+
+(define (parse/sort pgf input cat)
+  (map cdr
+       (sort (parse/list pgf input cat) < #:key car)))
+
+
+(define (parse/gen pgf input cat)
+  (local-require racket/generator)
+  (define-values
+    (parsings pool)
+    (parse pgf input cat))
   (generator ()
              (let next ()
                (define ep (next_exp pool parsings))
