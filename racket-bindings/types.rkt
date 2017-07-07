@@ -24,4 +24,35 @@
 (define _gu_exn* (_cpointer 'GuExn))
 (define _gu-enum* (_cpointer/null 'GuEnum))
 
+(define-cstruct _pgf-expr-app
+  ([fun _pgf-expr]
+   [arg _pgf-expr]))
+
+(define (_bytes/len n)
+  (make-ctype (make-array-type _byte n)
+
+              ;; ->c
+              (lambda (v)
+                (unless (and (bytes? v) (= (bytes-length v) n))
+                  (raise-argument-error '_chars/bytes 
+                                        (format "bytes of length ~a" n)
+                                        v))
+                v)
+
+              ;; ->racket
+              (lambda (v)
+                (make-sized-byte-string v n))))
+
+(define-cstruct _pgf-expr-fun
+  ([fun (_bytes/len 25)]))
+
+(define-cstruct _pgf-expr-lit
+  ([lit _gu-variant]))
+
+(define-cstruct _pgf-literal-str
+  ([val (_bytes/len 50)]))
+(define-cstruct _pgf-literal-int
+  ([val _int]))
+
+
 

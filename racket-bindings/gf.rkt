@@ -2,15 +2,15 @@
 (require ffi/unsafe
          ffi/unsafe/define
          "types.rkt")
-
 (provide get-concrete
          parse/gen
          unfold)
 
-
-(define c-libs
-  (λ () (let ([cd (current-directory)])
-          (list (build-path cd "../c/.libs") cd))))
+(require racket/runtime-path)
+(define-runtime-path HERE ".")
+ 
+(define (c-libs)
+  (list (build-path HERE 'up "c/.libs") HERE))
 (define-ffi-definer define-pgf (ffi-lib #:get-lib-dirs c-libs "libpgf"))
 (define-ffi-definer define-gu  (ffi-lib #:get-lib-dirs c-libs "libgu"))
 (define-ffi-definer define-enum (ffi-lib #:get-lib-dirs c-libs "enums"))
@@ -38,8 +38,6 @@
 (define-pgf pgf_expr_arity (_fun _pgf-expr -> _int))
 (define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer))
 
-;(define-pgf pgf_print_expr (_fun _pgf-expr PgfExpr expr, PgfPrintContext* ctxt, int prec, 
-;               GuOut* out, GuExn* err);
 
 (define-enum next_exp (_fun _gu-pool* _gu-enum* -> _pgf-exp-pb*))
 
@@ -55,18 +53,7 @@
      pool)))
 
 
-(define (unn e)
-  (let* ([pool (gu_new_pool)]
-         [app1 (pgf_expr_unapply e pool)]
-         [fun1 (pgf-application-fun app1)]
-         [n1 (pgf-application-n_args app1)]
-         [args1 (ptr-ref (pgf-application-args app1) (_array/list _pgf-expr n1))]
-         [app2 (pgf_expr_unapply (car args1) pool)])
-    (pgf-application-n_args app2)))
          
-         
-
-
 (struct pgf [pgf cnc pool])
 
 (define (get-concrete pgf-path lang)
@@ -96,31 +83,30 @@
                  (next)))))
   
 
-(define-cstruct _pgf-expr-app
-  ([fun _pgf-expr]
-   [arg _pgf-expr]))
-
-(define (_bytes/len n)
-  (make-ctype (make-array-type _byte n)
-
-              ;; ->c
-              (lambda (v)
-                (unless (and (bytes? v) (= (bytes-length v) n))
-                  (raise-argument-error '_chars/bytes 
-                                        (format "bytes of length ~a" n)
-                                        v))
-                v)
-
-              ;; ->racket
-              (lambda (v)
-                (make-sized-byte-string v n))))
 
 
-(define-cstruct _pgf-expr-fun
-  ([fun (_bytes/len 25)]))
 
 (define (reformat bs)
-  (bytes->string/utf-8 (apply bytes (for/list ([b bs]) #:break (zero? b) b))))
+  (apply bytes (for/list ([b bs]) #:break (zero? b) b)))
+(define (reformat/utf-8 bs)
+  (bytes->string/utf-8 (reformat bs)))
+(define (reformat/symbol bs)
+  (string->symbol (reformat/utf-8 bs)))
+
+(define (unfold-literal lit)
+  (let* ([ei (gu_variant_open lit)]
+         [tag (gu-variant-info-tag_ ei)]
+         [data (gu-variant-info-data ei)])
+    (case tag
+      [(0) ; PGF_LITERAL_STR
+       (let ([lit (ptr-ref data _pgf-literal-str)])
+         (reformat (pgf-literal-str-val lit)))]
+      [(1) ; PGF_LITERAL_INT
+       (let ([lit (ptr-ref data _pgf-literal-int)])
+         (pgf-literal-int-val lit))]
+      [else
+       (error (format "Literal tag '~a' not implemented" tag))])))
+         
 
 
 (define (unfold exp)
@@ -134,10 +120,12 @@
            (loop
             (pgf-expr-app-fun app)
             (cons (pgf-expr-app-arg app) args)))]
+        [(2) ; Literal
+         (unfold-literal (ptr-ref data _pgf-expr-lit))]
         [(4)
          (let* ([fun (ptr-ref data _pgf-expr-fun)]
                 [ffun (pgf-expr-fun-fun fun)]
-                [sfun (string->symbol (reformat ffun))])
+                [sfun (reformat/symbol ffun)])
            (cons sfun (map unfold args)))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
