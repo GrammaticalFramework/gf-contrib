@@ -1,27 +1,12 @@
 #lang racket/base
 (require ffi/unsafe
-         ffi/unsafe/define
          "types.rkt")
 (provide get-concrete
          parse/gen
          unfold)
 
-(require racket/runtime-path)
-(define-runtime-path HERE ".")
- 
-(define (c-libs)
-  (list (build-path HERE 'up "c/.libs") HERE))
-(define-ffi-definer define-pgf (ffi-lib #:get-lib-dirs c-libs "libpgf"))
-(define-ffi-definer define-gu  (ffi-lib #:get-lib-dirs c-libs "libgu"))
-(define-ffi-definer define-enum (ffi-lib #:get-lib-dirs c-libs "enums"))
 
-
-
-(define-gu gu_new_pool (_fun -> _gu-pool*))
-(define-gu gu_local_pool_ (_fun -> _gu-pool*))
-(define-gu gu_new_exn (_fun _gu-pool* -> _gu_exn*))
-(define-gu gu_variant_open (_fun _gu-variant -> _gu-variant-info))
-
+; pgf functions
 (define-pgf pgf_read
   (_fun _path _gu-pool* _gu_exn* -> _pgf-pgf*))
 (define-pgf language
@@ -39,8 +24,7 @@
 (define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer))
 
 
-(define-enum next_exp (_fun _gu-pool* _gu-enum* -> _pgf-exp-pb*))
-
+;; UNUSED? ;;
 (define (unapp pgf-expr)
   (let* ([pool (gu_new_pool)]
          [app (pgf_expr_unapply pgf-expr pool)]
@@ -52,7 +36,7 @@
            (ptr-ref args (_array/list _size nargs)))
      pool)))
 
-
+; Concrete struct
          
 (struct pgf [pgf cnc pool])
 
