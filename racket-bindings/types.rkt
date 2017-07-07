@@ -43,6 +43,13 @@
               (lambda (v)
                 (make-sized-byte-string v n))))
 
+(define _expr-tag (_enum '(abs app lit meta fun var typed impl-args num-tags)))
+(define _literal-tag (_enum '(string int float)))
+
+(define (get-variant-info-tag ei  [type #f])
+  (let ([t (gu-variant-info-tag_ ei)])
+    (if type (cast t _int type) t)))
+
 (define-cstruct _pgf-expr-fun
   ([fun (_bytes/len 25)]))
 
@@ -50,9 +57,7 @@
   ([lit _gu-variant]))
 
 (define-cstruct _pgf-literal-str
-  ([val (_bytes/len 50)]))
+  ([val _string]))
 (define-cstruct _pgf-literal-int
   ([val _int]))
-
-
 

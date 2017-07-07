@@ -3,7 +3,6 @@
          "types.rkt"
          "gf.rkt")
 
-(define _expr-tags (_enum '(abs app lit meta fun var typed impl-args num-tags)))
 (define-cstruct _expr-info
   ([tag_ _expr-tags]
    [data _pointer]))

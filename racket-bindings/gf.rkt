@@ -95,13 +95,13 @@
 
 (define (unfold-literal lit)
   (let* ([ei (gu_variant_open lit)]
-         [tag (gu-variant-info-tag_ ei)]
+         [tag (get-variant-info-tag ei _literal-tag)] 
          [data (gu-variant-info-data ei)])
     (case tag
-      [(0) ; PGF_LITERAL_STR
+      [(string) ; PGF_LITERAL_STR
        (let ([lit (ptr-ref data _pgf-literal-str)])
-         (reformat (pgf-literal-str-val lit)))]
-      [(1) ; PGF_LITERAL_INT
+         (pgf-literal-str-val lit))]
+      [(int) ; PGF_LITERAL_INT
        (let ([lit (ptr-ref data _pgf-literal-int)])
          (pgf-literal-int-val lit))]
       [else
@@ -112,17 +112,17 @@
 (define (unfold exp)
   (let loop ([e exp] [args '()])
     (let* ([info (gu_variant_open e)]
-           [tag (gu-variant-info-tag_ info)]
+           [tag (get-variant-info-tag info _expr-tag)]
            [data (gu-variant-info-data info)])
       (case tag
-        [(1)
+        [(app)
          (let ([app (ptr-ref data _pgf-expr-app)])
            (loop
             (pgf-expr-app-fun app)
             (cons (pgf-expr-app-arg app) args)))]
-        [(2) ; Literal
+        [(lit) ; Literal
          (unfold-literal (ptr-ref data _pgf-expr-lit))]
-        [(4)
+        [(fun)
          (let* ([fun (ptr-ref data _pgf-expr-fun)]
                 [ffun (pgf-expr-fun-fun fun)]
                 [sfun (reformat/symbol ffun)])
