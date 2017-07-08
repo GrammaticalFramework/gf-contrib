@@ -59,12 +59,16 @@
     (pgf_parse (pgf-cnc pgf) (symbol->string cat) input err pool pool)
     pool))
 
+(define (next-pb-exp pool enum)
+  (enum-next _pgf-exp-pb* enum pool))
+
+
 (define (parse/list pgf input cat)
   (define-values
     (parsings pool)
     (parse pgf input cat))
   (let loop ([ps '()])
-    (let* ([ep (next_exp pool parsings)])
+    (let* ([ep (next-pb-exp pool parsings)])
       (if ep
           (loop (cons
                  (cons (pgf-exp-pb-prob ep)
@@ -84,7 +88,7 @@
     (parse pgf input cat))
   (generator ()
              (let next ()
-               (define ep (next_exp pool parsings))
+               (define ep (next-pb-exp pool parsings))
                (when ep
                  (yield (cons
                          (pgf-exp-pb-prob ep)
@@ -139,3 +143,13 @@
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
 
+
+(module+ test
+  (require rackunit)
+  (define app-eng
+    (get-concrete
+     (path->complete-path "App.pgf")
+     "AppEng"))
+  (check-equal?
+   (length (parse/list app-eng "I see a man with a telescope" 'S))
+   32))

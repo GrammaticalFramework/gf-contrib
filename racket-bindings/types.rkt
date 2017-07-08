@@ -1,6 +1,6 @@
 #lang racket
 (require ffi/unsafe
-          ffi/unsafe/define)
+         ffi/unsafe/define)
 
 (provide (all-defined-out))
 
@@ -13,7 +13,6 @@
   (list (build-path HERE 'up "c/.libs") HERE))
 (define-ffi-definer define-pgf (ffi-lib #:get-lib-dirs c-libs "libpgf"))
 (define-ffi-definer define-gu  (ffi-lib #:get-lib-dirs c-libs "libgu"))
-(define-ffi-definer define-enum (ffi-lib #:get-lib-dirs c-libs "enums"))
 
 
 
@@ -31,6 +30,8 @@
 (define-gu gu_local_pool_ (_fun -> _gu-pool*))
 (define-gu gu_new_exn (_fun _gu-pool* -> _gu_exn*))
 (define-gu gu_variant_open (_fun _gu-variant -> _gu-variant-info))
+(define-gu gu_enum_next (_fun _gu-enum* _pointer _gu-pool* -> _void))
+
 
 
 
@@ -91,4 +92,11 @@
 
 ; Enum functions
 
-(define-enum next_exp (_fun _gu-pool* _gu-enum* -> _pgf-exp-pb*))
+
+
+
+(define (enum-next type enum pool)
+  (let ([t*
+         (cast (malloc type) _pointer (_cpointer type))])
+    (gu_enum_next enum t* pool)
+    (ptr-ref t* type)))
