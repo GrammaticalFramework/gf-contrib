@@ -1,3 +1,4 @@
+
 #lang racket/base
 (require ffi/unsafe
          "types.rkt")
@@ -37,7 +38,7 @@
      pool)))
 
 ; Concrete struct
-         
+
 (struct pgf [pgf cnc pool])
 
 (define (get-concrete pgf-path lang)
@@ -94,7 +95,7 @@
                          (pgf-exp-pb-prob ep)
                          (pgf-exp-pb-expr ep)))
                  (next)))))
-  
+
 
 
 
@@ -106,9 +107,10 @@
 (define (reformat/symbol bs)
   (string->symbol (reformat/utf-8 bs)))
 
+
 (define (unfold-literal lit)
   (let* ([ei (gu_variant_open lit)]
-         [tag (get-variant-info-tag ei _literal-tag)] 
+         [tag (get-variant-info-tag ei _literal-tag)]
          [data (gu-variant-info-data ei)])
     (case tag
       [(string) ; PGF_LITERAL_STR
@@ -119,7 +121,6 @@
          (pgf-literal-int-val lit))]
       [else
        (error (format "Literal tag '~a' not implemented" tag))])))
-         
 
 
 (define (unfold exp)
@@ -137,19 +138,26 @@
          (unfold-literal (ptr-ref data _pgf-expr-lit))]
         [(fun)
          (let* ([fun (ptr-ref data _pgf-expr-fun)]
-                [ffun (pgf-expr-fun-fun fun)]
-                [sfun (reformat/symbol ffun)])
-           (cons sfun (map unfold args)))]
+                [ffun (cast data _pointer _string)])
+           (cons
+              (string->symbol ffun)
+              (map unfold args)))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
 
 
 (module+ test
-  (require rackunit)
+  (require rackunit racket/list)
   (define app-eng
     (get-concrete
      (path->complete-path "App.pgf")
      "AppEng"))
+  (define ps
+      (parse/list app-eng "I see a man with a telescope" 'S))
+
   (check-equal?
-   (length (parse/list app-eng "I see a man with a telescope" 'S))
-   32))
+   (length ps) 32)
+
+   (check-equal?
+     (car (unfold (cdr (first ps))))
+     'UseCl))

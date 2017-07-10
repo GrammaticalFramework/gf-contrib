@@ -55,21 +55,6 @@
   ([fun _pgf-expr]
    [arg _pgf-expr]))
 
-(define (_bytes/len n)
-  (make-ctype (make-array-type _byte n)
-
-              ;; ->c
-              (lambda (v)
-                (unless (and (bytes? v) (= (bytes-length v) n))
-                  (raise-argument-error '_chars/bytes 
-                                        (format "bytes of length ~a" n)
-                                        v))
-                v)
-
-              ;; ->racket
-              (lambda (v)
-                (make-sized-byte-string v n))))
-
 (define _expr-tag (_enum '(abs app lit meta fun var typed impl-args num-tags)))
 (define _literal-tag (_enum '(string int float)))
 
@@ -78,7 +63,7 @@
     (if type (cast t _int type) t)))
 
 (define-cstruct _pgf-expr-fun
-  ([fun (_bytes/len 25)]))
+  ([fun (_bytes o 0)]))
 
 (define-cstruct _pgf-expr-lit
   ([lit _gu-variant]))
