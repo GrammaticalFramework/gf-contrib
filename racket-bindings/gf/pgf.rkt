@@ -57,14 +57,16 @@
   (define-values
     (parsings pool)
     (parse pgf input cat))
-  (let loop ([ps '()])
-    (let* ([ep (next-pb-exp pool parsings)])
-      (if ep
-          (loop (cons
-                 (cons (pgf-exp-pb-prob ep)
-                       (pgf-exp-pb-expr ep))
-                 ps))
-          ps))))
+  (if parsings
+    (let loop ([ps '()])
+      (let* ([ep (next-pb-exp pool parsings)])
+        (if ep
+            (loop (cons
+                   (cons (pgf-exp-pb-prob ep)
+                         (pgf-exp-pb-expr ep))
+                   ps))
+            ps)))
+    '()))
 
 (define (parse/sort pgf input cat)
   (map cdr
@@ -76,25 +78,15 @@
   (define-values
     (parsings pool)
     (parse pgf input cat))
-  (generator ()
-             (let next ()
-               (define ep (next-pb-exp pool parsings))
-               (when ep
-                 (yield (cons
-                         (pgf-exp-pb-prob ep)
-                         (pgf-exp-pb-expr ep)))
-                 (next)))))
-
-
-
-
-
-(define (reformat bs)
-  (apply bytes (for/list ([b bs]) #:break (zero? b) b)))
-(define (reformat/utf-8 bs)
-  (bytes->string/utf-8 (reformat bs)))
-(define (reformat/symbol bs)
-  (string->symbol (reformat/utf-8 bs)))
+  (when parsings
+    (generator ()
+                 (let next ()
+                   (define ep (next-pb-exp pool parsings))
+                   (when ep
+                     (yield (cons
+                             (pgf-exp-pb-prob ep)
+                             (pgf-exp-pb-expr ep)))
+                     (next))))))
 
 
 (define (unfold-literal lit)
