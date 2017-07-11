@@ -1,7 +1,6 @@
-
 #lang racket/base
 (require ffi/unsafe
-         "types.rkt")
+         "bindings.rkt")
 (provide get-concrete
          parse/gen parse/list parse/sort
          unfold)
@@ -25,17 +24,6 @@
 (define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer))
 
 
-;; UNUSED? ;;
-(define (unapp pgf-expr)
-  (let* ([pool (gu_new_pool)]
-         [app (pgf_expr_unapply pgf-expr pool)]
-         [fun (pgf-application-fun app)]
-         [nargs (pgf-application-n_args app)]
-         [args (pgf-application-args app)])
-    (values
-     (cons (string->symbol fun)
-           (ptr-ref args (_array/list _size nargs)))
-     pool)))
 
 ; Concrete struct
 
