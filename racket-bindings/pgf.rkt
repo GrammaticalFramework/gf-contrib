@@ -30,12 +30,13 @@
 (struct pgf [pgf cnc pool])
 
 (define (get-concrete pgf-path lang)
-  (define pool (gu_new_pool))
-  (define err1 (gu_new_exn pool))
-  (define _pgf (pgf_read pgf-path pool err1))
-  (define _cnc (language _pgf lang))
-  (displayln (format "concrete: ~a, start: ~a" (concrete-name _cnc) (start-cat _pgf)))
-  (pgf _pgf _cnc pool))
+  (let* ([pgf-path* (path->complete-path pgf-path)]
+        [pool (gu_new_pool)]
+        [err1 (gu_new_exn pool)]
+        [_pgf (pgf_read pgf-path* pool err1)]
+        [_cnc (language _pgf lang)])
+    (displayln (format "concrete: ~a, start: ~a" (concrete-name _cnc) (start-cat _pgf)))
+    (pgf _pgf _cnc pool)))
 
 
 
@@ -137,15 +138,15 @@
 (module+ test
   (require rackunit racket/list)
   (define app-eng
-    (get-concrete
-     (path->complete-path "App.pgf")
-     "AppEng"))
+    (get-concrete "App.pgf" "AppEng"))
   (define ps
       (parse/list app-eng "I see a man with a telescope" 'S))
 
   (check-equal?
    (length ps) 32)
 
-   (check-equal?
-     (car (unfold (cdr (first ps))))
-     'UseCl))
+  (define p (cdr (first ps)))
+  (check-equal?
+   (car (unfold p)) 'UseCl)
+  (check-equal?
+   (pgf_expr_arity p) 3))
