@@ -69,7 +69,7 @@
   ([lit _gu-variant]))
 
 (define-cstruct _pgf-literal-str
-  ([val _string]))
+  ([val (_bytes o 0)]))
 (define-cstruct _pgf-literal-int
   ([val _int]))
 

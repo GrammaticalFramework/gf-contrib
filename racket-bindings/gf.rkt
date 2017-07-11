@@ -114,8 +114,8 @@
          [data (gu-variant-info-data ei)])
     (case tag
       [(string) ; PGF_LITERAL_STR
-       (let ([lit (ptr-ref data _pgf-literal-str)])
-         (pgf-literal-str-val lit))]
+       (let ([lit (ptr-ref data _pgf-literal-str-pointer)])
+         (cast (ptr-add lit -1) _pgf-literal-str-pointer _string))]
       [(int) ; PGF_LITERAL_INT
        (let ([lit (ptr-ref data _pgf-literal-int)])
          (pgf-literal-int-val lit))]
