@@ -138,7 +138,7 @@
 (module+ test
   (require rackunit racket/list)
   (define app-eng
-    (get-concrete "App.pgf" "AppEng"))
+    (get-concrete "../App.pgf" "AppEng"))
   (define ps
       (parse/list app-eng "I see a man with a telescope" 'S))
 
