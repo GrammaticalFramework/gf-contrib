@@ -127,9 +127,10 @@
          (unfold-literal (ptr-ref data _pgf-expr-lit))]
         [(fun)
          (let* ([fun (ptr-ref data _pgf-expr-fun)]
-                [ffun (cast data _pointer _string)])
-           (cons
-              (string->symbol ffun)
-              (map unfold args)))]
+                [sfun (string->symbol
+                       (cast data _pointer _string))])
+           (if (null? args)
+               sfun
+               (cons sfun (map unfold args))))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
