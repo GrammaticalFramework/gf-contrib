@@ -1,7 +1,8 @@
 #lang racket/base
 
 (module+ test
-  (require rackunit))
+  (require rackunit)
+  (require gf/pgf))
 
 ;; Notice
 ;; To install (from within the package directory):
@@ -27,8 +28,17 @@
 ;; Code here
 
 (module+ test
+  (require racket/list)
   ;; Tests to be run with raco test
-  )
+  (define foods (get-concrete "../Foods.pgf" "FoodsEng"))
+  (define ps
+    (parse/list foods "that cheese is very warm" 'Comment))
+
+  (check-equal?
+   (length ps) 1)
+  (define p (cdr (first ps)))
+  (check-equal?
+    (car (unfold p)) 'Pred))
 
 (module+ main
   ;; Main entry point, executed when run with the `racket` executable or DrRacket.

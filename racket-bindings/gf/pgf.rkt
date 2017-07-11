@@ -133,20 +133,3 @@
               (map unfold args)))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
-
-
-(module+ test
-  (require rackunit racket/list)
-  (define app-eng
-    (get-concrete "../App.pgf" "AppEng"))
-  (define ps
-      (parse/list app-eng "I see a man with a telescope" 'S))
-
-  (check-equal?
-   (length ps) 32)
-
-  (define p (cdr (first ps)))
-  (check-equal?
-   (car (unfold p)) 'UseCl)
-  (check-equal?
-   (pgf_expr_arity p) 3))
