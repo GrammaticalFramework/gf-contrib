@@ -19,7 +19,7 @@
 ; Gu functions and types
 
 (define _gu-pool* (_cpointer 'GuPool))
-(define _gu_exn* (_cpointer 'GuExn))
+(define _gu-exn* (_cpointer 'GuExn))
 (define _gu-enum* (_cpointer/null 'GuEnum))
 (define _gu-variant (make-ctype _pointer #f #f))
 (define-cstruct _gu-variant-info

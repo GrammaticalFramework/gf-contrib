@@ -8,12 +8,12 @@
 
 ; pgf functions
 (define-pgf pgf_read
-  (_fun _path _gu-pool* _gu_exn* -> _pgf-pgf*))
+  (_fun _path _gu-pool* _gu-exn* -> _pgf-pgf*))
 (define-pgf language
   (_fun _pgf-pgf* _string -> _pgf-concr*)
   #:c-id pgf_get_language)
 (define-pgf pgf_parse
-  (_fun _pgf-concr* _string _string _gu_exn* _gu-pool* _gu-pool* -> _gu-enum*))
+  (_fun _pgf-concr* _string _string _gu-exn* _gu-pool* _gu-pool* -> _gu-enum*))
 (define-pgf start-cat
   (_fun _pgf-pgf* -> _string)
   #:c-id pgf_start_cat)
@@ -21,7 +21,9 @@
   (_fun _pgf-concr* -> _string)
   #:c-id pgf_concrete_name)
 (define-pgf pgf_expr_arity (_fun _pgf-expr -> _int))
-(define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer))
+(define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer/null))
+(define-pgf pgf_linearize (_fun _pgf-concr* _pgf-expr _gu-out* _gu-exn* -> _void))
+(define-pgf pgf_read_expr (_fun _gu-in* _gu-pool* _gu-exn* -> _pgf-expr))
 
 
 
