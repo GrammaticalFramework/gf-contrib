@@ -45,7 +45,7 @@
 (define-cstruct _pgf-application
   ([fun _pgf-cid]
    [n_args _int]
-   [args _pointer]))
+   [args (_array _pgf-expr 1)]))
 
 (define _pgf-pgf* (_cpointer 'PgfPGF))
 (define _pgf-concr* (_cpointer/null 'PgfConcr))

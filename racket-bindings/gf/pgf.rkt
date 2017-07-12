@@ -126,3 +126,62 @@
                (cons sfun (map unfold args))))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
+
+
+
+
+;; testing
+
+(define (rearray/list array type n)
+  (ptr-ref
+   (array-ptr array)
+   (_array/list type n)))
+
+(define (unapply* exp pool)
+  (let ([app (pgf_expr_unapply exp pool)])
+    (when app
+      (let ([nargs (pgf-application-n_args app)]
+            [fun (string->symbol (pgf-application-fun app))]
+            [args (pgf-application-fun app)])
+        (if (zero? nargs)
+            (list fun)
+            (cons fun
+                  (rearray/list (pgf-application-args app) _pgf-expr nargs)))))))
+
+(define (unapply exp)
+  (let ([pool (gu_new_pool)])
+    (unapply* exp pool)))
+
+
+(define (unfold* exp)
+  (local-require racket/match)
+  (define pool (gu_new_pool))
+  (let next ([e exp])
+     (let* ([info (gu_variant_open e)]
+           [tag (get-variant-info-tag info _expr-tag)]
+           [data (gu-variant-info-data info)])
+      (case tag
+        [(app)
+         (match (unapply* e pool)
+           [(list f arg ...) (cons f (map next arg))]
+           [(? symbol? f) f]
+           [a
+            (error (format "Unknown form in app '~a'" a))])]
+        [(lit) ; Literal
+         (unfold-literal (ptr-ref data _pgf-expr-lit))]
+        [(fun)
+         (let* ([fun (ptr-ref data _pgf-expr-fun)]
+                [sfun (string->symbol
+                       (cast data _pointer _string))])
+           (display "fun: ") (displayln sfun)
+           sfun)]
+        [else
+         (error (format "Expr tag '~a' not implemented" tag))]))))
+
+
+
+
+(define foods (get-concrete "../Foods.pgf" "FoodsEng"))
+(define app (get-concrete "../App.pgf" "AppEng"))
+(define p (car (parse/sort foods "that boring Italian cheese is very very very warm" 'Comment)))
+(define ps (parse/list app "I see a man with a telescope" 'Cl))
