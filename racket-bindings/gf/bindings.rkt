@@ -25,6 +25,10 @@
 (define-cstruct _gu-variant-info
   ([tag_ _int]
    [data _pointer]))
+(define _gu-in* (_cpointer 'GuIn))
+(define _gu-out* (_cpointer 'GuOut))
+(define _gu-string-buf* (_cpointer 'GuStringBuf))
+
 
 (define-gu gu_new_pool (_fun -> _gu-pool*))
 (define-gu gu_pool_free (_fun _gu-pool* -> _void))

@@ -31,15 +31,23 @@
   (require racket/list)
   ;; Tests to be run with raco test
   (define foods (get-concrete "../Foods.pgf" "FoodsEng"))
+  (define sentence "that cheese is very warm")
   (define ps
-    (parse/list foods "that cheese is very warm" 'Comment))
+    (parse/list foods sentence))
 
   (check-equal?
    (length ps) 1)
   (define p (cdr (first ps)))
-  (check-equal?
-    (car (unfold p)) 'Pred))
 
-(module+ main
-  ;; Main entry point, executed when run with the `racket` executable or DrRacket.
-  )
+  (check-equal?
+   (car (unfold p)) 'Pred)
+
+  (check-equal?
+   (unfold p) (unpack p))
+
+  (check-equal?
+   (linearize foods p) sentence))
+
+ (module+ main
+   ;; Main entry point, executed when run with the `racket` executable or DrRacket.
+   )
