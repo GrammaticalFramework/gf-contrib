@@ -27,10 +27,17 @@
    [data _pointer]))
 
 (define-gu gu_new_pool (_fun -> _gu-pool*))
+(define-gu gu_pool_free (_fun _gu-pool* -> _void))
 (define-gu gu_local_pool_ (_fun -> _gu-pool*))
-(define-gu gu_new_exn (_fun _gu-pool* -> _gu_exn*))
+(define-gu gu_new_exn (_fun _gu-pool* -> _gu-exn*))
 (define-gu gu_variant_open (_fun _gu-variant -> _gu-variant-info))
 (define-gu gu_enum_next (_fun _gu-enum* _pointer _gu-pool* -> _void))
+(define-gu gu_string_buf (_fun _gu-pool* -> _gu-string-buf*))
+(define-gu gu_string_buf_out (_fun _gu-string-buf* -> _gu-out*))
+(define-gu gu_string_buf_freeze (_fun _gu-string-buf* _gu-pool* -> _string))
+(define-gu gu_data_in (_fun _string _int _gu-pool* -> _gu-in*))
+(define-gu gu_exn_is_raised(_fun _gu-exn* -> _bool))
+
 
 
 

@@ -44,6 +44,12 @@
 
 ; Parsing
 
+(define (get-cat pgf cat)
+  (if cat
+      cat
+      (string->symbol
+       (start-cat (pgf-pgf pgf)))))
+
 (define (parse pgf input cat)
   (define pool (pgf-pool pgf))
   (define err (gu_new_exn pool))
@@ -55,10 +61,10 @@
   (enum-next _pgf-exp-pb* enum pool))
 
 
-(define (parse/list pgf input cat)
+(define (parse/list pgf input [cat #f])
   (define-values
     (parsings pool)
-    (parse pgf input cat))
+    (parse pgf input (get-cat pgf cat)))
   (if parsings
     (let loop ([ps '()])
       (let* ([ep (next-pb-exp pool parsings)])
@@ -70,16 +76,16 @@
             ps)))
     '()))
 
-(define (parse/sort pgf input cat)
+(define (parse/sort pgf input [cat #f])
   (map cdr
        (sort (parse/list pgf input cat) < #:key car)))
 
 
-(define (parse/gen pgf input cat)
+(define (parse/gen pgf input [cat #f])
   (local-require racket/generator)
   (define-values
     (parsings pool)
-    (parse pgf input cat))
+    (parse pgf input (get-cat pgf cat)))
   (when parsings
     (generator ()
                  (let next ()
@@ -90,6 +96,21 @@
                              (pgf-exp-pb-expr ep)))
                      (next))))))
 
+
+; Linearizing
+
+(define (linearize pgf expr)
+  (define pool (pgf-pool pgf))
+  (define err (gu_new_exn pool))
+  (define sbuf (gu_string_buf pool))
+  (define out (gu_string_buf_out sbuf))
+  (define cnc (pgf-cnc pgf))
+  (pgf_linearize cnc expr out err)
+  (gu_string_buf_freeze sbuf pool))
+
+
+
+; Unfolding Expr
 
 (define (unfold-literal lit)
   (let* ([ei (gu_variant_open lit)]
@@ -106,7 +127,7 @@
        (error (format "Literal tag '~a' not implemented" tag))])))
 
 
-(define (unfold exp)
+(define (unpack exp)
   (let loop ([e exp] [args '()])
     (let* ([info (gu_variant_open e)]
            [tag (get-variant-info-tag info _expr-tag)]
@@ -125,7 +146,7 @@
                        (cast data _pointer _string))])
            (if (null? args)
                sfun
-               (cons sfun (map unfold args))))]
+               (cons sfun (map unpack args))))]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
 
@@ -155,7 +176,7 @@
     (unapply* exp pool)))
 
 
-(define (unfold* exp)
+(define (unfold exp)
   (local-require racket/match)
   (define pool (gu_new_pool))
   (let next ([e exp])
@@ -175,7 +196,6 @@
          (let* ([fun (ptr-ref data _pgf-expr-fun)]
                 [sfun (string->symbol
                        (cast data _pointer _string))])
-           (display "fun: ") (displayln sfun)
            sfun)]
         [else
          (error (format "Expr tag '~a' not implemented" tag))]))))
