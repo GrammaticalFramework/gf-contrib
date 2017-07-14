@@ -2,7 +2,7 @@
 
 (module+ test
   (require rackunit)
-  (require gf/pgf))
+  (require gf/pgf gf/expr))
 
 ;; Notice
 ;; To install (from within the package directory):
