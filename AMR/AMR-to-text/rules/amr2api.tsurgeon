@@ -44,6 +44,10 @@
 @/:weekday/=/^:weekday$/
 @/:unit/=/^:unit$/
 @/:location/=/^:location$/
+@/:source/=/^:source$/
+@/:destination/=/^:destination$/
+@/:instrument/=/^:instrument$/
+@/:accompanier/=/^:accompanier$/
 @/:topic/=/^:topic$/
 @/:duration/=/^:duration$/
 @/:prep-prep/=/^:prep-[a-z]+$/
@@ -885,6 +889,30 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 # (:location mkNP) => (mkAdv in_Prep mkNP)
 /:location/=rel < mkNP=np
 [adjoinF (mkAdv in_Prep @) np]
+[excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:source mkNP) => (mkAdv from_Prep mkNP)
+/:source/=rel < mkNP=np
+[adjoinF (mkAdv from_Prep @) np]
+[excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:destination mkNP) => (mkAdv to_Prep mkNP)
+/:destination/=rel < mkNP=np
+[adjoinF (mkAdv to_Prep @) np]
+[excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:instrument mkNP) => (mkAdv with_Prep mkNP)
+/:instrument/=rel < mkNP=np
+[adjoinF (mkAdv with_Prep @) np]
+[excise rel rel]
+
+# mkAdv : Prep -> NP -> Adv
+# (:accompanier mkNP) => (mkAdv with_Prep mkNP)
+/:accompanier/=rel < mkNP=np
+[adjoinF (mkAdv with_Prep @) np]
 [excise rel rel]
 
 # mkAdv : Prep -> NP -> Adv
