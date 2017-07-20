@@ -2592,7 +2592,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 
 
 SNT: Viegas stated that the limitation was necessary.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Viegas")) (mkVP L.state_VS (mkS (mkCl (mkVP L.need_VV (mkVP L.limit_V)))))))) fullStopPunct)
-TXT: [unknown qualified constant L.limit_V]
+TXT: [Viegas states that it needs to limit .]
 
 SNT: Gandra stated that the provision undermines the decree's essential purpose by granting immunity to drug-smuggling aircraft carrying children and thus introducing the possibility of kidnapped children being used as human shields.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Gandra")) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.provision_N)) (mkVP (L.undermine_V2 (:manner (mkS (mkCl (mkVP (mkVP (L.grant_V2 (:ARG0-of (mkS (mkCl (mkVP (passiveVP L.cause_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.introduce_VS (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.child_N) (mkRS (mkRCl S.which_RP (passiveVP L.kidnap_V2))))) (passiveVP (L.use_V2 (:ARG2-PRP (mkS (mkCl (mkVP (P.mkAdV "human") (mkVP L.shield_V))))))))))))))))))))) (mkNP S.a_Quant (mkCN L.immunity_N))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN (mkCN (mkCN L.aircraft_N) (mkRS (mkRCl S.which_RP (mkVP L.carry_V2 (mkNP S.a_Quant (mkCN L.child_N)))))) (mkRS (mkRCl S.which_RP (mkVP L.smuggle_V2 (mkNP S.a_Quant (mkCN L.drug_N))))))))))))) (mkNP S.a_Quant (mkCN (mkCN L.essential_A L.purpose_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN L.decree_N)))))))))))) fullStopPunct)
@@ -3108,7 +3108,7 @@ TXT: [command not parsed: cc -one (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.s
 
 SNT: avoid answering questions about Iran's past treaty violations.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.avoid_VV (mkVP L.answer_VS (mkS (mkCl (mkVP (passiveVP L.question_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP (P.mkAdV "past") (mkVP L.violate_V2 (mkNP S.a_Quant (mkCN L.treaty_N))))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.answer_VS]
+TXT: [it avoids answering that it is questioned that Iran past violates a treaty .]
 
 SNT: Physicist and President of the Institute for Science and International Security David Albright stated that --
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "David Albright")) (mkVP L.state_V)))) fullStopPunct)

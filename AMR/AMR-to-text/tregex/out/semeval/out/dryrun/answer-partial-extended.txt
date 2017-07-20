@@ -2196,7 +2196,7 @@ TXT: [an envoy from Europe , Solana and Burns set a deadline .]
 
 SNT: Iranian officials refused to commit to stopping expansion or to observe the deadline.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Iran")))) (mkVP L.refuse_VV (mkVP L.commit_V))))) fullStopPunct)
-TXT: [unknown qualified constant L.commit_V]
+TXT: [official of Iran refuses to commit .]
 
 SNT: 20080726 ahmadinejad appeared to suggest that Iran might potentially halt expansion at a higher number of centrifuges that previously expected and for over 6 weeks.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.appear_V2) (dayMonthYearAdv (intMonthday (ss "26")) july_Month (intYear (ss "2008")))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Ahmadinejad")) (mkVP L.suggest_VS (mkS (mkCl S.it_NP (mkAP L.potential_AdA (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP (mkVP L.halt_VS (mkS (mkCl (mkVP L.expand_V)))) (S.mkAdv L.at_Prep (mkNP S.a_Quant (mkCN (mkCN L.number_N) (mkRS (mkRCl S.which_RP (mkAP L.more_AdA (mkAP L.high_A)))))))))))))))))))))) fullStopPunct)
@@ -2536,7 +2536,7 @@ TXT: [a thing that is planned requires 8 precaution steps .]
 
 SNT: Prior to the policy taking effect late 20041000 a publicity campaign will notify ranchers and others of the need to file flight plans.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.notify_V2 (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (mkVP L.ranch_V))))) (mkNP S.aPl_Det (mkCN L.other_A L.person_N)))))))) fullStopPunct)
-TXT: [unknown qualified constant L.ranch_V]
+TXT: [it notifies a person that ranches and other persons .]
 
 SNT: The Law to permit such an action was originally approved in 1998 but 1995-2003 President Fernando Henrique Cardoso never put the policy into effect.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.contrast_V2) (E.PurposeVP (mkVP (mkVP (P.mkAdV "ever") (mkVP L.put_V2 (mkNP S.a_Quant (mkCN L.policy_N)))) (S.mkAdv L.PRD_Prep (mkNP S.a_Quant (mkCN L.effect_N)))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (mkCN (mkCN L.law_N) (mkRS (mkRCl S.which_RP (mkVP L.permit_V2 (mkNP S.a_Quant (mkCN L.such_A L.action_N))))))) (mkVP (P.mkAdV "originally") (mkVP (passiveVP L.approve_V2) (yearAdv (intYear (ss "1998")))))))))))) fullStopPunct)
@@ -2592,7 +2592,7 @@ TXT: [official of Brazil states that a policy isn't applied against an aircraft 
 
 SNT: Viegas stated that the limitation was necessary.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Viegas")) (mkVP L.state_VS (mkS (mkCl (mkVP L.need_VV (mkVP L.limit_V)))))))) fullStopPunct)
-TXT: [unknown qualified constant L.limit_V]
+TXT: [Viegas states that it needs to limit .]
 
 SNT: Gandra stated that the provision undermines the decree's essential purpose by granting immunity to drug-smuggling aircraft carrying children and thus introducing the possibility of kidnapped children being used as human shields.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Gandra")) (mkVP L.state_VS (mkS (mkCl (mkNP S.a_Quant (mkCN L.provision_N)) (mkVP L.undermine_V2 (mkNP S.a_Quant (mkCN (mkCN L.essential_A L.purpose_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN L.decree_N)))))))))))) fullStopPunct)
@@ -3108,7 +3108,7 @@ TXT: [it is slowed that there is a process .]
 
 SNT: avoid answering questions about Iran's past treaty violations.
 AST: (mkText (mkUtt (mkS (mkCl (mkVP L.avoid_VV (mkVP L.answer_VS (mkS (mkCl (mkVP (passiveVP L.question_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP (P.mkPN "Iran")) (mkVP (P.mkAdV "past") (mkVP L.violate_V2 (mkNP S.a_Quant (mkCN L.treaty_N))))))))))))))) fullStopPunct)
-TXT: [unknown qualified constant L.answer_VS]
+TXT: [it avoids answering that it is questioned that Iran past violates a treaty .]
 
 SNT: Physicist and President of the Institute for Science and International Security David Albright stated that --
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "David Albright")) (mkVP L.state_V)))) fullStopPunct)
