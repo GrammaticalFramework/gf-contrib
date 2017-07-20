@@ -24,3 +24,10 @@ Gruzitis, Normunds & Gosko, Didzis & Barzdins, Guntis. (2017). [RIGOTRIO at SemE
 Gruzitis, Normunds & Barzdins, Guntis. (2016). [The role of CNL and AMR in scalable abstractive summarization for multilingual media monitoring](http://arxiv.org/abs/1606.05994). Controlled Natural Language, LNCS 9767, Springer, pp. 127-130
 
 Butler, Alastair. (2016). [Deterministic natural language generation from meaning representations for machine translation](http://aclweb.org/anthology/W/W16/W16-0601.pdf). Proceedings of the 2nd Workshop on Semantics-Driven Machine Translation, ACL, pp. 1-9
+
+
+## Licence
+
+The [Tregex](https://nlp.stanford.edu/software/tregex.shtml) component is licensed under GNU General Public License (v2 or later).
+The [Parboiled](https://github.com/sirthias/parboiled/wiki) component is licensed under Apache License (v2).
+The rest is licensed under BSD License.
