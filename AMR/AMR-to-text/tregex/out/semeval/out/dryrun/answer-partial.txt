@@ -166,7 +166,7 @@ PART	It contrasts.
 PART	Richmond has traffic.
 
 
-PART	A road.
+FULL	A road to a nowhere.
 FULL	You just think that it is possible that it is spent of this money!
 
 FULL	It is very nice that it obliges us.
@@ -297,7 +297,7 @@ PART	It is possible that it benefits you if there is an anxious person.
 
 
 
-PART	She is an epilepsy and it is manic depressed.
+FULL	She is an epilepsy and it is manic depressed with a huge problem about anger.
 PART	She is horrible.
 
 
@@ -327,7 +327,7 @@ PART	It is possible that you go on Saturday to a library and it studies.
 PART	Is it possible that you go to form a group that studies to a house?
 
 FULL	I know a thing that you feel.
-PART	Mum of me is too spit.
+FULL	Mum of me is too spit from a hell.
 FULL	I recommend high that it is taken up that it smokes.
 FULL	It is a joke.
 PART	I think that it is become a person that is more weak and it way down dulls a personality to try to befriend some persons in a university.
@@ -448,7 +448,7 @@ PART	It contrasts.
 
 
 
-PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge.
+PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge from a thing.
 PART	Do I see that I speak to a person that counsels?
 
 PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start. A demise circle in there.
@@ -569,9 +569,9 @@ PART	Russia and China hold a veto power.
 
 PART	It is reported that Iran is progressed about a reactor facility to research that is near.
 
-PART	An image that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
+PART	An image from a satellite that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
 
-PART	David Albright states that an image says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
+PART	David Albright states that an image from a satellite says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
 
 PART	Iran states that it pursues a nucleus technology.
 PART	United States and a country in West that is allied suspect that it is preceded to create a weapon infrastructure that Iran is an effort.
@@ -591,7 +591,7 @@ FULL	A weapon, energy, an international and science.
 PART	A large repository that is stored a laboratory complex from Russia threatens that it loses electricity.
 
 PART	A laboratory complex from Russia is a campus and it serves a location.
-PART	A headline that isn't correct states that a virus that kills threatens.
+
 
 
 
@@ -619,7 +619,7 @@ PART	It states that it main threatens because power is cut to an organism.
 
 
 PART	A missile silo doesn't lose power.
-PART	A troop that is armed marches and it back turns on power.
+FULL	A troop that is armed marches to a substation and it back turns on power.
 PART	Nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation.
 FULL	A center in Kamchatka that monitors Russian Space Forces is included to a military installation that loses power.
 
@@ -699,7 +699,7 @@ PART	Chavez is first elected in 1998 and it rates of a popularity.
 
 
 PART	This thing is costed less.
-PART	An organization that governs Venezuela also intends to buy six navy crafts, ten helicopters and ten transport planes.
+PART	An organization that governs Venezuela also intends to buy six navy crafts, ten helicopters from Russia and ten transport planes from Spain.
 
 
 PART	It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
@@ -722,7 +722,7 @@ PART	A unit of a person that defends is created in Free University, a neighborho
 
 
 
-PART	40 persons that an oil company employs participate an exercise that is resembled in June 2005.
+PART	40 persons with 1,200 soldiers that an oil company employs participate an exercise that is resembled in June 2005.
 
 
 
@@ -795,8 +795,8 @@ FULL	International Atomic Energy Agency is based in Vienna.
 
 FULL	Islamic Republic of Iran.
 
-PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
-PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list from Nuclear Suppliers Group shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list from Nuclear Suppliers Group shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
 
 PART	Nuclear Suppliers Group is composed of an advanced country.
 
@@ -837,7 +837,7 @@ FULL	A web site of an organization that governs Georgia intermittently crashes o
 
 
 PART	It conflicts in Chechnya.
-PART	A military incursion of Russia indicates confidence and a resolve.
+FULL	A military incursion to Georgia of Russia indicates confidence and a resolve.
 
 
 
@@ -1158,7 +1158,7 @@ FULL	Russia.
 FULL	A person that leads, a space, a military, a technology, an international and an organization that governs.
 
 
-PART	Chirac is flown to meet president of Russia Vladimir Putin in a space center.
+FULL	Chirac is flown to meet president of Russia Vladimir Putin in a space center to Krasnoznamernsk.
 FULL	It greets Chirac in a space center in Krasnoznamernsk.
 
 
@@ -1297,7 +1297,7 @@ PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal 
 
 FULL	It ends.
 FULL	Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
-PART	A principle of a party that is concerned today signs six documents in here.
+FULL	A principle of a party from China and Kirghizia that is concerned today signs six documents in here.
 FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
@@ -1317,9 +1317,9 @@ PART	Minister of State Welfare Ministry from Japan Souyasen delivers a departure
 
 
 
-PART	Souya hands over a delegation flag of a delegation.
+PART	Souya hands over a delegation flag of a delegation from Japan.
 
-PART	A delegation from Japan is flown.
+PART	A delegation from Japan is flown to Beijing.
 PART	They are remained in Beijing and it is returned to Japan.
 FULL	It ends.
 
