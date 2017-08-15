@@ -2,7 +2,7 @@
 (require ffi/unsafe
          "bindings.rkt")
 (provide get-concrete
-         parse/gen parse/list parse/sort
+         parse/gen parse/list parse/sort parse/stream
          linearize)
 
 
@@ -21,9 +21,8 @@
   (_fun _pgf-concr* -> _string)
   #:c-id pgf_concrete_name)
 
-(define-pgf pgf_expr_arity (_fun _pgf-expr -> _int))
+
 (define-pgf pgf_linearize (_fun _pgf-concr* _pgf-expr _gu-out* _gu-exn* -> _void))
-(define-pgf pgf_read_expr (_fun _gu-in* _gu-pool* _gu-exn* -> _pgf-expr))
 
 
 
@@ -35,7 +34,9 @@
   (let* ([pgf-path* (path->complete-path pgf-path)]
          [pool (gu_new_pool)]
          [err1 (gu_new_exn pool)]
-         [_pgf (pgf_read pgf-path* pool err1)]
+         [_pgf (if (file-exists? pgf-path*)
+                   (pgf_read pgf-path* pool err1)
+                   (error (format "file ~a not found" pgf-path*)))]
          [_cnc (language _pgf lang)])
     (displayln (format "concrete: ~a, start: ~a" (concrete-name _cnc) (start-cat _pgf)))
     (pgf _pgf _cnc pool)))
@@ -76,9 +77,9 @@
                 ps)))
         '())))
 
-(define (parse/sort pgf input [cat #f])
+(define (parse/sort pgf input [cat #f] #:key [key car])
   (map cdr
-       (sort (parse/list pgf input cat) < #:key car)))
+       (sort (parse/list pgf input cat) < #:key key)))
 
 
 (define (parse/gen pgf input [cat #f])
@@ -95,6 +96,24 @@
                            (pgf-exp-pb-prob ep)
                            (pgf-exp-pb-expr ep)))
                    (next))))))
+
+(define (parse/stream pgf input [cat #f])
+  (local-require racket/stream)
+   (define-values
+    (parsings pool)
+    (parse pgf input (get-cat pgf cat)))
+  (if parsings
+      (let next ()
+        (define ep (next-pb-exp pool parsings))
+        (if ep
+            (stream-cons (cons
+                          (pgf-exp-pb-prob ep)
+                          (pgf-exp-pb-expr ep))
+                         (next))
+            empty-stream))
+      empty-stream))
+    
+      
 
 
 ; Linearizing

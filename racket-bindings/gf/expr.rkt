@@ -5,7 +5,7 @@
 (provide unfold unpack)
 
 
-
+(define-pgf pgf_expr_arity (_fun _pgf-expr -> _int))
 (define-pgf pgf_expr_unapply (_fun _pgf-expr _gu-pool* -> _pgf-application-pointer/null))
 (define-pgf pgf_complete (_fun _pgf-concr* _string _string _string _gu-exn* _gu-pool* -> _gu-enum*))
 
