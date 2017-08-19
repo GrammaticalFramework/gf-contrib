@@ -7,12 +7,8 @@
 
 ; Access to the libraries
 
-(require racket/runtime-path)
-(define-runtime-path HERE ".")
-(define (c-libs)
-  (list (build-path HERE 'up "c/.libs") HERE))
-(define-ffi-definer define-pgf (ffi-lib #:get-lib-dirs c-libs "libpgf"))
-(define-ffi-definer define-gu  (ffi-lib #:get-lib-dirs c-libs "libgu"))
+(define-ffi-definer define-pgf (ffi-lib "libpgf"))
+(define-ffi-definer define-gu  (ffi-lib "libgu"))
 
 
 

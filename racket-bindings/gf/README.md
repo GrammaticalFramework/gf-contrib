@@ -1,3 +1,3 @@
 gf
 ==
-README text here.
+Bindings to GF (http://www.grammaticalframework.org)
