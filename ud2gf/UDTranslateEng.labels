@@ -3,123 +3,183 @@
 -- these functions have morphological conditions
 BareCN_   : CN -> NP ;        Number=Sing
 BareCN_ cn = MassNP cn
-----BareSgCN_ : CN -> NP ;        Number=Sing                 -- PK
-----BareSgCN_ cn = DetCN (DetQuant IndefArt NumSg) cn         -- PK
 BarePlCN_ : CN -> NP ;        Number=Plur
 BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
 
 -- words whose linearization from Dictionary is not their lemma in UD
-must_VV  : VV ; lemma=must
-can_1_VV : VV ; lemma=can
-i_Pron : Pron ; lemma=my  -- ---- as used in nmod:poss, must be a mistake
-UseCopula : VP ; lemma=be
+must_VV  : VV ;           lemma=must
+can_1_VV : VV ;           lemma=can
+may_1_VV : VV ;           lemma=may
+may_2_VV : VV ;           lemma=may
+ought_VV : VV ;           lemma=ought
+shall_VV : VV ;           lemma=shall
+should_VV : VV ;          lemma=should
+--used_VV : VV ;          lemma=used
 
+
+UseCopula : VP ;          lemma=be
+i_Pron : Pron ;           lemma=my          PronType=Prs  Poss=Yes    ---- as used in nmod:poss, must be a mistake
+--- Reflexives in UD are not reduced to their lemmas
+he_Pron : Pron ;          lemma=himself     PronType=Prs  Reflex=Yes  Number=Sing
+she_Pron : Pron ;         lemma=herself     PronType=Prs  Reflex=Yes  Number=Sing
+iFem_Pron : Pron ;        lemma=myself      PronType=Prs  Reflex=Yes  Number=Sing
+i_Pron : Pron ;           lemma=myself      PronType=Prs  Reflex=Yes  Number=Sing 
+it_Pron : Pron ;          lemma=itself      PronType=Prs  Reflex=Yes  Number=Sing 
+theyFem_Pron : Pron ;     lemma=themselves  PronType=Prs  Reflex=Yes  Number=Plur
+they_Pron : Pron ;        lemma=themselves  PronType=Prs  Reflex=Yes  Number=Plur
+weFem_Pron : Pron ;       lemma=ourselves   PronType=Prs  Reflex=Yes  Number=Plur
+we_Pron : Pron ;          lemma=ourselves   PronType=Prs  Reflex=Yes  Number=Plur
+youPlFem_Pron : Pron ;    lemma=yourself    PronType=Prs  Reflex=Yes
+youPl_Pron : Pron ;       lemma=yourself    PronType=Prs  Reflex=Yes 
+youPolFem_Pron : Pron ;   lemma=yourself    PronType=Prs  Reflex=Yes
+youPol_Pron : Pron ;      lemma=yourself    PronType=Prs  Reflex=Yes
+youSgFem_Pron : Pron ;    lemma=yourself    PronType=Prs  Reflex=Yes
+youSg_Pron : Pron ;       lemma=yourself    PronType=Prs  Reflex=Yes
 
 -- syncategorematic words
 
-Neg_          PART   lemma=not
-Fut_          AUX    lemma=will      VerbForm=Fin
-Cond_         AUX    lemma=would     VerbForm=Fin
-PrPerf_       AUX    lemma=have      VerbForm=Fin   Tense=Pres
-PaPerf_       AUX    lemma=have      VerbForm=Fin   Tense=Past
-FuPerf_       AUX    lemma=have      VerbForm=Inf
-PrCop_        VERB   lemma=be        VerbForm=Fin   Tense=Pres
-PaCop_        VERB   lemma=be        VerbForm=Fin   Tense=Past
-FuCop_        VERB   lemma=be        VerbForm=Inf
-PartCop_      VERB   lemma=be        VerbForm=Part  Tense=Past
-PrBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Pres
-PaBeVerb_     AUX    lemma=be        VerbForm=Fin   Tense=Past
-FuBeVerb_     AUX    lemma=be        VerbForm=Inf
-PartBeVerb_   AUX    lemma=be        VerbForm=Part
-GerBeVerb_    AUX    lemma=be        VerbForm=Ger
-PrAuxPass_    AUX    lemma=be        VerbForm=Fin   Tense=Pres
-PaAuxPass_    AUX    lemma=be        VerbForm=Fin   Tense=Past
-InfAuxPass_   AUX    lemma=be        VerbForm=Inf
-PartAuxPass_  AUX    lemma=be        VerbForm=Part
-AuxPass_      AUX    lemma=get
-InfMark_      PART   lemma=to
-GenMark_      PART   lemma='s                                 -- PK
-Expl_         PRON   lemma=there
-Cleft_        PRON   lemma=it
-ThatMark_     SCONJ  lemma=that
-PrInd_        AUX    lemma=do        VerbForm=Fin   Tense=Pres
-PaInd_        AUX    lemma=do        VerbForm=Fin   Tense=Past 
-FuInd_        AUX    lemma=do        VerbForm=Inf 
-Comma_        PUNCT  lemma=,
-Amp_          PUNCT  lemma=&
-Orslash_      PUNCT  lemma=/
-----EOS_          PUNCT  lemma=.
-----EOQS_         PUNCT  lemma=?
+Fut_          AUX         lemma=will      VerbForm=Fin
+Cond_         AUX         lemma=would     VerbForm=Fin
+PrPerf_       AUX         lemma=have      VerbForm=Fin   Tense=Pres
+PaPerf_       AUX         lemma=have      VerbForm=Fin   Tense=Past
+FuPerf_       AUX         lemma=have      VerbForm=Inf
+PrBeVerb_     AUX         lemma=be        VerbForm=Fin   Tense=Pres
+PaBeVerb_     AUX         lemma=be        VerbForm=Fin   Tense=Past
+FuBeVerb_     AUX         lemma=be        VerbForm=Inf
+PartBeVerb_   AUX         lemma=be        VerbForm=Part
+GerBeVerb_    AUX         lemma=be        VerbForm=Ger
+PrAuxPass_    AUX         lemma=be        VerbForm=Fin   Tense=Pres
+PaAuxPass_    AUX         lemma=be        VerbForm=Fin   Tense=Past
+InfAuxPass_   AUX         lemma=be        VerbForm=Inf
+PartAuxPass_  AUX         lemma=be        VerbForm=Part
+AuxPass_      AUX         lemma=get
+PrInd_        AUX         lemma=do        VerbForm=Fin   Tense=Pres
+PaInd_        AUX         lemma=do        VerbForm=Fin   Tense=Past 
+FuInd_        AUX         lemma=do        VerbForm=Inf 
+PrCop_        VERB        lemma=be        VerbForm=Fin   Tense=Pres
+PaCop_        VERB        lemma=be        VerbForm=Fin   Tense=Past
+FuCop_        VERB        lemma=be        VerbForm=Inf
+PartCop_      VERB        lemma=be        VerbForm=Part  Tense=Past
+Neg_          PART        lemma=not
+InfMark_      PART        lemma=to
+GenMark_      PART        lemma='s 
+Expl_         PRON        lemma=there
+Cleft_        PRON        lemma=it
+ThatMark_     SCONJ       lemma=that
+ComparAdv_    ADV         lemma=more
+SuperlAdv_    ADV         lemma=most
+-----Comma_        PUNCT       lemma=,
+Amp_          PUNCT       lemma=&
+Orslash_      PUNCT       lemma=/
 
---Prepof_       ADP    lemma=of
---Prepin_       ADP    lemma=in
---Prepto_       ADP    lemma=to
---Prepfor_      ADP    lemma=for
---Prepon_       ADP    lemma=on
---Prepwith_     ADP    lemma=with
---Prepat_       ADP    lemma=at
---Prepby_       ADP    lemma=by
---Prepout_      ADP    lemma=out
 
--- Exceptional tense handling for English specific things
+PrepIn_       ADP         lemma=in
+PrepOn_       ADP         lemma=on
+PrepOf_       ADP         lemma=of
+PrepThan_     ADP         lemma=than
+PrepBy_       ADP         lemma=by
+Next_         ADJ         lemma=next      Degree=Pos
+Last_         ADJ         lemma=last      Degree=Pos
+
+
+-- Tense handling for English specific things
 
 NegPresSimulVPSEng_ : Neg_ -> PrInd_ -> VP -> VPS ;            neg aux head       VerbForm=Inf
 NegPresSimulVPSEng_ p _ vp = MkVPS (TTAnt TPres ASimul) PNeg vp
 NegPastSimulVPSEng_ : Neg_ -> PaInd_ -> VP -> VPS ;            neg aux head       VerbForm=Inf
 NegPastSimulVPSEng_ p _ vp = MkVPS (TTAnt TPast ASimul) PNeg vp
-PPresSQVPSEng_ : PrInd_ -> QVP -> QVPS ;                     aux  head                 VerbForm=Inf
+PPresSQVPSEng_ : PrInd_ -> QVP -> QVPS ;                       aux  head          VerbForm=Inf
 PPresSQVPSEng_ _ qvp       = MkQVPS (TTAnt TPres ASimul) PPos qvp
-PPastSQVPSEng_ : PaInd_ -> QVP -> QVPS ;                     aux  head                 VerbForm=Inf 
+PPastSQVPSEng_ : PaInd_ -> QVP -> QVPS ;                       aux  head          VerbForm=Inf 
 PPastSQVPSEng_ _ qvp       = MkQVPS (TTAnt TPast ASimul) PPos qvp
-NPresSQVPSEng_ : Neg_ -> PrInd_ -> QVP -> QVPS ;             neg  aux  head            VerbForm=Inf
+NPresSQVPSEng_ : Neg_ -> PrInd_ -> QVP -> QVPS ;               neg  aux  head     VerbForm=Inf
 NPresSQVPSEng_ p _ qvp     = MkQVPS (TTAnt TPres ASimul) PNeg qvp
-NPastSQVPSEng_ : Neg_ -> PaInd_ -> QVP -> QVPS ;             neg  aux  head            VerbForm=Inf
+NPastSQVPSEng_ : Neg_ -> PaInd_ -> QVP -> QVPS ;               neg  aux  head     VerbForm=Inf
 NPastSQVPSEng_ p _ qvp     = MkQVPS (TTAnt TPast ASimul) PNeg qvp
 
----- AR: experiment with VPto_
+---- AR: experiment with lexicalized Helper categories
 cat VPto_ = VP
--- BackupVPto__ : VPto_ -> Backups -> VP ;     -- this does not work because BackupVP is applied in wrapBackup; not from grammar 
-ComplVV_ : VV -> VPto_ -> VP ;             head xcomp            -- (1)
+ComplVV_  : VV -> VPto_ -> VP ;                    head  xcomp 
+MarkVP_   : InfMark_ -> VP -> VPto_ ;              mark  head
+MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VPto_ ;  mark  cop  head
 ComplVV_ vv vpto = ComplVV vv vpto
-MarkVP_  : InfMark_ -> VP -> VPto_ ;       mark head         -- (1)
-MarkVP_ m vp = vp
-MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VPto_ ;  mark cop head
-MarkComp_ m _ c = UseComp c
+MarkVP_ m vp     = vp
+MarkComp_ m _ c  = UseComp c
 
+
+---- Empty categories
+--  For every (cat, expr) in the language, where expr =>* "",
+--  a helper function is required to handle the erasing property of 
+--  GF grammars
+--  An example of this is (Det, DetQuant IndefArt NumPl)
+    
+
+
+
+-- Gentives
 GenNPs_ : NP -> GenMark_ -> Quant ; head case
 GenNPs_ np _ = GenNP np
 
---cat NPof_ = NP
---cat NPin_ = NP
---cat NPto_ = NP
---cat NPfor_ = NP
---cat NPon_ = NP
---cat NPwith_ = NP
---cat NPat_ = NP
---cat NPby_ = NP
---cat NPout_ = NP
---CasedNPof_   : Prepof_ -> NP -> NPof_ ;       case   head 
---CasedNPin_   : Prepin_ -> NP -> NPin_ ;       case   head 
---CasedNPto_   : Prepto_ -> NP -> NPto_ ;       case   head 
---CasedNPfor_  : Prepfor_ -> NP -> NPfor_ ;     case   head 
---CasedNPon_   : Prepon_ -> NP -> NPon_ ;       case   head 
---CasedNPwith_ : Prepwith_ -> NP -> NPwith_ ;   case   head 
---CasedNPat_   : Prepat_ -> NP -> NPat_ ;       case   head 
---CasedNPby_   : Prepby_ -> NP -> NPby_ ;       case   head 
---CasedNPout_  : Prepout_ -> NP -> NPout_ ;     case   head 
---CasedNPof_ p np = np
---CasedNPin_ p np = np
---CasedNPto_ p np = np
---CasedNPfor_ p np = np
---CasedNPon_ p np = np
---CasedNPwith_ p np = np
---CasedNPat_ p np = np
---CasedNPby_ p np = np
---CasedNPout_ p np = np
+ReflPron_ : Pron -> ReflPron_ ;     Reflex=Yes
+ReflPron_ p = p
 
---DefCountNP_ : Quant -> Card -> NPof_ -> NP ;  det   head  nmod
---CountNP_    : Card -> NPof_ -> NP ;           head  nmod
---PartNP_     : CN -> NPof_ -> CN ;             head  nmod
---DefCountNP_ q card np = CountNP (DetQuant q (NumCard card)) np
---CountNP_ card np      = CountNP (DetQuant IndefArt (NumCard card)) np
---PartNP_ cn np = PartNP cn np
+UseComparA_   : ComparAdv_ -> A -> AP  ;      advmod  head      Degree=Cmp 
+OrdSuperl_    : SuperlAdv_ -> A -> Ord ;      advmod  head      Degree=Sup
+UseComparA_ _ a = UseComparA a
+OrdSuperl_  _ a = OrdSuperl a
+
+cat NPthan_ = NP
+cat NPof_   = NP
+AdvNPthan_  : PrepThan_ -> NP -> NPthan_ ;    case  head
+AdvNPof_    : PrepOf_ -> NP -> NPof_ ;        case  head
+AdvNPthan_ _ np = np
+AdvNPof_ _ np   = np
+
+ComparA_    : A  -> NPthan_ -> AP ;           head  nmod        Degree=Cmp
+CountNP_    : Card -> NPof_ -> NP ;           head  nmod
+DefCountNP_ : Quant -> Card -> NPof_ -> NP ;  det   head  nmod
+PartNP_     : CN -> NPof_ -> CN ;             head  nmod
+ComparA_ a np         = ComparA a np
+CountNP_ card np      = CountNP (DetQuant IndefArt (NumCard card)) np
+DefCountNP_ q card np = CountNP (DetQuant q (NumCard card)) np
+PartNP_ cn np         = PartNP cn np
+
+-- Constructions from Translate grammar
+-- these are commented out from the abstract labels because 
+-- they can introduce syncategorametic words
+-- depending on the language
+
+monthN               : Month -> N ;
+monthPN              : Month -> PN ;
+intYear              : Int -> Year ;
+InLanguage_          : PrepIn_ -> Language -> Adv ;            case  head
+monthAdv_            : PrepIn_ -> Month -> Adv ;               case  head
+yearAdv_             : PrepIn_ -> Year -> Adv ;                case  head
+monthYearAdv_        : PrepIn_ -> Month -> Year -> Adv ;       case  head  nummod
+timeunitAdv_         : Card -> Timeunit -> Adv ;               nummod  head
+weekdayN             : Weekday -> N ;
+weekdayPN            : Weekday -> PN ;
+weekdayNextAdv_      : Next_ -> Weekday -> Adv ;               amod  head
+weekdayLastAdv_      : Last_ -> Weekday -> Adv ;               amod  head
+weekdayHabitualAdv_  : PrepOn_ -> Weekday -> Adv ;             case  head      Number=Plur
+weekdayPunctualAdv_  : PrepOn_ -> Weekday -> Adv ;             case  head      Number=Sing
+ByVP_                : PrepBy_ -> VP -> Adv ;                  case   head      VerbForm=Ger
+
+InLanguage_ _ l         = InLanguage l
+monthAdv_   _ m         = monthAdv m
+yearAdv_    _ y         = yearAdv y
+monthYearAdv_ _ m y     = monthYearAdv m y
+timeunitAdv_ n t        = timeunitAdv n t
+weekdayNextAdv_ _ w     = weekdayNextAdv w
+weekdayLastAdv_ _ w     = weekdayLastAdv w
+weekdayHabitualAdv_ _ w = weekdayHabitualAdv w
+weekdayPunctualAdv_ _ w = weekdayPunctualAdv w
+ByVP_ _ vp              = ByVP vp
+
+
+
+----InOrderToVP : VP -> Adv ;
+----monthYearAdv : Month -> Year -> Adv ;
+----dayMonthAdv : Monthday -> Month -> Adv ;
+----dayMonthYearAdv : Monthday -> Month -> Year -> Adv ;
+

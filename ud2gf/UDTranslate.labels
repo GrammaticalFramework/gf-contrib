@@ -16,28 +16,29 @@ PredSCVPS : SC -> VPS -> S ;  csubjpass head
 ---PassVPSlash      : VPSlash -> VP ;
 ---PassAgentVPSlash : VPSlash -> NP -> VP ;
 
-ComplSlash : VPSlash -> NP -> VP ;  head dobj 
+----ComplSlash : VPSlash -> NP -> VP ;  head dobj 
 ComplVS : VS -> S -> VP  ;  head ccomp 
 ComplVQ : VQ -> QS -> VP ;  head ccomp 
 ComplVA : VA -> AP -> VP ;  head xcomp 
 ComplVV : VV -> VP -> VP ;  aux  head         VerbForm=Inf    -- matches modal verbs
--- ComplVV : VV -> VP -> VP ;  head xcomp     -- now handled in language specific 
+-- ComplVV : VV -> VP -> VP ;  head xcomp                     -- now handled in language specific 
 ---DirectComplVQ : Temp -> NP -> VQ -> QS -> S ;
 ---DirectComplVS : Temp -> NP -> VS -> Utt -> S ;
 
----ComplA2 : A2 -> NP -> AP ;  head  nmod         -- this is correct, 
+---ComplA2 : A2 -> NP -> AP ;  head  nmod         -- this is correct 
 ---ComplN2 : N2 -> NP -> CN ;  head  nmod         -- but should be handled using language specific rules 
 ---ComplN3 : N3 -> NP -> N2 ;  head  nmod         -- because case of complements is encoded in the lexicon
 
 SlashV2a    : V2 -> VPSlash ; 
-Slash2V3    : V3 -> NP -> VPSlash  ;  head iobj 
-Slash3V3    : V3 -> NP -> VPSlash  ;  head dobj 
-SlashV2S    : V2S -> S -> VPSlash  ;  head ccomp 
-SlashV2Q    : V2Q -> QS -> VPSlash ;  head ccomp 
-SlashV2A    : V2A -> AP -> VPSlash ;  head xcomp 
-SlashV2V    : V2V -> VP -> VPSlash ;  head xcomp 
+Slash2V3    : V3 -> NP -> VPSlash  ;  head  iobj 
+Slash3V3    : V3 -> NP -> VPSlash  ;  head  dobj 
+SlashV2S    : V2S -> S -> VPSlash  ;  head  ccomp 
+SlashV2Q    : V2Q -> QS -> VPSlash ;  head  ccomp 
+SlashV2A    : V2A -> AP -> VPSlash ;  head  xcomp 
+SlashV2V    : V2V -> VP -> VPSlash ;  head  xcomp 
 ---SlashV2VNP  : V2V -> NP -> VPSlash -> VPSlash ;  head dobj  xcomp
----SlashVV     : VV -> VPSlash -> VPSlash ;
+SlashVV     : VV -> VPSlash -> VPSlash ;     aux   head    VerbForm=Inf   -- match modal verbs
+SlashVV     : VV -> VPSlash -> VPSlash ;     head  xcomp
 ---SlashVS     : NP -> VS -> SSlash -> ClSlash ;  nsubj  head  ccomp
 ---SlashVP     : NP -> VPSlash -> ClSlash ;  nsubj head 
 ---SlashVPS    : NP -> VPSlash -> SSlash ;   nsubj head
@@ -70,10 +71,11 @@ ApposNP  : NP -> NP -> NP  ;   head  name
 --- Thus using these constrained versions reduces the performance
 --- Reverting back to simple PositA without any constraints
 --PositA     : A -> AP   ;     Degree=Pos
---UseComparA : A -> AP   ;     Degree=Cmp
---OrdSuperl  : A -> Ord  ;     Degree=Sup
+PositA     : A -> AP   ;
+UseComparA : A -> AP   ;     Degree=Cmp
+OrdSuperl  : A -> Ord  ;     Degree=Sup
 
-PositA   : A -> AP ;
+PositA   : A -> AP         ;
 AdjCN    : AP -> CN -> CN  ;   amod  head 
 ---AdvCN : CN -> Adv -> CN ;   head  nmod     -- avoid since it increases ambiguity 
 AdvNP 	 : NP -> Adv -> NP ;   head  advmod 
@@ -86,7 +88,7 @@ AdjOrd   : Ord -> AP ;
 AdnCAdv  : CAdv -> AdN ;
 DetDAP   : Det -> DAP ;
 ----CAdvAP   : CAdv -> AP -> NP -> AP ;
-----ComparA  : A -> NP -> AP          ;   amod  head
+----ComparA  : A -> NP -> AP          ;   head    nmod
 ----ComparAdvAdj : CAdv -> A -> NP -> Adv ;
 ----ComparAdvAdjS : CAdv -> A -> S -> Adv ;
 ----MassNP   : CN -> NP ;
@@ -98,10 +100,11 @@ DetDAP   : Det -> DAP ;
 ----OrdNumeralSuperl : Numeral -> A -> Ord ;
 
 NumCard  : Card -> Num ;
-----NumDigits : Digits -> Card ;
+----NumDigits  : Digits -> Card ;
 ----NumNumeral : Numeral -> Card ;
 ----OrdDigits  : Digits -> Ord ;
 ----OrdNumeral : Numeral -> Ord ;
+----IDig : Dig -> Digits ;
 
 
 -+  (predicate/clausal modifiers)
@@ -121,8 +124,8 @@ PrefixCard : Card -> Card -> Card ;      compound  head
 -+  (names)
 -- (this should be changed for next version to next line)
 PrefixPN : PN -> PN -> PN ;              name  head 
-PrefixPN : PN -> PN -> PN ;              compound  head
 ----PrefixPN : PN -> PN -> PN ;              head  name    -- (in case names are compositional like "Computer Science Department")
+PrefixPN : PN -> PN -> PN ;              compound  head
 UseQuantPN : Quant -> PN -> NP ;         det  head 
 
 -++ Non-core dependents of clausal predicates
@@ -130,19 +133,18 @@ UseQuantPN : Quant -> PN -> NP ;         det  head
 
 PositAdAAdj : A -> AdA ;
 PositAdvAdj : A -> Adv ;
-AdAdV      : AdA -> AdV -> AdV   ;  advmod head
-AdVVP      : AdV -> VP -> VP     ;  advmod head 
-AdVVPSlash : AdV -> VPSlash -> VPSlash ; advmod head
-----AdvVPSlash : VPSlash -> Adv -> VPSlash ;
-AdAP       : AdA -> AP -> AP     ;  advmod head 
-AdAdv      : AdA -> Adv -> Adv   ;  advmod head 
-AdNum      : AdN -> Card -> Card ;  advmod head      
+AdVVP      : AdV -> VP -> VP     ;        advmod  head 
+AdVVPSlash : AdV -> VPSlash -> VPSlash ;  advmod  head
+----AdvVPSlash : VPSlash -> Adv -> VPSlash ;   head   nmod   -- does this increase ambiguity? almost seems to break everything?
 AdvVPS     : VPS -> Adv -> VPS   ;  head advmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head advcl
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:npmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:tmod
-----AddAdvQVP  : QVP -> IAdv -> QVP ;  head nmod
+AdAP       : AdA -> AP -> AP     ;  advmod head 
+AdAdV      : AdA -> AdV -> AdV   ;  advmod head
+AdAdv      : AdA -> Adv -> Adv   ;  advmod head 
+AdNum      : AdN -> Card -> Card ;  advmod head
 AddAdvQVPS : QVPS -> IAdv -> QVPS ;  head nmod        -- to be added
 AdvS       : Adv -> S -> S       ;  advmod head 
 AdvS       : Adv -> S -> S       ;  advcl head
@@ -158,14 +160,13 @@ ExtAdvS    : Adv -> S -> S       ;  advmod head
 -++ RP is inconsistently annotated, (that,SCONJ,PronType=Rel,mark) and (which|who|whose,PRON,PronType=Rel,nsubj)
 -++ Case of "that" is handled using helper functions
 -++ Check when dobj label is used for RPs -- to do
-RelVPS   : RP -> VPS -> RS      ; nsubj  head
-RelVPS   : RP -> VPS -> RS      ; nsubjpass  head
-RelSSlash: RP -> SSlash  -> RS  ; dobj  head
-RelS     : S -> RS -> S         ; head  advcl 
 
-
-SSubjS   : S -> Subj -> S -> S  ; head mark advcl 
-SubjS    : Subj -> S -> Adv     ; mark head 
+RelVPS   : RP -> VPS -> RS      ;  nsubj  head
+RelVPS   : RP -> VPS -> RS      ;  nsubjpass  head
+RelSSlash: RP -> SSlash  -> RS  ;  dobj  head
+RelS     : S -> RS -> S         ;  head  advcl 
+SSubjS   : S -> Subj -> S -> S  ;  head  mark  advcl
+SubjS    : Subj -> S -> Adv     ;  mark  head 
 ----FocusObjS : NP -> SSlash -> S ;
 ----FunRP     : Prep -> NP -> RP -> RP ;
 
@@ -193,8 +194,8 @@ QuestVPS    : IP -> VPS -> QS ;          nsubj  head
 QuestVPS    : IP -> VPS -> QS ;          nsubj:cop   head
 QuestSlash  : IP -> ClSlash -> QCl ;     dobj   head 
 QuestIAdv   : IAdv -> Cl -> QCl ;        advmod head 
-QuestSSlash : IP -> SSlash -> QS ;       dobj   head 
-QuestSIAdv  : IAdv -> S -> QS ;          advmod head 
+QuestSSlash : IP -> SSlash -> QS ;       dobj   head
+QuestSIAdv  : IAdv -> S -> QS ;          advmod head
 QuestSIAdv  : IAdv -> S -> QS ;          mark   head
 ----QuestIComp : IComp -> NP -> QCl ;    head   nsubj 
 ----QuestIComp : IComp -> NP -> QCl ;    head   nsubj:cop 
@@ -228,8 +229,30 @@ EmbedQS    : QS -> SC ;
 -+  Constructions
 
 ----ByVP  : VP -> Adv ;
-----InLanguage : Language -> Adv ;
 ----InOrderToVP : VP -> Adv ;
+----InLanguage : Language -> Adv ;
+----monthN : Month -> N ;
+----monthPN : Month -> PN ;
+----monthAdv : Month -> Adv ;
+----intYear : Int -> Year ;
+----yearAdv : Year -> Adv ;
+----monthYearAdv : Month -> Year -> Adv ;
+----dayMonthAdv : Monthday -> Month -> Adv ;
+----dayMonthYearAdv : Monthday -> Month -> Year -> Adv ;
+----timeunitAdv : Card -> Timeunit -> Adv ;
+----weekdayN : Weekday -> N ;
+----weekdayPN : Weekday -> PN ;
+----weekdayNextAdv : Weekday -> Adv ;
+----weekdayLastAdv : Weekday -> Adv ;
+----weekdayHabitualAdv : Weekday -> Adv ;
+----weekdayPunctualAdv : Weekday -> Adv ;
+
+
+
+
+ParaTaxis  : Phr -> Phr -> Phr ;            head  parataxis
+ParaTaxis_ : Phr -> Punct -> Phr -> Phr ;   head  punct  parataxis
+ParaTaxis_ ph1 p ph2 = ParaTaxis ph1 ph2
 
 -+  Copula constructions and related functions
 
@@ -267,9 +290,10 @@ UseV       : V -> VP ;
 MkSymb        : String -> Symb  ;    udtag=X 
 MkSymb        : String -> Symb  ;    udtag=SYM
 ----MkVPI  : VP -> VPI
+----SlashVPS : Temp -> Pol -> VPSlash -> SSlash ;   aux neg  head
 ----MkVPS  : Temp -> Pol -> VP -> VPS ;     aux  neg head
 ----MkQVPS : Temp -> Pol -> QVP -> QVPS ; 
-
+PConj   : Conj -> PConj ;   
 
 -+  Utt* functions for building top level utterances ;
 -+  (reducing these heavily reduces ambiguity with loss of coverage)
@@ -291,35 +315,44 @@ UttVPS    : VPS -> Utt ;
 
 -+  Top function in UDTranslate grammar 
 -+  (handled mostly in helper functions)
+
 ----PhrUtt      : PConj -> Utt -> Voc -> Phr ;   conj  head  vocative
-----TopPhr      : Phr -> Top ; 
+TopPhr      : Phr -> Top ; 
 TopPhrPunct : Phr -> Punct -> Top ; head punct 
 
 -+  Functions used in Translate grammar but not in UDTranslate grammar
 
-----PredVP    : NP -> VP -> Cl  ;   nsubj   head 
-----PredVP    : NP -> VP -> Cl  ;   nsubj:cop   head 
-----PredSCVP  : SC -> VP -> Cl  ;   csubj   head 
-----PredSCVP  : SC -> VP -> Cl  ;   csubj:cop   head
-----AdvVP     : VP -> Adv -> VP ;   head   advmod 
-----AdvVP     : VP -> Adv -> VP ;   head   advcl        -- If Adv is GerundAdv
-----AdvVP     : VP -> Adv -> VP ;   head   nmod 
-----AdvVP     : VP -> Adv -> VP ;   head   nmod:npmod 
-----AdvVP     : VP -> Adv -> VP ;   head   nmod:tmod 
-----RelVP     : RP -> VP -> RCl ;   nsubj  head 
-----RelSlash  : RP -> ClSlash -> RCl ;   nsubj  head 
-----QuestVP   : IP -> VP -> QCl ;   nsubj head 
-----QuestVP   : IP -> VP -> QCl ;   nsubj:cop head 
-----QuestCl   : Cl -> QCl ;
-----UseCl     : Temp -> Pol -> Cl -> S ;
-----UseRCl    : Temp -> Pol -> RCl -> RS ;
-----UseQCl    : Temp -> Pol -> QCl -> QS ;
-----UttVP     : VP -> Utt ;
+----PredVP     : NP -> VP -> Cl  ;   nsubj   head 
+----PredVP     : NP -> VP -> Cl  ;   nsubjpass   head 
+----PredVP     : NP -> VP -> Cl  ;   nsubj:cop   head 
+----PredSCVP   : SC -> VP -> Cl  ;   csubj   head 
+----PredSCVP   : SC -> VP -> Cl  ;   csubjpass   head 
+----PredSCVP   : SC -> VP -> Cl  ;   csubj:cop   head
+----SlashVP    : NP -> VPSlash -> ClSlash ;  nsubj  head 
+----AdvVP      : VP -> Adv -> VP ;   head   advmod 
+----AdvVP      : VP -> Adv -> VP ;   head   advcl        -- If Adv is GerundAdv
+----AdvVP      : VP -> Adv -> VP ;   head   nmod 
+----AdvVP      : VP -> Adv -> VP ;   head   nmod:npmod 
+----AdvVP      : VP -> Adv -> VP ;   head   nmod:tmod 
+----RelVP      : RP -> VP -> RCl ;   mark   head 
+----RelSlash   : RP -> ClSlash -> RCl ;   mark  head 
+----RelCl      : RP -> Cl -> RCl ;   mark   head
+----QuestVP    : IP -> VP -> QCl ;   nsubj head 
+----QuestVP    : IP -> VP -> QCl ;   nsubj:cop head 
+----QuestSlash : IP -> ClSlash -> QCl ;     dobj   head 
+----QuestIAdv  : IAdv -> Cl -> QCl ;        advmod head 
+----QuestCl    : Cl -> QCl ;
+----UseCl      : Temp -> Pol -> Cl -> S ;
+----UseRCl     : Temp -> Pol -> RCl -> RS ;
+----UseQCl     : Temp -> Pol -> QCl -> QS ;
+----UttVP      : VP -> Utt ;
+----AddAdvQVP  : QVP -> IAdv -> QVP ;  head nmod
 
 
 -++ Other functions to facilitate UDTranslate
 
 StringCard  : String -> Card  ;    udtag=NUM      NumType=Card 
+StringOrd   : String -> Ord   ;    udtag=NUM      NumType=Ord
 StringPN    : String -> PN    ;
 StringPunct : String -> Punct ;    udtag=PUNCT
 PrefixForeign : Symb -> Symb -> Symb ;  foreign head
@@ -351,7 +384,6 @@ PrefixForeign : Symb -> Symb -> Symb ;  foreign head
 ---StringAdvSubj : String -> Subj  ;    udtag=ADV      PronType=Int
 ---StringIAdv    : String -> IAdv  ;    udtag=ADV      PronType=Int
 ---StringAdv     : String -> Adv   ;
-
 
 
 ------------------------------------
@@ -437,16 +469,26 @@ ConsVPS  : VPS  -> ListVPS  -> ListVPS ;   conj  head
 --  punct types. It is an identity function simply to cover
 --  punct types in UD2GF. The concrete syntax automatically
 --  adds these when linearizing the tree 
-DropCoLAdv_  : Comma_ -> ListAdv -> ListAdv ;   punct  head 
-DropCoLAdV_  : Comma_ -> ListAdV -> ListAdV ;   punct  head 
-DropCoLCN_   : Comma_ -> ListCN  -> ListCN  ;   punct  head 
-DropCoLDet_  : Comma_ -> ListDet -> ListDet ;   punct  head 
-DropCoLNP_   : Comma_ -> ListNP  -> ListNP  ;   punct  head 
-DropCoLAP_   : Comma_ -> ListAP  -> ListAP  ;   punct  head 
-DropCoLRS_   : Comma_ -> ListRS  -> ListRS  ;   punct  head 
-DropCoLS_    : Comma_ -> ListS   -> ListS   ;   punct  head 
-DropCoLVPS_  : Comma_ -> ListVPS -> ListVPS ;   punct  head 
+----DropCoLAdv_  : Comma_ -> ListAdv -> ListAdv ;   punct  head 
+----DropCoLAdV_  : Comma_ -> ListAdV -> ListAdV ;   punct  head 
+----DropCoLCN_   : Comma_ -> ListCN  -> ListCN  ;   punct  head 
+----DropCoLDet_  : Comma_ -> ListDet -> ListDet ;   punct  head 
+----DropCoLNP_   : Comma_ -> ListNP  -> ListNP  ;   punct  head 
+----DropCoLAP_   : Comma_ -> ListAP  -> ListAP  ;   punct  head 
+----DropCoLRS_   : Comma_ -> ListRS  -> ListRS  ;   punct  head 
+----DropCoLS_    : Comma_ -> ListS   -> ListS   ;   punct  head 
+----DropCoLVPS_  : Comma_ -> ListVPS -> ListVPS ;   punct  head 
 ----DropCoLQVPS_ : Comma_ -> ListQVPS -> ListQVPS ;   punct  head 
+DropCoLAdv_  : Punct -> ListAdv -> ListAdv ;   punct  head 
+DropCoLAdV_  : Punct -> ListAdV -> ListAdV ;   punct  head 
+DropCoLCN_   : Punct -> ListCN  -> ListCN  ;   punct  head 
+DropCoLDet_  : Punct -> ListDet -> ListDet ;   punct  head 
+DropCoLNP_   : Punct -> ListNP  -> ListNP  ;   punct  head 
+DropCoLAP_   : Punct -> ListAP  -> ListAP  ;   punct  head 
+DropCoLRS_   : Punct -> ListRS  -> ListRS  ;   punct  head 
+DropCoLS_    : Punct -> ListS   -> ListS   ;   punct  head 
+DropCoLVPS_  : Punct -> ListVPS -> ListVPS ;   punct  head 
+----DropCoLQVPS_ : Punct -> ListQVPS -> ListQVPS ;   punct  head 
 DropCoLAdv_ pu Lx = Lx
 DropCoLAdV_ pu Lx = Lx
 DropCoLCN_  pu Lx = Lx
@@ -457,6 +499,7 @@ DropCoLRS_  pu Lx = Lx
 DropCoLS_   pu Lx = Lx
 DropCoLVPS_ pu Lx = Lx
 ----DropCoLQVPS_ pu Lx = Lx
+
 --  we also need helper functions to handle `no-Conj' constructions.
 --  Two symbols, "/" and "&" are used as Conj with cc labels
 AmpConjAdv_   : Amp_ -> ListAdv -> Adv ;  cc  head 
@@ -601,6 +644,7 @@ EmbedCNVP_ cn vp = SentCN cn (EmbedVP vp)
 -+  Other forms of VP
 
 PresPartAP_      : VP -> AP ;                          VerbForm=Part  Tense=Pres
+PresPartAP_      : VP -> AP ;                          VerbForm=Ger
 PastPartAP_      : VPSlash -> AP ;                     VerbForm=Part  Tense=Past
 PastPartAgentAP_ : VPSlash -> NP -> AP ;   head nmod   VerbForm=Part  Tense=Past
 PresPartAP_ vp               = PresPartAP vp
@@ -682,6 +726,41 @@ NPastAQVPS_ p at qvp    = MkQVPS (TTAnt TPast AAnter) PNeg qvp
 NFutAQVPS_  p at tf qvp = MkQVPS (TTAnt TFut  AAnter) PNeg qvp
 NCondAQVPS_ p at tc qvp = MkQVPS (TTAnt TCond AAnter) PNeg qvp
 
+-++ SSlash phrases  (to be verified)
+
+----PPresSSSlash_ : NP -> VPSlash -> SSlash ;                               nsubj  head                      VerbForm=Fin   Tense=Pres
+----PPastSSSlash_ : NP -> VPSlash -> SSlash ;                               nsubj  head                      VerbForm=Fin   Tense=Past
+----PFutSSSlash_  : Fut_ -> NP -> VPSlash -> SSlash ;                       aux  nsubj  head                 VerbForm=Inf
+----PCondSSSlash_ : Cond_ -> NP -> VPSlash -> SSlash ;                      aux  nsubj  head                 VerbForm=Inf
+----PPresASSlash_ : PrPerf_ -> NP -> VPSlash -> SSlash ;                    aux  nsubj  head                 VerbForm=Part
+----PPastASSlash_ : PaPerf_ -> NP -> VPSlash -> SSlash ;                    aux  nsubj  head                 VerbForm=Part
+----PFutASSlash_  : FuPerf_ -> Fut_ -> NP -> VPSlash -> SSlash ;            aux  aux  nsubj  head            VerbForm=Part
+----PCondASSlash_ : FuPerf_ -> Cond_ -> NP -> VPSlash -> SSlash ;           aux  aux  nsubj  head            VerbForm=Part
+----NPresSSSlash_ : Neg_ -> NP -> VPSlash -> SSlash ;                       neg  nsubj  head                 VerbForm=Fin   Tense=Pres
+----NPastSSSlash_ : Neg_ -> NP -> VPSlash -> SSlash ;                       neg  nsubj  head                 VerbForm=Fin   Tense=Past
+----NFutSSSlash_  : Neg_ -> Fut_ -> NP -> VPSlash -> SSlash ;               neg  aux  nsubj  head            VerbForm=Inf
+----NCondSSSlash_ : Neg_ -> Cond_ -> NP -> VPSlash -> SSlash ;              neg  aux  nsubj  head            VerbForm=Inf
+----NPresASSlash_ : Neg_ -> PrPerf_ -> NP -> VPSlash -> SSlash ;            neg  aux  nsubj  head            VerbForm=Part
+----NPastASSlash_ : Neg_ -> PaPerf_ -> NP -> VPSlash -> SSlash ;            neg  aux  nsubj  head            VerbForm=Part
+----NFutASSlash_  : Neg_ -> FuPerf_ -> Fut_ -> NP -> VPSlash -> SSlash ;    neg  aux  aux  nsubj  head       VerbForm=Part
+----NCondASSlash_ : Neg_ -> FuPerf_ -> Cond_ -> NP -> VPSlash -> SSlash ;   neg  aux  aux  nsubj  head       VerbForm=Part
+----PPresSSSlash_ np vpslash         = SlashVPS (TTAnt TPres ASimul) PPos np vpslash
+----PPastSSSlash_ np vpslash         = SlashVPS (TTAnt TPast ASimul) PPos np vpslash
+----PFutSSSlash_  tf np vpslash      = SlashVPS (TTAnt TFut  ASimul) PPos np vpslash
+----PCondSSSlash_ tc np vpslash      = SlashVPS (TTAnt TCond ASimul) PPos np vpslash
+----PPresASSlash_ at np vpslash      = SlashVPS (TTAnt TPres AAnter) PPos np vpslash
+----PPastASSlash_ at np vpslash      = SlashVPS (TTAnt TPast AAnter) PPos np vpslash
+----PFutASSlash_  at tf np vpslash   = SlashVPS (TTAnt TFut  AAnter) PPos np vpslash
+----PCondASSlash_ at tc np vpslash   = SlashVPS (TTAnt TCond AAnter) PPos np vpslash
+----NPresSSSlash_ p np vpslash       = SlashVPS (TTAnt TPres ASimul) PNeg np vpslash
+----NPastSSSlash_ p np vpslash       = SlashVPS (TTAnt TPast ASimul) PNeg np vpslash
+----NFutSSSlash_  p tf np vpslash    = SlashVPS (TTAnt TFut  ASimul) PNeg np vpslash
+----NCondSSSlash_ p tc np vpslash    = SlashVPS (TTAnt TCond ASimul) PNeg np vpslash
+----NPresASSlash_ p at np vpslash    = SlashVPS (TTAnt TPres AAnter) PNeg np vpslash
+----NPastASSlash_ p at np vpslash    = SlashVPS (TTAnt TPast AAnter) PNeg np vpslash
+----NFutASSlash_  p at tf np vpslash = SlashVPS (TTAnt TFut  AAnter) PNeg np vpslash
+----NCondASSlash_ p at tc np vpslash = SlashVPS (TTAnt TCond AAnter) PNeg np vpslash
+
 -++ Progressive verb phrases
 
 PPrSProgrVP_ : PrBeVerb_ -> VP -> VPS ;                                aux  head                 VerbForm=Ger
@@ -737,6 +816,7 @@ NCoAProgrVP_ p at tc _ vp  = MkVPS (TTAnt TCond AAnter) PNeg (ProgrVP vp)
 
 GerundAdv  : VP -> Adv  ;                    VerbForm=Ger
 GerundNP   : VP -> NP   ;                    VerbForm=Ger  -- very important, but results time out
+GerundNP   : VP -> NP   ;                    VerbForm=Part  Tense=Pres
 GerundAdv_ : GerBeVerb_ -> Comp -> Adv ;   cop  head
 GerundNP_  : GerBeVerb_ -> Comp -> NP  ;   cop  head
 GerundAdv_ _ c = GerundAdv (UseComp c)
@@ -919,17 +999,31 @@ MarkVP_  : InfMark_ -> VP -> VP ; mark head
 MarkVP_ m vp = vp
 MarkComp_ : InfMark_ -> FuCop_ -> Comp -> VP ;  mark cop head
 MarkComp_ m _ c = UseComp c
+--MarkComp_ m _ c = InOrderToVP (UseComp c)
 
-----RelVP_     : ThatMark_ -> VP -> RCl ;      mark head
-----RelCl_     : ThatMark_ -> Cl -> RCl ;      mark head
-----RelSlash_  : ThatMark_ -> ClSlash -> RCl ; mark head
-----RelVP_  m vp   = RelVP IdRP vp
-----RelCl_  m cl   = RelCl cl
-----RelSlash m cl  = RelSlash IdRP cl
+
 RelVPS_    : ThatMark_ -> VPS -> RS ;      mark head
 RelSSlash_ : ThatMark_ -> SSlash -> RS ;   mark head
 RelVPS_ m vps  = RelVPS IdRP vps
 RelSSlash_ m s = RelSSlash IdRP s
+
+
+-+  Reflexives
+
+cat ReflPron_ = Pron
+-- write formation rules for reflexive pronouns in language-specific configurations
+
+ReflVP_    : VPSlash -> ReflPron_ -> VP ;   head  dobj
+SelfAdVVP_ : VP -> ReflPron_ -> VP ;        head  nmod
+SelfAdVVP_ : VP -> ReflPron_ -> VP ;        head  nmod:npmod
+SelfAdvVP_ : VP -> ReflPron_ -> VP ;        head  nmod
+SelfAdvVP_ : VP -> ReflPron_ -> VP ;        head  nmod:npmod
+SelfNP_    : NP -> ReflPron_ -> NP ;        head  nmod
+SelfNP_    : NP -> ReflPron_ -> NP ;        head  nmod:npmod
+ReflVP_ vpslash _ = ReflVP vpslash
+SelfAdVVP_ vp _   = SelfAdVVP vp 
+SelfAdvVP_ vp _   = SelfAdvVP vp
+SelfNP_ np _      = SelfNP np
 
 -+  Idioms
 
@@ -1076,14 +1170,17 @@ NPaAImpersCl_ p at _ cleft vp      = UseCl (TTAnt TPast AAnter) PNeg (ImpersCl v
 NFuAImpersCl_ p at tf _ cleft vp   = UseCl (TTAnt TFut  AAnter) PNeg (ImpersCl vp)
 NCoAImpersCl_ p at tc _ cleft vp   = UseCl (TTAnt TCond AAnter) PNeg (ImpersCl vp)
 
+---ImpersS
+---GenericS
+
 -+  Handling punctuations
 -++ Letting Comma_ be dropped from the sentence to improve coverage 
-DropCoAdv_    : Comma_ -> Adv -> Adv ;    punct   head 
-DropCoNP_     : Comma_ -> NP  -> NP  ;    punct   head 
-DropCoS_      : Comma_ -> S   -> S   ;    punct   head 
-DropCoAdv_ pu x = x 
-DropCoNP_  pu x = x 
-DropCoS_   pu x = x 
+----DropCoAdv_    : Comma_ -> Adv -> Adv ;    punct   head 
+----DropCoNP_     : Comma_ -> NP  -> NP  ;    punct   head 
+----DropCoS_      : Comma_ -> S   -> S   ;    punct   head 
+----DropCoAdv_ pu x = x 
+----DropCoNP_  pu x = x 
+----DropCoS_   pu x = x 
 
 
 -+  Utterance constructions
@@ -1098,72 +1195,86 @@ UttNegImpVP_ vp p = UttImpSg PNeg (ImpVP vp)
 ---- UttInterjS_ i u = (UttInterj i)
 
 PhrUttNovoc_    : Utt -> Phr ;
-PhrUttVoc_      : Utt -> NP -> Phr ;           head  vocative 
-PhrUttConj_     : Conj -> Utt -> Phr ;         conj  head
-PhrUttPConj_    : PConj -> Utt -> Phr ;        conj  head
-PhrUttConjVoc_  : Conj -> Utt -> NP -> Phr ;   conj  head  vocative
-PhrUttPConjVoc_ : PConj -> Utt -> NP -> Phr ;  conj  head  vocative
+PhrUttVoc_      : Utt -> Voc -> Phr ;           head  vocative 
+PhrUttPConj_    : PConj -> Utt -> Phr ;         conj  head
+PhrUttConjVoc_  : Conj -> Utt -> Voc -> Phr ;   conj  head  vocative
+PhrUttPConjVoc_ : PConj -> Utt -> Voc -> Phr ;  conj  head  vocative
 PhrUttNovoc_ utt          = PhrUtt NoPConj utt NoVoc
-PhrUttVoc_ utt np         = PhrUtt NoPConj utt (VocNP np)
+PhrUttVoc_ utt np         = PhrUtt NoPConj utt np
 PhrUttPConj_ pc utt       = PhrUtt pc utt NoVoc
-PhrUttConj_  c utt        = PhrUtt (PConjConj c) utt NoVoc
-PhrUttPConjVoc_ pc utt np = PhrUtt pc utt (VocNP np)
-PhrUttConjVoc_  c utt np  = PhrUtt (PConjConj c) utt (VocNP np)
+PhrUttPConjVoc_ pc utt np = PhrUtt pc utt np
+PhrUttConjVoc_  c utt np  = PhrUtt (PConjConj c) utt np
+
 
 -- backup construction functions
 
-*  APBackup : AP -> Backup ;
-*  AdvBackup : Adv -> Backup ;
-*  ConjBackup : Conj -> Backup ;
-*  DetBackup : Det -> Backup ;
-*  InterjBackup : Interj -> Backup ;
-*  NPBackup : NP -> Backup ;
-*  OrdBackup : Ord -> Backup ;
-*  PNBackup : PN -> Backup ;
-*  PunctBackup : Punct -> Backup ;
-*  SBackup : S -> Backup ;
-*  SubjBackup : Subj -> Backup ;
-*  SymbBackup : Symb -> Backup ;
-*  UttBackup : Utt -> Backup ;
-*  VPSlashBackup   : VPSlash -> Backup ;
-*  VPBackup  : VP -> Backup ;
-*  VPSBackup  : VPS -> Backup ;
+*  AdvBackup     : Adv -> Backup ;
+*  APBackup      : AP -> Backup ;
+*  NPBackup      : NP -> Backup ;
+*  VPBackup      : VP -> Backup ;
+*  VPSBackup     : VPS -> Backup ;
+*  VPSlashBackup : VPSlash -> Backup ;
+*  DetBackup     : Det -> Backup ;
+*  QuantBackup   : Quant -> Backup ;
+*  InterjBackup  : Interj -> Backup ;
+*  OrdBackup     : Ord -> Backup ;
+*  PNBackup      : PN -> Backup ;
+*  PrepBackup    : Prep -> Backup ;
+*  PunctBackup   : Punct -> Backup ;
+*  ConjBackup    : Conj -> Backup ;
+*  SymbBackup    : Symb -> Backup ;
+*  SBackup       : S -> Backup ;
+*  QSBackup      : QS -> Backup ;
+*  SCBackup      : SC -> Backup ;
+*  SubjBackup    : Subj -> Backup ;
+*  UttBackup     : Utt -> Backup ;
+*  PhrBackup     : Phr -> Backup ;
+*  TopBackup     : Top -> Backup ;
+
 -- eliminated backup application functions
 --- other backup application functions are built-in
 
-BackupA c b = c -- BackupAP (PositA c) b
+BackupA c b    = c -- BackupAP (PositA c) b
 BackupCop_ c b = b --
-BackupN c b = c -- BackupNP (MassNP (UseN c)) b
+BackupN c b    = c -- BackupNP (MassNP (UseN c)) b
 
 
 -------------------------------------
 -- categories
 --------------------------------------
+
 -+  OPEN classes
 N       NOUN 
-N       PROPN                    -- Iranians, Portuguese, Iraqi
+--N2    NOUN
+--N3    NOUN
+N       PROPN          -- Iranians, Portuguese, Iraqi
 PN      PROPN 
 A       ADJ
-AdA     ADV                    	 -- ADJ (some entries are marked as ADJ like pretty, less, much) / PK
-AdN     ADV
-AdV     ADV 
-Adv     ADV                      -- ADJ
-IAdv    ADV     PronType=Int 
-
----- PK (UD_ADJ can be Adv using AdAdv function), can be adjectives can be transformed to modifiers Adv using PositAdvAdj?)
+--A2    ADJ
 V       VERB 
 V2      VERB 
+--V2    ADJ                    -- possible to construct an AP without consuming anything using type-raising functions
 V3      VERB
------V2    ADJ                   -- possible to construct an AP without consuming anything using type-raising functions
-V2V     VERB 
-VA      VERB 
-VS      VERB 
 VV      VERB
-VV      AUX      VerbForm=Fin
-VP	VERB                     -- for copula
+VA      VERB 
+VV      AUX	VerbForm=Fin
+VS      VERB 
+VQ      VERB
+V2V     VERB 
+V2A     VERB
+V2S     VERB
+V2Q     VERB
+VP      VERB                     -- for copula
+AdA     ADV   -- ADJ (some entries are marked as ADJ like pretty, less, much) / PK
+AdN     ADV
+AdV     ADV 
+Adv     ADV   -- ADJ
+CAdv    ADV   -- no entries exist in the lexicon
+IAdv    ADV		PronType=Int 
+--CAdv  ADV
+---- PK (UD_ADJ can be Adv using AdAdv function), can be adjectives can be transformed to modifiers Adv using PositAdvAdj?)
+
 -+  CLOSED classes
-Card    NUM    NumType=Card 
-String  NUM    NumType=Card 
 Conj    CONJ 
 Pron    PRON   PronType=Prs 
 NP      PRON   PronType=Dem 
@@ -1171,16 +1282,40 @@ Det     PRON   PronType=Rel
 RP      PRON   PronType=Rel
 IP      PRON   PronType=Int
 Predet  DET
-Det     DET 
-Quant   DET 
+Det     DET
+IDet    DET
+Quant   DET                        -- PronType=Art? 
 IQuant  DET    PronType=Int 
 Interj  INTJ 
 Prep    ADP 
 Subj    SCONJ 
 Subj    ADV    PronType=Int
+
 Punct   PUNCT
 String  PUNCT
 ----Quant   PRON PronType=Rel      -- PK (probably an error, that left one Iraqi dead)
+
+
+-+   NUMERAL classes
+--Numer   NUM
+--Numeral NUM
+--Dig     NUM
+--Digit   NUM
+--Float   NUM
+--Int     NUM
+Card    NUM    NumType=Card 
+String  NUM    NumType=Card 
+
+-+   SEMANTIC lexical types
+Language    NOUN
+Language    PROPN
+Month	    NOUN
+Month	    PROPN
+Timeunit    NOUN
+Timeunit    PROPN
+Weekday	    NOUN
+Weekday	    PROPN
+Year        NUM  
 
 --- NOISY classes
 String  PROPN  SYM  X  PUNCT
