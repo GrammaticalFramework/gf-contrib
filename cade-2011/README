@@ -1,0 +1,60 @@
+aarne vid chalmers punkt se
+
+13/4/2011 - 20/4
+
+updated 2/6/2017 for gf-contrib at GitHub
+
+Code to accompany the paper
+
+Translating between language and logic: what is easy and what is difficult
+A Ranta - International Conference on Automated Deduction, 2011, LNCS/LNAI.
+
+http://ai2-s2-pdfs.s3.amazonaws.com/5812/81bb6292814ce285dc1de82a9785fdac2b5d.pdf
+
+Experimental program for translating between language and logic.
+
+Prerequisites: GF darcs version; do
+
+   darcs get --lazy http://www.grammaticalframework.org/ GF
+   cd GF
+   cabal install
+
+To compile
+
+  make
+
+To test
+
+  echo "for all numbers x , x is even or x is odd" | ./Trans
+
+Source files
+
+  -- language-neutral
+  Prop.gf        -- abstract syntax
+  TransProp.hs   -- conversions
+  Trans.hs       -- top loop
+  Makefile
+
+  -- concrete syntax
+  PropI.gf       -- concrete syntax, functor with RGL
+  PropEng.gf     -- concrete syntax, English with RGL functor
+  PropFin.gf     -- concrete syntax, Finnish with RGL functor
+  PropFre.gf     -- concrete syntax, French  with RGL functor
+  PropGer.gf     -- concrete syntax, German  with RGL functor
+  PropSwe.gf     -- concrete syntax, Swedish with RGL functor
+  PropLatex.gf   -- concrete syntax, symbolic logic in LaTeX
+
+  -- not in use
+  PropENF.gf     -- concrete syntax, English with RGL ordinary module
+  PropStr.gf     -- concrete syntax, pidgin English
+
+Generated files
+
+  Prop.hs        -- abstract syntax in Haskell
+
+TODO
+
+  - web demo
+  - integration with MOLTO math library
+  - bullet-based conjunctions are a hack now - should be supported better by RGL
+

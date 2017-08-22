@@ -7,7 +7,7 @@ PART	He tells on Saturday to a person that reports in an airport that we are obl
 
 
 PART	An authority blames ETA.
-
+PART	A police from Spain past foils ETA.
 
 
 
@@ -17,11 +17,11 @@ FULL	AFP on 5 August 2009 in Washington.
 PART	It is meant to ever doubt an outcome that it supports.
 
 
-PART	Menendez says in a press conference in US Capitol that it believes that it pays a price.
+PART	Menendez says with Spanish in a press conference in US Capitol that it believes that it pays a price.
 
 
 
-FULL	We need that it knows a person that supports and a person that doesn't support.
+FULL	We need to know a person that supports and a person that doesn't support.
 PART	A group person from America doesn't bloc vote Obama.
 
 
@@ -173,7 +173,7 @@ FULL	AFP on 17 November 2009 in Washington.
 FULL	Larry Elliott is executed an electrocution.
 
 PART	Elliott is sentenced and it is sentenced.
-PART	Elliott knows a victim.
+
 
 PART	A die is pronounced.
 
@@ -233,10 +233,10 @@ PART	A rabbi from Israel is accused to shoot a person that studies.
 FULL	AFP on 5 May 2010 in Jerusalem.
 
 
-PART	Spokesman of a police from Jerusalem Shmuel Ben Ruby tells to AFP that it is suspected him that it fires in a motorcycle.
+
 PART	It is contrasted to ban a report that it attacks in January.
 PART	A rabbi is arrested.
-
+PART	It says that a rabbi that serves is a felon and Liberty is convicted.
 PART	Governor of Nigeria that faces a graft is arrested in Dubai.
 FULL	AFP on 13 May 2010 in Abuja.
 PART	A person is arrested in Dubai.
@@ -305,9 +305,9 @@ PART	A pirate says that a ransom is paid a tanker from South Korea.
 FULL	AFP on 6 November 2010 in Mogadishu.
 PART	A pirate from Somalia says on Saturday that it receives a record ransom.
 
-PART	Abdi Yare says in Hobyo that money is dropped and a pirate shares.
+PART	Abdi Yare says in Hobyo that money is dropped with a helicopter and a pirate shares.
 
-PART	Samho Dream is seized when it heads Louisiana in April in Indian Ocean.
+FULL	Samho Dream is seized when it heads Louisiana from Iraq in April in Indian Ocean.
 
 PART	They hold a vessel.
 PART	A biggest sum is previously paid.
@@ -317,7 +317,7 @@ FULL	AFP on 28 December 2010 in Miranshah.
 
 
 PART	They say that it kills ten militants in Nawab.
-PART	Senior official tells to AFP that a person is killed when a drone from US fires a missile.
+PART	Senior official tells to AFP that a person is killed when a drone from US fires a missile to three vehicles.
 
 
 PART	Minister is appointed.
@@ -331,14 +331,14 @@ PART	It announces that a person is become a next minister.
 PART	Rudd says that it announces that it changes further.
 PART	Fitzgibbon resigns.
 
-
-PART	It is contrasted that he decides that it resigns to protect an integrity of an organization that governs.
+PART	Fitzgibbon writes in a letter that it avoids participating a negotiation to ensure that it doesn't conflict an interest.
+PART	It is contrasted that he decides to resign to protect an integrity of an organization that governs.
 
 PART	Emir of Kuwait pardons a maid from Philippines.
 PART	It on 11 June 2009 in Manila.
 
 
-
+PART	It is also found that it is guilty that there is her.
 
 
 FULL	Spokesman of Foreign Affairs Department Ed Malaya says that a pardon is signed on 1 June.
@@ -347,7 +347,7 @@ PART	It also thanks a person that leads Kuwait for a magnanimity and compassion.
 
 PART	A pardon is meant to free her and ambassador of Philippines Ricardo Endaya says that it is expected.
 PART	It travels to plead for a life of another maid in a die row that is convicted in 2007 to Kuwait.
-PART	A person that helps about a domestic works in Kuwait and it complains that a salary isn't paid and it is physical abused.
+PART	A person from a country of Asia that helps about a domestic works in Kuwait and it complains that a salary isn't paid and it is physical abused.
 
 
 
@@ -368,7 +368,7 @@ PART	A person
 
 
 PART	He steps down chairman of EMC in January 2001.
-PART	Egan gets a bachelor degree about art about science and a master degree about science.
+FULL	Egan gets a bachelor degree from Northeastern University about art about science and a master degree from Massachusetts Institute of Technology about science.
 PART	He doesn't ever forget a hardscrabble route and it is donated to Northeastern University.
 PART	Egan leaves behind.
 PART	It says that child of King meets to discuss an estate.
@@ -378,7 +378,7 @@ FULL	Atlanta.
 
 PART	Three siblings that sole hold a share are contrasted to meet a person that holds a share.
 FULL	Dexter King also sues sister.
-PART	A person that wins wants that a lottery from Texas pays.
+
 FULL	Austin.
 PART	A person that claims that it is defrauded 1,000,000 dollars to a lottery ticket that wins says that it sues Texas Lottery Commission if it doesn't pay for money.
 
@@ -387,8 +387,8 @@ PART	Pankaj Joshi is accused.
 PART	He is charged to claim a lottery prize.
 PART	Money is recovered to a bank from U.S.
 
-PART	Willis says on Tuesday that it hopes that it has it in a hand.
-PART	Breen says that it plans that it meets a general counsel of a lottery.
+PART	Willis says on Tuesday that it hopes to have it in a hand.
+PART	Breen says that it plans to meet a general counsel of a lottery.
 FULL	Spokesman of a commission declines that it comments.
 PART	Willis says that it doesn't ever doubt Joshi when it buys a ticket in Lucky Food Store.
 
@@ -429,13 +429,13 @@ PART	A procedure that allows that two drugs are injected to a muscle that backs 
 
 PART	Biros kills Engstrom in 1991 and it then scatters a part of a body to Ohio and Pennsylvania.
 
-PART	Biros says that it is paroled.
+PART	Biros says that it is paroled to a heaven.
 
 
 FULL	New York.
 
 
-
+FULL	Holladay says that Clinton chooses to exercise an authority to exempt to benefit Tariq Ramadan and Adam Habib.
 PART	We let that it speaks.
 PART	Holladay notes that it is changed that U.S. postures.
 
@@ -449,7 +449,7 @@ PART	A visa of Ramadan from U.S. is revoked when it is moved to take a job in Un
 
 PART	It is denied because it donates 1,336 dollars to charity that gives money to Hamas that he applies a visa.
 
-
+PART	Ramadan says that it is pleased very.
 
 PART	Habib says that it is thrilled.
 PART	Habib lives when it earns a doctorate about politics science to City University of New York in United States.
@@ -503,7 +503,7 @@ FULL	Tehran.
 
 FULL	It is approved that an estate of Jackson is compensated to a person that administers.
 FULL	Los Angeles.
-PART	It agrees on Wednesday that two men that administer an estate of Michael Jackson receive.
+
 
 PART	Branca and McClain receive.
 PART	Beckloff approves a thing that is arranged.
@@ -534,7 +534,7 @@ PART	Abhisit tells to Red Shirts that it wills that it holds a new poll.
 
 
 
-PART	They want that a person that leads is charged.
+PART	They want to charge a person that leads.
 
 PART	It says that a violent incident that is related kills 29 persons and it wounds a person.
 
@@ -574,7 +574,7 @@ FULL	A district court in Perth from Australia finds on Wednesday that it is guil
 PART	It is possible that he is sentenced a prison.
 
 
-PART	A person that then pays to a person that smuggles a person that flies that seeks an asylum targets Australia.
+PART	A person from Middle East and Asia that then pays to a person that smuggles a person that flies to Indonesia that seeks an asylum targets Australia.
 FULL	A person that prosecutes tells to a court that Ahmadi works to Achmad Olong.
 PART	Olong serves a prison term in Australia.
 
@@ -583,7 +583,7 @@ PART	A thing on 26 August 2010 in Sarajevo.
 
 FULL	Veselin Vlahovic is extradited on Thursday to Spain.
 FULL	Vlahovic is known a monster in Grbavica.
-PART	An organization that governs Spain decides that it allows that he is extradited to Bosnia.
+PART	An organization that governs Spain decides to allow that he is extradited to Bosnia.
 PART	It is contrasted that Vlahovic is jailed in Montenegro.
 
 PART	A thing on 9 September 2010 in Los Angeles.
@@ -661,7 +661,7 @@ PART	It is contrasted to fit something to an agenda that a sort media that doesn
 PART	A much about Faux Nooz.
 
 FULL	A story in here is caused.
-PART	It is a big mess and it needs that it big cleans up.
+PART	It is a big mess and it needs to big clean up.
 PART	A catastrophe is reported and a boat to fish heads an out.
 PART	Because a stigma is a biggest problem a person avoids an entire area.
 PART	It is good.
@@ -672,7 +672,7 @@ PART	It is busy.
 
 
 
-FULL	They hope that all lives are eliminated to an earth and an event is just looked.
+FULL	They hope to eliminate all lives to an earth and an event is just looked.
 
 
 PART	It soon entertains us.
@@ -680,7 +680,7 @@ PART	It soon entertains us.
 
 
 
-
+PART	It contrasts.
 
 PART	It isn't possible that I still believe that they cap it.
 
@@ -782,7 +782,7 @@ FULL	A produce is risen.
 FULL	A produce is risen.
 
 FULL	I give a source to you.
-PART	I say it.
+
 PART	It is a product spreadsheet.
 FULL	A link in here is hyperlinked.
 
@@ -834,7 +834,7 @@ PART	New oil is discovered.
 FULL	You don't provide that data because it is possible.
 
 
-PART	It is hyperlinked that a military from US warns of a business that it is possible that an oil output is dipped.
+PART	It is hyperlinked that a military from US warns of a business from The Guardian that it is possible that an oil output is dipped.
 
 PART	You do!
 PART	A chart says a source in a bottom.
@@ -934,7 +934,7 @@ PART	It is barred that it doesn't hold.
 FULL	Everything is wagered.
 PART	A progressive old agenda is pushed and it then retires in 2012.
 FULL	It is hyperlinked that Greenpeace claims that it shuts down an oil well in Greenland.
-PART	An environment group says that four expert persons evade a navy from Denmark to climb an inside of an oil rig of Cairn Energy.
+PART	An environment group says that four expert persons evade a navy from Denmark with a speedboat that is inflated to climb an inside of an oil rig of Cairn Energy.
 
 FULL	Yoda says.
 FULL	They are an idiot.
@@ -1045,7 +1045,7 @@ FULL	Do you ever hear Tricare Standard or Thrift Savings Plan?
 FULL	It doesn't compare.
 
 
-FULL	It is precise caused that this regime needs that it is voted in November that it is out.
+
 PART	We see a same bullshit.
 
 PART	You are seen in a commissary on Sunday.
@@ -1102,7 +1102,7 @@ PART	A person doesn't have a clue about a thing.
 
 
 
-PART	Every group plans that it does this.
+PART	Every group plans to do this.
 
 
 PART	An organization person controls House.
@@ -1131,11 +1131,11 @@ PART	It is said to a shit stain that it pays a car or it pays a mortgage isn't i
 FULL	Don't you thank Obama?
 
 PART	I read.
-PART	He doesn't need that you are thanked.
+PART	He doesn't need to thank you.
 
 PART	Senate is laughed for his budget.
 PART	I imagine a thing.
-FULL	A person needs that it knows a thing that a fool does.
+FULL	A person needs to know a thing that a fool does.
 
 PART	It is said to a shit stain that it pays a car or it pays a mortgage isn't included.
 
@@ -1185,7 +1185,7 @@ PART	Do you know few bad apples that I mention?
 PART	I just consider you.
 
 
-FULL	I then say that you deserve a cut because it votes a wrong party.
+FULL	I then say that you deserve to cut because it votes a wrong party.
 PART	It serves to you.
 
 
@@ -1194,7 +1194,7 @@ FULL	A wage is paid to you.
 PART	It is given that there is a break.
 PART	Do you know that it sees soldier?
 
-PART	It is right that there is that. I run and it also runs.
+PART	It is right that there is that. I run to a building that is burned and it also runs.
 FULL	What do I wonder?
 
 FULL	This just confirms it.
@@ -1214,9 +1214,9 @@ PART	A thing is told to me.
 PART	It wakes up a turd boy!
 
 
-
+PART	It is sounded.
 PART	It also shows a thing.
-PART	I hope that it gives a reputation that is negatived to a pathetic ass of you that doesn't serve.
+PART	I hope to give a reputation that is negatived to a pathetic ass of you that doesn't serve.
 FULL	It is sure that I do.
 PART	Before an incident
 PART	Veteran doesn't see a day.
@@ -1228,8 +1228,8 @@ FULL	It pays to them and it is become when it leaves a military a criminal and a
 
 
 PART	Do you ever go a post?
-
-PART	You argue!
+PART	It is contrasted that I do.
+FULL	You argue with a fact!
 PART	You are a serious piece and it deserves a brick that is thrown to a fucking head.
 
 FULL	It hurts truth.
@@ -1268,7 +1268,7 @@ FULL	I also know a criminal that goes to serve that scams a system when it is ou
 PART	It isn't more good that there is veteran.
 
 PART	We go to a society and it works.
-PART	You are an idiot if it thinks that it is possible that we live.
+PART	You are an idiot if it thinks that it is possible that we live from a check.
 
 PART	You only know.
 

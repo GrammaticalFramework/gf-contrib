@@ -3,8 +3,8 @@ PART	You pledge!
 FULL	A boat to fish is bumped a fleet. They again show a wolfish appearance with a heart of a person that steals and an arrogance form.
 PART	You aren't ever gone back to that time! It is sharp that there is a sword and a knife shines! We bury an enemy that is approached!
 
-FULL	I agree that a person that starts a thread analyzes.
-PART	I wish much that it is born.
+
+
 FULL	How long do we tolerate Japan?
 FULL	I say to a fellow citizen.
 
@@ -17,7 +17,7 @@ PART	Nanjing Massacre adds a layer that isn't ever faded an ancient city.
 PART	I say many instances that are cited that are difficultly recorded to a fellow citizen.
 
 FULL	It is still inferred that all persons that experience that era vividly remember.
-PART	Because Japan now wants that it reverses a verdict about aggression history it wakes up a citizen and a person in Asia from China.
+PART	Because Japan now wants to reverse a verdict about aggression history it wakes up a citizen and a person in Asia from China.
 
 PART	An interest of a country and a nation unity guarantees a honor. It isn't possible that we let that a native land is separated.
 
@@ -74,7 +74,7 @@ PART	Does a person from China still do this?
 PART	It is recommended that we tell to a whole world that it isn't possible that an other bullies China.
 PART	Time. It is calm that there is China.
 PART	All lives of our citizen are too carefree. Official is too extravagant.
-PART	We don't already now have a cohesion. China needs that it starts a war. A face of a country that follows a rear of United States is slapped.
+PART	We don't already now have a cohesion. China needs to start a war. A face of a country that follows a rear of United States is slapped.
 PART	You let that they know that US is a panacea!
 FULL	China is gone!
 PART	We fight if Japan dares to invade a territory for a scale war. It isn't possible that China loses.
@@ -152,7 +152,7 @@ FULL	This is a doh moment that is major!
 PART	I think that it is possible that it lags.
 
 FULL	Another thing that is predicted.
-PART	It is soared that it is needed that a road is improved.
+PART	It is soared that it needs to improve a road.
 
 
 FULL	I thank you for nothing.
@@ -166,7 +166,7 @@ PART	It contrasts.
 PART	Richmond has traffic.
 
 
-PART	A road.
+FULL	A road to a nowhere.
 FULL	You just think that it is possible that it is spent of this money!
 
 FULL	It is very nice that it obliges us.
@@ -183,12 +183,12 @@ PART	A person makes a good point.
 
 
 
-
+PART	Less Walter Stoch states that it intends to pay money to develop an economy a road.
 
 FULL	I say to TMT that it doesn't understand a point.
 PART	You are sticked to traffic.
 
-PART	It is needed that a business is supported.
+PART	It needs to support a business.
 
 FULL	It is recommended if we recognize that a road primary benefits a business that it does two things.
 
@@ -218,7 +218,7 @@ PART	It is wonderful that there is a road.
 PART	It is possible that it commerce develops to us and it is possible that it works.
 PART	It is possible that you think that a land is used.
 
-FULL	It refuses that I work in a downtown area.
+
 
 
 PART	It doesn't understand an exact thing.
@@ -233,7 +233,7 @@ PART	This infatuation baffles me truly.
 
 
 PART	I am broken up since August.
-PART	I want that it starts to date other persons and father says.
+PART	I want to start to date other persons and father says.
 
 PART	A much is gone on in his life and it thinks that it is possible that we are worked.
 
@@ -262,7 +262,7 @@ PART	You need.
 FULL	You keep that thing that is recorded!
 
 PART	You try to aid if it isn't possible that it affords one!
-PART	You tell that it is needed that it goes!
+PART	You tell that it needs to go!
 
 
 
@@ -283,7 +283,7 @@ PART	It isn't worked out if it opines because it doesn't ever open up, a person 
 
 PART	I have a person that counsels because it is possible that you only have and it doubts that it helps if it doesn't already help much.
 
-
+PART	I prefer to die and it worsens a matter.
 
 PART	It doesn't want that it is gone and it fails.
 PART	Is it possible that someone some advises me?
@@ -297,7 +297,7 @@ PART	It is possible that it benefits you if there is an anxious person.
 
 
 
-PART	She is an epilepsy and it is manic depressed.
+FULL	She is an epilepsy and it is manic depressed with a huge problem about anger.
 PART	She is horrible.
 
 
@@ -306,7 +306,7 @@ PART	I then anger a person that teaches.
 
 PART	I am not passed an exam and it already accepts that it is defeated and this year makes that it is failed.
 FULL	I don't ever make a grade.
-PART	I wish that it is possible that it wipes out her.
+
 
 
 PART	It is recommended that it is more good that there is it.
@@ -321,13 +321,13 @@ PART	A life throws a thing to you.
 
 
 
-
+PART	It sounds.
 
 PART	It is possible that you go on Saturday to a library and it studies.
 PART	Is it possible that you go to form a group that studies to a house?
 
 FULL	I know a thing that you feel.
-PART	Mum of me is too spit.
+FULL	Mum of me is too spit from a hell.
 FULL	I recommend high that it is taken up that it smokes.
 FULL	It is a joke.
 PART	I think that it is become a person that is more weak and it way down dulls a personality to try to befriend some persons in a university.
@@ -360,7 +360,7 @@ PART	I focus to an idol.
 PART	Does it cause? Does it cause? Does it cause?
 
 
-FULL	I hope that this helps.
+
 
 FULL	It is more comfortable that there is me.
 
@@ -393,11 +393,11 @@ PART	He just cares.
 
 
 FULL	Mum of me also suffers bipolar and it has a depression.
-FULL	I don't want that it stops.
+FULL	I don't want to stop.
 
 PART	It contrasts.
 PART	I don't tell to him.
-FULL	I don't want that it hurts him. I don't want that he hurts.
+FULL	I don't want to hurt him.
 FULL	What do I do?
 PART	I thank you.
 
@@ -422,7 +422,7 @@ FULL	OCD.
 
 
 
-PART	I just wish that it is possible that it goes out.
+
 
 
 
@@ -448,7 +448,7 @@ PART	It contrasts.
 
 
 
-PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge.
+PART	You speak it to a doctor and it sees that a pill that counters anxiety takes off an edge from a thing.
 PART	Do I see that I speak to a person that counsels?
 
 PART	It is well recommended because it makes that it is tensed and it is more likely that it is panicked more that it doesn't start. A demise circle in there.
@@ -477,7 +477,7 @@ PART	A thing that IAEA reports states that it is obligated.
 
 PART	Some expert persons state that IAEA cedes a much to Iran.
 
-PART	An expert person that doesn't depend states that it is short that Iran agrees of IAEA that a person that inspects accesses more nucleus sites and information.
+
 
 PART	Casey states that a nucleus program that moves to a forward is continued.
 
@@ -490,7 +490,7 @@ PART	Official of Iran states that it reduces if it more sanctions.
 
 FULL	Israel.
 
-PART	A document that outlines that Israel proposes that it allows that a nucleus technology is internationally transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group.
+PART	A document that outlines that Israel proposes to allow that a nucleus technology is internationally transferred to a state that doesn't sign on a proliferation rule is distributed to Nuclear Suppliers Group.
 
 
 
@@ -547,7 +547,7 @@ PART	Official of US repeats that it states that it isn't possible that it begins
 
 
 PART	An envoy from Europe, Solana and Burns set a deadline.
-
+PART	Official of Iran refuses to commit.
 
 
 FULL	It is possible that 5,000 centrifuges produce a nucleus material that suffices a power plant or an atom bomb if it is enriched high.
@@ -556,7 +556,7 @@ FULL	International Atomic Energy Agency states in May 2008 that Iran possesses 3
 
 FULL	United States, France, China, Iran and Russian Federation.
 PART	An international and a weapon.
-
+PART	It is concluded that it diplomacy meets in Paris.
 
 PART	There is a process.
 PART	It is ended that it meets on 13 November 2008.
@@ -569,9 +569,9 @@ PART	Russia and China hold a veto power.
 
 PART	It is reported that Iran is progressed about a reactor facility to research that is near.
 
-PART	An image that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
+PART	An image from a satellite that Institute for Science and International Security publishes shows that it is progressed that a reactor facility to research that is near is constructed.
 
-PART	David Albright states that an image says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
+PART	David Albright states that an image from a satellite says that a near water reactor to research from Iran is progressed and it is progressed to a facility that is finished large to a building frame.
 
 PART	Iran states that it pursues a nucleus technology.
 PART	United States and a country in West that is allied suspect that it is preceded to create a weapon infrastructure that Iran is an effort.
@@ -591,7 +591,7 @@ FULL	A weapon, energy, an international and science.
 PART	A large repository that is stored a laboratory complex from Russia threatens that it loses electricity.
 
 PART	A laboratory complex from Russia is a campus and it serves a location.
-PART	A headline that isn't correct states that a virus that kills threatens.
+
 
 
 
@@ -619,7 +619,7 @@ PART	It states that it main threatens because power is cut to an organism.
 
 
 PART	A missile silo doesn't lose power.
-PART	A troop that is armed marches and it back turns on power.
+FULL	A troop that is armed marches to a substation and it back turns on power.
 PART	Nation United Energy Systems cuts power in February 2001 in January 2001 in a military installation.
 FULL	A center in Kamchatka that monitors Russian Space Forces is included to a military installation that loses power.
 
@@ -632,7 +632,7 @@ PART	Brazil implements law that allows that Air Force targets an aircraft that t
 FULL	A liability if a civilian plane is misidentified concerns US.
 
 PART	A thing that is planned requires eight precaution steps.
-
+PART	It notifies a person that ranches and other persons.
 PART	It is contrasted to ever put a policy an effect that law that permits a such action is originally approved in 1998.
 
 
@@ -646,7 +646,7 @@ PART	An organization that governs US consults an organization that governs Brazi
 PART	US is scheduled to provide 10,200,000 dollars to Brazil.
 
 PART	Official of Brazil states that a policy isn't applied against an aircraft that a child boards.
-
+FULL	Viegas states that it needs to limit.
 PART	Gandra states that a provision undermines an essential purpose of a decree.
 
 PART	It prompts an organization that governs.
@@ -699,7 +699,7 @@ PART	Chavez is first elected in 1998 and it rates of a popularity.
 
 
 PART	This thing is costed less.
-PART	An organization that governs Venezuela also intends that it buys six navy crafts, ten helicopters and ten transport planes.
+PART	An organization that governs Venezuela also intends to buy six navy crafts, ten helicopters from Russia and ten transport planes from Spain.
 
 
 PART	It says that it is exaggerated that it is said that Chavez is engaged to build up an arm.
@@ -722,13 +722,13 @@ PART	A unit of a person that defends is created in Free University, a neighborho
 
 
 
-PART	40 persons that an oil company employs participate an exercise that is resembled in June 2005.
+PART	40 persons with 1,200 soldiers that an oil company employs participate an exercise that is resembled in June 2005.
 
 
 
 
 
-PART	Official says that a person side wishes because it politics calculates that Mr. Chavez reaches power that it makes that there is a relation.
+PART	Official says that a person side wishes to make that there is a relation because it politics calculates that Mr. Chavez reaches power.
 
 PART	A military from US has Cooperation Office in a fort from Venezuela.
 FULL	Chavez shuts down it in 2004.
@@ -775,7 +775,7 @@ FULL	Iran is a nucleus nation.
 FULL	United States and France are included to an organization from West that governs.
 
 PART	It is slowed that there is a process.
-FULL	It is avoided that it is answered that it is questioned that Iran past violates a treaty.
+FULL	It avoids answering that it is questioned that Iran past violates a treaty.
 FULL	David Albright states.
 FULL	It isn't possible that a thing that Iran claims is verified.
 
@@ -795,8 +795,8 @@ FULL	International Atomic Energy Agency is based in Vienna.
 
 FULL	Islamic Republic of Iran.
 
-PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
-PART	A list shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list from Nuclear Suppliers Group shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
+PART	A list from Nuclear Suppliers Group shows that it is denied because it is suspected that it is possible that it is used to build a bomb to Iran that it purchases a material that is related a nucleus.
 
 PART	Nuclear Suppliers Group is composed of an advanced country.
 
@@ -837,7 +837,7 @@ FULL	A web site of an organization that governs Georgia intermittently crashes o
 
 
 PART	It conflicts in Chechnya.
-PART	A military incursion of Russia indicates confidence and a resolve.
+FULL	A military incursion to Georgia of Russia indicates confidence and a resolve.
 
 
 
@@ -949,7 +949,7 @@ FULL	Peru.
 PART	An international and money.
 
 PART	Montesinos is sentenced.
-FULL	Montesinos plans that it appeals a sentence.
+FULL	Montesinos plans to appeal a sentence.
 
 PART	Montesinos is sentenced.
 
@@ -1014,7 +1014,7 @@ PART	Other damages or a casualty aren't reported in an incident.
 FULL	Nepal.
 PART	Terrorism and politics.
 
-PART	An insurgent plans an attack when it elects Parliament.
+PART	An insurgent plans to attack when it elects Parliament.
 
 
 PART	A bomb incident in Kathmandu Valley that is major.
@@ -1056,7 +1056,7 @@ FULL	Politics, an international and terrorism.
 
 
 
-PART	Tang states that it demonstrates that it is needed that there is an effort and it is correct.
+
 
 PART	Tang states.
 PART	Tang states that an organization that governs China signs a multilateral pact.
@@ -1092,7 +1092,7 @@ PART	France offers on 28 April 2003 to India that it military cooperates.
 
 
 FULL	Alliot-Marie states.
-PART	It is needed that it internationally cooperates.
+PART	It needs to internationally cooperate.
 
 
 PART	France offers in 2002 that it sells.
@@ -1126,7 +1126,7 @@ PART	Director of Evin Prison Assodalah Ladjevardi is assassinated in August 1998
 
 FULL	Australia.
 FULL	A person that leads, an organization that governs, an international and a weapon.
-
+PART	Prime minister of Australia John Howard hesitates to use a military force to intercept a suspect vessel that belongs to Democratic that smuggles a drug or a weapon.
 
 PART	Associated Press quotes on 9 June 2003 that it states that an organization that governs doesn't consider that it contributes a military.
 PART	Howard states that an organization that governs Australia considers and it is obligated to choose a descriptor and a word.
@@ -1158,7 +1158,7 @@ FULL	Russia.
 FULL	A person that leads, a space, a military, a technology, an international and an organization that governs.
 
 
-PART	Chirac is flown to meet president of Russia Vladimir Putin in a space center.
+FULL	Chirac is flown to meet president of Russia Vladimir Putin in a space center to Krasnoznamernsk.
 FULL	It greets Chirac in a space center in Krasnoznamernsk.
 
 
@@ -1191,7 +1191,7 @@ FULL	News ABS-CBN is a station of a local television in Manila.
 
 FULL	China and Germany.
 FULL	An economy, politics, a technology, an international and an organization that governs.
-PART	Premier of China discusses that it is planned that Germany cooperates.
+
 
 
 PART	It interviews Wen.
@@ -1205,7 +1205,7 @@ FULL	Wen states Germany.
 
 
 FULL	Wen states that it is expected that it is doubled in 2010 that China and Germany trade.
-PART	Wen states that an organization that governs China and an organization that governs Germany plan that it cooperates.
+PART	Wen states that an organization that governs China and an organization that governs Germany plan to cooperate.
 
 PART	China considers that Germany is partnered in Europe.
 
@@ -1297,7 +1297,7 @@ PART	He also announces that premier of Gabon Republic Casymier Auye Muba formal 
 
 FULL	It ends.
 FULL	Xinhua News Agency by Menjun Ju and Xiaoguang Hu on 23 April in Bishket.
-PART	A principle of a party that is concerned today signs six documents in here.
+FULL	A principle of a party from China and Kirghizia that is concerned today signs six documents in here.
 FULL	It attends a sign ceremony.
 
 PART	It respective answers a thing that a person that reports questions.
@@ -1317,9 +1317,9 @@ PART	Minister of State Welfare Ministry from Japan Souyasen delivers a departure
 
 
 
-PART	Souya hands over a delegation flag of a delegation.
+PART	Souya hands over a delegation flag of a delegation from Japan.
 
-PART	A delegation from Japan is flown.
+PART	A delegation from Japan is flown to Beijing.
 PART	They are remained in Beijing and it is returned to Japan.
 FULL	It ends.
 

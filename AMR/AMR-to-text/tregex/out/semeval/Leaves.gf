@@ -11,6 +11,7 @@ abstract Leaves = Cat, Dictionary ** {
 		attack_V : V ;			-- only attack_V2 in Dictionary
 		byline_V : V ;			-- FIXME
 		cause_V : V ;			-- only cause_V2 in Dictionary
+		commit_V : V ;			-- only commit_V2 in Dictionary
 		counsel_V : V ;			-- only counsel_V2 in Dictionary
 		defend_V : V ;			-- subcat in Dictionary
 		do_V : V ;				-- subcat in Dictionary
@@ -19,10 +20,12 @@ abstract Leaves = Cat, Dictionary ** {
 		exempt_V : V ;			-- only exempt_V2 in Dictionary
 		inspect_V : V ;			-- only inspect_V2 in Dictionary
 		kidnap_V : V ;			-- only kidnap_V2 in Dictionary
+		limit_V : V ;			-- only limit_V2 in Dictionary
 		mean_V : V ;			-- from IrregEng
 		opine_V : V ;			-- only opine_V2 in Dictionary
 		pledge_V : V ;			-- only pledge_V2 in Dictionary
 		prosecute_V : V ;		-- only prosecute_V2 in Dictionary
+		ranch_V : V ;			-- missing in Dictionary
 		sanction_V : V ;		-- only sanction_V2 in Dictionary
 		state_V : V ;			-- only state_V2 in Dictionary
 		support_V : V ;			-- only support_V2 in Dictionary
@@ -54,6 +57,7 @@ abstract Leaves = Cat, Dictionary ** {
 		urge_VV : VV ;			-- missing in Dictionary
 
 		allow_VS : VS ;			-- subcat in Dictionary
+		answer_VS : VS ;		-- only answer_V2 in Dictionary
 		call_VS : VS ;			-- only call_V2 in Dictionary
 		cause_VS : VS ;			-- subcat in Dictionary
 		criticize_VS : VS ;		-- only criticize_V2 in Dictionary
