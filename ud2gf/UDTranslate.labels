@@ -133,18 +133,18 @@ UseQuantPN : Quant -> PN -> NP ;         det  head
 
 PositAdAAdj : A -> AdA ;
 PositAdvAdj : A -> Adv ;
+AdAdV      : AdA -> AdV -> AdV   ;        advmod head
 AdVVP      : AdV -> VP -> VP     ;        advmod  head 
 AdVVPSlash : AdV -> VPSlash -> VPSlash ;  advmod  head
 ----AdvVPSlash : VPSlash -> Adv -> VPSlash ;   head   nmod   -- does this increase ambiguity? almost seems to break everything?
+AdAP       : AdA -> AP -> AP     ;  advmod head 
+AdAdv      : AdA -> Adv -> Adv   ;  advmod head 
+AdNum      : AdN -> Card -> Card ;  advmod head      
 AdvVPS     : VPS -> Adv -> VPS   ;  head advmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head advcl
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:npmod
 AdvVPS     : VPS -> Adv -> VPS   ;  head nmod:tmod
-AdAP       : AdA -> AP -> AP     ;  advmod head 
-AdAdV      : AdA -> AdV -> AdV   ;  advmod head
-AdAdv      : AdA -> Adv -> Adv   ;  advmod head 
-AdNum      : AdN -> Card -> Card ;  advmod head
 AddAdvQVPS : QVPS -> IAdv -> QVPS ;  head nmod        -- to be added
 AdvS       : Adv -> S -> S       ;  advmod head 
 AdvS       : Adv -> S -> S       ;  advcl head
@@ -229,8 +229,8 @@ EmbedQS    : QS -> SC ;
 -+  Constructions
 
 ----ByVP  : VP -> Adv ;
-----InOrderToVP : VP -> Adv ;
 ----InLanguage : Language -> Adv ;
+----InOrderToVP : VP -> Adv ;
 ----monthN : Month -> N ;
 ----monthPN : Month -> PN ;
 ----monthAdv : Month -> Adv ;

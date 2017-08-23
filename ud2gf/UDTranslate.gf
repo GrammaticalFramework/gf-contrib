@@ -61,9 +61,11 @@ fun
   VPSBackup   : VPS -> Backup ;
   VPSlashBackup : VPSlash -> Backup ;
   DetBackup   : Det -> Backup ;
+  QuantBackup : Quant -> Backup ;
   InterjBackup : Interj -> Backup ;
   OrdBackup   : Ord -> Backup ;
   PNBackup    : PN -> Backup ;
+  PrepBackup  : Prep -> Backup ;
   PunctBackup : Punct -> Backup ;
   ConjBackup  : Conj -> Backup ;
   SymbBackup  : Symb -> Backup ;
