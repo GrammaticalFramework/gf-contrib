@@ -5,6 +5,7 @@ import PGF
 import qualified Data.Map.Strict as M
 import qualified Data.Set as S
 import Data.List
+import Data.Ord (comparing)
 import Text.PrettyPrint (render)
 import Debug.Trace
 
@@ -23,6 +24,7 @@ gftree2pgftree = gf2pgf
 abstree2gftree :: Configuration -> AbsTree -> GFTree
 abstree2gftree config at@(T an _) =
   wrapBackup config (cat an) (backtrees an) (gftree an)
+
 
 -- annotatate with endo- and exocentric function applications
 abstreeAnnotFuns :: Configuration -> AbsTree -> AbsTree
@@ -44,7 +46,7 @@ abstreeAnnotFuns config (T an ats) =
     let
     
       funapps  = funApps an ats
-      endofuns = [tcu | (tcu,True)  <- funapps]
+      endofuns = sortBy (comparing proximity) [tcu | (tcu,True)  <- funapps]
       exofuns  = [tcu | (tcu,False) <- funapps]
       
     in case (endofuns,exofuns) of
@@ -64,6 +66,9 @@ abstreeAnnotFuns config (T an ats) =
                     where
                       (t,c):cands = bestCands $ exofuns ++ allTreecands an
 
+  -- proximity of endofunction to head: distance of the closest modifier node --- add 100 to avoid empty list
+  proximity (gft,cat) = minimum $ 100 : [d | n <- children gft, let d = abs (positio an - src (root n)), d /= 0]
+  
   bestCands tcs =
     let
       tls  = [((t,c),(length ns,sizeTree t)) |

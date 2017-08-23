@@ -28,3 +28,13 @@ ThatMark_     SCONJ  lemma=että
 Comma_        PUNCT  lemma=,
 Amp_          PUNCT  lemma=&
 Orslash_      PUNCT  lemma=/
+
+-- Handling lexical entries for DConj types
+-- These have non-local dependencies. Functon configurations need to be manually edited
+Conjand_    		CONJ		lemma=että		
+Conjboth_   		CONJ		lemma=sekä		
+Conjeither_ 		CONJ		lemma=joko		
+Conjneither_		CONJ		lemma=ei		
+Conjnor_    		CONJ		lemma=eikä		
+Conjor_     		CONJ		lemma=tai		
+

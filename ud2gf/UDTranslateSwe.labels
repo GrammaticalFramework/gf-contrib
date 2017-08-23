@@ -1,13 +1,13 @@
 -- Swedish annotations on top of UDTranslate.labels
 
-BareCN_   : CN -> NP ;        Number=Sing Definite=Ind
-BarePlCN_ : CN -> NP ;        Number=Plur Definite=Ind
-DefCN_    : CN -> NP ;        Number=Sing Definite=Def
-DefPlCN_  : CN -> NP ;        Number=Plur Definite=Def
-BareCN_ cn   = MassNP cn
+BareCN_   : CN -> NP ;    Number=Sing   Definite=Ind
+BarePlCN_ : CN -> NP ;    Number=Plur   Definite=Ind
+DefCN_    : CN -> NP ;    Number=Sing   Definite=Def
+DefPlCN_  : CN -> NP ;    Number=Plur   Definite=Def
+BareCN_   cn = MassNP cn
 BarePlCN_ cn = DetCN (DetQuant IndefArt NumPl) cn
-DefCN_ cn    = DetCN (DetQuant DefArt NumSg) cn
-DefPlCN_ cn  = DetCN (DetQuant DefArt NumPl) cn
+DefCN_    cn = DetCN (DetQuant DefArt NumSg) cn
+DefPlCN_  cn = DetCN (DetQuant DefArt NumPl) cn
 
 Predet        DET    lemma=all
 
@@ -43,8 +43,16 @@ ThatMark_     SCONJ  lemma=att
 Comma_        PUNCT  lemma=,
 Amp_          PUNCT  lemma=&
 Orslash_      PUNCT  lemma=/
-----EOS_          PUNCT  lemma=.
-----EOQS_         PUNCT  lemma=?
+
+-- Handling lexical entries for DConj types
+-- These have non-local dependencies. Functon configurations need to be manually edited
+Conjand_    		CONJ		lemma=och		
+Conjboth_   		CONJ		lemma=både		
+Conjeither_ 		CONJ		lemma=antingen		
+Conjneither_		CONJ		lemma=varken		
+Conjnor_    		CONJ		lemma=eller		
+Conjor_     		CONJ		lemma=eller		
+
 
 
 

@@ -61,15 +61,22 @@ lin
   InterjBackup i = mkUtt i ;
   NPBackup np = mkUtt np ;
   VPBackup vp = mkUtt vp ;
-  VPSlachBackup vp = mkUtt <vp : VP> ;
+  ---VPSBackup vps = mkUtt vps ;
+  VPSlashBackup vp = mkUtt <vp : VP> ;
+  QuantBackup q = mkUtt (mkNP (mkDet q singularNum)) ;
   OrdBackup ord = mkUtt (mkAP ord) ;
   PNBackup pn = mkUtt (mkNP pn) ;
+  ---PrepBackup p = mkUtt (mkAdv p) ;
   PunctBackup p = p ;
-  SBackup s = mkUtt s ;
   ConjBackup conj = mkUtt (mkNP conj (symb []) (symb [])) ; --- to get both discontinuous parts
-  SubjBackup subj = subj ;
   SymbBackup sy = sy ;
+  SBackup s = mkUtt s ;
+  QSBackup qs = mkUtt qs ;
+  SCBackup sc = mkUtt sc ;
+  SubjBackup subj = subj ;
   UttBackup utt = utt ;
+  PhrBackup phr = phr ;
+  TopBackup top = top ;
 
 
   these_Det = mkDet this_Quant pluralNum ;
