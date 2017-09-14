@@ -1,37 +1,37 @@
 \documentclass{article}
- \usepackage[utf8]{inputenc}
- \usepackage{latexsym}
- \usepackage{amsfonts}
- \begin{document}
- \input{macros}
- 
- \textbf{Définition}:
- Un type $A$ est contractible, s'il existe un $a : A$, nommé le centre de contraction, tel que pour tous les $x : A$, $\equalH {a}{x}$.
- 
- \textbf{Définition}:
- Une application $f : \arrowH {A}{B}$ est une équivalence, si pour tous les $y : B$, sa fibre, $\comprehensionH {x}{A}{\equalH {\appH {f}{x}}{y}}$, est contractible.
- Nous écrivons $\equivalenceH {A}{B}$, s'il existe une équivalence $\arrowH {A}{B}$.
- 
- \textbf{Lemme}:
- Pour tout type $A$, l'identité, $\defineH {\idMapH {A}}{\typingH {\lambdaH {x}{A}{x}}{\arrowH {A}{A}}}$, est une équivalence.
- 
- \textbf{Démonstration}:
- Pour tout $y : A$, soit $\defineH {\fiberH {y}{A}}{\comprehensionH {x}{A}{\equalH {x}{y}}}$ sa fibre par rapport de $\idMapH {A}$ et soit $\defineH {\barH {y}}{\typingH {\pairH {y}{\reflexivityH {A}{y}}}{\fiberH {y}{A}}}$.
- Comme pour tous les $y : A$, $\equalH {\pairH {y}{\reflexivityH {A}{y}}}{y}$, nous pouvons appliquer Id-induction sur $y$, $\typingH {x}{A}$ et $\typingH {z}{\idPropH {x}{y}}$ pour obtenir que \[\equalH {\pairH {x}{z}}{y}\].
- Donc, pour les $y : A$, nous pouvons appliquer $\Sigma$ -élimination sur $\typingH {u}{\fiberH {y}{A}}$ pour obtenir que $\equalH {u}{y}$, de façon que $\fiberH {y}{A}$ soit contractible.
- Alors, $\typingH {\idMapH {A}}{\arrowH {A}{A}}$ est une équivalence.
-  $\Box$ 
- 
- \textbf{Corollaire}:
- Si $U$ est un univers, alors, pour les $X , Y : U$, \[(*)\arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}\].
- 
- \textbf{Démonstration}:
- Nous pouvons appliquer le lemme pour obtenir que pour les $X : U$, $\equivalenceH {X}{X}$.
- Donc, nous pouvons appliquer Id-induction sur $\typingH {X , Y}{U}$ pour obtenir que $(*)$.
-  $\Box$ 
- 
- 
- \textbf{Définition}:
- Un univers $U$ est univalent, si pour les $X , Y : U$, l'application $\equivalenceMapH {X}{Y}: \arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}$ dans $(*)$ est une équivalence.
- 
- \end{document}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\begin{document}
+\input{macros}
+
+\textbf{Définition}:
+Un type $A$ est contractile, s'il existe un $a : A$, nommé le centre de contraction, tel que pour tous les $x : A$, $\equalH {a}{x}$.
+
+\textbf{Définition}:
+Une application $f : \arrowH {A}{B}$ est une équivalence, si pour tous les $y : B$, sa fibre, $\comprehensionH {x}{A}{\equalH {\appH {f}{x}}{y}}$, est contractile.
+Nous écrivons $\equivalenceH {A}{B}$, s'il existe une équivalence $\arrowH {A}{B}$.
+
+\textbf{Lemme}:
+Pour tout type $A$, l'identité, $\defineH {\idMapH {A}}{\typingH {\lambdaH {x}{A}{x}}{\arrowH {A}{A}}}$, est une équivalence.
+
+\textbf{Démonstration}:
+Pour tout $y : A$, soit $\defineH {\fiberH {y}{A}}{\comprehensionH {x}{A}{\equalH {x}{y}}}$ sa fibre par rapport de $\idMapH {A}$ et soit $\defineH {\barH {y}}{\typingH {\pairH {y}{\reflexivityH {A}{y}}}{\fiberH {y}{A}}}$.
+Comme pour tous les $y : A$, $\equalH {\pairH {y}{\reflexivityH {A}{y}}}{y}$, nous pouvons appliquer Id-induction sur $y$, $\typingH {x}{A}$ et $\typingH {z}{\idPropH {x}{y}}$ pour obtenir que \[\equalH {\pairH {x}{z}}{y}\].
+Donc, pour les $y : A$, nous pouvons appliquer $\Sigma$ -élimination sur $\typingH {u}{\fiberH {y}{A}}$ pour obtenir que $\equalH {u}{y}$, de façon que $\fiberH {y}{A}$ soit contractile.
+Alors, $\typingH {\idMapH {A}}{\arrowH {A}{A}}$ est une équivalence.
+ $\Box$ 
+
+\textbf{Corollaire}:
+Si $U$ est un univers, alors, pour les $X , Y : U$, \[(*)\arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}\].
+
+\textbf{Démonstration}:
+Nous pouvons appliquer le lemme pour obtenir que pour les $X : U$, $\equivalenceH {X}{X}$.
+Donc, nous pouvons appliquer Id-induction sur $\typingH {X , Y}{U}$ pour obtenir que $(*)$.
+ $\Box$ 
+
+
+\textbf{Définition}:
+Un univers $U$ est univalent, si pour les $X , Y : U$, l'application $\equivalenceMapH {X}{Y}: \arrowH {\equalH {X}{Y}}{\equivalenceH {X}{Y}}$ dans $(*)$ est une équivalence.
+
+\end{document}

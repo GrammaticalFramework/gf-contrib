@@ -11,7 +11,7 @@ concrete HottLexiconFre of HottLexicon = FrameworkFre **
 lin
   type_Sort = mkSort (P.mkN "type" P.masculine) ;
   type_universe_Sort = mkSort (P.mkN "univers") ;
-  contractible_Pred = mkComp (mkAP (P.mkA "contractible")) ;
+  contractible_Pred = mkComp (mkAP (P.mkA "contractile")) ;
   univalent_Pred = mkComp (mkAP (P.mkA "univalent")) ;
   centre_of_contraction_Fun = mkFun (mkCN (P.mkN "centre" P.masculine) (mkAdv possess_Prep (mkNP (P.mkN "contraction")))) ;
  
