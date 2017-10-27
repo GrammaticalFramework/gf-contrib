@@ -11,313 +11,227 @@ failure x = Bad $ "Undefined case: " ++ show x
 
 transIdent :: Ident -> Result
 transIdent x = case x of
-  Ident str  -> failure x
-
-
+  Ident string -> failure x
 transStr :: Str -> Result
 transStr x = case x of
-  Str str  -> failure x
-
-
+  Str string -> failure x
 transScript :: Script -> Result
 transScript x = case x of
-  SStm statements  -> failure x
-
-
+  SStm statements -> failure x
 transStatement :: Statement -> Result
 transStatement x = case x of
-  SCreateDatabase id  -> failure x
-  SCreateTable id typings  -> failure x
-  SDropTable id typings  -> failure x
-  SInsert id tableplaces insertvalues  -> failure x
-  SDelete id where'  -> failure x
-  SUpdate id settings where'  -> failure x
-  SCreateView id query  -> failure x
-  SAlterTable id alterations  -> failure x
-  SCreateAssertion id condition  -> failure x
-  SCreateTrigger id1 triggertime2 triggeractions3 id4 triggereach5 triggerbody6  -> failure x
-  SQuery query  -> failure x
-
-
+  SCreateDatabase ident -> failure x
+  SCreateTable ident typings -> failure x
+  SDropTable ident typings -> failure x
+  SInsert ident tableplaces insertvalues -> failure x
+  SDelete ident where_ -> failure x
+  SUpdate ident settings where_ -> failure x
+  SCreateView ident query -> failure x
+  SAlterTable ident alterations -> failure x
+  SCreateAssertion ident condition -> failure x
+  SCreateTrigger ident1 triggertime triggeractions ident2 triggereach triggerbody -> failure x
+  SQuery query -> failure x
 transQuery :: Query -> Result
 transQuery x = case x of
-  QSelect distinct columns tables where' group having order  -> failure x
-  QSetOperation query1 setoperation2 all3 query4  -> failure x
-  QWith definitions query  -> failure x
-
-
+  QSelect distinct columns tables where_ group having order -> failure x
+  QSetOperation query1 setoperation all query2 -> failure x
+  QWith definitions query -> failure x
 transTable :: Table -> Result
 transTable x = case x of
-  TName id  -> failure x
-  TTableAs table id  -> failure x
-  TQuery query id  -> failure x
-  TJoin table1 jointype2 table3 joinon4  -> failure x
-  TNaturalJoin table1 jointype2 table3  -> failure x
-
-
+  TName ident -> failure x
+  TTableAs table ident -> failure x
+  TQuery query ident -> failure x
+  TJoin table1 jointype table2 joinon -> failure x
+  TNaturalJoin table1 jointype table2 -> failure x
 transColumns :: Columns -> Result
 transColumns x = case x of
-  CCAll  -> failure x
-  CCExps columns  -> failure x
-
-
+  CCAll -> failure x
+  CCExps columns -> failure x
 transColumn :: Column -> Result
 transColumn x = case x of
-  CExp exp  -> failure x
-  CExpAs exp id  -> failure x
-
-
+  CExp exp -> failure x
+  CExpAs exp ident -> failure x
 transWhere :: Where -> Result
 transWhere x = case x of
-  WNone  -> failure x
-  WCondition condition  -> failure x
-
-
+  WNone -> failure x
+  WCondition condition -> failure x
 transCondition :: Condition -> Result
 transCondition x = case x of
-  COper exp oper compared  -> failure x
-  CNot condition  -> failure x
-  CExists not query  -> failure x
-  CIsNull exp not  -> failure x
-  CBetween exp1 not2 exp3 exp4  -> failure x
-  CIn exp not values  -> failure x
-  CAnd condition1 condition2  -> failure x
-  COr condition1 condition2  -> failure x
-
-
+  COper exp oper compared -> failure x
+  CNot condition -> failure x
+  CExists not query -> failure x
+  CIsNull exp not -> failure x
+  CBetween exp1 not exp2 exp3 -> failure x
+  CIn exp not values -> failure x
+  CAnd condition1 condition2 -> failure x
+  COr condition1 condition2 -> failure x
 transNot :: Not -> Result
 transNot x = case x of
-  NNot  -> failure x
-  NNone  -> failure x
-
-
+  NNot -> failure x
+  NNone -> failure x
 transCompared :: Compared -> Result
 transCompared x = case x of
-  ComExp exp  -> failure x
-  ComAny values  -> failure x
-  ComAll values  -> failure x
-
-
+  ComExp exp -> failure x
+  ComAny values -> failure x
+  ComAll values -> failure x
 transExp :: Exp -> Result
 transExp x = case x of
-  EName id  -> failure x
-  EQual id1 id2  -> failure x
-  EInt n  -> failure x
-  EFloat d  -> failure x
-  EStr str  -> failure x
-  EString str  -> failure x
-  ENull  -> failure x
-  EDefault  -> failure x
-  EQuery query  -> failure x
-  EAggr aggroper distinct exp  -> failure x
-  EAggrAll aggroper distinct  -> failure x
-  EMul exp1 exp2  -> failure x
-  EDiv exp1 exp2  -> failure x
-  ERem exp1 exp2  -> failure x
-  EAdd exp1 exp2  -> failure x
-  ESub exp1 exp2  -> failure x
-
-
+  EName ident -> failure x
+  EQual ident1 ident2 -> failure x
+  EInt integer -> failure x
+  EFloat double -> failure x
+  EStr str -> failure x
+  EString string -> failure x
+  ENull -> failure x
+  EDefault -> failure x
+  EQuery query -> failure x
+  EAggr aggroper distinct exp -> failure x
+  EAggrAll aggroper distinct -> failure x
+  EMul exp1 exp2 -> failure x
+  EDiv exp1 exp2 -> failure x
+  ERem exp1 exp2 -> failure x
+  EAdd exp1 exp2 -> failure x
+  ESub exp1 exp2 -> failure x
 transSetOperation :: SetOperation -> Result
 transSetOperation x = case x of
-  SOUnion  -> failure x
-  SOIntersect  -> failure x
-  SOExcept  -> failure x
-
-
+  SOUnion -> failure x
+  SOIntersect -> failure x
+  SOExcept -> failure x
 transAll :: All -> Result
 transAll x = case x of
-  ANone  -> failure x
-  AAll  -> failure x
-
-
+  ANone -> failure x
+  AAll -> failure x
 transJoinOn :: JoinOn -> Result
 transJoinOn x = case x of
-  JOCondition condition  -> failure x
-  JOUsing ids  -> failure x
-
-
+  JOCondition condition -> failure x
+  JOUsing idents -> failure x
 transJoinType :: JoinType -> Result
 transJoinType x = case x of
-  JTLeft outer  -> failure x
-  JTRight outer  -> failure x
-  JTFull outer  -> failure x
-  JTInner  -> failure x
-
-
+  JTLeft outer -> failure x
+  JTRight outer -> failure x
+  JTFull outer -> failure x
+  JTInner -> failure x
 transOuter :: Outer -> Result
 transOuter x = case x of
-  OutOuter  -> failure x
-  OutNone  -> failure x
-
-
+  OutOuter -> failure x
+  OutNone -> failure x
 transDistinct :: Distinct -> Result
 transDistinct x = case x of
-  DNone  -> failure x
-  DDistinct  -> failure x
-
-
+  DNone -> failure x
+  DDistinct -> failure x
 transGroup :: Group -> Result
 transGroup x = case x of
-  GNone  -> failure x
-  GGroupBy exps  -> failure x
-
-
+  GNone -> failure x
+  GGroupBy exps -> failure x
 transHaving :: Having -> Result
 transHaving x = case x of
-  HNone  -> failure x
-  HCondition condition  -> failure x
-
-
+  HNone -> failure x
+  HCondition condition -> failure x
 transOrder :: Order -> Result
 transOrder x = case x of
-  ONone  -> failure x
-  OOrderBy attributeorders  -> failure x
-
-
+  ONone -> failure x
+  OOrderBy attributeorders -> failure x
 transAttributeOrder :: AttributeOrder -> Result
 transAttributeOrder x = case x of
-  AOAsc exp  -> failure x
-  AODesc exp  -> failure x
-
-
+  AOAsc exp -> failure x
+  AODesc exp -> failure x
 transSetting :: Setting -> Result
 transSetting x = case x of
-  SVal id exp  -> failure x
-
-
+  SVal ident exp -> failure x
 transAggrOper :: AggrOper -> Result
 transAggrOper x = case x of
-  AOMax  -> failure x
-  AOMin  -> failure x
-  AOAvg  -> failure x
-  AOCount  -> failure x
-  AOSum  -> failure x
-
-
+  AOMax -> failure x
+  AOMin -> failure x
+  AOAvg -> failure x
+  AOCount -> failure x
+  AOSum -> failure x
 transOper :: Oper -> Result
 transOper x = case x of
-  OEq  -> failure x
-  ONeq  -> failure x
-  OGt  -> failure x
-  OLt  -> failure x
-  OGeq  -> failure x
-  OLeq  -> failure x
-  OLike not  -> failure x
-
-
+  OEq -> failure x
+  ONeq -> failure x
+  OGt -> failure x
+  OLt -> failure x
+  OGeq -> failure x
+  OLeq -> failure x
+  OLike not -> failure x
 transTyping :: Typing -> Result
 transTyping x = case x of
-  TColumn id type' inlineconstraints  -> failure x
-  TConstraint constraint  -> failure x
-  TNamedConstraint id constraint  -> failure x
-
-
+  TColumn ident type_ inlineconstraints -> failure x
+  TConstraint constraint -> failure x
+  TNamedConstraint ident constraint -> failure x
 transInlineConstraint :: InlineConstraint -> Result
 transInlineConstraint x = case x of
-  ICPrimaryKey  -> failure x
-  ICReferences id1 id2 policys3  -> failure x
-  ICUnique  -> failure x
-  ICNotNull  -> failure x
-  ICCheck condition  -> failure x
-  ICDefault exp  -> failure x
-
-
+  ICPrimaryKey -> failure x
+  ICReferences ident1 ident2 policys -> failure x
+  ICUnique -> failure x
+  ICNotNull -> failure x
+  ICCheck condition -> failure x
+  ICDefault exp -> failure x
 transConstraint :: Constraint -> Result
 transConstraint x = case x of
-  CPrimaryKey ids  -> failure x
-  CReferences ids1 id2 ids3 policys4  -> failure x
-  CUnique ids  -> failure x
-  CNotNull  -> failure x
-  CCheck condition  -> failure x
-
-
+  CPrimaryKey idents -> failure x
+  CReferences idents1 ident idents2 policys -> failure x
+  CUnique idents -> failure x
+  CNotNull -> failure x
+  CCheck condition -> failure x
 transType :: Type -> Result
 transType x = case x of
-  TIdent id  -> failure x
-  TSized id n  -> failure x
-
-
+  TIdent ident -> failure x
+  TSized ident integer -> failure x
 transPolicy :: Policy -> Result
 transPolicy x = case x of
-  PDelete action  -> failure x
-  PUpdate action  -> failure x
-
-
+  PDelete action -> failure x
+  PUpdate action -> failure x
 transAction :: Action -> Result
 transAction x = case x of
-  ACascade  -> failure x
-  ASetNull  -> failure x
-
-
+  ACascade -> failure x
+  ASetNull -> failure x
 transTablePlaces :: TablePlaces -> Result
 transTablePlaces x = case x of
-  TPNone  -> failure x
-  TPAttributes ids  -> failure x
-
-
+  TPNone -> failure x
+  TPAttributes idents -> failure x
 transValues :: Values -> Result
 transValues x = case x of
-  VValues exps  -> failure x
-  VQuery query  -> failure x
-
-
+  VValues exps -> failure x
+  VQuery query -> failure x
 transInsertValues :: InsertValues -> Result
 transInsertValues x = case x of
-  IVValues exps  -> failure x
-  IVQuery query  -> failure x
-
-
+  IVValues exps -> failure x
+  IVQuery query -> failure x
 transDefinition :: Definition -> Result
 transDefinition x = case x of
-  DTable id query  -> failure x
-
-
+  DTable ident query -> failure x
 transAlteration :: Alteration -> Result
 transAlteration x = case x of
-  AAdd typing  -> failure x
-  ADrop id  -> failure x
-  AAlter id type'  -> failure x
-  ADropPrimaryKey  -> failure x
-  ADropConstraint id  -> failure x
-
-
+  AAdd typing -> failure x
+  ADrop ident -> failure x
+  AAlter ident type_ -> failure x
+  ADropPrimaryKey -> failure x
+  ADropConstraint ident -> failure x
 transTriggerTime :: TriggerTime -> Result
 transTriggerTime x = case x of
-  TTBefore  -> failure x
-  TTAfter  -> failure x
-  TTInstead  -> failure x
-
-
+  TTBefore -> failure x
+  TTAfter -> failure x
+  TTInstead -> failure x
 transTriggerAction :: TriggerAction -> Result
 transTriggerAction x = case x of
-  TAUpdate  -> failure x
-  TAInsert  -> failure x
-  TADelete  -> failure x
-
-
+  TAUpdate -> failure x
+  TAInsert -> failure x
+  TADelete -> failure x
 transTriggerEach :: TriggerEach -> Result
 transTriggerEach x = case x of
-  TERow  -> failure x
-  TEStatement  -> failure x
-
-
+  TERow -> failure x
+  TEStatement -> failure x
 transTriggerBody :: TriggerBody -> Result
 transTriggerBody x = case x of
-  TBStatements triggerstatements  -> failure x
-  TBProcedure id  -> failure x
-
-
+  TBStatements triggerstatements -> failure x
+  TBProcedure ident -> failure x
 transTriggerStatement :: TriggerStatement -> Result
 transTriggerStatement x = case x of
-  TSStatement statement  -> failure x
-  TSIfThen condition triggerstatements triggerelses  -> failure x
-  TSException str  -> failure x
-
-
+  TSStatement statement -> failure x
+  TSIfThen condition triggerstatements triggerelses -> failure x
+  TSException str -> failure x
 transTriggerElse :: TriggerElse -> Result
 transTriggerElse x = case x of
-  TEElseIf condition triggerstatements  -> failure x
-
-
+  TEElseIf condition triggerstatements -> failure x
 

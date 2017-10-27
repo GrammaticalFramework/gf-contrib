@@ -1,6 +1,6 @@
 Query Converter
 
-(c) Aarne Ranta 2015 under the BSD License
+(c) Aarne Ranta 2015-2017 under the BSD License
 
 A simple converter for SQL, relational algebra, E-R diagrams, functional dependencies, normal forms, 
 database schemas, XML, and some natural language.
@@ -21,7 +21,7 @@ To run:
 
 To compile from source:
 
-  ghc --make -o qconv QConv.hs
+  make
 
 Facilities:
 
@@ -55,7 +55,12 @@ ToDo:
 - natural language generation and parsing (rudiments included)
 - fix bugs
 
-More documentation:
+
+More documentation included in course notes:
+
+http://www.cse.chalmers.se/edu/year/2017/course/TDA357/VT2017/notes/db-notes.pdf
+
+Older but shorter documentation:
 
   http://www.grammaticalframework.org/~aarne/query-converter/database-maths.pdf
 
