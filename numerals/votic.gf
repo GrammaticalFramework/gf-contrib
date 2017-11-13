@@ -18,32 +18,32 @@ lincat Sub1000000 = {s : Str} ;
 lin num x0 = {s = x0.s} ; -- TODO
 
 oper mkN2 : Str -> LinDigit = \u ->
-  mkN u u (u + "ts^ümmettä") (u + "ts^ümmet") ;
+  mkN u u (u + "ts^Ã¼mmettÃ¤") (u + "ts^Ã¼mmet") ;
 
 oper mkN : Str -> Str -> Str -> Str -> LinDigit = \u -> \a -> \t -> \t2 ->
   {s = table {unit => u ; attr => a + "sata:"; ten => t ; ten2 => t2 ; 
               teen => a + tess} ; size = pl} ;
 
 lin n2 = mkN "kahsi" "kahs"
-             (variants {"kahs^'t's^'ümmettä" ; "kahts^ümmettä"})
-             (variants {"kahs^'t's^'ümmet" ; "kahts^ümmet"});
-lin n3 = mkN "keVLmeV" "keVm" "keVmts^ümmettä" "keVmts^ümmet";
-lin n4 = mkN2 "nellä" ; 
-lin n5 = mkN "vi:si" "vi:s" "vi:s^'t's^'ümmettä" "vi:s^'t's^'ümmet";
-lin n6 = mkN "ku:si" "ku:s" "ku:s^'t's^'ümmettä" "ku:s^'t's^'ümmet"; 
+             (variants {"kahs^'t's^'Ã¼mmettÃ¤" ; "kahts^Ã¼mmettÃ¤"})
+             (variants {"kahs^'t's^'Ã¼mmet" ; "kahts^Ã¼mmet"});
+lin n3 = mkN "keVLmeV" "keVm" "keVmts^Ã¼mmettÃ¤" "keVmts^Ã¼mmet";
+lin n4 = mkN2 "nellÃ¤" ; 
+lin n5 = mkN "vi:si" "vi:s" "vi:s^'t's^'Ã¼mmettÃ¤" "vi:s^'t's^'Ã¼mmet";
+lin n6 = mkN "ku:si" "ku:s" "ku:s^'t's^'Ã¼mmettÃ¤" "ku:s^'t's^'Ã¼mmet"; 
 lin n7 = mkN2 "seitse:" ;
 lin n8 = mkN2 "kaheVsa:" ;
-lin n9 = mkN2 "ühesä:" ;
+lin n9 = mkN2 "Ã¼hesÃ¤:" ;
 
-oper tess : Str = (variants {"teV*s^s^eVmeVtta" ; "teV*is^'t's^'ümmeD"} ) ;
+oper tess : Str = (variants {"teV*s^s^eVmeVtta" ; "teV*is^'t's^'Ã¼mmeD"} ) ;
 
-lin pot01 = {s = table {unit => "ühsi" ; attr => "sata" ; _ => "dummy" }; size = sg } ;
+lin pot01 = {s = table {unit => "Ã¼hsi" ; attr => "sata" ; _ => "dummy" }; size = sg } ;
 
 oper ss : Str -> LinS100 = \s1 -> {s = s1 ; size = pl } ; 
 
 lin pot0 d = d ; 
-lin pot110 = ss "ts^ümme:" ;
-lin pot111 = ss ("ühs" + tess) ;
+lin pot110 = ss "ts^Ã¼mme:" ;
+lin pot111 = ss ("Ã¼hs" + tess) ;
 lin pot1to19 d = ss (d.s ! teen) ;
 lin pot0as1 n = {s = n.s ! unit ; size = n.size } ;
 lin pot1 d = ss (d.s ! ten) ;

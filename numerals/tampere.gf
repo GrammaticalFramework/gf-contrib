@@ -20,17 +20,17 @@ lin n2  =
 lin n3  =
   {s = table {attr => "kol" ; indep => "kolme"}} ;
 lin n4  =
-  {s = table {attr => "nel" ; indep => "neliä"}} ;
+  {s = table {attr => "nel" ; indep => "neliÃ¤"}} ;
 lin n5  =
   {s = table {p => "viis"}} ;
 lin n6  =
   {s = table {p => "kuus"}} ;
 lin n7  =
-  {s = table {attr => "seit" ; indep => "seittämän"}} ;
+  {s = table {attr => "seit" ; indep => "seittÃ¤mÃ¤n"}} ;
 lin n8  =
   {s = table {p => "kahreksan"}} ;
 lin n9  =
-  {s = table {p => "yhreksän"}} ;
+  {s = table {p => "yhreksÃ¤n"}} ;
 lin pot01  =
   {inh = sg ; s = table {attr => [] ; indep => "yks"}} ;
 lin pot0 d =
@@ -44,7 +44,7 @@ lin pot1to19 d =
 lin pot0as1 n =
   {inh = n.inh ; s = table {p => n.s ! p}} ;
 lin pot1 d =
-  {inh = pl ; s = table {p => (d.s ! attr) ++ "kytä"}} ;
+  {inh = pl ; s = table {p => (d.s ! attr) ++ "kytÃ¤"}} ;
 lin pot1plus d e =
   {inh = pl ; s = table {p => (d.s ! attr) ++ "kyt" ++ e.s ! indep}} ;
 lin pot1as2 n =

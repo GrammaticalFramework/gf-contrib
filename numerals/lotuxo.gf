@@ -22,8 +22,8 @@ oper mkNum : Str -> Form = \mbili ->
 -- I i without dot
 -- O IPA for o in cod
 
--- lin n1 = mkNum "âbotye" ; 
-lin n2 = mkNum "ârrexai" ;
+-- lin n1 = mkNum "Ã¢botye" ; 
+lin n2 = mkNum "Ã¢rrexai" ;
 lin n3 = mkNum "xunixoi" ;
 lin n4 = mkNum "aNwan" ;
 lin n5 = mkNum "miet" ;
@@ -34,15 +34,15 @@ lin n9 = mkNum "xOttONwan" ;
 
 oper xo : Str = pre {"xO" ; 
                      "xo" / strs {"m" ; "xu" ; "xo"} ; 
-                     "x'" / strs {"â" ; "a"}} ;
+                     "x'" / strs {"Ã¢" ; "a"}} ;
 
 oper ss : Str -> Form = \s1 -> {s = s1 ; size = pl} ;
 
 lin pot01  =
-  {s = "âbotye" ; size = sg };
+  {s = "Ã¢botye" ; size = sg };
 lin pot0 d = d ;
 lin pot110 = ss "'tOmOn" ; 
-lin pot111 = ss ("'tOmOn" ++ xo ++ "âbotye") ; 
+lin pot111 = ss ("'tOmOn" ++ xo ++ "Ã¢botye") ; 
 lin pot1to19 d = ss ("'tOmOn" ++ xo ++ d.s ) ;
 lin pot0as1 n = n ;
 lin pot1 d = ss ("atOmwana" ++ d.s ) ;
@@ -56,9 +56,9 @@ lin pot3plus n m = {s = (mktau n.size n.s) ++ "ikO" ++ m.s} ;
 
 oper mkessixa : Size -> Str -> Str = \sz -> \attr -> 
   table {pl => "EssIxa" ++ attr ; 
-         sg => variants {"EssIxa" ++ "âbotye"; "atOmwana" ++ "'tOmOn"}} ! sz ;
+         sg => variants {"EssIxa" ++ "Ã¢botye"; "atOmwana" ++ "'tOmOn"}} ! sz ;
 oper mktau : Size -> Str -> Str = \sz -> \attr ->
   table {pl => "tausand" ++ attr ; 
-         sg => variants {"tausand" ++ "âbotye"; "EssIxa" ++ "'tOmOn"}} ! sz ;
+         sg => variants {"tausand" ++ "Ã¢botye"; "EssIxa" ++ "'tOmOn"}} ! sz ;
 
 }

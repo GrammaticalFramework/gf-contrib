@@ -38,7 +38,7 @@ lin n4 = mkNum "caar" "cawda" "caaLis" ("paanc" ++ "se") "cho" ;
 lin n5 = mkNumS "paanc" "pandra" "pacaas" ("cho" ++ "se") "paanc" five;
 lin n6 = mkNum "cho" "sola" "saaT" ("saat" ++ "se") "caar" ;
 lin n7 = mkNumS "saat" "satara" "sattar" ("aaT" ++ "se") "tin" seven ; 
-lin n8 = mkNum "aaT" "aTara" "ãysi" ("naw" ++ "se") "di" ;
+lin n8 = mkNum "aaT" "aTara" "Ã£ysi" ("naw" ++ "se") "di" ;
 lin n9 = mkNumS "naw" "wagNis" "nawwad" "hajaar" "ek" nine;
 
 oper ss : Str -> LinSub100 = \s1 -> {s = s1 ; s2 = s1 ++ "hajaar" ; s3 = s1 ; size = other} ;

@@ -26,16 +26,16 @@ lin num x0 =
 oper mkNum : Str -> Str -> LinDigit =
   \u -> \t -> {s = table {unit => u ; teen => t } ; size = pl} ; 
 
-lin n2 = mkNum (variants {"side"; "sidea"}) "sidejaNan-â|~" ;
-lin n3 = mkNum (variants {"n-ahar" ; "nâr"}) "n-aharaNan-â|~" ;
-lin n4 = mkNum (variants {"t-êt" ; "t-iet" ; "tiet"}) "t-êtaNan-â|~" ;
+lin n2 = mkNum (variants {"side"; "sidea"}) "sidejaNan-Ã¢|~" ;
+lin n3 = mkNum (variants {"n-ahar" ; "nÃ¢r"}) "n-aharaNan-Ã¢|~" ;
+lin n4 = mkNum (variants {"t-Ãªt" ; "t-iet" ; "tiet"}) "t-ÃªtaNan-Ã¢|~" ;
 lin n5 = mkNum (variants {"saml-aN" ; "sambl-aN" ; "sambel-ank" }) 
-               "saml-an-aNan-â|~"; 
-lin n6 = mkNum "mat'" "mat-aNan-â|~";
-lin n7 = mkNum (variants {"siu" ; "s'eu"}) "siujaNan-â|~" ;
-lin n8 = mkNum "sidend-êt" "sidend-êtaNan-â|~" ;
-lin n9 = {s = table {unit => variants {"hâsawaju'" ; "habeiju'"} ; 
-                     teen => "hâsawajujaNan-â|~" } ; 
+               "saml-an-aNan-Ã¢|~"; 
+lin n6 = mkNum "mat'" "mat-aNan-Ã¢|~";
+lin n7 = mkNum (variants {"siu" ; "s'eu"}) "siujaNan-Ã¢|~" ;
+lin n8 = mkNum "sidend-Ãªt" "sidend-ÃªtaNan-Ã¢|~" ;
+lin n9 = {s = table {unit => variants {"hÃ¢sawaju'" ; "habeiju'"} ; 
+                     teen => "hÃ¢sawajujaNan-Ã¢|~" } ; 
           size = nine} ;
 
 oper ss : Str -> LinS100 = \s1 -> {s = s1 ; size = pl} ;
@@ -43,8 +43,8 @@ oper ss : Str -> LinS100 = \s1 -> {s = s1 ; size = pl} ;
 lin pot01 =
   {s = table {unit => variants {"~ob" ; "~opoi" } ; _ => "dummy" }; size = sg};
 lin pot0 d = d ;
-lin pot110 = ss (variants {"ju'" ; "lûcaju'" ; "lûsaju'" }) ;
-lin pot111 = ss (variants {"~objaNan-â|~"; "~objaNn-â" ; "~objaNa"}) ;
+lin pot110 = ss (variants {"ju'" ; "lÃ»caju'" ; "lÃ»saju'" }) ;
+lin pot111 = ss (variants {"~objaNan-Ã¢|~"; "~objaNn-Ã¢" ; "~objaNa"}) ;
 lin pot1to19 d = ss (d.s ! teen) ; 
 lin pot0as1 n = {s = n.s ! unit ; size = n.size} ;
 lin pot1 d = ss (ifnine d.size (d.s ! unit)) ;
@@ -58,13 +58,13 @@ lin pot3plus n m = {s = (mkjuonar n.size n.s) ++ m.s } ;
 
 oper mkjuonar : Size -> Str -> Str = \sz -> \attr ->
   table {nine => attr ++ "juonar" ;
-         sg => variants {"juonar" ; "jônar" ; "ju" ++ "jur"} ; 
+         sg => variants {"juonar" ; "jÃ´nar" ; "ju" ++ "jur"} ; 
          pl => attr ++ "juonar" } ! sz ;
  
 oper mkjur : Size -> Str -> Str = \sz -> \attr ->
   table {sg => "jur" ; _ => attr ++ "jur" } ! sz ;
 
 oper ifnine : Size -> Str -> Str = \sz -> \attr ->
-  table {nine => "hâsawajur" ; _ => attr ++ "ju'" } ! sz ;
+  table {nine => "hÃ¢sawajur" ; _ => attr ++ "ju'" } ! sz ;
 
 }

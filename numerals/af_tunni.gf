@@ -19,33 +19,33 @@ lin num x0 =
 oper mkNum : Str -> Str -> LinDigit = \mbili -> \lama ->
   {s = table {unit => mbili ; ten => lama }; size = pl };
 
--- lin n1 = mkNum "ków" ; 
-lin n2 = mkNum "lámma" "labaatón";
-lin n3 = mkNum "síddi?" "soddón" ;
-lin n4 = mkNum "áfar" "afartón";
-lin n5 = mkNum "s^án" "kontón";
-lin n6 = mkNum "lí?" "lihdón";
-lin n7 = mkNum "toddóbo" "toddobátan";
-lin n8 = mkNum "siyéed" "siyyeétan" ;
-lin n9 = mkNum "sagáal" "sagaás^an";
+-- lin n1 = mkNum "kÃ³w" ; 
+lin n2 = mkNum "lÃ¡mma" "labaatÃ³n";
+lin n3 = mkNum "sÃ­ddi?" "soddÃ³n" ;
+lin n4 = mkNum "Ã¡far" "afartÃ³n";
+lin n5 = mkNum "s^Ã¡n" "kontÃ³n";
+lin n6 = mkNum "lÃ­?" "lihdÃ³n";
+lin n7 = mkNum "toddÃ³bo" "toddobÃ¡tan";
+lin n8 = mkNum "siyÃ©ed" "siyyeÃ©tan" ;
+lin n9 = mkNum "sagÃ¡al" "sagaÃ¡s^an";
 
 oper ss : Str -> Form = \s1 -> {s = s1 ; size = pl} ;
 
 lin pot01  =
-  {s = table {f => "ków" }; size = sg };
+  {s = table {f => "kÃ³w" }; size = sg };
 lin pot0 d = d ;
-lin pot110 = ss "tómon" ; 
-lin pot111 = ss ("tómon" ++ "i" ++ "ków") ; 
-lin pot1to19 d = ss ("tómon" ++ "i" ++ (d.s ! unit)) ;
+lin pot110 = ss "tÃ³mon" ; 
+lin pot111 = ss ("tÃ³mon" ++ "i" ++ "kÃ³w") ; 
+lin pot1to19 d = ss ("tÃ³mon" ++ "i" ++ (d.s ! unit)) ;
 lin pot0as1 n = {s = n.s ! unit ; size = n.size } ;
 lin pot1 d = ss (d.s ! ten) ;
 lin pot1plus d e = ss (d.s ! ten ++ "i" ++ e.s ! unit) ; 
 lin pot1as2 n = n ;
-lin pot2 d = ss (selsg d.size (d.s ! unit) ++ "boqól" );
-lin pot2plus d e = ss ((selsg d.size (d.s ! unit)) ++ "boqól" ++ e.s) ;
+lin pot2 d = ss (selsg d.size (d.s ! unit) ++ "boqÃ³l" );
+lin pot2plus d e = ss ((selsg d.size (d.s ! unit)) ++ "boqÃ³l" ++ e.s) ;
 lin pot2as3 n = {s = n.s } ;
-lin pot3 n = {s = (selsg n.size n.s) ++ "kún"} ;
-lin pot3plus n m = {s = (selsg n.size n.s) ++ "kún" ++ m.s} ;
+lin pot3 n = {s = (selsg n.size n.s) ++ "kÃºn"} ;
+lin pot3plus n m = {s = (selsg n.size n.s) ++ "kÃºn" ++ m.s} ;
 
 oper selsg : Size -> Str -> Str = \sz -> \attr -> 
   table {pl => attr ; sg => [] } ! sz ; 

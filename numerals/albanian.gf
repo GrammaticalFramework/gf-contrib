@@ -16,25 +16,25 @@ lincat Sub1000 =    LinSub100 ;
 lincat Sub1000000 = { s : Str } ;
 
 oper mkNum : Str -> LinDigit = \tri -> 
-  { s = table {unit => tri ; teen => tri + "mbë" + "dhjetë" ; ten => tri + "dhjetë" }};
+  { s = table {unit => tri ; teen => tri + "mbÃ«" + "dhjetÃ«" ; ten => tri + "dhjetÃ«" }};
 
 lin num x = {s = x.s } ; 
 
-lin n2 = {s = table {unit => "dy" ; teen => "dy" + "mbë" + "dhjetë" ; ten => "njëzet" }};
+lin n2 = {s = table {unit => "dy" ; teen => "dy" + "mbÃ«" + "dhjetÃ«" ; ten => "njÃ«zet" }};
 lin n3 = mkNum "tre" ;
-lin n4 = {s = table {unit => "katër" ; teen => "katër" + "mbë" + "dhjetë" ; ten => "dyzet" } };
-lin n5 = mkNum "pesë" ;
-lin n6 = mkNum "gjashtë";
-lin n7 = mkNum "shtatë";
-lin n8 = mkNum "tetë";
-lin n9 = mkNum "nëntë";
+lin n4 = {s = table {unit => "katÃ«r" ; teen => "katÃ«r" + "mbÃ«" + "dhjetÃ«" ; ten => "dyzet" } };
+lin n5 = mkNum "pesÃ«" ;
+lin n6 = mkNum "gjashtÃ«";
+lin n7 = mkNum "shtatÃ«";
+lin n8 = mkNum "tetÃ«";
+lin n9 = mkNum "nÃ«ntÃ«";
 
 oper mkR : Str -> LinSub100 = \n -> {s = n } ;
 
-lin pot01 = { s = table {_ => "një" }};
+lin pot01 = { s = table {_ => "njÃ«" }};
 lin pot0 d = d ;
-lin pot110 = mkR "dhjetë" ;
-lin pot111 = mkR ("një" + "mbë" + "dhjetë") ;
+lin pot110 = mkR "dhjetÃ«" ;
+lin pot111 = mkR ("njÃ«" + "mbÃ«" + "dhjetÃ«") ;
 lin pot1to19 d = mkR (d.s ! teen) ;
 lin pot0as1 n = mkR (n.s ! unit) ;
 lin pot1 d = mkR (d.s ! ten) ;
@@ -43,8 +43,8 @@ lin pot1as2 n = n ;
 lin pot2 d = mkR (bind (d.s ! unit) "qind") ;
 lin pot2plus d e = mkR ((bind (d.s ! unit) "qind") ++ "e" ++ e.s) ;
 lin pot2as3 n = {s = n.s };
-lin pot3 n = {s = n.s ++ "mijë" } ;
-lin pot3plus n m = {s = n.s ++ "mijë" ++ m.s} ;
+lin pot3 n = {s = n.s ++ "mijÃ«" } ;
+lin pot3plus n m = {s = n.s ++ "mijÃ«" ++ m.s} ;
 
 
 }

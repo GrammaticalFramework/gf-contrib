@@ -18,27 +18,27 @@ oper mkNum : Str -> Form = \mbili ->
   {s = mbili ; size = pl };
 
 -- O IPA for o in cod
--- Ó
+-- Ã“
 
--- lin n1 = mkNum "ÓkO" ; 
-lin n2 = mkNum "óse" ;
-lin n3 = mkNum "otá" ;
-lin n4 = mkNum "osió" ;
-lin n5 = mkNum "ukú" ;
-lin n6 = mkNum "omaná" ;
-lin n7 = mkNum "mbásámbárá" ;
+-- lin n1 = mkNum "Ã“kO" ; 
+lin n2 = mkNum "Ã³se" ;
+lin n3 = mkNum "otÃ¡" ;
+lin n4 = mkNum "osiÃ³" ;
+lin n5 = mkNum "ukÃº" ;
+lin n6 = mkNum "omanÃ¡" ;
+lin n7 = mkNum "mbÃ¡sÃ¡mbÃ¡rÃ¡" ;
 lin n8 = mkNum "miombe" ;
-lin n9 = mkNum "ngombáyá" ;
+lin n9 = mkNum "ngombÃ¡yÃ¡" ;
 
-oper nandoni : Str = ("na" ++ variants {"ndó" ++ "ní" ; []}) ;
+oper nandoni : Str = ("na" ++ variants {"ndÃ³" ++ "nÃ­" ; []}) ;
 
 oper ss : Str -> Form = \s1 -> {s = s1 ; size = over10} ;
 
-lin pot01 = {s = "ÓkO" ; size = sg };
+lin pot01 = {s = "Ã“kO" ; size = sg };
 lin pot0 d = d ;
-lin pot110 = ss ("bale" ++ "ÓkO"); 
-lin pot111 = ss ("bale" ++ "ÓkO" ++ nandoni ++ "ÓkO");
-lin pot1to19 d = ss ("bale" ++ "ÓkO" ++ nandoni ++ d.s);
+lin pot110 = ss ("bale" ++ "Ã“kO"); 
+lin pot111 = ss ("bale" ++ "Ã“kO" ++ nandoni ++ "Ã“kO");
+lin pot1to19 d = ss ("bale" ++ "Ã“kO" ++ nandoni ++ d.s);
 lin pot0as1 n = n ;
 lin pot1 d = ss ("bale" ++ d.s ) ;
 lin pot1plus d e = ss ("bale" ++ d.s ++ nandoni ++ e.s ) ; 
@@ -52,7 +52,7 @@ lin pot3plus n m = {s = mktau n.size (n.s ++ nandoni ++ m.s) } ;
 oper mkng : Size -> Str -> Str = \sz -> \attr -> 
   table {pl => "ngbangbu" ++ attr ;
          over10 => "dummy" ;  
-         sg => variants {"ngbangbu" ++ "ÓkO"; "ngbangbu" }} ! sz ;
+         sg => variants {"ngbangbu" ++ "Ã“kO"; "ngbangbu" }} ! sz ;
 
 oper mktau : Size -> Str -> Str = \sz -> \attr ->
   table {pl => "ngbangbu" ++ "bale" ++ attr ;

@@ -1,7 +1,5 @@
 concrete amharic of Numerals = {
 
-flags coding = UTF8;
-
 param DForm = unit | ten  ;
 -- Size is Sg or Pl -- 
 

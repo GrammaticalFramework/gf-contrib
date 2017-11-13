@@ -18,23 +18,23 @@ oper mkNum : Str -> Str -> Str -> Str -> LinDigit =
   \two -> \twelve -> \twenty -> \tvo -> 
   {s = table {unit => two ; teen => twelve ; ten => twenty ; neuter => tvo}} ;
 oper regNum : Str -> LinDigit = 
-  \fimm -> mkNum fimm (fimm + "tán") (fimm + "tíu") fimm;
+  \fimm -> mkNum fimm (fimm + "tÃ¡n") (fimm + "tÃ­u") fimm;
 
 oper ss : Str -> {s : Gen => Str ; size : Size} = \s -> {s = table {_ => s } ; size = pl};
 
 lin num x = x ;
-lin n2 = mkNum "tveir" "tólf" "tuttugu" "tvö" ;
-lin n3 = mkNum "Þrír" "Þréttán" "Þrjátíu" "Þrjú" ;
-lin n4 = mkNum "fjórir"  "fjórtán" "fjörutíu" "fjögur";
+lin n2 = mkNum "tveir" "tÃ³lf" "tuttugu" "tvÃ¶" ;
+lin n3 = mkNum "ÃžrÃ­r" "ÃžrÃ©ttÃ¡n" "ÃžrjÃ¡tÃ­u" "ÃžrjÃº" ;
+lin n4 = mkNum "fjÃ³rir"  "fjÃ³rtÃ¡n" "fjÃ¶rutÃ­u" "fjÃ¶gur";
 lin n5 = regNum "fimm" ;
 lin n6 = regNum "sex" ;
-lin n7 = mkNum "sjö" "sautján" "sjötíu" "sjö" ; 
-lin n8 = mkNum "átta" "átján" "áttíu" "átta" ;
-lin n9 = mkNum "níu" "nítján" "níutíu" "níu" ;
+lin n7 = mkNum "sjÃ¶" "sautjÃ¡n" "sjÃ¶tÃ­u" "sjÃ¶" ; 
+lin n8 = mkNum "Ã¡tta" "Ã¡tjÃ¡n" "Ã¡ttÃ­u" "Ã¡tta" ;
+lin n9 = mkNum "nÃ­u" "nÃ­tjÃ¡n" "nÃ­utÃ­u" "nÃ­u" ;
 
 lin pot01 = {s = table {f => "einn"} ; size = sg } ;
 lin pot0 d = {s = d.s ; size = less10 } ;
-lin pot110 = ss "tíu" ;
+lin pot110 = ss "tÃ­u" ;
 lin pot111 = ss "ellefu" ;
 lin pot1to19 d = ss (d.s ! teen) ;
 lin pot0as1 n = {s = table {com => n.s ! unit ; neut => n.s ! neuter } ; size = n.size } ;
@@ -42,12 +42,12 @@ lin pot1 d = {s = table {_ => d.s ! ten } ; size = pl};
 lin pot1plus d e = {s = table {com => d.s ! ten ++ "og" ++ e.s ! unit ; 
                                neut => d.s ! ten ++ "og" ++ e.s ! neuter} ; size = pl} ;
 lin pot1as2 n = n ;
-lin pot2 d = {s = table {_ => omitsg (d.s ! neuter) d.size ++ "hundrað" } ; size = pl} ; 
-lin pot2plus d e = {s = table {f => omitsg (d.s ! neuter) d.size ++ "hundrað" ++ (maybeog) e.size ++ e.s ! f} ; size = pl} ; 
+lin pot2 d = {s = table {_ => omitsg (d.s ! neuter) d.size ++ "hundraÃ°" } ; size = pl} ; 
+lin pot2plus d e = {s = table {f => omitsg (d.s ! neuter) d.size ++ "hundraÃ°" ++ (maybeog) e.size ++ e.s ! f} ; size = pl} ; 
 
 lin pot2as3 n = {s = n.s ! com } ;
-lin pot3 n = {s = omitsg (n.s ! neut) n.size ++ "Þúsund"} ;
-lin pot3plus n m = {s = omitsg (n.s ! neut) n.size ++ "Þúsund" ++ (maybeog m.size) ++ m.s ! com} ;
+lin pot3 n = {s = omitsg (n.s ! neut) n.size ++ "ÃžÃºsund"} ;
+lin pot3plus n m = {s = omitsg (n.s ! neut) n.size ++ "ÃžÃºsund" ++ (maybeog m.size) ++ m.s ! com} ;
 
 
 oper maybeog : Size -> Str = \sz -> table {pl => [] ; _ => "og" } ! sz ;  

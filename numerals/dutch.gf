@@ -16,8 +16,8 @@ lincat Sub1000 = {s : Place => Str} ;
 lincat Sub1000000 = {s : Str} ;
 
 oper mkGetal : Str -> Str -> Str -> LinDigit = 
-  \två -> \tolv -> \tjugo -> 
-  {s = table {unit => två ; teen => tolv ; ten => tjugo}} ;
+  \tvÃ¥ -> \tolv -> \tjugo -> 
+  {s = table {unit => tvÃ¥ ; teen => tolv ; ten => tjugo}} ;
 oper regGetal : Str -> LinDigit = 
   \vier -> mkGetal vier (vier + "tien") (vier + "tig") ;
 oper ss : Str -> {s : Str} = \s -> {s = s} ;

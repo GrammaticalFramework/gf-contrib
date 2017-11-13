@@ -22,9 +22,9 @@ lin num x0 =
   {s = x0.s} ;
 
 lin n2 = mkNum "dois" "doze" "vinte" "duzentos" ;
-lin n3 = mkNum "três" "treze" "trinta" "trezentos" ;
+lin n3 = mkNum "trÃªs" "treze" "trinta" "trezentos" ;
 lin n4 = mkNum "cuatro" (variants {"catorze" ; "quatorze"}) "quarenta" "cuatrocentos" ;
-lin n5 = mkNum "cinco" "quinze" "cinqüenta" "quinhentos" ;
+lin n5 = mkNum "cinco" "quinze" "cinqÃ¼enta" "quinhentos" ;
 lin n6 = mkNum "seis" (variants {"dezasseis" ; "dezesseis"}) "sessenta" "seiscentos" ;
 lin n7 = mkNum "sete" (variants {"dezassete" ; "dezessete"}) "setenta" "setecentos" ;
 lin n8 = mkNum "oito" "dezoito" "oitenta" "oitocentos" ;
