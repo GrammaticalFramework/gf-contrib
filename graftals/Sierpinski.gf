@@ -1,14 +1,19 @@
 concrete Sierpinski of Graftal = {
-lincat N = {a : Str; b : Str} ;
-lincat S = {s : Str} ;
-
-lin z = {a = A; b = B} ;
-lin s x = {a = x.b ++ R ++ x.a ++ R ++ x.b; b =x.a ++ L ++ x.b ++ L ++ x.a} ;
-lin c x = {s = "newpath 300 550 moveto" ++ x.a ++ "stroke showpage"} ;
-
-oper A : Str = "0 2 rlineto" ;
-oper B : Str = "0 2 rlineto" ;
-oper L : Str = "+60 rotate" ;
-oper R : Str = "-60 rotate" ;
-
-}
+  lincat
+    N = {f : Str; g: Str} ;
+    S = {s : Str} ;
+  lin
+    z = {f = F ;
+         g = G ;
+      } ;
+    s x = {
+      f = x.f ++ R ++ x.g ++ L ++ x.f ++ L ++ x.g ++ R ++ x.f ;
+      g = x.g ++ x.g ;
+      } ;
+    c x = {s = "newpath 300 550 moveto" ++ x.f ++ R ++ x.g ++ R ++ x.g ++ "0.01 setlinewidth stroke showpage"} ;
+  oper
+    F : Str = "2 0 rlineto" ;
+    G : Str = "2 0 rlineto" ;
+    L : Str = "+120 rotate" ;
+    R : Str = "-120 rotate" ;
+} ;
