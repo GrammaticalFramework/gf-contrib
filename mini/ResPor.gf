@@ -5,11 +5,14 @@ resource ResPor = open Prelude in {
 param
   Number = Sg | Pl ;
   Gender = Masc | Fem ;
-  Case   = Nom | Acc | Dat ;
+  Case   = Nom | Acc | Dat ; -- Dat has two forms: "me" e "a mim"
   Agr    = Ag Gender Number Person ;
   Aux    = Ser | Estar | Ter | Haver ;
   Tense  = Pres | Perf ;
-  Person = Per1 | Per2F | Per2I |Per3 ;
+  Person = Per1
+    | Per2F -- tu
+    | Per2I -- você
+    |Per3 ;
 
   VForm = VInf | VPres Number Person | VPart Gender Number ;
 
@@ -43,10 +46,11 @@ oper
     } ;
 
   auxVerb : Aux -> Verb = \a -> case a of {
-    HaverOuTer => 
-      mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" HaverOuTer | mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" HaverOuTer ;
-    Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" HaverOuTer ;
-    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" HaverOuTer       
+    Haver => 
+      mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" Ter ;
+    Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver ;
+    Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" Ter ;
+    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter       
     } ;
 
   agrPart : Verb -> Agr -> ClitAgr -> Str = \v,a,c -> case v.aux of {
@@ -111,18 +115,18 @@ oper
     _ => mkNoun vino vino Masc 
     } ;
 
-  mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \buono,buona,buoni,buone,p -> {
+  mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \bom,boa,bons,boas,p -> {
     s = table {
-          Masc => table {Sg => buono ; Pl => buoni} ;
-          Fem  => table {Sg => buona ; Pl => buone}
+          Masc => table {Sg => bom ; Pl => bons} ;
+          Fem  => table {Sg => boa ; Pl => boas}
         } ;
     isPre = p
     } ;
 
-  regAdj : Str -> Adj = \nero -> case nero of {
-    ner + "o"  => mkAdj nero (ner + "a") (ner + "i") (ner + "e") False ;
-    verd + "e" => mkAdj nero nero (verd + "i") (verd + "i") False ;
-    _ => mkAdj nero nero nero nero False
+  regAdj : Str -> Adj = \preto -> case preto of {
+    pret + "o"  => mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
+    pret + "e" => mkAdj preto (pret + "a") (preto + "s") (pret + "as") ;
+    _ => mkAdj preto preto preto preto False
     } ;
 
   mkVerb : (_,_,_,_,_,_,_,_ : Str) -> Aux -> Verb = 
@@ -160,7 +164,7 @@ oper
     } ;
 
   pronNP : (s,a,d : Str) -> Gender -> Number -> Person -> NP = 
-  \s,a,d,g,n,p -> {
+  \s,a,d,g,n,p -> { -- s for standard?
     s = table {
       Nom => {clit = [] ; obj = s  ; isClit = False} ;
       Acc => {clit = a  ; obj = [] ; isClit = True} ;
@@ -172,9 +176,3 @@ oper
 -- phonological auxiliaries
 
   vowel    : pattern Str = #("a" | "e" | "i" | "o" | "u" | "h") ;
-  s_impuro : pattern Str = #("z" | "s" + ("b"|"c"|"d"|"f"|"m"|"p"|"q"|"t")) ;
-
-  elisForms : (_,_,_ : Str) -> Str = \lo,l',il ->
-    pre {#s_impuro => lo ; #vowel => l' ; _ => il} ;
-
-}

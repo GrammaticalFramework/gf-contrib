@@ -98,7 +98,7 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
     the_Det = {
       s = table {
         Masc => table {
-          Nom | Acc => elisForms "lo" "l'" "il" ;
+          Nom | Acc => "o"
           Dat => elisForms "allo" "all'" "al"
           } ;
         Fem => table {
@@ -109,16 +109,16 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
       n = Sg
       } ;
         
-    this_Det = adjDet (regAdj "questo") Sg ;
-    these_Det = adjDet (regAdj "questo") Pl ;
-    that_Det = adjDet quello_A Sg ;
-    those_Det = adjDet quello_A Pl ;
+    this_Det = adjDet (regAdj "este") Sg ;
+    these_Det = adjDet (regAdj "este") Pl ;
+    that_Det = adjDet (regAdj "esse") Sg ;
+    those_Det = adjDet (regAdj "esse") Pl ;
 
-    i_NP =   pronNP "io"  "mi" "mi" Masc Sg Per1 ;
-    she_NP = pronNP "lei" "la" "le" Fem  Sg Per3 ;
-    we_NP =  pronNP "noi" "ci" "ci" Masc Pl Per1 ;
+    i_NP =   pronNP "eu"  "me" "me" Masc Sg Per1 ;
+    she_NP = pronNP "ela" "a" "lhe" Fem  Sg Per3 ;
+    we_NP =  pronNP "nós" "nos" "nos" Masc Pl Per1 ;
 
-    very_AdA = ss "molto" ;
+    very_AdA = ss "muito" ;
 
     Pos  = {s = [] ; b = True} ;
     Neg  = {s = [] ; b = False} ;
@@ -127,11 +127,3 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
 
     and_Conj = {s = "e" ; n = Pl} ;
     or_Conj  = {s = "o" ; n = Sg} ;
-
-  oper
-    quello_A : Adj = mkAdj 
-      (elisForms "quello" "quell'" "quel") "quella"
-      (elisForms "quegli" "quegli" "quei") "quelle"
-      True ;
-
-}
