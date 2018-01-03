@@ -1,10 +1,10 @@
-concrete GrammarIta of Grammar = open ResIta, Prelude in {
+concrete GrammarPor of Grammar = open ResPor, Prelude in {
   lincat  
     S  = {s : Str} ;
-    Cl = {s : ResIta.Tense => Bool => Str} ; 
-    NP = ResIta.NP ;  
+    Cl = {s : ResPor.Tense => Bool => Str} ; 
+    NP = ResPor.NP ;  
       -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ; 
-    VP = ResIta.VP ;  
+    VP = ResPor.VP ;  
       -- {v : Verb ; clit : Str ; clitAgr : ClitAgr ; obj : Agr => Str} ;
     AP = {s : Gender => Number => Str ; isPre : Bool} ;
     CN = Noun ;           -- {s : Number => Str ; g : Gender} ;
@@ -15,7 +15,7 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
     V2 = Verb ** {c : Case} ;
     AdA = {s : Str} ;
     Pol = {s : Str ; b : Bool} ;
-    Tense = {s : Str ; t : ResIta.Tense} ;
+    Tense = {s : Str ; t : ResPor.Tense} ;
     Conj = {s : Str ; n : Number} ;
   lin
     UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ; 
@@ -122,8 +122,8 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
 
     Pos  = {s = [] ; b = True} ;
     Neg  = {s = [] ; b = False} ;
-    Pres = {s = [] ; t = ResIta.Pres} ;
-    Perf = {s = [] ; t = ResIta.Perf} ;
+    Pres = {s = [] ; t = ResPor.Pres} ;
+    Perf = {s = [] ; t = ResPor.Perf} ;
 
     and_Conj = {s = "e" ; n = Pl} ;
     or_Conj  = {s = "o" ; n = Sg} ;

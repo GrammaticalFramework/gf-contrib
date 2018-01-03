@@ -1,4 +1,4 @@
-resource ResIta = open Prelude in {
+resource ResPor = open Prelude in {
 
 -- parameters
 
@@ -7,9 +7,9 @@ param
   Gender = Masc | Fem ;
   Case   = Nom | Acc | Dat ;
   Agr    = Ag Gender Number Person ;
-  Aux    = Avere | Essere ;
+  Aux    = Ser | Estar | Ter | Haver ;
   Tense  = Pres | Perf ;
-  Person = Per1 | Per2 | Per3 ;
+  Person = Per1 | Per2F | Per2I |Per3 ;
 
   VForm = VInf | VPres Number Person | VPart Gender Number ;
 
@@ -43,10 +43,10 @@ oper
     } ;
 
   auxVerb : Aux -> Verb = \a -> case a of {
-    Avere => 
-      mkVerb "avere" "ho" "hai" "ha" "abbiamo" "avete" "hanno" "avuto" Avere ;
-    Essere => 
-      mkVerb "essere" "sono" "sei" "è" "siamo" "siete" "sono" "stato" Essere
+    HaverOuTer => 
+      mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" HaverOuTer | mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" HaverOuTer ;
+    Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" HaverOuTer ;
+    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" HaverOuTer       
     } ;
 
   agrPart : Verb -> Agr -> ClitAgr -> Str = \v,a,c -> case v.aux of {
@@ -59,9 +59,9 @@ oper
       }
     } ;
 
-  neg : Bool -> Str = \b -> case b of {True => [] ; False => "non"} ;
+  neg : Bool -> Str = \b -> case b of {True => [] ; False => "não"} ;
 
-  essere_V = auxVerb Essere ;
+  ser_V = auxVerb Ser ;
 
 -- for coordination
 
@@ -97,8 +97,8 @@ oper
   Adj  : Type = {s : Gender => Number => Str ; isPre : Bool} ;
   Verb : Type = {s : VForm => Str ; aux : Aux} ;
 
-  mkNoun : Str -> Str -> Gender -> Noun = \vino,vini,g -> {
-    s = table {Sg => vino ; Pl => vini} ;
+  mkNoun : Str -> Str -> Gender -> Noun = \cão,cães,g -> {
+    s = table {Sg => cão ; Pl => cães} ;
     g = g
     } ;
 
@@ -126,28 +126,30 @@ oper
     } ;
 
   mkVerb : (_,_,_,_,_,_,_,_ : Str) -> Aux -> Verb = 
-    \amare,amo,ami,ama,amiamo,amate,amano,amato,aux -> {
+    \amar,amo,amas,ama,amamos,amais,amam,amado,aux -> {
     s = table {
-          VInf          => amare ;
-          VPres Sg Per1 => amo ;
-          VPres Sg Per2 => ami ;
-          VPres Sg Per3 => ama ;
-          VPres Pl Per1 => amiamo ;
-          VPres Pl Per2 => amate ;
-          VPres Pl Per3 => amano ;
-          VPart g n     => (regAdj amato).s ! g ! n
+          VInf           => amar ;
+          VPres Sg Per1  => amo ;
+          VPres Sg Per2F => amas ;
+          VPres Sg Per2I => ama ;
+          VPres Sg Per3  => ama ;
+          VPres Pl Per1  => amamos ;
+          VPres Pl Per2F => amais ;
+          VPres Pl Per2I => amam ;
+          VPres Pl Per3  => amam ;
+          VPart g n      => (regAdj amado).s ! g ! n
           } ;
     aux = aux
     } ;
 
-  regVerb : Str -> Verb = \amare -> case amare of {
-    am  + "are" => mkVerb amare (am+"o") (am+"i") (am+"a") 
-                     (am+"iamo") (am+"ate") (am+"ano") (am+"ato") Avere ;
-    tem + "ere" => mkVerb amare (tem+"o") (tem+"i") (tem+"e") 
-                     (tem+"iamo") (tem+"ete") (tem+"ono") (tem+"uto") Avere ;
-    fin + "ire" => mkVerb amare (fin+"isco") (fin+"isci") (fin+"isce") 
-                     (fin+"iamo") (fin+"ite") (fin+"iscono") (fin+"ito") Avere
-    } ; 
+  regVerb : Str -> Verb = \amar -> case amar of {
+    am  + "ar" => mkVerb amar (am+"o") (am+"as") (am+"a") 
+                     (am+"amos") (am+"ais") (am+"am") (am+"ado") Ser ;
+    tem + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e") 
+                     (tem+"emos") (tem+"eis") (tem+"em") (tem+"ido") Ser ;
+    part + "ir" => mkVerb amar (part+"o") (part+"es") (part+"e") 
+                     (part+"imos") (part+"eis") (partem+"em") (part+"ido") Estar
+    } ;
 
 -- for structural words
 
