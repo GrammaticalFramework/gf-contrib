@@ -11,6 +11,8 @@ oper
   mkN = overload {
     mkN : (vinho : Str) -> N
       = \n -> lin N (regNoun n) ;
+    mkN : (mulher : Str) -> Gender -> N
+      = \n,g -> lin N (regNounGen n g) ;
     mkN : (pão, pães : Str) -> Gender -> N
       = \s,p,g -> lin N (mkNoun s p g) ;
     } ;
@@ -24,13 +26,13 @@ oper
 
   preA : A -> A
       = \a -> lin A {s = a.s ; isPre = True} ;
---
+
   mkV = overload {
     mkV : (amar : Str) -> V
       = \v -> lin V (regVerb v) ;
     mkV : (andar,ando,andas,anda,andamos,andais,andam,andado : Str)
       -> V
-      = \i,p1,p2,p3,p4,p5,p6,p -> lin V (mkVerb i p1 p2 p3 p4 p5 p6 p Avere) ;
+      = \i,p1,p2,p3,p4,p5,p6,p -> lin V (mkVerb i p1 p2 p3 p4 p5 p6 p Ter) ;
     } ;
 
   estarV : V -> V

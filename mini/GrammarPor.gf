@@ -66,7 +66,7 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
       } ;
 
     CompAP ap = {
-      v = essere_V ;
+      v = ser_V ;
       clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\ag => case ag of {
@@ -85,7 +85,7 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
         clit = [] ;
         isClit = False
         } ;
-      a = ny.a ; ---- should be conjAgr co.n nx.a ny.a
+      a = ny.a ; -- should be conjAgr co.n nx.a ny.a
       } ;
 
     UseN n = n ;
@@ -106,14 +106,14 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
       n = Sg
       } ;
 
-    this_Det = adjDet (regAdj "este") Sg ;
+    this_Det  = adjDet (regAdj "este") Sg ;
     these_Det = adjDet (regAdj "este") Pl ;
-    that_Det = adjDet (regAdj "esse") Sg ;
+    that_Det  = adjDet (regAdj "esse") Sg ;
     those_Det = adjDet (regAdj "esse") Pl ;
 
-    i_NP =   pronNP "eu"  "me" "me" Masc Sg Per1 ;
+    i_NP   = pronNP "eu"  "me" "me" Masc Sg Per1 ;
     she_NP = pronNP "ela" "a" "lhe" Fem  Sg Per3 ;
-    we_NP =  pronNP "nós" "nos" "nos" Masc Pl Per1 ;
+    we_NP  = pronNP "nós" "nos" "nos" Masc Pl Per1 ;
 
     very_AdA = ss "muito" ;
 
@@ -124,3 +124,4 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
 
     and_Conj = {s = "e" ; n = Pl} ;
     or_Conj  = {s = "o" ; n = Sg} ;
+} ;

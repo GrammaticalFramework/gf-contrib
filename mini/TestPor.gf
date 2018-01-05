@@ -1,17 +1,25 @@
+{--
+  what makes some verbs in Portuguese have the wrong participle?
+
+  /é amado/ is ok, and so are /é amada/ /são amados/, but /há chegado/
+  is awkward. and there is no gender agreement on /elas hão chegado/,
+  why?
+
+--}
+
 concrete TestPor of Test = GrammarPor ** open ParadigmsPor in {
 
 lin
-  man_N = mkN "uomo" "uomini" masculine ;
-  woman_N = mkN "donna" ;
-  house_N = mkN "casa" ;
-  tree_N = mkN "albero" ;
-  big_A = preA (mkA "grande") ;
-  small_A = preA (mkA "piccolo") ;
-  green_A = mkA "verde" ;
-  walk_V = mkV "camminare" ;
-  arrive_V = essereV (mkV "arrivare") ;
-  love_V2 = mkV2 "amare" ;
-  please_V2 = mkV2 (essereV (mkV "piacere" "piaccio" "piaci" "piace"
-                        "piacciamo" "piacete" "piacciono" "piaciuto")) dative ;
+  man_N     = mkN "homem" ;
+  woman_N   = mkN "mulher" feminine ;
+  house_N   = mkN "casa" ;
+  tree_N    = mkN "árvore" feminine ;
+  big_A     = preA (mkA "grande") ;
+  small_A   = preA (mkA "pequeno") ;
+  green_A   = mkA "verde" ;
+  walk_V    = mkV "caminhar" ;
+  arrive_V  = mkV "chegar";
+  love_V2   = serV (mkV2 "amar") ;
+  please_V2 = mkV2 (mkV "agradar") dative ;
 
 } ;

@@ -116,21 +116,31 @@ oper
     g = g
     } ;
 
+  regNounGen : Str -> Gender -> Noun = \vinho,g -> case vinho of {
+    rapa + z@("z"|"r"|"s")           =>
+      mkNoun vinho (rapa + z + "es") g ;
+    can  + v@("a"|"e"|"o"|"u") + "l" =>
+      mkNoun vinho (can + v + "is") g ;
+    can  + "il"                      =>
+      mkNoun vinho (can + "is") g ; -- what about fóssil?
+    tóra + "x"                       =>
+      mkNoun vinho vinho g ;
+    _                                =>
+      mkNoun vinho (vinho + "s") g
+    } ;
+
   regNoun : Str -> Noun = \vinho -> case vinho of {
-    falc + "ão"          =>
+    cas   + "a"  => regNounGen vinho Fem ;
+    vinh  + "o"  => regNounGen vinho Masc ;
+    falc  + "ão" =>
       mkNoun vinho (falc + "ões") Masc ; -- other rules depend on
-                                           -- stress, can this be
-                                           -- built with gf?
-    artes + "ã"          => mkNoun vinho (artes + "ãs") Fem ;
-    home + "m"           => mkNoun vinho (home + "ns") Masc ;
-    líque + "n"          => mkNoun vinho (líque + "ns") Masc ;
-    rapa + z@("z"|"r")   =>
-      mkNoun vinho (rapa + z + "es") Masc ; -- what about flor?
-    obu + "s"            =>
-      mkNoun vinho (vinho + "es") Masc ; -- what about gás, lápis?
-    can + v@#vowel + "l" =>
-      mkNoun vinho (can + v + "is") Masc ; -- what about vogal?
-    _                    => mkNoun vinho vinho Masc
+                                         -- stress, can this be built
+                                         -- with gf?
+    artes + "ã"  => mkNoun vinho (artes + "ãs") Fem ;
+    home  + "m"  => mkNoun vinho (home + "ns") Masc ;
+    líque + "n"  => mkNoun vinho (líque + "ns") Masc ;
+     obu  + "s"  => mkNoun vinho (vinho + "es") Masc ;
+     _           => mkNoun vinho (vinho + "s") Masc
     } ;
 
   mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \bom,boa,bons,boas,p -> {
@@ -145,7 +155,7 @@ oper
     pret + "o" =>
       mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
     pret + "e" =>
-      mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
+      mkAdj preto preto (preto + "s") (preto + "s") False ;
     _          => mkAdj preto preto preto preto False
     } ;
 
@@ -167,9 +177,9 @@ oper
     } ;
 
   regVerb : Str -> Verb = \amar -> case amar of {
-    am  + "ar" => mkVerb amar (am+"o") (am+"as") (am+"a")
-                     (am+"amos") (am+"ais") (am+"am") (am+"ado") Ser ;
-    tem + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e")
+    am   + "ar" => mkVerb amar (am+"o") (am+"as") (am+"a")
+                     (am+"amos") (am+"ais") (am+"am") (am+"ado") Haver ;
+    tem  + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e")
                      (tem+"emos") (tem+"eis") (tem+"em") (tem+"ido") Ser ;
     part + "ir" => mkVerb amar (part+"o") (part+"es") (part+"e")
                      (part+"imos") (part+"eis") (part+"em") (part+"ido") Estar
