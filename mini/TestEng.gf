@@ -1,6 +1,6 @@
 concrete TestEng of Test = GrammarEng ** open ResEng in {
 
-lin 
+lin
   man_N = mkN "man" "men" ;
   woman_N = mkN "woman" "women" ;
   house_N = mkN "house" ;

@@ -1,10 +1,10 @@
 concrete GrammarIta of Grammar = open ResIta, Prelude in {
-  lincat  
+  lincat
     S  = {s : Str} ;
-    Cl = {s : ResIta.Tense => Bool => Str} ; 
-    NP = ResIta.NP ;  
-      -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ; 
-    VP = ResIta.VP ;  
+    Cl = {s : ResIta.Tense => Bool => Str} ;
+    NP = ResIta.NP ;
+      -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ;
+    VP = ResIta.VP ;
       -- {v : Verb ; clit : Str ; clitAgr : ClitAgr ; obj : Agr => Str} ;
     AP = {s : Gender => Number => Str ; isPre : Bool} ;
     CN = Noun ;           -- {s : Number => Str ; g : Gender} ;
@@ -18,9 +18,9 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
     Tense = {s : Str ; t : ResIta.Tense} ;
     Conj = {s : Str ; n : Number} ;
   lin
-    UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ; 
-    PredVP np vp = 
-      let 
+    UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ;
+    PredVP np vp =
+      let
         subj = (np.s ! Nom).obj ;
         obj  = vp.obj ! np.a ;
         clit = vp.clit ;
@@ -32,12 +32,12 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
         s = \\t,b => subj ++ neg b ++ clit ++ verb ! t ++ obj
       } ;
 
-    ComplV2 v2 np = 
+    ComplV2 v2 np =
       let
         nps = np.s ! v2.c
       in {
-        v = {s = v2.s ; aux = v2.aux} ; 
-        clit = nps.clit ; 
+        v = {s = v2.s ; aux = v2.aux} ;
+        clit = nps.clit ;
         clitAgr = case <nps.isClit,v2.c> of {
           <True,Acc> => CAgr np.a ;
           _ => CAgrNo
@@ -46,16 +46,16 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
         } ;
 
     UseV v = {
-      v = v ; 
-      clit = [] ; 
+      v = v ;
+      clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\_ => []
       } ;
 
     DetCN det cn = {
       s = \\c => {
-        obj = det.s ! cn.g ! c ++ cn.s ! det.n ; 
-        clit = [] ; 
+        obj = det.s ! cn.g ! c ++ cn.s ! det.n ;
+        clit = [] ;
         isClit = False
         } ;
       a = Ag cn.g det.n Per3
@@ -67,8 +67,8 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
       } ;
 
     CompAP ap = {
-      v = essere_V ; 
-      clit = [] ; 
+      v = essere_V ;
+      clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\ag => case ag of {
         Ag g n _ => ap.s ! g ! n
@@ -82,8 +82,8 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
 
     ConjNP co nx ny = {
       s = \\c => {
-        obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ; 
-        clit = [] ; 
+        obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ;
+        clit = [] ;
         isClit = False
         } ;
       a = ny.a ; ---- should be conjAgr co.n nx.a ny.a
@@ -108,7 +108,7 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
         } ;
       n = Sg
       } ;
-        
+
     this_Det = adjDet (regAdj "questo") Sg ;
     these_Det = adjDet (regAdj "questo") Pl ;
     that_Det = adjDet quello_A Sg ;
@@ -129,7 +129,7 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
     or_Conj  = {s = "o" ; n = Sg} ;
 
   oper
-    quello_A : Adj = mkAdj 
+    quello_A : Adj = mkAdj
       (elisForms "quello" "quell'" "quel") "quella"
       (elisForms "quegli" "quegli" "quei") "quelle"
       True ;

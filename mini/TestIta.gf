@@ -11,7 +11,7 @@ lin
   walk_V = mkV "camminare" ;
   arrive_V = essereV (mkV "arrivare") ;
   love_V2 = mkV2 "amare" ;
-  please_V2 = mkV2 (essereV (mkV "piacere" "piaccio" "piaci" "piace" 
+  please_V2 = mkV2 (essereV (mkV "piacere" "piaccio" "piaci" "piace"
                         "piacciamo" "piacete" "piacciono" "piaciuto")) dative ;
 
 } ;

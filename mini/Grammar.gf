@@ -2,9 +2,9 @@ abstract Grammar = {
 
   flags startcat = S ;
 
-  cat 
-    S ; Cl ; NP ; VP ; AP ; CN ; 
-    Det ; N ; A ; V ; V2 ; AdA ; 
+  cat
+    S ; Cl ; NP ; VP ; AP ; CN ;
+    Det ; N ; A ; V ; V2 ; AdA ;
     Tense ; Pol ;
     Conj ;
   fun
