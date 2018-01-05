@@ -1,27 +1,25 @@
 -- [] are there no plural determiners so far?
 concrete GrammarPor of Grammar = open ResPor, Prelude in {
-  lincat  
+  lincat
     S  = {s : Str} ;
-    Cl = {s : ResPor.Tense => Bool => Str} ; 
-    NP = ResPor.NP ;  
-      -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ; 
-    VP = ResPor.VP ;  
-      -- {v : Verb ; clit : Str ; clitAgr : ClitAgr ; obj : Agr => Str} ;
+    Cl = {s : ResPor.Tense => Bool => Str} ;
+    NP = ResPor.NP ;
+    VP = ResPor.VP ;
     AP = {s : Gender => Number => Str ; isPre : Bool} ;
-    CN = Noun ;           -- {s : Number => Str ; g : Gender} ;
+    CN = Noun ;
     Det = {s : Gender => Case => Str ; n : Number} ;
-    N = Noun ;            -- {s : Number => Str ; g : Gender} ;
-    A = Adj ;             -- {s : Gender => Number => Str ; isPre : Bool} ;
-    V = Verb ;            -- {s : VForm => Str ; aux : Aux} ;
+    N = Noun ;
+    A = Adj ;
+    V = Verb ;
     V2 = Verb ** {c : Case} ;
     AdA = {s : Str} ;
     Pol = {s : Str ; b : Bool} ;
     Tense = {s : Str ; t : ResPor.Tense} ;
     Conj = {s : Str ; n : Number} ;
   lin
-    UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ; 
-    PredVP np vp = 
-      let 
+    UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ;
+    PredVP np vp =
+      let
         subj = (np.s ! Nom).obj ;
         obj  = vp.obj ! np.a ;
         clit = vp.clit ;
@@ -33,12 +31,12 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
         s = \\t,b => subj ++ neg b ++ clit ++ verb ! t ++ obj
       } ;
 
-    ComplV2 v2 np = 
+    ComplV2 v2 np =
       let
         nps = np.s ! v2.c
       in {
-        v = {s = v2.s ; aux = v2.aux} ; 
-        clit = nps.clit ; 
+        v = {s = v2.s ; aux = v2.aux} ;
+        clit = nps.clit ;
         clitAgr = case <nps.isClit,v2.c> of {
           <True,Acc> => CAgr np.a ;
           _          => CAgrNo
@@ -47,16 +45,16 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
         } ;
 
     UseV v = {
-      v = v ; 
-      clit = [] ; 
+      v = v ;
+      clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\_ => []
       } ;
 
     DetCN det cn = {
       s = \\c => {
-        obj = det.s ! cn.g ! c ++ cn.s ! det.n ; 
-        clit = [] ; 
+        obj = det.s ! cn.g ! c ++ cn.s ! det.n ;
+        clit = [] ;
         isClit = False
         } ;
       a = Ag cn.g det.n Per3
@@ -68,8 +66,8 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
       } ;
 
     CompAP ap = {
-      v = essere_V ; 
-      clit = [] ; 
+      v = essere_V ;
+      clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\ag => case ag of {
         Ag g n _ => ap.s ! g ! n
@@ -83,8 +81,8 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
 
     ConjNP co nx ny = {
       s = \\c => {
-        obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ; 
-        clit = [] ; 
+        obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ;
+        clit = [] ;
         isClit = False
         } ;
       a = ny.a ; ---- should be conjAgr co.n nx.a ny.a
@@ -107,7 +105,7 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
         } ;
       n = Sg
       } ;
-        
+
     this_Det = adjDet (regAdj "este") Sg ;
     these_Det = adjDet (regAdj "este") Pl ;
     that_Det = adjDet (regAdj "esse") Sg ;

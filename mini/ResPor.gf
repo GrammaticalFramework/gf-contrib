@@ -11,27 +11,28 @@ param
   Aux    = Estar | Haver | Ser | Ter ;
   Tense  = Pres | Perf ;
   Person = Per1
-    | Per2F -- tu
-    | Per2I -- você
+    | Per2F -- tu/vós
+    | Per2I -- você/vocês
     | Per3 ;
 
   VForm = VInf | VPres Number Person | VPart Gender Number ;
 
   ClitAgr = CAgrNo | CAgr Agr ;
 
--- parts of speech
+  ----
+  -- parts of speech
 
 oper
   VP = {
-    v : Verb ; 
-    clit : Str ; 
-    clitAgr : ClitAgr ; 
+    v : Verb ;
+    clit : Str ;
+    clitAgr : ClitAgr ;
     obj : Agr => Str
     } ;
   NP = {
-    s : Case => {clit,obj : Str ; isClit : Bool} ; 
+    s : Case => {clit,obj : Str ; isClit : Bool} ;
     a : Agr
-    } ; 
+    } ;
 
 -- the preposition word of an abstract case
 
@@ -47,7 +48,7 @@ oper
     } ;
 
   auxVerb : Aux -> Verb = \a -> case a of {
-    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter  
+    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter
     Haver => mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" Ter ;
     Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" Ter ;
     Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver ;
@@ -76,20 +77,18 @@ oper
     haver_V = auxVerb Haver ;
     ter_V   = auxVerb Ter ;
     ser_V   = auxVerb Ser ;
-  
-  
 
 -- for coordination
 
-  conjAgr : Number -> Agr -> Agr -> Agr = \n,xa,ya -> 
-    let 
+  conjAgr : Number -> Agr -> Agr -> Agr = \n,xa,ya ->
+    let
       x = agrFeatures xa ; y = agrFeatures ya
-    in Ag 
-      (conjGender x.g y.g) 
+    in Ag
+      (conjGender x.g y.g)
       (conjNumber (conjNumber x.n y.n) n)
       (conjPerson x.p y.p) ;
 
-  agrFeatures : Agr -> {g : Gender ; n : Number ; p : Person} = \a -> 
+  agrFeatures : Agr -> {g : Gender ; n : Number ; p : Person} = \a ->
     case a of {Ag g n p => {g = g ; n = n ; p = p}} ;
 
   conjGender : Gender -> Gender -> Gender = \g,h ->
@@ -106,7 +105,6 @@ oper
       } ;
 
 
-
 -- for morphology
 
   Noun : Type = {s : Number => Str ; g : Gender} ;
@@ -118,13 +116,20 @@ oper
     g = g
     } ;
 
-  regNoun : Str -> Noun = \vino -> case vino of {
-    fuo + c@("c"|"g") + "o" => mkNoun vino (fuo + c + "hi") Masc ;
-    ol  + "io" => mkNoun vino (ol + "i") Masc ;
-    vin + "o" => mkNoun vino (vin + "i") Masc ;
-    cas + "a" => mkNoun vino (cas + "e") Fem ;
-    pan + "e" => mkNoun vino (pan + "i") Masc ;
-    _ => mkNoun vino vino Masc 
+  regNoun : Str -> Noun = \vinho -> case vinho of {
+    falc + "ão"          =>
+      mkNoun vinho (c + "ões") Masc ; -- other rules depend on stress,
+                                      -- can this be built with gf?
+    artes + "ã"          => mkNoun vinho (artes + "ãs") Fem ;
+    home + "m"           => mkNoun vinho (home + "ns") Masc ;
+    líque + "n"          => mkNoun vinho (líque + "ns") Masc ;
+    rapa + z@("z"|"r")   =>
+      mkNoun vinho (rapa + z + "es") Masc ; -- what about flor?
+    obu + "s"            =>
+      mkNoun vinho (vinho + "es") Masc ; -- what about gás, lápis?
+    can + v@#vowel + "l" =>
+      mkNoun vinho (can + v + "is") Masc ; -- what about vogal?
+    _                    => mkNoun vino vino Masc
     } ;
 
   mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \bom,boa,bons,boas,p -> {
@@ -141,7 +146,7 @@ oper
     _ => mkAdj preto preto preto preto False
     } ;
 
-  mkVerb : (_,_,_,_,_,_,_,_ : Str) -> Aux -> Verb = 
+  mkVerb : (_,_,_,_,_,_,_,_ : Str) -> Aux -> Verb =
     \amar,amo,amas,ama,amamos,amais,amam,amado,aux -> {
     s = table {
           VInf           => amar ;
@@ -159,23 +164,23 @@ oper
     } ;
 
   regVerb : Str -> Verb = \amar -> case amar of {
-    am  + "ar" => mkVerb amar (am+"o") (am+"as") (am+"a") 
+    am  + "ar" => mkVerb amar (am+"o") (am+"as") (am+"a")
                      (am+"amos") (am+"ais") (am+"am") (am+"ado") Ser ;
-    tem + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e") 
+    tem + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e")
                      (tem+"emos") (tem+"eis") (tem+"em") (tem+"ido") Ser ;
-    part + "ir" => mkVerb amar (part+"o") (part+"es") (part+"e") 
+    part + "ir" => mkVerb amar (part+"o") (part+"es") (part+"e")
                      (part+"imos") (part+"eis") (partem+"em") (part+"ido") Estar
     } ;
 
 -- for structural words
   -- [ ] is this ok por port?
-  adjDet : Adj -> Number -> {s : Gender => Case => Str ; n : Number} = 
+  adjDet : Adj -> Number -> {s : Gender => Case => Str ; n : Number} =
   \adj,n -> {
     s = \\g,c => prepCase c ++ adj.s ! g ! n ;
     n = n
     } ;
 
-  pronNP : (s,a,d : Str) -> Gender -> Number -> Person -> NP = 
+  pronNP : (s,a,d : Str) -> Gender -> Number -> Person -> NP =
   \s,a,d,g,n,p -> { -- s for standard?
     s = table {
       Nom => {clit = [] ; obj = s  ; isClit = False} ;
