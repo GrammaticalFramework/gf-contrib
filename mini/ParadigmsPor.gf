@@ -1,4 +1,4 @@
-resource ParadigmsPor = GrammarPor [N,A,V] ** 
+resource ParadigmsPor = GrammarPor [N,A,V] **
   open ResPor, GrammarPor, Prelude in {
 
 oper
@@ -9,16 +9,16 @@ oper
   dative : Case = Dat ;
 
   mkN = overload {
-    mkN : (vinho : Str) -> N 
+    mkN : (vinho : Str) -> N
       = \n -> lin N (regNoun n) ;
-    mkN : (pão, pães : Str) -> Gender -> N 
+    mkN : (pão, pães : Str) -> Gender -> N
       = \s,p,g -> lin N (mkNoun s p g) ;
     } ;
 
   mkA = overload {
-    mkA : (preto : Str) -> A 
+    mkA : (preto : Str) -> A
       = \a -> lin A (regAdj a) ;
-    mkA : (bom,boa,bons,boas: Str) -> Bool -> A 
+    mkA : (bom,boa,bons,boas: Str) -> Bool -> A
       = \sm,sf,pm,pf,p -> lin A (mkAdj sm sf pm pf False) ;
     } ;
 
@@ -26,20 +26,21 @@ oper
       = \a -> lin A {s = a.s ; isPre = True} ;
 --
   mkV = overload {
-    mkV : (finire : Str) -> V 
+    mkV : (amar : Str) -> V
       = \v -> lin V (regVerb v) ;
-    mkV : (andare,vado,vadi,va,andiamo,andate,vanno,andato : Str) -> V 
+    mkV : (andar,ando,andas,anda,andamos,andais,andam,andado : Str)
+      -> V
       = \i,p1,p2,p3,p4,p5,p6,p -> lin V (mkVerb i p1 p2 p3 p4 p5 p6 p Avere) ;
     } ;
 
-  haverV : V -> V
-    = \v -> lin V {s = v.s ; aux = Haver} ;
-  terV : V -> V
-    = \v -> lin V {s = v.s ; aux = Ter} ;
-  serV : V -> V
-    = \v -> lin V {s = v.s ; aux = Ser} ;
   estarV : V -> V
     = \v -> lin V {s = v.s ; aux = Estar} ;
+  haverV : V -> V
+    = \v -> lin V {s = v.s ; aux = Haver} ;
+  serV : V -> V
+    = \v -> lin V {s = v.s ; aux = Ser} ;
+  terV : V -> V
+    = \v -> lin V {s = v.s ; aux = Ter} ;
 
   mkV2 = overload {
     mkV2 : Str -> V2

@@ -10,10 +10,10 @@ param
   Agr    = Ag Gender Number Person ;
   Aux    = Estar | Haver | Ser | Ter ;
   Tense  = Pres | Perf ;
-  Person = Per1
-    | Per2F -- tu/vós
-    | Per2I -- você/vocês
-    | Per3 ;
+  Person = Per1 | Per2 GPerson | Per3 ; -- discourse person
+  GPerson = -- grammatical person
+      GPer2   -- tu/vós
+    | GPer3 ; -- você/vocês
 
   VForm = VInf | VPres Number Person | VPart Gender Number ;
 
@@ -48,26 +48,25 @@ oper
     } ;
 
   auxVerb : Aux -> Verb = \a -> case a of {
-    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter
+    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter ;
     Haver => mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" Ter ;
     Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" Ter ;
-    Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver ;
+    Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver
     } ;
 
   agrPart : Verb -> Agr -> ClitAgr -> Str = \v,a,c -> case v.aux of {
     Estar => agrSerOuEstar v a ;
     Haver => agrTerOuHaver v c ;
     Ter   => agrTerOuHaver v c ;
-    Ser   => agrSerOuEstar v a ;
-      }
-    } ;
+    Ser   => agrSerOuEstar v a
+      } ;
 
   agrTerOuHaver : Verb -> ClitAgr -> Str = \v,c -> case c of {
     CAgr (Ag g n _) => v.s ! VPart g n ;
     _               => v.s ! VPart Masc Sg
     } ;
 
-  agrSerOuEstar : Verb -> a -> Str = \v,a -> case a of {
+  agrSerOuEstar : Verb -> Agr -> Str = \v,a -> case a of {
     Ag g n _ => v.s ! VPart g n
       } ;
 
@@ -99,9 +98,10 @@ oper
 
   conjPerson : Person -> Person -> Person = \p,q ->
     case <p,q> of {
-      <Per1,_> | <_,Per1> => Per1 ;
-      <Per2,_> | <_,Per2> => Per2 ;
-      _                   => Per3
+      <Per1,_> | <_,Per1>              => Per1 ;
+      <Per2 GPer2,_> | <_,Per2 GPer2>  => Per2 GPer2 ;
+      <Per2 GPer3,_> | <_,Per2 GPer3,> => Per2 GPer3 ;
+      _                                => Per3
       } ;
 
 
@@ -118,8 +118,9 @@ oper
 
   regNoun : Str -> Noun = \vinho -> case vinho of {
     falc + "ão"          =>
-      mkNoun vinho (c + "ões") Masc ; -- other rules depend on stress,
-                                      -- can this be built with gf?
+      mkNoun vinho (falc + "ões") Masc ; -- other rules depend on
+                                           -- stress, can this be
+                                           -- built with gf?
     artes + "ã"          => mkNoun vinho (artes + "ãs") Fem ;
     home + "m"           => mkNoun vinho (home + "ns") Masc ;
     líque + "n"          => mkNoun vinho (líque + "ns") Masc ;
@@ -129,7 +130,7 @@ oper
       mkNoun vinho (vinho + "es") Masc ; -- what about gás, lápis?
     can + v@#vowel + "l" =>
       mkNoun vinho (can + v + "is") Masc ; -- what about vogal?
-    _                    => mkNoun vino vino Masc
+    _                    => mkNoun vinho vinho Masc
     } ;
 
   mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \bom,boa,bons,boas,p -> {
@@ -141,24 +142,26 @@ oper
     } ;
 
   regAdj : Str -> Adj = \preto -> case preto of {
-    pret + "o"  => mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
-    pret + "e" => mkAdj preto (pret + "a") (preto + "s") (pret + "as") ;
-    _ => mkAdj preto preto preto preto False
+    pret + "o" =>
+      mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
+    pret + "e" =>
+      mkAdj preto (pret + "a") (preto + "s") (pret + "as") False ;
+    _          => mkAdj preto preto preto preto False
     } ;
 
   mkVerb : (_,_,_,_,_,_,_,_ : Str) -> Aux -> Verb =
     \amar,amo,amas,ama,amamos,amais,amam,amado,aux -> {
     s = table {
-          VInf           => amar ;
-          VPres Sg Per1  => amo ;
-          VPres Sg Per2F => amas ;
-          VPres Sg Per2I => ama ;
-          VPres Sg Per3  => ama ;
-          VPres Pl Per1  => amamos ;
-          VPres Pl Per2F => amais ;
-          VPres Pl Per2I => amam ;
-          VPres Pl Per3  => amam ;
-          VPart g n      => (regAdj amado).s ! g ! n
+          VInf                  => amar ;
+          VPres Sg Per1         => amo ;
+          VPres Sg (Per2 GPer2) => amas ;
+          VPres Sg (Per2 GPer3) => ama ;
+          VPres Sg Per3         => ama ;
+          VPres Pl Per1         => amamos ;
+          VPres Pl (Per2 GPer2) => amais ;
+          VPres Pl (Per2 GPer3) => amam ;
+          VPres Pl Per3         => amam ;
+          VPart g n             => (regAdj amado).s ! g ! n
           } ;
     aux = aux
     } ;
@@ -169,7 +172,7 @@ oper
     tem + "er" => mkVerb amar (tem+"o") (tem+"es") (tem+"e")
                      (tem+"emos") (tem+"eis") (tem+"em") (tem+"ido") Ser ;
     part + "ir" => mkVerb amar (part+"o") (part+"es") (part+"e")
-                     (part+"imos") (part+"eis") (partem+"em") (part+"ido") Estar
+                     (part+"imos") (part+"eis") (part+"em") (part+"ido") Estar
     } ;
 
 -- for structural words
@@ -192,4 +195,6 @@ oper
 
 -- phonological auxiliaries
 
-  vowel : pattern Str = #("a" | "e" | "i" | "o" | "u" | "h") ;
+  vowel : pattern Str = #("a" | "e" | "i" | "o" | "u") ;
+
+} ;
