@@ -5,14 +5,15 @@ resource ResPor = open Prelude in {
 param
   Number = Sg | Pl ;
   Gender = Masc | Fem ;
-  Case   = Nom | Acc | Dat ; -- Dat has two forms: "me" e "a mim"
+  Case   = Nom | Acc | Dat ; -- NotImplemented: Dat has two forms:
+                             -- "me" (clitic) e "a mim" (object)
   Agr    = Ag Gender Number Person ;
-  Aux    = Ser | Estar | Ter | Haver ;
+  Aux    = Estar | Haver | Ser | Ter ;
   Tense  = Pres | Perf ;
   Person = Per1
     | Per2F -- tu
     | Per2I -- você
-    |Per3 ;
+    | Per3 ;
 
   VForm = VInf | VPres Number Person | VPart Gender Number ;
 
@@ -46,26 +47,37 @@ oper
     } ;
 
   auxVerb : Aux -> Verb = \a -> case a of {
-    Haver => 
-      mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" Ter ;
-    Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver ;
+    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter  
+    Haver => mkVerb "haver" "hei" "hás" "há" "havemos" "haveis" "hão" "havido" Ter ;
     Ser =>  mkVerb "ser" "sou" "és" "é" "somos" "sois" "são" "sido" Ter ;
-    Estar => mkVerb "estar" "estou" "estás" "está" "estamos" "estais" "estão" "estado" Ter       
+    Ter => mkVerb "ter" "tenho" "tens" "tem" "temos" "tendes" "têm" "tido" Haver ;
     } ;
 
   agrPart : Verb -> Agr -> ClitAgr -> Str = \v,a,c -> case v.aux of {
-    Avere  => case c of {
-      CAgr (Ag g n _) => v.s ! VPart g n ;
-      _ => v.s ! VPart Masc Sg
-      } ;
-    Essere => case a of {
-      Ag g n _ => v.s ! VPart g n
+    Estar => agrSerOuEstar v a ;
+    Haver => agrTerOuHaver v c ;
+    Ter   => agrTerOuHaver v c ;
+    Ser   => agrSerOuEstar v a ;
       }
     } ;
 
+  agrTerOuHaver : Verb -> ClitAgr -> Str = \v,c -> case c of {
+    CAgr (Ag g n _) => v.s ! VPart g n ;
+    _               => v.s ! VPart Masc Sg
+    } ;
+
+  agrSerOuEstar : Verb -> a -> Str = \v,a -> case a of {
+    Ag g n _ => v.s ! VPart g n
+      } ;
+
   neg : Bool -> Str = \b -> case b of {True => [] ; False => "não"} ;
 
-  ser_V = auxVerb Ser ;
+    estar_V = auxVerb Estar ;
+    haver_V = auxVerb Haver ;
+    ter_V   = auxVerb Ter ;
+    ser_V   = auxVerb Ser ;
+  
+  
 
 -- for coordination
 
@@ -156,7 +168,7 @@ oper
     } ;
 
 -- for structural words
-
+  -- [ ] is this ok por port?
   adjDet : Adj -> Number -> {s : Gender => Case => Str ; n : Number} = 
   \adj,n -> {
     s = \\g,c => prepCase c ++ adj.s ! g ! n ;
@@ -175,4 +187,4 @@ oper
 
 -- phonological auxiliaries
 
-  vowel    : pattern Str = #("a" | "e" | "i" | "o" | "u" | "h") ;
+  vowel : pattern Str = #("a" | "e" | "i" | "o" | "u" | "h") ;

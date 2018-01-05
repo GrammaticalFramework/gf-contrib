@@ -1,3 +1,4 @@
+-- [] are there no plural determiners so far?
 concrete GrammarPor of Grammar = open ResPor, Prelude in {
   lincat  
     S  = {s : Str} ;
@@ -40,7 +41,7 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
         clit = nps.clit ; 
         clitAgr = case <nps.isClit,v2.c> of {
           <True,Acc> => CAgr np.a ;
-          _ => CAgrNo
+          _          => CAgrNo
           } ;
         obj  = \\_ => nps.obj
         } ;
@@ -93,17 +94,15 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
 
     UseA adj = adj ;
 
-    a_Det = adjDet (mkAdj "un" "una" [] [] True) Sg ;
+    a_Det = adjDet (mkAdj "um" "uma" [] [] True) Sg ;
 
     the_Det = {
       s = table {
         Masc => table {
-          Nom | Acc => "o"
-          Dat => elisForms "allo" "all'" "al"
+          _ => "o"
           } ;
         Fem => table {
-          Nom | Acc => elisForms "la" "'l" "la" ;
-          Dat => elisForms "alla" "all'" "alla"
+          _ => "a"
           }
         } ;
       n = Sg
