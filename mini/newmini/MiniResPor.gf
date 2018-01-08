@@ -11,6 +11,10 @@ resource MiniResPor = open Prelude in {
     VForm     = Inf | PresSg3 ;
 
   oper
+    NP = {
+      s : Case => {clit,obj : Str ; isClit : Bool} ;
+      a : Agr
+      } ;
     Noun : Type = {s : Number => Str ; g : Gender} ;
 
     mkNoun : Str -> Str -> Gender -> Noun = \sg,pl,g -> {
@@ -81,6 +85,9 @@ resource MiniResPor = open Prelude in {
       mkA : Str -> Adjective                     = regAdjective ;
       mkA : (_,_,_,_ : Str) -> Bool -> Adjective = mkAdjective ;
       } ;
+
+    preA : Adjective -> Adjective
+      = \a -> {s = a.s ; isPre = True} ;
 
     Verb : Type = {s : VForm => Str} ;
 

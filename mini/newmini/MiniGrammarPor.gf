@@ -1,5 +1,8 @@
 concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
   lincat
+    Adv = Adverb ;
+    NP = MiniResPor.NP
+    Det = {s : Gender => Case => Str ; n : Number} ;
     AP = Adjective ;
     CN = Noun ;
     V = Verb ;
@@ -10,6 +13,26 @@ concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
   lin
     UseN n = n ;
     PositA a = a ;
+    AdjCN ap cn = case ap.isPre of {
+        True => cn ** {s = table {n => ap.s ! cn.g ! n ++ cn.s ! n}} ;
+        False => cn ** {s = table {n => cn.s ! n ++ ap.s ! cn.g ! n}}
+      } ;
+    MassNP cn = {
+      s = \\_ => cn.s ! Sg ;
+      a = Agr Sg Per3
+      } ;
+    a_Det = {s = table {
+               Masc => table {
+                 _ => "um"
+                 } ;
+               Fem => table {
+                 _ => "uma"
+                 } ;
+               n = Sg} ;
+    aPl_Det = {s = "" ; n = Pl} ;
+    the_Det = {s = "the" ; n = Sg} ;
+    thePl_Det = {s = "the" ; n = Pl} ;
+
   {--
   lincat
     Utt = {s : Str} ;
