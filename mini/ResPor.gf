@@ -123,6 +123,7 @@ oper
       mkNoun vinho (can + v + "is") g ;
     can  + "il"                      =>
       mkNoun vinho (can + "is") g ; -- what about fóssil?
+    home  + "m"  => mkNoun vinho (home + "ns") g ;
     tóra + "x"                       =>
       mkNoun vinho vinho g ;
     _                                =>
@@ -137,10 +138,12 @@ oper
                                          -- stress, can this be built
                                          -- with gf?
     artes + "ã"  => mkNoun vinho (artes + "ãs") Fem ;
-    home  + "m"  => mkNoun vinho (home + "ns") Masc ;
+
     líque + "n"  => mkNoun vinho (líque + "ns") Masc ;
-     obu  + "s"  => mkNoun vinho (vinho + "es") Masc ;
-     _           => mkNoun vinho (vinho + "s") Masc
+    obu  + "s"   => mkNoun vinho (vinho + "es") Masc ;
+    can  + "il"  =>
+      mkNoun vinho (can + "is") Masc ; -- what about fóssil?
+     _           => regNounGen vinho Masc
     } ;
 
   mkAdj : (_,_,_,_ : Str) -> Bool -> Adj = \bom,boa,bons,boas,p -> {
