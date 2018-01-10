@@ -94,22 +94,12 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
 
     a_Det = adjDet (mkAdj "um" "uma" [] [] True) Sg ;
 
-    the_Det = {
-      s = table {
-        Masc => table {
-          _ => "o"
-          } ;
-        Fem => table {
-          _ => "a"
-          }
-        } ;
-      n = Sg
-      } ;
+    the_Det = adjDet (mkAdj "o" "a" [] [] True) Sg ;
 
-    this_Det  = adjDet (regAdj "este") Sg ;
-    these_Det = adjDet (regAdj "este") Pl ;
-    that_Det  = adjDet (regAdj "esse") Sg ;
-    those_Det = adjDet (regAdj "esse") Pl ;
+    this_Det  = adjDet (mkAdj "este" "esta" [] [] True) Sg ;
+    these_Det = adjDet (mkAdj [] [] "estes" "estas" True) Pl ;
+    that_Det  = adjDet (mkAdj "esse" "essa" [] [] True) Sg ;
+    those_Det = adjDet (mkAdj [] [] "esses" "essas" True) Pl ;
 
     i_NP   = pronNP "eu"  "me" "me" Masc Sg Per1 ;
     she_NP = pronNP "ela" "a" "lhe" Fem  Sg Per3 ;
@@ -123,5 +113,5 @@ concrete GrammarPor of Grammar = open ResPor, Prelude in {
     Perf = {s = [] ; t = ResPor.Perf} ;
 
     and_Conj = {s = "e" ; n = Pl} ;
-    or_Conj  = {s = "o" ; n = Sg} ;
+    or_Conj  = {s = "ou" ; n = Sg} ;
 } ;

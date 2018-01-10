@@ -19,7 +19,7 @@ lin
   green_A   = mkA "verde" ;
   walk_V    = mkV "caminhar" ;
   arrive_V  = mkV "chegar";
-  love_V2   = serV (mkV2 "amar") ;
+  love_V2   = mkV2 (serV (mkV "amar")) ;
   please_V2 = mkV2 (mkV "agradar") dative ;
 
 } ;
