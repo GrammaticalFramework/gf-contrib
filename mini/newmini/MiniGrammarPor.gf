@@ -1,7 +1,13 @@
+--[] when to use isClit?
+
 concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
   lincat
+    Pol = {s : Str ; b : Bool} ;
+    S  = {s : Str} ;
+    Cl = {s : Bool => Str} ;
+    VP = MiniResPor.VP ;
     Adv = Adverb ;
-    NP = MiniResPor.NP
+    NP = MiniResPor.NP ;
     Det = {s : Gender => Case => Str ; n : Number} ;
     AP = Adjective ;
     CN = Noun ;
@@ -10,7 +16,19 @@ concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
     A = Adjective ;
     N = Noun ;
     PN = ProperName ;
+    Pron = MiniResPor.Pron ;
   lin
+    UsePresCl pol cl = {
+      s = pol.s ++ cl.s ! pol.b
+      } ;
+    -- Verb
+    UseV v = {
+      verb = verb2gverb v ;
+      clit = [] ;
+      clitAgr = CAgrNo
+      compl = [] ;
+      } ;
+    -- Noun, CN, NP
     UseN n = n ;
     PositA a = a ;
     AdjCN ap cn = case ap.isPre of {
@@ -18,20 +36,64 @@ concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
         False => cn ** {s = table {n => cn.s ! n ++ ap.s ! cn.g ! n}}
       } ;
     MassNP cn = {
-      s = \\_ => cn.s ! Sg ;
-      a = Agr Sg Per3
+      s = \\_ => {clit = cn.s ! Sg ; obj = [] ; isClit = False} ;
+      a = Agr cn.g Sg Per3
       } ;
-    a_Det = {s = table {
-               Masc => table {
-                 _ => "um"
-                 } ;
-               Fem => table {
-                 _ => "uma"
-                 } ;
-               n = Sg} ;
-    aPl_Det = {s = "" ; n = Pl} ;
-    the_Det = {s = "the" ; n = Sg} ;
-    thePl_Det = {s = "the" ; n = Pl} ;
+    DetCN det cn = {
+      s = \\c => {clit = det.s ! cn.g ! c ++ cn.s ! det.n ;
+                  obj = [] ;
+                  isClit = False
+        } ;
+      a = Agr cn.g det.n Per3 ;
+      } ;
+    UsePN pn = {
+      s = \\_ => {clit = pn.s ; obj = [] ; isClit = False} ;
+      a = Agr pn.g Sg Per3
+      } ;
+    -- Pron
+    UsePron p = {
+      s = table {
+        Nom => {clit = p.s ! Nom ;
+                obj = [] ;
+                isClit = False} ;
+        Acc => {clit = [] ;
+                obj = p.s ! Acc ;
+                isClit = True}
+        } ;
+      a = p.a
+      } ;
+    i_Pron = iMasc_Pron | genderPron Fem iMasc_Pron ;
+    you_Pron = youMascSg_Pron | genderPron Fem youMascSg_Pron ;
+    he_Pron = {
+      s = table {Nom => "ele" ; Acc => "o"} ;
+      a = Agr Masc Sg Per3
+      } ;
+    she_Pron = {
+      s = table {Nom => "ela" ; Acc => "a"} ;
+      a = Agr Fem Sg Per3
+      } ;
+    we_Pron    = weMasc_Pron | genderPron Fem weMasc_Pron ;
+    youPl_Pron = youMascPl_Pron | genderPron Fem youMascPl_Pron ;
+    they_Pron = {
+      s = table {Nom => "Eles" ; Acc => "os"} ;
+      a = Agr Masc Pl Per2
+      }
+      | {
+        s = table {Nom => "Elas" ; Acc => "as"} ;
+        a = Agr Fem Pl Per2
+          } ;
+    -- Det
+    a_Det     = adjDet (mkAdjective "um" "uma" [] [] True) Sg ;
+    aPl_Det   = adjDet (mkAdjective [] [] "uns" "umas" True) Pl ;
+    the_Det   = adjDet (mkAdjective "o" "a" [] [] True) Sg ;
+    thePl_Det = adjDet (mkAdjective [] [] "os" "as" True) Pl ;
+    every_Det = adjDet (mkAdjective "todo" "toda" [] [] True) Sg ;
+    -- Conjunction/Disjunction
+    and_Conj = {s = "e"} ;
+    or_Conj = {s = "ou"} ;
+    -- polarity
+    PPos  = {s = [] ; b = True} ;
+    PNeg  = {s = [] ; b = False} ;
 
   {--
   lincat

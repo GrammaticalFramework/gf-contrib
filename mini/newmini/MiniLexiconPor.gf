@@ -63,8 +63,8 @@ concrete MiniLexiconPor of MiniLexicon = MiniGrammarPor ** open MiniResPor, Prel
   lin wine_N        = mkN "vinho" ;
   lin woman_N       = mkN "mulher" Fem ;
       -- Proper Noun
-  lin john_PN       = mkPN "João" ;
-  lin paris_PN      = mkPN "Paris" ;
+  lin john_PN       = mkPN "João" Masc ;
+  lin paris_PN      = mkPN "Paris" Fem ;
       -- V2
   lin break_V2      = mkV2 "quebrar" ;
   lin buy_V2        = mkV2 "comprar" ;

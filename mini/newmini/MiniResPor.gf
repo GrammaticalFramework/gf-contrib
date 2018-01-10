@@ -1,20 +1,23 @@
 resource MiniResPor = open Prelude in {
 
   param
-    Gender    = Masc | Fem ;
-    Number    = Sg | Pl ;
-    Case      = Nom | Acc ;
-    Person    = Per1 | Per2 | Per3 ;
+    Gender        = Masc | Fem ;
+    Number        = Sg | Pl ;
+    Case          = Nom | Acc ;
+    Person        = Per1 | Per2 | Per3 ;
 
-    Agreement = Agr Gender Number Person ;
+    Agreement     = Agr Gender Number Person ;
 
-    VForm     = Inf | PresSg3 ;
+    VForm         = Inf | PresSg3 ;
+
+    ClitAgreement = CAgrNo | CAgr Agreement ;
 
   oper
     NP = {
       s : Case => {clit,obj : Str ; isClit : Bool} ;
-      a : Agr
+      a : Agreement
       } ;
+
     Noun : Type = {s : Number => Str ; g : Gender} ;
 
     mkNoun : Str -> Str -> Gender -> Noun = \sg,pl,g -> {
@@ -59,9 +62,36 @@ resource MiniResPor = open Prelude in {
       mkN : Str -> Str -> Gender -> Noun = mkNoun ;
       } ;
 
-    ProperName : Type = {s : Str} ;
+    ProperName : Type = {s : Str ; g : Gender} ;
 
-    mkPN : Str -> ProperName = \s -> {s = s} ;
+    mkPN : Str -> Gender -> ProperName = \s,g -> {s = s ; g = g} ;
+    -- Pron
+    Pron : Type = {s : Case => Str ; a : Agreement} ;
+
+    iMasc_Pron : Pron = {
+      s = table {Nom => "Eu" ; Acc => "me"} ;
+      a = Agr Masc Sg Per1
+      } ;
+
+    youMascSg_Pron : Pron = {
+      s = table {Nom => "você" ; Acc => "lhe"} ;
+      a = Agr Masc Sg Per2
+      } ;
+
+    weMasc_Pron : Pron = {
+      s = table {Nom => "nós" ; Acc => "nos"} ;
+      a = Agr Masc Pl Per1
+      };
+
+    youMascPl_Pron : Pron = {
+      s = table {Nom => "vocês" ; Acc => "lhes"} ;
+      a = Agr Masc Pl Per2
+      } ;
+
+    genderPron : Gender -> Pron -> Pron ;
+    genderPron g pr = case pr.a of {
+      (Agr _ n pe) => {s = pr.s ; a = Agr g n pe}
+      } ;
 
     Adjective : Type = {s : Gender => Number => Str ; isPre : Bool} ;
 
@@ -88,6 +118,14 @@ resource MiniResPor = open Prelude in {
 
     preA : Adjective -> Adjective
       = \a -> {s = a.s ; isPre = True} ;
+
+    -- Verb
+    VP = {
+      verb : Verb ;
+      clit : Str ;
+      clitAgr : ClitAgr ;
+      compl : Agr => Str
+      } ;
 
     Verb : Type = {s : VForm => Str} ;
 
@@ -122,6 +160,11 @@ resource MiniResPor = open Prelude in {
 
     mkAdv : Str -> Adverb = \s -> {s = s} ;
 
+    GVerb : Type = {
+      s : GVForm => Str ;
+      isAux : Bool
+      } ;
+
     be_GVerb : GVerb = {
       s = table {
         PresSg1 => "am" ;
@@ -129,11 +172,6 @@ resource MiniResPor = open Prelude in {
         VF vf   => (mkVerb "be" "is").s ! vf
         } ;
       isAux = True
-      } ;
-
-    GVerb : Type = {
-      s : GVForm => Str ;
-      isAux : Bool
       } ;
 
   param
@@ -148,6 +186,13 @@ resource MiniResPor = open Prelude in {
            VF vf   => v.s ! vf
          } ;
        isAux = False
+      } ;
+
+    -- [ ] is this ok por port?
+    adjDet : Adjective -> Number -> {s : Gender => Case => Str ; n : Number} =
+      \adj,n -> {
+        s = \\g,c => adj.s ! g ! n ;
+        n = n
       } ;
 
 }
