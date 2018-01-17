@@ -1,26 +1,21 @@
-all: minsql algebra keywordalgebra xml executable
+all: minsql algebra keywordalgebra executable
 
-executable: 
-	ghc --make -o qconv QConv.hs
+executable: xml
+	ghc --make -o qconv -odir objs -hidir objs QConv.hs
 
 
 minsql:
-	bnfc -m --haskell MinSQL.bnf
-	make
-	cp -p Makefile.qconv Makefile
+	bnfc -mMakefile.minsql --haskell MinSQL.bnf
+	make -f Makefile.minsql
 
 algebra:
-	bnfc -m --haskell-gadt RelAlgebra.bnf
-	make
-	cp -p Makefile.qconv Makefile
+	bnfc -mMakefile.algebra --haskell-gadt RelAlgebra.bnf
+	make -f Makefile.algebra
 
 keywordalgebra:
-	bnfc -m --haskell KeywordRelAlgebra.bnf
-	make
-	cp -p Makefile.qconv Makefile
+	bnfc -mMakefile.keywordalgebra --haskell KeywordRelAlgebra.bnf
+	make -f Makefile.keywordalgebra
 
 xml:
-	bnfc -m --haskell-gadt XML.bnf
-	make
-	cp -p Makefile.qconv Makefile
-
+	bnfc -mMakefile.xml --haskell-gadt XML.bnf
+	make -f Makefile.xml
