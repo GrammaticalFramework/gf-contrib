@@ -29,6 +29,7 @@ oper
     clitAgr : ClitAgr ;
     obj : Agr => Str
     } ;
+
   NP = {
     s : Case => {clit,obj : Str ; isClit : Bool} ;
     a : Agr

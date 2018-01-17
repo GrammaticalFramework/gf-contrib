@@ -1,7 +1,7 @@
 concrete MiniLexiconPor of MiniLexicon = MiniGrammarPor ** open MiniResPor, Prelude in {
       -- Adjective
   lin bad_A         = mkA "mau" "má" "maus" "más" True ;
-  lin big_A         = preA (mkA "grande") ;
+  lin big_A         = mkA "grande" True ;
   lin black_A       = mkA "preto" ;
   lin blue_A        = mkA "azul" "azul" "azuis" "azuis" False ;
   lin clean_A       = mkA "limpo" ;
@@ -13,10 +13,10 @@ concrete MiniLexiconPor of MiniLexicon = MiniGrammarPor ** open MiniResPor, Prel
   lin heavy_A       = mkA "pesado" ;
   lin hot_A         = mkA "quente" ;
   lin new_A         = mkA "novo" ;
-  lin old_A         = preA (mkA "velho") ;
+  lin old_A         = mkA "velho" True ;
   lin ready_A       = mkA "pronto" ;
   lin red_A         = mkA "vermelho" ;
-  lin small_A       = preA (mkA "pequeno") ;
+  lin small_A       = mkA "pequeno" True ;
   lin warm_A        = mkA "quente" ;
   lin white_A       = mkA "branco" ;
   lin yellow_A      = mkA "amarelo" ;

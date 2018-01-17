@@ -1,16 +1,16 @@
 resource MiniResPor = open Prelude in {
 
   param
-    Gender        = Masc | Fem ;
-    Number        = Sg | Pl ;
-    Case          = Nom | Acc ;
-    Person        = Per1 | Per2 | Per3 ;
+    Gender = Masc | Fem ;
+    Number = Sg | Pl ;
+    Case   = Nom | Acc ;
+    Person = Per1 | Per2 | Per3 ;
 
-    Agreement     = Agr Gender Number Person ;
+    Agreement = Agr Gender Number Person ;
+    ClitAgr = CAgrNo | CAgr Agreement ;
 
-    VForm         = Inf | PresSg3 ;
-
-    ClitAgreement = CAgrNo | CAgr Agreement ;
+    Aux       = Estar | Haver | Ser | Ter | Ficar ;
+    VForm     = VInf | VPres Number Person ;
 
   oper
     NP = {
@@ -57,9 +57,9 @@ resource MiniResPor = open Prelude in {
       } ;
 
     mkN = overload {
-      mkN : Str -> Noun                  = smartNoun ;
-      mkN : Str -> Gender -> Noun        = smartGenNoun ;
-      mkN : Str -> Str -> Gender -> Noun = mkNoun ;
+      mkN : Str -> Noun                     = smartNoun ;
+      mkN : Str -> Gender -> Noun           = smartGenNoun ;
+      mkN : Str -> Str    -> Gender -> Noun = mkNoun ;
       } ;
 
     ProperName : Type = {s : Str ; g : Gender} ;
@@ -111,8 +111,16 @@ resource MiniResPor = open Prelude in {
       _          => mkAdjective preto preto preto preto False
       } ;
 
+    preAdjective : Str -> Bool -> Adjective = \preto,b ->
+      let pretoA = regAdjective preto in
+      case b of {
+        True => preA pretoA ;
+        _    => pretoA
+      } ;
+
     mkA = overload {
-      mkA : Str -> Adjective                     = regAdjective ;
+      mkA : Str             -> Adjective         = regAdjective ;
+      mkA : Str             -> Bool -> Adjective = preAdjective ;
       mkA : (_,_,_,_ : Str) -> Bool -> Adjective = mkAdjective ;
       } ;
 
@@ -124,27 +132,78 @@ resource MiniResPor = open Prelude in {
       verb : Verb ;
       clit : Str ;
       clitAgr : ClitAgr ;
-      compl : Agr => Str
+      compl : Agreement => Str ;
       } ;
 
-    Verb : Type = {s : VForm => Str} ;
+    Verb : Type = {s : VForm => Str ; aux : Aux} ;
 
-    mkVerb : (inf,pres : Str) -> Verb = \inf,pres -> {
+    agrV : Verb -> Agreement -> Str = \v,a -> case a of {
+      Agr _ n p => v.s ! VPres n p
+      } ;
+
+    agrPart : Verb -> Agreement -> ClitAgr -> Str = \v,a,c ->
+      case v.aux of {
+        Haver => agrClit v c ;
+        Ter   => agrClit v c ;
+        _     => agrSubj v a
+      } ;
+
+    agrClit : Verb -> ClitAgr -> Str = \v,c -> case c of {
+      CAgr (Agr g n _) => v.s ! VPart g n ;
+      _               => v.s ! VPart Masc Sg
+      };
+
+    agrSubj : Verb -> Agreement -> Str = \v,a -> case a of {
+      Agr g n _ => v.s ! VPart g n
+      } ;
+
+    estar_V = auxVerb Estar ;
+    ficar_V = auxVerb Ficar ;
+    ter_V   = auxVerb Ter ;
+    ser_V   = auxVerb Ser ;
+
+    auxVerb : Aux -> Verb = \a -> case a of {
+      Estar =>
+        mkV "estar" "estou" "está" "estamos" "estão" "estado" Ter ;
+      Haver =>
+        mkV "haver" "hei" "há" "havemos" "hão" "havido" Ter ;
+      Ser =>
+        mkV "ser" "sou" "é" "somos" "são" "sido" Ter ;
+      Ter =>
+        mkV "ter" "tenho" "tem" "temos" "têm" "tido" Haver ;
+      Ficar =>
+        mkV "ficar" Ter
+      } ;
+
+    mkVerb : (_,_,_,_,_,_ : Str) -> Aux -> Verb =
+      \amar,amo,ama,amamos,amam,amado,aux -> {
       s = table {
-        Inf     => inf ;
-        PresSg3 => pres
-        }
+        VInf     => amar ;
+        VPres Sg Per1 => amo ;
+        VPres Sg _ => ama ;
+        VPres Pl Per1 => amamos ;
+        VPres Pl _ => amam ;
+        VPart g n => (mkA amado).s ! g ! n
+        } ;
+      aux = aux
       } ;
 
     smartVerb : Str -> Verb = \inf -> case inf of {
-      part + "ir" => mkVerb inf (part + "e") ;
-      come + "r"  => mkVerb inf come ;
-      _ => mkVerb inf inf
+      part + v@("e"|"i") + "r" => mkVerb inf (part+"o") (part+"e") (part+v+"mos") (part+"em") (part+"ido") Haver;
+      am + "ar"  => mkVerb inf (am+"o") (am+"a") (am+"amos") (am+"am") (am+"ado") Ser ;
+      _ => mkVerb inf inf inf inf inf inf Haver
       } ;
+
+    smartAuxVerb : Str -> Aux -> Verb = \inf,aux ->
+      auxVerbIs aux (smartVerb inf) ;
+
+    auxVerbIs : Aux -> Verb -> Verb = \aux,v ->
+      v ** {aux = aux} ;
 
     mkV = overload {
       mkV : Str -> Verb = smartVerb ;
-      mkV : (inf,pres : Str) -> Verb = mkVerb ;
+      mkV : Str -> Aux -> Verb  = smartAuxVerb ;
+      mkV : (_,_,_,_,_,_ : Str) -> Aux -> Verb = mkVerb ;
       } ;
 
     Verb2 : Type = Verb ** {c : Str} ;
@@ -159,34 +218,6 @@ resource MiniResPor = open Prelude in {
     Adverb : Type = {s : Str} ;
 
     mkAdv : Str -> Adverb = \s -> {s = s} ;
-
-    GVerb : Type = {
-      s : GVForm => Str ;
-      isAux : Bool
-      } ;
-
-    be_GVerb : GVerb = {
-      s = table {
-        PresSg1 => "am" ;
-        PresPl  => "are" ;
-        VF vf   => (mkVerb "be" "is").s ! vf
-        } ;
-      isAux = True
-      } ;
-
-  param
-    GVForm = VF VForm | PresSg1 | PresPl ;
-
-  oper
-    verb2gverb : Verb -> GVerb = \v ->
-      {s =
-         table {
-           PresSg1 => v.s ! Inf ;
-           PresPl  => v.s ! Inf ;
-           VF vf   => v.s ! vf
-         } ;
-       isAux = False
-      } ;
 
     -- [ ] is this ok por port?
     adjDet : Adjective -> Number -> {s : Gender => Case => Str ; n : Number} =
