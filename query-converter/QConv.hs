@@ -10,10 +10,7 @@ import AbsXML
 import XPath (execXPath)
 import ValidateXML
 
-import LexMinSQL
-import ParMinSQL
-import PrintMinSQL
-import AbsMinSQL
+import MinSQL
 
 import ErrM
 import Viewer
@@ -22,7 +19,7 @@ import System.IO ( stdin, stdout, hFlush, hGetContents )
 import System.Environment ( getArgs, getProgName )
 import System.Exit ( exitFailure, exitSuccess )
 import System.Process
-import Data.Char
+--import Data.Char
 
 main = do
   putStrLn helpMsg
@@ -87,28 +84,12 @@ loop env@(senv, xmls) = do
       loop (senv',xmls)
 
 runSQLScript :: SEnv -> String -> IO Env
-runSQLScript env s = case pScript (preprocSQL (myLexer s)) of
+runSQLScript env s = case parseScript s of
   Ok c -> transScript env c
   Bad s -> putStrLn s >> return env    
 
--- convert keywords to upper case, idents to lower case
-
-preprocSQL :: [Token] -> [Token]
-preprocSQL = map prep where
-  prep t = case t of 
-    PT p (TV s) -> 
-            let us =  map toUpper s 
-            in case treeFind us resWords of 
-              Just u -> PT p u
-              _ -> PT p (TV (map toLower s))
-    _ -> t
-  treeFind s N = Nothing
-  treeFind s (B a t left right) | s < a  = treeFind s left
-                                | s > a  = treeFind s right
-                                | s == a = Just t
-
 alg2latex :: SEnv -> String -> IO ()
-alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
+alg2latex env s = case parseQuery s of
   Bad s -> putStrLn s
   Ok c -> do
     let rel = transQuery c
@@ -154,11 +135,6 @@ alg2latex env s = case pQuery (preprocSQL (myLexer s)) of
     system "pdflatex qconv-latex-tmp.tex > //dev//null"
     system $ viewer ++ " qconv-latex-tmp.pdf"
     return ()
-
-printSQL :: Query -> String
-printSQL = unwords . map addNewline . words . printTree
-  where
-    addNewline w = if elem w ["FROM","WHERE","GROUP","HAVING","ORDER"] then '\n':w else w
  
 mintex = "qconv-latex-tmp.tex"
 
