@@ -17,9 +17,9 @@ lin
   big_A     = preA (mkA "grande") ;
   small_A   = preA (mkA "pequeno") ;
   green_A   = mkA "verde" ;
-  walk_V    = mkV "caminhar" ;
+  walk_V    = terV (mkV "caminhar") ;
   arrive_V  = mkV "chegar";
-  love_V2   = mkV2 (serV (mkV "amar")) ;
+  love_V2   = mkV2 (mkV "amar") ;
   please_V2 = mkV2 (mkV "agradar") dative ;
 
 } ;
