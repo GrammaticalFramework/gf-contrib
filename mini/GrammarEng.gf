@@ -1,19 +1,19 @@
 concrete GrammarEng of Grammar = open ResEng, Prelude in {
 
 
-  lincat 
+  lincat
     S  = {s : Str} ;
     Cl = {subj : Str ; a : Agreement ; verb : GVerb ; compl : Str ; isAux : Bool} ;
     NP = {s : Case => Str ; a : Agreement} ;
     VP = {verb : GVerb ; compl : Str ; isAux : Bool} ;
     AP = Adjective ;
-    CN = Noun ; 
+    CN = Noun ;
     Det = {s : Str ; n : Number} ;
     N = Noun ;
     A = Adjective ;
     V = Verb ;
     V2 = Verb ;
---    AdA ; 
+--    AdA ;
     Tense = {vf : VForm} ;
     Pol   = {p  : Bool} ;
 --    Conj ;
@@ -26,17 +26,17 @@ concrete GrammarEng of Grammar = open ResEng, Prelude in {
           in
           cl.subj ++
 	  case <t.vf, p.p, agr, cl.isAux> of {
-            <Inf,True,Agr Sg Per3,_>  => verb ! VF PresSg ; 
+            <Inf,True,Agr Sg Per3,_>  => verb ! VF PresSg ;
             <Inf,True,Agr Sg Per1,_>  => verb ! PresSg1 ;
             <Inf,True,_,_>            => verb ! PresPl ;
 	    <Inf,False,Agr Sg Per3,False> => do_Verb.s ! PresSg ++ "not" ++ verb ! VF Inf ;
 	    <Inf,False,_,False>           => do_Verb.s ! Inf ++ "not" ++ verb ! VF Inf ;
-	    <Inf,False,Agr Sg Per3,_>  => verb ! VF PresSg ++ "not" ; 
-            <Inf,False,Agr Sg Per1,_>  => verb ! PresSg1 ++ "not" ; 
-            <Inf,False,_,_>            => verb ! PresPl ++ "not" ; 
-            <_  ,True,Agr Sg Per3,_>  => have_Verb.s ! PresSg ++ verb ! VF PastPart ; 
-            <_ , True,_,_>            => have_Verb.s ! Inf ++ verb ! VF PastPart ; 
-	    <_,  False,Agr Sg Per3,_> => have_Verb.s ! PresSg ++ "not" ++ verb ! VF PastPart ; 
+	    <Inf,False,Agr Sg Per3,_>  => verb ! VF PresSg ++ "not" ;
+            <Inf,False,Agr Sg Per1,_>  => verb ! PresSg1 ++ "not" ;
+            <Inf,False,_,_>            => verb ! PresPl ++ "not" ;
+            <_  ,True,Agr Sg Per3,_>  => have_Verb.s ! PresSg ++ verb ! VF PastPart ;
+            <_ , True,_,_>            => have_Verb.s ! Inf ++ verb ! VF PastPart ;
+	    <_,  False,Agr Sg Per3,_> => have_Verb.s ! PresSg ++ "not" ++ verb ! VF PastPart ;
 	    <_,  False,_,_>           => have_Verb.s ! Inf ++ "not" ++ verb ! VF PastPart
             } ++
 	  cl.compl ;

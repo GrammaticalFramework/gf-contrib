@@ -1,4 +1,4 @@
-interface Syntax = Grammar - 
+interface Syntax = Grammar -
     [UseCl,PredVP,ComplV2,UseV,DetCN,ModCN,CompAP,AdAP,
      UseN,UseA,Pres,Perf,Pos,Neg] **
   open Grammar in {
@@ -31,10 +31,10 @@ oper
 
   mkCN = overload {
     mkCN : N  -> CN = UseN ;
-    mkCN : A  -> N  -> CN = \a,n -> ModCN (UseA a) (UseN n) ; 
-    mkCN : A  -> CN -> CN = \a,n -> ModCN (UseA a) n ; 
-    mkCN : AP -> N  -> CN = \a,n -> ModCN a (UseN n) ; 
-    mkCN : AP -> CN -> CN = \a,n -> ModCN a n ; 
+    mkCN : A  -> N  -> CN = \a,n -> ModCN (UseA a) (UseN n) ;
+    mkCN : A  -> CN -> CN = \a,n -> ModCN (UseA a) n ;
+    mkCN : AP -> N  -> CN = \a,n -> ModCN a (UseN n) ;
+    mkCN : AP -> CN -> CN = \a,n -> ModCN a n ;
     } ;
 
   presTense : Tense = Pres ;

@@ -1,21 +1,20 @@
-concrete GrammarIta of Grammar = open ResIta, Prelude in {
+-- [] are there no plural determiners so far?
+concrete GrammarPor of Grammar = open ResPor, Prelude in {
   lincat
     S  = {s : Str} ;
-    Cl = {s : ResIta.Tense => Bool => Str} ;
-    NP = ResIta.NP ;
-      -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ;
-    VP = ResIta.VP ;
-      -- {v : Verb ; clit : Str ; clitAgr : ClitAgr ; obj : Agr => Str} ;
+    Cl = {s : ResPor.Tense => Bool => Str} ;
+    NP = ResPor.NP ;
+    VP = ResPor.VP ;
     AP = {s : Gender => Number => Str ; isPre : Bool} ;
-    CN = Noun ;           -- {s : Number => Str ; g : Gender} ;
+    CN = Noun ;
     Det = {s : Gender => Case => Str ; n : Number} ;
-    N = Noun ;            -- {s : Number => Str ; g : Gender} ;
-    A = Adj ;             -- {s : Gender => Number => Str ; isPre : Bool} ;
-    V = Verb ;            -- {s : VForm => Str ; aux : Aux} ;
+    N = Noun ;
+    A = Adj ;
+    V = Verb ;
     V2 = Verb ** {c : Case} ;
     AdA = {s : Str} ;
     Pol = {s : Str ; b : Bool} ;
-    Tense = {s : Str ; t : ResIta.Tense} ;
+    Tense = {s : Str ; t : ResPor.Tense} ;
     Conj = {s : Str ; n : Number} ;
   lin
     UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ;
@@ -40,7 +39,7 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
         clit = nps.clit ;
         clitAgr = case <nps.isClit,v2.c> of {
           <True,Acc> => CAgr np.a ;
-          _ => CAgrNo
+          _          => CAgrNo
           } ;
         obj  = \\_ => nps.obj
         } ;
@@ -67,7 +66,7 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
       } ;
 
     CompAP ap = {
-      v = essere_V ;
+      v = ser_V ;
       clit = [] ;
       clitAgr = CAgrNo ;
       obj = \\ag => case ag of {
@@ -86,52 +85,33 @@ concrete GrammarIta of Grammar = open ResIta, Prelude in {
         clit = [] ;
         isClit = False
         } ;
-      a = ny.a ; ---- should be conjAgr co.n nx.a ny.a
+      a = ny.a ; -- should be conjAgr co.n nx.a ny.a
       } ;
 
     UseN n = n ;
 
     UseA adj = adj ;
 
-    a_Det = adjDet (mkAdj "un" "una" [] [] True) Sg ;
+    a_Det = adjDet (mkAdj "um" "uma" [] [] True) Sg ;
 
-    the_Det = {
-      s = table {
-        Masc => table {
-          Nom | Acc => elisForms "lo" "l'" "il" ;
-          Dat => elisForms "allo" "all'" "al"
-          } ;
-        Fem => table {
-          Nom | Acc => elisForms "la" "'l" "la" ;
-          Dat => elisForms "alla" "all'" "alla"
-          }
-        } ;
-      n = Sg
-      } ;
+    the_Det = adjDet (mkAdj "o" "a" [] [] True) Sg ;
 
-    this_Det = adjDet (regAdj "questo") Sg ;
-    these_Det = adjDet (regAdj "questo") Pl ;
-    that_Det = adjDet quello_A Sg ;
-    those_Det = adjDet quello_A Pl ;
+    this_Det  = adjDet (mkAdj "este" "esta" [] [] True) Sg ;
+    these_Det = adjDet (mkAdj [] [] "estes" "estas" True) Pl ;
+    that_Det  = adjDet (mkAdj "esse" "essa" [] [] True) Sg ;
+    those_Det = adjDet (mkAdj [] [] "esses" "essas" True) Pl ;
 
-    i_NP =   pronNP "io"  "mi" "mi" Masc Sg Per1 ;
-    she_NP = pronNP "lei" "la" "le" Fem  Sg Per3 ;
-    we_NP =  pronNP "noi" "ci" "ci" Masc Pl Per1 ;
+    i_NP   = pronNP "eu"  "me" "me" Masc Sg Per1 ;
+    she_NP = pronNP "ela" "a" "lhe" Fem  Sg Per3 ;
+    we_NP  = pronNP "nós" "nos" "nos" Masc Pl Per1 ;
 
-    very_AdA = ss "molto" ;
+    very_AdA = ss "muito" ;
 
     Pos  = {s = [] ; b = True} ;
     Neg  = {s = [] ; b = False} ;
-    Pres = {s = [] ; t = ResIta.Pres} ;
-    Perf = {s = [] ; t = ResIta.Perf} ;
+    Pres = {s = [] ; t = ResPor.Pres} ;
+    Perf = {s = [] ; t = ResPor.Perf} ;
 
     and_Conj = {s = "e" ; n = Pl} ;
-    or_Conj  = {s = "o" ; n = Sg} ;
-
-  oper
-    quello_A : Adj = mkAdj
-      (elisForms "quello" "quell'" "quel") "quella"
-      (elisForms "quegli" "quegli" "quei") "quelle"
-      True ;
-
-}
+    or_Conj  = {s = "ou" ; n = Sg} ;
+} ;
