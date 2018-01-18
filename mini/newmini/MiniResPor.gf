@@ -9,7 +9,6 @@ resource MiniResPor = open Prelude in {
     Agreement = Agr Gender Number Person ;
     ClitAgr = CAgrNo | CAgr Agreement ;
 
-    Aux       = Estar | Haver | Ser | Ter | Ficar ;
     VForm     = VInf | VPres Number Person ;
 
   oper
@@ -93,6 +92,13 @@ resource MiniResPor = open Prelude in {
       (Agr _ n pe) => {s = pr.s ; a = Agr g n pe}
       } ;
 
+    employNP : Case -> NP -> Str = \c,np ->
+      let nps = np.s ! c in case nps.isClit of {
+        True => nps.clit ;
+        _    => nps.obj
+      } ;
+
+    -- Adjective
     Adjective : Type = {s : Gender => Number => Str ; isPre : Bool} ;
 
     mkAdjective : (_,_,_,_ : Str) -> Bool -> Adjective = \bom,boa,bons,boas,p -> {
@@ -135,84 +141,45 @@ resource MiniResPor = open Prelude in {
       compl : Agreement => Str ;
       } ;
 
-    Verb : Type = {s : VForm => Str ; aux : Aux} ;
+    Verb : Type = {s : VForm => Str } ;
 
     agrV : Verb -> Agreement -> Str = \v,a -> case a of {
       Agr _ n p => v.s ! VPres n p
       } ;
 
-    agrPart : Verb -> Agreement -> ClitAgr -> Str = \v,a,c ->
-      case v.aux of {
-        Haver => agrClit v c ;
-        Ter   => agrClit v c ;
-        _     => agrSubj v a
-      } ;
+    neg : Bool -> Str = \b -> case b of {True => [] ; False => "não"} ;
 
-    agrClit : Verb -> ClitAgr -> Str = \v,c -> case c of {
-      CAgr (Agr g n _) => v.s ! VPart g n ;
-      _               => v.s ! VPart Masc Sg
-      };
+    ser_V = mkV "ser" "sou" "é" "somos" "são" ;
 
-    agrSubj : Verb -> Agreement -> Str = \v,a -> case a of {
-      Agr g n _ => v.s ! VPart g n
-      } ;
-
-    estar_V = auxVerb Estar ;
-    ficar_V = auxVerb Ficar ;
-    ter_V   = auxVerb Ter ;
-    ser_V   = auxVerb Ser ;
-
-    auxVerb : Aux -> Verb = \a -> case a of {
-      Estar =>
-        mkV "estar" "estou" "está" "estamos" "estão" "estado" Ter ;
-      Haver =>
-        mkV "haver" "hei" "há" "havemos" "hão" "havido" Ter ;
-      Ser =>
-        mkV "ser" "sou" "é" "somos" "são" "sido" Ter ;
-      Ter =>
-        mkV "ter" "tenho" "tem" "temos" "têm" "tido" Haver ;
-      Ficar =>
-        mkV "ficar" Ter
-      } ;
-
-    mkVerb : (_,_,_,_,_,_ : Str) -> Aux -> Verb =
-      \amar,amo,ama,amamos,amam,amado,aux -> {
+    mkVerb : (_,_,_,_,_ : Str) -> Verb =
+      \amar,amo,ama,amamos,amam -> {
       s = table {
         VInf     => amar ;
         VPres Sg Per1 => amo ;
         VPres Sg _ => ama ;
         VPres Pl Per1 => amamos ;
-        VPres Pl _ => amam ;
-        VPart g n => (mkA amado).s ! g ! n
+        VPres Pl _ => amam
         } ;
-      aux = aux
       } ;
 
     smartVerb : Str -> Verb = \inf -> case inf of {
-      part + v@("e"|"i") + "r" => mkVerb inf (part+"o") (part+"e") (part+v+"mos") (part+"em") (part+"ido") Haver;
-      am + "ar"  => mkVerb inf (am+"o") (am+"a") (am+"amos") (am+"am") (am+"ado") Ser ;
-      _ => mkVerb inf inf inf inf inf inf Haver
+      part + v@("e"|"i") + "r" => mkVerb inf (part+"o") (part+"e") (part+v+"mos") (part+"em") ;
+      am + "ar"  => mkVerb inf (am+"o") (am+"a") (am+"amos") (am+"am") ;
+      _ => mkVerb inf inf inf inf inf
       } ;
-
-    smartAuxVerb : Str -> Aux -> Verb = \inf,aux ->
-      auxVerbIs aux (smartVerb inf) ;
-
-    auxVerbIs : Aux -> Verb -> Verb = \aux,v ->
-      v ** {aux = aux} ;
 
     mkV = overload {
       mkV : Str -> Verb = smartVerb ;
-      mkV : Str -> Aux -> Verb  = smartAuxVerb ;
-      mkV : (_,_,_,_,_,_ : Str) -> Aux -> Verb = mkVerb ;
+      mkV : (_,_,_,_,_ : Str) -> Verb = mkVerb ;
       } ;
 
-    Verb2 : Type = Verb ** {c : Str} ;
+    Verb2 : Type = Verb ** {c : Case} ;
 
     mkV2 = overload {
-      mkV2 : Str         -> Verb2 = \s   -> mkV s ** {c = []} ;
-      mkV2 : Str  -> Str -> Verb2 = \s,p -> mkV s ** {c = p} ;
-      mkV2 : Verb        -> Verb2 = \v   -> v ** {c = []} ;
-      mkV2 : Verb -> Str -> Verb2 = \v,p -> v ** {c = p} ;
+      mkV2 : Str          -> Verb2 = \s   -> mkV s ** {c = Nom} ;
+      mkV2 : Str  -> Case -> Verb2 = \s,p -> mkV s ** {c = p} ;
+      mkV2 : Verb         -> Verb2 = \v   -> v ** {c = Nom} ;
+      mkV2 : Verb -> Case -> Verb2 = \v,p -> v ** {c = p} ;
       } ;
 
     Adverb : Type = {s : Str} ;
@@ -224,6 +191,19 @@ resource MiniResPor = open Prelude in {
       \adj,n -> {
         s = \\g,c => adj.s ! g ! n ;
         n = n
+      } ;
+
+    Prep : Type = {s : Gender => Number => Str} ;
+    no_Prep : Prep = { s = table {
+                         Masc => table {
+                           Sg => "no" ;
+                           Pl => "nos"
+                           } ;
+                         Fem => table {
+                           Sg => "na" ;
+                           Pl => "nas"
+                           }
+                         } ;
       } ;
 
 }
