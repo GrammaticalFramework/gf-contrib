@@ -7,11 +7,15 @@ resource MiniResPor = open Prelude in {
     Person = Per1 | Per2 | Per3 ;
 
     Agreement = Agr Gender Number Person ;
-    ClitAgr = CAgrNo | CAgr Agreement ;
+    ClitAgr   = CAgrNo | CAgr Agreement ;
 
-    VForm     = VInf | VPres Number Person ;
+    VForm = VInf | VPres Number Person ;
 
   oper
+    genNumStr : Type = Gender => Number => Str ;
+    
+    ---
+    -- Noun
     NP = {
       s : Case => {clit,obj : Str ; isClit : Bool} ;
       a : Agreement
@@ -98,8 +102,9 @@ resource MiniResPor = open Prelude in {
         _    => nps.obj
       } ;
 
+    ---
     -- Adjective
-    Adjective : Type = {s : Gender => Number => Str ; isPre : Bool} ;
+    Adjective : Type = {s : genNumStr ; isPre : Bool} ;
 
     mkAdjective : (_,_,_,_ : Str) -> Bool -> Adjective = \bom,boa,bons,boas,p -> {
       s = table {
@@ -133,6 +138,7 @@ resource MiniResPor = open Prelude in {
     preA : Adjective -> Adjective
       = \a -> {s = a.s ; isPre = True} ;
 
+    ---
     -- Verb
     VP = {
       verb : Verb ;
@@ -150,6 +156,7 @@ resource MiniResPor = open Prelude in {
     neg : Bool -> Str = \b -> case b of {True => [] ; False => "não"} ;
 
     ser_V = mkV "ser" "sou" "é" "somos" "são" ;
+    estar_V = mkV "estar" "estou" "está" "estamos" "estão" ;
 
     mkVerb : (_,_,_,_,_ : Str) -> Verb =
       \amar,amo,ama,amamos,amam -> {
@@ -173,27 +180,44 @@ resource MiniResPor = open Prelude in {
       mkV : (_,_,_,_,_ : Str) -> Verb = mkVerb ;
       } ;
 
-    Verb2 : Type = Verb ** {c : Case} ;
+    Verb2 : Type = Verb ** {c : Case ; p : Str} ;
 
     mkV2 = overload {
-      mkV2 : Str          -> Verb2 = \s   -> mkV s ** {c = Nom} ;
-      mkV2 : Str  -> Case -> Verb2 = \s,p -> mkV s ** {c = p} ;
-      mkV2 : Verb         -> Verb2 = \v   -> v ** {c = Nom} ;
-      mkV2 : Verb -> Case -> Verb2 = \v,p -> v ** {c = p} ;
+      mkV2 : Str -> Verb2 =
+        \s   -> mkV s ** {c = Nom ; p = []} ;
+      mkV2 : Str -> Case -> Verb2 =
+        \s,c -> mkV s ** {c = c ; p = []} ;
+      mkV2 : Str -> Str -> Verb2 =
+        \s,p -> mkV s ** {c = Nom ; p = p} ;
+      mkV2 : Str  -> Case -> Str -> Verb2 =
+        \s,c,p -> mkV s ** {c = c ; p = p} ;
+      mkV2 : Verb -> Verb2 =
+        \v -> v ** {c = Nom ; p = []} ;
+      mkV2 : Verb -> Case -> Verb2 =
+        \v,c -> v ** {c = c ; p = []} ;
+      mkV2 : Verb -> Str -> Verb2 =
+        \v,p -> v ** {c = Nom ; p = p} ;
+      mkV2 : Verb -> Case -> Str -> Verb2 =
+        \v,c,p -> v ** {c = c ; p = p} ;
       } ;
 
+    ---
+    -- Adverb
     Adverb : Type = {s : Str} ;
 
     mkAdv : Str -> Adverb = \s -> {s = s} ;
 
+    ---
+    -- Det
     -- [ ] is this ok por port?
     adjDet : Adjective -> Number -> {s : Gender => Case => Str ; n : Number} =
       \adj,n -> {
         s = \\g,c => adj.s ! g ! n ;
         n = n
       } ;
-
-    Prep : Type = {s : Gender => Number => Str} ;
+    ---
+    -- Prep
+    Prep : Type = {s : genNumStr } ;
     no_Prep : Prep = { s = table {
                          Masc => table {
                            Sg => "no" ;

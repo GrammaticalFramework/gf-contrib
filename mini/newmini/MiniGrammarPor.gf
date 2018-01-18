@@ -1,5 +1,3 @@
---[] when to use isClit?
--- massNP is wrong?
 concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
   lincat
     Utt = {s : Str} ;
@@ -23,7 +21,7 @@ concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
   lin
     -- Phrase
     UttS s = s ;
-    UttNP np = ss (employNP Acc np) ;
+    UttNP np = ss (employNP Nom np) ;
     -- Sentence
     UsePresCl pol cl = {
       s = pol.s ++ cl.s ! pol.b
@@ -43,17 +41,17 @@ concrete MiniGrammarPor of MiniGrammar = open MiniResPor, Prelude in {
       compl = \\_ => []
       } ;
     ComplV2 v2 np = let nps = np.s ! v2.c in {
-      verb = {s = v2.s ; aux = v2.aux} ;
+      verb = {s = v2.s} ;
       clit = nps.clit ;
       clitAgr = case <nps.isClit,v2.c> of {
         <True,Acc> => CAgr np.a ;
         _          => CAgrNo
         } ;
-      compl = \\_ => nps.obj
+      compl = \\_ => v2.p ++ nps.obj
       } ;
-    AdvVP vp adv = vp ** {compl = \\agr => vp.compl ! agr ++ adv.s} ;
+    AdvVP vp adv = vp ** {compl = \\agr => vp.compl ! agr ++ adv.s } ;
     UseAP ap = {
-      verb = ser_V ;
+      verb = ser_V | estar_V ;
       clit = [] ;
       clitAgr = CAgrNo ;
       compl = \\agr => case agr of {

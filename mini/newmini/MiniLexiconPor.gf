@@ -77,7 +77,7 @@ concrete MiniLexiconPor of MiniLexicon = MiniGrammarPor ** open MiniResPor, Prel
   lin see_V2        = mkV2 (mkV "ver" "vejo" "vê" "vemos" "veem") ;
   lin teach_V2      = mkV2 "ensinar" ;
   lin understand_V2 = mkV2 "entender" ;
-  lin wait_V2       = mkV2 "esperar" ;
+  lin wait_V2       = mkV2 "esperar" "por" ;
       -- V
   lin come_V        = mkV "vir" "venho" "vem" "vimos" "vêm" ;
   lin go_V          = mkV "ir" "vou" "vai" "vamos" "vão" ;
