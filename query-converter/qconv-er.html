@@ -34,7 +34,7 @@ or upload a file: <input id=browse type=file accept="text/plain">
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Mon Jan 22 22:25:47 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Mon Jan 22 22:35:35 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -58,11 +58,11 @@ browse.onchange=function() {
 ERform.onsubmit=function(event) {
     var fd=new FormData(ERform)
     var http=new XMLHttpRequest()
-    http.onload=function() { console.log(http); ERdiagram.innerHTML=http.responseText }
+    http.onload=function() { ERdiagram.innerHTML=http.responseText }
     http.open("POST","qconv.cgi")
     http.send(fd)
     return false
 }
-
+ERform.onreset=function() { ERdiagram.innerHTML="" }
 </script>
 </html>
