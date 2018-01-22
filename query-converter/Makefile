@@ -1,7 +1,12 @@
 all: keywordalgebra executable
 
+D=-odir objs -hidir objs
+
 executable: xml minsql algebra
-	ghc --make -o qconv -odir objs -hidir objs QConv.hs
+	ghc --make -o qconv $D QConv.hs
+
+qconv.cgi::
+	ghc --make -o qconv.cgi $D -main-is QConvCGI QConvCGI.hs
 
 minsql:
 	bnfc -mMakefile_minsql --haskell MinSQL.bnf

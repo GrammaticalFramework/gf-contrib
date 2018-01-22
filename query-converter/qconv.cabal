@@ -31,8 +31,15 @@ Library
   default-language:    Haskell2010
 
 Executable qconv
---hs-source-dirs:      app
+  hs-source-dirs:      app
   main-is:             QConv.hs
   -- other-modules:
   build-depends:       base, array, containers, process, text, mtl, qconv
+  default-language:    Haskell2010
+
+Executable qconv.cgi
+  hs-source-dirs:      app
+  main-is:             QConvCGI.hs
+  ghc-options:	       -main-is QConvCGI
+  build-depends:       base, process, qconv, cgi
   default-language:    Haskell2010

@@ -82,10 +82,11 @@ displayER e = do
 
 -- reading a textfile
 
-file2ER file = do
-  s <- readFile file >>= return . filter (not . isPrefixOf "#") . filter (not . all isSpace) . lines
-  let er = getERDiagram s
-  displayER er
+file2ER file = displayER . parseER =<< readFile file
+
+parseER = getERDiagram .
+          filter (not . isPrefixOf "#") . filter (not . all isSpace) .
+          lines
 
 --------------------------------
 -- ER datatypes
