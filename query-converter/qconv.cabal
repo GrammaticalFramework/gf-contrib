@@ -13,21 +13,26 @@ build-type:          Simple
 extra-source-files:  README
 cabal-version:       >=1.10
 
-library
-  other-modules:       Relation, Natural, Design, Viewer, ToXML, XPath
-                     , AbsXPath, LexXPath, ParXPath
-                     , PrintMinSQL
-  exposed-modules:     Fundep, Algebra, Converter
-                     , AbsMinSQL, LexMinSQL, ParMinSQL
-                     , AbsRelAlgebra, PrintRelAlgebra, ErrM
-  other-extensions:    CPP, MagicHash, OverloadedStrings
-  build-depends:       base, array, containers, process, text
+Library
+  exposed-modules:     Fundep Algebra OptimizeAlgebra Viewer Design
+                       SQLCompiler Relation2XML XPath
+                     --Converter
+                       AbsXML ValidateXML
+                       MinSQL
+                       AbsRelAlgebra PrintRelAlgebra ErrM
+  other-modules:       Relation ComposOp
+                       AbsMinSQL LexMinSQL ParMinSQL PrintMinSQL
+                       PrintXML ParXML LexXML
+                     --Natural
+  other-extensions:    CPP GADTs KindSignatures DataKinds MagicHash
+                       Rank2Types PolyKinds
+                       TypeSynonymInstances FlexibleInstances
+  build-depends:       base, array, containers, process, text, mtl
   default-language:    Haskell2010
 
-
-executable qconv
+Executable qconv
+--hs-source-dirs:      app
   main-is:             QConv.hs
   -- other-modules:
-  other-extensions:    CPP, MagicHash, OverloadedStrings
-  build-depends:       base, array, containers, process, text
+  build-depends:       base, array, containers, process, text, mtl, qconv
   default-language:    Haskell2010
