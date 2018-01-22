@@ -2,12 +2,14 @@
 <html> <head>
 <title>Query-converter – ER diagrams</title>
 <meta charset="UTF-8">
+<meta name = "viewport" content = "width = device-width">
 <style>
 body { background: #eee; }
 h1,h2,small { color: #006; font-family: sans-serif; }
 h1,h2 { text-shadow: rgba(0,0,0,0.25) 2px 2px 5px; }
 .modtime { float:right; opacity: 0.5; }
 textarea { margin: 5px; }
+svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
 </style>
 </head>
 
@@ -18,10 +20,7 @@ textarea { margin: 5px; }
 <main>
 <h2>ER diagrams</h2>
 
-<div style="float:right">
-  <br>
-</div>
-<form action="qconv.cgi" method="post">
+<form id=ERform action="qconv.cgi">
 <input type="hidden" name="command" value="d">
 Enter the design below, or 
 <input id=example1 type=button value="Use EDU example">,
@@ -30,12 +29,12 @@ or upload a file: <input id=browse type=file accept="text/plain">
 <br><input type=submit value="Show ER diagram">
 <input type=reset value="Clear">
 </form>
-
+<div id=ERdiagram></div>
 </main>
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Mon Jan 22 17:13:48 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Mon Jan 22 22:25:47 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -56,5 +55,14 @@ browse.onchange=function() {
         reader.onload=function() { file.value=reader.result }
     }
 }
+ERform.onsubmit=function(event) {
+    var fd=new FormData(ERform)
+    var http=new XMLHttpRequest()
+    http.onload=function() { console.log(http); ERdiagram.innerHTML=http.responseText }
+    http.open("POST","qconv.cgi")
+    http.send(fd)
+    return false
+}
+
 </script>
 </html>
