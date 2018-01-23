@@ -15,10 +15,17 @@ main = runCGI $ handleErrors $ handleCGIErrors $
 qconvCGI cmd =
     case cmd of
       "d" -> do src <- getRequiredInput "file"
-                let dot = prERDiagram (parseER src)
+                let e = parseER src
+                    dot = prERDiagram e
                 svg <- liftIO $ readProcess "fdp" ["-Tsvg"] dot
-                setHeader "Content-Type" "image/svg+xml"
-                output svg
+                setHeader "Content-Type" "text/html"
+                output $
+                  "<h3>E-R diagram</h3>"++
+                  svg++
+                  "<h3>Database schema</h3><pre class=schema>"++
+                  prSchema (erdiagram2schema SER e)++
+                  "</pre><h3>In English (not necessarily perfect)</h3>"++
+                  bullets (erdiagram2text e)
       "hello" -> do setHeader "Content-Type" "text/plain"
                     output "Hello!\n"
       _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
@@ -26,6 +33,8 @@ qconvCGI cmd =
 
 getRequiredInput name = maybe (missing name) return =<< getInput name
 
+
+bullets = unlines . ("<ul>":) . (++["</ul>"]) . map ("<li>"++) . lines
 
 --------------------------------------------------------------------------------
 -- * General CGI Error exception mechanism

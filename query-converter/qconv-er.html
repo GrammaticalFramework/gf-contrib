@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html> <head>
-<title>Query-converter – ER diagrams</title>
+<title>Query-converter – Database Design</title>
 <meta charset="UTF-8">
 <meta name = "viewport" content = "width = device-width">
 <style>
 body { background: #eee; }
-h1,h2,small { color: #006; font-family: sans-serif; }
-h1,h2 { text-shadow: rgba(0,0,0,0.25) 2px 2px 5px; }
+h1,h2,h3,small { color: #007; font-family: sans-serif; }
+h1,h2,h3 { text-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
+label { font-size: 9pt; font-family: sans-serif; }
 .modtime { float:right; opacity: 0.5; }
-textarea { margin: 5px; }
 svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
+.reference { background: #ffd; }
+.schema, ul { background: white; }
+pre { margin: 5px; padding: 5px; }
+ul { margin: 5px; padding-top: 5px; padding-bottom: 5px; }
+pre, ul { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
 </style>
 </head>
 
@@ -18,23 +23,51 @@ svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
 <h1>Query Converter</h1>
 </header>
 <main>
-<h2>ER diagrams</h2>
+<h2>Database Design</h2>
 
 <form id=ERform action="qconv.cgi">
+<table>
+<tr><td colspan=2>
 <input type="hidden" name="command" value="d">
-Enter the design below, or 
+<label>1. Enter the design below, or </label>
 <input id=example1 type=button value="Use EDU example">,
-or upload a file: <input id=browse type=file accept="text/plain">
-<br><textarea id=file name=file rows=10 cols=72></textarea>
-<br><input type=submit value="Show ER diagram">
-<input type=reset value="Clear">
+<label>or upload a file:</label>
+<input id=browse type=file accept="text/plain">
+<tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
+<tr><td><label>2. <input type=submit value="Show…">
+…E-R diagram, database schema and English translation</label>
+<td style="text-align: right"><input type=reset value="Clear">
+</table>
 </form>
-<div id=ERdiagram></div>
+<div id=ERdiagram>
+<h3>Design syntax</h3>
+<pre class=reference>
+Diagram ::= Element+
+
+  Element ::=
+     "ENTITY"        Name                 Attributes
+   | "WEAK" "ENTITY" Name Support+        Attributes
+   | "ISA"           Name SuperEntity     Attributes
+   | "RELATIONSHIP"  Name RelatedEntity+  Attributes
+
+  Attributes ::=
+     ":" Attribute*            # attributes start after colon 
+   |                           # no attributes at all, no colon needed
+    
+  RelatedEntity ::= Arrow Entity ("(" Role ")")?   # optional role in parentheses
+  Support ::= Entity WeakRelationship
+  
+  Arrow ::= "--" | "->" | "-)"
+  Attribute ::= Ident | "_"Ident
+  Entity, SuperEntity, Relationship, WeakRelationship, Role ::= Ident
+</pre>
+</div>
+
 </main>
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Mon Jan 22 22:35:35 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Tue Jan 23 11:19:52 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -63,6 +96,7 @@ ERform.onsubmit=function(event) {
     http.send(fd)
     return false
 }
-ERform.onreset=function() { ERdiagram.innerHTML="" }
+ERform.onreset=function() { ERdiagram.innerHTML=instructions }
+var instructions=ERdiagram.innerHTML
 </script>
 </html>
