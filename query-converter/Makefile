@@ -6,7 +6,7 @@ executable: xml minsql algebra
 	ghc --make -o qconv $D QConv.hs
 
 qconv.cgi::
-	ghc --make -o qconv.cgi $D -main-is QConvCGI QConvCGI.hs
+	ghc --make -o www/qconv.cgi $D -main-is QConvCGI QConvCGI.hs
 
 minsql:
 	bnfc -mMakefile_minsql --haskell MinSQL.bnf

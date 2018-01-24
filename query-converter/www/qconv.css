@@ -1,0 +1,13 @@
+body { background: #eee; }
+h1,h2,h3,small { color: #007; font-family: sans-serif; }
+h1,h2,h3 { text-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
+.modtime { float:right; opacity: 0.5; }
+
+label { font-size: 9pt; font-family: sans-serif; }
+.reference { background: #ffd; }
+.schema, .nf { background: white; }
+.schema, .nf { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
+pre { margin: 5px; padding: 5px; }
+ul.schema { margin: 5px; padding-top: 5px; padding-bottom: 5px; }
+
+svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
