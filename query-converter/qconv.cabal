@@ -36,10 +36,11 @@ Executable qconv
   -- other-modules:
   build-depends:       base, array, containers, process, text, mtl, qconv
   default-language:    Haskell2010
+  ghc-options:	       -fwarn-unused-imports
 
 Executable qconv.cgi
   hs-source-dirs:      app
   main-is:             QConvCGI.hs
-  ghc-options:	       -main-is QConvCGI
+  ghc-options:	       -main-is QConvCGI -fwarn-unused-imports
   build-depends:       base, process, qconv, cgi
   default-language:    Haskell2010

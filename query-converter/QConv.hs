@@ -4,7 +4,7 @@ import SQLCompiler ---- Converter
 import Algebra
 import OptimizeAlgebra
 import Design (file2ER)
-import Fundep (prRelationInfo,pRelation,prRelation,normalizeBCNF,normalize3NF,normalize4NF)
+import Fundep (prRelationInfo,pRelation,prNormalizations)
 import Relation2XML (env2document)
 import AbsXML
 import XPath (execXPath)
@@ -15,9 +15,9 @@ import MinSQL
 import ErrM
 import Viewer
 
-import System.IO ( stdin, stdout, hFlush, hGetContents )
-import System.Environment ( getArgs, getProgName )
-import System.Exit ( exitFailure, exitSuccess )
+import System.IO ( stdout, hFlush) -- , stdin, hGetContents
+--import System.Environment ( getArgs, getProgName )
+--import System.Exit ( exitFailure, exitSuccess )
 import System.Process
 --import Data.Char
 
@@ -50,18 +50,9 @@ loop env@(senv, xmls) = do
       loop env
     "n":file:_ -> do
       rel@(_,(_,mvds)) <- readFile file >>= return . pRelation . lines
-      putStrLn "3NF decomposition (experimental feature):"
-      let rels = normalize3NF rel
-      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
-      putStrLn "BCNF decomposition:"
-      let rels = normalizeBCNF rel
-      putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
-      if null mvds
-         then return ()
-         else do
-           putStrLn "4NF decomposition (experimental feature):"
-           let rels = normalize4NF rel
-           putStrLn $ unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)
+      sequence [do putStrLn hdr
+                   putStrLn output
+                | (hdr,output) <- prNormalizations rel]
       loop env
     "h":[] -> do
       putStrLn helpMsg

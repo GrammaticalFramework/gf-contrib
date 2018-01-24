@@ -228,3 +228,18 @@ prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
     [] -> "none"
     vs -> unlines (map prMultidep vs)
   ]
+
+----
+
+prNormalizations rel@(_,(_,mvds)) =
+  [("3NF decomposition (experimental feature):",
+    let rels = normalize3NF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)),
+   ("BCNF decomposition:",
+    let rels = normalizeBCNF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))]
+  ++
+  [("4NF decomposition (experimental feature):",
+    let rels = normalize4NF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))
+   | not (null mvds)]
