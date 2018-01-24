@@ -3,4 +3,5 @@ er-tmp.png
 qconv
 qconv.cgi
 qconv-history.tmp
+qconv-latex-tmp.*
 dist/
