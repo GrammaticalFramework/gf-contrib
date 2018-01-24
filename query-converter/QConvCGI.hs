@@ -4,9 +4,15 @@ import Data.Typeable(cast)
 import Network.CGI
 import System.Process(readProcess)
 import System.Environment(getEnv,setEnv)
+import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 
 import Design
 import Fundep(prRelationInfo,pRelation,prNormalizations)
+import SQLCompiler(initSEnv,transQuery)
+import MinSQL(parseQuery,printSQL)
+import OptimizeAlgebra(pushSelect)
+import Algebra(prRelHtml)
+import ErrM(Err(..))
 
 main = runCGI $ handleErrors $ handleCGIErrors $
                 do liftIO fixPath
@@ -20,8 +26,7 @@ qconvCGI cmd =
                 let e = parseER src
                     dot = prERDiagram e
                 svg <- liftIO $ readProcess "fdp" ["-Tsvg"] dot
-                setHeader "Content-Type" "text/html"
-                output $
+                outputHTML $
                   h3 "E-R diagram" ++ svg ++
                   h3 "Database schema" ++
                   pre_cls "schema" (prSchema (erdiagram2schema SER e)) ++
@@ -29,17 +34,33 @@ qconvCGI cmd =
                   bullets "schema" (lines (erdiagram2text e))
       "nf" -> do src <- getRequiredInput "file"
                  let rel = pRelation (lines src)
-                 setHeader "Content-Type" "text/html"
-                 output$
+                 outputHTML $
                    h3 "Dependencies and keys" ++
                    pre_cls "nf" (prRelationInfo rel) ++
                    unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormalizations rel]
-      "hello" -> do setHeader "Content-Type" "text/plain"
-                    output "Hello!\n"
+      "a" -> do src <- getRequiredInput "file"
+                alg2html initSEnv src
+                             
+      "hello" -> outputPlain "Hello!\n"
       _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
 
+alg2html env src =
+  case parseQuery src of
+    Bad e -> outputHTML (pre_cls "error" e)
+    Ok c -> do let rel = transQuery c
+                   orel = pushSelect env rel
+                   cs = printSQL c
+                   h = prRelHtml rel
+                   oh = prRelHtml orel
+               outputHTML $
+                 h3 "Source" ++ pre_cls "sql" cs ++
+                 h3 "Original query" ++ div_cls "relalg" h ++
+                 h3 "Optimized query" ++ div_cls "relalg" oh ++
+                 h3 "Tree diagram for original query" ++ "[not implemented yet]"
 
-getRequiredInput name = maybe (missing name) return =<< getInput name
+getRequiredInput name = maybe (missing name) return =<< getTextInput name
+
+getTextInput name = fmap UTF8.decodeString <$> getInput name
 
 ----
 
@@ -48,6 +69,7 @@ bullets c = wrap_cls "ul" c . unlines . map ("<li>"++)
 h3 = wrap "h3"
 pre = wrap "pre"
 pre_cls = wrap_cls "pre"
+div_cls = wrap_cls "div"
 
 wrap tag s = "<"++tag++">\n"++s++"</"++tag++">\n"
 wrap_cls tag cls s = "<"++tag++" class="++cls++">\n"++s++"</"++tag++">\n"
@@ -81,3 +103,14 @@ badRequest = throw 400
 
 throw code msg extra =
     throwCGIError code msg [msg ++(if null extra then "" else ": "++extra)]
+
+-- * CGI output utilities
+
+outputHTML :: String -> CGI CGIResult
+outputHTML = outputText "text/html; charset=utf-8"
+
+outputPlain :: String -> CGI CGIResult
+outputPlain = outputText "text/plain; charset=utf-8"
+
+outputText ct x = do setHeader "Content-Type" ct
+                     output (UTF8.encodeString x)

@@ -31,6 +31,38 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
   mbox w = w ---- "\\mbox{" ++ w ++ "}"
   mkLine (i,l) = "\\mbox{\\hspace{" ++ show (6*i) ++ "mm}} " ++ l ++ "\\\\"
 
+
+prRelHtml :: Rel -> String
+prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . printTree 
+ where
+  splitToLines l s = case s of   -- split at each operator
+    ('(':o) : ws | operator o -> (if null l then [] else [unwords (reverse l)])
+                                 ++ splitToLines ['(':opHtml o] ws
+    o : ws | operator o -> (if null l then [] else [unwords (reverse l)])
+                           ++ splitToLines [opHtml o] ws
+    w : ws | ident w    -> splitToLines (mbox w:l) ws
+           | symbol w   -> splitToLines (symbolHtml w:l) ws
+    w : ws              -> splitToLines (w:l) ws
+    _                   -> [unwords (reverse l)]
+  operator o = elem o ops
+  opHtml o = maybe o id $ lookup o opsConv
+  opsConv = zip ops opsHtml
+  ops = ["\\sigma_{","\\pi_{","\\rho_{","\\gamma_{","\\tau_{"]
+  opsHtml = ["σ<sub>","π<sub>","ρ<sub>","γ<sub>","τ<sub>"]
+  symbol w = elem w symbols
+  symbolHtml w = maybe w id $ lookup w symbolsConv
+  symbolsConv = zip symbols symbolsHtml
+  symbols = ["}","\\times","\\delta","\\cup","\\cap","\\backslash","\\bowtie",
+             "\\bowtie_{","\\bowtie^{o}_{","\\bowtie^{oL}_{","\\bowtie^{oR}_{",
+             "\\rightarrow","\\downarrow"]
+  symbolsHtml=["</sub>","×","δ","∪","∩","∖","⋈","⋈<sub>","⋈<sup>o</sup><sub>",
+               "⋈<sup>oL</sup><sub>","⋈<sup>oR</sup><sub>","→","↓"]
+  
+  ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
+  mbox w = "<var>"++id++"</var>"++r ---- "\\mbox{" ++ w ++ "}"
+    where (id,r) = span isAlphaNum w
+  mkLine (i,l) = "<tt>"++replicate i ' '++"</tt>" ++ l ++ "<br>"
+
 ident2id :: Ident -> Id
 ident2id (Ident x) = x
   

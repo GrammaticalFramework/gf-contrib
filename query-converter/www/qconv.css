@@ -5,9 +5,12 @@ h1,h2,h3 { text-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
 
 label { font-size: 9pt; font-family: sans-serif; }
 .reference { background: #ffd; }
-.schema, .nf { background: white; }
-.schema, .nf { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
+.schema, .nf, .sql, .relalg { background: white; }
+.schema, .nf, .sql, .relalg { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
 pre { margin: 5px; padding: 5px; }
 ul.schema { margin: 5px; padding-top: 5px; padding-bottom: 5px; }
+.error { color: red; }
 
 svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
+
+li { margin-top: 0.75ex; margin-bottom: 0.75ex; }

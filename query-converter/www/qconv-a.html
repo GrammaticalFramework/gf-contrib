@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html> <head>
+<title>Query-converter – SQL to Relational Algebra</title>
+<meta charset="UTF-8">
+<meta name = "viewport" content = "width = device-width">
+<link rel=stylesheet href="qconv.css" title="QConv">
+</head>
+
+<body>
+<header>
+<h1>Query Converter</h1>
+</header>
+<main>
+<h2>SQL to Relational Algebra</h2>
+
+<form id=ERform action="qconv.cgi">
+<table>
+<tr><td colspan=2>
+<input type="hidden" name="command" value="a">
+<label>1. Enter the SQL query below, or </label>
+<input id=example1 type=button value="Use an SQL example">,
+<label>or upload a file:</label>
+<input id=browse type=file accept="text/plain">
+<tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
+<tr><td><label>2. <input type=submit value="Show…">
+…relational algebra translations</label>
+<td style="text-align: right"><input type=reset value="Clear">
+</table>
+</form>
+<div id=ERdiagram>
+</div>
+
+</main>
+
+<footer>
+<div class=modtime><small>
+  <!-- hhmts start -->Last modified: Wed Jan 24 17:02:30 CET 2018 <!-- hhmts end -->
+  </small>
+</div>
+</footer>
+</body>
+<script>
+example1.onclick=function() {
+  file.value=["SELECT a.name, b.capital",
+	      "FROM countries AS a, countries AS b",
+	      "WHERE a.name = b.capital"].join("\n")
+}
+browse.onchange=function() {
+    var files=browse.files
+    if(files.length==1) {
+        var reader=new FileReader()
+        reader.readAsText(files[0])
+        reader.onload=function() { file.value=reader.result }
+    }
+}
+ERform.onsubmit=function(event) {
+    var fd=new FormData(ERform)
+    var http=new XMLHttpRequest()
+    http.onload=function() { ERdiagram.innerHTML=http.responseText }
+    http.open("POST","qconv.cgi")
+    http.send(fd)
+    return false
+}
+ERform.onreset=function() { ERdiagram.innerHTML=instructions }
+var instructions=ERdiagram.innerHTML
+</script>
+</html>
