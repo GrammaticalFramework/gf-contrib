@@ -11,6 +11,7 @@ www/qconv.cgi:: RelAlgebra MinSQL
 	ghc -j --make -o $@ $D -main-is QConvCGI QConvCGI.hs
 
 
+SHELL=bash # The lines below might not work with /bin/sh, the default
 ALEX=if [ $G/Lex$@.x -nt $G/Lex$@.hs ] ; then alex -g $G/Lex$@.x ; fi
 HAPPY=if [ $G/Par$@.y -nt $G/Par$@.hs ] ; then happy -gac $G/Par$@.y ; fi
 
