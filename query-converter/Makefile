@@ -1,28 +1,26 @@
-all: keywordalgebra executable
+all: KeywordRelAlgebra executable cgi
+cgi:: www/qconv.cgi
 
-D=-odir objs -hidir objs
+G=generated
+D=-i$G -odir objs -hidir objs
 
-executable: xml minsql algebra
-	ghc --make -o qconv $D QConv.hs
+executable: XML MinSQL RelAlgebra
+	ghc -j --make -o qconv $D QConv.hs
 
-qconv.cgi::
-	ghc --make -o www/qconv.cgi $D -main-is QConvCGI QConvCGI.hs
+www/qconv.cgi:: RelAlgebra MinSQL
+	ghc -j --make -o $@ $D -main-is QConvCGI QConvCGI.hs
 
-minsql:
-	bnfc -mMakefile_minsql --haskell MinSQL.bnf
-	make -f Makefile_minsql
 
-algebra:
-	bnfc -mMakefile_algebra --haskell-gadt RelAlgebra.bnf
-	make -f Makefile_algebra
+ALEX=if [ $G/Lex$@.x -nt $G/Lex$@.hs ] ; then alex -g $G/Lex$@.x ; fi
+HAPPY=if [ $G/Par$@.y -nt $G/Par$@.hs ] ; then happy -gac $G/Par$@.y ; fi
 
-keywordalgebra:
-	bnfc -mMakefile_keywordalgebra --haskell KeywordRelAlgebra.bnf
-	make -f Makefile_keywordalgebra
+BNFC=bnfc -o $G -mMakefile_$@ --haskell $@.bnf && $(ALEX) && $(HAPPY)
+BNFC_GADT=bnfc -o $G -mMakefile_$@ --haskell-gadt $@.bnf && $(ALEX) && $(HAPPY)
 
-xml:
-	bnfc -mMakefile_xml --haskell-gadt XML.bnf
-	make -f Makefile_xml
+XML:: ; $(BNFC_GADT)
+MinSQL:: ; $(BNFC)
+RelAlgebra:: ; $(BNFC_GADT)
+KeywordRelAlgebra:: ; $(BNFC_GADT)
 
 clean:
-	-rm -rf *.log *.aux *.hi *.o *.dvi objs qconv TestMinSQL TestXML TestKeywordRelAlgebra TestRelAlgebra
+	-rm -rf *.log *.aux *.dvi objs generated qconv www/qconv.cgi

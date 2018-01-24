@@ -4,4 +4,6 @@ qconv
 qconv.cgi
 qconv-history.tmp
 qconv-latex-tmp.*
+generated/
+objs/
 dist/
