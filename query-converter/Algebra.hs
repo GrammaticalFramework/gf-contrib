@@ -33,7 +33,7 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
 
 
 prRelHtml :: Rel -> String
-prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . printTree 
+prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . rParSep . printTree
  where
   splitToLines l s = case s of   -- split at each operator
     ('(':o) : ws | operator o -> (if null l then [] else [unwords (reverse l)])
@@ -54,14 +54,24 @@ prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words
   symbolsConv = zip symbols symbolsHtml
   symbols = ["}","\\times","\\delta","\\cup","\\cap","\\backslash","\\bowtie",
              "\\bowtie_{","\\bowtie^{o}_{","\\bowtie^{oL}_{","\\bowtie^{oR}_{",
-             "\\rightarrow","\\downarrow"]
+             "\\rightarrow","\\downarrow",
+             "\\mbox{\\textbf{let}}","\\mbox{\\textbf{\\;in\\;}}"]
   symbolsHtml=["</sub>","×","δ","∪","∩","∖","⋈","⋈<sub>","⋈<sup>o</sup><sub>",
-               "⋈<sup>oL</sup><sub>","⋈<sup>oR</sup><sub>","→","↓"]
-  
-  ident w = length w > 1 && (isLetter (head w) || head w == '(' && ident (tail w))
+               "⋈<sup>oL</sup><sub>","⋈<sup>oR</sup><sub>","→","↓",
+               "<b>let</b>","<b>in</b>"]
+
+  ident ('(':w) = ident w
+  ident (c1:c2:w) = isLetter c1
+  ident _ = False
+
   mbox w = "<var>"++id++"</var>"++r ---- "\\mbox{" ++ w ++ "}"
     where (id,r) = span isAlphaNum w
   mkLine (i,l) = "<tt>"++replicate i ' '++"</tt>" ++ l ++ "<br>"
+
+  -- transform "(... x)\cup y" into "(... x) \cup y", so that \cup is recognized
+  rParSep (')':'\\':s) = ") \\"++rParSep s
+  rParSep (c:s) = c:rParSep s
+  rParSep "" = ""
 
 ident2id :: Ident -> Id
 ident2id (Ident x) = x
