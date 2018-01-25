@@ -15,7 +15,7 @@ cabal-version:       >=1.10
 
 Library
   hs-source-dirs:      . generated
-  exposed-modules:     Fundep Algebra OptimizeAlgebra Viewer Design
+  exposed-modules:     Fundep Algebra OptimizeAlgebra AlgebraTree Viewer Design
                        SQLCompiler Relation2XML XPath
                      --Converter
                        AbsXML ValidateXML

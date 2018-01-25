@@ -12,6 +12,7 @@ import SQLCompiler(initSEnv,transQuery)
 import MinSQL(parseQuery,printSQL)
 import OptimizeAlgebra(pushSelect)
 import Algebra(prRelHtml)
+import AlgebraTree(prRelTree)
 import ErrM(Err(..))
 
 main = runCGI $ handleErrors $ handleCGIErrors $
@@ -52,11 +53,13 @@ alg2html env src =
                    cs = printSQL c
                    h = prRelHtml rel
                    oh = prRelHtml orel
+                   dot = prRelTree rel
+               svg <- liftIO $ readProcess "dot" ["-Tsvg"] dot
                outputHTML $
                  h3 "Source" ++ pre_cls "sql" cs ++
                  h3 "Original query" ++ div_cls "relalg" h ++
                  h3 "Optimized query" ++ div_cls "relalg" oh ++
-                 h3 "Tree diagram for original query" ++ "[not implemented yet]"
+                 h3 "Tree diagram for original query" ++ svg
 
 getRequiredInput name = maybe (missing name) return =<< getTextInput name
 
