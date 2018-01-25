@@ -29,9 +29,9 @@ rel2dot t =
     RNaturalJoin r1 r2 -> node2 "⋈" r1 r2
     RThetaJoin r1 c r2 -> node3 "⋈" r1 c r2
     RInnerJoin r1 ns r2 -> node3 "⋈" r1 ns r2
-    RFullOuterJoin r1 ns r2 -> node3 "⋈o" r1 ns r2
-    RLeftOuterJoin r1 ns r2 -> node3 "⋈oL" r1 ns r2
-    RRightOuterJoin r1 ns r2 -> node3 "⋈oR" r1 ns r2
+    RFullOuterJoin r1 ns r2 -> node3 "⋈<sup>o</sup>" r1 ns r2
+    RLeftOuterJoin r1 ns r2 -> node3 "⋈<sup>oL</sup>" r1 ns r2
+    RRightOuterJoin r1 ns r2 -> node3 "⋈<sup>oR</sup>" r1 ns r2
     RLet n r1 r2 -> node2 "let" r1 r2
   where
     -- ** Creating trees
@@ -60,7 +60,7 @@ rel2dot t =
                          return i
 
     node3 :: Print a => String -> Rel -> a -> Rel -> DotM String
-    node3 lbl r1 aux r2 = do i <- node lbl
+    node3 lbl r1 aux r2 = do i <- node_html lbl
                              i1 <- rel2dot r1
                              edge i i1
                              iaux <- node (printTree aux)
@@ -74,6 +74,12 @@ rel2dot t =
     node lbl = do i <- new
                   tell [i++"[label = \""++escape lbl++"\", shape = \"plaintext\"] ; "]
                   return i
+
+    -- See https://graphviz.gitlab.io/_pages/doc/info/shapes.html#html
+    node_html :: String -> DotM String
+    node_html lbl = do i <- new
+                       tell [i++"[label = <"++lbl++">, shape = \"plaintext\"] ; "]
+                       return i
 
     edge = edge' "solid"
     edge_dashed = edge' "dashed"
