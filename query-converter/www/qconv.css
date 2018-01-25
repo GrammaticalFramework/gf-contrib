@@ -1,7 +1,7 @@
 body { background: #eee; }
 h1,h2,h3,small { color: #007; font-family: sans-serif; }
 h1,h2,h3 { text-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
-.modtime { float:right; opacity: 0.5; }
+.modtime { text-align:right; opacity: 0.6; }
 
 label { font-size: 9pt; font-family: sans-serif; }
 .reference { background: #ffd; }
