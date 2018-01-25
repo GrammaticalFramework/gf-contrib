@@ -1,5 +1,7 @@
 {-# LANGUAGE GADTs, FlexibleContexts #-}
 module AlgebraTree where
+import Data.Char(isSpace)
+import Data.List(groupBy)
 import Control.Monad.Writer --(WriterT,tell)
 import Control.Monad.State --(State,get,put)
 
@@ -48,7 +50,7 @@ rel2dot r =
     
     node1a :: Print a => String -> a -> Rel -> DotM String
     node1a lbl aux r = do i <- node lbl
-                          iaux <- node (printTree aux) -- !!!
+                          iaux <- node (printTree' aux)
                           ir <- rel2dot r
                           edge_dashed i iaux
                           edge i ir
@@ -58,7 +60,7 @@ rel2dot r =
     node2a lbl r1 aux r2 = do i <- node_html lbl
                               i1 <- rel2dot r1
                               edge i i1
-                              iaux <- node (printTree aux)
+                              iaux <- node (printTree' aux)
                               edge_dashed i iaux
                               i2 <- rel2dot r2
                               edge i i2
@@ -95,9 +97,9 @@ rel2dot r =
              return ("n"++show i)
 
 instance (Print a,Print b) => Print (a,b) where
-  prt d (a,b) = brackets (prt 0 a . doc (showChar ',') . prt 0 b)
+  prt d (a,b) = {-brackets-} (prt 0 a . doc (showChar ',') . prt 0 b)
 
-brackets ss = doc (showChar '{') . ss . doc (showChar '}')
+--brackets ss = doc (showChar '{') . ss . doc (showChar '}')
 
 {-
 opsHtml = ["σ<sub>","π<sub>","ρ<sub>","γ<sub>","τ<sub>"]
@@ -105,6 +107,16 @@ opsHtml = ["σ<sub>","π<sub>","ρ<sub>","γ<sub>","τ<sub>"]
 symbolsHtml=["×","δ","∪","∩","∖","⋈","⋈<sub>","⋈<sup>o</sup><sub>",
              "⋈<sup>oL</sup><sub>","⋈<sup>oR</sup><sub>","→","↓"]
 -}
+
+printTree' t = convSymbols (printTree t)
+  where
+    convSymbols = concatMap convSymbol . groupBy (\a b->isSpace a==isSpace b)
+    convSymbol s =
+      case s of
+        "\\rightarrow" -> "→"
+        "\\delta" -> "δ"
+        "\\downarrow" -> "↓"
+        _ -> s
 
 flatten :: Rel -> [Rel]
 flatten t =
