@@ -31,11 +31,15 @@ rel2dot r =
     RNaturalJoin r1 r2 -> node2 "⋈" r1 r2
     RThetaJoin r1 c r2 -> node2a "⋈" r1 c r2
     RInnerJoin r1 ns r2 -> node2a "⋈" r1 ns r2
-    RFullOuterJoin r1 ns r2 -> node2a "⋈<sup>o</sup>" r1 ns r2
-    RLeftOuterJoin r1 ns r2 -> node2a "⋈<sup>oL</sup>" r1 ns r2
-    RRightOuterJoin r1 ns r2 -> node2a "⋈<sup>oR</sup>" r1 ns r2
+    RFullOuterJoin r1 ns r2 -> node2a fullOuterJoin r1 ns r2
+    RLeftOuterJoin r1 ns r2 -> node2a "°⋈" r1 ns r2
+    RRightOuterJoin r1 ns r2 -> node2a "⋈°" r1 ns r2
     RLet n r1 r2 -> node2 ("let "++printTree n++" =") r1 r2
   where
+
+    -- A hack, since "⋈̊" (combining ring above) doesn't work in all browsers
+    fullOuterJoin = "<table border=\"0\" cellspacing=\"-11\" cellpadding=\"-11\"><tr><td>°</td></tr><tr><td>⋈</td></tr></table>"
+
     -- ** Creating trees
     leaf n = node (printTree n)
 
