@@ -1,6 +1,10 @@
 all: KeywordRelAlgebra executable cgi
 cgi:: www/qconv.cgi
 
+# Install web pages & CGI script (run it on www.grammaticalframework.org)
+install: cgi
+	rsync -av www/ /usr/local/www/qconv/
+
 G=generated
 D=-i$G -odir objs -hidir objs
 
