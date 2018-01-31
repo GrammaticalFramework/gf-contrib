@@ -24,14 +24,14 @@ oper mkNum : Str -> Str -> Str -> Str -> LinDigit =
 
 oper mkRegNum : Str -> LinDigit = 
   \su -> 
-  { s = table { basic => su ; belowtenform => su + "kci" ; tenindep => su + "kká" ; ten => su + "k"} }; 
+  { s = table { basic => su ; belowtenform => su + "kci" ; tenindep => su + "kkÃ¡" ; ten => su + "k"} }; 
 
 lin num x = x ;
 -- lin n1 mkNum "i" "ibim" ... ;
-lin n2 = mkNum "ni" "nicci" (variants { "nissá" ; "nukká" }) "nuk" ; 
+lin n2 = mkNum "ni" "nicci" (variants { "nissÃ¡" ; "nukkÃ¡" }) "nuk" ; 
 lin n3 = mkRegNum "su" ;
-lin n4 = mkNum "li" "lici" "likká" "lik" ;
-lin n5 = mkNum "ngá" "ngá" "ngakká" "ngak" ;
+lin n4 = mkNum "li" "lici" "likkÃ¡" "lik" ;
+lin n5 = mkNum "ngÃ¡" "ngÃ¡" "ngakkÃ¡" "ngak" ;
 lin n6 = mkRegNum "tu" ;
 lin n7 = mkRegNum "nu" ;
 lin n8 = mkRegNum "re" ;

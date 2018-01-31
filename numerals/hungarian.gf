@@ -14,20 +14,20 @@ lincat Sub1000000 = {s : Str} ;
 lin num x0 =
   {s = x0.s} ;
 lin n2  =
-  {s = table {<ental,indep> => "kettö" ; 
-              <tiotal,indep> => "húsz" ; 
-              <ental,attr> => "két" ; 
+  {s = table {<ental,indep> => "kettÃ¶" ; 
+              <tiotal,indep> => "hÃºsz" ; 
+              <ental,attr> => "kÃ©t" ; 
               <tiotal, attr> => "huszon"}} ;
 lin n3  =
-  {s = table {<ental,p> => "három" ; <tiotal,p> => "harminc"}} ;
+  {s = table {<ental,p> => "hÃ¡rom" ; <tiotal,p> => "harminc"}} ;
 lin n4  =
-  {s = table {<ental,p> => "négy" ; <tiotal,p> => "negyven"}} ;
+  {s = table {<ental,p> => "nÃ©gy" ; <tiotal,p> => "negyven"}} ;
 lin n5  =
-  {s = table {<ental,p> => "öt" ; <tiotal,p> => "ötven"}} ;
+  {s = table {<ental,p> => "Ã¶t" ; <tiotal,p> => "Ã¶tven"}} ;
 lin n6  =
   {s = table {<ental,p> => "hat" ; <tiotal,p> => "hatvan"}} ;
 lin n7  =
-  {s = table {<ental,p> => "hét" ; <tiotal,p> => "hetven"}} ;
+  {s = table {<ental,p> => "hÃ©t" ; <tiotal,p> => "hetven"}} ;
 lin n8  =
   {s = table {<ental,p> => "nyolc" ; <tiotal,p> => "nyolcvan"}} ;
 lin n9  =
@@ -37,7 +37,7 @@ lin pot01  =
 lin pot0 d =
   {s = table {<f,p> => d.s ! <f,p>}} ;
 lin pot110  =
-  {s = table {p => "tíz"}} ;
+  {s = table {p => "tÃ­z"}} ;
 lin pot111  =
   {s = table {p => "tizen" ++ "egy"}} ;
 lin pot1to19 d =
@@ -51,9 +51,9 @@ lin pot1plus d e =
 lin pot1as2 n =
   {s = table {p => n.s ! p}} ;
 lin pot2 d =
-  {s = table {p => (d.s ! <ental,attr>) ++ "száz"}} ;
+  {s = table {p => (d.s ! <ental,attr>) ++ "szÃ¡z"}} ;
 lin pot2plus d e =
-  {s = table {p => (d.s ! <ental,attr>) ++ "száz" ++ e.s ! indep}} ;
+  {s = table {p => (d.s ! <ental,attr>) ++ "szÃ¡z" ++ e.s ! indep}} ;
 lin pot2as3 n =
   {s = n.s ! indep} ;
 lin pot3 n =

@@ -19,32 +19,32 @@ lin num x0 =
 oper mkNum : Str -> Str -> LinDigit = \mbili -> \lama ->
   {s = table {unit => mbili ; acc => lama }; size = pl };
 
--- lin n1 = mkNum "wút`&" ; 
+-- lin n1 = mkNum "wÃºt`&" ; 
 lin n2 = mkNum "ts`&r" "ts'&r";
-lin n3 = mkNum "kìdi" "kídì" ;
+lin n3 = mkNum "kÃ¬di" "kÃ­dÃ¬" ;
 lin n4 = mkNum "f`&d>&" "f'&d>&";
-lin n5 = mkNum "vàatl&" "vaatl&";
-lin n6 = mkNum "màaha" "máahà";
-lin n7 = mkNum "màats&r" "máats`&r";
-lin n8 = mkNum "f´&rf´&d>&" "f`&rf´&d>&" ; 
-lin n9 = mkNum "kùciya" "kúcìya";
+lin n5 = mkNum "vÃ atl&" "vaatl&";
+lin n6 = mkNum "mÃ aha" "mÃ¡ahÃ ";
+lin n7 = mkNum "mÃ ats&r" "mÃ¡ats`&r";
+lin n8 = mkNum "fÂ´&rfÂ´&d>&" "f`&rfÂ´&d>&" ; 
+lin n9 = mkNum "kÃ¹ciya" "kÃºcÃ¬ya";
 
 oper ss : Str -> Form = \s1 -> {s = s1 ; size = pl} ;
-oper behan = "bèh&n" ;
-oper enaa = "'`&náa" ;
+oper behan = "bÃ¨h&n" ;
+oper enaa = "'`&nÃ¡a" ;
 
 lin pot01  =
-  {s = table {unit => "wút`&" ; acc => "wut'&"}; size = sg };
+  {s = table {unit => "wÃºt`&" ; acc => "wut'&"}; size = sg };
 lin pot0 d = d ;
 lin pot110 = ss "d'&rb>itim" ; 
 lin pot111 = ss (variants {behan ++ "wut'&";"d'&rb>itim" ++ behan ++ "wut'&"});
 lin pot1to19 d = ss (variants {behan ++ (d.s ! acc); "d'&rb>itim" ++ behan ++ d.s ! acc}) ;
 lin pot0as1 n = {s = n.s ! unit ; size = n.size } ;
-lin pot1 d = ss ("díb>i" ++ d.s ! unit) ;
-lin pot1plus d e = ss ("díb>i" ++ d.s ! unit ++ behan ++ e.s ! acc) ; 
+lin pot1 d = ss ("dÃ­b>i" ++ d.s ! unit) ;
+lin pot1plus d e = ss ("dÃ­b>i" ++ d.s ! unit ++ behan ++ e.s ! acc) ; 
 lin pot1as2 n = n ;
-lin pot2 d = ss ("d>àriy" ++ selsg d.size (d.s ! unit));
-lin pot2plus d e = ss ("d>àriy" ++ (selsg d.size (d.s ! unit)) ++ enaa ++ e.s);
+lin pot2 d = ss ("d>Ã riy" ++ selsg d.size (d.s ! unit));
+lin pot2plus d e = ss ("d>Ã riy" ++ (selsg d.size (d.s ! unit)) ++ enaa ++ e.s);
 lin pot2as3 n = {s = n.s } ;
 lin pot3 n = {s = "d'&bu" ++ (selsg n.size n.s)} ;
 lin pot3plus n m = {s = "d'&bu" ++ (selsg n.size n.s) ++ enaa ++ m.s} ;

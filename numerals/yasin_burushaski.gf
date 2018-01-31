@@ -4,11 +4,11 @@ concrete yasin_burushaski of Numerals = {
 oper LinDigit = {s : DForm => Str ; even20 : Even20 ; size : Size} ;
 
 oper mk20Ten : Str -> Str -> LinDigit = \tri -> \tw -> 
-  {s = table {unit => tri ; teen => "turma-" + tri ; twenty => tw+"-áltar"} ; 
+  {s = table {unit => tri ; teen => "turma-" + tri ; twenty => tw+"-Ã¡ltar"} ; 
    even20 = ten ; size = pl} ;
 
 oper mkEven20 : Str -> Str -> LinDigit = \tri -> \tw ->
-  {s = table {unit => tri ; teen => "turma-" + tri ; twenty => tw+"-áltar"} ; 
+  {s = table {unit => tri ; teen => "turma-" + tri ; twenty => tw+"-Ã¡ltar"} ; 
    even20 = even ; size = pl} ;
 
 param Even20 = ten | even ;
@@ -23,25 +23,25 @@ lincat Sub1000 = {s : Str ; size : Size } ;
 lincat Sub1000000 = {s : Str} ;
 lin num x0 =
   {s = x0.s} ;
-lin n2 = {s = table {unit => "altó" ; teen => "turma-" + "altó" ; twenty => "áltar" } ; even20 = even ; size = pl} ;
-lin n3  = {s = table {unit => "iskí" ; teen => "turma-" + "iskí" ; twenty => "áltar" } ; even20 = ten ; size = pl} ;
-lin n4  = mkEven20 "wálte" "altó";
-lin n5  = mk20Ten "cendí" "altó";
-lin n6  = mkEven20 "bis'índe" "iskí" ;
-lin n7  = mk20Ten "thalé" "iskí";
-lin n8  = mkEven20 "altámbe" "wálte";
-lin n9  = mk20Ten "hutí" "wálte";
+lin n2 = {s = table {unit => "altÃ³" ; teen => "turma-" + "altÃ³" ; twenty => "Ã¡ltar" } ; even20 = even ; size = pl} ;
+lin n3  = {s = table {unit => "iskÃ­" ; teen => "turma-" + "iskÃ­" ; twenty => "Ã¡ltar" } ; even20 = ten ; size = pl} ;
+lin n4  = mkEven20 "wÃ¡lte" "altÃ³";
+lin n5  = mk20Ten "cendÃ­" "altÃ³";
+lin n6  = mkEven20 "bis'Ã­nde" "iskÃ­" ;
+lin n7  = mk20Ten "thalÃ©" "iskÃ­";
+lin n8  = mkEven20 "altÃ¡mbe" "wÃ¡lte";
+lin n9  = mk20Ten "hutÃ­" "wÃ¡lte";
 
 lin pot01  =
-  {s = table {unit => "hek" ; teen => "turma-" + "hék" ; twenty => []} ; even20 = ten ; size = sg};
+  {s = table {unit => "hek" ; teen => "turma-" + "hÃ©k" ; twenty => []} ; even20 = ten ; size = sg};
 lin pot0 d = d ; 
-lin pot110 = {s = "tórum" ; size = pl} ;
-lin pot111 = {s = "turma-" + "hék" ; size = pl} ;
+lin pot110 = {s = "tÃ³rum" ; size = pl} ;
+lin pot111 = {s = "turma-" + "hÃ©k" ; size = pl} ;
 lin pot1to19 d = {s = d.s ! teen ; size = pl} ;
 lin pot0as1 n = {s = n.s ! unit ; size = n.size} ;
 lin pot1 d =
   {s = table {even => d.s ! twenty ;  
-              ten => d.s ! twenty ++ "tórum"} ! d.even20 ;
+              ten => d.s ! twenty ++ "tÃ³rum"} ! d.even20 ;
    size = pl} ;
 lin pot1plus d e =
   {s = table {even => d.s ! twenty ++ e.s ! unit;  
@@ -55,9 +55,9 @@ lin pot2plus d e =
 lin pot2as3 n =
   {s = n.s } ;
 lin pot3 n =
-  {s = selsg n.size n.s ++ "hazár"} ;
+  {s = selsg n.size n.s ++ "hazÃ¡r"} ;
 lin pot3plus n m =
-  {s = selsg n.size n.s ++ "hazár" ++ m.s } ;
+  {s = selsg n.size n.s ++ "hazÃ¡r" ++ m.s } ;
 
 oper selsg : Size -> Str -> Str = \sz -> \attr ->
   table {sg => [] ; _ => attr} ! sz ;

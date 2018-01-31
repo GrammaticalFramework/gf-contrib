@@ -1,17 +1,17 @@
 concrete irish of Numerals = {
 -- include numerals.Abs.gf ;
 
--- Not the archaic base-10 system fiche, triocha, daichead, caoga, seasca, seachtÛ, ochtÛ, nÛcha
--- scÛr can be used in place of fiche but is not implemented (since it's much less preferred)
+-- Not the archaic base-10 system fiche, triocha, daichead, caoga, seasca, seacht√≥, ocht√≥, n√≥cha
+-- sc√≥r can be used in place of fiche but is not implemented (since it's much less preferred)
 
 oper LinDigit = {s : DForm => Str ; even20 : Even20 ; size : Size} ;
 oper mk20Ten : Str -> Str -> Size -> LinDigit = 
   \tri -> \fiche -> \thesize -> 
-  { s = table {unit => tri ; twenty => fiche ; teen => tri ++ "dÈag" ; attrib => tri} ; even20 = ten ; size = thesize} ;
+  { s = table {unit => tri ; twenty => fiche ; teen => tri ++ "d√©ag" ; attrib => tri} ; even20 = ten ; size = thesize} ;
 
 oper mkEven20 : Str -> Str -> Size -> LinDigit = 
   \se -> \trifichid -> \thesize -> 
-  { s = table {unit => se ; twenty => trifichid ; teen => se ++ "dÈag" ; attrib => se} ; even20 = even ; size = thesize} ;
+  { s = table {unit => se ; twenty => trifichid ; teen => se ++ "d√©ag" ; attrib => se} ; even20 = even ; size = thesize} ;
 
 param HForm = attr | indep ;
 param Even20 = ten | even ;
@@ -27,13 +27,13 @@ lincat Sub1000000 = {s : Str} ;
 lin num x0 =
   {s = x0.s} ;
 lin n2  =
-  {s = table {unit => "dÛ" ; twenty => "fiche" ; attrib => "dh·" ; teen => "dÛ" ++ "dhÈag" } ; even20 = even ; size = onetosix } ; 
-lin n3  = mk20Ten "trÌ" "fiche" onetosix ;
+  {s = table {unit => "d√≥" ; twenty => "fiche" ; attrib => "dh√°" ; teen => "d√≥" ++ "dh√©ag" } ; even20 = even ; size = onetosix } ; 
+lin n3  = mk20Ten "tr√≠" "fiche" onetosix ;
 lin n4  =
-  {s = table {unit => "ceathair" ; twenty => "dh·" ++ "fhichead" ; teen => "dÛ" ++ "dhÈag" ; attrib => "ceithre" } ; even20 = even ; size = onetosix} ;
-lin n5  = mk20Ten "c˙ig" ("dh·" ++ "fhichead") onetosix ;
-lin n6  = mkEven20 "sÈ" ("trÌ" ++ "fichid") onetosix ;
-lin n7  = mk20Ten "seacht" ("trÌ" ++ "fichid") seventonine ;
+  {s = table {unit => "ceathair" ; twenty => "dh√°" ++ "fhichead" ; teen => "d√≥" ++ "dh√©ag" ; attrib => "ceithre" } ; even20 = even ; size = onetosix} ;
+lin n5  = mk20Ten "c√∫ig" ("dh√°" ++ "fhichead") onetosix ;
+lin n6  = mkEven20 "s√©" ("tr√≠" ++ "fichid") onetosix ;
+lin n7  = mk20Ten "seacht" ("tr√≠" ++ "fichid") seventonine ;
 lin n8  = mkEven20 "hocht" ("cheithre" ++ "fichid") seventonine ;
 lin n9  = mk20Ten "naoi" ("cheithre" ++ "fichid") seventonine ;
 
@@ -44,7 +44,7 @@ lin pot0 d =
 lin pot110 =
   {s = table {attr => "deich" ; indep => "a" ++ "deich"} ; size = tenover} ;
 lin pot111  =
-  {s = table {attr => "haon" ++ "dÈag" ; indep => "a" ++ "haon" ++ "dÈag"} ; size = tenover} ;
+  {s = table {attr => "haon" ++ "d√©ag" ; indep => "a" ++ "haon" ++ "d√©ag"} ; size = tenover} ;
 lin pot1to19 d =
   {s = table {attr => d.s ! teen ; indep => "a" ++ d.s ! teen } ; size = tenover} ;
 lin pot0as1 n =
@@ -55,9 +55,9 @@ lin pot1 d =
    size = eventen} ;
 lin pot1plus d e =
   {s = table {attr => (d.s ! twenty) ++ e.s ! unit ++ 
-                       table {ten => "dÈag" ; _ => []} ! (d.even20) ; 
+                       table {ten => "d√©ag" ; _ => []} ! (d.even20) ; 
 	      indep => (d.s ! twenty) ++ "a" ++ e.s ! unit ++ 
-                        table {ten => "dÈag" ; _ => []} ! (d.even20)} ; 
+                        table {ten => "d√©ag" ; _ => []} ! (d.even20)} ; 
    size = e.size} ;
 lin pot1as2 n =
   {s = table {attr => n.s ! attr ; indep => n.s ! indep} ; size = n.size} ;
@@ -75,8 +75,8 @@ lin pot3plus n m =
 oper AddDeich : Even20 => Str = table {ten => "deich" ; _ => []} ;
 oper AddADeich : Even20 => Str = table {ten => "a" ++ "deich" ; _ => []} ;
 oper AddIs : Size => Str = table {eventen => "is" ; _ => []} ; 
-oper EclipseLeniteCead : Size => Str = table {onetosix => "chead" ; seventonine => "gcÈad" ; _ => "cÈad" } ;
-oper LeniteMile : Size => Str = table {onetosix => "mhÌle" ; _ => "mÌle" } ;
+oper EclipseLeniteCead : Size => Str = table {onetosix => "chead" ; seventonine => "gc√©ad" ; _ => "c√©ad" } ;
+oper LeniteMile : Size => Str = table {onetosix => "mh√≠le" ; _ => "m√≠le" } ;
 
 
 }

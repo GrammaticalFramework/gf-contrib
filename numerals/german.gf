@@ -14,18 +14,18 @@ lincat Sub1000 = {s : Place => Str} ;
 lincat Sub1000000 = {s : Str} ;
 
 oper mkZahl : Str -> Str -> Str -> LinDigit = 
-  \två -> \tolv -> \tjugo -> 
-  {s = table {unit => två ; teen => tolv ; ten => tjugo}} ;
+  \tvÃ¥ -> \tolv -> \tjugo -> 
+  {s = table {unit => tvÃ¥ ; teen => tolv ; ten => tjugo}} ;
 oper regZahl : Str -> LinDigit = 
   \vier -> mkZahl vier (vier + "zehn") (vier + "zig") ;
 oper ss : Str -> {s : Str} = \s -> {s = s} ;
 
 lin num x = x ;
 
-lin n2 = mkZahl "zwei" "zwölf"    "zwanzig" ;
+lin n2 = mkZahl "zwei" "zwÃ¶lf"    "zwanzig" ;
 lin n3 = mkZahl "drei" "dreizehn" "dreissig" ;
 lin n4 = regZahl "vier" ;
-lin n5 = regZahl "fünf" ;
+lin n5 = regZahl "fÃ¼nf" ;
 lin n6 = mkZahl "sechs" "sechzehn" "sechzig" ;
 lin n7 = mkZahl "sieben" "siebzehn" "siebzig" ;
 lin n8 = regZahl "acht" ;

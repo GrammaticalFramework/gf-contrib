@@ -16,8 +16,8 @@ lincat Sub1000 = {s : Str ; n : Num} ;
 lincat Sub1000000 = {s : Str} ;
 
 oper mkTal : Str -> Str -> Str -> LinDigit = 
-  \två -> \tolv -> \tjugo -> 
-  {s = table {ental _ => två ; ton => tolv ; tiotal => tjugo}} ;
+  \tvÃ¥ -> \tolv -> \tjugo -> 
+  {s = table {ental _ => tvÃ¥ ; ton => tolv ; tiotal => tjugo}} ;
 oper ss : Str -> {s : Str} = \s -> {s = s} ;
 oper spl : Str -> {s : Str ; n : Num} = \s -> {s = s ; n = pl} ;
 oper mille : Num => Str = table {sg => "mille" ; pl => "mila"} ;

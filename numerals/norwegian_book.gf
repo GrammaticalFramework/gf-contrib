@@ -15,8 +15,8 @@ lincat Sub1000 = {s : Str} ;
 lincat Sub1000000 = {s : Str} ;
 
 oper mkTal : Str -> Str -> Str -> LinDigit = 
-  \två -> \tolv -> \tjugo -> 
-  {s = table {ental => två ; ton => tolv ; tiotal => tjugo}} ;
+  \tvÃ¥ -> \tolv -> \tjugo -> 
+  {s = table {ental => tvÃ¥ ; ton => tolv ; tiotal => tjugo}} ;
 oper regTal : Str -> LinDigit = \fem -> mkTal fem (fem + "ten") (fem + "ti") ;
 oper ss : Str -> {s : Str} = \s -> {s = s} ;
 
@@ -24,11 +24,11 @@ lin num x = x ;
 
 lin n2 = mkTal "to"  "tolv"    "tjue" ;
 lin n3 = mkTal "tre"  "tretten" "tretti" ;
-lin n4 = mkTal "fire" "fjorten" "førti" ;
+lin n4 = mkTal "fire" "fjorten" "fÃ¸rti" ;
 lin n5 = regTal "fem" ;
 lin n6 = regTal "seks" ;
 lin n7 = mkTal "sju"  "sytten" "sytti" ;
-lin n8 = mkTal "åtte" "atten"   "åtti" ;
+lin n8 = mkTal "Ã¥tte" "atten"   "Ã¥tti" ;
 lin n9 = mkTal "ni"  "nitten"   "nitti" ;
 
 lin pot01 = {s = table {f => "ett"}} ;
