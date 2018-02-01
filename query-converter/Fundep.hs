@@ -32,6 +32,10 @@ follows deps xs a = or [subset args xs | (args,b) <- deps, b == a]
 closureFundep :: Relation -> [Fundep]
 closureFundep rel@(allAttrs,(deps,_)) = [(xs, a) | xs <- subsets allAttrs, a <- closure rel xs, notElem a xs]
 
+--- partial closure, replacing the exponential closureFundep in some places
+optClosureFundep :: Relation -> [Fundep]
+optClosureFundep rel@(allAttrs,(deps,_)) = deps
+
 -- one minimal basis of functional dependencies FD has the FD in its closure but no smaller one does
 -- algorithm from http://stackoverflow.com/questions/10284004/minimal-cover-and-functional-dependencies
 basisFundep :: Relation -> [Fundep]
@@ -90,7 +94,7 @@ isTrivialFundep rel@(attrs,_) fd@(xs,a) = elem a xs
 -- find violations of the Boyce-Codd Normal Form
 violateBCNF :: Relation -> [Fundep]
 violateBCNF rel@(_,(deps,_)) = [dep |
-  dep@(args,val) <- closureFundep rel,
+  dep@(args,val) <- optClosureFundep rel,
   not (isTrivialFundep rel dep),
   not (isSuperkey rel args)]
 
@@ -101,7 +105,7 @@ isBCNF rel = null (violateBCNF rel)
 -- find violations of the Third Normal Form
 violate3NF :: Relation -> [Fundep]
 violate3NF rel@(_,(deps,_)) =
-  [dep | dep@(args,val) <- closureFundep rel, not (isSuperkey rel args || isPrime rel val)]
+  [dep | dep@(args,val) <- optClosureFundep rel, not (isSuperkey rel args || isPrime rel val)]
 
 -- check if a relation is in the Third Normal Form
 is3NF :: Relation -> Bool
@@ -110,7 +114,7 @@ is3NF rel = null (violate3NF rel)
 -- find violations of the Fourth Normal Form
 violate4NF :: Relation -> [Multidep]
 violate4NF rel@(_,(deps,mvds)) = [dep |
-  dep@(xs,ys) <- mvds ++ [(xs,[y]) | (xs,y) <- closureFundep rel],
+  dep@(xs,ys) <- mvds ++ [(xs,[y]) | (xs,y) <- optClosureFundep rel],
   not (isSuperkey rel xs),
   not (isTrivialMultidep rel dep)]
 
@@ -139,7 +143,7 @@ normalizeBCNF rel = case violateBCNF rel of
 restrictRel :: Relation -> [Attr] -> Relation
 restrictRel rel@(_,(fundeps,mvds)) attrs =
   (attrs,
-   ([(xs,a)  | (xs,a)  <- closureFundep rel,    subset (a:xs) attrs],
+   ([(xs,a)  | (xs,a)  <- optClosureFundep rel,    subset (a:xs) attrs],
     [(xs,ys) | (xs,ys) <- closureMultidep rel,  subset (ys ++ xs) attrs])) 
 
 -- bring relation to 3NF
@@ -216,17 +220,17 @@ prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
 ----  "Superkeys:",
 ----  unlines (map unwords (superkeys rel)),
   "Keys:",
-  unlines (map unwords (keys rel)),
+  unlines $ (map unwords (keys rel)),
   "3NF violations:",
-  unlines (map prFundep (violate3NF rel)),
+  unlines $ (map prFundep (violate3NF rel)),
   "BCNF violations:",
   case violateBCNF rel of
     [] -> "none"
-    vs -> unlines (map prFundep vs),
+    vs -> unlines $ (map prFundep vs),
   "4NF violations:",
   case violate4NF rel of
     [] -> "none"
-    vs -> unlines (map prMultidep vs)
+    vs -> unlines $ (map prMultidep vs)
   ]
 
 ----
