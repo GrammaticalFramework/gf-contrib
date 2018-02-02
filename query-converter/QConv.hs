@@ -45,14 +45,21 @@ loop env@(senv, xmls) = do
       file2ER file
       loop env
     "f":file:_ -> do
-      rel <- readFile file >>= return . pRelation . lines
-      putStrLn $ prRelationInfo rel
+      rs <- readFile file >>= return . lines
+      case pRelation rs of
+        Left  rel -> putStrLn $ prRelationInfo rel
+        Right msg -> putStrLn $ msg
       loop env
     "n":file:_ -> do
-      rel@(_,(_,mvds)) <- readFile file >>= return . pRelation . lines
-      sequence [do putStrLn hdr
-                   putStrLn output
-                | (hdr,output) <- prNormalizations rel]
+      rs <- readFile file >>= return . lines
+      case pRelation rs of
+        Left (rel@(_,(_,mvds))) -> do
+            sequence [do
+              putStrLn hdr
+              putStrLn output
+                      | (hdr,output) <- prNormalizations rel]
+            return ()
+        Right msg -> putStrLn msg
       loop env
     "h":[] -> do
       putStrLn helpMsg
