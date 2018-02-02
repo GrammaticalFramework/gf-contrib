@@ -34,11 +34,14 @@ qconvCGI cmd =
                   h3 "In English (not necessarily perfect)"++
                   bullets "schema" (lines (erdiagram2text e))
       "nf" -> do src <- getRequiredInput "file"
-                 let rel = pRelation (lines src)
-                 outputHTML $
-                   h3 "Dependencies and keys" ++
-                   pre_cls "nf" (prRelationInfo rel) ++
-                   unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormalizations rel]
+                 let erel = pRelation (lines src)
+                 case erel of
+                   Right msg -> outputHTML msg
+                   Left rel ->
+                     outputHTML $
+                       h3 "Dependencies and keys" ++
+                       pre_cls "nf" (prRelationInfo rel) ++
+                       unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormalizations rel]
       "a" -> do src <- getRequiredInput "file"
                 alg2html initSEnv src
                              
