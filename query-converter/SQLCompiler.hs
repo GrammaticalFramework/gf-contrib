@@ -31,6 +31,7 @@ putRel = putStrLn . Alg.prRel
 type Result = String ----
 
 failure x = error $ "Not available in algebra: " ++ printTree x
+failureC c x = error $ "Cannot handle " ++ c ++ ": " ++ printTree x
 
 transId :: Ident -> Rel.Id
 transId = Alg.ident2id . transIdent
@@ -173,8 +174,8 @@ transCondition :: Condition -> A.Cond
 transCondition x = case x of
   COper exp1 oper compared  -> transCompared compared (transOper oper (transExp exp1))
   CNot c  -> A.CNot (transCondition c)
-  CExists not table  -> failure x
-  CIsNull exp not -> failure x
+  CExists not table  -> failureC "subquery in a condition" x
+  CIsNull exp not -> transNot not $ A.CEq (transExp exp) (A.EIdent (A.Ident "NULL"))
   CBetween exp1 not2 exp2 exp3  -> transNot not2 $ A.CAnd (A.CLeq (transExp exp2) (transExp exp1)) (A.CLeq (transExp exp1) (transExp exp3))
   CIn exp not2 values -> transNot not2 $ foldl1 A.COr [A.CEq (transExp exp) te | te <- transValues values] 
   CAnd c1 c2  -> A.CAnd (transCondition c1) (transCondition c2)
@@ -188,8 +189,8 @@ transNot x = case x of
 transCompared :: Compared -> (A.Exp -> A.Cond) -> A.Cond
 transCompared x op = case x of
   ComExp exp  -> op (transExp exp)
-  ComAny values  -> failure x
-  ComAll values  -> failure x
+  ComAny values  -> foldl1 A.COr  [op te | te <- transValues values] 
+  ComAll values  -> foldl1 A.CAnd [op te | te <- transValues values] 
 
 transExp :: Exp -> A.Exp
 transExp x = case x of
@@ -201,7 +202,7 @@ transExp x = case x of
   EString str    -> A.EString str
   ENull          -> A.EIdent (A.Ident "NULL")
   EDefault       -> A.EIdent (A.Ident "DEFAULT")
-  EQuery query   -> failure x
+  EQuery query   -> failureC "subquery as expression" x
   EAggr op dist arg -> Alg.projectionExp $ A.EAggr (transAggrOper op) (transDistinct dist) (exp2Ident arg)  -- refer to column in groups
   EAggrAll op dist   -> Alg.projectionExp $ A.EAggr (transAggrOper op)  (transDistinct dist) starIdent
   EMul exp1 exp2  -> A.EMul (transExp exp1) (transExp exp2)
@@ -230,7 +231,7 @@ transAll x = case x of
 
 transJoinOn :: JoinOn -> [A.Ident] 
 transJoinOn x = case x of
-  JOCondition condition  -> failure x ---- not A.Ident
+  JOCondition condition  -> failureC "join condition yet (but join using attributes works)" x ---- not A.Ident
   JOUsing ids  -> map transIdent ids
 
 
