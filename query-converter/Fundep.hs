@@ -177,12 +177,12 @@ closureMultidep rel@(_,(fundeps,mvds)) = mvds ---- TODO
 ------------ printing and parsing
 
 -- get a relation from a list of lines: the attribute list plus a list of functional dependencies
-pRelation :: [String] -> Relation
+pRelation :: [String] -> Either Relation String
 pRelation rs = case rs of
-  [] -> error "empty relation"
+  [] -> Right "empty relation"
   s:ss -> case filter (flip notElem attrs) depattrs of
-    [] -> rel
-    xs -> error $ "unknown attributes in dependencies: " ++ unwords xs
+    [] -> Left rel
+    xs -> Right $ "unknown attributes in dependencies: " ++ unwords xs
    where
     rel = (attrs, (deps,multideps))
     attrs = words s
