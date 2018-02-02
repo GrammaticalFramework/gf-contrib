@@ -178,7 +178,18 @@ closureMultidep rel@(_,(fundeps,mvds)) = mvds ---- TODO
 
 -- get a relation from a list of lines: the attribute list plus a list of functional dependencies
 pRelation :: [String] -> Relation
-pRelation (s:ss) = (words s, (concatMap pDeps ss, concatMap pMultideps ss))
+pRelation rs = case rs of
+  [] -> error "empty relation"
+  s:ss -> case filter (flip notElem attrs) depattrs of
+    [] -> rel
+    xs -> error $ "unknown attributes in dependencies: " ++ unwords xs
+   where
+    rel = (attrs, (deps,multideps))
+    attrs = words s
+    depattrs = L.nub $ concat $ [a:xs | (xs,a) <- deps] ++ [ys++xs | (xs,ys) <- multideps]
+    deps = concatMap pDeps ss
+    multideps = concatMap pMultideps ss
+  
 
 -- get a set of fundeps from a string of the form "A B C -> D E" ; spaces around elements required
 pDeps :: String -> [Fundep]
@@ -210,8 +221,61 @@ prRelation rel@(attrs,(fundeps,mvds)) = unlines [
                else unlines ("Multivalued dependencies:": map prMultidep mvds ++ [""])
   ]
 
+
+--------- shown in CGI 2/2/2018
+
 prRelationInfo :: Relation -> String
 prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
+  prRelation rel,
+---  "A minimal basis of functional dependencies:",
+---  unlines (map prFundep (basisFundep rel)),
+----  "Derived functional dependencies:",
+----  unlines (map prFundep (filter (flip notElem fundeps) (closureFundep rel))),
+----  "Superkeys:",
+----  unlines (map unwords (superkeys rel)),
+  "Keys:",
+  unlines $ (map unwords (keys rel)),
+---  "3NF violations:",
+---  unlines $ (map prFundep (violate3NF rel)),
+  "BCNF violations:",
+  case violateBCNF rel of
+    [] -> "none"
+    vs -> unlines $ (map prFundep vs),
+  "4NF violations:",
+  case violate4NF rel of
+    [] -> "none"
+    vs | null mvds -> "none except the BCNF violations"
+    vs -> unlines $ (map prMultidep vs)
+  ]
+
+
+prNormalizations rel@(_,(_,mvds)) =
+  [("BCNF decomposition:",
+    let rels = normalizeBCNF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))]
+  ++
+  if null mvds then [] else
+  [("4NF decomposition (experimental feature):",
+    let rels = normalize4NF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))
+   | not (null mvds)]
+
+----- disabled for the time being to speed up processing. AR 2/2/2018
+
+prAllNormalizations rel@(_,(_,mvds)) =
+  prNormalizations rel
+  ++
+  [("3NF decomposition (experimental feature):",
+    let rels = normalize3NF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))] 
+  ++
+  [("4NF decomposition (experimental feature):",
+    let rels = normalize4NF rel
+    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))
+   | not (null mvds)]
+
+prFullRelationInfo :: Relation -> String
+prFullRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
   prRelation rel,
   "A minimal basis of functional dependencies:",
   unlines (map prFundep (basisFundep rel)),
@@ -230,20 +294,6 @@ prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
   "4NF violations:",
   case violate4NF rel of
     [] -> "none"
+    vs | null mvds -> "none except the BCNF violations"
     vs -> unlines $ (map prMultidep vs)
   ]
-
-----
-
-prNormalizations rel@(_,(_,mvds)) =
-  [("3NF decomposition (experimental feature):",
-    let rels = normalize3NF rel
-    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels)),
-   ("BCNF decomposition:",
-    let rels = normalizeBCNF rel
-    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))]
-  ++
-  [("4NF decomposition (experimental feature):",
-    let rels = normalize4NF rel
-    in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))
-   | not (null mvds)]
