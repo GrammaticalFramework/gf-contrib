@@ -30,7 +30,7 @@ putRel = putStrLn . Alg.prRel
 
 type Result = String ----
 
-failure x = error $ "not yet " ++ show x
+failure x = error $ "Not available in algebra: " ++ printTree x
 
 transId :: Ident -> Rel.Id
 transId = Alg.ident2id . transIdent
