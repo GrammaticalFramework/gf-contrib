@@ -20,19 +20,19 @@
 <p>
 
 <main>
-<h2>Functional Dependencies, Keys &amp; BCNF Normalization</h2>
+<h2>Third and Fourth Normal Forms</h2>
 
 <form id=ERform action="qconv.cgi">
 <table>
 <tr><td colspan=2>
-<input type="hidden" name="command" value="nf">
+<input type="hidden" name="command" value="enf">
 <label>1. Enter the functional dependencies below, or </label>
 <input id=example1 type=button value="Use an example">,
 <label>or upload a file:</label>
 <input id=browse type=file accept="text/plain">
 <tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
 <tr><td><label>2. <input type=submit value="Show…">
-…Functional Dependencies, Keys &amp; BCNF Normalization</label>
+…3NF, 4NF</label>
 <td style="text-align: right"><input type=reset value="Clear">
 </table>
 </form>
@@ -43,7 +43,7 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Mon Feb  5 14:14:54 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Thu Jan 25 18:01:49 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -53,7 +53,7 @@ example1.onclick=function() {
 	      "A -> B",
 	      "B -> C",
 	      "A -> C",
-	      "B D -> A"].join("\n")
+	      "B D ->> A"].join("\n")
 }
 browse.onchange=function() {
     var files=browse.files
@@ -76,3 +76,20 @@ var instructions=ERdiagram.innerHTML
 </script>
 </body>
 </html>
+
+
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+</head>
+
+<body>
+<h1></h1>
+
+
+
+<hr>
+<address></address>
+<!-- hhmts start -->Last modified: Mon Feb  5 14:14:00 CET 2018 <!-- hhmts end -->
+</body> </html>
