@@ -7,7 +7,7 @@ import System.Environment(getEnv,setEnv)
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
 
 import Design
-import Fundep(prRelationInfo,pRelation,prNormalizations)
+import Fundep(prRelationInfo,pRelation,prNormalizations,prOtherNormalizations)
 import SQLCompiler(initSEnv,transQuery)
 import MinSQL(parseQuery,printSQL)
 import OptimizeAlgebra(pushSelect)
@@ -42,6 +42,15 @@ qconvCGI cmd =
                        h3 "Dependencies and keys" ++
                        pre_cls "nf" (prRelationInfo rel) ++
                        unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormalizations rel]
+      "enf"-> do src <- getRequiredInput "file"
+                 let erel = pRelation (lines src)
+                 case erel of
+                   Right msg -> outputHTML msg
+                   Left rel ->
+                     outputHTML $
+                       h3 "Dependencies and keys" ++
+                       pre_cls "nf" (prRelationInfo rel) ++
+                       unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prOtherNormalizations rel]
       "a" -> do src <- getRequiredInput "file"
                 alg2html initSEnv src
                              

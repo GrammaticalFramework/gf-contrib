@@ -265,6 +265,9 @@ prNormalizations rel@(_,(_,mvds)) =
 prAllNormalizations rel@(_,(_,mvds)) =
   prNormalizations rel
   ++
+  prOtherNormalizations rel
+
+prOtherNormalizations rel@(_,(_,mvds)) =
   [("3NF decomposition (experimental feature):",
     let rels = normalize3NF rel
     in unlines $ map (\ (i,r) -> i : ". " ++ prRelation r) (zip ['1'..] rels))] 
