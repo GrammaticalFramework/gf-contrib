@@ -61,7 +61,7 @@ alg2html env src =
                outputHTML $
                  h3 "Source" ++ pre_cls "sql" cs ++
                  h3 "Original query" ++ div_cls "relalg" h ++
-                 h3 "Optimized query" ++ div_cls "relalg" oh ++
+--                 h3 "Optimized query" ++ div_cls "relalg" oh ++
                  h3 "Tree diagram for original query" ++ svg
 
 getRequiredInput name = maybe (missing name) return =<< getTextInput name
