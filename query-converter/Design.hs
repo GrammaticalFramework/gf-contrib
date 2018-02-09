@@ -189,7 +189,7 @@ data Relation = Rel {
 relation :: Ident -> Relation
 relation name = Rel name [] [] []
 
-type Reference = (Ident,(Ident,Ident))   -- x -> y.z
+type Reference = ([Ident],(Ident,[Ident]))   -- (a,b) -> x.(u,v)
 
 type FunDep = ([Ident],Ident)
 
@@ -200,10 +200,13 @@ prRelation :: Relation -> [String]
 prRelation r = [
   name r ++ "(" ++ concat (intersperse "," (map prAttr (attributes r))) ++ ")"
   ] ++ [
-  "  " ++ x ++ " -> " ++ y ++ "." ++ z | (x,(y,z)) <- references r
+  "  " ++ prTuple x ++ " -> " ++ y ++ "." ++ prTuple z | (x,(y,z)) <- references r
   ]
  where
    prAttr (a,b) = if b then "_" ++ a else a
+   prTuple xs = case xs of
+     [x] -> x
+     _ -> "(" ++ concat (intersperse "," xs) ++ ")"
 
 
 --------------- translate E-R to schema
@@ -218,24 +221,24 @@ erdiagram2schema sty er = map trSchema (filter (not . isFunction) er)
     trSchema e = case e of
       EEntity (EWeak strongrels) name attrs -> (relation name){
         attributes = attrs ++ [(ifqualif strongrels rel (qualif strong k), True)       | (strong,rel) <- strongrels, k <- keys strong],
-        references =          [(ifqualif strongrels rel (qualif strong k), (strong,k)) | (strong,rel) <- strongrels, k <- keys strong]
+        references =          [(map (ifqualif strongrels rel . (qualif strong)) ks, (strong,ks)) | (strong,rel) <- strongrels, let ks = keys strong]
         }
       EEntity EStrong name attrs -> 
-          let exacts = [(k,b) | fab@(f,(a,b)) <- functions, a == name, k <- keys b] 
+          let exacts = [(ks,b) | fab@(f,(a,b)) <- functions, a == name, let ks = keys b] 
           in (relation name){
         attributes = attrs ++ 
-                     [(qualif b k,False) | (k,b) <- exacts],
-        references = [(qualif b k,(b,k)) | (k,b) <- exacts]
+                     [(qualif b k,False) | (ks,b) <- exacts, k <- ks],
+        references = [(map (qualif b) ks,(b,ks)) | (ks,b) <- exacts]
         }
       ESubEntity strength name y attrs -> case sty of
         _ -> let kys = keys y in
              (relation name){
                attributes = [(k,True) | k <- kys] ++ [(a,False) | a <- attrs],
-               references = [(k,(y,k)) | k <- kys]
+               references = [(kys,(y,kys))]
                } ---- just er style
       ERelationship name ents attrs -> (relation name){
         attributes = [(mqualif ents n mi e k,status arr)  | ((e,(arr,mi)),n) <- zip ents [1..], k <- keys e] ++ [(a,False) | a <- attrs],
-        references = [(mqualif ents n mi e k,(e,k))       | ((e,(arr,mi)),n) <- zip ents [1..], k <- keys e]
+        references = [(map (mqualif ents n mi e) ks,(e,ks))       | ((e,(arr,mi)),n) <- zip ents [1..], let ks = keys e]
         }
     keys y = case lookup y entitiesWithKeys of
       Just (e,ks) -> case e of
