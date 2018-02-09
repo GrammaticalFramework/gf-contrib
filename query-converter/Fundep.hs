@@ -34,7 +34,8 @@ closureFundep rel@(allAttrs,(deps,_)) = [(xs, a) | xs <- subsets allAttrs, a <- 
 
 --- partial closure, replacing the exponential closureFundep in some places
 optClosureFundep :: Relation -> [Fundep]
-optClosureFundep rel@(allAttrs,(deps,_)) = deps
+--optClosureFundep rel@(allAttrs,(deps,_)) = deps
+optClosureFundep = closureFundep
 
 -- one minimal basis of functional dependencies FD has the FD in its closure but no smaller one does
 -- algorithm from http://stackoverflow.com/questions/10284004/minimal-cover-and-functional-dependencies
