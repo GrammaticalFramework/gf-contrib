@@ -238,15 +238,15 @@ prRelationInfo rel@(attrs,(fundeps,mvds)) = unlines [
   unlines $ (map unwords (keys rel)),
 ---  "3NF violations:",
 ---  unlines $ (map prFundep (violate3NF rel)),
-  "BCNF violations:",
+  "BCNF violations (the first 11):",
   case violateBCNF rel of
     [] -> "none"
-    vs -> unlines $ (map prFundep vs),
-  "4NF violations:",
+    vs -> unlines $ take 11 (map prFundep vs),
+  "4NF violations (the first 11):",
   case violate4NF rel of
     [] -> "none"
     vs | null mvds -> "none except the BCNF violations"
-    vs -> unlines $ (map prMultidep vs)
+    vs -> unlines $ take 11 (map prMultidep vs)
   ]
 
 
