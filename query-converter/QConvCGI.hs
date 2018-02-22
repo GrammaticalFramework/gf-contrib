@@ -1,17 +1,19 @@
 module QConvCGI where
 import qualified Control.Exception as E
+import Control.Monad.Writer(runWriter)
+import Control.Monad.Except(runExceptT)
 import Data.Typeable(cast)
 import Network.CGI
 import System.Process(readProcess)
 import System.Environment(getEnv,setEnv)
 import qualified Codec.Binary.UTF8.String as UTF8 (encodeString,decodeString)
-
+import Data.List(isPrefixOf)
 import Design
 import Fundep(prRelationInfo,pRelation,prNormalizations,prOtherNormalizations)
-import SQLCompiler(initSEnv,transQuery)
-import MinSQL(parseQuery,printSQL)
+import SQLCompiler(initSEnv,transQuery,transScript')
+import MinSQL(parseQuery,parseScript,printSQL)
 import OptimizeAlgebra(pushSelect)
-import Algebra(prRelHtml)
+import Algebra(prRelHtml,fmtRelHtml)
 import AlgebraTree(prRelTree)
 import ErrM(Err(..))
 
@@ -53,7 +55,17 @@ qconvCGI cmd =
                        unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prOtherNormalizations rel]
       "a" -> do src <- getRequiredInput "file"
                 alg2html initSEnv src
-                             
+      "i" -> do src <- getRequiredInput "file"
+                case parseScript src of
+                  Bad e -> outputHTML e
+                  Ok sql ->
+                    do let (r,ls0) = runWriter . runExceptT $
+                                     transScript' initSEnv sql
+                           ls = lines (unlines ls0)
+                       outputHTML $
+                         h3 "SQL interpreter output" ++
+                         div_cls "output" (unlines (tablesToHTML ls)) ++
+                         either (wrap_cls "span" "error") (const "") r
       "hello" -> outputPlain "Hello!\n"
       _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
 
@@ -72,6 +84,20 @@ alg2html env src =
                  h3 "Original query" ++ div_cls "relalg" h ++
 --                 h3 "Optimized query" ++ div_cls "relalg" oh ++
                  h3 "Tree diagram for original query" ++ svg
+
+tablesToHTML [] = []
+tablesToHTML ("":ls) = "<p>":tablesToHTML ls
+tablesToHTML (l:ls)
+    | "##" `isPrefixOf` l = wrap "h4" (drop 2 l):tablesToHTML ls
+    | "|" `isPrefixOf` l =
+        case span (isPrefixOf "|") ls of
+          (ls1,ls2) -> table (l:ls1):tablesToHTML ls2
+    | otherwise = fmtRelHtml l:tablesToHTML ls
+  where
+   table = wrap_cls "table" "table" . concatMap row
+   row s = "\n<tr>"++concatMap cell s
+   cell '|' = "<td>"
+   cell c = [c]
 
 getRequiredInput name = maybe (missing name) return =<< getTextInput name
 

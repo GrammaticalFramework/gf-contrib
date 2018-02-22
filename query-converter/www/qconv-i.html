@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html> <head>
-<title>Query-converter – Functional Dependencies, Keys &amp; Normalization</title>
+<title>Query-converter – SQL interpreter</title>
 <meta charset="UTF-8">
 <meta name = "viewport" content = "width = device-width">
 <link rel=stylesheet href="qconv.css" title="QConv">
@@ -15,26 +15,25 @@
 <nav>
 <a href="./qconv-er.html">ER modelling</a> |
 <a href="./qconv-nf.html">BCNF analysis</a> |
-<b>3NF and 4NF analysis</b> |
+<a href="./qconv-enf.html">3NF and 4NF analysis</a> |
 <a href="./qconv-a.html">Relational Algebra</a> |
-<a href="./qconv-i.html">SQL Interpreter</a> 
+<b>SQL Interpreter</b> 
 </nav>
 
 <main>
 
-<h2>Third and Fourth Normal Forms</h2>
+<h2>SQL interpreter</h2>
 
 <form id=ERform action="qconv.cgi">
 <table>
 <tr><td colspan=2>
-<input type="hidden" name="command" value="enf">
-<label>1. Enter the functional dependencies below, or </label>
-<input id=example1 type=button value="Use an example">,
+<input type="hidden" name="command" value="i">
+<label>1. Enter the SQL script below, or </label>
+<input id=example1 type=button value="Use an SQL example">,
 <label>or upload a file:</label>
-<input id=browse type=file accept="text/plain">
+<input id=browse type=file> <!-- accept="text/plain"-->
 <tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
-<tr><td><label>2. <input type=submit value="Show…">
-…3NF, 4NF</label>
+<tr><td><label>2. <input type=submit value="Run SQL script"></label>
 <td style="text-align: right"><input type=reset value="Clear">
 </table>
 </form>
@@ -45,17 +44,24 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Feb 22 15:21:29 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Thu Feb 22 15:21:51 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
 <script>
 example1.onclick=function() {
-  file.value=["A B C D",
-	      "A -> B",
-	      "B -> C",
-	      "A -> C",
-	      "B D ->> A"].join("\n")
+  file.value=["CREATE TABLE Teachers (",
+	      "  name VARCHAR(32),",
+              "  title VARCHAR(16)",
+	      ") ;",
+              "",
+	      "INSERT INTO Teachers VALUES ('Kemp','professor') ;",
+	      "INSERT INTO Teachers VALUES ('Ranta','professor') ;",
+	      "INSERT INTO Teachers VALUES ('Abel','associate professor') ;",
+	      "INSERT INTO Teachers VALUES ('Wolowitz','research engineer') ;",
+              "",
+              "SELECT name FROM Teachers WHERE title LIKE '%professor' ;"]
+              .join("\n")
 }
 browse.onchange=function() {
     var files=browse.files

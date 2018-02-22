@@ -1,16 +1,27 @@
-body { background: #eee; }
-h1,h2,h3,small { color: #007; font-family: sans-serif; }
+body { background: #eee; margin: 0; }
+nav>a, nav>b { font-family: sans-serif; }
+header>h1 { margin: 0; }
+header { padding: 0.5ex; }
+header, nav { text-align: center; background: white; }
+nav { border-bottom: 1px solid black; }
+main, footer { margin: 0 5px; }
+
+h1,h2,h3,h4,small { color: #007; font-family: sans-serif; }
 h1,h2,h3 { text-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
 .modtime { text-align:right; opacity: 0.6; }
 
 label { font-size: 9pt; font-family: sans-serif; }
 .reference { background: #ffd; }
-.schema, .nf, .sql, .relalg { background: white; }
-.schema, .nf, .sql, .relalg { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
-pre { margin: 5px; padding: 5px; }
+.schema, .nf, .sql, .relalg, .output { background: white; }
+.schema, .nf, .sql, .relalg, .output { box-shadow: rgba(0,0,7,0.25) 2px 2px 5px; }
+pre, div.output { margin: 5px; padding: 5px; }
 ul.schema { margin: 5px; padding-top: 5px; padding-bottom: 5px; }
 .error { color: red; }
 
 svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
 
 li { margin-top: 0.75ex; margin-bottom: 0.75ex; }
+
+table.table { border-collapse: collapse; background: #ffe; }
+table.table tr:first-child { background: #def; }
+table.table td { border: 1px solid black; }
