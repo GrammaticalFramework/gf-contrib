@@ -33,7 +33,10 @@ prRelLatex = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
 
 
 prRelHtml :: Rel -> String
-prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . rParSep . printTree
+prRelHtml = fmtRelHtml . printTree
+
+fmtRelHtml :: String -> String
+fmtRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words . lines . rParSep
  where
   splitToLines l s = case s of   -- split at each operator
     ('(':o) : ws | operator o -> (if null l then [] else [unwords (reverse l)])
@@ -47,8 +50,8 @@ prRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap words
   operator o = elem o ops
   opHtml o = maybe o id $ lookup o opsConv
   opsConv = zip ops opsHtml
-  ops = ["\\sigma_{","\\pi_{","\\rho_{","\\gamma_{","\\tau_{"]
-  opsHtml = ["σ<sub>","π<sub>","ρ<sub>","γ<sub>","τ<sub>"]
+  ops = ["\\sigma_{","\\pi_{","\\rho_{","\\gamma_{","\\gamma_{,","\\tau_{"]
+  opsHtml = ["σ<sub>","π<sub>","ρ<sub>","γ<sub>","γ<sub>","τ<sub>"]
   symbol w = elem w symbols
   symbolHtml w = maybe w id $ lookup w symbolsConv
   symbolsConv = zip symbols symbolsHtml
