@@ -39,7 +39,10 @@
 </table>
 </form>
 <div id=ERdiagram>
-<h3>Design syntax</h3>
+</div>
+<div>
+<h3>Design Syntax Reference</h3>
+<img title="Pop out" alt="[Pop out]" class=right id=btn width=16 height=16 src="popout-32x32">
 <pre class=reference>
 Diagram ::= Element+
 
@@ -66,7 +69,7 @@ Diagram ::= Element+
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Feb 22 15:21:43 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Mon Feb 26 14:12:11 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -94,8 +97,12 @@ ERform.onsubmit=function(event) {
     http.send(fd)
     return false
 }
-ERform.onreset=function() { ERdiagram.innerHTML=instructions }
-var instructions=ERdiagram.innerHTML
+ERform.onreset=function() { ERdiagram.innerHTML="" }
+
+btn.onclick=function(){
+  window.open("ersyntax.html","reference",
+              "toolbar=no,location=no,status=no,menubar=no")
+}
 </script>
 </body>
 </html>

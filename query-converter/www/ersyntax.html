@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ER Design Syntax Reference</title>
+<meta charset="UTF-8">
+<meta name = "viewport" content = "width = device-width">
+<link rel=stylesheet href="qconv.css" title="QConv">
+</head>
+
+<body>
+<main>
+<div>
+<h3>Design Syntax Reference</h3>
+<pre class=reference>
+Diagram ::= Element+
+
+  Element ::=
+     "ENTITY"        Name                 Attributes
+   | "WEAK" "ENTITY" Name Support+        Attributes
+   | "ISA"           Name SuperEntity     Attributes
+   | "RELATIONSHIP"  Name RelatedEntity+  Attributes
+
+  Attributes ::=
+     ":" Attribute*            # attributes start after colon 
+   |                           # no attributes at all, no colon needed
+    
+  RelatedEntity ::= Arrow Entity ("(" Role ")")?   # optional role in parentheses
+  Support ::= Entity WeakRelationship
+  
+  Arrow ::= "--" | "->" | "-)"
+  Attribute ::= Ident | "_"Ident
+  Entity, SuperEntity, Relationship, WeakRelationship, Role ::= Ident
+</pre>
+</div>
+
+</main>
