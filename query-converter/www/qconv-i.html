@@ -26,14 +26,19 @@
 
 <form id=ERform action="qconv.cgi">
 <table>
-<tr><td colspan=2>
+<tr><td class=label>1.<td colspan=2>
 <input type="hidden" name="command" value="i">
-<label>1. Enter the SQL script below, or </label>
+<label>Enter the SQL script below, or </label>
 <input id=example1 type=button value="Use an SQL example">,
 <label>or upload a file:</label>
 <input id=browse type=file> <!-- accept="text/plain"-->
-<tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
-<tr><td><label>2. <input type=submit value="Run SQL script"></label>
+<tr><td><td colspan=2><textarea id=file name=file rows=11 cols=72></textarea>
+  <tr><td class=label>2.<td colspan=2><label><input name=queryResults type=checkbox checked>
+    Include query results in the output</label>
+  <tr><td><td colspan=2>
+    <label><input name=xmlDocument type=checkbox checked>
+    Include XML representation of final database in the output</label>
+<tr><td class=label>3.<td><label><input type=submit value="Run SQL script"></label>
 <td style="text-align: right"><input type=reset value="Clear">
 </table>
 </form>
@@ -44,7 +49,7 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Feb 22 15:21:51 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Tue Feb 27 17:00:58 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>

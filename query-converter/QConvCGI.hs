@@ -11,6 +11,8 @@ import Data.List(isPrefixOf)
 import Design
 import Fundep(prRelationInfo,pRelation,prNormalizations,prOtherNormalizations)
 import SQLCompiler(initSEnv,transQuery,transScript')
+import Relation2XML(env2document)
+import ValidateXML(printXML)
 import MinSQL(parseQuery,parseScript,printSQL)
 import OptimizeAlgebra(pushSelect)
 import Algebra(prRelHtml,fmtRelHtml)
@@ -20,54 +22,40 @@ import ErrM(Err(..))
 main = runCGI $ handleErrors $ handleCGIErrors $
                 do liftIO fixPath
                    qconvCGI =<< getRequiredInput "command"
-  where
-    fixPath = setEnv "PATH" . ("/usr/local/bin:"++) =<< getEnv "PATH"
+  where    fixPath = setEnv "PATH" . ("/usr/local/bin:"++) =<< getEnv "PATH"
 
 qconvCGI cmd =
-    case cmd of
-      "d" -> do src <- getRequiredInput "file"
-                let e = parseER src
-                    dot = prERDiagram e
-                svg <- liftIO $ readProcess "fdp" ["-Tsvg"] dot
-                outputHTML $
-                  h3 "E-R diagram" ++ svg ++
-                  h3 "Database schema" ++
-                  pre_cls "schema" (prSchema (erdiagram2schema SER e)) ++
-                  h3 "In English (not necessarily perfect)"++
-                  bullets "schema" (lines (erdiagram2text e))
-      "nf" -> do src <- getRequiredInput "file"
-                 let erel = pRelation (lines src)
-                 case erel of
-                   Right msg -> outputHTML msg
-                   Left rel ->
-                     outputHTML $
-                       h3 "Dependencies and keys" ++
-                       pre_cls "nf" (prRelationInfo rel) ++
-                       unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormalizations rel]
-      "enf"-> do src <- getRequiredInput "file"
-                 let erel = pRelation (lines src)
-                 case erel of
-                   Right msg -> outputHTML msg
-                   Left rel ->
-                     outputHTML $
-                       h3 "Dependencies and keys" ++
-                       pre_cls "nf" (prRelationInfo rel) ++
-                       unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prOtherNormalizations rel]
-      "a" -> do src <- getRequiredInput "file"
-                alg2html initSEnv src
-      "i" -> do src <- getRequiredInput "file"
-                case parseScript src of
-                  Bad e -> outputHTML e
-                  Ok sql ->
-                    do let (r,ls0) = runWriter . runExceptT $
-                                     transScript' initSEnv sql
-                           ls = lines (unlines ls0)
-                       outputHTML $
-                         h3 "SQL interpreter output" ++
-                         div_cls "output" (unlines (tablesToHTML ls)) ++
-                         either (wrap_cls "span" "error") (const "") r
-      "hello" -> outputPlain "Hello!\n"
-      _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
+  case cmd of
+    "d" -> design2html =<< getFile
+    "nf" -> normalizations2html prNormalizations =<< getFile
+    "enf"-> normalizations2html prOtherNormalizations =<< getFile
+    "a" -> alg2html initSEnv =<< getFile
+    "i" -> do src <- getFile
+              queryResults <- getChecked "queryResults"
+              xmlDocument <- getChecked "xmlDocument"
+              outputHTML $ runSqlInterpreter src queryResults xmlDocument
+    "hello" -> outputPlain "Hello!\n"
+    _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
+
+design2html src =
+  do let e = parseER src
+         dot = prERDiagram e
+     svg <- liftIO $ readProcess "fdp" ["-Tsvg"] dot
+     outputHTML $
+       h3 "E-R diagram" ++ svg ++
+       h3 "Database schema" ++
+       pre_cls "schema" (prSchema (erdiagram2schema SER e)) ++
+       h3 "In English (not necessarily perfect)"++
+       bullets "schema" (lines (erdiagram2text e))
+
+normalizations2html prNormRel src =
+  case pRelation (lines src) of
+    Right msg -> outputHTML msg
+    Left rel ->
+      outputHTML $
+        h3 "Dependencies and keys" ++
+        pre_cls "nf" (prRelationInfo rel) ++
+        unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormRel rel]
 
 alg2html env src =
   case parseQuery src of
@@ -85,10 +73,30 @@ alg2html env src =
 --                 h3 "Optimized query" ++ div_cls "relalg" oh ++
                  h3 "Tree diagram for original query" ++ svg
 
+runSqlInterpreter src queryResults xmlDocument =
+    case parseScript src of
+      Bad e  -> e
+      Ok sql -> optional queryResults results ++
+                either (wrap_cls "span" "error") outputXML r
+        where
+          results =
+            h3 "SQL interpreter output" ++
+            div_cls "output" (unlines (tablesToHTML ls))
+
+          (r,ls0) = runWriter . runExceptT $ transScript' initSEnv sql
+          ls = lines (unlines ls0)
+
+          outputXML senv =
+              optional xmlDocument $
+              h3 "XML representation of final database" ++
+              pre_cls "output" (plain2html (printXML xml))
+            where
+              xml = env2document "QConvData" senv
+
 tablesToHTML [] = []
 tablesToHTML ("":ls) = "<p>":tablesToHTML ls
 tablesToHTML (l:ls)
-    | "##" `isPrefixOf` l = wrap "h4" (drop 2 l):tablesToHTML ls
+    | "##" `isPrefixOf` l = h4 (plain2html (drop 2 l)):tablesToHTML ls
     | "|" `isPrefixOf` l =
         case span (isPrefixOf "|") ls of
           (ls1,ls2) -> table (l:ls1):tablesToHTML ls2
@@ -99,21 +107,37 @@ tablesToHTML (l:ls)
    cell '|' = "<td>"
    cell c = [c]
 
+----
+
+getFile = getRequiredInput "file"
+
 getRequiredInput name = maybe (missing name) return =<< getTextInput name
 
 getTextInput name = fmap UTF8.decodeString <$> getInput name
+
+getChecked name = (==Just "on") <$> getInput name
 
 ----
 
 bullets c = wrap_cls "ul" c . unlines . map ("<li>"++)
 
 h3 = wrap "h3"
+h4 = wrap "h4"
 pre = wrap "pre"
 pre_cls = wrap_cls "pre"
 div_cls = wrap_cls "div"
 
 wrap tag s = "<"++tag++">\n"++s++"</"++tag++">\n"
 wrap_cls tag cls s = "<"++tag++" class="++cls++">\n"++s++"</"++tag++">\n"
+
+plain2html :: String -> String
+plain2html = concatMap encode
+  where
+    encode '<' = "&lt;"
+    encode '&' = "&amp;"
+    encode c   = [c]
+
+optional b s = if b then s else ""
 
 --------------------------------------------------------------------------------
 -- * General CGI Error exception mechanism
