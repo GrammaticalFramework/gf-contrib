@@ -55,11 +55,11 @@ fmtRelHtml = unlines . map mkLine . zip [0..] . splitToLines [] . concatMap word
   symbol w = elem w symbols
   symbolHtml w = maybe w id $ lookup w symbolsConv
   symbolsConv = zip symbols symbolsHtml
-  symbols = ["}","\\times","\\delta","\\cup","\\cap","\\backslash","\\bowtie",
+  symbols = ["<","}","\\times","\\delta","\\cup","\\cap","\\backslash","\\bowtie",
              "\\bowtie_{","\\bowtie^{o}_{","\\bowtie^{oL}_{","\\bowtie^{oR}_{",
              "\\rightarrow","\\downarrow",
              "\\mbox{\\textbf{let}}","\\mbox{\\textbf{\\;in\\;}}"]
-  symbolsHtml=["</sub>","×","δ","∪","∩","∖","⋈","⋈<sub>","⋈<sup>o</sup><sub>",
+  symbolsHtml=["&lt;","</sub>","×","δ","∪","∩","∖","⋈","⋈<sub>","⋈<sup>o</sup><sub>",
                "⋈<sup>oL</sup><sub>","⋈<sup>oR</sup><sub>","→","↓",
                "<b>let</b>","<b>in</b>"]
 
