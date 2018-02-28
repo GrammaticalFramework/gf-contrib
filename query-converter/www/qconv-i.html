@@ -49,7 +49,7 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Wed Feb 28 18:16:22 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Wed Feb 28 18:25:00 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -76,7 +76,7 @@ function showResult(responseText) {
     insertAfter(saveButton(xmlOutput.innerText,"Database.xml","text/xml"),xmlOutput)
 }
 
-ERform.onsubmit=function(event) { return postForm(ERform,showResult) }
+ERform.onsubmit=function() { return postForm(ERform,showResult) }
 ERform.onreset=function() { ERdiagram.innerHTML=instructions }
 </script>
 </body>

@@ -45,10 +45,11 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Feb 22 15:22:07 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Wed Feb 28 18:25:41 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
+<script src="qconv.js"></script>
 <script>
 example1.onclick=function() {
   file.value=["A B C D",
@@ -57,24 +58,10 @@ example1.onclick=function() {
 	      "A -> C",
 	      "B D -> A"].join("\n")
 }
-browse.onchange=function() {
-    var files=browse.files
-    if(files.length==1) {
-        var reader=new FileReader()
-        reader.readAsText(files[0])
-        reader.onload=function() { file.value=reader.result }
-    }
-}
-ERform.onsubmit=function(event) {
-    var fd=new FormData(ERform)
-    var http=new XMLHttpRequest()
-    http.onload=function() { ERdiagram.innerHTML=http.responseText }
-    http.open("POST","qconv.cgi")
-    http.send(fd)
-    return false
-}
+browse.onchange=function() { uploadFileTo(file) }
+function showResult(responseText) { ERdiagram.innerHTML=responseText }
+ERform.onsubmit=function() { return postForm(ERform,showResult) }
 ERform.onreset=function() { ERdiagram.innerHTML=instructions }
-var instructions=ERdiagram.innerHTML
 </script>
 </body>
 </html>
