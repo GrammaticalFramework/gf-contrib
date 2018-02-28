@@ -69,11 +69,13 @@ Diagram ::= Element+
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Mon Feb 26 14:12:11 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Wed Feb 28 17:18:41 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
+<script src="qconv.js"></script>
 <script>
+
 example1.onclick=function() {
   file.value=["ENTITY Course : _code name",
               "ENTITY Teacher : _name title",
@@ -81,25 +83,19 @@ example1.onclick=function() {
               "RELATIONSHIP IsTaughtBy CourseInstance -- Teacher",
               "ISA LimitedCourse Course : limitedNumberOfStudents"].join("\n")
 }
-browse.onchange=function() {
-    var files=browse.files
-    if(files.length==1) {
-        var reader=new FileReader()
-        reader.readAsText(files[0])
-        reader.onload=function() { file.value=reader.result }
-    }
+
+browse.onchange=function() { uploadFileTo(file) }
+
+function showResult(responseText) {
+    ERdiagram.innerHTML=responseText
+    svg=ERdiagram.getElementsByTagName("svg")[0]
+    insertAfter(saveButton(svg.outerHTML,"ERdiagram.svg","image/svg+xml"),svg)
 }
-ERform.onsubmit=function(event) {
-    var fd=new FormData(ERform)
-    var http=new XMLHttpRequest()
-    http.onload=function() { ERdiagram.innerHTML=http.responseText }
-    http.open("POST","qconv.cgi")
-    http.send(fd)
-    return false
-}
+
+ERform.onsubmit=function() { return postForm(ERform,showResult) }
 ERform.onreset=function() { ERdiagram.innerHTML="" }
 
-btn.onclick=function(){
+btn.onclick=function() {
   window.open("ersyntax.html","reference",
               "toolbar=no,location=no,status=no,menubar=no")
 }
