@@ -32,6 +32,8 @@ function postForm(form,callback) {
     return false
 }
 
+// Create a Save button
+// as described at https://stackoverflow.com/a/30832210
 function saveButton(text,filename,type) {
     var saveBtn=node("input",{type:"button",value:"Save"})
     saveBtn.onclick=function() {
