@@ -89,7 +89,7 @@ runSqlInterpreter src queryResults xmlDocument =
           outputXML senv =
               optional xmlDocument $
               h3 "XML representation of final database" ++
-              pre_cls "output" (plain2html (printXML xml))
+              pre_id_cls "xmlOutput" "output" (plain2html (printXML xml))
             where
               xml = env2document "QConvData" senv
 
@@ -125,10 +125,13 @@ h3 = wrap "h3"
 h4 = wrap "h4"
 pre = wrap "pre"
 pre_cls = wrap_cls "pre"
+pre_id_cls = wrap_id_cls "pre"
 div_cls = wrap_cls "div"
 
-wrap tag s = "<"++tag++">\n"++s++"</"++tag++">\n"
-wrap_cls tag cls s = "<"++tag++" class="++cls++">\n"++s++"</"++tag++">\n"
+wrap tag = wrap' tag tag
+wrap' start end s = "<"++start++">\n"++s++"</"++end++">\n"
+wrap_cls tag cls = wrap' (tag++" class="++cls) tag
+wrap_id_cls tag id cls = wrap' (tag++" id="++id++" class="++cls) tag
 
 plain2html :: String -> String
 plain2html = concatMap encode
