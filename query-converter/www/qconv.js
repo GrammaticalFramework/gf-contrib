@@ -3,6 +3,8 @@ function insertAfter(el,ref) {
     ref.parentNode.insertBefore(el,ref.nextSibling);
 }
 
+function text(s) { return document.createTextNode(s); }
+
 function node(tag,as,ds) {
     var n=attr(as,document.createElement(tag));
     if(ds) for(var i in ds) n.appendChild(ds[i]);

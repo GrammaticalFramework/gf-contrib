@@ -36,16 +36,12 @@ qconvCGI cmd =
               queryResults <- getChecked "queryResults"
               xmlDocument <- getChecked "xmlDocument"
               outputHTML $ runSqlInterpreter src queryResults xmlDocument
-    "ix" -> do s <- getInput "submit"
-               case s of
-                 Just "Validate" ->
-                   do outputErr (\_->outputHTML "Valid") =<< getXMLFile
-                 Just "Run Query" ->
-                   do q <- parseXPath <$> getRequiredInput "query"
-                      r <- fmap (:[]) <$> getXMLFile
-                      outputErr (outputHTML . pre_cls "output" . prXPValue)
-                                (queryXPath <$> q <*> r)
-                 _ -> outputError 400 "Bad request [ix]" [show s]
+    "ix" -> do outputErr (\_->outputHTML (wrap_cls "b" "valid" "Valid"))
+                         =<< getXMLFile
+    "xp" -> do q <- parseXPath <$> getRequiredInput "query"
+               r <- fmap (:[]) <$> getXMLFile
+               outputErr (outputHTML . pre_cls "output" . prXPValue)
+                         (queryXPath <$> q <*> r)
     "hello" -> outputPlain "Hello!\n"
     _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
 

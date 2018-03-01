@@ -18,6 +18,7 @@ label, .label { font-size: 9pt; font-family: sans-serif; }
 pre, div.output { margin: 5px; padding: 5px; }
 ul.schema { margin: 5px; padding-top: 5px; padding-bottom: 5px; }
 .error { color: red; }
+.valid { color: #0a0; }
 
 svg { border: 1px solid black; max-width: 100%; object-fit: contain;}
 

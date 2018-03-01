@@ -50,7 +50,7 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Mar  1 14:15:24 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Thu Mar  1 14:48:20 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -74,7 +74,13 @@ browse.onchange=function() { uploadFileTo(file) }
 
 function showResult(responseText) {
     ERdiagram.innerHTML=responseText
-    insertAfter(saveButton(xmlOutput.innerText,"Database.xml","text/xml"),xmlOutput)
+    if(window.xmlOutput) {
+        insertAfter(document.createTextNode(" page."),xmlOutput)
+        insertAfter(node("a",{href:"qconv-xml.html"},[document.createTextNode("XML & XPath")]),xmlOutput)
+        insertAfter(document.createTextNode(" This XML document is now available on the "),xmlOutput)
+        insertAfter(saveButton(xmlOutput.innerText,"Database.xml","text/xml"),xmlOutput)
+        sessionStorage["qconv.xmlDocument"]=xmlOutput.innerText
+    }
 }
 
 ERform.onsubmit=function() { return postForm(ERform,showResult) }

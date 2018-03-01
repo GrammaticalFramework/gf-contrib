@@ -34,13 +34,15 @@
 <label>or upload a file:</label>
 <input id=browse type=file accept="text/plain">
 <tr><td colspan=2><textarea id=file name=file rows=10 cols=72></textarea>
-<tr><td><label>2. <input name=submit type=submit value="Validate"></label>
+<tr><td><label>2. <input onclick="ERform.command.value='ix'" type=submit value="Validate"></label>
 <td style="text-align: right"><input type=reset value="Clear">
 <tr><td colspan=2>
 
-<tr><td colspan=2><label>3. Enter an XPath query below:</label>
+<tr><td colspan=2><div id=validationOutput></div>
+<tr><td colspan=2><label>3. Enter an XPath query below
+  (example: <code id=xpathexample>/QConvData//@name</code>):</label>
 <tr><td colspan=2><input name=query size=75>
-<tr><td colspan=2><label>4. <input name=submit type=submit value="Run Query"></label>
+<tr><td colspan=2><label>4. <input onclick="ERform.command.value='xp'" type=submit value="Run Query"></label>
 </table>
 </form>
 <div id=ERdiagram>
@@ -49,28 +51,39 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Mar  1 14:13:37 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Thu Mar  1 15:15:18 CET 2018 <!-- hhmts end -->
   </small>
 </div>
 </footer>
 <script src="qconv.js"></script>
 <script>
 example1.onclick=function() {
-  file.value=["SELECT a.name, b.capital",
-	      "FROM countries AS a, countries AS b",
-	      "WHERE a.name = b.capital"].join("\n")
+  file.value=['<? xml version="1.0" encoding="utf-8" standalone="no" ?> <! DOCTYPE QConvData [<! ELEMENT QConvData teachers *>',
+ '<! ELEMENT teachers EMPTY>',
+ '<! ATTLIST teachers name CDATA #REQUIRED title CDATA #REQUIRED>',
+ ']> <QConvData>',
+ '<teachers name = "Wolowitz" title = "research engineer"/>',
+ '<teachers name = "Abel" title = "associate professor"/>',
+ '<teachers name = "Ranta" title = "professor"/>',
+ '<teachers name = "Kemp" title = "professor"/>',
+ '</QConvData>'].join("\n")
+
 }
 
 browse.onchange=function() { uploadFileTo(file) }
-
+file.onchange=function() { validationOutput.innerHTML="" }
 function showResult(responseText) {
-    ERdiagram.innerHTML=responseText
-    svg=ERdiagram.getElementsByTagName("svg")[0]
-    insertAfter(saveButton(svg.outerHTML,"TreeDiagram.svg","image/svg+xml"),svg)
+  if(ERform.command.value=="ix") validationOutput.innerHTML=responseText
+  else ERdiagram.innerHTML=responseText
 }
 
-ERform.onsubmit=function() { return postForm(ERform,showResult) }
+ERform.onsubmit=function(event) { return postForm(ERform,showResult) }
 ERform.onreset=function() { ERdiagram.innerHTML=instructions }
+
+xpathexample.onclick=function() { ERform.query.value=xpathexample.innerText }
+
+var xmlDocument=sessionStorage["qconv.xmlDocument"]
+if(xmlDocument && file.value=="") file.value=xmlDocument
 </script>
 </body>
 </html>
