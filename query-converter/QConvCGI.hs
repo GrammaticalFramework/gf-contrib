@@ -1,5 +1,6 @@
 module QConvCGI where
 import qualified Control.Exception as E
+import Control.Monad((<=<))
 import Control.Monad.Writer(runWriter)
 import Control.Monad.Except(runExceptT)
 import Data.Typeable(cast)
@@ -12,7 +13,8 @@ import Design
 import Fundep(prRelationInfo,pRelation,prNormalizations,prOtherNormalizations)
 import SQLCompiler(initSEnv,transQuery,transScript')
 import Relation2XML(env2document)
-import ValidateXML(printXML)
+import ValidateXML(printXML,parseDocument,validateDocument)
+import XPath(parseXPath,prXPValue,queryXPath)
 import MinSQL(parseQuery,parseScript,printSQL)
 import OptimizeAlgebra(pushSelect)
 import Algebra(prRelHtml,fmtRelHtml)
@@ -34,6 +36,16 @@ qconvCGI cmd =
               queryResults <- getChecked "queryResults"
               xmlDocument <- getChecked "xmlDocument"
               outputHTML $ runSqlInterpreter src queryResults xmlDocument
+    "ix" -> do s <- getInput "submit"
+               case s of
+                 Just "Validate" ->
+                   do outputErr (\_->outputHTML "Valid") =<< getXMLFile
+                 Just "Run Query" ->
+                   do q <- parseXPath <$> getRequiredInput "query"
+                      r <- fmap (:[]) <$> getXMLFile
+                      outputErr (outputHTML . pre_cls "output" . prXPValue)
+                                (queryXPath <$> q <*> r)
+                 _ -> outputError 400 "Bad request [ix]" [show s]
     "hello" -> outputPlain "Hello!\n"
     _ -> outputError 400 "Bad request" ["Unknown command: "++cmd]
 
@@ -57,10 +69,9 @@ normalizations2html prNormRel src =
         pre_cls "nf" (prRelationInfo rel) ++
         unlines [h3 hdr ++pre_cls "nf" txt | (hdr,txt)<-prNormRel rel]
 
-alg2html env src =
-  case parseQuery src of
-    Bad e -> outputHTML (pre_cls "error" e)
-    Ok c -> do let rel = transQuery c
+alg2html env src = outputErr ok (parseQuery src)
+  where
+    ok c =  do let rel = transQuery c
                    orel = pushSelect env rel
                    cs = printSQL c
                    h = prRelHtml rel
@@ -109,6 +120,19 @@ tablesToHTML (l:ls)
 
 ----
 
+outputBad e = outputHTML (pre_cls "error" (plain2html e))
+
+outputErr ok err = handleErr err outputBad ok
+
+handleErr err bad ok =
+  case err of
+    Bad e -> bad e
+    Ok x -> ok x
+
+----
+
+getXMLFile = (validateDocument <=< parseDocument) <$> getFile
+ 
 getFile = getRequiredInput "file"
 
 getRequiredInput name = maybe (missing name) return =<< getTextInput name
