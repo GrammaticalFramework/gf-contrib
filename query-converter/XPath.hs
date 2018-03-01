@@ -12,9 +12,11 @@ import ErrM
 import Data.Char (isDigit)
 
 execXPath :: String -> [Document] -> IO () 
-execXPath s docs = putStrLn $ case pXPath (myLexer s) of
+execXPath s docs = putStrLn $ case parseXPath s of
   Ok x  -> prXPValue $ queryXPath x docs
   Bad s -> s
+
+parseXPath = pXPath . myLexer
 
 queryXPath :: XPath -> [Document] -> XPValue
 queryXPath xp docs = getXPValues $ concatMap (matchXPath xp) [el | DXML _ _ el <- docs] 
