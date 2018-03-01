@@ -31,10 +31,12 @@ printXML = unspace . printTree where
 getXML :: FilePath -> IO Document
 getXML f = do
   s <- readFile f
-  let ex = pDocument (myLexer s) >>= validateDocument
+  let ex = parseDocument s >>= validateDocument
   case ex of
     Ok x -> return x
     Bad s -> putStrLn s >> return (DXML HNone DTDNone (EEmpty (ETEmpty (Ident "x") [])))
+
+parseDocument = pDocument . myLexer
 
 validateDocument :: Document -> Err Document
 validateDocument d@(DXML header dtd element) = do
