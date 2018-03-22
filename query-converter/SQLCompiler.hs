@@ -239,10 +239,10 @@ transAll x = case x of
   AAll  -> failure x
 
 
-transJoinOn :: JoinOn -> [A.Ident] 
+transJoinOn :: JoinOn -> A.JoinOn
 transJoinOn x = case x of
-  JOCondition condition  -> failureC "join condition yet (but join using attributes works)" x ---- not A.Ident
-  JOUsing ids  -> map transIdent ids
+  JOCondition condition  -> A.JOCond (transCondition condition) ;
+  JOUsing ids  -> A.JOIdents (map transIdent ids)
 
 
 transJoinType :: JoinType -> Result

@@ -16,11 +16,11 @@ RIntersect.       Rel1 ::= Rel1 "\\cap" Rel2 ;
 RCartesian.       Rel1 ::= Rel1 "\\times" Rel2 ;
 RExcept.          Rel1 ::= Rel1 "\\backslash" Rel2 ;
 RNaturalJoin.     Rel1 ::= Rel1 "\\bowtie" Rel2 ;
-RThetaJoin.       Rel1 ::= Rel1 "\\bowtie_{" Cond "}" Rel2 ;
-RInnerJoin.       Rel1 ::= Rel1 "\\bowtie_{" [Ident] "}" Rel2 ;
-RFullOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{o}_{" [Ident] "}" Rel2 ;
-RLeftOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{oL}_{" [Ident] "}" Rel2 ;
-RRightOuterJoin.  Rel1 ::= Rel1 "\\bowtie^{oR}_{" [Ident] "}" Rel2 ;
+--RThetaJoin.       Rel1 ::= Rel1 "\\bowtie_{" Cond "}" Rel2 ;
+RInnerJoin.       Rel1 ::= Rel1 "\\bowtie_{" JoinOn "}" Rel2 ;
+RFullOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{o}_{" JoinOn "}" Rel2 ;
+RLeftOuterJoin.   Rel1 ::= Rel1 "\\bowtie^{oL}_{" JoinOn "}" Rel2 ;
+RRightOuterJoin.  Rel1 ::= Rel1 "\\bowtie^{oR}_{" JoinOn "}" Rel2 ;
 RLet.             Rel  ::= "\\mbox{\\textbf{let}}" Ident "=" Rel1 "\\mbox{\\textbf{\\;in\\;}}" Rel ;
 
 coercions Rel 3 ;
@@ -61,6 +61,9 @@ separator nonempty Projection "," ;
 
 RRelation.   Renaming    ::= Ident ;
 RAttributes. Renaming    ::= Ident "(" [Ident] ")" ;
+
+JOCond.    JoinOn ::= Cond ;
+JOIdents.   JoinOn  ::= [Ident] ;
 
 AApp.        Aggregation ::= Function "(" Distinct Ident ")" ;
 ARename.     Aggregation ::= Function "(" Distinct Ident ")" "\\rightarrow" Exp ;

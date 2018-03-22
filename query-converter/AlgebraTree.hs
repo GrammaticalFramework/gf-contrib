@@ -29,7 +29,7 @@ rel2dot r =
     RCartesian r1 r2 -> node_n "×" (flatten r)
     RExcept r1 r2 -> node2 "∖" r1 r2
     RNaturalJoin r1 r2 -> node2 "⋈" r1 r2
-    RThetaJoin r1 c r2 -> node2a "⋈" r1 c r2
+--    RThetaJoin r1 c r2 -> node2a "⋈" r1 c r2
     RInnerJoin r1 ns r2 -> node2a "⋈" r1 ns r2
     RFullOuterJoin r1 ns r2 -> node2a fullOuterJoin r1 ns r2
     RLeftOuterJoin r1 ns r2 -> node2a "°⋈" r1 ns r2

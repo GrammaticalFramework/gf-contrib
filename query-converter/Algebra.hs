@@ -112,10 +112,11 @@ evalRel env r = case r of
   RIntersect rela relb -> Relation.intersect (evalRel env rela) (evalRel env relb)
   RExcept rela relb    -> Relation.subtract (evalRel env rela) (evalRel env relb)
   RNaturalJoin rela relb -> naturalJoin (evalRel env rela) (evalRel env relb)
-  RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond env cnd tab) tab
+----   RThetaJoin ra cnd rb -> let tab = cartesian (evalRel env ra) (evalRel env rb) in select (evalCond env cnd tab) tab
   RSort sortexps rel   -> sortby (map (evalSortExp env) sortexps) (evalRel env rel)
   RDistinct rel        -> distinct (evalRel env rel)
   RGroup ids ags rel   -> groupAggregate (map ident2id ids) (map evalAggregation ags) (evalRel env rel)
+  _ -> error $ "interpretation not yet covered " ++ printTree r
 
 evalProjection :: Env -> Projection -> (Table -> Tuple -> Value, Id)
 evalProjection env p = case p of
