@@ -1531,8 +1531,8 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkVP (passiveVP L.worsen_V2) (S.mkAdv S.
 TXT: [unknown qualified constant L.have_VS]
 
 SNT: i have sevral slits on my arm,
-AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.have_V2 (mkNP S.a_Quant (mkCN (mkCN L.slit_N) (S.mkAdv L.in_Prep (mkNP S.i_Pron (mkCN L.arm_N))))))))) fullStopPunct)
-TXT: [I have a slit in my arm .]
+AST: (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.have_V2 (mkNP L.several_Det (mkCN (mkCN L.slit_N) (S.mkAdv L.in_Prep (mkNP S.i_Pron (mkCN L.arm_N))))))))) fullStopPunct)
+TXT: [I have several slits in my arm .]
 
 SNT: they healed, then i cut myself with staples i robbed from school and a razor.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl S.they_NP (passiveVP L.heal_V2))) (mkS (mkCl S.i_NP (mkVP (mkVP (P.mkAdV "then") (mkVP L.cut_V)) (S.mkAdv L.MNR_Prep (mkNP S.and_Conj (mkListNP (mkNP S.a_Quant (mkCN L.staple_N)) (mkNP S.a_Quant (mkCN L.razor_N))))))))))) fullStopPunct)
@@ -3447,8 +3447,8 @@ AST: (mkText (mkUtt (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mk
 TXT: [it isn't possible that a hack is claimed and Iran asserts that XP is based in United Arab Emirates is independently verified .]
 
 SNT: Several Iranian news sites stated on 19 September 2008 that many of the Shiite and Iran-related web sites that had been attacked were running normally again.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.news_N L.site_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran"))))) (mkVP (mkVP L.state_VS (mkS (mkCl (mkNP S.many_Det (mkCN (mkCN (E.CompoundCN L.web_N L.site_N) (mkRS (mkRCl S.which_RP (passiveVP L.attack_V2)))) (mkRS (mkRCl S.which_RP (passiveVP L.relate_V2))))) (mkVP (P.mkAdV "again") (passiveVP L.run_V2))))) (dayMonthYearAdv (intMonthday (ss "19")) september_Month (intYear (ss "2008"))))))) fullStopPunct)
-TXT: [a news site from Iran states on 19 September 2008 that many web sites that are attacked that are related are again run .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP L.several_Det (mkCN (E.CompoundCN L.news_N L.site_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran"))))) (mkVP (mkVP L.state_VS (mkS (mkCl (mkNP S.many_Det (mkCN (mkCN (E.CompoundCN L.web_N L.site_N) (mkRS (mkRCl S.which_RP (passiveVP L.attack_V2)))) (mkRS (mkRCl S.which_RP (passiveVP L.relate_V2))))) (mkVP (P.mkAdV "again") (passiveVP L.run_V2))))) (dayMonthYearAdv (intMonthday (ss "19")) september_Month (intYear (ss "2008"))))))) fullStopPunct)
+TXT: [several news sites from Iran state on 19 September 2008 that many web sites that are attacked that are related are again run .]
 
 SNT: A statement signed group XP was posted on the home page of Al-Sistani's web site and stated that the attack was on behalf of Sunni Muslims.
 AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkVP (passiveVP L.post_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.state_V))))))) (mkS (mkCl (mkVP L.state_VS (mkS (mkCl (mkVP L.attack_V))))))))) fullStopPunct)
@@ -3611,8 +3611,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkAP L.suspicious_A) (mkVP (passiveVP L.consider
 TXT: [unknown qualified constant L.rely_VV]
 
 SNT: Kenyan politicians were demanding answers and have called for several commissions to examine the situation.
-AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.politician_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Kenya"))))) (mkVP L.demand_V2 (mkNP S.a_Quant (mkCN L.answer_N))))) (mkS (mkCl (mkVP (mkVP L.call_VS (mkS (mkCl (mkVP L.examine_V2 (mkNP S.a_Quant (mkCN L.situation_N)))))) (S.mkAdv L.GOL_Prep (mkNP S.a_Quant (mkCN L.commission_N))))))))) fullStopPunct)
-TXT: [a politician from Kenya demands an answer and it calls to a commission that it examines a situation .]
+AST: (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.politician_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Kenya"))))) (mkVP L.demand_V2 (mkNP S.a_Quant (mkCN L.answer_N))))) (mkS (mkCl (mkVP (mkVP L.call_VS (mkS (mkCl (mkVP L.examine_V2 (mkNP S.a_Quant (mkCN L.situation_N)))))) (S.mkAdv L.GOL_Prep (mkNP L.several_Det (mkCN L.commission_N))))))))) fullStopPunct)
+TXT: [a politician from Kenya demands an answer and it calls to several commissions that it examines a situation .]
 
 SNT: Southern Sudan is an autonomous region that is currently increasing its military and that uses Soviet-designed tanks.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Southern Sudan")) (mkNP S.a_Quant (E.CompoundCN L.autonomy_N L.region_N))))) fullStopPunct)
@@ -4491,7 +4491,7 @@ AST: (a and)
 TXT: [constant not found: a]
 
 SNT: The People's Mujahedeen in recent years claimed responsibility for the assassination of several persons in the Iranian regime.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.claim_VS (mkS (mkCl (mkVP L.responsible_VS (mkS (mkCl (mkVP L.assassinate_V2 (mkNP S.a_Quant (mkCN (mkCN L.person_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.regime_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran")))))))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.claim_VS (mkS (mkCl (mkVP L.responsible_VS (mkS (mkCl (mkVP L.assassinate_V2 (mkNP L.several_Det (mkCN (mkCN L.person_N) (S.mkAdv S.possess_Prep (mkNP S.a_Quant (mkCN (mkCN L.regime_N) (S.mkAdv L.from_Prep (mkNP (P.mkPN "Iran")))))))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.responsible_VS]
 
 SNT: These assassinations include that of the Teheran Evin prison's former director assodalah Ladjevardi in August 980800 and of former Commandant in chief of the Iranian army General Ali Sayad Chirazi in 990400.

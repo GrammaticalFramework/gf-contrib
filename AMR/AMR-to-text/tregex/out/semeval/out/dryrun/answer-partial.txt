@@ -381,7 +381,7 @@ PART	I don't read to a random symptom that is resembled to that.
 PART	I am a girl that is addicted to harm a self.
 
 
-PART	I have a slit in my arm.
+FULL	I have several slits in my arm.
 PART	They are healed and I then cut a staple and a razor.
 
 PART	I am tempted when it writes this really.
@@ -860,7 +860,7 @@ PART	Isn't it clear that it begins to attack?
 PART	An alternative address is still operated.
 
 FULL	It isn't possible that a hack is claimed and Iran asserts that XP is based in United Arab Emirates is independently verified.
-PART	A news site from Iran states on 19 September 2008 that many web sites that are attacked that are related are again run.
+PART	Several news sites from Iran state on 19 September 2008 that many web sites that are attacked that are related are again run.
 PART	It is posted that it states and it states that it attacks.
 FULL	A thing that is stated says.
 
@@ -901,7 +901,7 @@ FULL	All appropriate paperworks are validated.
 PART	Ukraine abides.
 
 
-PART	A politician from Kenya demands an answer and it calls to a commission that it examines a situation.
+FULL	A politician from Kenya demands an answer and it calls to several commissions that it examines a situation.
 FULL	Southern Sudan is an autonomy region.
 
 

@@ -1514,4 +1514,21 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // ::snt i have sevral slits on my arm,
+    @Test
+    public void t80_i_have_sevral_slits_on_my_arm() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(h / have-03 :ARG0 (i / i) :ARG1 (s / slit :location (a / arm :part-of i) :quant (s2 / several)))");
+        assertEquals(amr,
+                "(h (have-03 (:ARG0 (i i)) (:ARG1 (s (slit (:location (a (arm (:part-of i)))) (:quant (s2 several)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.have_V2 (mkNP L.several_Det (mkCN (mkCN L.slit_N) (S.mkAdv L.in_Prep (mkNP S.i_Pron (mkCN L.arm_N))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
