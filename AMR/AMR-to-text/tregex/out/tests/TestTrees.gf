@@ -77,5 +77,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t77_if_you_tell_people_they_can_help_you : Text ;
 	fun t78_what_do_Chinese_still_tolerate : Text ;
 	fun t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu : Text ;
+	fun t80_i_have_sevral_slits_on_my_arm : Text ;
 
 }

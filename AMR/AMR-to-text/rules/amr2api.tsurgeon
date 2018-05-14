@@ -1213,6 +1213,13 @@ mkS=s [> /:sntN/ | !> /ANY/]
 [move txt2 >-1 snt1]
 [delete snt2]
 
+# mkNP : Det -> CN -> NP
+# (mkNP S.a_Quant (:quant (s2 several)) mkCN) => (mkNP L.several_Det mkCN)
+mkNP <1 /a_Quant/=quant1 <2 (/:quant/=quant2 < (/VAR/=var < several=det)) <3 mkCN
+[delete quant1]
+[excise quant2 var]
+[relabel det /several/L.several_Det/]
+
 ### Post-editing
 
 # NB: To preserve a single-rooted tree, the multi-sentence construction is simplified but not fully excised.

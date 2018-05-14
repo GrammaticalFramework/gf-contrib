@@ -96,7 +96,7 @@ FULL	AFP on 4 October 2009 in Sarajevo.
 
 
 
-PART	It adds that an other is injured.
+PART	It adds that several others are injured.
 
 
 
@@ -536,7 +536,7 @@ PART	Abhisit tells to Red Shirts that it wills that it holds a new poll.
 
 PART	They want to charge a person that leads.
 
-PART	It says that a violent incident that is related kills 29 persons and it wounds a person.
+PART	It says that several violent incidents that are related kill 29 persons and it wounds a person.
 
 PART	A thing on 29 June 2010 in Geneva.
 

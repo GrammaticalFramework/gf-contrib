@@ -373,3 +373,8 @@ TestTreesEng: Xinhua News Agency by Yiguo Yu on 1 September in Tokyo .
 TestTreesLav: 
 TestTreesRus: 
 
+TestTrees: t80_i_have_sevral_slits_on_my_arm
+TestTreesEng: I have several slits in my arm .
+TestTreesLav: 
+TestTreesRus: 
+
