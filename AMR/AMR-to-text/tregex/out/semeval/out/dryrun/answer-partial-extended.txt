@@ -443,7 +443,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.recommen
 TXT: [it is recommended to us that it is future done .] [unknown qualified constant L.capable_V] [unknown qualified constant L.such_AdA]
 
 SNT: More suffering is under the disguise of glorious looks, 'tis the undisputable fact.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.disguise_V2) (E.PurposeVP (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.suffer_V)))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.disguise_V2) (E.PurposeVP (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "more") (mkVP L.suffer_V))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.glorious_N]
 
 SNT: It's not so bad, they're just playing in their own circle, out of sight, out of mind,
@@ -479,7 +479,7 @@ AST: (mkText (mkUtt (mkS (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS negativePo
 TXT: [unknown qualified constant L.seem_V2]
 
 SNT: A star will have lots of contracts and her source of money will be rolling if she tackles well; If she doesn't tack well, what comes after her heel would be forcing out or even frame-ups ...
-AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (passiveVP L.star_V2))))) (mkVP L.have_VS (mkS (mkCl (mkVP L.contract_V)))))) (mkS (mkCl (mkVP (mkVP (passiveVP L.roll_V2) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP L.tackle_V))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.source_V2 (mkNP (mkCN L.money_N)))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.come_V2 (mkNP S.a_Quant (mkCN (mkCN L.heel_N) (S.mkAdv L.part_Prep S.she_NP)))) (S.mkAdv S.if_Subj (mkS negativePol (mkCl (mkVP L.tack_V)))))))) fullStopPunct))
+AST: (multi-sentence (mkText (mkUtt (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.person_N) (mkRS (mkRCl S.which_RP (passiveVP L.star_V2))))) (mkVP L.have_VS (mkS (mkCl (mkVP (P.mkAdV "lot") (mkVP L.contract_V))))))) (mkS (mkCl (mkVP (mkVP (passiveVP L.roll_V2) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP L.tackle_V))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP L.source_V2 (mkNP (mkCN L.money_N)))))))))))) fullStopPunct) (mkText (mkUtt (mkS (mkCl (mkVP (mkVP L.come_V2 (mkNP S.a_Quant (mkCN (mkCN L.heel_N) (S.mkAdv L.part_Prep S.she_NP)))) (S.mkAdv S.if_Subj (mkS negativePol (mkCl (mkVP L.tack_V)))))))) fullStopPunct))
 TXT: [unknown qualified constant L.have_VS] [unknown qualified constant L.come_V2]
 
 SNT: There are two kinds of smart female stars. Those of the first kind always hold very high integrity and sternly reject all such invitations;
@@ -923,7 +923,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (E.CompoundCN L.else_N L.th
 TXT: [unknown qualified constant L.else_N]
 
 SNT: How much traffic congestion could have been alleviated had the money been applied to other pressing road projects or , god forbid , even non-road projects .
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (passiveVP L.alleviate_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.congest_V) (S.mkAdv L.PPT_Prep (mkNP (mkCN L.traffic_N)))))))))))) (S.mkAdv S.if_Subj (mkS (mkCl (mkNP (mkCN L.money_N)) (mkVP (passiveVP L.apply_V2) (S.mkAdv L.PRD_Prep (mkNP S.or_Conj (mkListNP (mkNP S.aPl_Det (mkCN (E.CompoundCN L.road_N L.other_A L.project_N) (mkRS (mkRCl S.which_RP (mkAP L.press_A))))) (mkNP S.a_Quant (mkCN (E.CompoundCN L.road_N L.even_A L.project_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (mkCN L.god_N)) L.forbid_V2))))))))))))))) exclMarkPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkVP (passiveVP L.alleviate_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP (P.mkAdV "much") (mkVP L.congest_V)) (S.mkAdv L.PPT_Prep (mkNP (mkCN L.traffic_N)))))))))))) (S.mkAdv S.if_Subj (mkS (mkCl (mkNP (mkCN L.money_N)) (mkVP (passiveVP L.apply_V2) (S.mkAdv L.PRD_Prep (mkNP S.or_Conj (mkListNP (mkNP S.aPl_Det (mkCN (E.CompoundCN L.road_N L.other_A L.project_N) (mkRS (mkRCl S.which_RP (mkAP L.press_A))))) (mkNP S.a_Quant (mkCN (E.CompoundCN L.road_N L.even_A L.project_N) (mkRS (mkRCl S.which_RP (mkNP S.a_Quant (mkCN L.god_N)) L.forbid_V2))))))))))))))) exclMarkPunct)
 TXT: [unknown qualified constant L.congest_V]
 
 SNT: Ray Hyde - My comments were directed at investors who lobby to place roads near where they own property and the incompetent system that funds these requests without regard to their link or lack thereof to a master transportation plan .
@@ -3883,7 +3883,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP S.a_Quant (mkCN (mkCN L.police_N) (S.mkAdv 
 TXT: [unknown qualified constant L.crack_down_VS]
 
 SNT: On 020724 the police dispatched over 100 staff reportedly stormed a propitiation dance and wine party organized to settle some disputes by 2 triad groups at a disco nightclub in mongkok, Kowloon.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.report_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.police_N)) (mkVP (mkVP (mkVP L.dispatch_V2 (mkNP S.a_Quant (mkCN L.staff_N))) (E.PurposeVP (mkVP L.storm_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP (mkVP (passiveVP L.organize_V2) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.disco_N L.nightclub_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Mongkok"))))))) (E.PurposeVP (mkVP L.settle_VS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN L.group_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Triad"))))) (mkVP L.dispute_V))))))))) (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.dance_N) (mkRS (mkRCl S.which_RP (mkVP L.propitiate_V))))) (mkNP S.a_Quant (E.CompoundCN L.wine_N L.party_N))))))) (dayMonthYearAdv (intMonthday (ss "24")) july_Month (intYear (ss "2002"))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.report_V2) (S.mkAdv S.that_Subj (mkS (mkCl (mkNP S.a_Quant (mkCN L.police_N)) (mkVP (mkVP (mkVP L.dispatch_V2 (mkNP S.a_Quant (mkCN L.staff_N))) (E.PurposeVP (mkVP L.storm_V2 (mkNP (S.and_Conj (mkRS (mkRCl S.which_RP (mkVP (mkVP (passiveVP L.organize_V2) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN (E.CompoundCN L.disco_N L.nightclub_N) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Mongkok"))))))) (E.PurposeVP (mkVP L.settle_VS (mkS (mkCl (mkNP S.a_Quant (mkNum (mkDigits "2")) (mkCN (mkCN L.group_N) (S.mkAdv S.possess_Prep (mkNP (P.mkPN "Triad"))))) (mkVP (P.mkAdV "some") (mkVP L.dispute_V)))))))))) (mkListNP (mkNP S.a_Quant (mkCN (mkCN L.dance_N) (mkRS (mkRCl S.which_RP (mkVP L.propitiate_V))))) (mkNP S.a_Quant (E.CompoundCN L.wine_N L.party_N))))))) (dayMonthYearAdv (intMonthday (ss "24")) july_Month (intYear (ss "2002"))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.settle_VS]
 
 SNT: The police eventually arrested 3 branch leaders and 14 core Triad members.
@@ -4435,7 +4435,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (mkCN (P.mkN2 (L.minister_N (S.mkAdv 
 TXT: [unknown qualified constant L.foreign_N]
 
 SNT: At French radio France Info de Villepin said that the People's Mujahedeen Organization has claimed responsibility for numerous attacks in Iran and said that this dimension of terrorism can not be hidden.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "de Villepin")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.claim_VS (mkS (mkCl (mkVP L.responsible_VS (mkS (mkCl (mkVP (mkVP L.attack_V) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Iran")))))))))))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.this_Det (E.CompoundCN L.terrorism_N L.dimension_N)) (passiveVP L.hide_V2)))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "de Villepin")) (mkVP L.say_VS (mkS S.and_Conj (mkListS (mkS (mkCl (mkNP (P.mkPN "Mujahedeen")) (mkVP L.claim_VS (mkS (mkCl (mkVP L.responsible_VS (mkS (mkCl (mkVP (mkVP (P.mkAdV "numerous") (mkVP L.attack_V)) (S.mkAdv L.in_Prep (mkNP (P.mkPN "Iran")))))))))))) (mkS negativePol (mkCl S.it_NP (mkAP (mkAP L.possible_A) (mkS (mkCl (mkNP S.this_Det (E.CompoundCN L.terrorism_N L.dimension_N)) (passiveVP L.hide_V2)))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.responsible_VS]
 
 SNT: De Villepin said that the arrests were a decision of justice and that there is no diplomatic factor in this affair.
@@ -5419,7 +5419,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkVP (mkVP (mkVP L.train_V) (S.mkAdv
 TXT: [unknown qualified constant L.indoor_N]
 
 SNT: Looks like we still need to train more outdoors . "
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP L.train_V) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.outdoor_N))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV "more") (mkVP L.train_V)) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.outdoor_N))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.outdoor_N]
 
 SNT: He felt that , there were more new competitors from our country participating in this competition .
