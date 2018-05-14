@@ -78,5 +78,6 @@ abstract TestTrees = TestLexicon ** {
 	fun t78_what_do_Chinese_still_tolerate : Text ;
 	fun t79_Xinhua_News_Agency_Tokyo_September_1st_by_reporter_Yiguo_Yu : Text ;
 	fun t80_i_have_sevral_slits_on_my_arm : Text ;
+	fun t81_Looks_like_we_still_need_to_train_more_outdoors : Text ;
 
 }

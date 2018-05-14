@@ -1531,4 +1531,24 @@ public class Tester {
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
 
+    // ::snt Looks like we still need to train more outdoors .
+    // FIXME: in_Prep outdoors_N => outdoors_Adv
+    // FIXME: "more train" => "train more" (AdV => Adv)
+    // FIXME: "it is looked that" => "it looks [like] that" (idiom)
+    @Test
+    public void t81_Looks_like_we_still_need_to_train_more_outdoors() {
+        Transformer t = new Transformer(rules, roles, false);
+
+        String amr = t.transformToLISP(
+                "(l / look-02 :ARG1 (n / need-01 :ARG0 (w / we) :ARG1 (t / train-01 :ARG0 w :ARG2 w :quant (m / more) :location (o / outdoors)) :mod (s / still)))");
+        assertEquals(amr,
+                "(l (look-02 (:ARG1 (n (need-01 (:ARG0 (w we)) (:ARG1 (t (train-01 (:ARG0 w) (:ARG2 w) (:quant (m more)) (:location (o outdoors))))) (:mod (s still)))))))");
+
+        String ast = t.transformToGF(amr).get(0);
+        assertEquals(ast,
+                "(mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV \"still\") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV \"more\") (mkVP L.train_V)) (S.mkAdv L.in_Prep (mkNP (mkCN L.outdoors_N))))))))))))) fullStopPunct)");
+
+        generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
+    }
+
 }
