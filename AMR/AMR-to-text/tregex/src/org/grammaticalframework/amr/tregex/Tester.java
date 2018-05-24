@@ -1546,7 +1546,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV \"still\") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV \"more\") (mkVP L.train_V)) L.outdoors_Adv)))))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV \"still\") (mkVP L.need_VV (mkVP (mkVP (mkVP L.train_V) L.more_Adv) L.outdoors_Adv)))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }
