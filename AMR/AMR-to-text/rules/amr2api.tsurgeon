@@ -127,7 +127,7 @@
 
 @/definite_N/=/^(west|east|north|south)_N$/ # TODO: extend the list
 
-@/adverb_N/=/^(outdoors)_N$/ # TODO: extend the list
+@/adverb_N/=/^(outdoors|indoors)_N$/ # TODO: extend the list
 
 ### Simplification of named entity types
 

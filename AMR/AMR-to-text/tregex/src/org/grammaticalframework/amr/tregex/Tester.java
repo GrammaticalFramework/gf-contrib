@@ -1533,6 +1533,7 @@ public class Tester {
 
     // ::snt Looks like we still need to train more outdoors .
     // FIXME: in_Prep outdoors_N => outdoors_Adv
+    // TODO: location (o / outdoor) vs.location (o / outdoors)
     // FIXME: "more train" => "train more" (AdV => Adv)
     // FIXME: "it is looked that" => "it looks [like] that" (idiom)
     @Test
