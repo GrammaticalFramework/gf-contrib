@@ -118,6 +118,8 @@
 
 @/definite_N/=/^(west|east|north|south)_N$/
 
+@/adverb_N/=/^(outdoors)_N$/
+
 ### Simplification of named entity types
 
 /VAR/ < /^(ethnic-group|regional-group|religious-group)$/=type
@@ -886,8 +888,11 @@ mkCN=cn_i < mkN2 < /:ARG1/ < /:location/=loc
 [adjoinF (mkAdv S.when_Subj @) sub]
 [excise time time]
 
-# TODO: outdoors, etc.
-#%
+# adverb_Adv
+# (:location (mkNP (mkCN adverb_N))) => adverb_Adv
+/:location/=rel < (mkNP < (mkCN < /adverb_N/=adv))
+[relabel adv /^(.+)_N$/L.$1_Adv/]
+[replace rel adv]
 
 # mkAdv : Prep -> NP -> Adv
 # (:location mkNP) => (mkAdv in_Prep mkNP)
