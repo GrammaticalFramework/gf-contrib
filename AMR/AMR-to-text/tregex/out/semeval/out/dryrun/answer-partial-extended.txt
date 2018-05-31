@@ -443,7 +443,7 @@ AST: (multi-sentence (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.recommen
 TXT: [it is recommended to us that it is future done .] [unknown qualified constant L.capable_V] [unknown qualified constant L.such_AdA]
 
 SNT: More suffering is under the disguise of glorious looks, 'tis the undisputable fact.
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.disguise_V2) (E.PurposeVP (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (P.mkAdV "more") (mkVP L.suffer_V))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (passiveVP L.disguise_V2) (E.PurposeVP (mkVP L.look_V2 (mkNP S.a_Quant (mkCN L.glorious_N))))) (S.mkAdv S.that_Subj (mkS (mkCl (mkVP (mkVP L.suffer_V) L.more_Adv)))))))) fullStopPunct)
 TXT: [unknown qualified constant L.glorious_N]
 
 SNT: It's not so bad, they're just playing in their own circle, out of sight, out of mind,
@@ -1943,8 +1943,8 @@ AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Kimball")) (mkVP L.state_VS (mkS (
 TXT: [Kimball states that an organization that governs Iran is a design .]
 
 SNT: Iranian officials stated a possible reduction in collaboration with inspectors in the event of more sanctions.
-AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Iran")))) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP L.reduce_V) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP (P.mkAdV "more") (mkVP L.sanction_V)))))))))))) fullStopPunct)
-TXT: [official of Iran states that it reduces if it more sanctions .]
+AST: (mkText (mkUtt (mkS (mkCl (mkNP (mkCN (P.mkN2 L.official_N L.of_Prep) (mkNP (P.mkPN "Iran")))) (mkVP L.state_VS (mkS (mkCl (mkVP (mkVP L.reduce_V) (S.mkAdv S.if_Subj (mkS (mkCl (mkVP (mkVP L.sanction_V) L.more_Adv))))))))))) fullStopPunct)
+TXT: [official of Iran states that it reduces if it sanctions more .]
 
 SNT: The Security Council has voted unanimously to impose sanctions against Iran but the penalties have been limited from U.S. demands under Chinese and Russian pressure.
 AST: (mkText (mkUtt (mkS (mkCl (mkNP (P.mkPN "Security Council")) (mkVP (P.mkAdV "unanimous") (mkVP L.vote_VS (mkS (mkCl (mkVP (mkVP L.impose_VS (mkS (mkCl (mkVP L.sanction_V)))) (S.mkAdv L.GOL_Prep (mkNP (P.mkPN "Iran"))))))))))) fullStopPunct)
@@ -5419,7 +5419,7 @@ AST: (mkText (mkUtt (mkS (mkCl (mkVP (mkVP (mkVP (mkVP (mkVP L.train_V) (S.mkAdv
 TXT: [unknown qualified constant L.indoor_N]
 
 SNT: Looks like we still need to train more outdoors . "
-AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV "more") (mkVP L.train_V)) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.outdoor_N))))))))))))) fullStopPunct)
+AST: (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP (mkVP L.train_V) L.more_Adv) (S.mkAdv L.in_Prep (mkNP S.a_Quant (mkCN L.outdoor_N))))))))))))) fullStopPunct)
 TXT: [unknown qualified constant L.outdoor_N]
 
 SNT: He felt that , there were more new competitors from our country participating in this competition .

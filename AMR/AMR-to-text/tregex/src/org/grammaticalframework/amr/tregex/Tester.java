@@ -1533,6 +1533,7 @@ public class Tester {
 
     // ::snt Looks like we still need to train more outdoors .
     // FIXME: in_Prep outdoors_N => outdoors_Adv
+    // TODO: location (o / outdoor) vs.location (o / outdoors)
     // FIXME: "more train" => "train more" (AdV => Adv)
     // FIXME: "it is looked that" => "it looks [like] that" (idiom)
     @Test
@@ -1546,7 +1547,7 @@ public class Tester {
 
         String ast = t.transformToGF(amr).get(0);
         assertEquals(ast,
-                "(mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV \"still\") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV \"more\") (mkVP L.train_V)) (S.mkAdv L.in_Prep (mkNP (mkCN L.outdoors_N))))))))))))) fullStopPunct)");
+                "(mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV \"still\") (mkVP L.need_VV (mkVP (mkVP (mkVP L.train_V) L.more_Adv) L.outdoors_Adv)))))))))) fullStopPunct)");
 
         generateBody(Thread.currentThread().getStackTrace()[1].getMethodName(), ast, false);
     }

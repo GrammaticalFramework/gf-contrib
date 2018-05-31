@@ -159,6 +159,6 @@ open SyntaxEng, (S=SyntaxEng), (E=ExtraEng), (L=TestLexiconEng), (P=ParadigmsEng
 
 	lin t80_i_have_sevral_slits_on_my_arm = (mkText (mkUtt (mkS (mkCl S.i_NP (mkVP L.have_V2 (mkNP L.several_Det (mkCN (mkCN L.slit_N) (S.mkAdv L.in_Prep (mkNP S.i_Pron (mkCN L.arm_N))))))))) fullStopPunct) ;
 
-	lin t81_Looks_like_we_still_need_to_train_more_outdoors = (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP (P.mkAdV "more") (mkVP L.train_V)) (S.mkAdv L.in_Prep (mkNP (mkCN L.outdoors_N))))))))))))) fullStopPunct) ;
+	lin t81_Looks_like_we_still_need_to_train_more_outdoors = (mkText (mkUtt (mkS (mkCl (mkVP (passiveVP L.look_V2) (S.mkAdv S.that_Subj (mkS (mkCl S.we_NP (mkVP (P.mkAdV "still") (mkVP L.need_VV (mkVP (mkVP (mkVP L.train_V) L.more_Adv) L.outdoors_Adv)))))))))) fullStopPunct) ;
 
 }

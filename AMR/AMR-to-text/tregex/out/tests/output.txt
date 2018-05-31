@@ -379,7 +379,7 @@ TestTreesLav:
 TestTreesRus: 
 
 TestTrees: t81_Looks_like_we_still_need_to_train_more_outdoors
-TestTreesEng: it is looked that we still need to more train in outdoors .
+TestTreesEng: it is looked that we still need to train more outdoors .
 TestTreesLav: 
 TestTreesRus: 
 
