@@ -1,6 +1,18 @@
 compile = runghc Compile 
 
-all: demo missing
+forApp: 
+	$(compile) -opt Bul Cat Chi Dut Eng Est Fin Fre Ger Hin Ita Jpn Rus Spa Swe Tha Urd
+	make gfos
+
+.PHONY: gfos
+
+Chi:
+	$(compile) Chi
+
+all: demo missing gfos
+
+gfos:
+	mkdir -p gfos && cp -p *.gfo gfos
 
 thaidroid: #thaiscript
 	cp -p Phrasebook.pgf FullPhrasebook.pgf
@@ -15,13 +27,13 @@ thaiscript:
 demo: compdemo fin linkdemo
 
 compdemo:
-	$(compile) -opt Bul Cat Dan Dut Eng Fre Ger Hin Ita Lav Nor Pes Pol Ron Rus Spa Swe Tha Urd DisambPhrasebookEng
+	$(compile) -opt Bul Cat Chi Dan Dut Eng Fre Ger Hin Ita Jpn Lav Nor Pes Pol Ron Rus Spa Swe Tha Urd DisambPhrasebookEng
 
 linkdemo:
-	$(compile) -link Eng Bul Cat Dan Dut Fin Fre Ger Hin Ita Lav Nor Pes Pol Ron Rus Spa Swe Tha Urd DisambPhrasebookEng
+	$(compile) -link Eng Bul Cat Chi Dan Dut Fin Fre Ger Hin Ita Jpn Lav Nor Pes Pol Ron Rus Spa Swe Tha Urd DisambPhrasebookEng
 
 linkdemothb:
-	$(compile) -link Eng Bul Cat Dan Dut Fin Fre Ger Ita Nor Pol Ron Rus Spa Swe Tha Thb Urd DisambPhrasebookEng 
+	$(compile) -link Eng Bul Cat Chi Dan Dut Fin Fre Ger Ita Jpn Nor Pol Ron Rus Spa Swe Tha Thb Urd DisambPhrasebookEng 
 
 #separate, because slow...
 fin:

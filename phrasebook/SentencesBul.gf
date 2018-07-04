@@ -2,7 +2,7 @@ concrete SentencesBul of Sentences =
   NumeralBul ** SentencesI - [IMale, IFemale, YouFamMale, YouFamFemale, YouPolMale, 
                               YouPolFemale, ACitizen, Citizenship, PCitizenship, 
                               LangNat, CitiNat, CountryNat, PropCit,
-                              Nationality, Country, Language, PLanguage, PCountry
+                              Nationality, Country, LAnguage, PLanguage, PCountry
                               ] with 
   (Syntax = SyntaxBul),
   (Symbolic = SymbolicBul),
@@ -16,7 +16,7 @@ lincat
                    s2 : A;                                          -- furthermore, adjective for Property
                    s3 : PN                                          -- country name
                   } ;
-    Language = A ;
+    LAnguage = A ;
     Country = PN ;
 
 lin IMale = mkPerson i_Pron ;
@@ -30,11 +30,11 @@ lin ACitizen p cit =
       let noun : N
                = case p.name.a.gn of {
                    R.GSg g => lin N {s   = \\nf => cit.s1 ! g      ! nf;
-                                     rel = cit.s2.s;
+                                     rel = cit.s2.s; relPost = False;
                                      g   = case g of {R.Masc=>R.AMasc R.Human; R.Fem=>R.AFem; R.Neut=>R.ANeut}
                                     } ;
                    R.GPl   => lin N {s   = \\nf => cit.s1 ! R.Masc ! nf;
-                                     rel = cit.s2.s;
+                                     rel = cit.s2.s; relPost = False;
                                      g   = R.AMasc R.Human
                                     }
                  } ;

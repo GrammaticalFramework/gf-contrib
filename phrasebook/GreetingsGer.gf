@@ -1,4 +1,5 @@
 --# -path=.:abstract:prelude:german:api:common
+--# -coding=latin1
 concrete GreetingsGer of Greetings = SentencesGer [Greeting,mkGreeting] ** open Prelude in {
 
 lin 
@@ -24,6 +25,7 @@ lin
   GCongratulations = mkGreeting "herzlichen Glückwunsch";
   GHappyBirthday = mkGreeting "alles Gute zum Geburtstag" ;
   GGoodLuck = mkGreeting "viel Glück" ; 
+  GWhatTime = mkGreeting "wieviel Uhr ist es" | mkGreeting "wie spät ist es" ;
 
 }
 

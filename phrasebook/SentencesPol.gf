@@ -1,6 +1,6 @@
 concrete SentencesPol of Sentences = 
   NumeralPol ** SentencesI - [
-    Day,PDay,OnDay,Language,PLanguage,Citizenship,
+    Day,PDay,OnDay,LAnguage,PLanguage,Citizenship,
     PCitizenship,CitiNat,PropCit,ACitizen,
     Nationality,Transport,PTransport,ByTransp,
     IFemale,YouFamFemale, YouPolFemale,YouPolMale,
@@ -17,7 +17,7 @@ concrete SentencesPol of Sentences =
 
   lincat
     Day = { name,hab,adv:Str } ;
-    Language = A ;
+    LAnguage = A ;
     Citizenship = { prop:A; citizenMSg:Str; citizenMPl:Str; citizenF:Str} ;
     Nationality = { lang: A; prop: A; country: NP; citizenMSg:Str; citizenMPl:Str; citizenF:Str } ;
     Transport = { cn:CN; verb:Str} ;

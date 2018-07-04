@@ -1,3 +1,4 @@
+--# -coding=latin1
 concrete GreetingsSwe of Greetings = SentencesSwe [Greeting,mkGreeting] ** open Prelude in {
 
 lin 
@@ -23,5 +24,6 @@ lin
   GCongratulations = mkGreeting "grattis";
   GHappyBirthday = mkGreeting "grattis på födelsedagen" ;
   GGoodLuck = mkGreeting "lycka till" ; 
+  GWhatTime = mkGreeting "vad är klockan" | mkGreeting "hur mycket är klockan" ;
 
 }

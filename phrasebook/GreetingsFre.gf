@@ -1,3 +1,4 @@
+--# -coding=latin1
 concrete GreetingsFre of Greetings = SentencesFre [Greeting,mkGreeting] ** open Prelude in {
 
 lin 
@@ -25,5 +26,6 @@ lin
   GCongratulations = mkGreeting "félicitations";
   GHappyBirthday = mkGreeting "joyeux anniversaire" ;
   GGoodLuck = mkGreeting "bonne chance" ; 
+  GWhatTime = mkGreeting "quelle heure est-il" ;
 
 }

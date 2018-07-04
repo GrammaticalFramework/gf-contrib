@@ -1,3 +1,4 @@
+--# -coding=latin1
 concrete GreetingsFin of Greetings = SentencesFin [Greeting,mkGreeting] ** open Prelude in {
 
 lin 
@@ -24,4 +25,6 @@ lin
   GCongratulations = mkGreeting "onnittelut";
   GHappyBirthday = mkGreeting "hyv‰‰ syntym‰p‰iv‰‰" ;
   GGoodLuck = mkGreeting "onnea" ; 
+  GWhatTime = mkGreeting "paljonko kello on" | mkGreeting "mit‰ kello on" ;
+
 }
