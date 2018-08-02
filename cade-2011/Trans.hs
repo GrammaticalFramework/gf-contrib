@@ -1,6 +1,7 @@
+{-# LANGUAGE PackageImports #-}
 module Main where
 
-import PGF
+import "gf" PGF
 import TransProp
 
 main = do

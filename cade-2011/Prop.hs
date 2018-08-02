@@ -1,17 +1,17 @@
+{-# LANGUAGE PackageImports #-}
 {-# OPTIONS_GHC -fglasgow-exts #-}
 module Prop where
 
 import Control.Monad.Identity
 import Data.Monoid
-import PGF hiding (Tree)
-import qualified PGF
+import "gf" PGF hiding (Tree)
 ----------------------------------------------------
 -- automatic translation from GF to Haskell
 ----------------------------------------------------
 
 class Gf a where
-  gf :: a -> PGF.Tree
-  fg :: PGF.Tree -> a
+  gf :: a -> Expr
+  fg :: Expr -> a
 
 instance Gf GString where
   gf (GString x) = mkStr x
@@ -28,9 +28,9 @@ instance Gf GInt where
       Nothing -> error ("no GInt " ++ show t)
 
 instance Gf GFloat where
-  gf (GFloat x) = mkDouble x
+  gf (GFloat x) = mkFloat x
   fg t =
-    case unDouble t of
+    case unFloat t of
       Just x  ->  GFloat x
       Nothing -> error ("no GFloat " ++ show t)
 
