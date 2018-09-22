@@ -2,9 +2,9 @@
 {-# OPTIONS_GHC -fglasgow-exts #-}
 module Prop where
 
+import "gf" PGF hiding (Tree)
 import Control.Monad.Identity
 import Data.Monoid
-import "gf" PGF hiding (Tree)
 ----------------------------------------------------
 -- automatic translation from GF to Haskell
 ----------------------------------------------------
