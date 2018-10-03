@@ -5,7 +5,7 @@ abstract Numerals = {
 flags startcat=Numeral ;
 
 cat 
-  Numeral ;     -- 0..
+  Numeral ;     -- 1..
   Digit ;       -- 2..9
   Sub10 ;       -- 1..9
   Sub100 ;      -- 1..99
