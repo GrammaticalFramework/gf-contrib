@@ -1,4 +1,4 @@
-resource MiniResSom = open Prelude in {
+resource MiniResSom = open Prelude, Predef in {
 
 
 --------------------------------------------------------------------------------
@@ -172,7 +172,7 @@ oper
       #c + #v + #c | #c + #v + #v + #c | #v + #c  => nMas n ;
       _ => nXayawaan n } ;
 
-
+  NP : Type = {s : Case => Str ; a : Agreement ; isPron : Bool} ;
 --------------------------------------------------------------------------------
 -- Pronouns, prepositions
 
@@ -184,7 +184,7 @@ oper
 -- Adjectives
 
 param
-  AForm = AIndef Number | ADef Number ; ----
+  AForm = AIndef Number | ADef Number ; ---- TODO: past tense
 
 oper
 
@@ -224,7 +224,7 @@ param
    | VPast Agreement
    | VFut -- agreement comes from auxiliary
    | VRel -- "som är/har/…" TODO is this used in other verbs?
-   | VImp Number ;
+   | VImp Number ; -- TODO negation
 
 -- TODO:
 -- tre aspekter (enkel, progressiv, habituell),
@@ -237,70 +237,112 @@ oper
 
   Verb2 : Type = Verb ** { c2 : Str } ;
 
-  mkVerb : (stem : Str) -> Verb = \ark ->
+  mkVerb : (x1,x2 : Str) -> Verb = \ark,qaat ->
     let stems : {p1 : Str ; p2 : Str} = case ark of {
           a + r@#c + k@#c => <ark + "i", a + r + a + voiced k> ;
+          yar + "ee"      => <ark + "n", yar + "ey"> ;
           _               => <ark + "n", ark> } ;
         arki = stems.p1 ;
         arag = stems.p2 ;
+        t : Str = case arag of {
+               _ + ("i"|"y") => "s" ;
+               _             => "t" } ;
+        ay : Str = case ark of {
+               _ + ("i"|"e") => "ey" ;
+               _             => "ay" } ;
+        n : Str = case arag of {
+               _ + #v => "nn" ;
+               _      => "n" } ;
    in { s = table {
-          VPres Sg1        => ark + "aa" ;
-          VPres Sg2        => arag + "taa" ;
-          VPres (Sg3 Fem)  => arag + "taa" ;
-          VPres (Sg3 Masc) => ark + "aa" ;
-          VPres (Pl1 _)    => arag + "naa" ;
-          VPres Pl2        => arag + "taan" ;
-          VPres Pl3        => ark + "aan" ;
+          VPres (Sg1|Sg3 Masc)
+                        => qaat + "aa" ;
+          VPres (Sg2|Sg3 Fem)
+                        => arag + t + "aa" ;
+          VPres (Pl1 _) => arag + n + "aa" ;
+          VPres Pl2     => arag + t + "aan" ;
+          VPres Pl3     => qaat + "aan" ;
 
-          -- TODO
-          -- VPast Sg1        => "ahaa" ;
-          -- VPast Sg2        => "ahayd" ;
-          -- VPast (Sg3 Fem)  => "ahayd" ;
-          -- VPast (Sg3 Masc) => "ahaa" ;
-          -- VPast (Pl1 _)    => "ahayn" ;
-          -- VPast Pl2        => "ahaydeen" ;
-          -- VPast Pl3        => "ahaayeen" ;
+          VPres (Sg1|Sg3 Masc)
+                        => qaat + ay ;
+          VPres (Sg2|Sg3 Fem)
+                        => arag + t + ay ;
+          VPres (Pl1 _) => arag + n + ay ;
+          VPres Pl2     => arag + t + "een" ; -- kari+seen, (sug|joogsa|qaada)+teen
+          VPres Pl3     => qaat + "een" ;
+
           VImp Sg          => arag ;
+          VImp Pl          => qaat + "a" ; -- TODO: allomorphs, page 86 in Saeed
           VInf             => arki ;
           _  => "TODO" }
       } ;
 
-  mkV2 : Str -> Verb2 = \s -> mkVerb s ** { c2 = [] } ;
+-------------------------
+-- Regular verb paradigms
+
+  cSug, cKari, cYaree, cJoogso, cQaado : Str -> Verb ;
+
+  cSug sug = mkVerb sug sug ; -- TODO: stem/dictionary form of verbs with consonant clusters?
+
+  cKari, cYaree = \kari -> mkVerb kari (kari+"y") ;
+
+  cJoogso joogso =
+    let joogsa = init joogso + "a" ;
+     in mkVerb joogsa (joogsa + "d") ;
+
+  cQaado qaado =
+    let qaa = drop 2 qaado
+     in mkVerb (qaa + "da") (qaa + "t") ;
+
+  -- Smart paradigms
+  mkV : Str -> Verb = \s -> case s of {
+    _ + #c + #c + "o" => cJoogso s ;
+    _           + "o" => cQaado s ; ----
+    _           + "i" => cKari s ;
+    _          + "ee" => cYaree s ;
+    _                 => cSug s
+    } ;
+
+
+    mkV2 : Str -> Verb2 = \s -> mkV s ** { c2 = [] } ;
+------------------
+-- Irregular verbs
 
   copula : Verb = {
-    s = table { VPres Sg1        => "ahay" ;
-                VPres Sg2        => "tahay" ;
-                VPres (Sg3 Fem)  => "tahay" ;
-                VPres (Sg3 Masc) => "yahay" ;
-                VPres (Pl1 _)    => "nahay" ;
-                VPres Pl2        => "tihiin" ;
-                VPres Pl3        => "yihiin" ;
+    s = table {
+          VPres Sg1        => "ahay" ;
+          VPres (Sg2|Sg3 Fem)
+                           => "tahay" ;
+          VPres (Sg3 Masc) => "yahay" ;
+          VPres (Pl1 _)    => "nahay" ;
+          VPres Pl2        => "tihiin" ;
+          VPres Pl3        => "yihiin" ;
 
-                VPast Sg1        => "ahaa" ;
-                VPast Sg2        => "ahayd" ;
-                VPast (Sg3 Fem)  => "ahayd" ;
-                VPast (Sg3 Masc) => "ahaa" ;
-                VPast (Pl1 _)    => "ahayn" ;
-                VPast Pl2        => "ahaydeen" ;
-                VPast Pl3        => "ahaayeen" ;
-                VRel => "ah" ;
-                _    => "TODO:copula" } ;
+          VPast (Sg1|Sg3 Masc)
+                          => "ahaa" ;
+          VPast (Sg2|Sg3 Fem)
+                          => "ahayd" ;
+          VPast (Pl1 _)   => "ahayn" ;
+          VPast Pl2       => "ahaydeen" ;
+          VPast Pl3       => "ahaayeen" ;
+          VRel => "ah" ;
+          _    => "TODO:copula" }
      } ;
    -- I somaliskan används inte något kopulaverb motsvarande svenskans är mellan
    -- två substantivfraser som utgör subjekt respektive predikatsfyllnad.
    -- Observera också att kopulaverbet vara alltid hamnar efter det adjektiv
-   -- som utgör predikatsfyllnaden.
+ -- som utgör predikatsfyllnaden.
   have_V : Verb = {
-    s = table { VPres Sg1        => "leeyahay" ;
-                VPres Sg2        => "leedahay" ;
-                VPres (Sg3 Fem)  => "leedahay" ;
-                VPres (Sg3 Masc) => "leeyahay" ;
-                VPres (Pl1 _)    => "leenahay" ;
-                VPres Pl2        => "leedihiin" ;
-                VPres Pl3        => "leeyihiin" ;
-                VPast x          => "l" + copula.s ! VPast x ;
-                VRel => "leh" ;
-                _    => "TODO:have_V" } ;
+    s = table {
+          VPres Sg1        => "leeyahay" ;
+          VPres Sg2        => "leedahay" ;
+          VPres (Sg3 Fem)  => "leedahay" ;
+          VPres (Sg3 Masc) => "leeyahay" ;
+          VPres (Pl1 _)    => "leenahay" ;
+          VPres Pl2        => "leedihiin" ;
+          VPres Pl3        => "leeyihiin" ;
+          VPast x          => "l" + copula.s ! VPast x ;
+          VRel => "leh" ;
+          _    => "TODO:have_V" } ;
     } ;
 -- Till VERBFRASEN ansluter sig
 -- · satstypsmarkörer (waa, ma...),
@@ -317,4 +359,17 @@ oper
 I 3 person utelämnas däremot oftast det korta subjektspronomenet uu han eller ay hon, de efter satsmarkören waa om predikatet består av adjektiv + yahay / tahay / yihiin är.
 Även i satser med andra verb i predikatet utelämnas det korta subjekts- pronomenet i 3 person någon gång ibland.
 -}
+
+
+------------------
+-- satstypsmarkörer
+
+stmarker : (_,_ : Bool) -> Agreement -> Str = \isPos,isPron,agr ->
+  case <isPos,isPron,agr> of {
+    <False>       => "ma" ; ---- contracts with pronoun
+    <_,True,_>    => [] ;
+    <_,False,Pl3> => "waa" ; ---- just guessing /IL
+    <_,False,Sg3 Fem> => "way" ;
+    <_,False,_>   => "wuu"} ;
+
 }

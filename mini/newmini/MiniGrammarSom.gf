@@ -7,11 +7,11 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     Pol = {s : Str ; p : Bool} ;
     S  = SS ;
     Cl = {s : Bool => Str} ;
-    VP = Verb ** { compl : Agreement => Str} ;
+    VP = Verb ** { compl : Agreement => Str } ;
     AP = Adjective ;
     CN = CNoun ;
-    NP = {s : Case => Str ; a : Agreement} ;
-    Pron = {s : Case => Str ; a : Agreement} ;
+    NP,
+    Pron = MiniResSom.NP ;
     Det = {s : Str ; sp : Gender => Str ; d : NForm } ;
     -- Conj = {s : Str} ;
     -- Prep = {s : Str} ;
@@ -27,12 +27,13 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     UsePresCl pol cl = {
       s = cl.s ! pol.p
       } ;
+
     PredVP np vp = {
       s = \\b =>
            np.s ! Nom
-        ++ if_then_Str b "waa" "ma"  --satstypmarkörer
-	++ vp.s ! VPres np.a
-        ++ vp.compl ! np.a ;
+        ++ stmarker b np.isPron np.a  --satstypmarkörer
+        ++ vp.compl ! np.a
+	      ++ vp.s ! VPres np.a
       } ;
 
     UseV v = v ** { compl = \\_ => [] } ;
@@ -50,18 +51,19 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
       vp ** { compl = \\x => vp.compl ! x ++ adv.s } ;
     DetCN det cn = {
       s = \\c => cn.s ! det.d ! c ++ det.s ++ cn.mod ! det.d ! c ;
-      a = getAgr det.d cn.g
+      a = getAgr det.d cn.g ;
+      isPron = False
       } ;
     -- UsePN pn = {
     --   s = \\_ => pn.s ;
     --   a = Agr Sg Per3
     --   } ;
-    -- UsePron p =
-    --   p ;
+    UsePron p =
+       p ;
     MassNP cn = {
       s = table { Nom => cn.s ! Def Sg ! Nom   ++ cn.mod ! Def Sg ! Nom ;
                   Abs => cn.s ! Indef Sg ! Abs ++ cn.mod ! Indef Sg ! Abs } ;
-      a = Sg3 cn.g
+      a = Sg3 cn.g ; isPron = False
       } ;
 
     UseN n = n ** { mod = \\_,_ => [] } ;
@@ -80,7 +82,7 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 -- de kongruerar med avseende på bestämdhet, t.ex.
     AdjCN ap cn = cn ** {
       s = \\nf,cas => cn.s ! nf ! Abs ; -- When an adjective is added, it will carry subject marker.
-      mod = \\nf,cas => case nf of {
+      mod = \\nf,cas => cn.mod ! nf ! Abs ++ case nf of {
                          Def n   => ap.s ! ADef n  ;
                          Indef n => ap.s ! AIndef n ;
                          x       => ap.s ! AIndef Sg } ----
@@ -103,34 +105,34 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     in_Prep = {s = "in"} ;
     on_Prep = {s = "on"} ;
     with_Prep = {s = "with"} ;
-
+-}
     i_Pron = {
-      s = table {Nom => "I" ; Abs => "me"} ;
-      a = Agr Sg Per1
+      s = table {Nom => "waan" ; Abs => "aan"} ;
+      a = Sg1 ; isPron = True
       } ;
     youSg_Pron = {
-      s = \\_ => "you" ;
-      a = Agr Sg Per2
+      s = table {Nom => "waad" ; Abs => "aad"} ;
+      a = Sg2 ; isPron = True
       } ;
     he_Pron = {
-      s = table {Nom => "he" ; Abs => "him"} ;
-      a = Agr Sg Per3
+      s = table {Nom => "wuu" ; Abs => "uu"} ;
+      a = Sg3 Masc ; isPron = True
       } ;
     she_Pron = {
-      s = table {Nom => "she" ; Abs => "her"} ;
-      a = Agr Sg Per3
+      s = table {Nom => "way" ; Abs => "ay"} ;
+      a = Sg3 Fem ; isPron = True
       } ;
-    we_Pron = {
-      s = table {Nom => "we" ; Abs => "us"} ;
-      a = Agr Pl Per1
-      } ;
-    youPl_Pron = {
-      s = \\_ => "you" ;
-      a = Agr Pl Per2
-      } ;
+    -- we_Pron = {
+    --   s = table {Nom => "we" ; Abs => "us"} ;
+    --   a = Agr Pl Per1
+    --   } ;
+    -- youPl_Pron = {
+    --   s = \\_ => "you" ;
+    --   a = Agr Pl Per2
+    --   } ;
     they_Pron = {
-      s = table {Nom => "they" ; Abs => "them"} ;
-      a = Agr Pl Per2
+      s = table {Nom => "way" ; Abs => "ay"} ;
+      a = Pl3 ; isPron = True
       } ;
--}
+
 }
