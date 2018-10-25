@@ -1,0 +1,1 @@
+concrete MiniLangSom of MiniLang = MiniGrammarSom, MiniLexiconSom ;
