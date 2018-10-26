@@ -172,7 +172,16 @@ oper
       #c + #v + #c | #c + #v + #v + #c | #v + #c  => nMas n ;
       _ => nXayawaan n } ;
 
-  NP : Type = {s : Case => Str ; a : Agreement ; isPron : Bool} ;
+  BaseNP : Type = {
+    a : Agreement ;
+    isPron : Bool ;
+    stm : Bool => Str ;
+    sp : Str } ;
+
+  NP : Type = BaseNP ** { s : Case => Str } ;
+  useN : Noun -> CNoun ** BaseNP = \n -> n **
+    { mod = \\_,_ => [] ; a = Sg3 n.g ; stm = stmarker (Sg3 n.g) ;
+      isPron = False ; sp = []} ;
 --------------------------------------------------------------------------------
 -- Pronouns, prepositions
 
@@ -184,7 +193,7 @@ oper
 -- Adjectives
 
 param
-  AForm = AIndef Number | ADef Number ; ---- TODO: past tense
+  AForm = AIndef Number | ADef Number Case ; ---- TODO: past tense
 
 oper
 
@@ -199,12 +208,15 @@ oper
 
   mkA : Str -> Adjective = \yar ->
     let ga = allomorph Ka yar ;
+        gu = init ga + "u" ;
         yaryar = duplicate yar
     in { s = table {
            AIndef Sg => yar ;
            AIndef Pl => yaryar ;
-           ADef Sg => yar + ga ;
-           ADef Pl => yaryar + ga }
+           ADef Sg Abs => yar + ga ;
+           ADef Pl Abs => yaryar + ga ;
+           ADef Sg Nom => yar + gu ;
+           ADef Pl Nom => yaryar + gu }
        } ;
 
   duplicate : Str -> Str = \yar -> case yar of {
@@ -220,7 +232,8 @@ oper
 param
    VForm =
      VInf
-   | VPres Agreement
+   | VPres Agreement Bool
+   | VNegPast
    | VPast Agreement
    | VFut -- agreement comes from auxiliary
    | VRel -- "som är/har/…" TODO is this used in other verbs?
@@ -244,6 +257,7 @@ oper
           _               => <ark + "n", ark> } ;
         arki = stems.p1 ;
         arag = stems.p2 ;
+        arkin = case last arki of { "n" => arki ; _ => arki + "n" } ;
         t : Str = case arag of {
                _ + ("i"|"y") => "s" ;
                _             => "t" } ;
@@ -254,25 +268,27 @@ oper
                _ + #v => "nn" ;
                _      => "n" } ;
    in { s = table {
-          VPres (Sg1|Sg3 Masc)
-                        => qaat + "aa" ;
-          VPres (Sg2|Sg3 Fem)
-                        => arag + t + "aa" ;
-          VPres (Pl1 _) => arag + n + "aa" ;
-          VPres Pl2     => arag + t + "aan" ;
-          VPres Pl3     => qaat + "aan" ;
+          VPres (Sg1|Sg3 Masc) pol
+                        => qaat + if_then_Str pol "aa" "o" ;
+          VPres (Sg2|Sg3 Fem) pol
+                        => arag + t + if_then_Str pol "aa" "o" ;
+          VPres (Pl1 _) pol
+                        => arag + n + if_then_Str pol "aa" "o"  ;
+          VPres Pl2 pol => arag + t + "aan" ;
+          VPres Pl3 pol => qaat + "aan" ;
 
-          VPres (Sg1|Sg3 Masc)
+          VPast (Sg1|Sg3 Masc)
                         => qaat + ay ;
-          VPres (Sg2|Sg3 Fem)
+          VPast (Sg2|Sg3 Fem)
                         => arag + t + ay ;
-          VPres (Pl1 _) => arag + n + ay ;
-          VPres Pl2     => arag + t + "een" ; -- kari+seen, (sug|joogsa|qaada)+teen
-          VPres Pl3     => qaat + "een" ;
+          VPast (Pl1 _) => arag + n + ay ;
+          VPast Pl2     => arag + t + "een" ; -- kari+seen, (sug|joogsa|qaada)+teen
+          VPast Pl3     => qaat + "een" ;
 
           VImp Sg          => arag ;
           VImp Pl          => qaat + "a" ; -- TODO: allomorphs, page 86 in Saeed
           VInf             => arki ;
+          VNegPast         => arkin ;
           _  => "TODO" }
       } ;
 
@@ -309,13 +325,13 @@ oper
 
   copula : Verb = {
     s = table {
-          VPres Sg1        => "ahay" ;
-          VPres (Sg2|Sg3 Fem)
-                           => "tahay" ;
-          VPres (Sg3 Masc) => "yahay" ;
-          VPres (Pl1 _)    => "nahay" ;
-          VPres Pl2        => "tihiin" ;
-          VPres Pl3        => "yihiin" ;
+          VPres Sg1 pol    => if_then_Str pol "ahay" "ihi" ;
+          VPres Sg2 pol    => if_then_Str pol "tahay" "ihid" ;
+          VPres (Sg3 Masc) pol => if_then_Str pol "yahay" "aha" ;
+          VPres (Sg3 Fem)  pol => if_then_Str pol "tahay" "aha" ;
+          VPres (Pl1 _) pol => if_then_Str pol "nahay" "ihin" ;
+          VPres Pl2 pol     => if_then_Str pol "tihiin" "ihidin" ;
+          VPres Pl3 pol     => if_then_Str pol "yihiin" "aha" ;
 
           VPast (Sg1|Sg3 Masc)
                           => "ahaa" ;
@@ -324,6 +340,7 @@ oper
           VPast (Pl1 _)   => "ahayn" ;
           VPast Pl2       => "ahaydeen" ;
           VPast Pl3       => "ahaayeen" ;
+          VNegPast        => "ahi" ;
           VRel => "ah" ;
           _    => "TODO:copula" }
      } ;
@@ -331,15 +348,16 @@ oper
    -- två substantivfraser som utgör subjekt respektive predikatsfyllnad.
    -- Observera också att kopulaverbet vara alltid hamnar efter det adjektiv
  -- som utgör predikatsfyllnaden.
+  -- TODO: add negation forms
   have_V : Verb = {
     s = table {
-          VPres Sg1        => "leeyahay" ;
-          VPres Sg2        => "leedahay" ;
-          VPres (Sg3 Fem)  => "leedahay" ;
-          VPres (Sg3 Masc) => "leeyahay" ;
-          VPres (Pl1 _)    => "leenahay" ;
-          VPres Pl2        => "leedihiin" ;
-          VPres Pl3        => "leeyihiin" ;
+          VPres Sg1 _      => "leeyahay" ;
+          VPres Sg2 _      => "leedahay" ;
+          VPres (Sg3 Fem) _ => "leedahay" ;
+          VPres (Sg3 Masc)_ => "leeyahay" ;
+          VPres (Pl1 _) _  => "leenahay" ;
+          VPres Pl2     _  => "leedihiin" ;
+          VPres Pl3     _  => "leeyihiin" ;
           VPast x          => "l" + copula.s ! VPast x ;
           VRel => "leh" ;
           _    => "TODO:have_V" } ;
@@ -364,12 +382,9 @@ Även i satser med andra verb i predikatet utelämnas det korta subjekts- pron
 ------------------
 -- satstypsmarkörer
 
-stmarker : (_,_ : Bool) -> Agreement -> Str = \isPos,isPron,agr ->
-  case <isPos,isPron,agr> of {
-    <False>       => "ma" ; ---- contracts with pronoun
-    <_,True,_>    => [] ;
-    <_,False,Pl3> => "waa" ; ---- just guessing /IL
-    <_,False,Sg3 Fem> => "way" ;
-    <_,False,_>   => "wuu"} ;
-
+stmarker : Agreement -> Bool => Str = \agr ->
+  case agr of {
+    Sg3 Masc => table { True => "wuu" ; False => "muu" } ;
+    _        => table { True => "way" ; False => "may" }
+   } ;
 }

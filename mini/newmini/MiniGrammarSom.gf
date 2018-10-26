@@ -7,7 +7,7 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     Pol = {s : Str ; p : Bool} ;
     S  = SS ;
     Cl = {s : Bool => Str} ;
-    VP = Verb ** { compl : Agreement => Str } ;
+    VP = Verb ** { compl : Agreement => {p1,p2 : Str} ; isPred : Bool } ;
     AP = Adjective ;
     CN = CNoun ;
     NP,
@@ -28,50 +28,55 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
       s = cl.s ! pol.p
       } ;
 
-    PredVP np vp = {
+    -- Subjektspronomenet brukar oftast utelämnas då predikatet består av ett adjektiv följt av verbet är.
+    PredVP np vp = let compl = vp.compl ! np.a in {
       s = \\b =>
-           np.s ! Nom
-        ++ stmarker b np.isPron np.a  --satstypmarkörer
-        ++ vp.compl ! np.a
-	      ++ vp.s ! VPres np.a
+           if_then_Str np.isPron [] (np.s ! Nom)
+        ++ compl.p1
+        ++ case <b,vp.isPred,np.a> of { --sentence type marker + subj. pronoun
+             <True,True,Sg3 _> => "waa" ;
+             _                 => np.stm ! b }
+        ++ compl.p2            -- object pronoun for pronouns, empty for nouns
+	      ++ vp.s ! VPres np.a b -- the verb inflected
       } ;
 
-    UseV v = v ** { compl = \\_ => [] } ;
+    UseV v = v ** { compl = \\_ => <[],[]> ; isPred = False } ;
 
     ComplV2 v2 np = v2 ** {
-      compl = \\a => v2.c2 ++ np.s ! Abs
+      compl = \\a => case np.isPron of {
+                True  => <"(" ++ np.sp ++ ")", v2.c2 ++ np.s ! Abs> ;
+                False => <v2.c2 ++ np.s ! Abs, []> } ;
+      isPred = False
       } ;
     UseAP ap = {
-      s = \\x => case x of { VPres a => ap.s ! AIndef (getNum a) ++ copula.s ! x ;
-                             VPast a => ap.s ! AIndef (getNum a) ++ copula.s ! x ;
-                             _       => ap.s ! AIndef Sg ++ copula.s ! x } ; ----
-      compl = \\_ => []
+      compl = \\a => <[], ap.s ! AIndef (getNum a)> ;
+      s = copula.s ; isPred = True
       } ;
-    AdvVP vp adv =
-      vp ** { compl = \\x => vp.compl ! x ++ adv.s } ;
-    DetCN det cn = {
+    AdvVP vp adv = vp ** {
+      compl = \\x => <(vp.compl ! x).p1, (vp.compl ! x).p2 ++ adv.s> } ;
+
+    DetCN det cn = useN cn ** {
       s = \\c => cn.s ! det.d ! c ++ det.s ++ cn.mod ! det.d ! c ;
       a = getAgr det.d cn.g ;
-      isPron = False
+      stm = stmarker (getAgr det.d cn.g)
       } ;
     -- UsePN pn = {
     --   s = \\_ => pn.s ;
     --   a = Agr Sg Per3
     --   } ;
     UsePron p =
-       p ;
-    MassNP cn = {
+      p ;
+    MassNP cn = useN cn ** {
       s = table { Nom => cn.s ! Def Sg ! Nom   ++ cn.mod ! Def Sg ! Nom ;
-                  Abs => cn.s ! Indef Sg ! Abs ++ cn.mod ! Indef Sg ! Abs } ;
-      a = Sg3 cn.g ; isPron = False
+                  Abs => cn.s ! Indef Sg ! Abs ++ cn.mod ! Indef Sg ! Abs }
       } ;
 
-    UseN n = n ** { mod = \\_,_ => [] } ;
+    UseN = useN ;
 
     a_Det = {s = "" ; sp = \\_ => "TODO:a_Det" ; d = Indef Sg} ;
     aPl_Det = a_Det ** { d = Indef Pl } ;
     the_Det = { s = [] ; -- To be glued onto the definite form of noun
-               sp = table { Fem => "tan" ; Masc => "kan" } ; -- tani, kani for DetNP
+               sp = table { Fem => "tan" ; Masc => "kan" } ; -- tani, kani for DetNP nominative
                 d = Def Sg } ;
     thePl_Det = { s = "" ; sp = \\_ => "kuwan" ; d = Def Pl } ;
 
@@ -79,13 +84,13 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 -- När ett substantiv binds som attribut till ett annat substantiv med hjälp av
 -- den attributiva kortformen ah som är av kopulaverbet yahay är, då måste båda
 -- substantiven vara antingen obestämda eller bestämda. Man kan alltså säga att
--- de kongruerar med avseende på bestämdhet, t.ex.
+-- de kongruerar med avseende på bestämdhet
     AdjCN ap cn = cn ** {
       s = \\nf,cas => cn.s ! nf ! Abs ; -- When an adjective is added, it will carry subject marker.
       mod = \\nf,cas => cn.mod ! nf ! Abs ++ case nf of {
-                         Def n   => ap.s ! ADef n  ;
+                         Def n   => ap.s ! ADef n cas ;
                          Indef n => ap.s ! AIndef n ;
-                         x       => ap.s ! AIndef Sg } ----
+                         x       => ap.s ! AIndef Sg }
       } ;
 
     PositA a = a ;
@@ -107,32 +112,39 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     with_Prep = {s = "with"} ;
 -}
     i_Pron = {
-      s = table {Nom => "waan" ; Abs => "aan"} ;
-      a = Sg1 ; isPron = True
+      s = table {Nom => "aan" ; Abs => "i"} ;
+      a = Sg1 ; isPron = True ; sp = "aniga" ;
+      stm = table { True => "waan" ; False => "maan" }
       } ;
     youSg_Pron = {
-      s = table {Nom => "waad" ; Abs => "aad"} ;
-      a = Sg2 ; isPron = True
+      s = table {Nom => "aad" ; Abs => "ku"} ;
+      a = Sg2 ; isPron = True ; sp = "adiga" ;
+      stm = table { True => "waad" ; False => "maad" }
       } ;
     he_Pron = {
-      s = table {Nom => "wuu" ; Abs => "uu"} ;
-      a = Sg3 Masc ; isPron = True
+      s = table {Nom => "uu" ; Abs => []} ;
+      a = Sg3 Masc ; isPron = True ; sp = "isaga" ;
+      stm = table { True => "wuu" ; False => "muu" }
       } ;
     she_Pron = {
-      s = table {Nom => "way" ; Abs => "ay"} ;
-      a = Sg3 Fem ; isPron = True
+      s = table {Nom => "ay" ; Abs => []} ;
+      a = Sg3 Fem ; isPron = True ; sp = "iyada" ;
+      stm = table { True => "way" ; False => "may" }
       } ;
-    -- we_Pron = {
-    --   s = table {Nom => "we" ; Abs => "us"} ;
-    --   a = Agr Pl Per1
-    --   } ;
-    -- youPl_Pron = {
-    --   s = \\_ => "you" ;
-    --   a = Agr Pl Per2
-    --   } ;
+    we_Pron = {
+      s = table {Nom => "aan" ; Abs => "na"} ;
+      a = Pl1 Incl ; isPron = True ; sp = "innaga" ;
+      stm = table { True => "waan" ; False => "maan" }
+      } ;
+    youPl_Pron = {
+      s = table {Nom => "aad" ; Abs => "idin"} ;
+      a =  Pl2 ; isPron = True ; sp = "idinka" ;
+      stm = table { True => "waad" ; False => "maad" }
+      } ;
     they_Pron = {
-      s = table {Nom => "way" ; Abs => "ay"} ;
-      a = Pl3 ; isPron = True
+      s = table {Nom => "aay" ; Abs => []} ;
+      a = Pl3 ; isPron = True ; sp = "iyaga" ;
+      stm = table { True => "way" ; False => "may" }
       } ;
 
 }
