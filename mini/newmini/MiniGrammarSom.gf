@@ -44,7 +44,7 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 
     ComplV2 v2 np = v2 ** {
       compl = \\a => case np.isPron of {
-                True  => <"(" ++ np.sp ++ ")", v2.c2 ++ np.s ! Abs> ;
+                True  => <[], v2.c2 ++ np.s ! Abs> ;
                 False => <v2.c2 ++ np.s ! Abs, []> } ;
       isPred = False
       } ;

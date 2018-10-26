@@ -45,7 +45,7 @@ oper
 
   --TODO: figure out some nice minimum number of stems
   mkNoun : (x1,_,_,x4 : Str) -> Gender -> Noun = \a,b,c,d,gender ->
-    { s = table { Indef Sg|Numerative => \\_ => a ;
+    { s = table { Indef Sg|Numerative => case gender of { Fem => table { Nom => a + "i" ; _ => a } ; Masc => \\_ => a } ;
                   Indef Pl => \\_ => c ;
                   Def   Sg => addCase b [] ;
                   Def   Pl => addCase d [] ;
