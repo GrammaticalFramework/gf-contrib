@@ -12,7 +12,7 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     CN = CNoun ;
     NP,
     Pron = MiniResSom.NP ;
-    Det = {s : Str ; sp : Gender => Str ; d : NForm } ;
+    Det = MiniResSom.Det ;
     -- Conj = {s : Str} ;
     -- Prep = {s : Str} ;
     V = Verb ;
@@ -28,14 +28,14 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
       s = cl.s ! pol.p
       } ;
 
-    -- Subjektspronomenet brukar oftast utelämnas då predikatet består av ett adjektiv följt av verbet är.
     PredVP np vp = let compl = vp.compl ! np.a in {
       s = \\b =>
            if_then_Str np.isPron [] (np.s ! Nom)
         ++ compl.p1
         ++ case <b,vp.isPred,np.a> of { --sentence type marker + subj. pronoun
              <True,True,Sg3 _> => "waa" ;
-             _                 => np.stm ! b }
+             _                 => stmarker ! np.a ! b } -- marker+pronoun contract
+            -- _                 => stmarkerNoContr ! np.a ! b }
         ++ compl.p2            -- object pronoun for pronouns, empty for nouns
 	      ++ vp.s ! VPres np.a b -- the verb inflected
       } ;
@@ -49,16 +49,23 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
       isPred = False
       } ;
     UseAP ap = {
-      compl = \\a => <[], ap.s ! AIndef (getNum a)> ;
+      compl = \\a => <[], ap.s ! AF (getNum a) Abs> ;
       s = copula.s ; isPred = True
       } ;
     AdvVP vp adv = vp ** {
       compl = \\x => <(vp.compl ! x).p1, (vp.compl ! x).p2 ++ adv.s> } ;
 
     DetCN det cn = useN cn ** {
-      s = \\c => cn.s ! det.d ! c ++ det.s ++ cn.mod ! det.d ! c ;
+      s = \\c =>
+           let cns = case <c,det.d> of {
+                       <Nom,Indef Sg> => cn.s ! IndefNom ; -- special form
+                       <Nom,Def x A>  => cn.s ! Def x U ; ---- TODO check if makes sense
+                       _              => cn.s ! det.d }
+            in cns
+            ++ det.s ! c
+            ++ cn.mod ! getNum (getAgr det.d Masc) ! c ;
       a = getAgr det.d cn.g ;
-      stm = stmarker (getAgr det.d cn.g)
+      stm = stmarker ! getAgr det.d cn.g
       } ;
     -- UsePN pn = {
     --   s = \\_ => pn.s ;
@@ -67,18 +74,16 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     UsePron p =
       p ;
     MassNP cn = useN cn ** {
-      s = table { Nom => cn.s ! Def Sg ! Nom   ++ cn.mod ! Def Sg ! Nom ;
-                  Abs => cn.s ! Indef Sg ! Abs ++ cn.mod ! Indef Sg ! Abs }
+      s = table { Nom => cn.s ! IndefNom ++ cn.mod ! Sg ! Nom ;
+                  Abs => cn.s ! Indef Sg ++ cn.mod ! Sg ! Abs }
       } ;
 
     UseN = useN ;
 
-    a_Det = {s = "" ; sp = \\_ => "TODO:a_Det" ; d = Indef Sg} ;
-    aPl_Det = a_Det ** { d = Indef Pl } ;
-    the_Det = { s = [] ; -- To be glued onto the definite form of noun
-               sp = table { Fem => "tan" ; Masc => "kan" } ; -- tani, kani for DetNP nominative
-                d = Def Sg } ;
-    thePl_Det = { s = "" ; sp = \\_ => "kuwan" ; d = Def Pl } ;
+    a_Det = mkDet [] "uu" [] (Indef Sg) ;
+    aPl_Det = mkDet [] "ay" [] (Indef Pl) ;
+    the_Det = mkDet "a" "kani" "tani" (Def Sg A) ;
+    thePl_Det = mkDet "a" "kuwan" "kuwan" (Def Pl A) ;
 
 -- Bestämdhetskongruens
 -- När ett substantiv binds som attribut till ett annat substantiv med hjälp av
@@ -86,11 +91,9 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 -- substantiven vara antingen obestämda eller bestämda. Man kan alltså säga att
 -- de kongruerar med avseende på bestämdhet
     AdjCN ap cn = cn ** {
-      s = \\nf,cas => cn.s ! nf ! Abs ; -- When an adjective is added, it will carry subject marker.
-      mod = \\nf,cas => cn.mod ! nf ! Abs ++ case nf of {
-                         Def n   => ap.s ! ADef n cas ;
-                         Indef n => ap.s ! AIndef n ;
-                         x       => ap.s ! AIndef Sg }
+      s = table { IndefNom => cn.s ! Indef Sg ; -- When an adjective is added, it will carry subject marker.
+                  x        => cn.s ! x } ;
+      mod = \\n,c => cn.mod ! n ! Abs ++ ap.s ! AF n c
       } ;
 
     PositA a = a ;
