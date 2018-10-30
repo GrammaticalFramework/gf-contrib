@@ -12,7 +12,7 @@ param
   Vowel = A | E | I | O | U ; -- For vowel assimilation
 
   Inclusion = Excl | Incl ;
-  Agreement = Sg1 | Sg2 | Sg3 Gender | Pl1 Inclusion | Pl2 | Pl3 ;
+  Agreement = Sg1 | Sg2 | Sg3 Gender | Pl1 Inclusion | Pl2 | Pl3 | Impers ;
 
 
 
@@ -25,9 +25,9 @@ param
   -- mundul·kii·sii   -- kii is the morpheme, what is sii?
 
   NForm = Indef Number
-        | Def Number Vowel -- stems for definite and determinative suffixes
+        | Def Number Vowel -- Stems for definite and determinative suffixes
         | Numerative       -- When modified by a number (only distinct for some feminine nouns)
-        | IndefNom ;       -- special form, only fem. nouns ending in consonant
+        | IndefNom ;       -- Special form, only fem. nouns ending in consonant
 
 oper
   getAgr : NForm -> Gender -> Agreement = \n,g ->
@@ -36,11 +36,9 @@ oper
   getNum : Agreement -> Number = \a ->
     case a of { Sg1|Sg2|Sg3 _ => Sg ; _ => Pl } ;
 
-  --TODO: can probably make this leaner and have just stems in NForm, if case is regular?
-  -- -u for nouns and pronouns, -i for demonstratives -- how about adding the ending in DetCN/MassNP, UsePron and DetCN with &+, and no case in the tables? Wait to see which other forms are needed.
   Noun : Type = {s : NForm => Str ; g : Gender} ;
 
-  CNoun : Type = Noun ** { mod : Number => Case => Str } ;
+  CNoun : Type = Noun ** { mod : Number => Case => Str ; hasMod : Bool } ;
 
   --TODO: figure out some nice minimum number of stems
   mkNoun : (x1,_,_,x4 : Str) -> Gender -> Noun = \wiil,wiilka,wiilal,wiilasha,gender ->
@@ -65,20 +63,12 @@ oper
            Indef Sg => wiil ;
            Indef Pl => wiilal ;
            IndefNom => bisadi ;
+           -- DefAbs Sg  => wiilka ;
+           -- DefAbs Pl  => wiilasha ;
            Numerative => bisadood ;
            Def Sg vow => defStems wiilka ! vow ;
            Def Pl vow => defStems wiilasha ! vow } ;
          g = gender } ;
-
-  -- obsolete
-  -- addCase : Str -> Str -> Case=>Str = \ilkaha,iis ->
-  --   let dupl : Str -> {p1 : Str ; p2 : Str} = \x -> <x,x> ;
-  --       stems : {p1 : Str ; p2 : Str} = case <ilkaha,iis> of {
-  --                       <ilk + "aha", "i" + is> => dupl (ilk + "ih" + iis) ;
-  --                       <ilk + "aha", ""      > => <ilk + "uh", init ilkaha> ;
-  --                       <magac + "a", ood     > => dupl (magac + ood) ;
-  --                       _                       => dupl (ilkaha+"-"+iis) } ;
-  --    in table { Nom => stems.p1 + "u" ; Abs => stems.p2 + "a" } ;
 
 -------------------------
 -- Regular noun paradigms
@@ -95,8 +85,9 @@ oper
   -- 3) Masculine, plural with duplication
   nMas mas = let s = last mas ;
                  ka = allomorph mKa mas ;
-                 sha = case ka of {"sha" => ka ; _ => s + ka } in
-    mkNoun mas (mas + "ka") (mas + "a" + s) (mas + "a" + sha) Masc ;
+                 ta = allomorph mTa mas ;
+                 sha = case ta of {"sha" => ta ; _ => s + ta } in
+    mkNoun mas (mas + ka) (mas + "a" + s) (mas + "a" + sha) Masc ;
 
   -- 4a) Feminine, plural with ó
   nUl ul = let o  = case last ul of { "i" => "yo" ; _ => "o" } ;
@@ -118,25 +109,30 @@ oper
                     xo = x + o in
     mkNoun x (x + ka) xo (init xo + "ada") Masc ;
 
+  nMaalin : (_,_ : Str) -> Gender -> Noun = \maalin,maalmo,g ->
+   let ta = case g of { Masc => allomorph mKa maalin ;
+                        Fem  => allomorph mTa maalin } ;
+       aha = case g of { Masc|Fem  => "aha" } ; ---- ?
+   in mkNoun maalin (maalin + ta) maalmo (init maalmo + aha) g ;
 
   allomorph : Morpheme -> Str -> Str = \x,stem ->
     case x of {
       mO => case last stem of {
                   d@("b"|"d"|"r"|"l"|"m"|"n") => d + "o" ;
-                  "c"|"g"|"i"                 => "yo" ; --TODO other sounds?
+                  "c"|"g"|"i"|"j"|"x"|"s"     => "yo" ;
                   _                           => "o" } ;
 
       -- Based on the table on page 21--TODO find generalisations in patterns
-      mTa => case last stem of {
-                   "d"|"c"|"h"|"x"|"q"|"'"|"i"|"y"|"w" => "da" ;
-                   "l" => "sha" ;
-                   _   => "ta" } ;
+      mTa => case stem of {
+                   _ + ("dh")  => "a" ; ---- ??? just guessing from gabadh
+                   _ + ("d"|"c"|"h"|"x"|"q"|"'"|"i"|"y"|"w") => "da" ;
+                   _ + "l" => "sha" ;
+                   _       => "ta" } ;
 
       mKa => case stem of {
                    _ + ("g"|"aa"|"i"|"y"|"w") => "ga" ;
                    _ + ("c"|"h"|"x"|"q"|"'")  => "a" ;
                    _ + ("e"|"o")              => "ha" ;
-                   _ + "l"                    => "sha" ;
                    _                          => "ka" }
     } ;
 
@@ -145,11 +141,6 @@ oper
     "t" => "d" ;
     "p" => "b" ;
      _  => s } ;
-
-  -- don't remember what this was supposed to be
-  -- caseForm : (NForm => Str) -> NForm -> Str -> Str = \s,nf,u -> case nf of {
-  --   Numerative|Indef _ => s ! nf ;
-  --   _                  => glue (s ! nf) u } ;
 
 param
   Morpheme = mO | mKa | mTa ;
@@ -174,7 +165,7 @@ oper
   mkN = overload {
     mkN : Str -> Noun = mkN1 ;
     mkN : Str -> Gender -> Noun = mkNg ;
-    mkN : (_,_ : Str) -> Gender -> Noun = mkN2 ;
+    mkN : (_,_ : Str) -> Gender -> Noun = nMaalin ;
     mkN : Noun -> Gender -> Noun = \n,g ->
       n ** { g = g } ;
 
@@ -192,15 +183,13 @@ oper
       _                => nXayawaan n } ;
 
   mkNg : Str -> Gender -> Noun = \n,g -> case n of {
-      _ + ("r"|"n"|"l")
+      _ + ("r"|"n"|"l"|"g")
           => case g of {
                   Fem  => nUl n ;
                   Masc => mkN1 n } ;
       _   => mkN1 n
    } ; -- TODO: add more exceptional cases
 
-  mkN2 : (_,_ : Str) -> Gender -> Noun = \buug,buugga,g ->
-   mkNoun buug buugga (buug+"aag") (buug+"aagta") g ;
   ---------------------------------------------
   -- NP
 
@@ -213,8 +202,9 @@ oper
   NP : Type = BaseNP ** { s : Case => Str } ;
 
   useN : Noun -> CNoun ** BaseNP = \n -> n **
-    { mod = \\_,_ => [] ; a = Sg3 n.g ; stm = stmarker (Sg3 n.g) ;
-      isPron = False ; sp = []} ;
+    { mod = \\_,_ => [] ; hasMod = False ;
+      a = Sg3 n.g ; isPron = False ; sp = [] ;
+      stm = stmarker (Sg3 n.g) } ;
 
 --------------------------------------------------------------------------------
 -- Determiners
@@ -255,7 +245,90 @@ oper
 --  kiinna tiinna kuwiinna
 --  kooda tooda kuwooda
 
+  Prep : Type = { s : Agreement => Str } ;
 
+  mkPrep : (x1,_,_,_,_,x6 : Str) -> Prep = \ku,ii,kuu,noo,idiin,loo -> {
+    s = table {
+          Sg1 => ii ;
+          Sg2 => kuu ;
+          Pl2 => idiin ;
+          Pl1 Excl => noo ;
+          Pl1 Incl => "i" + noo ;
+          Impers => loo ;
+          _ => ku
+        }
+    } ;
+
+  noPrep : Prep = mkPrep [] "i" "ku" "na" "idin" "la" ;
+
+param
+  Preposition = u | ku | ka | la ;
+  PrepCombination = ugu | uga | ula | kaga | kula | kala
+                  | NoContr Preposition Preposition ; ---- not a good idea
+
+oper
+
+  combine : Preposition -> Preposition -> PrepCombination = \p1,p2 ->
+    let oneWay : Preposition => Preposition => PrepCombination =
+          \\x,y => case <x,y> of {
+                      <u,u|ku> => ugu ;
+                      <u,ka>   => uga ;
+                      <u,la>   => ula ;
+                      <ku|ka,
+                        ku|ka> => kaga ;
+                      <ku,la>  => kula ;
+                      <ka,la>  => kala ;
+                      _ => NoContr x y } ;
+    in case oneWay ! p2 ! p1 of {
+              NoContr _ _ => oneWay ! p1 ! p2 ;
+              x           => x } ;
+
+  prepTable : Preposition => Prep = table {
+    ku  => mkPrep "ku" "ii" "kuu" "noo" "idiin" "loo" ;
+    _la => mkPrep "la" "ila" "kula" "nala" "inala" "lala"
+  } ;
+
+
+  ---- this probably explodes; think of better alternatives
+  prepContrTable : Agreement => PrepCombination => Str = table {
+    Sg1 => table { ugu => "iigu" ; uga => "iiga" ;
+                   ula => "iila" ; kaga => "igaga" ;
+                   kula => "igula" ; kala => "igala" ;
+                   nc => showNoContr nc } ;
+    Sg2 => table { ugu => "kuugu" ; uga => "kaaga" ;
+                   ula => "kuula" ; kaga => "kaaga" ;
+                   kula => "kugula" ; kala => "kaala" ;
+                   nc => showNoContr nc } ;
+
+    Pl1 Excl =>
+           table { ugu => "noogu" ; uga => "nooga" ;
+                   ula => "noola" ; kaga => "nagaga" ;
+                   kula => "nagula" ; kala => "nagala" ;
+                   nc => showNoContr nc } ;
+    Pl1 Incl =>
+           table { ugu => "inoogu" ; uga => "inooga" ;
+                   ula => "inoola" ; kaga => "inagaga" ;
+                   kula => "inagula" ; kala => "inagala" ;
+                   nc => showNoContr nc } ;
+    Pl2 => table { ugu => "idiinku" ; uga => "idiinka" ;
+                   ula => "idiinla" ; kaga => "idinkaga" ;
+                   kula => "idinkula" ; kala => "idinkala" ;
+                   nc => showNoContr nc } ;
+    Impers =>
+           table { ugu => "loogu" ; uga => "looga" ;
+                   ula => "loola" ; kaga => "lagaga" ;
+                   kula => "lagula" ; kala => "lagala" ;
+                   nc => showNoContr nc } ;
+--
+    _    => table { ugu => "ugu" ; uga => "uga" ;
+                    ula => "ula" ; kaga => "kaga" ;
+                    kula => "kula" ; kala => "kala" ;
+                   nc => showNoContr nc }
+  } where {
+     showNoContr : PrepCombination -> Str = \pc ->
+       case pc of { NoContr x y => (prepTable ! x).s ! Pl3 ++ (prepTable ! y).s ! Pl3 ;
+                    _           => Predef.error "prepositions contract" }
+  } ;
 -- Negationen má `inte' skrivs samman med en föregående preposition.
 --------------------------------------------------------------------------------
 -- Adjectives
@@ -314,7 +387,7 @@ oper
 
   Verb : Type = { s : VForm => Str } ;
 
-  Verb2 : Type = Verb ** { c2 : Str } ;
+  Verb2 : Type = Verb ** { prep : Prep } ;
 
   mkVerb : (x1,x2 : Str) -> Verb = \ark,qaat ->
     let stems : {p1 : Str ; p2 : Str} = case ark of {
@@ -385,7 +458,10 @@ oper
     } ;
 
 
-    mkV2 : Str -> Verb2 = \s -> mkV s ** { c2 = [] } ;
+  mkV2 = overload {
+    mkV2 : Str -> Verb2 = \s -> mkV s ** {prep = noPrep } ;
+    mkV2 : Str -> Prep -> Verb2 = \s,p -> mkV s ** {prep = p}
+    } ;
 ------------------
 -- Irregular verbs
 
@@ -444,7 +520,21 @@ I 3 person utelämnas däremot oftast det korta subjektspronomenet uu han elle
 Även i satser med andra verb i predikatet utelämnas det korta subjekts- pronomenet i 3 person någon gång ibland.
 -}
 
+------------------
+-- VP
+  Adv : Type = {s,s2 : Str} ; -- TODO: prepositions contract
 
+  VP : Type = Verb ** {
+    compl : Agreement => {p1,p2 : Str} ;
+    isPred : Bool ;
+    adv : Adv
+    } ;
+
+  useV : Verb -> VP = \v -> v ** {
+    compl = \\_ => <[],[]> ;
+    isPred = False ;
+    adv = {s,s2 = []}
+    } ;
 ------------------
 -- satstypsmarkörer
 
