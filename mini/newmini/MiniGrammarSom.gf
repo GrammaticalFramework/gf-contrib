@@ -13,7 +13,7 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
     PN,
     Pron = MiniResSom.NP ;
     Det = MiniResSom.Det ;
-    -- Conj = {s : Str} ;
+    Conj = {s : Str} ;
     Prep = MiniResSom.Prep ;
     Adv = MiniResSom.Adv ;
     V = Verb ;
@@ -50,10 +50,12 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 
     ComplV2 v2 np = useV v2 ** {
       compl = \\a => case np.isPron of {
-                True  => <[]        , v2.prep.s ! np.a> ;
-                False => <np.s ! Abs, v2.prep.s ! np.a> } ;
-      isPred = False
+                True  => <[]        , complV2 np v2> ;
+                False => <np.s ! Abs, complV2 np v2> } ;
+      isPred = False ;
+      c2 = v2.c2
       } ;
+
     UseAP ap = useV copula ** {
       compl = \\a => <[], ap.s ! AF (getNum a) Abs> ;
       isPred = True
@@ -122,10 +124,12 @@ concrete MiniGrammarSom of MiniGrammar = open MiniResSom, Prelude in {
 
 --    every_Det = {s = "every" ; n = Sg} ;
 
-    -- page 39 in Saeed for more preposition contractions
+    -- this seems incomprehensible but trust me it's legit.
+    -- Preps are used in both verbs and to build advs
+    -- but only for verbs they may combine with other preps
     in_Prep,
-    on_Prep = mkPrep "ku" "ii" "kuu" "noo" "idiin" "loo" ;
-    with_Prep = mkPrep "la" "ila" "kula" "nala" "inala" "lala" ;
+    on_Prep = prepTable ! ku ;
+    with_Prep = prepTable ! la ;
 
     i_Pron = {
       s = table {Nom => "aan" ; Abs => "i"} ;

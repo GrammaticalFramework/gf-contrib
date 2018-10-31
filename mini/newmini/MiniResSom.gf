@@ -249,22 +249,21 @@ oper
 
   mkPrep : (x1,_,_,_,_,x6 : Str) -> Prep = \ku,ii,kuu,noo,idiin,loo -> {
     s = table {
-          Sg1 => ii ;
-          Sg2 => kuu ;
-          Pl2 => idiin ;
+          Sg1      => ii ;
+          Sg2      => kuu ;
+          Pl2      => idiin ;
           Pl1 Excl => noo ;
           Pl1 Incl => "i" + noo ;
-          Impers => loo ;
-          _ => ku
+          Impers   => loo ;
+          _        => ku
         }
     } ;
 
-  noPrep : Prep = mkPrep [] "i" "ku" "na" "idin" "la" ;
 
 param
-  Preposition = u | ku | ka | la ;
+  Preposition = u | ku | ka | la | noPrep ;
   PrepCombination = ugu | uga | ula | kaga | kula | kala
-                  | NoContr Preposition Preposition ; ---- not a good idea
+                  | Single Preposition ;
 
 oper
 
@@ -278,57 +277,64 @@ oper
                         ku|ka> => kaga ;
                       <ku,la>  => kula ;
                       <ka,la>  => kala ;
-                      _ => NoContr x y } ;
+                      <noPrep,p> => Single p ;
+                      <p,noPrep> => Single p ;
+                      <p,_> => Single p } -- for trying both ways
+                --      <_,_> => Predef.error (showPrep x ++ showPrep y) } ;
     in case oneWay ! p2 ! p1 of {
-              NoContr _ _ => oneWay ! p1 ! p2 ;
-              x           => x } ;
+              Single x => oneWay ! p1 ! p2 ;
+              x        => x } ;
 
   prepTable : Preposition => Prep = table {
-    ku  => mkPrep "ku" "ii" "kuu" "noo" "idiin" "loo" ;
-    _la => mkPrep "la" "ila" "kula" "nala" "inala" "lala"
+    ku => mkPrep "ku" "igu" "kugu" "nagu" "idinku" "lagu" ;
+    ka => mkPrep "ka" "iga" "kaa" "naga" "idinka" "laga" ;
+    la => mkPrep "la" "ila" "kula" "nala" "idinla" "lala" ;
+    u  => mkPrep "u" "ii" "kuu" "noo" "idiin" "loo" ;
+    noPrep => mkPrep [] "i" "ku" "na" "idin" "la"
   } ;
 
+   showPrep : Preposition -> Str = \p ->
+     case p of {
+       noPrep => "noPrep" ;
+       _      => (prepTable ! p).s ! Pl3
+     } ;
 
-  ---- this probably explodes; think of better alternatives
-  prepContrTable : Agreement => PrepCombination => Str = table {
+  prepCombTable : Agreement => PrepCombination => Str = table {
     Sg1 => table { ugu => "iigu" ; uga => "iiga" ;
                    ula => "iila" ; kaga => "igaga" ;
                    kula => "igula" ; kala => "igala" ;
-                   nc => showNoContr nc } ;
+                   Single x => (prepTable ! x).s ! Sg1 } ;
     Sg2 => table { ugu => "kuugu" ; uga => "kaaga" ;
                    ula => "kuula" ; kaga => "kaaga" ;
                    kula => "kugula" ; kala => "kaala" ;
-                   nc => showNoContr nc } ;
-
+                   Single x => (prepTable ! x).s ! Sg2 } ;
     Pl1 Excl =>
            table { ugu => "noogu" ; uga => "nooga" ;
                    ula => "noola" ; kaga => "nagaga" ;
                    kula => "nagula" ; kala => "nagala" ;
-                   nc => showNoContr nc } ;
+                   Single x => (prepTable ! x).s ! Pl1 Excl } ;
     Pl1 Incl =>
            table { ugu => "inoogu" ; uga => "inooga" ;
                    ula => "inoola" ; kaga => "inagaga" ;
                    kula => "inagula" ; kala => "inagala" ;
-                   nc => showNoContr nc } ;
+                   Single x => (prepTable ! x).s ! Pl1 Incl } ;
+
     Pl2 => table { ugu => "idiinku" ; uga => "idiinka" ;
                    ula => "idiinla" ; kaga => "idinkaga" ;
                    kula => "idinkula" ; kala => "idinkala" ;
-                   nc => showNoContr nc } ;
+                   Single x => (prepTable ! x).s ! Pl2 } ;
     Impers =>
            table { ugu => "loogu" ; uga => "looga" ;
                    ula => "loola" ; kaga => "lagaga" ;
                    kula => "lagula" ; kala => "lagala" ;
-                   nc => showNoContr nc } ;
+                   Single x => (prepTable ! x).s ! Impers } ;
 --
-    _    => table { ugu => "ugu" ; uga => "uga" ;
-                    ula => "ula" ; kaga => "kaga" ;
-                    kula => "kula" ; kala => "kala" ;
-                   nc => showNoContr nc }
-  } where {
-     showNoContr : PrepCombination -> Str = \pc ->
-       case pc of { NoContr x y => (prepTable ! x).s ! Pl3 ++ (prepTable ! y).s ! Pl3 ;
-                    _           => Predef.error "prepositions contract" }
+    y   => table { ugu => "ugu" ; uga => "uga" ;
+                   ula => "ula" ; kaga => "kaga" ;
+                   kula => "kula" ; kala => "kala" ;
+                   Single x => (prepTable ! x).s ! y }
   } ;
+
 -- Negationen má `inte' skrivs samman med en föregående preposition.
 --------------------------------------------------------------------------------
 -- Adjectives
@@ -387,7 +393,7 @@ oper
 
   Verb : Type = { s : VForm => Str } ;
 
-  Verb2 : Type = Verb ** { prep : Prep } ;
+  Verb2 : Type = Verb ** { c2 : Preposition } ;
 
   mkVerb : (x1,x2 : Str) -> Verb = \ark,qaat ->
     let stems : {p1 : Str ; p2 : Str} = case ark of {
@@ -459,8 +465,8 @@ oper
 
 
   mkV2 = overload {
-    mkV2 : Str -> Verb2 = \s -> mkV s ** {prep = noPrep } ;
-    mkV2 : Str -> Prep -> Verb2 = \s,p -> mkV s ** {prep = p}
+    mkV2 : Str -> Verb2 = \s -> mkV s ** {c2 = noPrep} ;
+    mkV2 : Str -> Preposition -> Verb2 = \s,p -> mkV s ** {c2 = p}
     } ;
 ------------------
 -- Irregular verbs
@@ -527,14 +533,22 @@ Även i satser med andra verb i predikatet utelämnas det korta subjekts- pron
   VP : Type = Verb ** {
     compl : Agreement => {p1,p2 : Str} ;
     isPred : Bool ;
-    adv : Adv
+    adv : Adv ;
+    c2, c3 : Preposition
     } ;
 
   useV : Verb -> VP = \v -> v ** {
     compl = \\_ => <[],[]> ;
     isPred = False ;
-    adv = {s,s2 = []}
+    adv = {s,s2 = []} ;
+    c2,c3 = noPrep ;
     } ;
+
+  compl : NP -> VP -> Str = \np,vp ->
+    prepCombTable ! np.a ! combine vp.c2 vp.c3 ;
+
+  complV2 : NP -> Verb2 -> Str = \np,vp ->
+      prepCombTable ! np.a ! combine vp.c2 noPrep ;
 ------------------
 -- satstypsmarkörer
 
