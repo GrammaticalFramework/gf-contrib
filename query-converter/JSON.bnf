@@ -1,0 +1,18 @@
+-- following the grammar in https://www.json.org
+-- AR 2018-11-24
+
+EValue.  Element ::= Value ;
+
+VObject. Value ::= "{" [Member] "}" ;
+VArray.  Value ::= "[" [Element] "]" ;
+VString. Value ::= String ;
+VInt.    Value ::= Integer ;
+VFloat.  Value ::= Double ;
+Vtrue.   Value ::= "true" ;
+Vfalse.  Value ::= "false" ;
+Vnull.   Value ::= "null" ;
+
+MAssign. Member ::= String ":" Element ;
+
+separator Member "," ;
+separator Element "," ;
