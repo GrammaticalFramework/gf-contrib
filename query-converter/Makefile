@@ -4,6 +4,7 @@ cgi:: www/qconv.cgi
 # Install web pages & CGI script (run it on www.grammaticalframework.org)
 install: cgi
 	rsync -av www/ /usr/local/www/qconv/
+	-chgrp gf /usr/local/www/qconv/
 
 G=generated
 D=-i$G -odir objs -hidir objs
@@ -11,8 +12,9 @@ D=-i$G -odir objs -hidir objs
 executable: XML MinSQL RelAlgebra
 	ghc -j --make -o qconv $D QConv.hs
 
+R=-with-rtsopts=-M1G
 www/qconv.cgi:: RelAlgebra MinSQL
-	ghc -j --make -o $@ $D -main-is QConvCGI QConvCGI.hs
+	ghc -j --make -o $@ $D $R -main-is QConvCGI QConvCGI.hs
 
 
 SHELL=bash # The lines below might not work with /bin/sh, the default
