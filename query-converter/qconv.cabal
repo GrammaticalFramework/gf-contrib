@@ -39,7 +39,7 @@ Executable qconv
   default-language:    Haskell2010
   ghc-options:	       -fwarn-unused-imports
 
-Executable qconv.cgi
+Executable qconv-real.cgi
   hs-source-dirs:      app
   main-is:             QConvCGI.hs
   ghc-options:	       -main-is QConvCGI -fwarn-unused-imports
