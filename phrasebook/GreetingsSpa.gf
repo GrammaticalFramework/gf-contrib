@@ -2,7 +2,7 @@ concrete GreetingsSpa of Greetings = SentencesSpa [Greeting,mkGreeting] ** open 
 
 flags coding = utf8 ;
 
-lin 
+lin
   GBye = mkGreeting "adiós" ;
   GCheers = mkGreeting "salud" ;
   GDamn = mkGreeting "joder" ;
@@ -17,15 +17,15 @@ lin
   GGoodbye = mkGreeting "hasta luego" ;
   GHello = mkGreeting "hola" ;
   GHelp = mkGreeting "socorro" ;
-  GHowAreYou = mkGreeting "cómo está¡" ; -- the polite singular "you"
+  GHowAreYou = mkGreeting "cómo está" ; -- the polite singular "you"
   GLookOut = mkGreeting "atención" ;
   GNiceToMeetYou = mkGreeting "encantado de conocerle" ; -- the polite singular "you"
   GPleaseGive, GPleaseGivePol = mkGreeting "por favor" ;
-  GSeeYouSoon = mkGreeting "nos vemos pronto" ; 
-  GSorry = mkGreeting "disculpa" ; 
-  GSorryPol = mkGreeting "disculpe" ; 
+  GSeeYouSoon = mkGreeting "nos vemos pronto" ;
+  GSorry = mkGreeting "disculpa" ;
+  GSorryPol = mkGreeting "disculpe" ;
   GThanks = mkGreeting "gracias" ;
   GTheCheck = mkGreeting "la cuenta" ;
-  GWhatTime = mkGreeting "qué ora es" ;
+  GWhatTime = mkGreeting "qué hora es" ;
 
 }
