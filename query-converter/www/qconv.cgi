@@ -4,4 +4,7 @@
 
 ulimit -t 40
 
-./qconv-real.cgi "$@"
+./qconv-real.cgi "$@" || {
+    echo ''
+    echo '<p>Something went wrong (time/memory limit exceeded perhaps)'
+}
