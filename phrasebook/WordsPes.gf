@@ -1,14 +1,14 @@
 --2 Implementations of Words, with English as example
 
-concrete WordsPes of Words = SentencesPes ** 
-    open 
+concrete WordsPes of Words = SentencesPes **
+    open
       SyntaxPes,
       ResPes,
-      ParadigmsPes, 
-      (L = LexiconPes), 
-      (P = ParadigmsPes), 
---      IrregPes, 
-      ExtraPes, 
+      ParadigmsPes,
+      (L = LexiconPes),
+      (P = ParadigmsPes),
+--      IrregPes,
+      ExtraPes,
       Prelude in {
 flags coding = utf8 ;
 
@@ -45,7 +45,7 @@ flags coding = utf8 ;
     Suspect = mkA "مشکوک" ;
     Warm = L.warm_A ;
 
--- Places require different prepositions to express location; in some languages 
+-- Places require different prepositions to express location; in some languages
 -- also the directional preposition varies, but in English we use $to$, as
 -- defined by $mkPlace$.
 
@@ -62,7 +62,7 @@ flags coding = utf8 ;
     Hotel = mkPlace "هتل" "در" ;
     Museum = mkPlace "موزه" "در" ;
     Park = mkPlace "پارک" "در" ;
-    Parking = mkPlace "پارکینگ" "در" ; 
+    Parking = mkPlace "پارکینگ" "در" ;
     Pharmacy = mkPlace "داروخانه" "در" ;
     PostOffice = mkCompoundPlace "اداره" "پست" "در" ;
     Pub = mkPlace "میخانه" "در" ;
@@ -70,12 +70,12 @@ flags coding = utf8 ;
     School = mkPlace "مدرسه" "در" ;
     Shop = mkPlace "مغازه" "در";
     Station = mkPlace "ایستگاه" "در" ;
-    Supermarket = mkPlace "فروشگاه" "در" ; 
+    Supermarket = mkPlace "فروشگاه" "در" ;
     Theatre = mkPlace "تئاتر" "در" ;
     Toilet = mkPlace "دستشویی" "در" ;
     University = mkPlace "دانشگاه" "در";
     Zoo = mkPlace ["باغ وحش"] "در" ;
-   
+
     CitRestaurant cit = mkCNPlace (mkCN cit (mkCN (mkN01 "رستوران" Inanimate))) in_Prep to_Prep ;
 
 
@@ -103,7 +103,7 @@ flags coding = utf8 ;
     English = mkNat "انگلیسی" "انگلستان" ;
     Finnish = mkNat "فنلاندی" "فنلاند" ;
     Flemish = mkNP (mkPN "فلاندرز" Inanimate) ;
-    French = mkNat "فرانسوی" "فرانسه" ; 
+    French = mkNat "فرانسوی" "فرانسه" ;
     German = mkNat "آلمانی" "آلمان" ;
     Italian = mkNat "ایتالیایی" "ایتالیا" ;
     Norwegian = mkNat "نروژی" "نروژ" ;
@@ -113,8 +113,8 @@ flags coding = utf8 ;
     Spanish = mkNat "اسپانیایی" "اسپانیا" ;
     Swedish = mkNat "سوئدی" "سوئد" ;
 
--- Means of transportation 
- 
+-- Means of transportation
+
    Bike = mkTransport L.bike_N ;
    Bus = mkTransport (mkN01 "اتوبوس" Inanimate) ;
    Car = mkTransport L.car_N ;
@@ -132,9 +132,9 @@ flags coding = utf8 ;
 --    AHasAge p num = mkCl p.name (mkNP (mkNP num L.year_N) (ParadigmsPes.mkAdv "ک"));
     AHasAge p num = mkCl p.name  (mkNP num (mkCN L.year_N));
     AHasChildren p num = mkCl p.name have_V2 (mkNP num L.child_N) ;
-    AHasRoom p num = mkCl p.name have_V2 
+    AHasRoom p num = mkCl p.name have_V2
       (mkNP (mkNP a_Det (mkCN (mkN01 "اتاق" Inanimate))) (SyntaxPes.mkAdv for_Prep (mkNP num (mkCN (P.mkN01 "شخص" Animate))))) ;
-    AHasTable p num = mkCl p.name have_V2 
+    AHasTable p num = mkCl p.name have_V2
       (mkNP (mkNP a_Det (mkCN (mkN01 "میز" Inanimate))) (SyntaxPes.mkAdv for_Prep (mkNP num (mkCN (P.mkN01 "شخص" Animate))))) ;
     AHasName p name = mkCl (nameOf p) name ;
     AHungry p = mkCl p.name (mkA "گرسنه") ;
@@ -159,29 +159,29 @@ flags coding = utf8 ;
 --    QWhatName p = mkQS (mkQCl whatSg_IP (mkVP (nameOf p))) ;
     QWhatName p = mkQS (mkQCl what_IAdv (mkNP p.poss (lin N (mkN01 "نام" Inanimate)))) ;
 --    QWhatAge p = mkQS (mkQCl (mkCl (mkNP p.poss) (P.mkAdv "سال"))) ;
-    QWhatAge p = mkQS (mkQCl howMuchAge_IAdv (mkNP (mkNP p.poss) (P.mkAdv "سال"))) ; 
+    QWhatAge p = mkQS (mkQCl howMuchAge_IAdv (mkNP (mkNP p.poss) (P.mkAdv "سال"))) ;
 --    HowMuchCost item = mkQS (mkQCl (mkCl item (P.mkAdv ["قیمت داشتن"]))) ;
-    HowMuchCost item = mkQS (mkQCl howMuchCost_IAdv (mkNP (lin Predet {s = "قیمت"}) item)) ; 
+    HowMuchCost item = mkQS (mkQCl howMuchCost_IAdv (mkNP (lin Predet {s = "قیمت"}) item)) ;
     ItCost item price = mkCl item (mkV2 (mkV "قیمت" "")) price ;
 
     PropOpen p = mkCl p.name open_Adv ;
     PropClosed p = mkCl p.name closed_Adv ;
  --   PropOpenDate p d = mkCl p.name (mkVP (mkVP d) open_Adv) ;
-    PropOpenDate p d = mkCl p.name (mkVP (mkVP open_Adv) d) ; 
+    PropOpenDate p d = mkCl p.name (mkVP (mkVP open_Adv) d) ;
 --    PropClosedDate p d = mkCl p.name (mkVP (mkVP d) closed_Adv) ;
-    PropClosedDate p d = mkCl p.name (mkVP (mkVP closed_Adv) d) ; 
+    PropClosedDate p d = mkCl p.name (mkVP (mkVP closed_Adv) d) ;
 --    PropOpenDay p d = mkCl p.name (mkVP (mkVP  open_Adv) d.habitual);
-    PropOpenDay p d = mkCl p.name (mkVP (mkNP d.name open_Adv)); 
+    PropOpenDay p d = mkCl p.name (mkVP (mkNP d.name open_Adv));
 --    PropClosedDay p d = mkCl p.name (mkVP (mkVP d.habitual) closed_Adv) ;
-    PropClosedDay p d = mkCl p.name (mkVP (mkNP d.name closed_Adv)) ; 
+    PropClosedDay p d = mkCl p.name (mkVP (mkNP d.name closed_Adv)) ;
 
 -- Building phrases from strings is complicated: the solution is to use
 -- mkText : Text -> Text -> Text ;
 
     PSeeYouDate d = mkText (lin Text (Prelude.ss ("شما را"))) (mkText (mkPhrase (mkUtt d)) (lin Text (Prelude.ss ("می بینم")))) ;
     PSeeYouPlace p = mkText (lin Text (Prelude.ss ("شما را"))) (mkText (mkPhrase (mkUtt p.at)) (lin Text (Prelude.ss ("می بینم")))) ;
-    PSeeYouPlaceDate p d = 
-      mkText (lin Text (Prelude.ss ("شما را"))) 
+    PSeeYouPlaceDate p d =
+      mkText (lin Text (Prelude.ss ("شما را")))
         (mkText (mkPhrase (mkUtt p.at)) (mkText (mkPhrase (mkUtt d)) (lin Text (Prelude.ss ("می بینم"))))) ;
 
 -- Relations are expressed as "می wفe" or "می سْn'س wفe", as defined by $xOf$
@@ -203,13 +203,13 @@ flags coding = utf8 ;
     Friday = mkDay "جمعه" ;
     Saturday = mkDay "شنبه" ;
     Sunday = mkDay "یکشنبه" ;
- 
+
     Tomorrow = P.mkAdv "فردا" ;
 
 -- modifiers of places
 
     TheBest = mkSuperl L.good_A ;
-    TheClosest = mkSuperl L.near_A ; 
+    TheClosest = mkSuperl L.near_A ;
     TheCheapest = mkSuperl (mkA "ارزان") ;
     TheMostExpensive = mkSuperl (mkA "گران") ;
     TheMostPopular = mkSuperl (mkA "پرطرفدار") ;
@@ -223,11 +223,11 @@ flags coding = utf8 ;
 
     HowFar place = mkQS (mkQCl far_IAdv (mkNP tA_Prep place.name)) ;
     HowFarFrom x y = mkQS (mkQCl far_IAdv (mkNP (mkNP from_Prep x.name) (SyntaxPes.mkAdv tA_Prep y.name ))) ;
-    HowFarFromBy x y t = 
+    HowFarFromBy x y t =
       mkQS (mkQCl far_IAdv (mkNP (mkNP (mkNP from_Prep x.name) (SyntaxPes.mkAdv tA_Prep y.name)) t)) ;
     HowFarBy y t = mkQS (mkQCl far_IAdv (mkNP (mkNP tA_Prep y.name) t)) ;
- 
-    WhichTranspPlace trans place = 
+
+    WhichTranspPlace trans place =
       mkQS (mkQCl (SyntaxPes.mkIP which_IDet trans.name) (mkVP (mkVP L.go_V) place.to)) ;
 
     IsTranspPlace trans place =
@@ -239,41 +239,41 @@ flags coding = utf8 ;
 
   oper
 
-    mkNat : Str -> Str -> NPNationality = \nat,co -> 
+    mkNat : Str -> Str -> NPNationality = \nat,co ->
       mkNPNationality (mkNP (mkPN nat Inanimate)) (mkNP (mkPN co Inanimate)) (mkA nat) ;
 
     mkDay : Str -> {name : NP ; point : Adv ; habitual : Adv} = \d ->
-      let day = mkNP (mkPN d Inanimate) in 
-      mkNPDay day (SyntaxPes.mkAdv no_Prep day) 
+      let day = mkNP (mkPN d Inanimate) in
+      mkNPDay day (SyntaxPes.mkAdv no_Prep day)
         (SyntaxPes.mkAdv to_Prep (mkNP a_Quant sgNum (mkCN (mkN01 d Inanimate)))) ; --changed from plNum to sgNum
-    
+
     mkCompoundPlace : Str -> Str -> Str -> {name : CN ; at : Prep ; to : Prep; isPl : Bool} = \comp, p, i ->
 --     mkCNPlace (mkCN (P.mkN01 comp (mkN01 p))) (P.mkPrep i) to_Prep ;
       mkCNPlace (mkCN (mkN01 (comp++p) Inanimate)) (P.mkPrep i) to_Prep ;
 
-    mkPlace : Str -> Str -> {name : CN ; at : Prep ; to : Prep; isPl : Bool} = \p,i -> 
+    mkPlace : Str -> Str -> {name : CN ; at : Prep ; to : Prep; isPl : Bool} = \p,i ->
       mkCNPlace (mkCN (mkN01 p Inanimate)) (P.mkPrep i) to_Prep ;
---    mkPlaceFem : Str -> Str -> Gender -> {name : CN ; at : Prep ; to : Prep; isPl : Bool} = \p,i,g -> 
---      mkCNPlace (mkCN (P.mkN01 p Inanimate)) (P.mkPrep i) to_Prep ;  
+--    mkPlaceFem : Str -> Str -> Gender -> {name : CN ; at : Prep ; to : Prep; isPl : Bool} = \p,i,g ->
+--      mkCNPlace (mkCN (P.mkN01 p Inanimate)) (P.mkPrep i) to_Prep ;
 
     open_Adv = P.mkAdv "باز";
     open_Predet = lin Predet {s = "باز"};
     closed_Adv = P.mkAdv "بسته" ;
 
-    xOf : SentencesPes.GNumber -> N -> NPPerson -> NPPerson = \n,x,p -> 
+    xOf : SentencesPes.GNumber -> N -> NPPerson -> NPPerson = \n,x,p ->
       relativePerson n (mkCN x) (\a,b,c -> mkNP (GenNP b) a c) p ;
 
     nameOf : NPPerson -> NP = \p -> (xOf ssing (mkN01 "نام" Inanimate) p).name ;
     ssing = False ;
 
     mkTransport : N -> {name : CN ; by : Adv} = \n -> {
-      name = mkCN n ; 
+      name = mkCN n ;
       by = SyntaxPes.mkAdv by8means_Prep (mkNP n)
       } ;
 
 --    mkSuperl : A -> Det = \a -> SyntaxPes.mkDet the_Art (SyntaxPes.mkOrd a) ;
-      mkSuperl : A -> Det = \a -> lin Det { s = a.s ! bEzafa ++ "ترین" ; n = Sg ; isNum = False ; fromPron = False} ;
-    
+      mkSuperl : A -> Det = \a -> lin Det { s = a.s ! Bare ++ "ترین" ; n = Sg ; isNum = False ; mod = Bare} ;
+
 --   far_IAdv = ExtraPes.IAdvAdv (P.mkAdv "دور") ;
    far_IAdv = lin IAdv {s = "چقدر راه"} ;
    howMuchAge_IAdv = lin IAdv {s = "چند"} ;
