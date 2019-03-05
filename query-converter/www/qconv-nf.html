@@ -46,7 +46,7 @@
 
 <footer>
 <div class=modtime><small>
-  <!-- hhmts start -->Last modified: Thu Mar  1 15:30:13 CET 2018 <!-- hhmts end -->
+  <!-- hhmts start -->Last modified: Thu Feb 14 17:17:13 CET 2019 <!-- hhmts end -->
   </small>
 </div>
 </footer>
@@ -61,7 +61,10 @@ example1.onclick=function() {
 }
 browse.onchange=function() { uploadFileTo(file) }
 function showResult(responseText) { ERdiagram.innerHTML=responseText }
-ERform.onsubmit=function() { return postForm(ERform,showResult) }
+ERform.onsubmit=function() {
+  ERdiagram.innerHTML='<img src="loading.gif">'
+  return postForm(ERform,showResult)
+}
 ERform.onreset=function() { ERdiagram.innerHTML="" }
 </script>
 </body>

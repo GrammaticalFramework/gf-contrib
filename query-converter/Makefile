@@ -11,11 +11,11 @@ G=generated
 D=-i$G -odir objs -hidir objs
 
 executable: XML MinSQL RelAlgebra
-	ghc -j --make -o qconv $D QConv.hs
+	ghc -j --make -O -o qconv $D QConv.hs
 
 R=-with-rtsopts=-M1G
 www/qconv-real.cgi:: RelAlgebra MinSQL
-	ghc -j --make -o $@ $D $R -main-is QConvCGI QConvCGI.hs
+	ghc -j --make -O -o $@ $D $R -main-is QConvCGI QConvCGI.hs
 
 
 SHELL=bash # The lines below might not work with /bin/sh, the default
