@@ -337,7 +337,7 @@ oper
 -- phonological auxiliaries
 
   vowel    : pattern Str = #("a" | "e" | "i" | "o" | "u" | "h") ;
-  s_impuro : pattern Str = #("z" | "s" + ("b"|"c"|"d"|"f"|"m"|"p"|"q"|"t")) ;
+  s_impuro : pattern Str = #("z" | ("s" + ("b"|"c"|"d"|"f"|"m"|"p"|"q"|"t"))) ;
 
   elisForms : (_,_,_ : Str) -> Str = \lo,l',il ->
     pre {#s_impuro => lo ; #vowel => l' ; _ => il} ;

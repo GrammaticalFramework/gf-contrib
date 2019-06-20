@@ -168,10 +168,10 @@ lin
        let dir = mkV (dir_41 "dir")
        in  mkQS (mkQCl how_IAdv (mkCl p.name (reflV dir))) ;
     HowMuchCost item = 
-      let valer = mkV (valer_114 "valer")
+      let valer = mkV (valer_114 "valer" False) ---- False? AR 2019-05-20
       in  mkQS (mkQCl how8much_IAdv (mkCl item valer)) ; 
     ItCost item price = 
-      let valer = mkV (valer_114 "valer")
+      let valer = mkV (valer_114 "valer" False)
       in mkCl item (mkV2 valer) price ;
     PropOpen p = mkCl p.name stateCopula (mkAP open_A) ;
     PropClosed p = mkCl p.name stateCopula (mkAP closed_A) ;
