@@ -1,4 +1,4 @@
-concrete CoreWordnetIce of CoreWordnet = CatIce [A,N,V] ** open ParadigmsIce, IrregIce in {
+concrete CoreWordnetIce of CoreWordnet = CatIce [A,N,V] ** open ParadigmsIce, WiktIrregIce in {
 
 lin able_5_00_00_capable__A = mkA "fær" ;
 lin abnormal_3_00_00_A = mkA "afbrigðilegur" ;
