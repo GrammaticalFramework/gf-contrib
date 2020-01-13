@@ -1,0 +1,75 @@
+Example question-answering system using GF
+
+Author: Laurette Marais, laurette.p@gmail.com
+
+This was a project for the GF Summer School 2018 at Stellenbosch. The goal
+was to implement a multilingual question-answering system that neatly separates
+generic question-answering functionality from the specifics of a particular
+domain/query service.
+
+The main idea is that the grammar is developed so that questions and answers
+have almost identical parse trees, except that trees parsed from questions have
+empty nodes, while trees linearised into answers are complete. The abstract
+grammar is implemented with a question and an answer concrete module for each
+language. For example, the following tree is linearised in Afrikaans and English
+in two ways:
+
+WeatherFact: ElementFact Stellenbosch (Temperature (FNum 25.0))
+WeatherFactAfrQ: wat is die temperatuur in Stellenbosch ?
+WeatherFactAfrR: die temperatuur in Stellenbosch is 25.0 grade Celsius
+WeatherFactEngQ: what is the temperature in Stellenbosch ?
+WeatherFactEngR: the temperature in Stellenbosch is 25.0 degrees Celsius
+
+Parsing the question in either language results in the following tree, where the
+node contributing the answer content is empty:
+ElementFact Stellenbosch (Temperature ?2)
+
+The task of the QA system is to:
+- find the empty nodes in a tree parsed from a question
+- construct the appropriate query by analysing the tree
+- receive and interpret the response
+- construct any subtrees that are missing
+- insert the missing subtrees to produce a complete tree
+- linearise the complete tree as an answer
+
+The system can also handle more extensive questions:
+
+WeatherFact: ElementsFact
+               CapeTown
+               (MoreElements
+                 (TwoElements
+                   (Humidity (FNum 70.0))
+                   (Clouds (FNum 65.0)))
+                 (Temperature (FNum 25.0)))
+WeatherFactAfrQ: wat is die temperatuur , humiditeit en wolkdekking in Kaapstad ?
+WeatherFactAfrR: in Kaapstad is die temperatuur 25.0 grade Celsius , die
+                humiditeit 70.0 persent en die wolkdekking 65.0 persent
+WeatherFactEngQ: what is the temperature , humidity and cloud coverage in Cape
+                Town ?
+WeatherFactEngR: in Cape Town , the temperature is 25.0 degrees Celsius , the
+                humidity is 70.0 percent and the cloud coverage is 65.0 percent
+
+Locations in trees are represented in a very simplistic way, with reference only
+to the node's parent function and its position in the list of children, but it
+could be made more precise if necessary by using a full path specification from
+the root.
+
+--------------------------------------------------------------------------------
+
+The QA system is implemented in Python 3 using the bindings to the C runtime.
+OpenWeatherMap provides a free API for getting current weather data from around
+the world.
+
+The main module is qa:
+usage: qa.py [-h] topic language question
+
+positional arguments:
+  topic       Eg. 'weather'
+  language    (3-letter ISO-code)
+  question    Eg. 'what is the weather like in Stellenbosch?'
+
+The other modules are:
+qa_utils: used by qa and weather to manipulate parse trees
+weather: domain specific, responsible for interpeting and constructing
+         parse trees
+openweathermap: responsible for querying domain specific service
