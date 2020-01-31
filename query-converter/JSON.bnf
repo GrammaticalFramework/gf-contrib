@@ -1,0 +1,40 @@
+-- following the grammar in https://www.json.org
+-- AR 2018-11-24
+
+EValue.  Element ::= Value ;
+
+VObject. Value ::= "{" [Member] "}" ;
+VArray.  Value ::= "[" [Element] "]" ;
+VString. Value ::= String ;
+VInt.    Value ::= Integer ;
+VFloat.  Value ::= Double ;
+Vtrue.   Value ::= "true" ;
+Vfalse.  Value ::= "false" ;
+Vnull.   Value ::= "null" ;
+
+MAssign. Member ::= String ":" Element ;
+
+separator Member "," ;
+separator Element "," ;
+
+-- JSONPath 2019-03-05
+
+PRoot.       Path ::= "$" ;
+PChild.      Path ::= Path Descend Ident ;
+PChildren.   Path ::= Path Descend "[" [Ident] "]" ;
+PFilter.     Path ::= Path Descend "[" "?" "(" Cond ")" "]" ;
+PSubscript.  Path ::= Path Descend Ident "[" Integer "]" ;
+PSlice.      Path ::= Path Descend Ident "[" Integer ":" Integer ":" Integer "]" ;
+
+DNext.       Descend ::= "." ;
+DRecursive.  Descend ::= ".." ;
+
+CEq.         Cond ::= Exp "==" Exp ;
+CLt.         Cond ::= Exp "<"  Exp ;
+
+EIdent.      Exp  ::= Ident ;
+ECurrent.    Exp  ::= "@" ;
+EChild.      Exp  ::= Exp "." Ident ;
+ESubscript.  Exp  ::= Exp "[" Integer "]" ;
+
+separator nonempty Ident "," ;

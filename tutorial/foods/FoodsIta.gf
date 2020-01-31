@@ -70,7 +70,7 @@ concrete FoodsIta of Foods = open Prelude in {
 
     copula : Number -> Str = 
       \n -> case n of {
-        Sg => "è" ;
+        Sg => "Ã¨" ;
         Pl => "sono"
         } ;
 }
