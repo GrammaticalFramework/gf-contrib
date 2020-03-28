@@ -24,23 +24,23 @@ concrete yiddish of Numerals = {
   lin
     num x = x ;
 
-    n2 = mkZahl "צװײ" "טװעלף" "צװאַנציק"  ;
+    n2 = mkZahl "צװײ" "צװעלף" "צװאַנציק"  ;
     n3 = mkZahl "דרײַ" "דרײַצן" "דרײַסיק" ;
     n4 = mkZahl "פֿיר" "פֿערצן" "פֿערציק" ;
-    n5 = mkZahl "פֿינף" "פֿנפֿצן" "פֿופֿציק" ;
+    n5 = mkZahl "פֿינף" "פֿופֿצן" "פֿופֿציק" ;
     n6 = mkZahl "זעקס" "זעכצן" "זעכציק" ;
     n7 = mkZahl "זיבן" "זיבעצן" "זיבעציק" ;
     n8 = mkZahl "אַכט" "אַכצן" "אַכציק" ;
     n9 = mkZahl "נײַן" "נײַנצן" "נײַנציק" ;
 
-    pot01 = {s = table {<f,indep> => "אַײנס" ; <f,prae> => "אַײן" ; <f,attr> => []}} ;
+    pot01 = {s = table {<f,indep> => "אײנס" ; <f,prae> => "אײן" ; <f,attr> => []}} ;
     pot0 d = {s = table {<f,p> => d.s ! f}} ;
     pot110 = {s = table {p => "צען"}} ;
     pot111 = {s = table {p => "עלף"}} ;
     pot1to19 d = {s = table {p => d.s ! teen}} ;
     pot0as1 n = {s = table {p => n.s ! <unit,p>}} ;
     pot1 d = {s = table {p => d.s ! ten}} ;
-    pot1plus d e = {s = table {p => e.s ! <unit,prae> ++ "אַון" ++ d.s ! ten}} ;
+    pot1plus d e = {s = table {p => e.s ! <unit,prae> ++ "און" ++ d.s ! ten}} ;
     pot1as2 n = {s = table {p => n.s ! p}} ;
     pot2 d = {s = table {p => d.s ! <unit,attr> ++  "הונדערט" }} ;
     pot2plus d e = {s = table {
