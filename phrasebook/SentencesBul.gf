@@ -30,11 +30,11 @@ lin ACitizen p cit =
       let noun : N
                = case p.name.gn of {
                    R.GSg g => lin N {s   = \\nf => cit.s1 ! g      ! nf;
-                                     rel = cit.s2.s; relPost = False;
+                                     rel = cit.s2.s; relType = R.AdjMod;
                                      g   = case g of {R.Masc=>R.AMasc R.Human; R.Fem=>R.AFem; R.Neut=>R.ANeut}
                                     } ;
                    R.GPl   => lin N {s   = \\nf => cit.s1 ! R.Masc ! nf;
-                                     rel = cit.s2.s; relPost = False;
+                                     rel = cit.s2.s; relType = R.AdjMod;
                                      g   = R.AMasc R.Human
                                     }
                  } ;
