@@ -13,11 +13,7 @@ http://ai2-s2-pdfs.s3.amazonaws.com/5812/81bb6292814ce285dc1de82a9785fdac2b5d.pd
 
 Experimental program for translating between language and logic.
 
-Prerequisites: GF darcs version; do
-
-   darcs get --lazy http://www.grammaticalframework.org/ GF
-   cd GF
-   cabal install
+Prerequisites: GF with haskell binding
 
 To compile
 
@@ -41,6 +37,7 @@ Source files
   PropFin.gf     -- concrete syntax, Finnish with RGL functor
   PropFre.gf     -- concrete syntax, French  with RGL functor
   PropGer.gf     -- concrete syntax, German  with RGL functor
+  PropPor.gf     -- concrete syntax, Portuguese with RGL functor
   PropSwe.gf     -- concrete syntax, Swedish with RGL functor
   PropLatex.gf   -- concrete syntax, symbolic logic in LaTeX
 

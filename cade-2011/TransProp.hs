@@ -1,8 +1,9 @@
+{-# LANGUAGE PackageImports #-}
 {-# OPTIONS_GHC -fglasgow-exts #-}
 
 module TransProp where
 
-import qualified PGF (Tree, showExpr)
+import qualified "gf" PGF (Tree, showExpr)
 import Prop   -- generated from GF
 
 transfer :: Mode -> PGF.Tree -> PGF.Tree
