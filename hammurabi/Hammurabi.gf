@@ -1,4 +1,4 @@
-abstract Hammurabi = {
+abstract Hammurabi = Numeral ** {
     flags startcat = Law ;
     cat
         Law ;
@@ -7,7 +7,7 @@ abstract Hammurabi = {
 	Person ;
 	Object ;
 	Quantity ;
-			
+
     fun
 	FreeMan  : Person ;
 	Commoner : Person ;
@@ -16,17 +16,23 @@ abstract Hammurabi = {
 	Eye      : Object ;
 	Bone     : Object ;
 
-		
-	n_mana   : Quantity ;
-	
+
+	DigQ : Digits -> Quantity ;
+        NumQ : Numeral -> Quantity ;
+
 	Poss : Object -> Person -> Item ;
 	Det  : Object -> Item ;
-	
+
 	Strike  : Action ;
-	Break   : Action ;	
+	Break   : Action ;
 --		AndAction : Action -> Action -> Action ;
-		
+
+        -- If Person1 does Action to Person2's Object, …
 	EyeForEye  : Action -> Person -> Person -> Object -> Law ;
+
+        -- If Person1 does Action to Person2, …
 	HitForHit  : Action -> Person -> Person -> Law ;
-	ShallPay   : Action -> Person -> Item -> Law ;
+
+        -- If Person does Action to Item,  they shall pay this much
+        ShallPay : Action -> Person -> Item -> Quantity -> Law ;
 }
