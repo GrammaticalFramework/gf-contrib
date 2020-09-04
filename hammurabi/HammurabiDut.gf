@@ -18,7 +18,7 @@ concrete HammurabiDut of Hammurabi = NumeralDut **
         Bone     = mkN2 L.bone_N ;
 
         Poss obj person = defnt (mkCN obj (indef person)) ;
-        Det obj = mkNP the_Det (mkCN obj) ;
+        Any obj = mkNP the_Det (mkCN obj somebody_NP) ;
 
         Strike = mkV2 (mkV "sla" "slaat" "slaan" "sloeg" "sloegen" "geslagen") ;
         Break  = L.break_V2 ;
