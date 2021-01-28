@@ -4,12 +4,12 @@ aarne vid chalmers punkt se
 
 updated 2/6/2017 for gf-contrib at GitHub
 
-Code to accompany the paper
+## Code to accompany the paper
 
-Translating between language and logic: what is easy and what is difficult
+_Translating between language and logic: what is easy and what is difficult._
 A Ranta - International Conference on Automated Deduction, 2011, LNCS/LNAI.
 
-http://ai2-s2-pdfs.s3.amazonaws.com/5812/81bb6292814ce285dc1de82a9785fdac2b5d.pdf
+http://www.cse.chalmers.se/~aarne/articles/cade2011.pdf
 
 Experimental program for translating between language and logic.
 
@@ -40,6 +40,7 @@ To test
 
 ### Source files
 
+```
   -- language-neutral
   Prop.gf        -- abstract syntax
   TransProp.hs   -- conversions
@@ -59,12 +60,15 @@ To test
   -- not in use
   PropENF.gf     -- concrete syntax, English with RGL ordinary module
   PropStr.gf     -- concrete syntax, pidgin English
+```
 
-Generated files
+### Generated files
 
+```
   Prop.hs        -- abstract syntax in Haskell
+```
 
-TODO
+### TODO
 
   - web demo
   - integration with MOLTO math library
