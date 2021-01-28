@@ -1,4 +1,4 @@
-concrete MyFoodsChi of Foods = open Prelude in {
+concrete FoodsChi of Foods = open Prelude in {
 flags coding = utf8 ;
 lincat
     Comment, Item = Str;
