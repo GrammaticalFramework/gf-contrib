@@ -9,19 +9,20 @@ abstract Hammurabi = Numeral ** {
 	Quantity ;
 
     fun
-	FreeMan  : Person ;
+        FreeMan  : Person ;
+        FreeWoman : Person ;
 	Commoner : Person ;
 	Slave    : Person ;
 	King     : Person ;
+        Queen    : Person ;
 	Eye      : Object ;
 	Bone     : Object ;
-
 
 	DigQ : Digits -> Quantity ;
         NumQ : Numeral -> Quantity ;
 
 	Poss : Object -> Person -> Item ;
-	Det  : Object -> Item ;
+	Any  : Object -> Item ;
 
 	Strike  : Action ;
 	Break   : Action ;

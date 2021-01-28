@@ -13,17 +13,32 @@ http://ai2-s2-pdfs.s3.amazonaws.com/5812/81bb6292814ce285dc1de82a9785fdac2b5d.pd
 
 Experimental program for translating between language and logic.
 
-Prerequisites: GF with haskell binding
+### Compile globally
+
+Prerequisite: GF with haskell binding
 
 To compile
 
-  make
+    make
 
 To test
 
-  echo "for all numbers x , x is even or x is odd" | ./Trans
+    echo "for all numbers x , x is even or x is odd" | ./Trans
 
-Source files
+### Alternative: compile with stack
+
+This is a parallel method to the previous. Both work, and if you choose one, you can ignore the other.
+
+To build
+
+    make pgf
+    stack build
+
+To test
+
+    echo "for all numbers x , x is even or x is odd" | stack run trans
+
+### Source files
 
   -- language-neutral
   Prop.gf        -- abstract syntax
@@ -54,4 +69,3 @@ TODO
   - web demo
   - integration with MOLTO math library
   - bullet-based conjunctions are a hack now - should be supported better by RGL
-

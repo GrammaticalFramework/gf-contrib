@@ -1,4 +1,5 @@
 {-# LANGUAGE PackageImports #-}
+{-# LANGUAGE GADTs #-}
 {-# OPTIONS_GHC -fglasgow-exts #-}
 
 module TransProp where
