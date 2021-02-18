@@ -1,5 +1,4 @@
 -- (c) 2009 Ramona Enache and Aarne Ranta under LGPL
---# -coding=latin1
 
 concrete WordsFre of Words = SentencesFre ** open
   SyntaxFre,
@@ -21,13 +20,13 @@ lin
     Bread = mkCN L.bread_N ;
     Cheese = mkCN (mkN "fromage" masculine) ;
     Chicken = mkCN (mkN "poulet") ;
-    Coffee = mkCN (mkN "café") ;
+    Coffee = mkCN (mkN "cafÃ©") ;
     Fish = mkCN L.fish_N ;
     Meat = mkCN (mkN "viande") ;
     Milk = mkCN L.milk_N ;
     Pizza = mkCN (mkN "pizza" feminine) ;
     Salt = mkCN L.salt_N ;
-    Tea = mkCN (mkN "thé") ;
+    Tea = mkCN (mkN "thÃ©") ;
     Water = mkCN L.water_N ;
     Wine = mkCN L.wine_N ;
 
@@ -35,42 +34,42 @@ lin
 
     Bad = L.bad_A ;
     Boring = mkA "ennuyeux" ;
-    Cheap = let bm = "bon marché" in mkA bm bm bm bm ;
+    Cheap = let bm = "bon marchÃ©" in mkA bm bm bm bm ;
     Cold = L.cold_A ;
-    Delicious = mkA "délicieux" ;
+    Delicious = mkA "dÃ©licieux" ;
     Expensive = mkA "cher" ;
-    Fresh = mkA "frais" "fraîche" "frais" "fraîchement" ;
+    Fresh = mkA "frais" "fraÃ®che" "frais" "fraÃ®chement" ;
     Good = L.good_A ;
     Suspect = mkA "suspect" ;
     Warm = L.warm_A ;
 
 -- places
 
-    Airport = mkPlace (mkN "aéroport") dative ;
+    Airport = mkPlace (mkN "aÃ©roport") dative ;
     AmusementPark = mkPlace (compN (mkN "parc") ["d'attractions"]) dative ;
     Bank = mkPlace (mkN "banque") dative ;
     Bar = mkPlace (mkN "bar") dative ;
-    Cafeteria = mkPlace (mkN "cafétéria") dative ;
+    Cafeteria = mkPlace (mkN "cafÃ©tÃ©ria") dative ;
     Center = mkPlace (mkN "centre" "centres" ParadigmsFre.masculine) dative ;
-    Church = mkPlace (mkN "église") dative ;
-    Cinema = mkPlace (mkN "cinéma" masculine) dative ;
-    Disco = mkPlace (mkN "discothèque" feminine) dative ;
-    Hospital = mkPlace (mkN "hôpital") dative ;
-    Hotel = mkPlace (mkN "hôtel") dative ;
-    Museum = mkPlace (mkN "musée" masculine) dative ;
+    Church = mkPlace (mkN "Ã©glise") dative ;
+    Cinema = mkPlace (mkN "cinÃ©ma" masculine) dative ;
+    Disco = mkPlace (mkN "discothÃ¨que" feminine) dative ;
+    Hospital = mkPlace (mkN "hÃ´pital") dative ;
+    Hotel = mkPlace (mkN "hÃ´tel") dative ;
+    Museum = mkPlace (mkN "musÃ©e" masculine) dative ;
     Park = mkPlace (mkN "parc") dative ;
     Parking = mkPlace (mkN "parking" masculine) dative ;
     Pharmacy = mkPlace (mkN "pharmacie" feminine) dative ;
     PostOffice = mkPlace (mkN "poste" feminine) dative ;
     Pub = mkPlace (mkN "pub" masculine) dative ;
     Restaurant = mkPlace (mkN "restaurant") dative ;
-    School = mkPlace (mkN "école") dative ;
+    School = mkPlace (mkN "Ã©cole") dative ;
     Shop = mkPlace (mkN "magasin") dative ;
     Station = mkPlace (mkN "gare") dative ;
-    Supermarket = mkPlace (mkN "supermarché" masculine) dative ;
-    Theatre = mkPlace (mkN "théâtre" masculine) dative ;
-    Toilet = mkCNPlacePl (mkCN (mkN "toilette")) dative dative; 
-    University = mkPlace (mkN "université" feminine) dative ;
+    Supermarket = mkPlace (mkN "supermarchÃ©" masculine) dative ;
+    Theatre = mkPlace (mkN "thÃ©Ã¢tre" masculine) dative ;
+    Toilet = mkCNPlacePl (mkCN (mkN "toilette")) dative dative;
+    University = mkPlace (mkN "universitÃ©" feminine) dative ;
     Zoo = mkPlace (mkN "zoo" masculine) dative ;
 
     CitRestaurant cit = mkCNPlace (mkCN cit (mkN "restaurant")) dative to_Prep ;
@@ -82,12 +81,12 @@ lin
     Euro = mkCN (mkN "euro") ;
     Lei = mkCN (mkN "leu" "lei" masculine) ;
     Leva = mkCN (mkN "lev" "leva" masculine);
-    NorwegianCrown = mkCN (mkA "norvégien") (mkN "couronne") | mkCN (mkN "couronne") ;
+    NorwegianCrown = mkCN (mkA "norvÃ©gien") (mkN "couronne") | mkCN (mkN "couronne") ;
     Pound = mkCN (compN (mkN "livre") ["sterling"]);
     Rouble = mkCN (mkN "rouble" "rouble" masculine) ;
-    SwedishCrown = mkCN (mkA "suédois") (mkN "couronne") | mkCN (mkN "couronne") ;
+    SwedishCrown = mkCN (mkA "suÃ©dois") (mkN "couronne") | mkCN (mkN "couronne") ;
     Zloty = mkCN (mkN "zloty" "zlotych" masculine) ;
-   
+
 -- nationalities
 
     Belgian = mkA "belge" ;
@@ -99,50 +98,50 @@ lin
     English = mkNat "anglais" "Angleterre" ;
     Finnish = mkNat "finlandais" "Finlande" ;
     Flemish = mkNP (mkPN "flamand") ;
-    French = mkNat "français" "France" ; 
+    French = mkNat "franÃ§ais" "France" ;
     German = mkNat "allemand" "Allemagne" ;
     Italian = mkNat "italien" "Italie" ;
-    Norwegian = mkNat "norvégien" "Norvège" ;
+    Norwegian = mkNat "norvÃ©gien" "NorvÃ¨ge" ;
     Polish = mkNat "polonais" "Pologne" ;
     Romanian = mkNat "roumain" "Roumanie" ;
     Russian = mkNat "russe" "Russie" ;
     Spanish = mkNat "espagnol" "Espagne" ;
-    Swedish = mkNat "suédois" "Suède" ;
+    Swedish = mkNat "suÃ©dois" "SuÃ¨de" ;
 
 -- means of transportation
-  
+
    Bike = mkTransport en_Prep L.bike_N ;
    Bus = mkTransport par_Prep (mkN "bus") ;
    Car = mkTransport en_Prep L.car_N ;
    Ferry = mkTransport en_Prep (mkN "ferry") ;
    Plane = mkTransport par_Prep L.airplane_N ;
-   Subway = mkTransport par_Prep (mkN "métro") ;
+   Subway = mkTransport par_Prep (mkN "mÃ©tro") ;
    Taxi = mkTransport en_Prep (mkN "taxi") ;
    Train = mkTransport par_Prep (mkN "train") ;
    Tram = mkTransport par_Prep (mkN "tram") ;
 
-   ByFoot = P.mkAdv "à pied" ;
+   ByFoot = P.mkAdv "Ã  pied" ;
 
 
 -- actions
 
     AHasAge p num = mkCl p.name have_V2 (mkNP num L.year_N) ;
     AHasChildren p num = mkCl p.name have_V2 (mkNP num L.child_N) ;
-    AHasRoom p num = mkCl p.name have_V2 
-      (mkNP (mkNP a_Det (mkN "chambre")) 
+    AHasRoom p num = mkCl p.name have_V2
+      (mkNP (mkNP a_Det (mkN "chambre"))
         (SyntaxFre.mkAdv for_Prep (mkNP num (mkN "personne")))) ;
-    AHasTable p num = mkCl p.name have_V2 
-      (mkNP (mkNP a_Det (mkN "table")) 
+    AHasTable p num = mkCl p.name have_V2
+      (mkNP (mkNP a_Det (mkN "table"))
         (SyntaxFre.mkAdv for_Prep (mkNP num (mkN "personne")))) ;
-    AMarried p = mkCl p.name (mkA "marié") ;
+    AMarried p = mkCl p.name (mkA "mariÃ©") ;
     AWant p obj = mkCl p.name vouloir_V2 obj ;
     ALike p item = mkCl item plaire_V2 p.name ;
     ASpeak p lang = mkCl p.name  (mkV2 (mkV "parler")) lang ;
     ALove p q = mkCl p.name (mkV2 (mkV "aimer")) q.name ;
     AHungry p = mkCl p.name (E.ComplCN have_V2 (mkCN (mkN "faim" feminine))) ;
-    AReady p = mkCl p.name (mkA "prêt") ;
+    AReady p = mkCl p.name (mkA "prÃªt") ;
     AThirsty p = mkCl p.name (E.ComplCN have_V2 (mkCN (mkN "soif" feminine))) ;
-    ATired p = mkCl p.name (mkA "fatigué") ;
+    ATired p = mkCl p.name (mkA "fatiguÃ©") ;
     AScared p = mkCl p.name (E.ComplCN have_V2 (mkCN (mkN "peur" feminine))) ;
     AIll p = mkCl p.name (mkA "malade") ;
     AUnderstand p = mkCl p.name (mkV IrregFre.comprendre_V2) ;
@@ -154,17 +153,17 @@ lin
 -- miscellaneous
 
     QWhatName p = mkQS (mkQCl how_IAdv (mkCl p.name (reflV (mkV "appeler")))) ;
-    QWhatAge p = mkQS (mkQCl (mkIP whichSg_IDet (mkN "âge" masculine)) p.name have_V2) ; 
+    QWhatAge p = mkQS (mkQCl (mkIP whichSg_IDet (mkN "Ã¢ge" masculine)) p.name have_V2) ;
 
     PropOpen p = mkCl p.name open_A ;
     PropClosed p = mkCl p.name closed_A ;
-    PropOpenDate p d = mkCl p.name (mkVP (mkVP open_A) d) ; 
-    PropClosedDate p d = mkCl p.name (mkVP (mkVP closed_A) d) ; 
-    PropOpenDay p d = mkCl p.name (mkVP (mkVP open_A) d.habitual) ; 
-    PropClosedDay p d = mkCl p.name (mkVP (mkVP closed_A) d.habitual) ; 
+    PropOpenDate p d = mkCl p.name (mkVP (mkVP open_A) d) ;
+    PropClosedDate p d = mkCl p.name (mkVP (mkVP closed_A) d) ;
+    PropOpenDay p d = mkCl p.name (mkVP (mkVP open_A) d.habitual) ;
+    PropClosedDay p d = mkCl p.name (mkVP (mkVP closed_A) d.habitual) ;
 
-    HowMuchCost item = mkQS (mkQCl how8much_IAdv (mkCl item (mkV "coûter"))) ; 
-    ItCost item price = mkCl item (mkV2 (mkV "coûter")) price ;
+    HowMuchCost item = mkQS (mkQCl how8much_IAdv (mkCl item (mkV "coÃ»ter"))) ;
+    ItCost item price = mkCl item (mkV2 (mkV "coÃ»ter")) price ;
 
 -- Building phrases from strings is complicated: the solution is to use
 -- mkText : Text -> Text -> Text ;
@@ -172,8 +171,8 @@ lin
 
     PSeeYouPlace d = mkText (lin Text (ss ("on se voit"))) (mkPhrase (mkUtt d.at)) ;
     PSeeYouDate d = mkText (lin Text (ss ("on se voit"))) (mkPhrase (mkUtt d)) ;
-    PSeeYouPlaceDate p d = 
-      mkText (lin Text (ss ("on se voit"))) 
+    PSeeYouPlaceDate p d =
+      mkText (lin Text (ss ("on se voit")))
         (mkText (mkPhrase (mkUtt p.at)) (mkPhrase (mkUtt d))) ;
 
 -- Relations are expressed as "my wife" or "the wife of my son", as defined by $xOf$
@@ -201,21 +200,21 @@ lin
 
 -- modifiers of places
     TheBest = mkSuperl True L.good_A ;
-    TheClosest = mkSuperl True L.near_A ; 
+    TheClosest = mkSuperl True L.near_A ;
     TheCheapest = mkSuperl False
-      (compADeg {s = \\_ => (M.mkAdj "bon marché" "bon marché" "bon marché" "bon marché").s ; 
-       isPre = False ; lock_A = <>}) ; 
+      (compADeg {s = \\_ => (M.mkAdj "bon marchÃ©" "bon marchÃ©" "bon marchÃ©" "bon marchÃ©").s ;
+       isPre = False ; copTyp = <> ; lock_A = <>}) ;
     TheMostExpensive = mkSuperl True (mkA "cher") ;
     TheMostPopular = mkSuperl True (mkA "populaire") ;
     TheWorst = mkSuperl True L.bad_A ;
 
-    SuperlPlace sup kind = 
-      let 
+    SuperlPlace sup kind =
+      let
         det  : Det = mkDet the_Art sup.s ;
         name : NP  = case sup.isPre of {
           True  => mkNP det kind.name ;                      -- le meilleur bar
           False => mkNP the_Art (mkCN kind.name (mkNP det))  -- le bar le plus cher
-          } 
+          }
       in {
         name = name ;
         at = SyntaxFre.mkAdv kind.at name ;
@@ -224,17 +223,17 @@ lin
 
 -- transports
 
-    HowFar place = mkQS (mkQCl what_distance_IAdv place.name) ; 
-    HowFarFrom x y = 
-      mkQS (mkQCl (E.CompIQuant which_IQuant) 
-        (mkNP (mkNP distance_NP (SyntaxFre.mkAdv from_Prep x.name)) y.to)) ; 
-    HowFarFromBy x y t = 
-      mkQS (mkQCl (E.CompIQuant which_IQuant) 
-        (mkNP (mkNP (mkNP distance_NP (SyntaxFre.mkAdv from_Prep x.name)) y.to) t)) ; 
-    HowFarBy place t = 
-       mkQS (mkQCl what_distance_IAdv (mkNP place.name t)) ; 
-     
-    WhichTranspPlace trans place = 
+    HowFar place = mkQS (mkQCl what_distance_IAdv place.name) ;
+    HowFarFrom x y =
+      mkQS (mkQCl (E.CompIQuant which_IQuant)
+        (mkNP (mkNP distance_NP (SyntaxFre.mkAdv from_Prep x.name)) y.to)) ;
+    HowFarFromBy x y t =
+      mkQS (mkQCl (E.CompIQuant which_IQuant)
+        (mkNP (mkNP (mkNP distance_NP (SyntaxFre.mkAdv from_Prep x.name)) y.to) t)) ;
+    HowFarBy place t =
+       mkQS (mkQCl what_distance_IAdv (mkNP place.name t)) ;
+
+    WhichTranspPlace trans place =
       mkQS (mkQCl (mkIP which_IDet trans.name) (mkVP (mkVP L.go_V) place.to)) ;
 
     IsTranspPlace trans place =
@@ -242,7 +241,7 @@ lin
       --      mkQS (mkQCl (mkCl (mkCN trans.name place.to))) ;
 
   oper
-    mkNat : Str -> Str -> NPNationality = \nat,co -> 
+    mkNat : Str -> Str -> NPNationality = \nat,co ->
       mkNPNationality (mkNP (mkPN nat)) (mkNP (mkPN co)) (mkA nat) ;
 
     mkDay : Str -> {name : NP ; point : Adv ; habitual : Adv} = \d ->
@@ -253,13 +252,13 @@ lin
       mkCNPlace (mkCN p) i dative ;
 
     open_A = P.mkA "ouvert" ;
-    closed_A = P.mkA "fermé" ;
+    closed_A = P.mkA "fermÃ©" ;
 
-    xOf : GNumber -> N -> NPPerson -> NPPerson = \n,x,p -> mkRelative n (mkCN x) p ; 
+    xOf : GNumber -> N -> NPPerson -> NPPerson = \n,x,p -> mkRelative n (mkCN x) p ;
 
     mkTransport : Prep -> N -> {name : CN ; by : Adv} = \p,n -> {
-      name = mkCN n ; 
-      by = E.PrepCN p n  -- par train, en vélo
+      name = mkCN n ;
+      by = E.PrepCN p n  -- par train, en vÃ©lo
       } ;
 
     en_Prep = mkPrep "en" ;
@@ -268,9 +267,9 @@ lin
   mkSuperl : Bool -> A -> {s : Ord ; isPre : Bool} = \b,a ->
      {s = SyntaxFre.mkOrd a ; isPre = b} ;
 
-    
-    what_distance_IAdv = ss "à quelle distance"**{lock_IAdv=<>};
-    
+
+    what_distance_IAdv = ss "Ã  quelle distance"**{lock_IAdv=<>};
+
     distance_NP : NP = mkNP the_Det (mkN "distance" feminine) ;
 
 
