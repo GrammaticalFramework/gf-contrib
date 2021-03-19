@@ -122,12 +122,12 @@ prERElement :: ERElement -> [String]
 prERElement e = case e of
   EEntity EStrong name attrs -> 
     (name ++ " [shape=box fontsize=10 " ++ "] ;") :
-    [name ++ "_" ++ attr ++ " [shape=ellipse fontsize=10 label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
-    [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] 
+    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse fontsize=10 label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
+    [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] 
   EEntity (EWeak strongrels) name attrs -> 
     (name ++ " [shape=box peripheries=2 fontsize=10] ;") :
-    [name ++ "_" ++ attr ++ " [shape=ellipse, label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
-    [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] ++
+    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse, label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
+    [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] ++
     [rel ++ " [shape=diamond peripheries=2 fontsize=10] ;" | (_,rel) <- strongrels] ++
     concat [
       [
@@ -138,14 +138,14 @@ prERElement e = case e of
     ]
   ERelationship name ents attrs -> 
     (name ++ " [shape=diamond fontsize=10 " ++ "] ;") :
-    [name ++ "_" ++ attr ++ " [shape=ellipse fontsize=10 label=" ++ quote attr ++ "]" | attr <- attrs] ++
-    [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | attr <- attrs] ++
+    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse fontsize=10 label=" ++ quote attr ++ "]" | attr <- attrs] ++
+    [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | attr <- attrs] ++
     [name ++  " -> " ++ ent ++ arrowhead arr ++ maybe "" (\l -> "[label=" ++ l ++ " fontsize=10]") ml  | (ent,(arr,ml)) <- ents]     
   ESubEntity strength name y attrs -> 
     let isaxy = "isa_" ++ name ++ "_" ++ y in
     (name ++ " [shape=box fontsize=10 " ++ style strength ++ "] ;") :
-    [name ++ "_" ++ attr ++ " [shape=ellipse fontsize=10 label=" ++ quote attr ++ "]" | attr <- attrs] ++ 
-    [name ++ "_" ++ attr ++ " -> " ++ name ++ " [arrowhead=none]"  | attr <- attrs] ++ [
+    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse fontsize=10 label=" ++ quote attr ++ "]" | attr <- attrs] ++ 
+    [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | attr <- attrs] ++ [
       isaxy ++ " [shape=triangle fontsize=10 label=\"ISA\"] ;" , 
       name ++ " -> " ++ isaxy ++ " [arrowhead=none]", 
       isaxy ++ " -> " ++ y ++ " [arrowhead=curve]"
@@ -154,7 +154,7 @@ prERElement e = case e of
    style s = case s of
      EStrong -> ""
      EWeak _ -> "peripheries=2"
-   status b a = if b then "_" ++ a else a --- if b then "<<u>" ++ a ++ "</u>>" else a
+   status b a = if b then "_" ++ (attributeName a) else (attributeName a) --- if b then "<<u>" ++ a ++ "</u>>" else a
    arrowhead a = case a of
      EAtMostOne -> ""
      EExactlyOne -> " [arrowhead=curve]"
@@ -194,7 +194,35 @@ type Reference = ([Ident],(Ident,[Ident]))   -- (a,b) -> x.(u,v)
 type FunDep = ([Ident],Ident)
 
 prSchema :: Schema -> String
-prSchema = unlines . map (unlines . prRelation)
+prSchema = unlines . map (unlines . prCreate)
+--prSchema = unlines . map (unlines . prRelation)
+
+prCreate :: Relation -> [String]
+prCreate r = [
+    "CREATE TABLE " ++ name r ++ "("
+  ] ++ commas ([
+    "  " ++ attributeName a ++ " " ++ attributeType a | (a,_) <- attributes r
+  ] ++ [
+    "  PRIMARY KEY " ++ prTuple [attributeName a | (a,b) <- attributes r, b]
+  ] ++ [
+    "  FOREIGN KEY " ++ prTuple x ++ " REFERENCES " ++ y ++ prTuple z | (x,(y,z)) <- references r
+  ]) ++
+  [") ;"]
+  
+ where
+   prTuple xs = case xs of
+   ---  [x] -> x
+     _ -> "(" ++ concat (intersperse "," (map attributeName xs)) ++ ")"
+   commas ls
+     | length ls > 1 = map (++",") (init ls) ++ [last ls]
+     | otherwise = ls
+
+attributeParts a = case break (==':') a of
+  (n,_:t) -> (n,t)
+  _ -> (a, "TEXT")
+  
+attributeType = snd . attributeParts
+attributeName = fst . attributeParts
 
 prRelation :: Relation -> [String]
 prRelation r = [
@@ -206,7 +234,7 @@ prRelation r = [
    prAttr (a,b) = if b then "_" ++ a else a
    prTuple xs = case xs of
      [x] -> x
-     _ -> "(" ++ concat (intersperse "," xs) ++ ")"
+     _ -> "(" ++ concat (intersperse "," (map attributeName xs)) ++ ")"
 
 
 --------------- translate E-R to schema
