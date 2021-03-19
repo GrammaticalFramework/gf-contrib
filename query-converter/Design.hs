@@ -71,18 +71,21 @@ tex6 = getERDiagram [
 -------------------------------
 -- the function displaying everything
 
-displayER e = do
+displayER ifLex e = do
   writeFile "er-tmp.dot" $ prERDiagram e
   system "fdp -Tpng er-tmp.dot >er-tmp.png" -- dot or neato sometimes better
   system $ viewer ++ " er-tmp.png"
-  putStrLn $ prSchema $ erdiagram2schema SER e  -- only E-R strategy implemented; OO and Null TODO
+  let sch = erdiagram2schema SER e 
+  putStrLn $ prSchema $ sch
   putStrLn ""
   putStrLn $ erdiagram2text e
+  putStrLn ""
+  if ifLex then (putStrLn $ unlines $ schemaLexicon $ sch) else return ()
   return ()
 
 -- reading a textfile
 
-file2ER file = displayER . parseER =<< readFile file
+file2ER ifLex file = displayER ifLex . parseER =<< readFile file
 
 parseER = getERDiagram .
           filter (not . isPrefixOf "#") . filter (not . all isSpace) .
@@ -122,12 +125,12 @@ prERElement :: ERElement -> [String]
 prERElement e = case e of
   EEntity EStrong name attrs -> 
     (name ++ " [shape=box fontsize=10 " ++ "] ;") :
-    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse fontsize=10 label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
+    [name ++ "_" ++ nattr ++ " [shape=ellipse fontsize=10 label=" ++ quote (status b nattr) ++ "]" | (attr,b) <- attrs, let nattr = attributeName attr] ++
     [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] 
   EEntity (EWeak strongrels) name attrs -> 
     (name ++ " [shape=box peripheries=2 fontsize=10] ;") :
-    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse, label=" ++ quote (status b attr) ++ "]" | (attr,b) <- attrs] ++
-    [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs] ++
+    [name ++ "_" ++ " [shape=ellipse, label=" ++ quote (status b nattr) ++ "]" | (attr,b) <- attrs, let nattr = attributeName attr] ++
+    [name ++ "_" ++ nattr ++ " -> " ++ name ++ " [arrowhead=none]"  | (attr,_) <- attrs, let nattr = attributeName attr] ++
     [rel ++ " [shape=diamond peripheries=2 fontsize=10] ;" | (_,rel) <- strongrels] ++
     concat [
       [
@@ -138,7 +141,7 @@ prERElement e = case e of
     ]
   ERelationship name ents attrs -> 
     (name ++ " [shape=diamond fontsize=10 " ++ "] ;") :
-    [name ++ "_" ++ attributeName attr ++ " [shape=ellipse fontsize=10 label=" ++ quote attr ++ "]" | attr <- attrs] ++
+    [name ++ "_" ++ nattr ++ " [shape=ellipse fontsize=10 label=" ++ quote nattr ++ "]" | attr <- attrs, let nattr = attributeName attr] ++
     [name ++ "_" ++ attributeName attr ++ " -> " ++ name ++ " [arrowhead=none]"  | attr <- attrs] ++
     [name ++  " -> " ++ ent ++ arrowhead arr ++ maybe "" (\l -> "[label=" ++ l ++ " fontsize=10]") ml  | (ent,(arr,ml)) <- ents]     
   ESubEntity strength name y attrs -> 
@@ -381,7 +384,7 @@ erdiagram2text = unlines . map (mkSentence . unwords . punctuate . trEl)
      EExactlyOne -> ["exactly", "one", uncamel e]
      EAtMostOne -> ["at", "most", "one", uncamel e]
 
-   trAttr a = trEnt indef a
+   trAttr a = trEnt indef (attributeName a)
 
    trRel form r = let ue = uncamel r 
                   in case words ue of
@@ -413,4 +416,18 @@ uncamel = map toLower . uncam where
      (s1,c:s2) -> s1 ++ " " ++ c:uncam s2
      (s1,[]) -> s1
 
+--------------- lexicon from ER, in GF format
 
+schemaLexicon :: Schema -> [String]
+schemaLexicon = concatMap gfRules . nub . concatMap items
+ where
+   items rel =
+     (name rel, "Table") :
+     [(attributeName a, "Attribute") | (a,_) <- attributes rel]
+   gfRules (x,t) = map unwords [
+     ["fun",xt,":",t,";"],
+     ["lin",xt,"=",mkt, unwords (map quote (x : words (uncamel x))), ";"]
+     ]
+     where
+      xt = x ++ "_" ++ t
+      mkt = "mk" ++ t

@@ -42,7 +42,10 @@ loop env@(senv, xmls) = do
        senv' <- runSQLScript senv s
        loop (senv', xmls)
     "d":file:_ -> do
-      file2ER file
+      file2ER False file
+      loop env
+    "dw":file:_ -> do
+      file2ER True file
       loop env
     "f":file:_ -> do
       rs <- readFile file >>= return . lines
@@ -142,6 +145,7 @@ helpMsg = unlines $ [
   "  a  <SQL>   = show algebra for sql query", 
   "  i  <File>  = read SQL, run commands",
   "  d  <File>  = read design, show E-R, schema, English",
+  "  dw <File>  = read design, show E-R, schema, English, GF lexicon",
   "  f  <File>  = read relation, analyse dependencies and keys",
   "  n  <File>  = read relation, normalize to BCNF and 4NF",
   "  ix <File>  = read XML file to an XML document",

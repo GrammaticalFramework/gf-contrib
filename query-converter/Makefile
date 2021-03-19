@@ -13,6 +13,9 @@ D=-i$G -odir objs -hidir objs
 executable: XML MinSQL RelAlgebra
 	ghc -j --make -O -o qconv $D QConv.hs
 
+compile:
+	ghc -j --make -O -o qconv $D QConv.hs
+
 R=-with-rtsopts=-M1G
 www/qconv-real.cgi:: RelAlgebra MinSQL
 	ghc -j --make -O -o $@ $D $R -main-is QConvCGI QConvCGI.hs
