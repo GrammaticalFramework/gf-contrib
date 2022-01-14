@@ -10,7 +10,7 @@ main = do
 
 doTrans pgf s = case parseAllLang pgf (startCat pgf) s of 
   (l,ts):_ -> unlines [display m l u | t <- ts, noFreeVars t, (u,m) <- transfers t]
-  _ -> "no parse of input: " ++ s
+  _ -> "no parse of input: " ++ s ++ "\nlanguages tried: " ++ unwords (map showCId (languages pgf)) 
  where
    display m l u = unlines $ (show m ++ ":") : 
      showExpr [] u : [s | la <- languages pgf, let s = linearize pgf la u]
