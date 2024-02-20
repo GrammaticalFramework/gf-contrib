@@ -1,7 +1,8 @@
 module Main where
 
-import Char
-import System
+import Data.Char
+import System.Process
+import System.Environment
 
 --- translation from Symbolic JVM to real Jasmin code
 

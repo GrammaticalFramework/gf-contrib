@@ -6,6 +6,7 @@ concrete ImperC of Imper = open ResImper in {
     Exp = PrecExp ; 
     Typ = {s,s2 : Str} ;
     Rec = {s,s2,s3 : Str} ;
+    IsNum = {s : Str} ;
 
   lin
     Empty = ss [] ;
@@ -39,10 +40,10 @@ concrete ImperC of Imper = open ResImper in {
     EVar  _ x  = constant x.s ;
     EInt    n  = constant n.s ;
     EFloat a b = constant (a.s ++ "." ++ b.s) ;
-    EMul _ _   = infixL 3 "*" ;
-    EAdd _ _   = infixL 2 "+" ;
-    ESub _ _   = infixL 2 "-" ;
-    ELt _ _    = infixN 1 "<" ;
+    EMul _ p   = infixL 3 p.s "*" ;
+    EAdd _ p   = infixL 2 p.s "+" ;
+    ESub _ p   = infixL 2 p.s "-" ;
+    ELt _ p    = infixN 1 p.s "<" ;
 
     EAppNil val f = constant (f.s ++ paren []) ;
     EApp args val f exps = constant (f.s ++ paren exps.s) ;
@@ -53,4 +54,7 @@ concrete ImperC of Imper = open ResImper in {
     ConsTyp = cc2 ;
     OneExp _ e = e ;
     ConsExp _ _ e es = ss (e.s ++ "," ++ es.s) ;
+
+    isNumInt = {s = []} ;
+    isNumFloat = {s = []} ;
 }

@@ -21,12 +21,12 @@ resource ResImper = open Predef in {
 
     constant : Str -> PrecExp = mkPrec 4 PN ;
 
-    infixN : Prec -> Str -> (_,_ : PrecExp) -> PrecExp = \p,f,x,y ->
-      mkPrec p PN (usePrec x (nextPrec p) ++ f ++ usePrec y (nextPrec p)) ;
-    infixL : Prec -> Str -> (_,_ : PrecExp) -> PrecExp = \p,f,x,y ->
-      mkPrec p PL (usePrec x p ++ f ++ usePrec y (nextPrec p)) ;
-    infixR : Prec -> Str -> (_,_ : PrecExp) -> PrecExp = \p,f,x,y ->
-      mkPrec p PR (usePrec x (nextPrec p) ++ f ++ usePrec y p) ;
+    infixN : Prec -> Str -> Str -> (_,_ : PrecExp) -> PrecExp = \p,c,f,x,y ->
+      mkPrec p PN (usePrec x (nextPrec p) ++ c ++ f ++ usePrec y (nextPrec p)) ;
+    infixL : Prec -> Str -> Str -> (_,_ : PrecExp) -> PrecExp = \p,c,f,x,y ->
+      mkPrec p PL (usePrec x p ++ c ++ f ++ usePrec y (nextPrec p)) ;
+    infixR : Prec -> Str -> Str -> (_,_ : PrecExp) -> PrecExp = \p,c,f,x,y ->
+      mkPrec p PR (usePrec x (nextPrec p) ++ c ++ f ++ usePrec y p) ;
 
     nextPrec : Prec -> Prec = \p -> case <p : Prec> of {
       4 => 4 ; 
@@ -54,7 +54,7 @@ resource ResImper = open Predef in {
       Zero => One ;
       _    => More
       } ;
-    separator : Str -> Size -> Str = \t,n -> case n of {
+    separatr : Str -> Size -> Str = \t,n -> case n of {
       Zero => [] ;
      _ => t
      } ;

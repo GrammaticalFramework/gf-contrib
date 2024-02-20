@@ -90,4 +90,7 @@ flags lexer=codevars ; unlexer=code ; startcat=Stm ;
     ConsTyp = cc2 ;
     OneExp _ e = e ;
     ConsExp _ _ = cc2 ;
+
+    isNumInt = {s = []} ;
+    isNumFloat = {s = []} ;
 }

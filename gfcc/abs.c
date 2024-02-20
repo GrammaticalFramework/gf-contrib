@@ -12,7 +12,7 @@ int abs (int x){
   } ;
 int main () {
   int i ;
-  i = abs (16);
+  i = abs (2-16);
   printf ("%d",i) ;
   return ;
   } ;
