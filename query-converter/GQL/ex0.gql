@@ -1,0 +1,10 @@
+USE G {
+  MATCH ALL (Foo)
+  LET Foo = Bar
+  FOR u IN v
+  RETURN x AS y
+THEN
+  MATCH ANY ACYCLIC (Bar)
+  RETURN Bar AS Foo
+
+}

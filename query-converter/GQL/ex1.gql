@@ -1,0 +1,10 @@
+USE Fraud {
+  MATCH (x) -[z:Transfer WHERE z.amount>1000000]-> (y WHERE y.isBlocked=true)
+  RETURN x.owner AS sender, y.owner AS recipient
+  THEN
+  USE Social
+  MATCH (x1) -[:Member]-> (z1:YachtClub) ,
+        (y1) -[:Member]-> (z1:YachtClub)
+  FILTER sender=x1.name AND recipient=y1.name
+  RETURN z1.address AS clubAddress
+}

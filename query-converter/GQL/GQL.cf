@@ -1,0 +1,80 @@
+entrypoints Query ;
+QUses. Query  ::= "USE" Ident "{" [Query] "}" ;
+
+QIntersect. Query1 ::= Query1 "INTERSECT" Query2 ;
+QUnion.     Query1 ::= Query1 "UNION" Query2 ;
+QExcept.    Query1 ::= Query1 "EXCEPT" Query2 ;
+
+QUse.    Query2 ::= "USE" Ident Query2 ;
+QSeq.    Query2 ::= Clause Query2 ;
+QReturn. Query2 ::= "RETURN" [Value] ;
+
+coercions Query 2 ;
+
+separator nonempty Query "THEN" ;
+
+CMatch.  Clause ::= "MATCH" GraphPattern ;
+CLet.    Clause ::= "LET" Ident "=" Exp ;
+CFor.    Clause ::= "FOR" Ident "IN" Ident ;
+CFilter. Clause ::= "FILTER" Condition ;
+
+VExp. Value ::= Exp "AS" Ident ;
+
+separator nonempty Value "," ;
+
+CEqual. Condition2 ::= Exp "=" Exp ;
+CLess.  Condition2 ::= Exp "<" Exp ; 
+CGt.    Condition2 ::= Exp ">" Exp ;  --- not in grammar spec
+CNull.  Condition2 ::= Exp "IS" "NULL" ;
+CLabel. Condition2 ::= Ident ":" Ident ;
+CExist. Condition2 ::= "EXISTS" "{" Query "}" ;
+COr.    Condition  ::= Condition "OR" Condition1 ;
+CAnd.   Condition  ::= Condition "AND" Condition1 ;
+CNot.   Condition1 ::= "NOT" Condition2 ;
+
+coercions Condition 2 ;
+
+GPPath.  GraphPatternAtom ::= PathMode PathPattern1 ;
+GPEqual. GraphPatternAtom ::= PathMode Ident "=" PathPattern1 ;
+GPSeq.   GraphPattern     ::= GraphPattern "," GraphPatternAtom ;
+GPAtom.  GraphPattern     ::= GraphPatternAtom ;
+
+PMDet. PathMode ::= Determiner Shortest TrailAcyclic ;
+
+DAll.  Determiner ::= "ALL" ;
+DAny.  Determiner ::= "ANY" ;
+DNone. Determiner ::= ;  --- not in grammar spec
+
+SNone.     Shortest ::= ;
+SShortest. Shortest ::= "SHORTEST" ;
+
+TATrail.   TrailAcyclic ::= "TRAIL" ;
+TAAcyclic. TrailAcyclic ::= "ACYCLIC" ;
+TANone.    TrailAcyclic ::= ; 
+
+EIdent. Exp ::= Ident ;
+EInt.   Exp ::= Integer ;
+EProj.  Exp ::= Ident "." Ident ;
+
+PPNode.       PathPattern2 ::= "(" Descriptor ")" ;
+PPRight.      PathPattern2 ::= "-" "[" Descriptor "]" "->" ;
+PPLeft.       PathPattern2 ::= "<-" "[" Descriptor "]" "-" ;
+PPMid.        PathPattern2 ::= "-" "[" Descriptor "]" "-" ;
+PPConcat.     PathPattern1 ::= PathPattern2 PathPattern1 ;
+PPUnion.      PathPattern  ::= PathPattern1 "|" PathPattern ;
+PPCond.       PathPattern2 ::= PathPattern2 "WHERE" Condition ; 
+PPRepBound.   PathPattern2 ::= PathPattern2 "{" Integer "," Integer "}" ;
+PPRepUnbound. PathPattern2 ::= PathPattern2 "{" Integer "," "}" ;
+
+coercions PathPattern 2 ;
+
+DIdent.   Descriptor ::= Ident Label Where ;
+DNoIdent. Descriptor ::= ":" Ident Where ;
+
+LIdent. Label ::= ":" Ident ;
+LNone.  Label ::= ;
+
+WCond. Where ::= "WHERE" Condition ;
+WNone. Where ::= ;
+
+comment "//" ;
