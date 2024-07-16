@@ -57,9 +57,9 @@ EInt.   Exp ::= Integer ;
 EProj.  Exp ::= Ident "." Ident ;
 
 PPNode.       PathPattern2 ::= "(" Descriptor ")" ;
-PPRight.      PathPattern2 ::= "-" "[" Descriptor "]" "->" ;
-PPLeft.       PathPattern2 ::= "<-" "[" Descriptor "]" "-" ;
-PPMid.        PathPattern2 ::= "-" "[" Descriptor "]" "-" ;
+PPRight.      PathPattern2 ::= "-[" Descriptor "]->" ;
+PPLeft.       PathPattern2 ::= "<-[" Descriptor "]-" ;
+PPMid.        PathPattern2 ::= "-[" Descriptor "]-" ;
 PPConcat.     PathPattern1 ::= PathPattern2 PathPattern1 ;
 PPUnion.      PathPattern  ::= PathPattern1 "|" PathPattern ;
 PPCond.       PathPattern2 ::= PathPattern2 "WHERE" Condition ; 
