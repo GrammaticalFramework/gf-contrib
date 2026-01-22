@@ -50,6 +50,8 @@ SShortest. Shortest ::= "SHORTEST" ;
 
 TATrail.   TrailAcyclic ::= "TRAIL" ;
 TAAcyclic. TrailAcyclic ::= "ACYCLIC" ;
+TAWalk.    TrailAcyclic ::= "WALK" ;
+
 TANone.    TrailAcyclic ::= ; 
 
 EIdent. Exp ::= Ident ;
